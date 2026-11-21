@@ -1,3 +1,262 @@
+# D0a Part D: critic 3 redraw
+
+Repaired the 31 files failed by `critic-D-3.json`. All 29 passing files retain their starting SHA-256 hashes, including the Part C proofs, swatches, style guide and STORIES.md. No `operator-D.md` was present. This D0a-D.3 repair keeps the 48 px cell and existing palette.
+
+Both chest states retain the accepted B chest's board divisions, grain, straps and hasp. Brighter boards preserve loot separation; hinges connect the opened lid to the case. The hoard has fewer ingots, exposed cargo boards, goblets and overlapping plate stacks. Its brazier has a bowl, fuel bed, clamps and feet; the broken inset has a fallen, extinguished bowl. The southeast wall follows an ordered native curve. The eastern crypt altar has a stone slab, carved supports and a green reliquary. Manor plaster has timber contact areas without repeating lath damage. Rock ground has exposed beds, clay between them and local wear along the original route. Four cave patterns have connected material seams, with whole shapes continued across their boundaries. The original mining apparatus, mushroom and stairs remain visible.
+
+`D-validation.json` and `D-critic3-redraw-audit.json` pass saved-pixel checks for binary alpha, transparent RGB, palette membership, nonblack outlines, dimensions, colour caps, all 18 frame companions and all 325 source object placements. The four complete cave patterns have zero one- or two-pixel colour components. Maximum floor span is 14.592 L*. Per-cell lone-pixel percentages are recorded in the audit: the highest floor-cell rate is 0.1303%, surface-cell rate 1.3455%, and rendered surface-cell rate 0.4775%, all below 3%. The repaired wall curve's vertical runs decrease from 20 to 1 without alternating back upward. The manor face averages 29.032 L*.
+
+Regenerated the current `D-*.png` sheets and `d0a-review.png`. The `D-critic3-*` sheets contain native, 2x and 3x comparisons, grey and quarter-grey views, repeat/seam inspections and master comparisons at equal art-pixel scale. My visual check covered the repaired drawings and the six frames' recognition targets below. This is a drawing-agent self-review; independent critic acceptance, a timed player test and the owner's station same-game judgement remain pending.
+
+## Five-second checklist
+
+Coordinates are native `(x,y)` pixels; inset coordinates mark their upper-left corners. These are the targets used for the self-check.
+
+| Frame | Open / locked door | Stairs / striped trap | Closed / open chest | Party / red foe | Feature / broken inset |
+| --- | --- | --- | --- | --- | --- |
+| hoard-keep | (384,324) / (384,240) | (336,240) / (576,432) | (1104,198) / (576,552) | (336,225) / (576,232) | (336,960) / (1224,936) |
+| breach-temple | (528,186) / (1200,342) | (480,198) / (1296,390) | (816,246) / (576,294) | (1248,184) / (1200,480) | (816,625) / (1272,984) |
+| sanctum-crypt | (960,192) / (1296,432) | (1008,198) / (1056,534) | (864,390) / (816,390) | (1008,518) / (1200,228) | (432,336) / (1416,888) |
+| cave_rock-plain-21 | (987,174) / (1704,1062) | (1371,552) / (1275,558) | (1464,558) / (1467,606) | (1371,540) / (600,432) | Not a lair |
+| manor-ground | (552,276) / (528,678) | (624,288) / (1152,246) | (1440,918) / (912,1014) | (1008,1086) / (1008,231) | Yard: (72,600) |
+| station_lab | (456,312) / (648,408) | (816,528) / (552,330) | (600,528) / (384,528) | (192,618) / (744,270) | Specimen bay: (660,174) |
+
+| Frame | Wall top / face / baseline / mass |
+| --- | --- |
+| hoard-keep | (480,108) / (480,144) / (480,167) / (480,80) |
+| breach-temple | (600,65) / (600,100) / (600,125) / (600,40) |
+| sanctum-crypt | (610,105) / (610,145) / (610,167) / (610,80) |
+| cave_rock-plain-21 | (650,45) / (650,80) / (650,107) / (650,20) |
+| manor-ground | (600,205) / (600,240) / (600,263) / (600,170) |
+| station_lab | (500,35) / (500,70) / (500,95) / (500,12) |
+
+Found secret: hoard (648,720). Approach dressing: hoard (498,470), (564,646), (564,763); breach (1053,410), (1046,530), (860,561); sanctum (766,242), (632,270), (513,344). Repaired crypt altar: (1320,558).
+
+The native drawings are in `tools/d3_materials.py`, `d3_ground_finish.py`, `d3_props.py` and `d3_scene.py`; checks are in `d_review.py` and `d3_audit.py`. Review and scratch files stay under `art-drop/review-d0a/`. The prose pass was local. No commit, push, branch change or write outside `art-drop/`.
+
+# D0a Part D: critic 2 redraw
+
+Redrew the 31 failed files from `critic-D-2.json`. All 27 passing files retain their starting hashes; these include STORIES, swatches and the style guide. The canon remains 48 px per cell. The new drawings use native coordinates and the existing palette; only the requested review conversions resize pixels.
+
+The hoard has overlapping cargo, bullion and plate stacks, with fallen cargo and an empty focus in its inset. Doors have connected returns, visible leaves and lock bands; the found secret exposes a passage behind displaced stone. The temple has carved altars, folded bedding, fractured sandstone banks and damage connected to flag joints. The crypt has a clean ring, stone plinths and folded ritual cloth. Tables have plank edges, mortices and trestles; the manor face has darker plaster and timber panels. Lab fittings have service joints and controls, and the spill connects to its tank. The cave's floor is drawn once across the chamber; its mining apparatus and mushroom remain visible at their source positions. Only the added locked door moved, to (1704,1062).
+
+Earlier-part repairs in this round are the four failed cave floor patterns, the manor wall surface, and the rock proof pair. The rock proof includes a local exposed bed and wall-foot wear. The passing ice, crystal and lava proofs and swatches remain unchanged, as requested; their reusable patterns use the same ramps with new geometry. Tools are `d2_materials.py`, `d2_ground.py`, `d2_props.py`, `d2_cave.py`, `d2_scene.py` and `d2_audit.py`.
+
+`D-validation.json` and `D-critic2-redraw-audit.json` record the saved-pixel checks and every surface cell's lone-pixel percentage. Alpha is binary, transparent RGB is zero, palette membership and native dimensions pass, and no opaque black occurs. Surface/prop sheets peak at 12/20 colours. All complete floor patterns have zero one- or two-pixel components; floor spans stay at or below 14.491 L*. Maximum lone-pixel rates are 0.0434% for floor cells, 1.3455% across surface cells, and 0.1736% across rendered surface cells. The four repaired patterns match on opposite edges. All 18 frame companion conversions match exactly, and all 325 source object records retain their coordinates. The ring's tangent runs are monotone and its apex border is one pixel. The manor face averages 27.639 L*.
+
+## Five-second self-check coordinates
+
+Each pair is a native pixel coordinate. Wall top, face, baseline and mass targets remain at the coordinates in the earlier per-frame tables. These coordinates support the drawing-agent recognition check. An independent timed player test remains pending.
+
+| Frame | Open / locked door | Stairs / striped trap | Closed / open chest | Party / red foe | Feature / broken inset |
+| --- | --- | --- | --- | --- | --- |
+| hoard-keep | (384,324) / (384,240) | (336,240) / (576,432) | (720,198) / (576,552) | (336,225) / (576,232) | (336,960) / (1224,936) |
+| breach-temple | (528,186) / (1200,342) | (480,198) / (1296,390) | (816,246) / (576,294) | (1248,184) / (1200,480) | (816,625) / (1272,984) |
+| sanctum-crypt | (960,192) / (1296,432) | (1008,198) / (1056,534) | (864,390) / (816,390) | (1008,518) / (1200,228) | (432,336) / (1416,888) |
+| cave_rock-plain-21 | (987,174) / (1704,1062) | (1371,552) / (1275,558) | (1464,558) / (1467,606) | (1371,540) / (600,432) | Not a lair |
+| manor-ground | (552,276) / (528,678) | (624,288) / (1152,246) | (1440,918) / (912,1014) | (1008,1086) / (1008,231) | Whole yard: (72,600) |
+| station_lab | (456,312) / (648,408) | (816,528) / (552,330) | (600,528) / (384,528) | (192,618) / (744,270) | Specimen bay: (660,174) |
+
+Found secret: hoard (648,720). Approach dressing: hoard (498,470), (564,646), (564,763); breach (1053,410), (1050,470), (1046,530), (1004,555), (860,561); sanctum (766,242), (703,251), (632,270), (561,290), (513,344).
+
+I refreshed `d0a-review.png` and the current `D-*.png` sheets; `D-critic2-*.png` contains this round's final details, repeats, master comparisons and squints. I inspected native frames, enlarged details at 2x and 3x, greyscale and quarter-grey views. Independent critic and owner acceptance remain pending. The station still needs the owner's same-game judgement. The prose pass was local. No commit, push, branch change or write outside `art-drop/`.
+
+# D0a Part D: critic 1 redraw
+
+2026-11-21. Redrew or repaired all 48 files failed in `critic-D-1.json`. All nine passing files, including `frames/STORIES.md` and the ice, crystal and lava proof pairs, retain their starting SHA-256 hashes. No `operator-D.md` was present. The canon remains 48 px per cell; the palette is unchanged.
+
+The hoard contains overlapping bullion, cargo chests, plate stacks, a shield and an urn. The rift has split sandstone banks, overhanging fragments and an ember interior of varying width. The sanctum has a stepped circular inlay and inscribed stone sockets. Each lair has distinct approach dressing through its route. Doors have returns and thresholds for their direction of travel; the found secret uses displaced masonry. Mining supports replace the mistaken weapon racks at all five source positions, and wider stair treads remain visible beside the cave party. Lab benches, storage and a connected specimen work area replace the domestic furniture. Furniture repairs include a larger masonry hearth, book arrangements, cloth folds, stone effigies and brighter chest bodies.
+
+Authorized changes to earlier parts: repaired the keep, temple, crypt, rock-cave and sewer proofs and their grey copies; seven failed swatches and their exact style-guide inserts; the mushroom study; cave floor patterns and sewer banks. The manor frame's wall surface has plaster over timber wainscot. The ice, crystal and lava proofs remain unchanged as requested, while their failed reusable floor patterns have matching boundaries. These are D0a-D.1 drawing repairs; they do not change the cell size or palette. Existing Part B crate, chest, column, door and table files remain unchanged; D uses its own brighter chest sprite.
+
+`tools/d_redraw_materials.py`, `d_redraw_props.py` and `d_redraw_scene.py` reproduce the native drawings in that order. Pixels are drawn directly or copied 1:1. Only review companions are enlarged or reduced. `frames/layout.json` retains original source IDs and coordinates alongside replacement sprite names. Regenerated the companions, `d0a-review.png`, and the `D-*.png` review sheets under `art-drop/review-d0a/`.
+
+Pixel checks pass in `D-validation.json` and `D-redraw-audit.json`: binary alpha, zero transparent RGB, palette membership, no opaque black, dimensions, colour caps, exact companions and source-object coordinates. Surface sheets use at most 12 colours and prop sheets at most 20. The largest floor span is 14.491 L*. Every complete floor has zero one- or two-pixel components; all 504 floor cells have 0% lone pixels. The highest surface-tile rate is 1.3455%, in the unchanged hydroponics wall. The highest rendered surface-cell rate is 0.1736%, in the cave. Both remain below 3%. Every tile's percentage is retained in the reports. The four repaired cave patterns match on both pairs of opposite edges. The guide is unchanged outside the authorized inserts.
+
+## Five-second self-check targets
+
+Native pixel coordinates follow. These are visual self-review targets, not an independent timed player test. The earlier per-frame tables below still locate each wall top, face, baseline and mass; the approach coordinates in this section supersede the earlier lists. I checked the changed drawings at native and nearest-neighbour scales, in grey and in quarter-grey views against the master at its registered art-pixel scale. Independent critic and owner acceptance remain pending.
+
+| Frame | Open / locked door | Stairs / trap | Closed / open chest | Party / red foe | Feature / broken inset |
+| --- | --- | --- | --- | --- | --- |
+| hoard-keep | (384,324) / (384,240) | (336,240) / (576,432) | (720,198) / (576,552) | (336,225) / (576,232) | (336,960) / (1224,936) |
+| breach-temple | (528,186) / (1200,342) | (480,198) / (1296,390) | (816,246) / (576,294) | (1248,184) / (1200,480) | (816,625) / (1272,984) |
+| sanctum-crypt | (960,192) / (1296,432) | (1008,198) / (1056,534) | (864,390) / (816,390) | (1008,518) / (1200,228) | (432,336) / (1416,888) |
+| cave_rock-plain-21 | (987,174) / (1707,942) | (1371,552) / (1275,558) | (1464,558) / (1467,606) | (1371,540) / (600,432) | Not a lair |
+| manor-ground | (552,276) / (528,678) | (624,288) / (1152,246) | (1440,918) / (912,1014) | (1008,1086) / (1008,231) | Yard: (72,600) |
+| station_lab | (456,312) / (648,408) | (816,528) / (552,330) | (600,528) / (384,528) | (192,618) / (744,270) | Specimen bay: (660,174) |
+
+Found secret: hoard (648,720). Hoard approach: (498,470), (564,646), (564,763), with intact/ruined storage at (504,454) and (563,745). Breach approach: (1053,410), (1050,470), (1046,530), (1004,555), (860,561). Sanctum approach: (766,242), (703,251), (632,270), (561,290), (513,344).
+
+All writes stayed under `art-drop/`. No commit, push or branch change. The prose pass and visual review were performed locally without delegation.
+
+# D0a Part D
+
+2026-11-21. Six mood frames are in `frames/`, each with an exact nearest-neighbour `-2x` copy, a `-grey` copy and a quarter-size greyscale `-squint` review copy. `frames/STORIES.md` gives three story lines per frame. `d0a-review.png` places all six native frames side by side above the 14 proofs.
+
+The cell remains **48 × 48 art pixels**. I drew the new pixels with explicit rectangles, stepped paths and selected clusters in `tools/d_surfaces.py`, `d_sprites.py` and `d_frames.py`. Existing Part B/C pixels are copied at 1:1. No image-tool output, spatial reduction, random texture, filters, glow or soft alpha enters the art. Enlargements repeat pixels; only the greyscale squints reduce an image.
+
+`tools/d_layouts.py` transcribes the five reference grids as room outlines, internal wall holes and object coordinates. The conversion is from 64 px grid landmarks to 48 px geometry; it never samples reference image pixels. `frames/layout.json` records every placed object's source coordinate and native bounds. The cave gets a 48 px margin on all sides to retain the full upper wall. Its recorded coordinates include that margin. The lab uses the brief's 20 × 16 fallback, with an office, corridor and specimen bay. The manor retains its outer wall and at least a cell of visible yard. Existing overworld reference crops are reused.
+
+The required Part C repairs are back-ported to the colour/grey proofs and material studies for **keep, temple, crypt, cave_rock, cave_ice, cave_crystal, cave_lava and dungeon_sewer**, and their eight style-guide inserts. Built floors have flag joints and connected edge wear. Cave floors have broad ground planes, exposed shelves and fractures. The temple floor is warm sandstone. The sewer has wet flags and a water channel. Keep, temple, crypt and sewer caps have joints and lit front lips. The lava crucible is squat and has no handle; an ember channel crosses its proof floor. The palette, cell size, accepted B props and other earlier deliverables are preserved.
+
+Reusable native pieces are in `canon/surfaces/` and `canon/props/d-*.png`; the `*-study.png` props copy the accepted C pieces except for the requested crucible redraw. The lab frame uses clean tiles with one placed spill, so the study's spill does not repeat across the room. Party and foe markers retain the reference's simple silhouette as the existing character-art exception. Doors have a dark opening, lintel and lit threshold; lock plates and the found secret's displaced masonry distinguish their states.
+
+`tools/d_review.py` passes alpha, palette, dimensions, sheet colour caps, floor components, value spans, lone-pixel limits, companion-export equivalence and placement-manifest checks. All checked art has alpha 0/255, zero RGB under transparency and no opaque black. Combined wall/floor colours peak at 12; prop sheets stay below 48. Frames and the contact sheet combine separately limited sheets and are scene images. Greyscale copies and unchanged reference inserts are exempt from palette membership. Squints are exempt from native-size rules.
+
+All 14 complete floor sheets have zero one- or two-pixel colour components and zero lone pixels. The largest floor span is 14.491 L*. The largest lone-pixel rate among the 504 individual 48 px floor crops is 0.0434%, where an ice fracture crosses a crop boundary. Full per-cell measurements are in `art-drop/review-d0a/D-validation.json`.
+
+| Look | Floor span, L* | Floor lone pixels | Wall lone pixels |
+| --- | ---: | ---: | ---: |
+| keep | 14.182 | 0.0000% | 0.0000% |
+| temple | 13.742 | 0.0000% | 0.0000% |
+| manor | 11.061 | 0.0000% | 0.0000% |
+| crypt | 11.203 | 0.0000% | 0.0000% |
+| cave_rock | 14.474 | 0.0000% | 0.0000% |
+| cave_ice | 13.800 | 0.0000% | 0.0000% |
+| cave_crystal | 11.718 | 0.0000% | 0.0000% |
+| cave_lava | 11.689 | 0.0000% | 0.0000% |
+| dungeon_sewer | 12.599 | 0.0000% | 0.0000% |
+| station_corridor | 8.420 | 0.0000% | 0.0000% |
+| station_lab | 12.654 | 0.0000% | 0.0000% |
+| station_engine | 14.491 | 0.0000% | 0.0506% |
+| station_hydro | 6.631 | 0.0000% | 0.2242% |
+| yard | 12.140 | 0.0000% | 0.0000% |
+
+Review sheets, native crops, master comparisons and scratch layers are under `art-drop/review-d0a/D-*.png`. The master comparison reads one exact 2 × 2 source block per master art pixel; native and enlarged views use equal art-pixel scales. I reviewed native scenes, enlarged prop and surface crops, greyscale views and squints. The wall mass, door openings, loot bands, traps and feature highlights remain distinct in greyscale. The inspections caught party markers hidden by stairs, repeated lab spills, grass inside manor wall mass and lone pixels along curved wall faces. These are repaired. Wall courses use world-aligned rows; native stepped base lines connect the curves. The worst rendered 48 px surface cell contains 0.2170% lone pixels, below the 3% limit. The checklists below are drawing-agent findability checks, not an independent timed player test. Independent critic and owner acceptance remain pending.
+
+## Five-second checklist coordinates
+
+Coordinates are `(x, y)` in each native frame, measured from its top-left. Object coordinates indicate the original cell centre or the visible feature focus. Insets use their top-left corner. These lists also identify the additions needed where a source map lacked a required state example.
+
+### hoard-keep
+
+Native size: 1440 × 1104 px.
+
+| Find | Native coordinates |
+| --- | --- |
+| Wall top | (480, 108) |
+| Wall face | (480, 144) |
+| One-pixel base line | (480, 167) |
+| Mass beyond the wall | (480, 80) |
+| Open door | (384, 324) |
+| Locked door | (384, 240) |
+| Stairs | (336, 240) |
+| Found striped trap | (576, 432) |
+| Closed chest | (720, 198) |
+| Opened chest | (576, 552) |
+| Party | (336, 225) |
+| Foe in red | (576, 232) |
+| Found secret door | (648, 720) |
+| Lair feature | (336, 960) |
+| Broken-state inset | (1224, 936) |
+| Approach dressing | (504, 468), (576, 648), (576, 768), (384, 816) |
+
+### breach-temple
+
+Native size: 1488 × 1152 px.
+
+| Find | Native coordinates |
+| --- | --- |
+| Wall top | (600, 65) |
+| Wall face | (600, 100) |
+| One-pixel base line | (600, 125) |
+| Mass beyond the wall | (600, 40) |
+| Open door | (528, 186) |
+| Locked door | (1200, 342) |
+| Stairs | (480, 198) |
+| Found striped trap | (1296, 390) |
+| Closed chest | (816, 246) |
+| Opened chest | (576, 294) |
+| Party | (1248, 184) |
+| Foe in red | (1200, 480) |
+| Lair feature | (816, 625) |
+| Broken-state inset | (1272, 984) |
+| Approach dressing | (1056, 414), (1056, 486), (1056, 546), (1008, 558), (864, 564) |
+
+### sanctum-crypt
+
+Native size: 1632 × 1056 px.
+
+| Find | Native coordinates |
+| --- | --- |
+| Wall top | (610, 105) |
+| Wall face | (610, 145) |
+| One-pixel base line | (610, 167) |
+| Mass beyond the wall | (610, 80) |
+| Open door | (960, 192) |
+| Locked door | (1296, 432) |
+| Stairs | (1008, 198) |
+| Found striped trap | (1056, 534) |
+| Closed chest | (864, 390) |
+| Opened chest | (816, 390) |
+| Party | (1008, 518) |
+| Foe in red | (1200, 228) |
+| Lair feature | (432, 336) |
+| Broken-state inset | (1416, 888) |
+| Approach dressing | (624, 240), (672, 240), (720, 240), (768, 240) |
+
+### cave_rock-plain-21
+
+Native size: 1968 × 1392 px.
+
+| Find | Native coordinates |
+| --- | --- |
+| Wall top | (650, 45) |
+| Wall face | (650, 80) |
+| One-pixel base line | (650, 107) |
+| Mass beyond the wall | (650, 20) |
+| Open door | (987, 174) |
+| Locked door | (1707, 942) |
+| Stairs | (1371, 552) |
+| Found striped trap | (1275, 558) |
+| Closed chest | (1464, 558) |
+| Opened chest | (1467, 606) |
+| Party | (1371, 540) |
+| Foe in red | (600, 432) |
+
+### manor-ground
+
+Native size: 1968 × 1248 px.
+
+| Find | Native coordinates |
+| --- | --- |
+| Wall top | (600, 205) |
+| Wall face | (600, 240) |
+| One-pixel base line | (600, 263) |
+| Mass beyond the wall | (600, 170) |
+| Open door | (552, 276) |
+| Locked door | (528, 678) |
+| Stairs | (624, 288) |
+| Found striped trap | (1152, 246) |
+| Closed chest | (1440, 918) |
+| Opened chest | (912, 1014) |
+| Party | (1008, 1086) |
+| Foe in red | (1008, 231) |
+| Yard and front approach | (72, 600), (1008, 1180) |
+
+### station_lab
+
+Native size: 960 × 768 px.
+
+| Find | Native coordinates |
+| --- | --- |
+| Wall top | (500, 35) |
+| Wall face | (500, 70) |
+| One-pixel base line | (500, 95) |
+| Mass beyond the wall | (500, 12) |
+| Open door | (456, 312) |
+| Locked door | (648, 408) |
+| Stairs | (816, 528) |
+| Found striped trap | (552, 330) |
+| Closed chest | (600, 528) |
+| Opened chest | (384, 528) |
+| Party | (192, 618) |
+| Foe in red | (744, 270) |
+| Specimen bay / office / spill | (660, 174), (240, 210), (638, 251) |
+
+No commit, push or branch change. Work stayed under `art-drop/`. The repository install/build workflow was not run for this art-only task, which forbids writes elsewhere. The prose pass used the vendored declauding lint and a local newcomer read; it was not independent.
+
 # D0a Part C: critic 23 redraw
 
 2026-11-21: repaired all nine files listed by critic 23. The rock and crystal walls have connected planes, branching fractures and chipped ledges. Removed the enclosed lozenges and repeated interior marks. Yard cobbles continue across the vertical wrap, with a shaped turf return across the horizontal wrap. Cave floors, props and the angular crystal inclusion are unchanged.
