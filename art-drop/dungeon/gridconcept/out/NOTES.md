@@ -11,3 +11,11 @@ How it was made (AI-generated art, Codex image tool):
 Checked: walls, faces and floors on the block-out cells; doors at (8,4) locked, (8,6), (14,6), (24,7), (12,15); stairs at (7,4) and (26,6); hoard inside its 18 cells; no figures, text or floor light pools.
 
 Known blemishes: a faint cobble discontinuity along the quarter joins (x 744, y 552); the patched floor cell (9,6) shows its square edge; two spear tips clipped where the back-room cells were swapped.
+
+## Calm version (2026-11-22): `keep-lair-calm*.png`
+
+Owner feedback on the first concept: too busy, props too big, hung props over the floor, every door front-facing, no clear path. This version follows the standing rules: plain dark side walls; props sized to the grid (clutter 1 cell, tables/beds 2x1 at most); nothing hung over the floor; the four doors in side walls drawn edge-on, only (12,15) front-facing; furniture against walls with a clear lane between every door and stair; one set piece per room (hoard, egg nest).
+
+Method: three whole-map paint-overs of the clean base, best one (calm-1, 713/713 cells) kept; rough stairs and a lock sketched onto its exact cells; re-rendered as pixel art in four 17x13-cell quarters at 2x, each with its finished neighbours attached for matching stones; snapped with one shared palette (mode per 2x2) and stitched along minimum-difference seams in 3-cell overlaps. Hand pixel fixes: both stair cells (7,4) and (26,6) redrawn as steps going down; the lock moved onto the edge of door (8,4). Grid check: 713/713 cells.
+
+Known: the two hand-drawn stair cells are flatter than the painted props, and the stairwell table runs under the stair rim; one patched floor patch beside door (8,4) is plain flag without mortar lines; the big hall is sparse by design.
