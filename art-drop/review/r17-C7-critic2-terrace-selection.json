@@ -1,0 +1,18 @@
+{
+  "selected": "B",
+  "rejected": [
+    "family A: too few rows",
+    "family B: oversized tiles",
+    "master C: broad hips made separate caps"
+  ],
+  "reason": "B has narrow16px hips, legible ridge/eave and continuous terrace slope; widths crop native interior columns, depth3 wraps one drawn48px slope band without changing tile scale",
+  "widths": [
+    48,
+    96,
+    144
+  ],
+  "depths": [
+    96,
+    144
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "tower-b",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Draw ONE MEDIEVAL FORTIFICATION WATCHTOWER, isolated on puremagenta. This is a BARE STONE CASTLE TOWER, NOT a house, NO timber framing, NO residential windows, NO gabled roof, NO chimney. Native96x240 portrait, tall SQUARE masonry shaft,16pxvisible rightreturn, stonecrenellations and flatopen battlementdeck at top. Narrow arrow slits only, smallplainoakdoor nearbase and a towerdoor atwallwalkheight abouttopthird. Entiretowerstone matches the curtain wall and gatehouse reference, quietgrey-brownlargeblocks with sparsechips, no scratches. Continuouslegiblemasonry,1pxnativeoutline, upper-leftlight, high3/4RPGview. Sidewallwalkstubs24pxdeep left/right atupperthird, connecteddoor. No floor/platform/landscape. SIMPLE heavyfortification silhouette, no decorativehouseelements.",
+    "source": "r17-C7-source-tower-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "gate-context",
+    "size": [
+      192,
+      192
+    ],
+    "prompt": "Edit the gatehouse reference by ADDING a COMPLETE EXTERNAL MASONRY STAIR along its RIGHT side. Keep the entire existing two towers, broadportal, chamber and roof UNCHANGED. Expand canvas right by about one-third, so nativecoregate144x192 remainsleft and newstairfits48x192right. Stair runs continuously from groundbottomright to the existingwallwalklanding beside righttower atheightofgatechamber. Clearlyvisible treads go allthewayup, samequietstonecoursesandlight, continuouslanding to towerdoor, no disconnectedoverlays. Gate+stair must be drawn as ONECOHERENT ASSEMBLY. Newwholecontext192x192, core3cellswide+stair1cellwide. Preserve hugeopenportalmagenta, puremagentaoutside, nofloorslaborbackground. Thin1pxnativeoutline andpixelartnotphotorealistic.",
+    "source": "r17-C7-source-gate-context.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "roof-family-a",
+    "size": [
+      288,
+      144
+    ],
+    "prompt": "Draw a horizontal sprite atlas of THREE separate medieval terracotta ROOF CAPS on puremagenta, no houses/facades/windows/ground. Same high3/4pitch and tileclusters as referencehouse. Three caps lefttoright with relative widths1:2:3, native48x144,96x144,144x144; equaldepth144. Leave generousmagenta gutters soeachcanbecropped. They are deep topview pitchedROOF VOLUMES with ridge nearrear/top, broadlitupperleftplane, shadedrightreturn, thick2pxeaveatflatbottomedge,1pxoutsideoutline. Firstnarrowroofmodesthipnotneedle; secondcrossgable withbroadplainslope; thirdbroadhipwithcenter ridge. Every lowerroofbodyopaque acrossfullwidth, no magentawedgeholes. Consistent6-8nativepxtilewidth3-4pxcoursesacrossallcaps; quietmutedredclaypalette6tones, notornament. No dormer,chimney,spikes,decorations, labelsorpanelborders. RoofONLYassets, notcompletebuildings. Paintlarge around2304x1152. Flatmagentaoutsideeachcap.",
+    "source": "r17-C7-source-roof-family-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "roof-family-b",
+    "size": [
+      288,
+      144
+    ],
+    "prompt": "SECOND horizontal atlas THREE isolated ROOFONLY cap candidates on puremagenta: native48x144narrowhip,96x144gable/hip,144x144broadhip, proportionalwidths1:2:3 andequal144depth. Keepdeeprecedingroofsseenfromabove, top-leftlight, shadedrightplane, thickenedeaves, smoothjoinedvalleychannelsatends, onenativepixeloutsideoutline. Tileclusters6-8pxwide3-4pxcourses, fewerlargerquietclusters, mutedterracottaramp, no decorativewindows/dormers/chimneys. Allroofbodysolidunderpeak,noholes. Vertical sidesandsquarefronteaveforgridjoining, no roundedcorners. Separatecapswithmagenta gutters, no text. NOT houses, NO wallorfrontdoor, NO ground. Same rooftreatmentasreferencehousebutonlyroofmass. Paintatlargetwicenativeplus.",
+    "source": "r17-C7-source-roof-family-b.png",
+    "tool": "built-in image tool"
+  }
+]

@@ -1,0 +1,398 @@
+{
+  "source_drawings": [
+    {
+      "file": "r17-C7-critic1-source-back-north.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "0ff801cb58b2a24105ad73d8d4f06ceab4bb9a8bf3dea56e639d0e8a537dfffa"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-a-inspect.png",
+      "size": [
+        960,
+        720
+      ],
+      "sha256": "18a1b8c1405255842b5b30492275150a2cff79fa200ed68067e33f7b9b73d366"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-a-ne.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "1df0cc951a9f9af077877d17229010a977e77d481322b63cdf8af600822abb0c"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-a-nw.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "6f06cce89f0a707d0d0d2a79b168f0eae6fbd69a0399b75cae434f9512dc8d15"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-a-se.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "2f144ea32a6d8a2e361291529e536a3682c9bff7dfc9a499918063314a3c940e"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-a-sw.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "2c1ff0cf1a734d14dfc36309e3aa85931fcef631c941f2fec2eda4dcc0657623"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-b-ne.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "01c0e52907f816787839cf91ce48e36ccc814f1bfea296b6095a9e2247d5443b"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-b-nw.png",
+      "size": [
+        1447,
+        1087
+      ],
+      "sha256": "60511214a580687615e6080dd574e1caaadc6837e8454218e04f54be2f74cabf"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-b-se.png",
+      "size": [
+        1447,
+        1087
+      ],
+      "sha256": "75c8bb7299b38ecea1a620144d36898a536102f02fea744ac8965fd4b5471f91"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-b-sw.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "671fc819e635bea5708bf2a466cbf82b5bfceec3f2c332efaf951f739c144fb6"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-c-ne.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "c1b8477589674dcc24d3a7941f1c2f100a15adee492534bb0ba4c416e098dde3"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-c-nw.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "67457bbd8a50b6ca5a2ce8ad61bbb7c5bfb51ad17b7c4ad5357432ad72b40b35"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-c-se.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "887ed06a0bdfc52e44ec7cf18a079163afc2940eeea550a38f07393526ad1833"
+    },
+    {
+      "file": "r17-C7-critic1-source-concept-c-sw.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "30743052568a48edce25b59e95d0ecdcbf577061df06d7f85252eeaeefa64b38"
+    },
+    {
+      "file": "r17-C7-critic1-source-corner-a.png",
+      "size": [
+        916,
+        1717
+      ],
+      "sha256": "58e00ed937b8180ecbe1df41c8c0ab277bae962b4d4ce34648f3ac5b079563e1"
+    },
+    {
+      "file": "r17-C7-critic1-source-corner-b.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "1acd6443a66a9fa974bca815f9840fc750189b36d88c16e9a0938ed96e23978e"
+    },
+    {
+      "file": "r17-C7-critic1-source-corner-roof-fine.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "be16ab346c0e3457ff813548a5bd2ca9d7bbb8248fbc1a4dbf48fa55fbdf076c"
+    },
+    {
+      "file": "r17-C7-critic1-source-gate-a.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b41f990f1473f3d7e6086a1139473e18ec1a67e102f12fa25c9605e99f833a80"
+    },
+    {
+      "file": "r17-C7-critic1-source-gate-b.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b10ad88a4705b21eefa29e5385aec54871b5f765f849e1b8741a8a29f1c3679c"
+    },
+    {
+      "file": "r17-C7-critic1-source-gate-c.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "aa4ecac4570a0590f0f5fc9ffc08ae9ffcfbdc5f4ba3ccdeebb68865bdda83b3"
+    },
+    {
+      "file": "r17-C7-critic1-source-guildhall.png",
+      "size": [
+        948,
+        1659
+      ],
+      "sha256": "48f1ad22190234e25e0515d7fbe298eb49c67128cae10b6723ee8747567257ab"
+    },
+    {
+      "file": "r17-C7-critic1-source-inn-west-b.png",
+      "size": [
+        793,
+        1983
+      ],
+      "sha256": "d45757182ece3de8b70faf44167648566c77143cdd7fbe779760152e720a8d48"
+    },
+    {
+      "file": "r17-C7-critic1-source-inn-west.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "e0198ed6d5736bb2ca1673a4eace2a3d4d169eb3f18889399befcc25d38b9d63"
+    },
+    {
+      "file": "r17-C7-critic1-source-lean-roof.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "b647680392e755281ebf8e44afb8564a75ab0779db4c3f41d5a2f64b720c039e"
+    },
+    {
+      "file": "r17-C7-critic1-source-market-a.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "7a5eb1ec8158b2d8e576a0a9c222a30474b93a0b6d86fe3f0367b6106d6aff78"
+    },
+    {
+      "file": "r17-C7-critic1-source-market-b.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "0f6ec5942d2a2b2ddaf5f13cd15cf117ffa331fb77ccfba1aa86594d355413a1"
+    },
+    {
+      "file": "r17-C7-critic1-source-market-c.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "d3c754ee40802dec7ae847d47b8d8630cc751037525bb56546437bbbbfd7c1fa"
+    },
+    {
+      "file": "r17-C7-critic1-source-narrow-front.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "e38b54a49596e67b8a38ceef810e65f6adb0e09a1ce55601ae04cff290758c6c"
+    },
+    {
+      "file": "r17-C7-critic1-source-narrow-side.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "1092079aa3a120f0b1e0d9b2474378ff21361fc5e8f31a03c1c2748b7164a6a8"
+    },
+    {
+      "file": "r17-C7-critic1-source-paving.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "258fb60a4219a6c6d46c684e328f13126cc86bf31403b8d1a5460cfedb0f598b"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-field-d2.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "76f26e552f5680dbbac41f4affa0ef39b9562cabc97388ce29c81b1e0bad6172"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-field-d3.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "425b84e50b6913f99fd586c99cb139d1a8e308c6b9bd89a014885e5f73c24d79"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w1-d2.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "e308151ec412b926e977324cf066d93f4cf4d3de812ba5d009591c3d05dc0d13"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w1-d3.png",
+      "size": [
+        724,
+        2172
+      ],
+      "sha256": "410412235c63b46093861f3e79d6266ae9396ea4b9cf90f7eb2c0e9791146d04"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w2-d2-b.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9f1d8471d01c3eafdf68e6d453cdd221a95742a7981b375896a0f7b8777785b9"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w2-d2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e4fb9fd49db695cec8b3155728ed14299cefb5ef8cefd558090104c452b36dc5"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w2-d3-b.png",
+      "size": [
+        1490,
+        1056
+      ],
+      "sha256": "b58ce387d13943c338ad4e2757eeed49d3c1e61ed421eb6315c9799305753681"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w2-d3.png",
+      "size": [
+        1086,
+        1448
+      ],
+      "sha256": "0a62e21277b4542cb892779c34ae44ab2ab7e9936732ce0b3edb209eec77930e"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w3-d2-b.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c061b85e324fef41ea1a5a5a0b9f82c8a1c8de74ccf59e66d8ed91135e24f917"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w3-d2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "949b5c35ae237be1e60a6ffe314e7e887b47c35bfd3983fdffb589574adb87c1"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w3-d3-b.png",
+      "size": [
+        1490,
+        1056
+      ],
+      "sha256": "32e75f58a057042bd12d7b210fd0623a1c8b44a1d6b11bd9be8eb69e5e1472af"
+    },
+    {
+      "file": "r17-C7-critic1-source-roof-w3-d3.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "2d6d8567ab75b616b93aebb3b7f4aab414f4bbf823cc301c71daf369f39bde31"
+    },
+    {
+      "file": "r17-C7-critic1-source-side-east.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "0b06f36cba92b659b9395d4d2f08c8eef2738d133a72923a4ba5837f9daa8f6b"
+    },
+    {
+      "file": "r17-C7-critic1-source-side-west.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "46e78a199df3b6faa9fc37bc0bd4ef30939f88a35cec439316c5117007fff309"
+    },
+    {
+      "file": "r17-C7-critic1-source-street-turn.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "7bf488fab5b285df2564925f9596101cac585e220932cbcb9b0b11d57e7d736d"
+    },
+    {
+      "file": "r17-C7-critic1-source-wall-strip.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "7f6ca72f40ec0869ea152a0073efbe929b3b0b424835eaa11693cdd9528c060a"
+    },
+    {
+      "file": "r17-C7-critic1-source-wall-walk.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "9efd4fee4c6769704873510fd30338c839e138e122957a24108c99a706849426"
+    }
+  ],
+  "concept_guides": [
+    "r17-C7-critic1-guide-a.png",
+    "r17-C7-critic1-guide-b.png",
+    "r17-C7-critic1-guide-c.png"
+  ],
+  "piece_prompt_files": [
+    "r17-C7-critic1-piece-prompts-1.json",
+    "r17-C7-critic1-piece-prompts-2.json",
+    "r17-C7-critic1-piece-prompts-3.json",
+    "r17-C7-critic1-piece-prompts-4.json",
+    "r17-C7-critic1-piece-prompts-5.json",
+    "r17-C7-critic1-piece-prompts-6.json",
+    "r17-C7-critic1-piece-prompts-7.json",
+    "r17-C7-critic1-piece-prompts-8.json",
+    "r17-C7-critic1-piece-prompts-9.json"
+  ],
+  "method": "Built-in tool paintings; exact64-vote mode reduction; fixed palette; hardalpha; native cleanup; source-only composition",
+  "unique_saved_drawing_images": 50
+}

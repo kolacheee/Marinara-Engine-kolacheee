@@ -1,0 +1,52 @@
+[
+  {
+    "id": "corner-a",
+    "size": [
+      144,
+      240
+    ],
+    "prompt": "Create a high-quality GAME PIXEL ART asset, matching the supplied small town house reference exactly in high 3/4 camera, top-left light, warm muted plaster/timber/stone palette, deep roof volume, recessed windows with sill tops and shutters, one-native-pixel outline. The district concept is a COMPOSITION / MATERIAL reference. Render only the requested building assembly isolated on SOLID PURE MAGENTA #ff00ff, absolutely NO pavement platform, ground slab, grass, shadow mat, background scenery, labels or border. Make the whole requested assembly share one consistent drawing treatment. Crisp hard square pixel clusters; 6-8 native px roof tile widths, 3-4px courses; quiet material details, no dense scratch/noise. Front eaves horizontal, wall posts vertical, roof recesses toward top of image, NOT isometric diamond. All house fronts face outward toward the surrounding streets; corner and east/west faces have real doors and windows addressing those sides. No free-standing separated buildings. Do not separate the assembly into a sheet. Draw large, fill frame, generous magenta outside. Native target dimensions given below are for registration, paint at least 3x that size with large consistent pixel clusters. Keep corners and base edges square, no rounded grid edges. Real entries have lit24x6 steps and6x12 jamb lanterns, scenery doors shuttered. Roofs of attached buildings meet with coherent shared valleys/party walls, no magenta holes except the explicit little court. No soft/blur/fog, no text.Draw ONE complete corner merchant house with native144x240 proportions: roof in upper144x144, TWO occupied floors below each exactly48high. High3/4 orthographic view matches supplied144px house. Muted terracotta full hip-gable roof with deep receding plane, ridgeleftlit rightshade, one dormer. Front wall128px wide plus16px shaded RIGHT return with a genuine side door, substantial posts, sills and stoneplinthtop. Groundfloor has bakery tray and entereddoor24pxwide withlitstep/lantern, upperfloor two recessedwindows. No horizontalbelts except thinstructuralbeams. Make roof side contacts fullyopaque to width except sloping peak, no roofgroundwedge. Pixeltiles6-8px,3-4pxspacing. Isolated onmagenta. This is the standard corner/roof family to crop into modules; no roofsidehut orannex.",
+    "source": "r17-C7-source-corner-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "corner-b",
+    "size": [
+      144,
+      240
+    ],
+    "prompt": "Create a high-quality GAME PIXEL ART asset, matching the supplied small town house reference exactly in high 3/4 camera, top-left light, warm muted plaster/timber/stone palette, deep roof volume, recessed windows with sill tops and shutters, one-native-pixel outline. The district concept is a COMPOSITION / MATERIAL reference. Render only the requested building assembly isolated on SOLID PURE MAGENTA #ff00ff, absolutely NO pavement platform, ground slab, grass, shadow mat, background scenery, labels or border. Make the whole requested assembly share one consistent drawing treatment. Crisp hard square pixel clusters; 6-8 native px roof tile widths, 3-4px courses; quiet material details, no dense scratch/noise. Front eaves horizontal, wall posts vertical, roof recesses toward top of image, NOT isometric diamond. All house fronts face outward toward the surrounding streets; corner and east/west faces have real doors and windows addressing those sides. No free-standing separated buildings. Do not separate the assembly into a sheet. Draw large, fill frame, generous magenta outside. Native target dimensions given below are for registration, paint at least 3x that size with large consistent pixel clusters. Keep corners and base edges square, no rounded grid edges. Real entries have lit24x6 steps and6x12 jamb lanterns, scenery doors shuttered. Roofs of attached buildings meet with coherent shared valleys/party walls, no magenta holes except the explicit little court. No soft/blur/fog, no text.SECOND alternative complete144x240 merchant corner house with144px-deep full terracotta HIP roof, two48px floors below. Distinct shifted dormer and brickinfill, matched 16px RIGHT receiving return, leftandright roofplanes consistentdepth, windowsnever squeezed. Upperfloor recessed window left and projectingoriel right, groundentereddoor+shopwindow,24x6litstepand6x12jamb lantern. Same native detail, quiet plaster/timber, broadstoneclusters,no scratches. Roofoccupies60% artworkheight, full144width flatfront eave. Wholehouse onflatmagenta,no platform/shadowmat. Match smalltownhousereferenceexactly. Single1px outlines. Gable/hipvalley joins clear.",
+    "source": "r17-C7-source-corner-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "gate-c",
+    "size": [
+      144,
+      192
+    ],
+    "prompt": "Draw ONLY a compact medieval city GATEHOUSE sprite on pure magenta. Nativecanvas144x192, paintlarge864x1152. Exactproportions: a rectangular SQUARE tower exactly24pxwide atLEFT and another exactly24pxwide atRIGHT; between them a HUGE96px-wide portal occupying TWO THIRDS of the totalwidth, magenta fullyclear atbase. Tower shafts stay full24pxwidth down to ground, NO extra sidewall extensions, no extra ground doors, no setbacks narrowing shafts. Upperchamber spans between towers ABOVE portal with ONE deepterracotta roof and coherentstone front; chamberloweredge atnativey96, portalclearareabelow. Towers2bayshigh, roofs atnativey0..32, towerbodyy32..192; each tower is broadblock24pxnotneedles. Portalverywide lowarch, archbearings belongINSIDEthe24pxtowers, no extra columns in96pxopening. Match warmgrey/brownmasonry, quiet6-12pxstonecourses, top-leftlight, deep3/4roof, onepixeloutline, sparsewindows. ClearlyconnectedwallwalklandingandshortstairBEHINDrighttower inside144pxwidth, no centralblackpatch. Gamepixelartnotillustration, nofloorslab, notext. Referencehouseforpaletteandstroke. Threecellwide totalbuilding, fourcelltall. Emphasize massivewideportal, broadplain24pxtowersandoneunifiedchamber.",
+    "source": "r17-C7-source-gate-c.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "inn-access",
+    "size": [
+      240,
+      336
+    ],
+    "prompt": "Fix ONLY the inn's entrance access. Keep tall narrow slate-roof perimeter block, west-facing porch, tankard+bed pictogram and through arch. The porch is currently floating over the arch with no way to reach it. Move the WEST-FACING lodging door and porch DOWN to ground level on the LEFT wall, beside the through arch (not above it), with a short2-step threshold, jamb lantern, bench next to door. Through arch and lodging door are separate adjacent groundlevelopenings, do notstackthem. No newdooronthe southwall. Preserve tall narrowportrait composition, complete connected roof mass,240x336native proportions and puremagenta background. SAME pixelart, light,materials. Do not add scenery.",
+    "source": "r17-C7-source-inn-access.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "churchyard",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "Draw a tiny enclosed medieval church precinct gamepixelart asset on solidmagenta, native144x96 (3x2squarecells). High3/4topdown view matchingreferencehouse top-leftlight, sharpgridrectangular enclosure. Packedearth inside lowgrey-brownstoneboundarywalls, TWO simple rectangular grave slabs and a24pxwide open gate on EAST/right side facing square. The eastgate is at groundlevel and pathcontinues through it. Native1pxoutline, quietearth, no talltrees/flowers/specks/roundedcorners. No otherobjects, nochurchitself, isolated144x96rectangle. Warmgrey masonry likereferencehall, smallcleargravestones, no text.",
+    "source": "r17-C7-source-churchyard.png",
+    "tool": "built-in image tool"
+  }
+]

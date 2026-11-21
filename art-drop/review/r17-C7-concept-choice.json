@@ -1,0 +1,13 @@
+{
+  "chosen": "b",
+  "why": "B keeps broad connected roof planes, distinct brown peripheral housing and the four-sided civic enclosure without A's crowded gable rhythm. C is close, but its slate return arrangement is less clear. The final repaint uses the measured nine-block layout guide so its streets and landmark allocations track the rebuild.",
+  "alternatives": {
+    "a": "More gables, but excessive small roof peaks at district scale.",
+    "c": "Sober material treatment; weaker separation of the eastern returns."
+  },
+  "source_method": "Three full fixed-layout guides, then twelve newly drawn overlapping 1448x1086 sections, joined to 2688x2016 and genuinely reduced to 1920x1440. Initial unregistered concepts remain as rejected evidence. The north ditch is existing painted art wrapped behind the wall.",
+  "precedence": "BRIEF-17 and coordinator structure rules control streets, lots and allocations. No panel waiver enlarges the gate, market or lots, reduces sign scale or authorizes cross-property overlays.",
+  "status": "Repair submission; no independent critic approval asserted",
+  "comparison": "r17-city-final-vs-concept.png",
+  "registration": "r17-C7-critic2-concept-registration.json"
+}

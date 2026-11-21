@@ -1,0 +1,32 @@
+[
+  {
+    "file": "roof-a-w1-d2-c7.png",
+    "source": "roof-field-d2",
+    "operation": "native frontage crop from independently drawn whole roof depth; full ridge-to-eave retained"
+  },
+  {
+    "file": "roof-a-w2-d2-c7.png",
+    "source": "roof-field-d2",
+    "operation": "native frontage crop from independently drawn whole roof depth; full ridge-to-eave retained"
+  },
+  {
+    "file": "roof-a-w3-d2-c7.png",
+    "source": "roof-field-d2",
+    "operation": "native frontage crop from independently drawn whole roof depth; full ridge-to-eave retained"
+  },
+  {
+    "file": "roof-a-w1-d3-c7.png",
+    "source": "roof-field-d3",
+    "operation": "native frontage crop from independently drawn whole roof depth; full ridge-to-eave retained"
+  },
+  {
+    "file": "roof-a-w2-d3-c7.png",
+    "source": "roof-field-d3",
+    "operation": "native frontage crop from independently drawn whole roof depth; full ridge-to-eave retained"
+  },
+  {
+    "file": "roof-a-w3-d3-c7.png",
+    "source": "roof-field-d3",
+    "operation": "native frontage crop from independently drawn whole roof depth; full ridge-to-eave retained"
+  }
+]

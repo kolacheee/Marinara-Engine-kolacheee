@@ -1,0 +1,876 @@
+{
+  "blocks": [
+    {
+      "id": "L",
+      "rect": [
+        48,
+        240,
+        288,
+        240
+      ],
+      "roof": "terracotta",
+      "floors": 2,
+      "notches": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "court_cells": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "T",
+      "rect": [
+        384,
+        240,
+        336,
+        144
+      ],
+      "roof": "slate",
+      "floors": 2,
+      "notches": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "deadend",
+      "rect": [
+        432,
+        432,
+        288,
+        96
+      ],
+      "roof": "brown",
+      "floors": 1
+    }
+  ],
+  "lots": [
+    {
+      "id": "L-N-0",
+      "block": "L",
+      "facing": "N",
+      "street_faces": [
+        "N",
+        "W"
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "footprint": [
+        48,
+        240,
+        96,
+        96
+      ],
+      "bottom_left": [
+        48,
+        336
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "terracotta",
+      "variant": 0,
+      "corner": true,
+      "shared_roof_edges": [
+        "right"
+      ]
+    },
+    {
+      "id": "L-N-1",
+      "block": "L",
+      "facing": "N",
+      "street_faces": [
+        "N"
+      ],
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "footprint": [
+        144,
+        240,
+        96,
+        96
+      ],
+      "bottom_left": [
+        144,
+        336
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "terracotta",
+      "variant": 1,
+      "corner": false,
+      "rear_wing_cells": [
+        [
+          3,
+          2
+        ]
+      ],
+      "shared_roof_edges": [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "id": "L-N-2",
+      "block": "L",
+      "facing": "N",
+      "street_faces": [
+        "E",
+        "N"
+      ],
+      "cells": [
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "footprint": [
+        240,
+        240,
+        48,
+        96
+      ],
+      "bottom_left": [
+        240,
+        336
+      ],
+      "floors": 2,
+      "width": 1,
+      "roof": "terracotta",
+      "variant": 2,
+      "corner": true,
+      "rear_wing_cells": [
+        [
+          4,
+          2
+        ]
+      ],
+      "shared_roof_edges": [
+        "left"
+      ]
+    },
+    {
+      "id": "L-N-3",
+      "block": "L",
+      "facing": "N",
+      "street_faces": [
+        "E",
+        "N"
+      ],
+      "cells": [
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "footprint": [
+        288,
+        336,
+        48,
+        96
+      ],
+      "bottom_left": [
+        288,
+        432
+      ],
+      "floors": 2,
+      "width": 1,
+      "roof": "terracotta",
+      "variant": 0,
+      "corner": true,
+      "shared_roof_edges": []
+    },
+    {
+      "id": "L-S-4",
+      "block": "L",
+      "facing": "S",
+      "street_faces": [
+        "S",
+        "W"
+      ],
+      "cells": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "footprint": [
+        48,
+        384,
+        96,
+        96
+      ],
+      "bottom_left": [
+        48,
+        480
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "terracotta",
+      "variant": 1,
+      "corner": true,
+      "shared_roof_edges": [
+        "right"
+      ]
+    },
+    {
+      "id": "L-S-5",
+      "block": "L",
+      "facing": "S",
+      "street_faces": [
+        "S"
+      ],
+      "cells": [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "footprint": [
+        144,
+        384,
+        96,
+        96
+      ],
+      "bottom_left": [
+        144,
+        480
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "terracotta",
+      "variant": 2,
+      "corner": false,
+      "shared_roof_edges": [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "id": "L-S-4-3",
+      "block": "L",
+      "facing": "S",
+      "street_faces": [
+        "E",
+        "S"
+      ],
+      "cells": [
+        [
+          4,
+          3
+        ]
+      ],
+      "footprint": [
+        240,
+        384,
+        48,
+        48
+      ],
+      "bottom_left": [
+        240,
+        432
+      ],
+      "floors": 2,
+      "width": 1,
+      "roof": "terracotta",
+      "variant": 1,
+      "corner": true,
+      "shared_roof_edges": []
+    },
+    {
+      "id": "L-S-4-4",
+      "block": "L",
+      "facing": "S",
+      "street_faces": [
+        "E",
+        "S"
+      ],
+      "cells": [
+        [
+          4,
+          4
+        ]
+      ],
+      "footprint": [
+        240,
+        432,
+        48,
+        48
+      ],
+      "bottom_left": [
+        240,
+        480
+      ],
+      "floors": 2,
+      "width": 1,
+      "roof": "terracotta",
+      "variant": 2,
+      "corner": true,
+      "shared_roof_edges": [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "id": "L-S-5-4",
+      "block": "L",
+      "facing": "S",
+      "street_faces": [
+        "E",
+        "S"
+      ],
+      "cells": [
+        [
+          5,
+          4
+        ]
+      ],
+      "footprint": [
+        288,
+        432,
+        48,
+        48
+      ],
+      "bottom_left": [
+        288,
+        480
+      ],
+      "floors": 2,
+      "width": 1,
+      "roof": "terracotta",
+      "variant": 0,
+      "corner": true,
+      "shared_roof_edges": [
+        "left"
+      ]
+    },
+    {
+      "id": "L-W-9",
+      "block": "L",
+      "facing": "W",
+      "street_faces": [
+        "W"
+      ],
+      "cells": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "footprint": [
+        48,
+        336,
+        96,
+        48
+      ],
+      "bottom_left": [
+        48,
+        384
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "terracotta",
+      "variant": 0,
+      "corner": false,
+      "shared_roof_edges": []
+    },
+    {
+      "id": "T-N-0",
+      "block": "T",
+      "facing": "N",
+      "street_faces": [
+        "N",
+        "W"
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "footprint": [
+        432,
+        240,
+        96,
+        96
+      ],
+      "bottom_left": [
+        432,
+        336
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "slate",
+      "variant": 0,
+      "corner": true,
+      "shared_roof_edges": [
+        "right"
+      ]
+    },
+    {
+      "id": "T-N-1",
+      "block": "T",
+      "facing": "N",
+      "street_faces": [
+        "N"
+      ],
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "footprint": [
+        528,
+        240,
+        96,
+        96
+      ],
+      "bottom_left": [
+        528,
+        336
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "slate",
+      "variant": 1,
+      "corner": false,
+      "shared_roof_edges": [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "id": "T-N-2",
+      "block": "T",
+      "facing": "N",
+      "street_faces": [
+        "E",
+        "N"
+      ],
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "footprint": [
+        624,
+        240,
+        96,
+        96
+      ],
+      "bottom_left": [
+        624,
+        336
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "slate",
+      "variant": 2,
+      "corner": true,
+      "shared_roof_edges": [
+        "left"
+      ]
+    },
+    {
+      "id": "T-N-3",
+      "block": "T",
+      "facing": "N",
+      "street_faces": [
+        "N",
+        "S",
+        "W"
+      ],
+      "cells": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "footprint": [
+        384,
+        288,
+        48,
+        96
+      ],
+      "bottom_left": [
+        384,
+        384
+      ],
+      "floors": 2,
+      "width": 1,
+      "roof": "slate",
+      "variant": 0,
+      "corner": true,
+      "shared_roof_edges": []
+    },
+    {
+      "id": "T-S-4",
+      "block": "T",
+      "facing": "S",
+      "street_faces": [
+        "S"
+      ],
+      "cells": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "footprint": [
+        432,
+        336,
+        96,
+        48
+      ],
+      "bottom_left": [
+        432,
+        384
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "slate",
+      "variant": 1,
+      "corner": false,
+      "shared_roof_edges": [
+        "right"
+      ]
+    },
+    {
+      "id": "T-S-5",
+      "block": "T",
+      "facing": "S",
+      "street_faces": [
+        "S"
+      ],
+      "cells": [
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "footprint": [
+        528,
+        336,
+        96,
+        48
+      ],
+      "bottom_left": [
+        528,
+        384
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "slate",
+      "variant": 2,
+      "corner": false,
+      "shared_roof_edges": [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "id": "T-S-6",
+      "block": "T",
+      "facing": "S",
+      "street_faces": [
+        "E",
+        "S"
+      ],
+      "cells": [
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "footprint": [
+        624,
+        336,
+        96,
+        48
+      ],
+      "bottom_left": [
+        624,
+        384
+      ],
+      "floors": 2,
+      "width": 2,
+      "roof": "slate",
+      "variant": 0,
+      "corner": true,
+      "shared_roof_edges": [
+        "left"
+      ]
+    },
+    {
+      "id": "deadend-N-0",
+      "block": "deadend",
+      "facing": "N",
+      "street_faces": [
+        "N",
+        "S",
+        "W"
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "footprint": [
+        432,
+        432,
+        96,
+        96
+      ],
+      "bottom_left": [
+        432,
+        528
+      ],
+      "floors": 1,
+      "width": 2,
+      "roof": "brown",
+      "variant": 0,
+      "corner": true,
+      "shared_roof_edges": [
+        "right"
+      ]
+    },
+    {
+      "id": "deadend-N-1",
+      "block": "deadend",
+      "facing": "N",
+      "street_faces": [
+        "N",
+        "S"
+      ],
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "footprint": [
+        528,
+        432,
+        96,
+        96
+      ],
+      "bottom_left": [
+        528,
+        528
+      ],
+      "floors": 1,
+      "width": 2,
+      "roof": "brown",
+      "variant": 1,
+      "corner": true,
+      "shared_roof_edges": [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "id": "deadend-N-2",
+      "block": "deadend",
+      "facing": "N",
+      "street_faces": [
+        "E",
+        "N",
+        "S"
+      ],
+      "cells": [
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "footprint": [
+        624,
+        432,
+        96,
+        96
+      ],
+      "bottom_left": [
+        624,
+        528
+      ],
+      "floors": 1,
+      "width": 2,
+      "roof": "brown",
+      "variant": 2,
+      "corner": true,
+      "shared_roof_edges": [
+        "left"
+      ]
+    }
+  ]
+}

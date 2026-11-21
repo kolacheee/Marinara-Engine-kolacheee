@@ -1,0 +1,7451 @@
+[
+  {
+    "file": "r17-C7-piece-bench-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      24,
+      16
+    ],
+    "native": [
+      24,
+      16
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-bench-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      64
+    ],
+    "native": [
+      24,
+      16
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-bench-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      48,
+      16
+    ],
+    "native": [
+      48,
+      16
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-bench-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      144,
+      48
+    ],
+    "native": [
+      48,
+      16
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-civic-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      384
+    ],
+    "native": [
+      576,
+      384
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-civic-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      2304,
+      1536
+    ],
+    "native": [
+      576,
+      384
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-civic-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      1152,
+      384
+    ],
+    "native": [
+      1152,
+      384
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-civic-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      3456,
+      1152
+    ],
+    "native": [
+      1152,
+      384
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-east-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      240,
+      336
+    ],
+    "native": [
+      240,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-east-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      960,
+      1344
+    ],
+    "native": [
+      240,
+      336
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-east-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      480,
+      336
+    ],
+    "native": [
+      480,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-east-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1440,
+      1008
+    ],
+    "native": [
+      480,
+      336
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-inn-b-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      288,
+      528
+    ],
+    "native": [
+      288,
+      528
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-inn-b-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      1152,
+      2112
+    ],
+    "native": [
+      288,
+      528
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-inn-b-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      528
+    ],
+    "native": [
+      576,
+      528
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-inn-b-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1728,
+      1584
+    ],
+    "native": [
+      576,
+      528
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-market-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      480,
+      336
+    ],
+    "native": [
+      480,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-market-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      1920,
+      1344
+    ],
+    "native": [
+      480,
+      336
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-market-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      960,
+      336
+    ],
+    "native": [
+      960,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-market-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      2880,
+      1008
+    ],
+    "native": [
+      960,
+      336
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-ne-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      528,
+      384
+    ],
+    "native": [
+      528,
+      384
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-ne-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      2112,
+      1536
+    ],
+    "native": [
+      528,
+      384
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-ne-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      1056,
+      384
+    ],
+    "native": [
+      1056,
+      384
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-ne-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      3168,
+      1152
+    ],
+    "native": [
+      1056,
+      384
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-nw-a-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      432,
+      384
+    ],
+    "native": [
+      432,
+      384
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-nw-a-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      1728,
+      1536
+    ],
+    "native": [
+      432,
+      384
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-nw-a-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      384
+    ],
+    "native": [
+      864,
+      384
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-nw-a-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      2592,
+      1152
+    ],
+    "native": [
+      864,
+      384
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-se-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      336
+    ],
+    "native": [
+      576,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-se-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      2304,
+      1344
+    ],
+    "native": [
+      576,
+      336
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-se-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      1152,
+      336
+    ],
+    "native": [
+      1152,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-se-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      3456,
+      1008
+    ],
+    "native": [
+      1152,
+      336
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-se-main-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      432,
+      240
+    ],
+    "native": [
+      432,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-se-main-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      1728,
+      960
+    ],
+    "native": [
+      432,
+      240
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-se-main-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      240
+    ],
+    "native": [
+      864,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-se-main-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      2592,
+      720
+    ],
+    "native": [
+      864,
+      240
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-se-wing-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      144
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-se-wing-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      576
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-se-wing-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-se-wing-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      432
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-sm-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      240,
+      240
+    ],
+    "native": [
+      240,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-sm-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      960,
+      960
+    ],
+    "native": [
+      240,
+      240
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-sm-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      480,
+      240
+    ],
+    "native": [
+      480,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-sm-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1440,
+      720
+    ],
+    "native": [
+      480,
+      240
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-sw-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      288,
+      240
+    ],
+    "native": [
+      288,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-sw-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      1152,
+      960
+    ],
+    "native": [
+      288,
+      240
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-sw-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      240
+    ],
+    "native": [
+      576,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-sw-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1728,
+      720
+    ],
+    "native": [
+      576,
+      240
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-block-west-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      288,
+      336
+    ],
+    "native": [
+      288,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-block-west-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      1152,
+      1344
+    ],
+    "native": [
+      288,
+      336
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-block-west-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      336
+    ],
+    "native": [
+      576,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-block-west-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1728,
+      1008
+    ],
+    "native": [
+      576,
+      336
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-church-b-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      240,
+      432
+    ],
+    "native": [
+      240,
+      432
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-church-b-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      960,
+      1728
+    ],
+    "native": [
+      240,
+      432
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-church-b-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      480,
+      432
+    ],
+    "native": [
+      480,
+      432
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-church-b-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1440,
+      1296
+    ],
+    "native": [
+      480,
+      432
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-churchyard-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      96
+    ],
+    "native": [
+      144,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-churchyard-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      384
+    ],
+    "native": [
+      144,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-churchyard-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      96
+    ],
+    "native": [
+      288,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-churchyard-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      288
+    ],
+    "native": [
+      288,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-corner-bastion-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      192
+    ],
+    "native": [
+      144,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-corner-bastion-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      768
+    ],
+    "native": [
+      144,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-corner-bastion-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      192
+    ],
+    "native": [
+      288,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-corner-bastion-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      576
+    ],
+    "native": [
+      288,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-corner-house-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      240
+    ],
+    "native": [
+      144,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-corner-house-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      960
+    ],
+    "native": [
+      144,
+      240
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-corner-house-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      240
+    ],
+    "native": [
+      288,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-corner-house-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      720
+    ],
+    "native": [
+      288,
+      240
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-delivery-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      24
+    ],
+    "native": [
+      48,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-delivery-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      48,
+      24
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-delivery-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      24
+    ],
+    "native": [
+      96,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-delivery-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      72
+    ],
+    "native": [
+      96,
+      24
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-firewall-left-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      16,
+      48
+    ],
+    "native": [
+      16,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-firewall-left-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      192
+    ],
+    "native": [
+      16,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-firewall-left-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      32,
+      48
+    ],
+    "native": [
+      32,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-firewall-left-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      32,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-firewall-right-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      16,
+      48
+    ],
+    "native": [
+      16,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-firewall-right-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      192
+    ],
+    "native": [
+      16,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-firewall-right-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      32,
+      48
+    ],
+    "native": [
+      32,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-firewall-right-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      32,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-gate-assembly-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-gate-assembly-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      768,
+      768
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-gate-assembly-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      384,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-gate-assembly-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1152,
+      576
+    ],
+    "native": [
+      384,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-gate-c-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      192
+    ],
+    "native": [
+      144,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-gate-c-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      768
+    ],
+    "native": [
+      144,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-gate-c-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      192
+    ],
+    "native": [
+      288,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-gate-c-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      576
+    ],
+    "native": [
+      288,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-gate-stair-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      192
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-gate-stair-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      768
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-gate-stair-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-gate-stair-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      576
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-a-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-a-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-a-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-a-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-a-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-a-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-a-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-a-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-b-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-b-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-b-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-b-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-b-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-b-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-b-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-b-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-corner-w3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      48
+    ],
+    "native": [
+      144,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-corner-w3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      192
+    ],
+    "native": [
+      144,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-corner-w3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      48
+    ],
+    "native": [
+      288,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-corner-w3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      144
+    ],
+    "native": [
+      288,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-east-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-east-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-east-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-east-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-east-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-east-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-east-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-east-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-north-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-north-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-north-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-north-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-north-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-north-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-north-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-north-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-west-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-west-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-west-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-west-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-ground-west-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-ground-west-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-ground-west-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-ground-west-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-guard-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      12,
+      24
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-guard-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-guard-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      24,
+      24
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-guard-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      72,
+      72
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-guildhall-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      336
+    ],
+    "native": [
+      192,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-guildhall-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      768,
+      1344
+    ],
+    "native": [
+      192,
+      336
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-guildhall-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      336
+    ],
+    "native": [
+      384,
+      336
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-guildhall-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      1152,
+      1008
+    ],
+    "native": [
+      384,
+      336
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-a-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      192
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-a-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      768
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-a-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-a-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      576
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-a-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-a-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-a-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-a-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-b-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      192
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-b-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      768
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-b-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-b-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      576
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-b-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-b-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-b-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-b-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-east-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      192
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-east-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      768
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-east-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-east-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      576
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-east-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-east-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-east-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-east-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-north-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      192
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-north-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      768
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-north-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-north-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      576
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-north-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-north-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-north-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-north-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-west-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      192
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-west-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      768
+    ],
+    "native": [
+      48,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-west-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-west-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      576
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-house-west-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-house-west-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-house-west-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-house-west-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-inn-patron-a-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      12,
+      24
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-inn-patron-a-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-inn-patron-a-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      24,
+      24
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-inn-patron-a-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      72,
+      72
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-inn-patron-b-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      12,
+      24
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-inn-patron-b-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-inn-patron-b-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      24,
+      24
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-inn-patron-b-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      72,
+      72
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-inn-west-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      240
+    ],
+    "native": [
+      96,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-inn-west-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      960
+    ],
+    "native": [
+      96,
+      240
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-inn-west-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      240
+    ],
+    "native": [
+      192,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-inn-west-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      720
+    ],
+    "native": [
+      192,
+      240
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-kerb-h-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      3
+    ],
+    "native": [
+      48,
+      3
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-kerb-h-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      12
+    ],
+    "native": [
+      48,
+      3
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-kerb-h-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      3
+    ],
+    "native": [
+      96,
+      3
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-kerb-h-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      9
+    ],
+    "native": [
+      96,
+      3
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-kerb-v-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      3,
+      48
+    ],
+    "native": [
+      3,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-kerb-v-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      12,
+      192
+    ],
+    "native": [
+      3,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-kerb-v-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      6,
+      48
+    ],
+    "native": [
+      6,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-kerb-v-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      18,
+      144
+    ],
+    "native": [
+      6,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-laundry-worker-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      12,
+      24
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-laundry-worker-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      12,
+      24
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-laundry-worker-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      24,
+      24
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-laundry-worker-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      72,
+      72
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-main-paving-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-main-paving-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-main-paving-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-main-paving-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-main-paving-v1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-main-paving-v1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-main-paving-v1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-main-paving-v1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-main-paving-v2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-main-paving-v2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-main-paving-v2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-main-paving-v2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-market-north-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-market-north-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      768,
+      576
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-market-north-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      144
+    ],
+    "native": [
+      384,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-market-north-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      1152,
+      432
+    ],
+    "native": [
+      384,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-receiving-left-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      16,
+      144
+    ],
+    "native": [
+      16,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-receiving-left-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      576
+    ],
+    "native": [
+      16,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-receiving-left-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      32,
+      144
+    ],
+    "native": [
+      32,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-receiving-left-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      432
+    ],
+    "native": [
+      32,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-receiving-right-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      16,
+      144
+    ],
+    "native": [
+      16,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-receiving-right-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      576
+    ],
+    "native": [
+      16,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-receiving-right-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      32,
+      144
+    ],
+    "native": [
+      32,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-receiving-right-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      432
+    ],
+    "native": [
+      32,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w1-d2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w1-d2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w1-d2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w1-d2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w1-d3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      144
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w1-d3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      576
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w1-d3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w1-d3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      432
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w2-d2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w2-d2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w2-d2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w2-d2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w2-d3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w2-d3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w2-d3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w2-d3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w3-d2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      96
+    ],
+    "native": [
+      144,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w3-d2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      384
+    ],
+    "native": [
+      144,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w3-d2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      96
+    ],
+    "native": [
+      288,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w3-d2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      288
+    ],
+    "native": [
+      288,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w3-d3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-a-w3-d3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w3-d3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      288,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-a-w3-d3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      432
+    ],
+    "native": [
+      288,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-b-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-b-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-b-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-b-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-b-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-b-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-b-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-b-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-corner-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-corner-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-corner-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-corner-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-east-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-east-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-east-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-east-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-east-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-east-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-east-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-east-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-fill-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-fill-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-fill-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-fill-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-left-d2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-left-d2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-left-d2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-left-d2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-left-d3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      144
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-left-d3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      576
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-left-d3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-left-d3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      432
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-right-d2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-right-d2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-right-d2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-right-d2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-right-d3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      144
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-hip-right-d3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      576
+    ],
+    "native": [
+      48,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-right-d3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-hip-right-d3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      432
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-lean-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-lean-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-lean-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-lean-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-north-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-north-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-north-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-north-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-north-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-north-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-north-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-north-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-west-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      96
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-west-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      384
+    ],
+    "native": [
+      48,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-west-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-west-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      288
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-roof-west-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-roof-west-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-roof-west-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-roof-west-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-apothecary-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-apothecary-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-apothecary-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-apothecary-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-baker-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-baker-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-baker-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-baker-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-butcher-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-butcher-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-butcher-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-butcher-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-cobbler-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-cobbler-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-cobbler-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-cobbler-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-inn-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-inn-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-inn-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-inn-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-scribe-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-scribe-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-scribe-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-scribe-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-smith-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-smith-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-smith-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-smith-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sign-tailor-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      64,
+      72
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sign-tailor-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      256,
+      288
+    ],
+    "native": [
+      64,
+      72
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sign-tailor-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      128,
+      72
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sign-tailor-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      216
+    ],
+    "native": [
+      128,
+      72
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-sorting-table-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-sorting-table-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-sorting-table-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-sorting-table-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-square-paving-0-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-square-paving-0-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-0-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-0-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-square-paving-1-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-square-paving-1-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-1-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-1-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-square-paving-2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-square-paving-2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-square-paving-3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-square-paving-3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-square-paving-3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-a-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-a-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-a-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-a-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-a-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-a-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-a-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-a-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-b-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-b-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-b-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-b-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-b-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-b-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-b-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-b-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-corner-w3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      144,
+      48
+    ],
+    "native": [
+      144,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-corner-w3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      576,
+      192
+    ],
+    "native": [
+      144,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-corner-w3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      48
+    ],
+    "native": [
+      288,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-corner-w3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      864,
+      144
+    ],
+    "native": [
+      288,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-east-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-east-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-east-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-east-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-east-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-east-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-east-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-east-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-north-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-north-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-north-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-north-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-north-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-north-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-north-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-north-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-west-w1-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-west-w1-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-west-w1-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-west-w1-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-storey-west-w2-c7r1-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-storey-west-w2-c7r1-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      192
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-storey-west-w2-c7r1-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      48
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-storey-west-w2-c7r1-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      144
+    ],
+    "native": [
+      192,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-street-turn-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-street-turn-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      48,
+      48
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-street-turn-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      48
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-street-turn-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      144
+    ],
+    "native": [
+      96,
+      48
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-0-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-0-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-0-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-0-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-0-short-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-0-short-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-0-short-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-0-short-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-1-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-1-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-1-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-1-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-1-short-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-1-short-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-1-short-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-1-short-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-2-short-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-2-short-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-2-short-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-2-short-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-3-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-3-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-3-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-3-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-3-short-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-3-short-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-3-short-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-3-short-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-4-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-4-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-4-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-4-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-4-short-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-4-short-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      96,
+      96
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-4-short-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-4-short-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      288
+    ],
+    "native": [
+      192,
+      96
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-strip-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      480,
+      144
+    ],
+    "native": [
+      480,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-strip-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      1920,
+      576
+    ],
+    "native": [
+      480,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-strip-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      960,
+      144
+    ],
+    "native": [
+      960,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-strip-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      2880,
+      432
+    ],
+    "native": [
+      960,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      240
+    ],
+    "native": [
+      96,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      960
+    ],
+    "native": [
+      96,
+      240
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      240
+    ],
+    "native": [
+      192,
+      240
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      720
+    ],
+    "native": [
+      192,
+      240
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-mid-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-mid-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-mid-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-mid-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-mid-v1-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-mid-v1-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-mid-v1-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-mid-v1-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-mid-v2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      192
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-mid-v2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      768
+    ],
+    "native": [
+      96,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-mid-v2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      192
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-mid-v2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      192,
+      192
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-short-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-short-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-short-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-short-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-short-v1-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-short-v1-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-short-v1-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-short-v1-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-short-v2-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      144
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-tower-short-v2-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      384,
+      576
+    ],
+    "native": [
+      96,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-short-v2-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      192,
+      144
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-tower-short-v2-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      576,
+      432
+    ],
+    "native": [
+      192,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-wall-walk-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      48,
+      24
+    ],
+    "native": [
+      48,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-wall-walk-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      192,
+      96
+    ],
+    "native": [
+      48,
+      24
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-wall-walk-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      96,
+      24
+    ],
+    "native": [
+      96,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-wall-walk-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      288,
+      72
+    ],
+    "native": [
+      96,
+      24
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-piece-woodpile-c7-1x.png",
+    "kind": "piece",
+    "size": [
+      24,
+      24
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-piece-woodpile-c7-4x.png",
+    "kind": "piece",
+    "size": [
+      96,
+      96
+    ],
+    "native": [
+      24,
+      24
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-self-seam-woodpile-c7-1x.png",
+    "kind": "seam",
+    "size": [
+      48,
+      24
+    ],
+    "native": [
+      48,
+      24
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-self-seam-woodpile-c7-3x.png",
+    "kind": "seam",
+    "size": [
+      144,
+      72
+    ],
+    "native": [
+      48,
+      24
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-0-c7-1x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-0-c7-4x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-1-c7-1x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-1-c7-4x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-2-c7-1x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-2-c7-4x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-3-c7-1x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-repeat-square-paving-3-c7-4x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-repeat-main-paving-c7-1x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-repeat-main-paving-c7-4x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-repeat-street-turn-c7-1x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-repeat-street-turn-c7-4x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-repeat-roof-fill-c7-1x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      144,
+      144
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-repeat-roof-fill-c7-4x.png",
+    "kind": "literal 3x3 repeat",
+    "size": [
+      576,
+      576
+    ],
+    "native": [
+      144,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-trade-signs-1x.png",
+    "kind": "signs",
+    "size": [
+      320,
+      192
+    ],
+    "native": [
+      320,
+      192
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-trade-signs-4x.png",
+    "kind": "signs",
+    "size": [
+      1280,
+      768
+    ],
+    "native": [
+      320,
+      192
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-wall-all-25-pairs-1x.png",
+    "kind": "seam",
+    "size": [
+      960,
+      720
+    ],
+    "native": [
+      960,
+      720
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-wall-all-25-pairs-3x.png",
+    "kind": "seam",
+    "size": [
+      2880,
+      2160
+    ],
+    "native": [
+      960,
+      720
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-wall-five-module-strip-1x.png",
+    "kind": "seam",
+    "size": [
+      480,
+      144
+    ],
+    "native": [
+      480,
+      144
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-wall-five-module-strip-3x.png",
+    "kind": "seam",
+    "size": [
+      1440,
+      432
+    ],
+    "native": [
+      480,
+      144
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-wall-five-module-strip-4x.png",
+    "kind": "seam",
+    "size": [
+      1920,
+      576
+    ],
+    "native": [
+      480,
+      144
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-paving-variant-field-1x.png",
+    "kind": "seam",
+    "size": [
+      384,
+      384
+    ],
+    "native": [
+      384,
+      384
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-paving-variant-field-4x.png",
+    "kind": "seam",
+    "size": [
+      1536,
+      1536
+    ],
+    "native": [
+      384,
+      384
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-five-one-left-1x.png",
+    "kind": "height join",
+    "size": [
+      288,
+      432
+    ],
+    "native": [
+      288,
+      432
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-five-one-left-3x.png",
+    "kind": "height join",
+    "size": [
+      864,
+      1296
+    ],
+    "native": [
+      288,
+      432
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-five-one-right-1x.png",
+    "kind": "height join",
+    "size": [
+      288,
+      432
+    ],
+    "native": [
+      288,
+      432
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-five-one-right-3x.png",
+    "kind": "height join",
+    "size": [
+      864,
+      1296
+    ],
+    "native": [
+      288,
+      432
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-unequal-height-both-hands-1x.png",
+    "kind": "height join",
+    "size": [
+      624,
+      464
+    ],
+    "native": [
+      624,
+      464
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-unequal-height-both-hands-3x.png",
+    "kind": "height join",
+    "size": [
+      1872,
+      1392
+    ],
+    "native": [
+      624,
+      464
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-house-vs-current-1x.png",
+    "kind": "reference",
+    "size": [
+      448,
+      272
+    ],
+    "native": [
+      448,
+      272
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-house-vs-current-4x.png",
+    "kind": "reference",
+    "size": [
+      1792,
+      1088
+    ],
+    "native": [
+      448,
+      272
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-acceptance-16x12-1x.png",
+    "kind": "acceptance",
+    "size": [
+      768,
+      576
+    ],
+    "native": [
+      768,
+      576
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-acceptance-16x12-3x.png",
+    "kind": "acceptance",
+    "size": [
+      2304,
+      1728
+    ],
+    "native": [
+      768,
+      576
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-acceptance-square-1x.png",
+    "kind": "acceptance",
+    "size": [
+      1056,
+      624
+    ],
+    "native": [
+      1056,
+      624
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-acceptance-square-3x.png",
+    "kind": "acceptance",
+    "size": [
+      3168,
+      1872
+    ],
+    "native": [
+      1056,
+      624
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-acceptance-vs-r15-today-1x.png",
+    "kind": "reference",
+    "size": [
+      3704,
+      944
+    ],
+    "native": [
+      3704,
+      944
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-acceptance-vs-r15-today-3x.png",
+    "kind": "reference",
+    "size": [
+      11112,
+      2832
+    ],
+    "native": [
+      3704,
+      944
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-city-1x.png",
+    "kind": "city",
+    "size": [
+      1920,
+      1440
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-city-4x.png",
+    "kind": "city",
+    "size": [
+      7680,
+      5760
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-city-greyscale-1x.png",
+    "kind": "city",
+    "size": [
+      1920,
+      1440
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-concept-a-1x.png",
+    "kind": "concept",
+    "size": [
+      1920,
+      1440
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-concept-a-4x.png",
+    "kind": "concept",
+    "size": [
+      7680,
+      5760
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-concept-b-1x.png",
+    "kind": "concept",
+    "size": [
+      1920,
+      1440
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-concept-b-4x.png",
+    "kind": "concept",
+    "size": [
+      7680,
+      5760
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-concept-c-1x.png",
+    "kind": "concept",
+    "size": [
+      1920,
+      1440
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-concept-c-4x.png",
+    "kind": "concept",
+    "size": [
+      7680,
+      5760
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-lot-ownership-1x.png",
+    "kind": "plan",
+    "size": [
+      1920,
+      1440
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-footprints-clearance-1x.png",
+    "kind": "plan",
+    "size": [
+      1920,
+      1440
+    ],
+    "native": [
+      1920,
+      1440
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-access-gate-portal-1x.png",
+    "kind": "access",
+    "size": [
+      528,
+      224
+    ],
+    "native": [
+      528,
+      224
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-access-gate-portal-3x.png",
+    "kind": "access",
+    "size": [
+      1584,
+      672
+    ],
+    "native": [
+      528,
+      224
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-access-gate-stair-1x.png",
+    "kind": "access",
+    "size": [
+      528,
+      224
+    ],
+    "native": [
+      528,
+      224
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-access-gate-stair-3x.png",
+    "kind": "access",
+    "size": [
+      1584,
+      672
+    ],
+    "native": [
+      528,
+      224
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-access-market-entrance-1x.png",
+    "kind": "access",
+    "size": [
+      624,
+      272
+    ],
+    "native": [
+      624,
+      272
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-access-market-entrance-3x.png",
+    "kind": "access",
+    "size": [
+      1872,
+      816
+    ],
+    "native": [
+      624,
+      272
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-access-northwest-court-1x.png",
+    "kind": "access",
+    "size": [
+      624,
+      368
+    ],
+    "native": [
+      624,
+      368
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-access-northwest-court-3x.png",
+    "kind": "access",
+    "size": [
+      1872,
+      1104
+    ],
+    "native": [
+      624,
+      368
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-access-church-porch-1x.png",
+    "kind": "access",
+    "size": [
+      624,
+      272
+    ],
+    "native": [
+      624,
+      272
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-access-church-porch-3x.png",
+    "kind": "access",
+    "size": [
+      1872,
+      816
+    ],
+    "native": [
+      624,
+      272
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-concepts-1x.png",
+    "kind": "concept comparison",
+    "size": [
+      5808,
+      2976
+    ],
+    "native": [
+      5808,
+      2976
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-concepts-final-comparison-1x.png",
+    "kind": "concept comparison",
+    "size": [
+      5808,
+      2976
+    ],
+    "native": [
+      5808,
+      2976
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-critic2-before-after-1x.png",
+    "kind": "comparison",
+    "size": [
+      3888,
+      1480
+    ],
+    "native": [
+      3888,
+      1480
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-critic2-roof-family-1x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      944,
+      184
+    ],
+    "native": [
+      944,
+      184
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-critic2-roof-family-3x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      2832,
+      552
+    ],
+    "native": [
+      944,
+      184
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-critic2-selected-redraws-1x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      480,
+      280
+    ],
+    "native": [
+      480,
+      280
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-critic2-selected-redraws-4x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      1920,
+      1120
+    ],
+    "native": [
+      480,
+      280
+    ],
+    "scale": 4
+  },
+  {
+    "file": "r17-C7-critic2-alternatives-1x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      880,
+      280
+    ],
+    "native": [
+      880,
+      280
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-critic2-alternatives-3x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      2640,
+      840
+    ],
+    "native": [
+      880,
+      280
+    ],
+    "scale": 3
+  },
+  {
+    "file": "r17-C7-critic2-course-contract-1x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      976,
+      88
+    ],
+    "native": [
+      976,
+      88
+    ],
+    "scale": 1
+  },
+  {
+    "file": "r17-C7-critic2-course-contract-4x.png",
+    "kind": "critic 2 repairs",
+    "size": [
+      3904,
+      352
+    ],
+    "native": [
+      976,
+      88
+    ],
+    "scale": 4
+  }
+]

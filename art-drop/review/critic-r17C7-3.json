@@ -1,0 +1,982 @@
+{
+  "part": "C7",
+  "round": 3,
+  "verdict": "fail",
+  "failed": [
+    "block-inn-b-c7",
+    "block-market-c7",
+    "block-se-c7",
+    "block-se-wing-c7",
+    "guildhall-c7r1",
+    "market-north-c7",
+    "roof-a-w1-d2-c7",
+    "roof-a-w1-d3-c7",
+    "roof-a-w2-d2-c7",
+    "roof-a-w2-d3-c7",
+    "roof-a-w3-d2-c7",
+    "roof-a-w3-d3-c7",
+    "roof-fill-c7",
+    "roof-lean-c7r1",
+    "street-turn-c7",
+    "r17-concept-a",
+    "r17-concept-b",
+    "r17-concept-c",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-vs-concept",
+    "r17-concepts-vs-today-vs-final",
+    "compose.py",
+    "r17-C7-acceptance-16x12-1x",
+    "r17-C7-acceptance-square-1x",
+    "r17-C7-access-market-entrance-1x",
+    "r17-C7-acceptance-16x12-3x",
+    "r17-C7-acceptance-square-3x",
+    "r17-C7-access-market-entrance-3x",
+    "r17-C7-footprints-clearance-1x",
+    "r17-C7-five-one-left-1x",
+    "r17-C7-five-one-left-3x",
+    "r17-C7-five-one-right-1x",
+    "r17-C7-five-one-right-3x",
+    "r17-C7-unequal-height-both-hands-1x",
+    "r17-C7-unequal-height-both-hands-3x"
+  ],
+  "files": {
+    "bench-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-civic-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-east-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-inn-b-c7": {
+      "status": "fail",
+      "problems": [
+        "The roof contacts around the lower three-house row remain a stack of independent caps and vertical stone separators rather than the chosen concept’s connected roof construction. The lower row’s left and central roof contacts and the tall rear shop frontage expose the mixed plate-roof/gabled-roof treatment.",
+        "The central rear merchant is five storeys of the same window bay and has a shopfront facing the block interior. The assembly does not convincingly distinguish a street-facing outer frontage from its rear elevation; simply labelling that lot N does not repair the drawing."
+      ],
+      "fix": "Use the chosen concept’s connected ridge/eave construction, actual rear-facing elevations for the northern ring and drawn handed contacts at the low/high joins. Keep the occupied lots, square-facing inn return and native course rows."
+    },
+    "block-market-c7": {
+      "status": "fail",
+      "problems": [
+        "The market presents its illustrated open arcade to the south rather than the square to the north, inheriting market-north-c7’s structural failure.",
+        "The dense fine orange market roof, long horizontal brown roof bands and two narrow steep caps immediately to its east have incompatible material scales and roof construction. The south-square edge is still visibly assembled from conflicting pieces (FIXES 4/6/11/15)."
+      ],
+      "fix": "Replace the market with the corrected north-opening whole assembly, fit its attached roofs with drawn valleys/returns and unify tile scale. Remove the pair of needle-like east caps in favour of coherent low side/rear wings; re-export this block from the corrected lots."
+    },
+    "block-ne-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-nw-a-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-se-c7": {
+      "status": "fail",
+      "problems": [
+        "The middle rear-wing roofs end in straight rectangular cuts against repeated dormer caps. Several contacts expose pale triangular stone wedges instead of a resolved valley/coping, particularly around the two left foreground dormers and the centre-right joins.",
+        "The long stripe-patterned brown caps still read as roof panels pasted behind elevations. This is a material/depth failure, even though the old flat roof carpet has been replaced and the ground-plan ownership is improved."
+      ],
+      "fix": "Resolve the wing-to-frontage contacts as complete drawn pitched assemblies with handed valleys and exposed coping only where physically required. Use common tile clusters and order roof/receiver/flashing within each owning assembly. Check the whole block at 1x before re-exporting."
+    },
+    "block-se-main-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-se-wing-c7": {
+      "status": "fail",
+      "problems": [
+        "The 48 px-wide wing is dominated by the tall striped, nearly parallel-sided roof above a tiny front. The roof reads as a capped vertical slab, not the modest attached shed requested for the peripheral blocks (FIXES 4/11/15)."
+      ],
+      "fix": "Rebuild the wing around a drawn pitched or lean-to roof with clear receding depth, attachment and eave. Keep its 48 px frontage and hard alpha."
+    },
+    "block-sm-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-sw-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-west-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-b-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "churchyard-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-bastion-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-house-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "delivery-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "firewall-left-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "firewall-right-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-assembly-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-c-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-stair-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-a-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-a-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-b-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-b-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-corner-w3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-east-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-east-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-north-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-north-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-west-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-west-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guard-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guildhall-c7r1": {
+      "status": "fail",
+      "problems": [
+        "Its entire canvas is 192×336. A five-storey stack with the current 96 px roof is also 336 px high; the hall therefore is not taller than any five-storey stack as BRIEF-17 D requires. The side-by-side native proof critic-r17C7-3-landmark-height-1x.png makes the shortfall explicit.",
+        "In the city, the clock and main roof compete with the repeated neighbouring caps and the tall merchant frontage instead of establishing the required civic dominance. The banners and substantial new roof are improvements, but they do not repair height hierarchy."
+      ],
+      "fix": "Raise/redraw the hall’s architectural height or turret above the maximum five-storey stack while retaining the 4×4 ground allocation, arcade, banners, full roof and visible return. Verify the same-baseline native comparison and city greyscale."
+    },
+    "house-a-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-a-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-east-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-east-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-north-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-north-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-west-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-west-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-patron-a-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-patron-b-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-west-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "kerb-h-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "kerb-v-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "laundry-worker-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-v1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-v2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "market-north-c7": {
+      "status": "fail",
+      "problems": [
+        "The complete 192×144 roof is present, but every visibly open bay and counter is on the lower/south edge. With the square north of the sprite, this does not show the required readable north-facing trading entrance (structure rule 1 and FIXES 6). A north-facing metadata label cannot supply the missing drawing.",
+        "Its roof uses much finer, densely mottled shingles than the adjoining long striped roof caps and than concept B’s broad tiles. At 1x the large orange roof becomes a different surface treatment from the surrounding district."
+      ],
+      "fix": "Redraw the whole market assembly with an unambiguous open north trading side addressing the square, a coherent continuous roof and common tile scale. Keep 192×144; make entrance, foreground posts/counters and reveal ownership agree with the drawing. Test an actor entering from the square, away from a post."
+    },
+    "receiving-left-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "receiving-right-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-a-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-a-w1-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "The 48×96 cap still reads as a nearly rectangular striped panel: a very narrow edge stands in for the substantial pitched side planes and eave construction in fantasy-house-2 and concept B. Its long horizontal tile joints and repeated bright scratches remain conspicuous at 1x. FIXES 4/11 and the C7 common roof treatment are not resolved."
+      ],
+      "fix": "Redraw the complete native-depth slope from an image-tool drawing with a legible ridge, receding roof plane, eave and shaded return; use coherent roughly 6–8 px tile clusters rather than long scratch-striped bands. Preserve the registered width and 96/144 px depth. Test beside house-a-w2-c7r1 and the chosen concept before exporting."
+    },
+    "roof-a-w1-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "The 48×144 cap still reads as a nearly rectangular striped panel: a very narrow edge stands in for the substantial pitched side planes and eave construction in fantasy-house-2 and concept B. Its long horizontal tile joints and repeated bright scratches remain conspicuous at 1x. FIXES 4/11 and the C7 common roof treatment are not resolved.",
+        "The inserted middle band visibly repeats the same tile/scratch motif vertically. Increasing depth has produced a repeating strip rather than a consistently drawn deep roof; see the 4x asset sheet and the southern rear-wing masses."
+      ],
+      "fix": "Redraw the complete native-depth slope from an image-tool drawing with a legible ridge, receding roof plane, eave and shaded return; use coherent roughly 6–8 px tile clusters rather than long scratch-striped bands. Preserve the registered width and 96/144 px depth. Test beside house-a-w2-c7r1 and the chosen concept before exporting."
+    },
+    "roof-a-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-a-w2-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "The 96×96 cap still reads as a nearly rectangular striped panel: a very narrow edge stands in for the substantial pitched side planes and eave construction in fantasy-house-2 and concept B. Its long horizontal tile joints and repeated bright scratches remain conspicuous at 1x. FIXES 4/11 and the C7 common roof treatment are not resolved."
+      ],
+      "fix": "Redraw the complete native-depth slope from an image-tool drawing with a legible ridge, receding roof plane, eave and shaded return; use coherent roughly 6–8 px tile clusters rather than long scratch-striped bands. Preserve the registered width and 96/144 px depth. Test beside house-a-w2-c7r1 and the chosen concept before exporting."
+    },
+    "roof-a-w2-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "The 96×144 cap still reads as a nearly rectangular striped panel: a very narrow edge stands in for the substantial pitched side planes and eave construction in fantasy-house-2 and concept B. Its long horizontal tile joints and repeated bright scratches remain conspicuous at 1x. FIXES 4/11 and the C7 common roof treatment are not resolved.",
+        "The inserted middle band visibly repeats the same tile/scratch motif vertically. Increasing depth has produced a repeating strip rather than a consistently drawn deep roof; see the 4x asset sheet and the southern rear-wing masses."
+      ],
+      "fix": "Redraw the complete native-depth slope from an image-tool drawing with a legible ridge, receding roof plane, eave and shaded return; use coherent roughly 6–8 px tile clusters rather than long scratch-striped bands. Preserve the registered width and 96/144 px depth. Test beside house-a-w2-c7r1 and the chosen concept before exporting."
+    },
+    "roof-a-w3-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "The 144×96 cap still reads as a nearly rectangular striped panel: a very narrow edge stands in for the substantial pitched side planes and eave construction in fantasy-house-2 and concept B. Its long horizontal tile joints and repeated bright scratches remain conspicuous at 1x. FIXES 4/11 and the C7 common roof treatment are not resolved."
+      ],
+      "fix": "Redraw the complete native-depth slope from an image-tool drawing with a legible ridge, receding roof plane, eave and shaded return; use coherent roughly 6–8 px tile clusters rather than long scratch-striped bands. Preserve the registered width and 96/144 px depth. Test beside house-a-w2-c7r1 and the chosen concept before exporting."
+    },
+    "roof-a-w3-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "The 144×144 cap still reads as a nearly rectangular striped panel: a very narrow edge stands in for the substantial pitched side planes and eave construction in fantasy-house-2 and concept B. Its long horizontal tile joints and repeated bright scratches remain conspicuous at 1x. FIXES 4/11 and the C7 common roof treatment are not resolved.",
+        "The inserted middle band visibly repeats the same tile/scratch motif vertically. Increasing depth has produced a repeating strip rather than a consistently drawn deep roof; see the 4x asset sheet and the southern rear-wing masses."
+      ],
+      "fix": "Redraw the complete native-depth slope from an image-tool drawing with a legible ridge, receding roof plane, eave and shaded return; use coherent roughly 6–8 px tile clusters rather than long scratch-striped bands. Preserve the registered width and 96/144 px depth. Test beside house-a-w2-c7r1 and the chosen concept before exporting."
+    },
+    "roof-b-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-b-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-corner-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-east-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-east-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-c7": {
+      "status": "fail",
+      "problems": [
+        "The literal 3×3 repeat shows conspicuous horizontal bands and the same bright scratch clusters every 48 px. This is visible at native size in critic-r17C7-3-repeat-all-native.png; the surface does not disappear into a coherent roof.",
+        "Tile treatment remains thin horizontal stripes rather than the calmer pitched tile clusters of the reference houses. FIXES 11 remains open."
+      ],
+      "fix": "Redraw the source tile with quieter, consistent tile clusters and staggered wear; register and wrap it so all four edges join without a repeated dark/light band. Check a literal 3×3 at 1x and 4x."
+    },
+    "roof-hip-left-d2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-left-d3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-right-d2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-right-d3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-lean-c7r1": {
+      "status": "fail",
+      "problems": [
+        "The narrow lean-to is the same tall striped cap treatment: its short taper at the ridge, almost parallel sides and tiny return read as an upright panel at 1x, not a modest lean-to with a clear attachment and eave. It does not solve the needle-cap problem in FIXES 15."
+      ],
+      "fix": "Draw a clear attached lean-to plane with a high wall attachment, a lower eave, an angular silhouette and the common tile scale; keep its native grid allocation."
+    },
+    "roof-north-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-north-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-west-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-west-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sorting-table-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-paving-0-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-paving-1-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-paving-2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-paving-3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-a-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-a-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-b-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-b-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-corner-w3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-east-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-east-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-north-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-north-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-west-w1-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-west-w2-c7r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-turn-c7": {
+      "status": "fail",
+      "problems": [
+        "The 48×48 tile is visibly more fragmented and pale than the main-paving family. In the final at x1104–1152/y1152–1200 it is an obvious square patch in the gate bend, with broken small cobble fragments in place of the surrounding large stones. FIXES 12 remains visibly unaddressed.",
+        "The literal 3×3 repeat exposes the same conspicuous fragmented patch motif. It is not a compatible corner/kerb/gutter transition."
+      ],
+      "fix": "Draw the bend transition from the same two cobble sizes, value range and edge courses as the main paving. Continue the kerb/gutter around the actual bend and match all adjacent tile edges; check the final placement at 1x."
+    },
+    "wall-0-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-0-short-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-1-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-1-short-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-2-short-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-3-short-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-4-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-4-short-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-strip-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-mid-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-mid-v1-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-mid-v2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-short-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-short-v1-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-short-v2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "woodpile-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-concept-a": {
+      "status": "fail",
+      "problems": [
+        "At the south-square market (approximately x816–1008/y1056–1200), the illustrated arcade/counters face the lower/south side; there is no readable open north side facing the square. The coordinator explicitly requires the concepts themselves to obey this structure rule.",
+        "Along the south wall, especially x144–576/y1300–1392 and x1248–1776, the house thresholds meet the defensive wall. No continuous free 48 px inner lane is shown. See critic-r17C7-3-concepts-south-lane-1x.png.",
+        "The drawn roof network is more coherent than the final, but these are structural errors in the target itself, so none of the three is an acceptable passing target as supplied."
+      ],
+      "fix": "Revise the target drawing to show the market opening toward the northern square and a continuous 48 px lane between the southern properties and the wall, including tower/gate bends. Preserve the perimeter blocks, main-route bend and enclosed square; then rebuild toward that corrected target."
+    },
+    "r17-concept-b": {
+      "status": "fail",
+      "problems": [
+        "At the south-square market (approximately x816–1008/y1056–1200), the illustrated arcade/counters face the lower/south side; there is no readable open north side facing the square. The coordinator explicitly requires the concepts themselves to obey this structure rule.",
+        "Along the south wall, especially x144–576/y1300–1392 and x1248–1776, the house thresholds meet the defensive wall. No continuous free 48 px inner lane is shown. See critic-r17C7-3-concepts-south-lane-1x.png.",
+        "The drawn roof network is more coherent than the final, but these are structural errors in the target itself, so none of the three is an acceptable passing target as supplied."
+      ],
+      "fix": "Revise the target drawing to show the market opening toward the northern square and a continuous 48 px lane between the southern properties and the wall, including tower/gate bends. Preserve the perimeter blocks, main-route bend and enclosed square; then rebuild toward that corrected target."
+    },
+    "r17-concept-c": {
+      "status": "fail",
+      "problems": [
+        "At the south-square market (approximately x816–1008/y1056–1200), the illustrated arcade/counters face the lower/south side; there is no readable open north side facing the square. The coordinator explicitly requires the concepts themselves to obey this structure rule.",
+        "Along the south wall, especially x144–576/y1300–1392 and x1248–1776, the house thresholds meet the defensive wall. No continuous free 48 px inner lane is shown. See critic-r17C7-3-concepts-south-lane-1x.png.",
+        "The drawn roof network is more coherent than the final, but these are structural errors in the target itself, so none of the three is an acceptable passing target as supplied."
+      ],
+      "fix": "Revise the target drawing to show the market opening toward the northern square and a continuous 48 px lane between the southern properties and the wall, including tower/gate bends. Preserve the perimeter blocks, main-route bend and enclosed square; then rebuild toward that corrected target."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "South defensive circulation is missing: at x144–1008 and x1248–1776 the houses end at y1344, exactly where the southern curtain begins. The alleged south-inner road y1344–1392 is painted over by the wall. This is not a visible free one-cell inner lane (BRIEF layout; FIXES 14).",
+        "The market at x816–1008/y1056–1200 has a whole roof, but the visible arcade faces south, away from the square; no readable north trading entrance is provided. The square’s southern landmark therefore fails the explicit orientation rule.",
+        "Roof contacts are still unresolved: pale stone wedges/abrupt cuts around x1432–1528/y516–612 and x1248–1392/y1140–1248, and bare-looking gaps behind the civic frontage near x744–816/y480–528. The receiver strips do not form coherent pitched valleys. Compare the native/4x city crops and the 8x receiver close-ups (FIXES 4/5).",
+        "The long scratch-striped red/slate/brown caps conflict with the fine noisy market shingles and with concept B’s consistently pitched, larger tile clusters. The nine-block street plan clearly resembles B now, but the intended common roof/side-plane treatment still does not (FIXES 4/11).",
+        "The gate bend contains a conspicuous different paving square at x1104–1152/y1152–1200 (street-turn-c7), instead of an integrated corner transition (FIXES 12).",
+        "Trade signs now read clearly, but mounting still covers ground-floor shop windows. Examples: baker x624–688/y624–648, tailor x1536–1600/y960–984, scribe x1632–1696/y960–984. A 72 px-high sign mounted 96 px above the base extends 24 px into the ground floor; only the upper 48 px blank sign bay was reserved (FIXES 9).",
+        "The guildhall is only 336 px high, equal to the current five-storey stack; it does not meet the brief’s greater-than-five-storey landmark hierarchy. See the native same-baseline height comparison.",
+        "The north perimeter route remains a long straight constant-width band. In particular the NE block’s northern ground boundary x1248–1728 is ten cells before its notch. Splitting the road metadata into north-inner-0..4 does not provide a physical junction, width change or bend at the segment boundary (BRIEF layout; FIXES 2)."
+      ],
+      "fix": "Correct the south-lane geometry and wall footprints first; show the market opening north and its real approach. Resolve the roof/receiver family as drawn assemblies, unify tile scale, relocate signs onto sufficiently tall blank wall bays, raise the guildhall and make real street variations. Preserve the now-correct perimeter ownership, wall-line towers, gate assembly and course rows. Regenerate every final export and acceptance proof from the corrected result."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "This is a byte-exact nearest-neighbour 2x enlargement of the current native final. Its export is correct, but it faithfully enlarges the structural and drawing failures listed under r17-city-final."
+      ],
+      "fix": "Repair the native final, then regenerate the exact nearest-neighbour 2x export."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "This is the correct grayscale conversion of the native final. The hall remains only as tall as the five-storey merchant stack and is embedded in competing cap/window rhythms; the required landmark dominance is still insufficient.",
+        "The missing south inner lane and the noisy square patch at the gate bend remain visible in greyscale."
+      ],
+      "fix": "Resolve native hierarchy, circulation and paving, then regenerate grayscale without blur."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop, but it retains the wrong-facing market, insufficient guildhall height, mixed roof treatments and unresolved civic/NE roof contacts. Coordinates are given in r17-city-final."
+      ],
+      "fix": "Repair the native square and its four frontage assemblies, then regenerate this exact crop."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop, but the NW and craft frontage still use long striped roof caps, abrupt receiving strips and repeated frontal shop treatments inside the ring. The smith/cobbler boards overlap the upper part of the ground-floor shop windows."
+      ],
+      "fix": "Resolve the roof/rear-elevation and sign-mounting changes in the native layout, then regenerate the street crop."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "The gatehouse itself is now coherent. This crop still fails for the obvious paving patch at native x1104–1152/y1152–1200, the missing south inner lane and the fragmented roof contacts/needle caps beside the approach."
+      ],
+      "fix": "Keep the passing gatehouse; repair the approach paving, adjacent roof contacts and continuous inner lane, then regenerate the crop."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "The comparison artifact is readable and includes the requested views, but its current C7 panel contains the rejected final. Concept B and the final share the street plan; the comparison also exposes the unmatched roof construction and the lane/market errors shared by the targets."
+      ],
+      "fix": "Regenerate the comparison from corrected concepts and the repaired native final, preserving native-size source panels and readable labels."
+    },
+    "r17-city-final-vs-concept": {
+      "status": "fail",
+      "problems": [
+        "The comparison artifact is readable and includes the requested views, but its current C7 panel contains the rejected final. Concept B and the final share the street plan; the comparison also exposes the unmatched roof construction and the lane/market errors shared by the targets."
+      ],
+      "fix": "Regenerate the comparison from corrected concepts and the repaired native final, preserving native-size source panels and readable labels."
+    },
+    "r17-concepts-vs-today-vs-final": {
+      "status": "fail",
+      "problems": [
+        "The comparison artifact is readable and includes the requested views, but its current C7 panel contains the rejected final. Concept B and the final share the street plan; the comparison also exposes the unmatched roof construction and the lane/market errors shared by the targets."
+      ],
+      "fix": "Regenerate the comparison from corrected concepts and the repaired native final, preserving native-size source panels and readable labels."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "c7_city_layout puts south-inner-* roads at y1344 with height48; c7_render starts the 96 px-high southern curtain at exactly y1344. Its own wall footprint occupies the declared lane. The clearance view is consequently not a clearance proof.",
+        "north-inner-0..4 are adjacent collinear rectangles of the same width; their names do not implement the eight-cell variation rule. The NE block’s northern ground boundary x1248–1728 is ten cells long before its notch, despite an artificial road-segment break at1632.",
+        "c7_build_lot chooses south-facing front families b/a for two of three N-facing variants. The ring ownership data is real, but the painted front/back distinction does not consistently express those outward-facing lots.",
+        "c7_join_lots fills missing silhouettes row-by-row with receiving-strip paint and a single flashing column. The resulting NE/SE stone wedges and cropped roof contacts remain visible; a successful mask intersection is not a successful roof join.",
+        "c7_build_lot mounts 64×72 signs at h-96 but reserves a blank bay only for j==1. The last24 pixels cover ground-floor shop imagery. Use complete source paint coverage, not just a board-visibility test.",
+        "The market entrance is declared on its north edge near (888,1056), while its illustrated arcade and proof actor are on the south side at (900,1164). The proof does not demonstrate the declared entrance or an unobstructed interior actor.",
+        "The hall’s 336 px height does not exceed the current 336 px five-storey stack. Neither the layout nor acceptance composition catches the hierarchy violation."
+      ],
+      "fix": "Correct the south-lane geometry and wall footprints first; show the market opening north and its real approach. Resolve the roof/receiver family as drawn assemblies, unify tile scale, relocate signs onto sufficiently tall blank wall bays, raise the guildhall and make real street variations. Preserve the now-correct perimeter ownership, wall-line towers, gate assembly and course rows. Regenerate every final export and acceptance proof from the corrected result. Make clearance checks intersect road areas with actual wall/building footprints, and make access checks exercise the declared entrance and the foreground masks."
+    },
+    "r17-C7-acceptance-16x12-1x": {
+      "status": "fail",
+      "problems": [
+        "The 16×12 composition shows two separated property chunks on an undifferentiated paving field, with a roughly96 px gap between them. It does not clearly demonstrate the specified two east-west streets, north-south service lane, T-junction and dead-end treatment.",
+        "The stripe-roof/cap mismatch and unresolved roof contacts remain visible. It is not a passing acceptance specimen for FIXES 20."
+      ],
+      "fix": "Build and clearly show the specified L/T/dead-end street arrangement with actual 48 px streets/24 px lane, joined owned roofs and the repaired material family; render both scales."
+    },
+    "r17-C7-acceptance-square-1x": {
+      "status": "fail",
+      "problems": [
+        "The square proof contains the same south-facing market arcade, insufficient guildhall height and roof/entry problems as the final square. Its existence does not establish that the acceptance criteria pass."
+      ],
+      "fix": "Re-render from the repaired enclosed square, including the north-facing market entrance and corrected landmark dominance."
+    },
+    "r17-C7-access-market-entrance-1x": {
+      "status": "fail",
+      "problems": [
+        "The actor feet are (900,1164), 108 px south of the declared north entrance row1056. This tests the south arcade rather than the square-facing entrance.",
+        "In the reveal panel only the actor’s head/upper body appears above the central arcade/post; removing the roof does not make the actor and route legible. The foreground/rear masks and test position do not provide a convincing access proof."
+      ],
+      "fix": "After correcting the market drawing, show an actor approaching from the square, crossing the actual north threshold and occupying an open bay. Separate rear fabric, roof and foreground posts/counters so the normal/reveal states retain a readable actor."
+    },
+    "r17-C7-acceptance-16x12-3x": {
+      "status": "fail",
+      "problems": [
+        "The 16×12 composition shows two separated property chunks on an undifferentiated paving field, with a roughly96 px gap between them. It does not clearly demonstrate the specified two east-west streets, north-south service lane, T-junction and dead-end treatment.",
+        "The stripe-roof/cap mismatch and unresolved roof contacts remain visible. It is not a passing acceptance specimen for FIXES 20."
+      ],
+      "fix": "Build and clearly show the specified L/T/dead-end street arrangement with actual 48 px streets/24 px lane, joined owned roofs and the repaired material family; render both scales."
+    },
+    "r17-C7-acceptance-square-3x": {
+      "status": "fail",
+      "problems": [
+        "The square proof contains the same south-facing market arcade, insufficient guildhall height and roof/entry problems as the final square. Its existence does not establish that the acceptance criteria pass."
+      ],
+      "fix": "Re-render from the repaired enclosed square, including the north-facing market entrance and corrected landmark dominance."
+    },
+    "r17-C7-access-market-entrance-3x": {
+      "status": "fail",
+      "problems": [
+        "The actor feet are (900,1164), 108 px south of the declared north entrance row1056. This tests the south arcade rather than the square-facing entrance.",
+        "In the reveal panel only the actor’s head/upper body appears above the central arcade/post; removing the roof does not make the actor and route legible. The foreground/rear masks and test position do not provide a convincing access proof."
+      ],
+      "fix": "After correcting the market drawing, show an actor approaching from the square, crossing the actual north threshold and occupying an open bay. Separate rear fabric, roof and foreground posts/counters so the normal/reveal states retain a readable actor."
+    },
+    "r17-C7-footprints-clearance-1x": {
+      "status": "fail",
+      "problems": [
+        "The cyan south-inner 48 px rectangles at y1344–1392 are drawn directly across the solid southern wall rather than a free ground lane. Labels certify an area that the normal render and curtain footprint occupy."
+      ],
+      "fix": "Correct the actual lane/wall geometry, then regenerate the clearance map from intersections against all building and wall footprints. A drawn width label is insufficient."
+    },
+    "r17-C7-access-gate-portal-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-access-gate-portal-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-access-gate-stair-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-access-gate-stair-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-access-northwest-court-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-access-northwest-court-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-access-church-porch-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-access-church-porch-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-lot-ownership-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-trade-signs-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-trade-signs-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C7-five-one-left-1x": {
+      "status": "fail",
+      "problems": [
+        "The stacking course now joins correctly. The proof still includes the rejected stripe-panel roof family and a broad pale receiving strip that does not match the chosen concept’s roof-to-wall construction. It therefore does not yet pass the visual part of the unequal-height acceptance test."
+      ],
+      "fix": "Retain the fixed course rows; replace the rejected roof/receiver treatment and regenerate both handed joins at the required scales."
+    },
+    "r17-C7-five-one-left-3x": {
+      "status": "fail",
+      "problems": [
+        "The stacking course now joins correctly. The proof still includes the rejected stripe-panel roof family and a broad pale receiving strip that does not match the chosen concept’s roof-to-wall construction. It therefore does not yet pass the visual part of the unequal-height acceptance test."
+      ],
+      "fix": "Retain the fixed course rows; replace the rejected roof/receiver treatment and regenerate both handed joins at the required scales."
+    },
+    "r17-C7-five-one-right-1x": {
+      "status": "fail",
+      "problems": [
+        "The stacking course now joins correctly. The proof still includes the rejected stripe-panel roof family and a broad pale receiving strip that does not match the chosen concept’s roof-to-wall construction. It therefore does not yet pass the visual part of the unequal-height acceptance test."
+      ],
+      "fix": "Retain the fixed course rows; replace the rejected roof/receiver treatment and regenerate both handed joins at the required scales."
+    },
+    "r17-C7-five-one-right-3x": {
+      "status": "fail",
+      "problems": [
+        "The stacking course now joins correctly. The proof still includes the rejected stripe-panel roof family and a broad pale receiving strip that does not match the chosen concept’s roof-to-wall construction. It therefore does not yet pass the visual part of the unequal-height acceptance test."
+      ],
+      "fix": "Retain the fixed course rows; replace the rejected roof/receiver treatment and regenerate both handed joins at the required scales."
+    },
+    "r17-C7-unequal-height-both-hands-1x": {
+      "status": "fail",
+      "problems": [
+        "The stacking course now joins correctly. The proof still includes the rejected stripe-panel roof family and a broad pale receiving strip that does not match the chosen concept’s roof-to-wall construction. It therefore does not yet pass the visual part of the unequal-height acceptance test."
+      ],
+      "fix": "Retain the fixed course rows; replace the rejected roof/receiver treatment and regenerate both handed joins at the required scales."
+    },
+    "r17-C7-unequal-height-both-hands-3x": {
+      "status": "fail",
+      "problems": [
+        "The stacking course now joins correctly. The proof still includes the rejected stripe-panel roof family and a broad pale receiving strip that does not match the chosen concept’s roof-to-wall construction. It therefore does not yet pass the visual part of the unequal-height acceptance test."
+      ],
+      "fix": "Retain the fixed course rows; replace the rejected roof/receiver treatment and regenerate both handed joins at the required scales."
+    }
+  },
+  "notes": "Independent C7 critic, round3. Verdict is fail despite substantial repairs. Read BRIEF-17 in full, both panel briefs, NOTES method/current C7 sections, COURSE.md and all five cycle-7 reviews/FIXES. The latest coordinator structure requirements take precedence over any concept that disagrees; specifically a drawn south-facing market or omitted wall lane is not a waiver. No art was drawn or modified by this review. Scope: all126 production PNGs named by r17-C7-QC.json were inspected at native1x and nearest-neighbour4x, plus all three1920×1440 concepts and the current city/required comparisons/crops. Complete city4x coverage is saved as sixteen native-crop enlargements; selected joins, signs and market edges were also inspected at8x. Ground and roof-fill repeats were literal3×3. Small props were checked over summer grass, city paving and autumn/winter/spring grass. C7 defines no seasonal partner exports, so there are zero C7 summer/season alpha-pair comparisons to perform; all923 pre-existing seasonal PNG hashes still match the supplied baseline. Independent mechanical checks: all126 current production hashes match the QC snapshot; all have only0/255 alpha and zero RGB under transparency; recorded dimensions match; every C7 ground/storey row0/47 matches COURSE.md exactly. The final is1920×1440; its2x is pixel-exact nearest-neighbour, squint is the exact grayscale conversion, and all three3x crops match the specified native rectangles. These mechanical passes do not override the visual failures. Repairs accepted: real nine-block/107-lot ownership, wall-line towers rather than street towers, a coherent whole gatehouse with attached stair, complete market roof, restored course rows, readable uncut trade glyphs, the NW laundry rack and NE sorting table, low peripheral storeys, quieter curtain joins and improved directional shade. The final now clearly resembles concept B’s street plan. The remaining failure is not a claim that the plan is unrelated to the concept; it is the listed structure, roof/material coherence, entrance, mounting and hierarchy defects. Outstanding FIXES are principally2 (real width variation),4/5/11 (roof and receiving construction/material scale),6 (north-facing market entrance),9 (window-clear sign mounting),12 (integrated gate-turn paving),14 (continuous inner wall lane),15 (remaining narrow cap/wing treatment), and20 (acceptance/access proofs). The old course, clipped-tailor-sign and roofless-market complaints have not been repeated as current defects. Legacy block-civic/block-nw/block-ne/etc PNGs that are not used as whole sprites by the present composer are assessed as individual drawings; defects in the current reconstructed city are assigned to compose.py and the final, not incorrectly attributed to those unused older drawings. block-inn-b, block-market and block-se are current reconstructed exports and are assessed accordingly. Evidence is in critic-r17C7-3-*.png. No runtime collision correctness is claimed. Only review files under art-drop/review were written; production art, compose.py, NOTES, branches and git history were left unchanged."
+}

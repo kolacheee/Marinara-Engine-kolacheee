@@ -1,0 +1,17 @@
+{
+  "chosen": "r17-concept-b.png",
+  "source": "concept-b2",
+  "reason": "Strongest continuous terraced perimeter blocks and the clearest church-west / guildhall-north / inn-east / market-south civic room. Its mixed roofs, gate road and closed blocks provide one drawing treatment for the rebuild.",
+  "alternatives": {
+    "a": "Kept as a comparison: weaker street rank and less decisive square enclosure.",
+    "c": "Kept as a comparison: compact rings, but weaker market grouping.",
+    "a2": "Rejected: simplified treatment loses the reference materials."
+  },
+  "precedence": [
+    "Coordinator C7 structure rules control the composed plan when a concept differs.",
+    "BRIEF-17 controls allocations, 1-2-cell lot footprints, 48px courses, required bends, signs and bounded overlays.",
+    "Panel suggestions to deepen footprints, widen the gate core, shrink signs, waive street variation or permit cross-property overlays were not adopted.",
+    "The explicit full C7 district request supersedes the older small-pilot/defer-expansion recommendation."
+  ],
+  "registration": "Tool concept originals are 1448x1086. They are enlarged during registration to 1920x1440; the 8x working canvas is a sampling registration, not additional original drawing resolution. Individual production assets are reduced from larger painted sources."
+}

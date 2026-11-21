@@ -1,0 +1,7291 @@
+[
+  {
+    "owner": "northwest-N-0",
+    "receiver": [
+      144,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      144,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      240,
+      438,
+      263,
+      480
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 1660,
+    "cast_pixels": 501
+  },
+  {
+    "owner": "northwest-N-0",
+    "receiver": [
+      144,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-0",
+    "receiver": [
+      144,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-1",
+    "receiver": [
+      240,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      240,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      264,
+      432,
+      359,
+      480
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 2932,
+    "cast_pixels": 2741
+  },
+  {
+    "owner": "northwest-N-1",
+    "receiver": [
+      240,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-1",
+    "receiver": [
+      240,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-2",
+    "receiver": [
+      336,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      336,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      360,
+      432,
+      455,
+      480
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3992,
+    "cast_pixels": 3392
+  },
+  {
+    "owner": "northwest-N-2",
+    "receiver": [
+      336,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-2",
+    "receiver": [
+      336,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-3",
+    "receiver": [
+      432,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      432,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      456,
+      432,
+      491,
+      480
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 1959,
+    "cast_pixels": 1405
+  },
+  {
+    "owner": "northwest-N-3",
+    "receiver": [
+      432,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-3",
+    "receiver": [
+      432,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-4",
+    "receiver": [
+      528,
+      384,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      528,
+      384,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      576,
+      482,
+      595,
+      525
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3456,
+    "cast_pixels": 446
+  },
+  {
+    "owner": "northwest-N-4",
+    "receiver": [
+      528,
+      288,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-N-4",
+    "receiver": [
+      528,
+      288,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-5",
+    "receiver": [
+      144,
+      576,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      144,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      144,
+      672,
+      151,
+      677
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 614,
+    "cast_pixels": 15
+  },
+  {
+    "owner": "northwest-S-5",
+    "receiver": [
+      144,
+      480,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      93,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-5",
+    "receiver": [
+      144,
+      480,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-6",
+    "receiver": [
+      240,
+      576,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      240,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 0,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northwest-S-6",
+    "receiver": [
+      240,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-6",
+    "receiver": [
+      240,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      22,
+      6,
+      96
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-7",
+    "receiver": [
+      336,
+      576,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      336,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      424,
+      672,
+      443,
+      696
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 453,
+    "cast_pixels": 248
+  },
+  {
+    "owner": "northwest-S-7",
+    "receiver": [
+      336,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-7",
+    "receiver": [
+      336,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-8",
+    "receiver": [
+      432,
+      576,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      432,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      444,
+      672,
+      545,
+      720
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3793,
+    "cast_pixels": 2035
+  },
+  {
+    "owner": "northwest-S-8",
+    "receiver": [
+      432,
+      480,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-8",
+    "receiver": [
+      432,
+      480,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-9",
+    "receiver": [
+      528,
+      576,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      528,
+      576,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      562,
+      672,
+      599,
+      720
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 4377,
+    "cast_pixels": 958
+  },
+  {
+    "owner": "northwest-S-9",
+    "receiver": [
+      528,
+      480,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-S-9",
+    "receiver": [
+      528,
+      480,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-W-10",
+    "receiver": [
+      144,
+      432,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      144,
+      432,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 1824,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northwest-W-10",
+    "receiver": [
+      144,
+      336,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-W-10",
+    "receiver": [
+      144,
+      336,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-W-11",
+    "receiver": [
+      144,
+      528,
+      120,
+      96
+    ],
+    "ground_footprint": [
+      144,
+      528,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 235,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northwest-W-11",
+    "receiver": [
+      144,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-W-11",
+    "receiver": [
+      144,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-E-12",
+    "receiver": [
+      480,
+      480,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      480,
+      480,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 1152,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northwest-E-12",
+    "receiver": [
+      480,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northwest-E-12",
+    "receiver": [
+      480,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-0",
+    "receiver": [
+      672,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      672,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      703,
+      432,
+      791,
+      480
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 4263,
+    "cast_pixels": 3110
+  },
+  {
+    "owner": "civic-N-0",
+    "receiver": [
+      672,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-0",
+    "receiver": [
+      672,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-1",
+    "receiver": [
+      768,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      768,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      792,
+      432,
+      856,
+      480
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 2504,
+    "cast_pixels": 2504
+  },
+  {
+    "owner": "civic-N-1",
+    "receiver": [
+      768,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-1",
+    "receiver": [
+      768,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-2",
+    "receiver": [
+      864,
+      336,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      864,
+      336,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 12,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "civic-N-2",
+    "receiver": [
+      864,
+      240,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-2",
+    "receiver": [
+      864,
+      240,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-3",
+    "receiver": [
+      1008,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1008,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1008,
+      432,
+      1104,
+      457
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 1407,
+    "cast_pixels": 323
+  },
+  {
+    "owner": "civic-N-3",
+    "receiver": [
+      1008,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-3",
+    "receiver": [
+      1008,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-4",
+    "receiver": [
+      1104,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1104,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1200,
+      434,
+      1216,
+      477
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3456,
+    "cast_pixels": 419
+  },
+  {
+    "owner": "civic-N-4",
+    "receiver": [
+      1104,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-4",
+    "receiver": [
+      1104,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-5",
+    "receiver": [
+      624,
+      384,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      624,
+      384,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 0,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "civic-N-5",
+    "receiver": [
+      624,
+      288,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-5",
+    "receiver": [
+      624,
+      288,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-6",
+    "receiver": [
+      912,
+      384,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      912,
+      384,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      992,
+      480,
+      1012,
+      528
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 766,
+    "cast_pixels": 372
+  },
+  {
+    "owner": "civic-N-6",
+    "receiver": [
+      912,
+      288,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-N-6",
+    "receiver": [
+      912,
+      288,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-7",
+    "receiver": [
+      624,
+      576,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      624,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      624,
+      672,
+      720,
+      676
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 694,
+    "cast_pixels": 270
+  },
+  {
+    "owner": "civic-S-7",
+    "receiver": [
+      624,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-7",
+    "receiver": [
+      624,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-8",
+    "receiver": [
+      720,
+      576,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      720,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      758,
+      672,
+      830,
+      720
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 5014,
+    "cast_pixels": 2717
+  },
+  {
+    "owner": "civic-S-8",
+    "receiver": [
+      720,
+      480,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      93,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-8",
+    "receiver": [
+      720,
+      480,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      22,
+      6,
+      96
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-9",
+    "receiver": [
+      1008,
+      576,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1008,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1008,
+      672,
+      1139,
+      744
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 10270,
+    "cast_pixels": 6380
+  },
+  {
+    "owner": "civic-S-9",
+    "receiver": [
+      1008,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-9",
+    "receiver": [
+      1008,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-10",
+    "receiver": [
+      1104,
+      576,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1104,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1140,
+      672,
+      1200,
+      744
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 5438,
+    "cast_pixels": 4244
+  },
+  {
+    "owner": "civic-S-10",
+    "receiver": [
+      1104,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-S-10",
+    "receiver": [
+      1104,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-W-11",
+    "receiver": [
+      624,
+      480,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      624,
+      480,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 581,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "civic-W-11",
+    "receiver": [
+      624,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-W-11",
+    "receiver": [
+      624,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-E-12",
+    "receiver": [
+      1104,
+      432,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1104,
+      432,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1200,
+      534,
+      1219,
+      572
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 2526,
+    "cast_pixels": 308
+  },
+  {
+    "owner": "civic-E-12",
+    "receiver": [
+      1104,
+      336,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-E-12",
+    "receiver": [
+      1104,
+      336,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-E-13",
+    "receiver": [
+      1104,
+      528,
+      120,
+      96
+    ],
+    "ground_footprint": [
+      1104,
+      528,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 295,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "civic-E-13",
+    "receiver": [
+      1104,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "civic-E-13",
+    "receiver": [
+      1104,
+      384,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-0",
+    "receiver": [
+      1248,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1248,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 506,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northeast-N-0",
+    "receiver": [
+      1248,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-0",
+    "receiver": [
+      1248,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-1",
+    "receiver": [
+      1344,
+      336,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1344,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1372,
+      432,
+      1468,
+      500
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 2313,
+    "cast_pixels": 1965
+  },
+  {
+    "owner": "northeast-N-1",
+    "receiver": [
+      1344,
+      192,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-1",
+    "receiver": [
+      1344,
+      192,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-2",
+    "receiver": [
+      1536,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1536,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1536,
+      432,
+      1646,
+      480
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3576,
+    "cast_pixels": 3134
+  },
+  {
+    "owner": "northeast-N-2",
+    "receiver": [
+      1536,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-2",
+    "receiver": [
+      1536,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      71,
+      6,
+      94
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-3",
+    "receiver": [
+      1632,
+      336,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1632,
+      336,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1660,
+      432,
+      1680,
+      450
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 838,
+    "cast_pixels": 343
+  },
+  {
+    "owner": "northeast-N-3",
+    "receiver": [
+      1632,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-3",
+    "receiver": [
+      1632,
+      240,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-4",
+    "receiver": [
+      1440,
+      384,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1440,
+      384,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1452,
+      480,
+      1557,
+      529
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 5611,
+    "cast_pixels": 3911
+  },
+  {
+    "owner": "northeast-N-4",
+    "receiver": [
+      1440,
+      240,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-4",
+    "receiver": [
+      1440,
+      240,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-5",
+    "receiver": [
+      1728,
+      432,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      1728,
+      432,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1776,
+      530,
+      1793,
+      576
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3456,
+    "cast_pixels": 417
+  },
+  {
+    "owner": "northeast-N-5",
+    "receiver": [
+      1728,
+      336,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-N-5",
+    "receiver": [
+      1728,
+      336,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-6",
+    "receiver": [
+      1248,
+      576,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1248,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 0,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northeast-S-6",
+    "receiver": [
+      1248,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-6",
+    "receiver": [
+      1248,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-7",
+    "receiver": [
+      1344,
+      576,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1344,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1392,
+      673,
+      1396,
+      719
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 173,
+    "cast_pixels": 173
+  },
+  {
+    "owner": "northeast-S-7",
+    "receiver": [
+      1344,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-7",
+    "receiver": [
+      1344,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-8",
+    "receiver": [
+      1440,
+      576,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1440,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1485,
+      672,
+      1536,
+      696
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1400,
+    "cast_pixels": 1208
+  },
+  {
+    "owner": "northeast-S-8",
+    "receiver": [
+      1440,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-8",
+    "receiver": [
+      1440,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      0,
+      6,
+      96
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-9",
+    "receiver": [
+      1536,
+      576,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1536,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 120,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northeast-S-9",
+    "receiver": [
+      1536,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-9",
+    "receiver": [
+      1536,
+      528,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-10",
+    "receiver": [
+      1632,
+      576,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1632,
+      576,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1728,
+      678,
+      1731,
+      744
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 369,
+    "cast_pixels": 110
+  },
+  {
+    "owner": "northeast-S-10",
+    "receiver": [
+      1632,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-10",
+    "receiver": [
+      1632,
+      432,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-11",
+    "receiver": [
+      1728,
+      576,
+      84,
+      168
+    ],
+    "ground_footprint": [
+      1728,
+      576,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1773,
+      672,
+      1811,
+      744
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 6439,
+    "cast_pixels": 1320
+  },
+  {
+    "owner": "northeast-S-11",
+    "receiver": [
+      1728,
+      432,
+      48,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-S-11",
+    "receiver": [
+      1728,
+      432,
+      48,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-W-12",
+    "receiver": [
+      1248,
+      432,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1248,
+      432,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 242,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northeast-W-12",
+    "receiver": [
+      1248,
+      288,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-W-12",
+    "receiver": [
+      1248,
+      288,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-W-13",
+    "receiver": [
+      1248,
+      528,
+      132,
+      120
+    ],
+    "ground_footprint": [
+      1248,
+      528,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 149,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northeast-W-13",
+    "receiver": [
+      1248,
+      336,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-W-13",
+    "receiver": [
+      1248,
+      336,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-E-14",
+    "receiver": [
+      1680,
+      528,
+      132,
+      120
+    ],
+    "ground_footprint": [
+      1680,
+      528,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 622,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "northeast-E-14",
+    "receiver": [
+      1680,
+      336,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "northeast-E-14",
+    "receiver": [
+      1680,
+      336,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-0",
+    "receiver": [
+      144,
+      720,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      144,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 557,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "craft-N-0",
+    "receiver": [
+      144,
+      624,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-0",
+    "receiver": [
+      144,
+      624,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-1",
+    "receiver": [
+      240,
+      720,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      240,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      264,
+      816,
+      336,
+      817
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 77,
+    "cast_pixels": 61
+  },
+  {
+    "owner": "craft-N-1",
+    "receiver": [
+      240,
+      624,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-1",
+    "receiver": [
+      240,
+      624,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-2",
+    "receiver": [
+      336,
+      720,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      336,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      364,
+      816,
+      432,
+      817
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 86,
+    "cast_pixels": 68
+  },
+  {
+    "owner": "craft-N-2",
+    "receiver": [
+      336,
+      624,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      93,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-2",
+    "receiver": [
+      336,
+      624,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-3",
+    "receiver": [
+      480,
+      720,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      480,
+      720,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      528,
+      820,
+      531,
+      854
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 733,
+    "cast_pixels": 93
+  },
+  {
+    "owner": "craft-N-3",
+    "receiver": [
+      480,
+      624,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-3",
+    "receiver": [
+      480,
+      624,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-4",
+    "receiver": [
+      432,
+      816,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      432,
+      816,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 0,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "craft-N-4",
+    "receiver": [
+      432,
+      720,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-N-4",
+    "receiver": [
+      432,
+      720,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-5",
+    "receiver": [
+      144,
+      912,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      144,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      144,
+      1008,
+      240,
+      1056
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3310,
+    "cast_pixels": 2233
+  },
+  {
+    "owner": "craft-S-5",
+    "receiver": [
+      144,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-5",
+    "receiver": [
+      144,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-6",
+    "receiver": [
+      240,
+      912,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      240,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      264,
+      1008,
+      288,
+      1056
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 1442,
+    "cast_pixels": 676
+  },
+  {
+    "owner": "craft-S-6",
+    "receiver": [
+      240,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-6",
+    "receiver": [
+      240,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-7",
+    "receiver": [
+      336,
+      912,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      336,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      384,
+      1008,
+      432,
+      1009
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 716,
+    "cast_pixels": 37
+  },
+  {
+    "owner": "craft-S-7",
+    "receiver": [
+      336,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-7",
+    "receiver": [
+      336,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-8",
+    "receiver": [
+      432,
+      912,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      432,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      456,
+      1008,
+      505,
+      1009
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 562,
+    "cast_pixels": 49
+  },
+  {
+    "owner": "craft-S-8",
+    "receiver": [
+      432,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      93,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-S-8",
+    "receiver": [
+      432,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-W-9",
+    "receiver": [
+      144,
+      816,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      144,
+      816,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 269,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "craft-W-9",
+    "receiver": [
+      144,
+      720,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-W-9",
+    "receiver": [
+      144,
+      720,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-E-10",
+    "receiver": [
+      480,
+      816,
+      72,
+      144
+    ],
+    "ground_footprint": [
+      480,
+      816,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 285,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "craft-E-10",
+    "receiver": [
+      480,
+      720,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "craft-E-10",
+    "receiver": [
+      480,
+      720,
+      48,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-N-0",
+    "receiver": [
+      1200,
+      720,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1200,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1296,
+      822,
+      1307,
+      888
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 1444,
+    "cast_pixels": 406
+  },
+  {
+    "owner": "inn-N-0",
+    "receiver": [
+      1200,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-N-0",
+    "receiver": [
+      1200,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-N-1",
+    "receiver": [
+      1296,
+      720,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1296,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1332,
+      816,
+      1392,
+      817
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 53,
+    "cast_pixels": 53
+  },
+  {
+    "owner": "inn-N-1",
+    "receiver": [
+      1296,
+      480,
+      96,
+      336
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-N-1",
+    "receiver": [
+      1296,
+      480,
+      96,
+      336
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-N-2",
+    "receiver": [
+      1392,
+      720,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1392,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1488,
+      818,
+      1512,
+      888
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 6048,
+    "cast_pixels": 951
+  },
+  {
+    "owner": "inn-N-2",
+    "receiver": [
+      1392,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      93,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-N-2",
+    "receiver": [
+      1392,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      0,
+      6,
+      96
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-S-3",
+    "receiver": [
+      1296,
+      912,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1296,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1296,
+      1008,
+      1392,
+      1009
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 868,
+    "cast_pixels": 78
+  },
+  {
+    "owner": "inn-S-3",
+    "receiver": [
+      1296,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-S-3",
+    "receiver": [
+      1296,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-S-4",
+    "receiver": [
+      1392,
+      912,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1392,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1416,
+      1008,
+      1465,
+      1009
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3012,
+    "cast_pixels": 49
+  },
+  {
+    "owner": "inn-S-4",
+    "receiver": [
+      1392,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-S-4",
+    "receiver": [
+      1392,
+      816,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-W-5",
+    "receiver": [
+      1200,
+      816,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1200,
+      816,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1200,
+      912,
+      1296,
+      926
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 821,
+    "cast_pixels": 21
+  },
+  {
+    "owner": "inn-W-5",
+    "receiver": [
+      1200,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-W-5",
+    "receiver": [
+      1200,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-E-6",
+    "receiver": [
+      1392,
+      816,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1392,
+      816,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 580,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "inn-E-6",
+    "receiver": [
+      1392,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "inn-E-6",
+    "receiver": [
+      1392,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-N-0",
+    "receiver": [
+      1536,
+      720,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1536,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1632,
+      865,
+      1636,
+      888
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 528,
+    "cast_pixels": 82
+  },
+  {
+    "owner": "east-trades-N-0",
+    "receiver": [
+      1536,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-N-0",
+    "receiver": [
+      1536,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-N-1",
+    "receiver": [
+      1632,
+      720,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1632,
+      720,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 45,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "east-trades-N-1",
+    "receiver": [
+      1632,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-N-1",
+    "receiver": [
+      1632,
+      576,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-N-2",
+    "receiver": [
+      1728,
+      768,
+      84,
+      168
+    ],
+    "ground_footprint": [
+      1728,
+      768,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1776,
+      866,
+      1803,
+      936
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 6048,
+    "cast_pixels": 1062
+  },
+  {
+    "owner": "east-trades-N-2",
+    "receiver": [
+      1728,
+      624,
+      48,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-N-2",
+    "receiver": [
+      1728,
+      624,
+      48,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-S-3",
+    "receiver": [
+      1536,
+      912,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1536,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1536,
+      1008,
+      1632,
+      1009
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 384,
+    "cast_pixels": 85
+  },
+  {
+    "owner": "east-trades-S-3",
+    "receiver": [
+      1536,
+      768,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-S-3",
+    "receiver": [
+      1536,
+      768,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-S-4",
+    "receiver": [
+      1632,
+      912,
+      132,
+      168
+    ],
+    "ground_footprint": [
+      1632,
+      912,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1668,
+      1008,
+      1751,
+      1056
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 2062,
+    "cast_pixels": 539
+  },
+  {
+    "owner": "east-trades-S-4",
+    "receiver": [
+      1632,
+      768,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-S-4",
+    "receiver": [
+      1632,
+      768,
+      96,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-S-5",
+    "receiver": [
+      1728,
+      912,
+      84,
+      168
+    ],
+    "ground_footprint": [
+      1728,
+      912,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1764,
+      1008,
+      1811,
+      1080
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 72,
+    "receiver_pixels": 6051,
+    "cast_pixels": 1789
+  },
+  {
+    "owner": "east-trades-S-5",
+    "receiver": [
+      1728,
+      768,
+      48,
+      240
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      48,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-S-5",
+    "receiver": [
+      1728,
+      768,
+      48,
+      240
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-W-6",
+    "receiver": [
+      1536,
+      816,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1536,
+      816,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 494,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "east-trades-W-6",
+    "receiver": [
+      1536,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-W-6",
+    "receiver": [
+      1536,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-E-7",
+    "receiver": [
+      1680,
+      864,
+      108,
+      72
+    ],
+    "ground_footprint": [
+      1680,
+      864,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 46,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "east-trades-E-7",
+    "receiver": [
+      1680,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "east-trades-E-7",
+    "receiver": [
+      1680,
+      768,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-0",
+    "receiver": [
+      192,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      192,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      240,
+      1152,
+      254,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 962,
+    "cast_pixels": 249
+  },
+  {
+    "owner": "southwest-N-0",
+    "receiver": [
+      192,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-0",
+    "receiver": [
+      192,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-3-0",
+    "receiver": [
+      288,
+      1056,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      288,
+      1056,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      300,
+      1104,
+      336,
+      1128
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 727,
+    "cast_pixels": 727
+  },
+  {
+    "owner": "southwest-N-3-0",
+    "receiver": [
+      288,
+      1008,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-3-0",
+    "receiver": [
+      288,
+      1008,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-4-0",
+    "receiver": [
+      336,
+      1056,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      336,
+      1056,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 0,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "southwest-N-4-0",
+    "receiver": [
+      336,
+      1008,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-4-0",
+    "receiver": [
+      336,
+      1008,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-4-1",
+    "receiver": [
+      336,
+      1104,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      336,
+      1104,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      349,
+      1152,
+      361,
+      1164
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 239,
+    "cast_pixels": 79
+  },
+  {
+    "owner": "southwest-N-4-1",
+    "receiver": [
+      336,
+      1056,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-4-1",
+    "receiver": [
+      336,
+      1056,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-4",
+    "receiver": [
+      384,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      384,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      404,
+      1152,
+      439,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 339,
+    "cast_pixels": 339
+  },
+  {
+    "owner": "southwest-N-4",
+    "receiver": [
+      384,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-4",
+    "receiver": [
+      384,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-5",
+    "receiver": [
+      480,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      480,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      576,
+      1154,
+      581,
+      1168
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1586,
+    "cast_pixels": 37
+  },
+  {
+    "owner": "southwest-N-5",
+    "receiver": [
+      480,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      93,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-5",
+    "receiver": [
+      480,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-6",
+    "receiver": [
+      144,
+      1152,
+      60,
+      120
+    ],
+    "ground_footprint": [
+      144,
+      1152,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 0,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "southwest-N-6",
+    "receiver": [
+      144,
+      1152,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-N-6",
+    "receiver": [
+      144,
+      1152,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-0-4",
+    "receiver": [
+      144,
+      1248,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      144,
+      1248,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      144,
+      1296,
+      203,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1600,
+    "cast_pixels": 1117
+  },
+  {
+    "owner": "southwest-S-0-4",
+    "receiver": [
+      144,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-0-4",
+    "receiver": [
+      144,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-1-3",
+    "receiver": [
+      192,
+      1200,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      192,
+      1200,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 0,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "southwest-S-1-3",
+    "receiver": [
+      192,
+      1152,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-1-3",
+    "receiver": [
+      192,
+      1152,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-1-4",
+    "receiver": [
+      192,
+      1248,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      192,
+      1248,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      204,
+      1296,
+      251,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1395,
+    "cast_pixels": 970
+  },
+  {
+    "owner": "southwest-S-1-4",
+    "receiver": [
+      192,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-1-4",
+    "receiver": [
+      192,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-10",
+    "receiver": [
+      240,
+      1200,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      240,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      252,
+      1296,
+      351,
+      1344
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 5746,
+    "cast_pixels": 3781
+  },
+  {
+    "owner": "southwest-S-10",
+    "receiver": [
+      240,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-10",
+    "receiver": [
+      240,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-11",
+    "receiver": [
+      336,
+      1200,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      336,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      360,
+      1296,
+      443,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 2385,
+    "cast_pixels": 1812
+  },
+  {
+    "owner": "southwest-S-11",
+    "receiver": [
+      336,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-11",
+    "receiver": [
+      336,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      22,
+      6,
+      96
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-12",
+    "receiver": [
+      432,
+      1200,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      432,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      444,
+      1296,
+      538,
+      1344
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 5663,
+    "cast_pixels": 3926
+  },
+  {
+    "owner": "southwest-S-12",
+    "receiver": [
+      432,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-12",
+    "receiver": [
+      432,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-13",
+    "receiver": [
+      528,
+      1200,
+      60,
+      120
+    ],
+    "ground_footprint": [
+      528,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      563,
+      1296,
+      576,
+      1304
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1489,
+    "cast_pixels": 87
+  },
+  {
+    "owner": "southwest-S-13",
+    "receiver": [
+      528,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-S-13",
+    "receiver": [
+      528,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      0,
+      6,
+      48
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-E-14",
+    "receiver": [
+      480,
+      1152,
+      108,
+      72
+    ],
+    "ground_footprint": [
+      480,
+      1152,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 841,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "southwest-E-14",
+    "receiver": [
+      480,
+      1056,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southwest-E-14",
+    "receiver": [
+      480,
+      1056,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-N-0",
+    "receiver": [
+      624,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      624,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      720,
+      1160,
+      731,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 692,
+    "cast_pixels": 120
+  },
+  {
+    "owner": "south-artisans-N-0",
+    "receiver": [
+      624,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-N-0",
+    "receiver": [
+      624,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-N-1",
+    "receiver": [
+      720,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      720,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      732,
+      1152,
+      817,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 3007,
+    "cast_pixels": 1949
+  },
+  {
+    "owner": "south-artisans-N-1",
+    "receiver": [
+      720,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-N-1",
+    "receiver": [
+      720,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-N-2",
+    "receiver": [
+      1008,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1008,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1056,
+      1152,
+      1109,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 2984,
+    "cast_pixels": 1146
+  },
+  {
+    "owner": "south-artisans-N-2",
+    "receiver": [
+      1008,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      93,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-N-2",
+    "receiver": [
+      1008,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-3",
+    "receiver": [
+      1008,
+      1152,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      1008,
+      1152,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1008,
+      1200,
+      1067,
+      1224
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1971,
+    "cast_pixels": 1041
+  },
+  {
+    "owner": "south-artisans-S-3",
+    "receiver": [
+      1008,
+      1104,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      48,
+      44,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-3",
+    "receiver": [
+      1008,
+      1104,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-4",
+    "receiver": [
+      624,
+      1200,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      624,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      624,
+      1296,
+      731,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 3156,
+    "cast_pixels": 2197
+  },
+  {
+    "owner": "south-artisans-S-4",
+    "receiver": [
+      624,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      48,
+      96,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-4",
+    "receiver": [
+      624,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-5",
+    "receiver": [
+      720,
+      1200,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      720,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      732,
+      1296,
+      827,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 2654,
+    "cast_pixels": 2111
+  },
+  {
+    "owner": "south-artisans-S-5",
+    "receiver": [
+      720,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      96,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-5",
+    "receiver": [
+      720,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-6",
+    "receiver": [
+      816,
+      1200,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      816,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      828,
+      1296,
+      923,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 2742,
+    "cast_pixels": 2100
+  },
+  {
+    "owner": "south-artisans-S-6",
+    "receiver": [
+      816,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      96,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-6",
+    "receiver": [
+      816,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-7",
+    "receiver": [
+      912,
+      1200,
+      60,
+      120
+    ],
+    "ground_footprint": [
+      912,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      924,
+      1296,
+      971,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 2547,
+    "cast_pixels": 970
+  },
+  {
+    "owner": "south-artisans-S-7",
+    "receiver": [
+      912,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-S-7",
+    "receiver": [
+      912,
+      1200,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-W-8",
+    "receiver": [
+      624,
+      1152,
+      108,
+      72
+    ],
+    "ground_footprint": [
+      624,
+      1152,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1014,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "south-artisans-W-8",
+    "receiver": [
+      624,
+      1056,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      4,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "south-artisans-W-8",
+    "receiver": [
+      624,
+      1056,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-0",
+    "receiver": [
+      1248,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1248,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1296,
+      1152,
+      1321,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 809,
+    "cast_pixels": 484
+  },
+  {
+    "owner": "southeast-N-0",
+    "receiver": [
+      1248,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-0",
+    "receiver": [
+      1248,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-1",
+    "receiver": [
+      1344,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1344,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1364,
+      1152,
+      1399,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 339,
+    "cast_pixels": 339
+  },
+  {
+    "owner": "southeast-N-1",
+    "receiver": [
+      1344,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-1",
+    "receiver": [
+      1344,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-2",
+    "receiver": [
+      1440,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1440,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1481,
+      1152,
+      1536,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 473,
+    "cast_pixels": 461
+  },
+  {
+    "owner": "southeast-N-2",
+    "receiver": [
+      1440,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-2",
+    "receiver": [
+      1440,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-3",
+    "receiver": [
+      1536,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1536,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1548,
+      1152,
+      1609,
+      1153
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 411,
+    "cast_pixels": 61
+  },
+  {
+    "owner": "southeast-N-3",
+    "receiver": [
+      1536,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-3",
+    "receiver": [
+      1536,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-4",
+    "receiver": [
+      1632,
+      1056,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1632,
+      1056,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1652,
+      1152,
+      1668,
+      1175
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 224,
+    "cast_pixels": 224
+  },
+  {
+    "owner": "southeast-N-4",
+    "receiver": [
+      1632,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-4",
+    "receiver": [
+      1632,
+      1008,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-5",
+    "receiver": [
+      1728,
+      1056,
+      60,
+      120
+    ],
+    "ground_footprint": [
+      1728,
+      1056,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1776,
+      1154,
+      1787,
+      1176
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1152,
+    "cast_pixels": 132
+  },
+  {
+    "owner": "southeast-N-5",
+    "receiver": [
+      1728,
+      1056,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-5",
+    "receiver": [
+      1728,
+      1056,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-6",
+    "receiver": [
+      1200,
+      1152,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      1200,
+      1152,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1200,
+      1200,
+      1259,
+      1224
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1719,
+    "cast_pixels": 1096
+  },
+  {
+    "owner": "southeast-N-6",
+    "receiver": [
+      1200,
+      1104,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-N-6",
+    "receiver": [
+      1200,
+      1104,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-7",
+    "receiver": [
+      1248,
+      1152,
+      60,
+      72
+    ],
+    "ground_footprint": [
+      1248,
+      1152,
+      48,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1260,
+      1200,
+      1296,
+      1224
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1378,
+    "cast_pixels": 856
+  },
+  {
+    "owner": "southeast-S-7",
+    "receiver": [
+      1248,
+      1104,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      48,
+      48,
+      52
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-7",
+    "receiver": [
+      1248,
+      1104,
+      48,
+      96
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-8",
+    "receiver": [
+      1296,
+      1200,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1296,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1296,
+      1296,
+      1403,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 3171,
+    "cast_pixels": 2098
+  },
+  {
+    "owner": "southeast-S-8",
+    "receiver": [
+      1296,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-8",
+    "receiver": [
+      1296,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-9",
+    "receiver": [
+      1392,
+      1200,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1392,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1404,
+      1296,
+      1501,
+      1344
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6238,
+    "cast_pixels": 3990
+  },
+  {
+    "owner": "southeast-S-9",
+    "receiver": [
+      1392,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-9",
+    "receiver": [
+      1392,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-10",
+    "receiver": [
+      1488,
+      1200,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1488,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1512,
+      1296,
+      1583,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 1602,
+    "cast_pixels": 1201
+  },
+  {
+    "owner": "southeast-S-10",
+    "receiver": [
+      1488,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-10",
+    "receiver": [
+      1488,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": [
+      0,
+      19,
+      6,
+      96
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-11",
+    "receiver": [
+      1584,
+      1200,
+      108,
+      120
+    ],
+    "ground_footprint": [
+      1584,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1596,
+      1296,
+      1691,
+      1320
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 2274,
+    "cast_pixels": 1705
+  },
+  {
+    "owner": "southeast-S-11",
+    "receiver": [
+      1584,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      1,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-11",
+    "receiver": [
+      1584,
+      1152,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-12",
+    "receiver": [
+      1680,
+      1200,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1680,
+      1200,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1692,
+      1296,
+      1789,
+      1344
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 8542,
+    "cast_pixels": 3990
+  },
+  {
+    "owner": "southeast-S-12",
+    "receiver": [
+      1680,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      2,
+      96,
+      96,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-S-12",
+    "receiver": [
+      1680,
+      1104,
+      96,
+      192
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-E-13",
+    "receiver": [
+      1680,
+      1152,
+      108,
+      72
+    ],
+    "ground_footprint": [
+      1680,
+      1152,
+      96,
+      48
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 24,
+    "receiver_pixels": 513,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "southeast-E-13",
+    "receiver": [
+      1680,
+      1056,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "wall",
+    "mask_bounds": [
+      3,
+      96,
+      95,
+      100
+    ],
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "southeast-E-13",
+    "receiver": [
+      1680,
+      1056,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "roof",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "source alpha intersected with own painted surface"
+  },
+  {
+    "owner": "curtain-48-48",
+    "receiver": [
+      48,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      48,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      48,
+      192,
+      166,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 3681,
+    "cast_pixels": 2869
+  },
+  {
+    "owner": "curtain-144-48",
+    "receiver": [
+      144,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      144,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      144,
+      192,
+      262,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6273,
+    "cast_pixels": 4531
+  },
+  {
+    "owner": "curtain-240-48",
+    "receiver": [
+      240,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      240,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      240,
+      192,
+      358,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6229,
+    "cast_pixels": 4531
+  },
+  {
+    "owner": "curtain-336-48",
+    "receiver": [
+      336,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      336,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      336,
+      192,
+      454,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6170,
+    "cast_pixels": 4532
+  },
+  {
+    "owner": "curtain-432-48",
+    "receiver": [
+      432,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      432,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      432,
+      192,
+      550,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 5875,
+    "cast_pixels": 4528
+  },
+  {
+    "owner": "curtain-528-48",
+    "receiver": [
+      528,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      528,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      528,
+      192,
+      646,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6289,
+    "cast_pixels": 4527
+  },
+  {
+    "owner": "curtain-624-48",
+    "receiver": [
+      624,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      624,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      624,
+      192,
+      742,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6266,
+    "cast_pixels": 4531
+  },
+  {
+    "owner": "curtain-720-48",
+    "receiver": [
+      720,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      720,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      720,
+      192,
+      838,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6251,
+    "cast_pixels": 4527
+  },
+  {
+    "owner": "curtain-816-48",
+    "receiver": [
+      816,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      816,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      816,
+      192,
+      934,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6179,
+    "cast_pixels": 4532
+  },
+  {
+    "owner": "curtain-912-48",
+    "receiver": [
+      912,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      912,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      912,
+      192,
+      1030,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 5997,
+    "cast_pixels": 4531
+  },
+  {
+    "owner": "curtain-1008-48",
+    "receiver": [
+      1008,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1008,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1008,
+      192,
+      1126,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 5881,
+    "cast_pixels": 4532
+  },
+  {
+    "owner": "curtain-1104-48",
+    "receiver": [
+      1104,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1104,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1104,
+      192,
+      1222,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6303,
+    "cast_pixels": 4527
+  },
+  {
+    "owner": "curtain-1200-48",
+    "receiver": [
+      1200,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1200,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1200,
+      192,
+      1318,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6243,
+    "cast_pixels": 4528
+  },
+  {
+    "owner": "curtain-1296-48",
+    "receiver": [
+      1296,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1296,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1296,
+      192,
+      1400,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 4112,
+    "cast_pixels": 2658
+  },
+  {
+    "owner": "curtain-1392-48",
+    "receiver": [
+      1392,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1392,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1392,
+      192,
+      1510,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 4938,
+    "cast_pixels": 3701
+  },
+  {
+    "owner": "curtain-1488-48",
+    "receiver": [
+      1488,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1488,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1488,
+      192,
+      1606,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 5922,
+    "cast_pixels": 4531
+  },
+  {
+    "owner": "curtain-1584-48",
+    "receiver": [
+      1584,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1584,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1584,
+      192,
+      1702,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6265,
+    "cast_pixels": 4532
+  },
+  {
+    "owner": "curtain-1680-48",
+    "receiver": [
+      1680,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1680,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1680,
+      192,
+      1798,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 6277,
+    "cast_pixels": 4527
+  },
+  {
+    "owner": "curtain-1776-48",
+    "receiver": [
+      1776,
+      48,
+      120,
+      192
+    ],
+    "ground_footprint": [
+      1776,
+      48,
+      96,
+      144
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": [
+      1776,
+      192,
+      1874,
+      240
+    ],
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 2740,
+    "cast_pixels": 1919
+  },
+  {
+    "owner": "curtain-48-1344",
+    "receiver": [
+      48,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      48,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 235,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-144-1344",
+    "receiver": [
+      144,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      144,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 505,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-240-1344",
+    "receiver": [
+      240,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      240,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 543,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-336-1344",
+    "receiver": [
+      336,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      336,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 509,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-432-1344",
+    "receiver": [
+      432,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      432,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 442,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-528-1344",
+    "receiver": [
+      528,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      528,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 187,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-624-1344",
+    "receiver": [
+      624,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      624,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 483,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-720-1344",
+    "receiver": [
+      720,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      720,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 506,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-816-1344",
+    "receiver": [
+      816,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      816,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 495,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-912-1344",
+    "receiver": [
+      912,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      912,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 2721,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-1200-1344",
+    "receiver": [
+      1200,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1200,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 434,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-1296-1344",
+    "receiver": [
+      1296,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1296,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 495,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-1392-1344",
+    "receiver": [
+      1392,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1392,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 527,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-1488-1344",
+    "receiver": [
+      1488,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1488,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 268,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-1584-1344",
+    "receiver": [
+      1584,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1584,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 312,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-1680-1344",
+    "receiver": [
+      1680,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1680,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 491,
+    "cast_pixels": 0
+  },
+  {
+    "owner": "curtain-1776-1344",
+    "receiver": [
+      1776,
+      1344,
+      120,
+      144
+    ],
+    "ground_footprint": [
+      1776,
+      1344,
+      96,
+      96
+    ],
+    "opacity": 88,
+    "surface": "ground",
+    "mask_bounds": null,
+    "owned_intersection": true,
+    "projection": "stepped drawn silhouette southeast onto partitioned frontage receiver",
+    "reach": 48,
+    "receiver_pixels": 193,
+    "cast_pixels": 0
+  }
+]

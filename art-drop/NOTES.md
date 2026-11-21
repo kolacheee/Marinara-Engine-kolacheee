@@ -1,3 +1,152 @@
+# Round 17 — Part C7: critic-r17C7-2 redraw
+
+Repaired all **34 failed production PNGs** and rebuilt the city/review exports.
+New painted terrace roofs, handed hips, a complete corner and west-facing house,
+the inn mounting bay and street turn replace the failed drawings. The twelve
+course repairs now use dark endpoints only at x0/xW−1, with brown interiors on
+rows 0/47. Passing production art and seasonal files remain byte-identical.
+
+**Concept B remains selected:** its broad joined roofs are calmer than A's many
+gables, and its eastern returns read more clearly than C's. The initial concept
+repairs still drifted from the grid, so all three were repainted over the measured
+nine-block layout. Each final 2688×2016 source joins four newly drawn overlapping
+sections and is genuinely reduced to 1920×1440. Across this repair, 41
+image-tool drawings and their alternatives are retained. Solid magenta → painted
+registration → reference palette → exact 8×8 mode → one-pixel cleanup; hard alpha
+0/255 and zero RGB under transparency. Code only registers, reduces, wraps,
+cleans and composites painted art. The final roof depth extension wraps a drawn
+48 px slope band without changing native tile scale.
+
+The composer now has **nine rings / 107 lots**, pitched rear wings, varied actual
+facade/roof layers, attached church and market returns, the bent 96 px route,
+48 px side streets, continuous north-wall shade and visible court work. The inn's
+sign clears its windows/porch; the tailor sign is fully visible in the normal view.
+BRIEF-17 and the coordinator's structure rules override the panels' allocation,
+sign-size and cross-property-overlay waivers.
+
+**Verification:** 405/405 measured checks pass; 573 review
+PNGs are indexed, including every current asset and the requested final/crop/
+comparison views. An independent Python counter also replays 240 sampled native
+pixels across 20 mode registrations. These are static self-checks, not an independent critic pass
+or runtime collision validation. No branch change, commit or push was made.
+
+[Review index](review/r17-C7-review.html) ·
+[Final beside concept](review/r17-city-final-vs-concept.png) ·
+[Twenty fixes](review/r17-C7-FIXES-response.json) ·
+[Checks](review/r17-C7-QC.json) ·
+[Drawing manifest](review/r17-C7-critic2-generation.json) ·
+[Reduction records](review/r17-C7-critic2-processing.json) ·
+[Mode replay](review/r17-C7-critic2-mode-verification.json).
+
+# Round 17 — Part C7: critic-r17C7-1 redraw
+
+Replaced all **38 failed production PNGs** and rebuilt the final toward **concept B**.
+B has the strongest continuous southern terraces, civic enclosure and west-facing
+inn; A separates the market more, while C crowds the offset stalls. The mandatory
+structure and BRIEF-17 rules take precedence over painterly departures and panel
+waivers. This section supersedes the earlier C7 submission's method and counts.
+
+Three full guides were repainted in overlapping large sections. Each joined
+2688×2016 drawing is genuinely reduced to 1920×1440; smaller guides are not
+upscaled deliverables. New gate, market, roof, facade, corner, wall, paving and
+walk paintings follow the same magenta → registration → exact 64-vote mode →
+reference palette → hard 0/255 alpha, zero hidden RGB and one-pixel cleanup method.
+Code registers, masks, wraps and composites painted pixels. Difficult gate,
+market and roof alternatives are retained in the review index.
+
+The composer now builds **106 oriented buildings in nine perimeter plans** from
+complete ground/storey/roof units. Facings and floor counts change the paint.
+It includes the bent 96 px route with outside kerbs, 48 px side streets, 24 px passages,
+a 48×96 southeast setback, four civic frontages and connected southern roofs.
+Gate/stair and market are whole assemblies. Shadows have separate owned ground,
+wall and roof receivers; access reveals retain supports, counters and stair treads.
+
+**Verification:** 409 mechanical checks pass across 126 production sprites;
+578 current review PNGs are indexed. Every passing production sprite and all
+seasonal files remain byte-identical to the saved baseline. This is saved-art
+self-review, not an independent critic pass or runtime collision approval.
+No commits, pushes or branch changes were made.
+
+[Current review index](review/r17-C7-review.html) ·
+[Final beside concept](review/r17-city-final-vs-concept.png) ·
+[All 20 fixes](review/r17-C7-FIXES-response.json) ·
+[Checks](review/r17-C7-QC.json) ·
+[Source manifest](review/r17-C7-critic1-generation.json) ·
+[Reduction records](review/r17-C7-critic1-processing.json).
+
+# Round 17 — Part C7
+
+Painted the district first, then rebuilt the composer toward **concept B**.
+Three full native concept views are retained, together with three exploratory
+revisions. B was selected for connected roof-filled blocks, the clearest
+four-sided civic square, mixed heights/roof materials and the gate road.
+A has weaker street rank; C has a weaker market grouping. The coordinator's
+structure rules govern the rebuilt plan wherever the painting differs.
+[Concept comparison](review/r17-concepts-vs-today-vs-final.png) ·
+[Choice and precedence](review/r17-C7-concept-choice.json).
+
+**Method:** 44 built-in image-tool paintings on solid magenta,
+with alternatives for the difficult block, church, gate, market, corner and
+roof work. Registered paint → fixed reference palette → exact 64-vote 8×8
+RGBA mode → native isolated-pixel/one-pixel-outline cleanup. Production
+alpha is 0/255 with zero RGB underneath transparency. Code only registers,
+reduces, remaps material colours, wraps native edges, crops/masks and
+composites drawn pixels. The concept originals returned by the tool are
+1448×1086, enlarged during registration to 1920×1440; the 8× working registration does not add
+original drawing resolution. Individual production pieces were reduced from
+larger paintings. [Prompts and selections](review/r17-C7-generation.json) ·
+[Registration measurements](review/r17-C7-processing.json) ·
+[Native operations](review/r17-C7-native-operations.json).
+
+**Plan:** 40×30 cells at 48 px, 10 perimeter blocks and
+114 owned outward/return lots with 1–2-cell footprints. Front,
+side and corner slices and their rear-wing cells reconstruct the whole
+painted blocks without internal seams. These are static owned assemblies;
+the separate course units supply the stacking proofs. The main route is 96 px, side streets 48 px,
+service passage 24 px; the gate route bends beside the southeast jog.
+The southeast wing was repainted and registered with a visible 48×96 street
+recess. The square has a 48 px notch, six stalls and four enclosing destinations:
+guildhall north, church's east porch west, inn's west return east, open
+north side of the market south. Towers occupy the wall line; a new angular
+corner bastion, north stair and wall walk complete the defensive edge.
+[Plan data](review/r17-C7-layout.json) ·
+[Ownership](review/r17-C7-lot-ownership-1x.png) ·
+[Clearances](review/r17-C7-footprints-clearance-1x.png).
+
+**Files:** 80 new transparent PNGs in `out/city17/*-c7.png`;
+existing production sprites remain byte-identical. Whole gate context 192×192
+is split from one painting into the 144×192 gate core and 48 px stair, with a 96 px
+portal. The complete market pavilion is 192×144; church art 240×432 projects
+above its 5×6-cell footprint. New corners, 96/144 px roof depths, 16 px receivers,
+fixed-course floors, five 96×144 curtains, four 48×48 paving variants, signs
+and purposeful people/props accompany the ten blocks. The gate's painted
+24 px projection is recorded separately from its cell anchor.
+All requested final, 2×, squint, three 3× crops,old/today comparison and
+`r17-city-final-vs-concept.png` have been rendered.
+[Final city](review/r17-city-final.png) ·
+[Final beside chosen concept](review/r17-city-final-vs-concept.png) ·
+[Review index](review/r17-C7-review.html).
+
+**QC:** 378 indexed review exports include every production file
+at 1×/nearest-neighbour 4× over summer cobble, literal 3×3 base repeats,
+self/variant seams, five-module wall strip, 16×12 L/T/dead-end proof,
+irregular square, both 5/1-storey joins, house/reference 1×/4× and actor
+normal/reveal states. 281/281 measured checks pass:
+hard alpha, hidden RGB, no 1–2-pixel alpha islands, native course rows 0/47,
+all 25 wall edge pairs, disjoint lot ownership, owned-piece reconstruction,
+perimeter towers and exact enlarged/repeated exports. 720 mode
+probes across 60 registrations replay correctly; the log records
+678,359,040 sample votes, not an exhaustive replay of
+every vote. [QC and complete file measurements](review/r17-C7-QC.json) ·
+[Mode probes](review/r17-C7-mode-verification.json) ·
+[Twenty-item cycle-7 response](review/r17-C7-FIXES-response.json).
+
+These are saved-art self-checks, not independent critic approval or runtime
+collision/pathfinding validation. BRIEF-17 takes precedence over the panels'
+deeper-footprint, wider-gate-core, smaller-sign and cross-property-overlay
+waivers; the explicit C7 district request supersedes their small-pilot cap.
+No seasonal partner or other checkout file changed; no branch change, commit or push was made.
+
 # Round 17 — Part C6: critic-r17C6-3 redraw
 
 Repaired the **composer-only failures** using the approved image-tool drawings.

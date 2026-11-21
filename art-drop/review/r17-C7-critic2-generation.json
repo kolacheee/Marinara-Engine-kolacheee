@@ -1,0 +1,439 @@
+{
+  "part": "C7",
+  "repair": "critic-r17C7-2",
+  "drawings": [
+    {
+      "id": "concept-a-guide",
+      "prompt": "Edit target: first image, the whole medieval walled district concept. Reference 2 and 3 are the exact intended pixel art style, top-left light and roof tile scale. Produce revised concept A as a COMPLETE LARGE 2688x2016 pixel-art painting on perfectly solid #ff00ff outside the wall. Preserve joined perimeter blocks, square enclosure, church west with east porch, guildhall north, inn east, complete north-open market south. Make all streets strictly square orthogonal, no diagonal/chamfer/curved kerbs. Treat scene as a 40 by 30 cell orthogonal plan. 48 native pixels per cell, native final 1920x1440; draw at 1.4x scale so cells are 67.2 painted pixels. Wall lines on outer grid. South portal at native x1056..1152. Main road native x1056..1152 from y1056..1440, then EXACT 48-pixel square jog east into x1104..1200 up to y672. Every ordinary street exactly one cell wide, main road two cells wide; hard right-angle corner on the bend. Southeast wedge is a stepped rectangular frontage: one cell jog for two cells then back, NEVER diagonal. Square core native x768..1104 y720..1056. Attached houses close both sides of market; church joined to inhabited west range. Dense roofs fill block interiors, with just one small purposeful court each; houses face outward on all 4 sides, no free standing houses, towers ONLY wall line. Southern peripheral blocks have chocolate BROWN tile roofs and 1-2 storeys, middle red terracotta, northeast slate; taller merchants near square but civic clock hall clearly dominates them. Broad lit/shaded roof planes and 6-8 native pixel shingle clusters, no stipple. Same native detail as references. All 3/4 roof perspective, but street plan square, not isometric. No words or labels, no drawn grid lines, no haze or isolated specks. Frame whole district without cropping. This is complete replacement painting, keep basic concept B connected silhouette.",
+      "reference_images": [
+        "art-drop/review/r17-concept-b.png",
+        "art-drop/reference/r17/fantasy-house-2.png",
+        "art-drop/reference/r17/fantasy-hall-2.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-a-guide.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-b-guide",
+      "prompt": "Edit target: first image, the whole medieval walled district concept. Reference 2 and 3 are the exact intended pixel art style, top-left light and roof tile scale. Produce revised concept B as a COMPLETE LARGE 2688x2016 pixel-art painting on perfectly solid #ff00ff outside the wall. Preserve joined perimeter blocks, square enclosure, church west with east porch, guildhall north, inn east, complete north-open market south. Make all streets strictly square orthogonal, no diagonal/chamfer/curved kerbs. Treat scene as a 40 by 30 cell orthogonal plan. 48 native pixels per cell, native final 1920x1440; draw at 1.4x scale so cells are 67.2 painted pixels. Wall lines on outer grid. South portal at native x1056..1152. Main road native x1056..1152 from y1056..1440, then EXACT 48-pixel square jog east into x1104..1200 up to y672. Every ordinary street exactly one cell wide, main road two cells wide; hard right-angle corner on the bend. Southeast wedge is a stepped rectangular frontage: one cell jog for two cells then back, NEVER diagonal. Square core native x768..1104 y720..1056. Attached houses close both sides of market; church joined to inhabited west range. Dense roofs fill block interiors, with just one small purposeful court each; houses face outward on all 4 sides, no free standing houses, towers ONLY wall line. Southern peripheral blocks have chocolate BROWN tile roofs and 1-2 storeys, middle red terracotta, northeast slate; taller merchants near square but civic clock hall clearly dominates them. Broad lit/shaded roof planes and 6-8 native pixel shingle clusters, no stipple. Same native detail as references. All 3/4 roof perspective, but street plan square, not isometric. No words or labels, no drawn grid lines, no haze or isolated specks. Frame whole district without cropping. This is complete replacement painting, keep basic concept B connected silhouette. Prefer a tightly enclosed square with low attached shops connecting the market to the church and inn. Keep more north-south roof ridges alternating with low rear cross-wings, broad readable roof shapes and restrained detail.",
+      "reference_images": [
+        "art-drop/review/r17-concept-b.png",
+        "art-drop/reference/r17/fantasy-house-2.png",
+        "art-drop/reference/r17/fantasy-hall-2.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-b-guide.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-c-guide",
+      "prompt": "Edit target: first image, the whole medieval walled district concept. Reference 2 and 3 are the exact intended pixel art style, top-left light and roof tile scale. Produce revised concept C as a COMPLETE LARGE 2688x2016 pixel-art painting on perfectly solid #ff00ff outside the wall. Preserve joined perimeter blocks, square enclosure, church west with east porch, guildhall north, inn east, complete north-open market south. Make all streets strictly square orthogonal, no diagonal/chamfer/curved kerbs. Treat scene as a 40 by 30 cell orthogonal plan. 48 native pixels per cell, native final 1920x1440; draw at 1.4x scale so cells are 67.2 painted pixels. Wall lines on outer grid. South portal at native x1056..1152. Main road native x1056..1152 from y1056..1440, then EXACT 48-pixel square jog east into x1104..1200 up to y672. Every ordinary street exactly one cell wide, main road two cells wide; hard right-angle corner on the bend. Southeast wedge is a stepped rectangular frontage: one cell jog for two cells then back, NEVER diagonal. Square core native x768..1104 y720..1056. Attached houses close both sides of market; church joined to inhabited west range. Dense roofs fill block interiors, with just one small purposeful court each; houses face outward on all 4 sides, no free standing houses, towers ONLY wall line. Southern peripheral blocks have chocolate BROWN tile roofs and 1-2 storeys, middle red terracotta, northeast slate; taller merchants near square but civic clock hall clearly dominates them. Broad lit/shaded roof planes and 6-8 native pixel shingle clusters, no stipple. Same native detail as references. All 3/4 roof perspective, but street plan square, not isometric. No words or labels, no drawn grid lines, no haze or isolated specks. Frame whole district without cropping. This is complete replacement painting, keep basic concept B connected silhouette. Brown roofs MUST visibly cover every house in the bottom two block rows. Brown means muted dark chocolate tile, never terracotta orange. Make the guildhall lower with clock turret, tightly connected terraces. Preserve right angled street bend.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-concept-b.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-hall-2.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-c-guide.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "roof-family-a",
+      "prompt": "Use case: stylized-concept. Pixel art game asset sheet on perfectly SOLID MAGENTA #ff00ff background. Six separate complete terracotta tiled ROOFS ONLY (no walls/windows, no ground shadows). STYLE reference tiny fantasy house and hall, high 3/4 top-left light. Arrange THREE columns, TWO rows. Width proportions exactly 1:2:3 across columns. Top row native targets 48x96,96x96,144x96. Bottom row native targets 48x144,96x144,144x144. Each is a broad PITCHED HIP roof: horizontal ridge near the back/top, broad light front slope, distinctly shaded 16px right hip, continuous thick 3px eave at bottom. On sheet use physical native-pixel factor 3: column widths144,288,432 source pixels; top roofs288 source pixels high, bottom432 source pixels high. Leave at least60 magenta pixels between pieces, around canvas. Each roof must be drawn independently at same shingle scale, NEVER resized texture. Every shingle is a clean quiet 6-8 native pixel wide x3-4 native pixel high colour cluster; about18-24 by9-12 source pixels. Large calm reddish-brown colour planes; tile joints low contrast; no individual tiny light dots, noise, stipple, diagonal scratches, grain or hairline stripe fill. Visible ridge coping, eave shadow and 1px native silhouette dark brown. Compatible left/right ends, planar perspective like reference, no isometric ground or rounded corners. No text/labels/dormers/chimneys. Fill sheet generously.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-hall-2.png"
+      ],
+      "source": "r17-C7-critic2-source-roof-family-a.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "retained alternative"
+    },
+    {
+      "id": "roof-family-b",
+      "prompt": "Use case: stylized-concept. Pixel art game asset sheet on perfectly SOLID MAGENTA #ff00ff background. Six separate complete terracotta tiled ROOFS ONLY (no walls/windows, no ground shadows). STYLE reference tiny fantasy house and hall, high 3/4 top-left light. Arrange THREE columns, TWO rows. Width proportions exactly 1:2:3 across columns. Top row native targets 48x96,96x96,144x96. Bottom row native targets 48x144,96x144,144x144. Each is a broad PITCHED HIP roof: horizontal ridge near the back/top, broad light front slope, distinctly shaded 16px right hip, continuous thick 3px eave at bottom. On sheet use physical native-pixel factor 3: column widths144,288,432 source pixels; top roofs288 source pixels high, bottom432 source pixels high. Leave at least60 magenta pixels between pieces, around canvas. Each roof must be drawn independently at same shingle scale, NEVER resized texture. Every shingle is a clean quiet 6-8 native pixel wide x3-4 native pixel high colour cluster; about18-24 by9-12 source pixels. Large calm reddish-brown colour planes; tile joints low contrast; no individual tiny light dots, noise, stipple, diagonal scratches, grain or hairline stripe fill. Visible ridge coping, eave shadow and 1px native silhouette dark brown. Compatible left/right ends, planar perspective like reference, no isometric ground or rounded corners. No text/labels/dormers/chimneys. Fill sheet generously. Alternative drawing: use calmer larger contiguous tile clusters and particularly clear 16px shaded hip. Exact same sheet layout and pitch; slightly irregular grouped tile courses but no speckles.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-hall-2.png"
+      ],
+      "source": "r17-C7-critic2-source-roof-family-b.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "retained alternative"
+    },
+    {
+      "id": "roof-master-c",
+      "prompt": "Draw ONE production pixel art roof ONLY on solid MAGENTA. Native asset 144px wide by144px tall: its painted outline must have approximately SQUARE bounding box, NOT a low squat roof. Large 1024x1024 drawing with margin. High three-quarter near-overhead camera like provided medieval house. A hipped terracotta roof with long horizontal ridge top, broad foreshortened front slope, a separately shaded 16-native-pixel right hip and 16px lit left contact. Full front roof plane has THIRTY SIX distinct overlapping rows of tiles, TWENTY tiles across the bottom. Each tile flat clustered 6-8 native pixels wide and3-4 high, low contrast individual seams. A 4px ridge and3px thick continuous eave shadow. Calm broad red-brown surface, NO noise/stipple/tiny bright flecks. Native1px exposed dark-brown contour; light top-left, brown shadowedright. No walls, dormers, chimneys, labels. THIS IS A DEEP ROOF 144x144, draw full depth not stretched texture. Every roof shingle is a readable contiguous rectangular colour cluster. Reference palette and treatment.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-hall-2.png"
+      ],
+      "source": "r17-C7-critic2-source-roof-master-c.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "retained alternative"
+    },
+    {
+      "id": "corner-a",
+      "prompt": "Redraw the first corner-house target as ONE complete coherent pixel art merchant corner house on solid MAGENTA; reference tiny house sets drawing style. Native144x240: upper96px a genuine deep terracotta HIP roof (20shingles across,24rows, each6-8x3-4px), below THREE 48px wall courses. Asymmetric layout: upper left double shutter bay, right single narrow window, brick infill below, small off-centre dormer. Visible shaded RIGHT return exactly16px with continuing course beams and side-facing ground door; large recesses, sill tops, lit plinth top,3px eave shadow. Top-left light, 1px exposed contour. Roof and wall read as ONE volume, no texture carpet. No sign or ornaments, no ground shadow. High3/4 town-view like reference. Single complete isolated tall house fills frame, no cutting. Large crisp drawing for mode reduction.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/corner-house-c7.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+      ],
+      "source": "r17-C7-critic2-source-corner-a.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "selected roof contact; corner B selected for whole assembly"
+    },
+    {
+      "id": "west-a",
+      "prompt": "Redraw the narrow west-facing house as one complete pixel-art assembly on solid MAGENTA. Native target48x192, two48px wall courses below a96px deep gabled roof. Match provided two-cell west-facing house's camera and material scale. Draw at large portrait scale. Street-facing WEST side at screen LEFT occupies32px native and has a22x30px deep doorway, lit step and jamb lantern. RIGHT16px is shaded party-wall return with one small shutter upstairs. Ground entrance faces west visibly, not a narrow south frontal column. Roof ridge runs back/up into image, visible end-on gable and full slope with6-8px shingle clusters,3-4px row spacing, not5 broad horizontal stripes. Top-left light, onepixel dark outside contour, timber, cream plaster and warm stone, terracotta roof, no noise/dither. Roof and side body drawn together with intact windows. No props, ground or shadow.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/house-west-w2-c7r1.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+      ],
+      "source": "r17-C7-critic2-source-west-a.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "selected production drawing"
+    },
+    {
+      "id": "corner-b",
+      "prompt": "Redraw the first corner-house target as ONE complete coherent pixel art merchant corner house on solid MAGENTA; reference tiny house sets drawing style. Native144x240: upper96px a genuine deep muted SLATE HIP roof (20shingles across,24rows, each6-8x3-4px), below THREE 48px wall courses. Asymmetric layout: one wide recessed upstairs window at left, a smaller paired-window bay at right, large brick infill on the return, a small dormer offset to LEFT. Visible shaded RIGHT return exactly16px with continuing course beams and side-facing ground door; large recesses, sill tops, lit plinth top,3px eave shadow. Top-left light, 1px exposed contour. Roof and wall read as ONE volume, no texture carpet. No sign or ornaments, no ground shadow. High3/4 town-view like reference. Single complete isolated tall house fills frame, no cutting. Large crisp drawing for mode reduction. Make this alternate corner less symmetrical with a visibly substantial shaded right side, broad calm material planes.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/corner-house-c7.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+      ],
+      "source": "r17-C7-critic2-source-corner-b.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "selected production drawing"
+    },
+    {
+      "id": "west-b",
+      "prompt": "Redraw the narrow west-facing house as one complete pixel-art assembly on solid MAGENTA. Native target48x192, two48px wall courses below a96px deep gabled roof. Match provided two-cell west-facing house's camera and material scale. Draw at large portrait scale. Street-facing WEST side at screen LEFT occupies32px native and has a22x30px deep doorway, lit step and jamb lantern. RIGHT16px is shaded party-wall return with one small shutter upstairs. Ground entrance faces west visibly, not a narrow south frontal column. Roof ridge runs back/up into image, visible end-on gable and full slope with6-8px shingle clusters,3-4px row spacing, not5 broad horizontal stripes. Top-left light, onepixel dark outside contour, timber, cream plaster and warm stone, terracotta roof, no noise/dither. Roof and side body drawn together with intact windows. No props, ground or shadow. Alternative: rotate the gable roof so its ridge runs from top-right back down-left foreground; the left-facing street entrance sits on the broad left wall under a supported porch, and the narrow right front is blind cream masonry. Keep the complete roof silhouette visible. Don't compress window bays.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/house-west-w2-c7r1.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+      ],
+      "source": "r17-C7-critic2-source-west-b.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "retained alternative"
+    },
+    {
+      "id": "inn",
+      "prompt": "Edit target inn house image, redraw whole96x240native west-facing tall inn, coherent high3/4 view top-left light, slate roof, cream plaster timber. Keep door/porch and lit step/lantern clear on west-facing lower LEFT return, and small court arch at lower right. THREE48px wall courses,96px roof. CRITICAL leave a completely BLANK40x48native plaster mounting bay at LEFT of lowest upper storey, localx0..40 y144..192; NO window/door/beam inside blank area. A large tankard/bed sign will be composited here later, so DON'T draw a sign. Put shuttered windows to right and on uppercourse, safely away from reserved bay. Full side perspective, visible eave, chunky6-8px shingles3-4rows like fantasy house. Onepixel outline, no stipple or noise, no pixel dust. Large portrait drawing isolated on perfectly solid magenta, no ground or shadow.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/inn-west-c7r1.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+      ],
+      "source": "r17-C7-critic2-source-inn.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "selected production drawing"
+    },
+    {
+      "id": "paving-turn",
+      "prompt": "Draw a single48x48 native pixel art paving transition TILE at large scale as production game art. Reference image is exact current main-road paving style and colour: muted warm grey green-beige cobbles, nearly same values, two cobble sizes 6x4 and10x6native pixels, very quiet thin dark joints. TOP DOWN square tile filling square frame on solid magenta around a thin outer margin. A narrow angular3nativepx kerb/gutter runs at LEFT and TOP edges in an exact right angle, rest regular cobbles. No round edges or diagonalcorner. Match reference cobble size and palette exactly; no broken speckles, soft shading, gradients or dramatic contrast. Painted square grain-free pixel clusters, no extraneous items.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/main-paving-c7.png"
+      ],
+      "source": "r17-C7-critic2-source-paving-turn.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "selected production drawing"
+    },
+    {
+      "id": "terrace-a",
+      "prompt": "Production pixel-art medieval TERRACED ROOF, one continuous roof ONLY, no walls, on solid magenta. Wide horizontal192x96 NATIVE footprint/aspect2:1, draw very large. Long horizontal ridge, almost rectangular broad top-down slope; TWO VERY NARROW hip ends each16nativepx wide, centre160px is an uninterrupted pitched plane. Ridge spans160pixels, eave192pixels, NOT pyramid/trapezoid with a short ridge. Top-left light; right end distinctly shaded. Warm muted terracotta tile; twenty-six tiles across and TWENTY FOUR rows down, each native6-8wide3-4high. Quiet large connected pixel clusters, slightly irregular tile courses, no tiny highlights or noisy dots. Visible4px ridge and3px eave contact shade. This roof must join attached houses like the long terrace roofs in the concept reference, never isolated conical caps. Native1px brown contour. Single complete asset, no dormers/chimneys/windows/text.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-source-concept-b-guide.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+      ],
+      "source": "r17-C7-critic2-source-terrace-a.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "retained alternative"
+    },
+    {
+      "id": "terrace-b",
+      "prompt": "Production pixel-art medieval TERRACED ROOF, one continuous roof ONLY, no walls, on solid magenta. Wide horizontal192x96 NATIVE footprint/aspect2:1, draw very large. Long horizontal ridge, almost rectangular broad top-down slope; TWO VERY NARROW hip ends each16nativepx wide, centre160px is an uninterrupted pitched plane. Ridge spans160pixels, eave192pixels, NOT pyramid/trapezoid with a short ridge. Top-left light; right end distinctly shaded. Warm muted terracotta tile; twenty-six tiles across and TWENTY FOUR rows down, each native6-8wide3-4high. Quiet large connected pixel clusters, slightly irregular tile courses, no tiny highlights or noisy dots. Visible4px ridge and3px eave contact shade. This roof must join attached houses like the long terrace roofs in the concept reference, never isolated conical caps. Native1px brown contour. Single complete asset, no dormers/chimneys/windows/text. Alternate arrangement, keep roof planes broad and almost square-ended, truly tiny hips only at ends, low contrast joints.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-source-concept-b-guide.png",
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+      ],
+      "source": "r17-C7-critic2-source-terrace-b.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "selected production drawing"
+    },
+    {
+      "id": "concept-a-nw",
+      "prompt": "This image is an exact cropped quadrant of a full pixel-art town drawing. Redraw this entire crop at LARGE 1448x1086 resolution, preserving every building silhouette, relative position, framing and cut-off at all four edges EXACTLY. It will be stitched with overlapping quadrants, so DO NOT recenter, add margins or complete buildings cut at the edge. Keep joined terraced perimeter blocks, high3/4 view, top-left light, sharp square street corners and low-contrast native tile clusters. Preserve the brown roofs of southern peripheral blocks and the solid MAGENTA outside wall. Dense 1px outline game pixel art, same camera and occupied composition, every original border pixel aligns. No blur, speckles, labels or new isolated houses. This is section nw of concept A.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-a-nw.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-a-nw.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-a-ne",
+      "prompt": "This image is an exact cropped quadrant of a full pixel-art town drawing. Redraw this entire crop at LARGE 1448x1086 resolution, preserving every building silhouette, relative position, framing and cut-off at all four edges EXACTLY. It will be stitched with overlapping quadrants, so DO NOT recenter, add margins or complete buildings cut at the edge. Keep joined terraced perimeter blocks, high3/4 view, top-left light, sharp square street corners and low-contrast native tile clusters. Preserve the brown roofs of southern peripheral blocks and the solid MAGENTA outside wall. Dense 1px outline game pixel art, same camera and occupied composition, every original border pixel aligns. No blur, speckles, labels or new isolated houses. This is section ne of concept A.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-a-ne.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-a-ne.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-a-sw",
+      "prompt": "This image is an exact cropped quadrant of a full pixel-art town drawing. Redraw this entire crop at LARGE 1448x1086 resolution, preserving every building silhouette, relative position, framing and cut-off at all four edges EXACTLY. It will be stitched with overlapping quadrants, so DO NOT recenter, add margins or complete buildings cut at the edge. Keep joined terraced perimeter blocks, high3/4 view, top-left light, sharp square street corners and low-contrast native tile clusters. Preserve the brown roofs of southern peripheral blocks and the solid MAGENTA outside wall. Dense 1px outline game pixel art, same camera and occupied composition, every original border pixel aligns. No blur, speckles, labels or new isolated houses. This is section sw of concept A.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-a-sw.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-a-sw.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-a-se",
+      "prompt": "This image is an exact cropped quadrant of a full pixel-art town drawing. Redraw this entire crop at LARGE 1448x1086 resolution, preserving every building silhouette, relative position, framing and cut-off at all four edges EXACTLY. It will be stitched with overlapping quadrants, so DO NOT recenter, add margins or complete buildings cut at the edge. Keep joined terraced perimeter blocks, high3/4 view, top-left light, sharp square street corners and low-contrast native tile clusters. Preserve the brown roofs of southern peripheral blocks and the solid MAGENTA outside wall. Dense 1px outline game pixel art, same camera and occupied composition, every original border pixel aligns. No blur, speckles, labels or new isolated houses. This is section se of concept A.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-a-se.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-a-se.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-b-nw",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Retain roof colours. Keep joined perimeter-block wings and one small court. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section nw of concept B.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-b-nw.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-b-nw.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-b-ne",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Retain roof colours. Keep joined perimeter-block wings and one small court. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section ne of concept B.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-b-ne.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-b-ne.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-b-sw",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Change roofs of ALL peripheral houses below the church/inn to muted dark CHOCOLATE BROWN tile; keep market and inn red and northeast slate. Keep joined perimeter-block wings and one small court. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section sw of concept B.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-b-sw.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-b-sw.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-b-se",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Change roofs of ALL peripheral houses below the church/inn to muted dark CHOCOLATE BROWN tile; keep market and inn red and northeast slate. Keep joined perimeter-block wings and one small court. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section se of concept B.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-b-se.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-b-se.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-c-nw",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Keep BROWN roofs of peripheral houses below church/inn, red market and slate northeast. Keep joined perimeter-block wings and one small court, outward-facing streets. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section nw of concept C.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-c-nw.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-c-nw.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-c-ne",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Keep BROWN roofs of peripheral houses below church/inn, red market and slate northeast. Keep joined perimeter-block wings and one small court, outward-facing streets. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section ne of concept C.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-c-ne.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-c-ne.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-c-sw",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Keep BROWN roofs of peripheral houses below church/inn, red market and slate northeast. Keep joined perimeter-block wings and one small court, outward-facing streets. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section sw of concept C.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-c-sw.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-c-sw.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-c-se",
+      "prompt": "Redraw this exact cropped town quadrant at LARGE1448x1086. Preserve framing, all silhouettes and boundary cutoffs precisely for overlap stitching: no margins/recenter or completion of cropped buildings. Pixel art, high3/4 view, top-left light, reference detail. Keep BROWN roofs of peripheral houses below church/inn, red market and slate northeast. Keep joined perimeter-block wings and one small court, outward-facing streets. Hard right-angle square kerbs, two-cell main route, one-cell side routes, NO rounded or diagonal road corners. No noise/stipple/fog/labels. Preserve solid magenta outside wall. This is section se of concept C.",
+      "reference_images": [
+        "/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C7-critic2-guide-c-se.png"
+      ],
+      "source": "r17-C7-critic2-source-concept-c-se.png",
+      "method": "Built-in image tool on solid magenta; source pixels retained; registration, palette lock and exact64-vote mode; no procedural architecture.",
+      "selection": "superseded: grid clearances drifted"
+    },
+    {
+      "id": "concept-a-grid-guide",
+      "prompt": "Repaint the FIRST IMAGE as a unified medieval town pixel-art concept, keeping its EXACT geometry, proportions and street edges. First image is a locked 40x30-cell construction layout, 48 pixels per cell; aqua grid lines are guide marks that MUST DISAPPEAR in your painting. The second image is style/depth inspiration ONLY, do not copy its plan or oversized landmarks. Keep the first image's 9 dense perimeter blocks with buildings on all four sides and complete attached pitched rear roofs; tiny purposeful courts. Keep every FIRST-IMAGE street boundary and all landmark footprints EXACTLY: main road 2 cells (96 native px), side streets 1 cell (48px), hard orthogonal dogleg beside the gate, no chamfers, no rounded kerbs. Church WEST of the square, guildhall NORTH, west-facing inn EAST, fully roofed north-open market SOUTH; connected low shops frame the market on both sides. South gate stays at the first image's location and width as ONE chamber/landing assembly. Towers only on the wall line. First image already has the desired road and clearances. Unify the roofs into the second image's coherent, deep attached pitched volumes and valleys without shifting building feet or changing storey counts. Keep first image's slate in east blocks, terracotta west/civic, chocolate BROWN in southern peripheral blocks. Use fantasy-house reference high 3/4 projection, exact square pixel clusters, 1 native pixel contours, broad top-left light, 6-8 native pixel shingle clusters and 3-4px row spacing, quiet paving. Make no procedural texture or soft/dither speckle. No labels/grid. Whole district, same framing as first image, exterior solid magenta. This is a meticulous paintover of FIRST IMAGE; preserve its geometric street mask and the size of the guildhall/church/market/gate. Large landscape 4:3 output.\nAlternative A: Use more paired, alternating front gables within the SAME building feet. Keep quiet narrow roof ridges connecting same-height terrace neighbours.",
+      "source": "r17-C7-critic2-source-concept-a-grid-guide.png",
+      "reference_images": [
+        "r17-C7-critic2-concept-layout-guide.png",
+        "r17-C7-critic2-source-concept-b-grid-guide.png",
+        "../reference/r17/fantasy-house-2.png"
+      ],
+      "role": "Final fixed-layout guide; not enlarged as the deliverable",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-a-grid-nw",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the nw overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-a-grid-nw.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-a-nw.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-a-grid-ne",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the ne overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-a-grid-ne.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-a-ne.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-a-grid-sw",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the sw overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-a-grid-sw.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-a-sw.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-a-grid-se",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the se overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-a-grid-se.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-a-se.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-b-grid-guide",
+      "prompt": "Repaint the FIRST IMAGE as a unified medieval town pixel-art concept, keeping its EXACT geometry, proportions and street edges. First image is a locked 40x30-cell construction layout, 48 pixels per cell; aqua grid lines are guide marks that MUST DISAPPEAR in your painting. The second image is style/depth inspiration ONLY, do not copy its plan or oversized landmarks. Keep the first image's 9 dense perimeter blocks with buildings on all four sides and complete attached pitched rear roofs; tiny purposeful courts. Keep every FIRST-IMAGE street boundary and all landmark footprints EXACTLY: main road 2 cells (96 native px), side streets 1 cell (48px), hard orthogonal dogleg beside the gate, no chamfers, no rounded kerbs. Church WEST of the square, guildhall NORTH, west-facing inn EAST, fully roofed north-open market SOUTH; connected low shops frame the market on both sides. South gate stays at the first image's location and width as ONE chamber/landing assembly. Towers only on the wall line. First image already has the desired road and clearances. Unify the roofs into the second image's coherent, deep attached pitched volumes and valleys without shifting building feet or changing storey counts. Keep first image's slate in east blocks, terracotta west/civic, chocolate BROWN in southern peripheral blocks. Use fantasy-house reference high 3/4 projection, exact square pixel clusters, 1 native pixel contours, broad top-left light, 6-8 native pixel shingle clusters and 3-4px row spacing, quiet paving. Make no procedural texture or soft/dither speckle. No labels/grid. Whole district, same framing as first image, exterior solid magenta. This is a meticulous paintover of FIRST IMAGE; preserve its geometric street mask and the size of the guildhall/church/market/gate. Large landscape 4:3 output.",
+      "source": "r17-C7-critic2-source-concept-b-grid-guide.png",
+      "reference_images": [
+        "r17-C7-critic2-concept-layout-guide.png",
+        "r17-C7-critic2-concept-b-pre-grid.png",
+        "../reference/r17/fantasy-house-2.png"
+      ],
+      "role": "Final fixed-layout guide; not enlarged as the deliverable",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-b-grid-nw",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the nw overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-b-grid-nw.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-b-nw.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-b-grid-ne",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the ne overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-b-grid-ne.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-b-ne.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-b-grid-sw",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the sw overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-b-grid-sw.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-b-sw.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-b-grid-se",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the se overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-b-grid-se.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-b-se.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-c-grid-guide",
+      "prompt": "Repaint the FIRST IMAGE as a unified medieval town pixel-art concept, keeping its EXACT geometry, proportions and street edges. First image is a locked 40x30-cell construction layout, 48 pixels per cell; aqua grid lines are guide marks that MUST DISAPPEAR in your painting. The second image is style/depth inspiration ONLY, do not copy its plan or oversized landmarks. Keep the first image's 9 dense perimeter blocks with buildings on all four sides and complete attached pitched rear roofs; tiny purposeful courts. Keep every FIRST-IMAGE street boundary and all landmark footprints EXACTLY: main road 2 cells (96 native px), side streets 1 cell (48px), hard orthogonal dogleg beside the gate, no chamfers, no rounded kerbs. Church WEST of the square, guildhall NORTH, west-facing inn EAST, fully roofed north-open market SOUTH; connected low shops frame the market on both sides. South gate stays at the first image's location and width as ONE chamber/landing assembly. Towers only on the wall line. First image already has the desired road and clearances. Unify the roofs into the second image's coherent, deep attached pitched volumes and valleys without shifting building feet or changing storey counts. Keep first image's slate in east blocks, terracotta west/civic, chocolate BROWN in southern peripheral blocks. Use fantasy-house reference high 3/4 projection, exact square pixel clusters, 1 native pixel contours, broad top-left light, 6-8 native pixel shingle clusters and 3-4px row spacing, quiet paving. Make no procedural texture or soft/dither speckle. No labels/grid. Whole district, same framing as first image, exterior solid magenta. This is a meticulous paintover of FIRST IMAGE; preserve its geometric street mask and the size of the guildhall/church/market/gate. Large landscape 4:3 output.\nAlternative C: Use some asymmetric dormers and sober brick infill within the SAME building feet, narrow hipped slate corner volumes, with unified ridge contacts. All road and civic coordinates still fixed.",
+      "source": "r17-C7-critic2-source-concept-c-grid-guide.png",
+      "reference_images": [
+        "r17-C7-critic2-concept-layout-guide.png",
+        "r17-C7-critic2-source-concept-b-grid-guide.png",
+        "../reference/r17/fantasy-house-2.png"
+      ],
+      "role": "Final fixed-layout guide; not enlarged as the deliverable",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-c-grid-nw",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the nw overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-c-grid-nw.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-c-nw.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-c-grid-ne",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the ne overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-c-grid-ne.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-c-ne.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-c-grid-sw",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the sw overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-c-grid-sw.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-c-sw.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    },
+    {
+      "id": "concept-c-grid-se",
+      "prompt": "Repaint this exact cropped pixel-art town view at LARGE 1448x1086 resolution. Same framing, same partial buildings cropped at the four image edges, absolutely no zoom or rearrangement. This is the se overlapping section of a fixed-grid district concept. Every building foot, road edge, court boundary and wall stays at exactly the same normalized coordinate. Native street widths are exactly 48/96px on the full 1920x1440 plan. Preserve those structural edges, no curved or diagonal kerbs. Draw richer connected ridge/eave/valley contacts and coherent high 3/4 pixel-art volumes at the same scale, exact top-left light, restrained 1-native-pixel contour, broad lit planes, quiet roof clusters and paving, solid magenta outside wall. Draw all existing content only; no new streets, no new towers, no detached houses, no texts. Keep partial objects at edges for seamless joining to neighbouring section. Uniform sharp hand-drawn pixel clusters without speckles, soft effects or blur; not a smooth illustration. This is a fresh detailed drawing with the existing exact layout.",
+      "source": "r17-C7-critic2-source-concept-c-grid-se.png",
+      "reference_images": [
+        "r17-C7-critic2-grid-crop-c-se.png"
+      ],
+      "role": "Fresh enlarged overlapping drawing used in the final concept",
+      "selection": "selected final layout guide/section"
+    }
+  ],
+  "drawing_count": 41
+}

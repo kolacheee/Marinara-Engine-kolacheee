@@ -1,0 +1,18 @@
+{
+  "files": [
+    "ground-a-w1-c7r1",
+    "ground-b-w1-c7r1",
+    "ground-corner-w3-c7",
+    "ground-east-w1-c7r1",
+    "ground-north-w1-c7r1",
+    "ground-west-w1-c7r1",
+    "storey-a-w1-c7r1",
+    "storey-b-w1-c7r1",
+    "storey-corner-w3-c7",
+    "storey-east-w1-c7r1",
+    "storey-north-w1-c7r1",
+    "storey-west-w1-c7r1"
+  ],
+  "donor": "ground-shop-w2-c0",
+  "rule": "Native drawn interior repeated; left and right drawn endpoints transferred only to x0 and xW-1"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "roof-family-c",
+    "refs": [
+      "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/roof-a-w3-d3-c7.png",
+      "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-house-2.png"
+    ],
+    "prompt": "Paint a new pixel-art game ROOF PART atlas on completely solid pure magenta #ff00ff. First reference is the silhouette and shape, second is exact medieval town drawing scale/material/light. Three separate roof caps left to right, with generous magenta gaps: narrow lean-to 1 cell wide, medium cross-gable 2 cells wide, broad hipped roof 3 cells wide. All depth 3 cells, ratios 1:3, 2:3, 1:1. Each roof must have small fine laid terracotta tiles, around TWENTY small tiles across the broad cap and THIRTY-SIX rows from ridge to eave. Existing reference cap tiles are much too large; draw them 2.5 times smaller. Every tile is a tidy hard angular cluster, top-left light, brown-red shadow, muted clay. No black internal seams, no ornaments, no chimneys, no house walls, no grass, no text. Draw as large as possible (prefer 2048x1536) with native-pixel-aligned blocky edges intended for mode reduction to caps 48x144,96x144,144x144. Complete depth seen from above in same high 3/4 view; dark one-pixel eave at final size. Paint every tile, no texture/noise."
+  },
+  {
+    "id": "market-north-c",
+    "refs": [
+      "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/market-b-c7.png",
+      "/home/kolache/Downloads/marinara-art-r14/art-drop/reference/r17/fantasy-hall-2.png"
+    ],
+    "prompt": "Redraw the first reference as ONE WHOLE NORTH-OPEN market pavilion for a medieval town game. Solid pure magenta #ff00ff outside the building. High 3/4 view like second reference, top-left light, fine crisp pixel-art strokes. The hall stands SOUTH of a market square, so the four open trading bays must face the TOP of the image: north elevation under a shallow projecting upper eave, and the entire continuous roof plane recedes down towards the south foreground. Show the four north-facing openings along the UPPER third, with posts, goods counters and visible floor; the full roof occupies the LOWER two-thirds and has a far north ridge and near south eave. Rotate the architecture in plan, not the lighting. No door on the south foreground edge, no missing roof, no detached posts, no cutaway. A low complete brown tiled hipped roof with no domes or needles. Closed solid south back wall only 12% of total height. Allocation ratio 4:3, native192x144 after reduction; draw at least1536x1152 with 6-8px final roof tiles and3-4px row spacing. Four clear north bays, tiny goods and hanging lanterns, warm stone piers and dark timber. No labels, people, ground patch, gradients or shadows outside silhouette."
+  },
+  {
+    "id": "gate-stone-d",
+    "refs": [
+      "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/gate-assembly-c7.png",
+      "/home/kolache/Downloads/marinara-art-r14/art-drop/out/city17/wall-strip-c7.png"
+    ],
+    "prompt": "Refine the FIRST image as one complete coherent medieval town south gatehouse, preserving its exact silhouette, twin corner towers, central tall clear portal, roofed gate chamber bridging both towers, and RIGHT external staircase in exactly same positions. Solid pure magenta #ff00ff background. Match the SECOND reference wall's grey-beige stone palette and broad quiet stone courses; replace all golden yellow plaster with that grey warm limestone. Towers must clearly read as stone towers, not narrow wooden posts. Keep the rusty terracotta roofs with small tiles. Show a12-16px-final walk top and a doorway where the RIGHT stair actually reaches the gate chamber; landing continuous, one support bearing, no stacked shelf lines. Top-left light, high3/4 view, one native pixel exposed dark outline. Main gatecore3x4cells plus right staircase1x4cells, whole4x4cells. Portal central96px final wide, fullcore144px wide, stair48px. Every stone block drawn, no noise. Draw at1536x1536 orlarger, enough clean detail to reduce to192x192 exactnativepixels. Keep center passage transparent magenta through to ground. No labels, people, haze, dirt specks, detached stones or foliage."
+  }
+]

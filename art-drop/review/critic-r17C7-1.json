@@ -1,0 +1,686 @@
+{
+  "part": "C7",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "block-inn-b-c7",
+    "block-market-c7",
+    "block-se-c7",
+    "block-se-wing-c7",
+    "corner-house-c7",
+    "gate-assembly-c7",
+    "gate-c-c7",
+    "gate-stair-c7",
+    "main-paving-c7",
+    "market-north-c7",
+    "roof-a-w1-d2-c7",
+    "roof-a-w1-d3-c7",
+    "roof-a-w2-d2-c7",
+    "roof-a-w2-d3-c7",
+    "roof-a-w3-d2-c7",
+    "roof-a-w3-d3-c7",
+    "roof-fill-c7",
+    "roof-hip-left-d2-c7",
+    "roof-hip-left-d3-c7",
+    "roof-hip-right-d2-c7",
+    "roof-hip-right-d3-c7",
+    "square-paving-0-c7",
+    "square-paving-1-c7",
+    "square-paving-2-c7",
+    "square-paving-3-c7",
+    "street-turn-c7",
+    "wall-0-c7",
+    "wall-0-short-c7",
+    "wall-1-c7",
+    "wall-1-short-c7",
+    "wall-2-c7",
+    "wall-2-short-c7",
+    "wall-3-c7",
+    "wall-3-short-c7",
+    "wall-4-c7",
+    "wall-4-short-c7",
+    "wall-strip-c7",
+    "wall-walk-c7",
+    "compose.py",
+    "r17-concept-a",
+    "r17-concept-b",
+    "r17-concept-c",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x",
+    "r17-city-final-vs-concept",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-concepts-vs-today-vs-final"
+  ],
+  "files": {
+    "bench-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-civic-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-east-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-inn-b-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / square enclosure, FIXES 3 and 8: the porch/door is a small south-facing appendage at the lower-left corner; the long west-facing elevation beside the square still does not read as the requested west-facing inn frontage.",
+        "The front courtyard arch, porch and main front door crowd the lower edge while the street-side elevation is mostly a long wall/roof. In the final, the added bench/patrons sit over the porch assembly instead of clearly beside two open approaches."
+      ],
+      "fix": "Paint an actual west-facing return with a 48 px porch addressing the square/main route, a visible step and jamb lantern, and a courtyard passage showing paving. Place the bench and patrons beside clear approach cells. Retain one physical bed-and-tankard sign, then mount the separate sign without covering openings."
+    },
+    "block-market-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / structure rule 2 and FIXES 6 visibly remain unfixed: the four trading bays occupy the top of the sprite (approximately local y8-48), above/in front of the large roof plane at y48-125. It reads as a rooftop arcade or a cutaway, not a complete roof covering its trading floor.",
+        "The exposed bay fronts face the viewer/south. The required open north side toward the square is not established beneath a continuous roof with posts, eave thickness and correctly occluded counters.",
+        "The block embeds that failed pavilion at its north edge; repeated brown house/gable ranges below it do not repair the civic south frontage. At city x864-1056/y1008-1152 the floating trading bays remain the first thing read."
+      ],
+      "fix": "Paint a new whole 192x144 hall: continuous 192x96 roof, coherent ridge and shaded return, and a 192x48 supported arcade below the eave. Establish the north entry toward the square without leaving an exposed rear arcade above the roof. Derive the reveal mask from only the foreground roof/occluders; retain posts, counters and floor. Rebuild the attached southern housing with a continuous owned roof contact and distinct end returns."
+    },
+    "block-ne-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-nw-a-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-se-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / structure rule 1; FIXES 2, 5: the northwest wing is a thin sliced half-house (local x0-48/y0-144) separated from the principal roof by a conspicuous tapered ground wedge. The abrupt vertical end and missing lower part look cut out.",
+        "The south-west 48x96 recess is not resolved into a coherent jogged frontage, roof return and rear-lane T. It therefore does not establish the requested wedge block."
+      ],
+      "fix": "Replace the sliced wing with a complete outward-facing corner/return assembly and close the unintended roof contact. Build the 48 px jog for 96 px and back from actual lots and attach its rear lane; reassemble the block around those ground boundaries."
+    },
+    "block-se-main-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-se-wing-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 1, 2, 5: the 48x144 wing is visibly a sliced half-gable with a hard vertical cut at its right edge. It lacks a complete street-facing ground elevation and a convincing roof contact to the main range.",
+        "At city x1296-1344/y1056-1200 it reads as a thin detached-looking end sliver beside the main roof, not the built return of a wedge block."
+      ],
+      "fix": "Draw a complete handed return for the jog, including street-facing ground door/windows, roof end/valley and owned rear-wing contact. Fit the 48x96 setback in the ground plan; do not create the wedge by cropping away part of a house."
+    },
+    "block-sm-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-sw-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "block-west-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-b-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "churchyard-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-bastion-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-house-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4, 11, 15: the tall pointed hip consumes roughly the upper half of the 144x240 sprite. Its broad rounded tile scallops and needle-like profile disagree with the joined pitched roofs of concept B and the new block paintings.",
+        "The corner reads as a separate ornate tower-house treatment, rather than the coherent modest roof/return family needed for the peripheral terraces and five-/one-storey joins."
+      ],
+      "fix": "Paint a lower pitched/hipped corner roof with the same tile size, ridge/return treatment and one-pixel exposed contour as the selected house family. Keep complete matching ground/storey/roof layers at the shared courses; draw a second genuinely different corner arrangement."
+    },
+    "delivery-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "firewall-left-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "firewall-right-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-assembly-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / structure rule 2; FIXES 7: the portal is a thin flat arch cut out of a front wall, with paving continuing straight through it. There is no convincing chamber depth, inner soffit, substantial twin-tower bearing or shaded return comparable to the concept gate.",
+        "The west tower has no readable wall-walk landing; the small east stair landing terminates at a door without a continuous matching defensive walk. The curtain uses very large rounded stones while the gate uses fine scratched masonry, so their contact still reads assembled from different treatments.",
+        "At 1x the tiny turret caps and thin piers lose the gate hierarchy beneath the adjacent housing. At 4x/8x the red roof becomes mottled horizontal scratches instead of the concept/reference tile clusters."
+      ],
+      "fix": "Redraw the chamber and two towers as one high-three-quarter building within the 144x192 gate core, with the separate 48 px stair derived from that same painting. Give the 96 px span visible depth, bearings, one clear return, 12-16 px walk/landings and doors at matching heights. Match the curtain/tower masonry scale and simplify the roof to discrete tiles. Preserve a genuinely clear 96 px passage."
+    },
+    "gate-c-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / structure rule 2; FIXES 7: the portal is a thin flat arch cut out of a front wall, with paving continuing straight through it. There is no convincing chamber depth, inner soffit, substantial twin-tower bearing or shaded return comparable to the concept gate.",
+        "The west tower has no readable wall-walk landing; the small east stair landing terminates at a door without a continuous matching defensive walk. The curtain uses very large rounded stones while the gate uses fine scratched masonry, so their contact still reads assembled from different treatments.",
+        "At 1x the tiny turret caps and thin piers lose the gate hierarchy beneath the adjacent housing. At 4x/8x the red roof becomes mottled horizontal scratches instead of the concept/reference tile clusters."
+      ],
+      "fix": "Redraw the chamber and two towers as one high-three-quarter building within the 144x192 gate core, with the separate 48 px stair derived from that same painting. Give the 96 px span visible depth, bearings, one clear return, 12-16 px walk/landings and doors at matching heights. Match the curtain/tower masonry scale and simplify the roof to discrete tiles. Preserve a genuinely clear 96 px passage."
+    },
+    "gate-stair-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 7, 14, 20: the upper landing is only a tiny shelf at the gate door; it does not supply a continuous wall-walk connection. In the assembled city the lower run meets the mismatched curtain face and the guard sits on the solid stair cheek.",
+        "The matching reveal proof removes the lower 112 px rectangle, including the treads and support, leaving the actor over unrelated wall paint. A cropped stair fragment is not an adequate supported circulation/reveal assembly."
+      ],
+      "fix": "Resolve treads, upper/lower landings, door and wall-walk contacts in the same gate drawing. Keep a separate walking surface and foreground parapet mask; the actor must stand on a retained tread/landing in both normal and revealed states."
+    },
+    "ground-corner-w3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guard-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-patron-a-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-patron-b-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "kerb-h-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "kerb-v-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "laundry-worker-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 12: it is pixel-identical to square-paving-2-c7 and is repeated by itself along the entire main route. The same jagged crack motif repeats every 48 px, making the route a flat pasted patterned strip.",
+        "Its style differs sharply from the surrounding painted cobbles, and the turn is made by rectangular fill/kerb strips rather than an integrated painted transition."
+      ],
+      "fix": "Draw a compatible main-route paving/transition family with quieter two-size cobbles and matching gutters. Mix compatible drawn variants along the route and join the bend without a hard pasted texture boundary; preserve the full 96 px clear width outside kerbs."
+    },
+    "market-north-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / structure rule 2 and FIXES 6 visibly remain unfixed: the four trading bays occupy the top of the sprite (approximately local y8-48), above/in front of the large roof plane at y48-125. It reads as a rooftop arcade or a cutaway, not a complete roof covering its trading floor.",
+        "The exposed bay fronts face the viewer/south. The required open north side toward the square is not established beneath a continuous roof with posts, eave thickness and correctly occluded counters."
+      ],
+      "fix": "Paint a new whole 192x144 hall: continuous 192x96 roof, coherent ridge and shaded return, and a 192x48 supported arcade below the eave. Establish the north entry toward the square without leaving an exposed rear arcade above the roof. Derive the reveal mask from only the foreground roof/occluders; retain posts, counters and floor."
+    },
+    "receiving-left-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "receiving-right-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-a-w1-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch.",
+        "The reduced-depth piece has an abrupt mid-slope shoulder around native row 48: the roof contour/course width jumps where the middle section was removed. This is visible in the hip/roof silhouette, not a valid seamless pitched plane."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-a-w1-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-a-w2-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch.",
+        "The reduced-depth piece has an abrupt mid-slope shoulder around native row 48: the roof contour/course width jumps where the middle section was removed. This is visible in the hip/roof silhouette, not a valid seamless pitched plane."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-a-w2-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-a-w3-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch.",
+        "The reduced-depth piece has an abrupt mid-slope shoulder around native row 48: the roof contour/course width jumps where the middle section was removed. This is visible in the hip/roof silhouette, not a valid seamless pitched plane."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-a-w3-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-fill-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch.",
+        "The literal 3x3 repeat exposes horizontal striping and repeated fleck clusters. This cannot serve as a quiet seamless owned interior roof fill matching the adjoining caps."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-hip-left-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch.",
+        "The reduced-depth piece has an abrupt mid-slope shoulder around native row 48: the roof contour/course width jumps where the middle section was removed. This is visible in the hip/roof silhouette, not a valid seamless pitched plane."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-hip-left-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-hip-right-d2-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch.",
+        "The reduced-depth piece has an abrupt mid-slope shoulder around native row 48: the roof contour/course width jumps where the middle section was removed. This is visible in the hip/roof silhouette, not a valid seamless pitched plane."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "roof-hip-right-d3-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 4, 5, 11: at 1x this roof resolves into soft-looking horizontal bands; at NN4x/8x the bands contain irregular flecks and short zigzags instead of consistently sized 6-8 px tiles with 3-4 px row spacing. Its material clusters do not match the discrete tiles of the concept or the painted blocks. Hard alpha does not repair this internal texture mismatch."
+      ],
+      "fix": "Redraw this roof/hand/depth at a sufficiently large source size, then mode-reduce to its exact native canvas. Establish a continuous pitched plane, ridge, compatible exposed contour, shaded return and eave; use the same discrete tile clusters as the chosen block/reference family. Draw the two depths as complete shapes rather than removing a middle band. Recheck self/variant and five-/one-storey contacts with coping/flashing."
+    },
+    "sign-apothecary-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sorting-table-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-paving-0-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 12: The broad rectangular stones form repeated horizontal rungs in the 3x3 field.",
+        "The two-tone line network looks like outlined cracks on a flat slab sheet rather than two restrained cobble sizes. In the composed four-variant field the ordered placement produces visible diagonal bands and a rectangular pasted square edge."
+      ],
+      "fix": "Repaint quieter individually readable cobble faces at two sizes, with fewer continuous seam lines and no unique repeated crack cluster. Register/wrap painted edges and inspect literal self and mixed 3x3 repeats. Compose a non-striped variant arrangement with compatible gutter/threshold transitions."
+    },
+    "square-paving-1-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 12: The large near-vertical seams form repeated rails in the 3x3 field.",
+        "The two-tone line network looks like outlined cracks on a flat slab sheet rather than two restrained cobble sizes. In the composed four-variant field the ordered placement produces visible diagonal bands and a rectangular pasted square edge."
+      ],
+      "fix": "Repaint quieter individually readable cobble faces at two sizes, with fewer continuous seam lines and no unique repeated crack cluster. Register/wrap painted edges and inspect literal self and mixed 3x3 repeats. Compose a non-striped variant arrangement with compatible gutter/threshold transitions."
+    },
+    "square-paving-2-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 12: The broken diagonal crack/fleck cluster repeats as a distinct motif every 48 px.",
+        "The two-tone line network looks like outlined cracks on a flat slab sheet rather than two restrained cobble sizes. In the composed four-variant field the ordered placement produces visible diagonal bands and a rectangular pasted square edge."
+      ],
+      "fix": "Repaint quieter individually readable cobble faces at two sizes, with fewer continuous seam lines and no unique repeated crack cluster. Register/wrap painted edges and inspect literal self and mixed 3x3 repeats. Compose a non-striped variant arrangement with compatible gutter/threshold transitions."
+    },
+    "square-paving-3-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 12: The elongated stone/seam arrangement repeats as a ladder pattern in the 3x3 field.",
+        "The two-tone line network looks like outlined cracks on a flat slab sheet rather than two restrained cobble sizes. In the composed four-variant field the ordered placement produces visible diagonal bands and a rectangular pasted square edge."
+      ],
+      "fix": "Repaint quieter individually readable cobble faces at two sizes, with fewer continuous seam lines and no unique repeated crack cluster. Register/wrap painted edges and inspect literal self and mixed 3x3 repeats. Compose a non-striped variant arrangement with compatible gutter/threshold transitions."
+    },
+    "storey-corner-w3-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-turn-c7": {
+      "status": "fail",
+      "problems": [
+        "FIXES 12: the turn uses much brighter, larger stone faces than the two-tone main/square tiles, so it cannot form a seamless material transition. Its large L-shaped strip produces a conspicuous coarse grid in the literal 3x3 proof.",
+        "The city does not use this as a complete dedicated corner transition; thin extracted kerb strips outline rectangular road fills instead."
+      ],
+      "fix": "Paint matching 48 px handed transition/corner pieces using the main/side cobble family, with coherent 2-3 px kerb and darker gutter. Test the actual elbow with both adjoining roads, then use those painted transitions in the composer."
+    },
+    "wall-0-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-0-short-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-1-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-1-short-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-2-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-2-short-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-3-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-3-short-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-4-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-4-short-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-strip-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 10, 11: the curtain is built from oversized rounded boulder-like blocks with heavy dark mortar. At 1x beside the towers/gate, its stone units are several times larger and its outline/mortar treatment is visibly heavier.",
+        "At 4x there is dense mottled/diagonal scratch texture across stone faces instead of sparse 2-4 px chips. The repeated crenellation and block rhythm remains prominent across the north wall. Equal border columns in the seam audit do not make these materials agree with the adjoining structures."
+      ],
+      "fix": "Redraw the curtain material at the same native masonry/course scale as the gate and towers: angular squared stones, calmer broad faces, sparse chips, restrained mortar and one-pixel exposed contours. Preserve compatible edge courses across all variants and inspect the full five-module strip with actual tower/stair contacts, not border equality alone."
+    },
+    "wall-tower-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-mid-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-mid-v1-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-mid-v2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-short-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-short-v1-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-short-v2-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-c7": {
+      "status": "fail",
+      "problems": [
+        "P0 / FIXES 14: this 48x24 file is a crop of upright merlons and their vertical stone face. It has no readable horizontal walking top, inner edge or walk depth.",
+        "Repeated at city y72 it adds parapet frontage rather than a continuous route from the north stair to tower doors."
+      ],
+      "fix": "Draw a real 48x24 horizontal wall-walk top in the same high-three-quarter view, with a lit top plane, shaded outer return/contact and compatible end joints. Connect its walking height to the stair and tower doors."
+    },
+    "woodpile-c7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "P0 / structure rule 1; FIXES 1, 2, 4, 15: c7_ring uses the projected painting rectangle as its ground plan. c7_assemble_block (around lines 4299-4322) cuts 48x48 squares from a whole painting and pastes them back at identical coordinates. These squares cut through roofs and storeys; they are not complete outward-facing front/side/corner buildings on 1-2-cell ground footprints. An independent read-only check found all ten results byte-identical to their masters, and changing every lot facing and floor count left every result unchanged. The 114-lot ownership test therefore does not establish the required perimeter-block assembly or height/course system.",
+        "P0 / concept resemblance: the selected B has tightly joined southern terraces, a much more enclosed square and strong wall-to-wall street edges. The final consists of ten separated rectangular compounds. The long southern terrace against the wall is absent, the church is surrounded by paving, and broad aprons separate the middle and lower groups. Matching roof colours and landmark quadrants is insufficient.",
+        "P0 / FIXES 2, 12: gate-main-north is [1152,624,96,480], a ten-cell unchanged corridor. Kerbs are pasted inside its 96 px allocation, leaving 90 px between their inner edges, not a demonstrated 96 px clear route. The 624 px craft-return and long wall lanes also remain unchanged runs. The southeast wedge is a clipped wing beside a rectangular block, without a convincing jogged frontage/roof connection or rear-lane T. Implement the eight-cell variation rule per district.",
+        "P0 / structure rule 1; FIXES 3, 8: the square is not a four-sided civic room. At x720-768/y720-1008 the church does not meet its west edge; the northern part of that edge is open paving. The inn porch is at the southern end of its block and faces the viewer, not west along the square. The south boundary retains an exposed raised arcade above the market roof. Preserve the church east porch, but bring actual inhabited elevations and the roofed north-open hall to the square boundaries.",
+        "P0 / FIXES 7, 10, 11, 14: the gate chamber is much flatter and less substantial than B, the coarse curtain stones disagree with the fine tower/gate masonry, and wall-walk-c7 is upright parapet masonry pasted at y72, not a horizontal walking surface connecting stair and tower doors. Tower positions are now on the perimeter; retain that repair.",
+        "P0 / FIXES 13: c7_render starts every cast at the bottom of the entire block bitmap, compresses all silhouette rows into a 24/48/60 px strip and clips only against occupied alpha. It never intersects a cast with its owning lot and has no wall/roof receiver masks. Broad south-edge mats remain at y624-672 and y1008-1068, while north-south streets lack appropriate eastward structural shade. Opacity 88/255 and overlap union pass, but ownership and structural projection do not.",
+        "P0 / FIXES 9, 19: signs cover windows and duplicate embedded signs (tailor near x1536/y900-960; inn near x1248/y840-912). The guard at x1320/y1380-1404 is pasted on the solid stair side. Laundry props/worker are forced above the whole NW block with sort_base=625; the extra small worker intersects a foreground roof. These overrides are not bottom-left base-row building-layer sorting.",
+        "P0 / FIXES 20: reveal=True erases rectangles, including market counters/posts, gate-stair treads/support and the NW front wall. Those are not overhead-only reveal masks. The normal/reveal proofs do not establish supported stair/market actor placement. The 16x12 acceptance scene includes detached corner houses, and the five-/one-storey proofs still show striped caps and a masonry zipper without a resolved coping/flashing contact.",
+        "P1 / FIXES 16: the curtain sequence is i%5 throughout; immediately recurring three-piece sequences return after five modules. The standalone corner family has only one new arrangement and its repeatedly stacked oriel silhouette is still conspicuous. Passing pixel-edge equality does not establish visual variation."
+      ],
+      "fix": "Rebuild the ground plan first from real 48/96 px lots, separate projected paint bounds, and complete street-facing ground/storey/roof assemblies with shared 0/47 courses. Retain the useful whole-block paintings as appearance references, not as arbitrary grid slices standing in for buildings. Fit B's density and joined frontages to the mandatory 48/96 px circulation, a real wedge/T and four square elevations. Redraw the gate/market/walk and incompatible roof family, then implement owned stepped shadows, building-derived reveal masks and true surface/base-row ordering. Re-render and inspect all required proofs after these changes."
+    },
+    "r17-concept-a": {
+      "status": "fail",
+      "problems": [
+        "The tool original is 1448x1086 and was enlarged to 1920x1440 (explicitly recorded in NOTES and the concept-choice/processing records). Enlarging into an 8x working buffer and then mode-sampling does not create a high-resolution drawing reduced to native 48 px cells. The result has uneven enlarged source clusters rather than the requested native pixel scale.",
+        "Structure requirement: the gate approach beside the east end of the market/inn pinches to a visibly much narrower passage than a continuous two-cell route, while long frontage runs remain straight. The southern hall presents its open arcade toward the viewer/south, not a resolved open north side addressing the square."
+      ],
+      "fix": "Paint a replacement concept over an explicit 40x30-cell plan that already satisfies the mandatory street widths, perimeter lots, four square sides and north-open market. Obtain enough source drawing resolution for genuine reduction to 1920x1440; do not enlarge a smaller finished painting and label it native. Keep B's connected roof massing as the strongest appearance reference, subject to those corrections."
+    },
+    "r17-concept-b": {
+      "status": "fail",
+      "problems": [
+        "The tool original is 1448x1086 and was enlarged to 1920x1440 (explicitly recorded in NOTES and the concept-choice/processing records). Enlarging into an 8x working buffer and then mode-sampling does not create a high-resolution drawing reduced to native 48 px cells. The result has uneven enlarged source clusters rather than the requested native pixel scale.",
+        "Structure requirement: the gate approach beside the east end of the market/inn pinches to a visibly much narrower passage than a continuous two-cell route, while long frontage runs remain straight. The southern hall presents its open arcade toward the viewer/south, not a resolved open north side addressing the square."
+      ],
+      "fix": "Paint a replacement concept over an explicit 40x30-cell plan that already satisfies the mandatory street widths, perimeter lots, four square sides and north-open market. Obtain enough source drawing resolution for genuine reduction to 1920x1440; do not enlarge a smaller finished painting and label it native. Keep B's connected roof massing as the strongest appearance reference, subject to those corrections."
+    },
+    "r17-concept-c": {
+      "status": "fail",
+      "problems": [
+        "The tool original is 1448x1086 and was enlarged to 1920x1440 (explicitly recorded in NOTES and the concept-choice/processing records). Enlarging into an 8x working buffer and then mode-sampling does not create a high-resolution drawing reduced to native 48 px cells. The result has uneven enlarged source clusters rather than the requested native pixel scale.",
+        "The six stalls are moved into the narrow northern lane above the guildhall, leaving the civic square without the required two rows. The market shows its arcade on the south/viewer side, and the detached narrow housing strip below it does not establish a roof-filled perimeter block."
+      ],
+      "fix": "Paint a replacement concept over an explicit 40x30-cell plan that already satisfies the mandatory street widths, perimeter lots, four square sides and north-open market. Obtain enough source drawing resolution for genuine reduction to 1920x1440; do not enlarge a smaller finished painting and label it native. Keep B's connected roof massing as the strongest appearance reference, subject to those corrections."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "P0: fails C7 resemblance to chosen concept B. Continuous southern frontage and tight square enclosure have become separated compounds and broad paved gaps; the street/block massing does not cohere like the target.",
+        "P0: structure rule 1 is not met by the composer: ground lots are arbitrary cells cut through projected block paintings, facing/heights do not drive assembly, the church is isolated from the square edge, the inn return is not west-facing, and the southeast jog exposes a sliced wing.",
+        "P0: the market still has an exposed trading arcade above the roof; the gate still reads as a thin facade without chamber/wall-walk depth; the wall-walk is upright masonry. See city x864-1056/y1008-1152, x1176-1368/y1248-1440 and north wall y72-96.",
+        "P0: repeating flat paving, incompatible giant curtain stones, broad south shadow mats and missing owned receiver masks remain. The north main-route segment runs ten cells unchanged and has only 90 px between its inset kerbs.",
+        "P0: FIXES items remain visibly unresolved, including 1-7, 9-14 and 20; a pass of hard-alpha, edge equality or ownership labels cannot override these visible failures."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "Exact 2x nearest-neighbour export passes, but it reproduces all structural, market, gate, paving, material and shadow failures in r17-city-final."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "The greyscale export correctly matches the final, but the tiny flat gate competes poorly with the adjacent brown housing. Similar rectangular block masses dominate the composition, and the square/route read largely as a flat contrasting ground patch.",
+        "The silhouette and shade hierarchy still do not recover the selected concept's enclosed civic room or substantial gate. Broad horizontal shadow strips remain obvious."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact NN3x crop passes; content fails. The west square edge is open paving between the church and square, the inn is not a continuous west-facing frontage, and the south market arcade is exposed above its roof.",
+        "The patterned paving dominates the open middle, signs overlap facade openings, and broad block-bottom shadows replace owned structural shade."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact NN3x crop passes; content fails. Whole rectangular compounds sit apart in broad paving rather than proving the declared outward-facing 1-2-cell lots and course-based street assemblies.",
+        "The south shadows are broad compressed silhouettes below complete blocks; the intervening north-south street lacks the required corresponding stepped eastward shade."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact NN3x crop passes; content fails. The gate is flat and underscaled against neighboring houses, its stone treatment disagrees with the curtain, and there is no continuous wall-walk landing.",
+        "The guard is pasted on the solid stair cheek, the approach is a repeated cracked-slab strip, and the southeast wing is visibly a cut half-house beside a roof gap."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x."
+    },
+    "r17-city-final-vs-concept": {
+      "status": "fail",
+      "problems": [
+        "The comparison exposes the required resemblance failure: B has continuous dense southern terraces, a strongly enclosed square and a substantial gate; the final has separated compounds, widened blank aprons and a thin gate facade.",
+        "The concept is also enlarged from a smaller original, so the label native describes the output canvas, not compliance with the requested large-drawing-to-native-reduction method."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x. Replace the failed native concept after repainting it at sufficient source resolution, and keep the comparison at true native scale."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "The comparison is present and readable, but the final still fails the demonstrated common material/scale treatment: coarse curtain stones, mottled roof/corner modules and flat gate differ from the neighboring town art.",
+        "It reproduces the final's unresolved structural and square/market failures; the existence of a comparison does not constitute acceptance."
+      ],
+      "fix": "Correct compose.py and the individually failed assets, restoring concept B's connected massing within the mandatory structure rules. Then regenerate all finals/crops/comparisons and actor/stack/seam proofs from the same corrected scene; judge again at 1x and NN4x."
+    },
+    "r17-concepts-vs-today-vs-final": {
+      "status": "fail",
+      "problems": [
+        "The requested comparison exists and includes the previous final and today, but all three proposed targets are enlarged smaller-source paintings and retain structural departures described in their entries.",
+        "It does not supply an acceptable native-scale, structure-compliant target for the subsequent rebuild."
+      ],
+      "fix": "Replace the three concepts with genuinely reduced native paintings obeying the structure rules, retain today and the previous final for comparison, and document the choice against those rules before rebuilding."
+    }
+  },
+  "notes": "Independent C7 round-1 review; FAIL. Read BRIEF-17 in full, both panel briefs, NOTES method/C7 sections, all five cycle-7 reviews and FIXES.md. The explicit C7 structure rules and BRIEF-17 control: deeper ground lots, wider gate core, smaller illegible signs, cross-lot overlays and indefinitely straight corridors are not accepted panel waivers. The full district request overrides the small-pilot limit. No production art was drawn or edited by this critic.\n\nScope: all 80 new out/city17/*-c7.png production images have individual entries, plus compose.py and every explicitly requested concept/final/comparison output. Inspected native images and nearest-neighbour 4x views; useful roof, tower and market details also at 8x. Reviewed grounds/roof fill in literal 3x3 repeats, props over summer cobble, reference houses/halls, the 25 curtain pair sheet, five-module strip, mixed paving, 16x12 and square acceptance scenes, both five-/one-storey joins and saved actor/reveal proofs. Final enlarged derivatives were also compared pixel-for-pixel with their native source. Supporting critic composites are critic-r17C7-1-*.png in this directory. This review does not claim runtime collision/pathfinding validation or an exhaustive independent replay of image-registration mode votes.\n\nMeasurements: all 80 new production PNGs pass alpha in {0,255} and RGB=(0,0,0) beneath transparency. Native canvases are cell multiples or the specified prop/receiver sizes; the failures are visual/structural rather than soft-alpha export errors. Final 2x and all three 3x crops exactly reproduce the current final, and squint equals its greyscale conversion. The ten block assemblers independently reconstruct their master bitmaps byte-for-byte; changing lot facing and floor counts leaves their pixels unchanged. These facts invalidate the inference that pixel ownership alone proves real perimeter buildings. No C7 seasonal partners were created: 923 seasonal @ files checked against the saved baseline are byte-identical, so a new summer/seasonal silhouette overlay test is not applicable; no seasonal silhouette failure is alleged.\n\nCycle-7 disposition: (1) roof filling improves, but real lot assembly and joined district frontages remain unresolved; (2) street rank partly improves, but unchanged runs, inset clear width and the sliced wedge fail; (3) church porch improves, but full square enclosure fails; (4) whole blocks gain depth, yet the separate modular roof/return/corner standard is incompatible; (5) adapters exist, but shortened cap shoulders, the SE roof gap and five/one masonry zipper fail; (6) market remains a rooftop arcade; (7) gate is one source painting but chamber/bearings/walk depth remain weak; (8) steps/lanterns improve, but west inn approach fails; (9) individual signs are nameable and mounted with hooks/thickness, but placement overlaps openings and no owned wall shadow is provided; (10) edge equality improves, but curtain/tower contact treatment remains incompatible; (11) material clusters remain inconsistent and noisy; (12) four paving files exist but repeats and transition treatment fail; (13) shadow alpha/union pass, ownership and structural projection fail; (14) actual wall-walk top faces/circulation are absent; (15) southern height is lower, but the actual per-lot height model and modest corner family remain unresolved; (16) painted variation improves, but repeated curtain triplets and one corner/oriel arrangement persist; (17) churchyard asset passes, although the church is still isolated in the layout; (18) purposeful courts/props improve, but their surface and ownership assembly is not proven; (19) individual new people/props pass, but guard/worker sorting and placement fail; (20) exports exist, but detached acceptance buildings and destructive reveal masks fail the acceptance conditions.\n\nPassing individual sprites means no independent redraw blocker was found for those PNGs; it does not approve their current placement, arbitrary slicing into lots or failed composite. Preserve the useful church porch, purposeful courts, readable sign symbols and perimeter-only tower placement. Correct the plan and whole gate/market assemblies first; then the roof family, stone scale, paving, owned shadows and actor masks. NOTES records the concept upscaling honestly, but its statements that the current market, square, walk and owned lots satisfy the requirements are not supported by this independent inspection.\n\nThe complete city17 directory content hash before and after review is 649a938f07a00700c47b8f143f70c003dc42d65bd2ec147877fbb68397162c94. Only the requested critic JSON and prefixed review composites were written; no branch change, commit or push."
+}

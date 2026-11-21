@@ -1,0 +1,18 @@
+[
+  [
+    "inn-west-b",
+    "Use case: precise-object-edit. Turn the attached LEFT-FACING SIDE HOUSE into a three-storey inn. PRESERVE THE EXACT CAMERA, left-facing facade plane, street-side LEFT door position, broad side elevation and front/south blank end from image1. Add one matching upper floor; change roof to muted slate. Enlarge the existing LEFT-FACING doorway into a porch with a shallow canopy extending LEFT, stair treads parallel to that LEFT facade, jamb lantern. The porch faces LEFT into the square, absolutely NOT toward the viewer on a long south-facing front. South end gets a narrow through courtyard arch with magenta visible. Blank mounting pier above porch for separate bed/tankard sign; no built-in sign board, glyph, bench, patrons or flowers. Native96x240 proportions: roof96px,3floors48px. Draw large on pure magenta. Quiet broad timber/plaster planes, recessed windows,top-left light,1px dark outline after reduction,square corners,clean discrete roof tiles; no specks,blur,noise."
+  ],
+  [
+    "guildhall",
+    "Use case: stylized-concept. One complete stone GUILDHALL, same high3/4 orthogonal RPG view and palette as references. Draw LARGE isolated on pure solid #ff00ff magenta. Native192px wide by336px projected height over4x4cell groundfootprint. Warm grey squared stone, lit left/shaded16px right return. Three open ground arcade bays with central usable door, lit step and lantern, two tall civic banners on OUTER piers leave all three openings visible. Two restrained civic window floors above; deep recess,silltop. Broad visible complete terracotta roof192x96 with SMALL discrete6x4nativepixel rectangular tiles, not stripes; modest clock/bell turret extending96px above roof. Hall lower than church spire, majestic coherent building. Native48px horizontal course registration, broad low roof and thick eave, top-left light, onepixel outline, no mottle, flourishes,flowerboxes,smears,haze,noise or background."
+  ],
+  [
+    "street-turn",
+    "Use case: stylized-concept. Draw a LARGE exact square surface sample for a96x96 native medieval RPG cobbled street CORNER TRANSITION. Ground fills square edge to edge, outside pure magenta. Same quiet taupe rectangular individual stones as attached paving field, two cobble sizes6x4 and10x6 at native, close value faces and thin lowcontrast mortar, no diagonal wedges or repeated cracks. Along TOP and LEFT outermost edges only, one simple L-shaped3pixel-wide square stone kerb with darker adjacent2pixel gutter; inside angle square90degrees, not rounded. Bottom/right continue cobbles seamlessly into adjoining street. High overhead ground view, top-left light, no people/items/grass/noise/smudges or black tile border. L kerb placed OUTSIDE measured route when assembled."
+  ],
+  [
+    "roof-w3-d3-b",
+    "Use case: stylized-concept. ONE deep TERRACOTTA HIP ROOF only, native144x144, drawn LARGE on pure magenta. High3/4 orthogonal townview, long horizontal ridge across top, thick horizontal front eave bottom, visible lit left hip and shaded right hip. The surface has THIRTY-SIX horizontal courses of small rectangular roof tiles, TWENTY-FOUR tiles across front eave. This is a finely tiled roof, NOT a dozen giant shingles, NOT thin fuzzy stripes. Tile faces are clear6x4nativepixel rectangles grouped into calm warm burnt-red ramp; dark contour only1nativepixel. Broad modest ridge, no needle spike, no walls/chimneys/dormers, no rounded scales, noise, scratches, dotted wear or blur. Complete3-cell-deep shape, no shoulder halfway down. Reference2 shows roof material/detail scale; match it."
+  ]
+]

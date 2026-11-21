@@ -1,0 +1,14 @@
+{
+  "roof-a-w1-d2-c7": "roof-w1-d2-c",
+  "roof-a-w1-d3-c7": "roof-w1-d3-c",
+  "roof-a-w2-d2-c7": "roof-w2-d2-a",
+  "roof-a-w2-d3-c7": "roof-w2-d3-b",
+  "roof-a-w3-d2-c7": "roof-w3-d2-a",
+  "roof-a-w3-d3-c7": "roof-w3-d3-b",
+  "roof-lean-c7r1": "lean-a: complete shallow roof, no elongated slope",
+  "roof-fill-c7": "fill-b, six-colour terracotta ramp, native edge wrap",
+  "street-turn-c7": "turn-a, native main-road edge-course registration",
+  "market-north-c7": "market-c: north portico and stair, continuous main roof, closed south wall",
+  "guildhall-c7r1": "guildhall-b: 432px art; 192x192 ground allocation; turret/main-roof/body registration",
+  "block-se-wing-c7": "lean-a over unchanged west ground; one occupied storey"
+}

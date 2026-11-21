@@ -1,0 +1,8 @@
+[
+  {
+    "id": "trade-signs",
+    "prompt": "Draw a clean pixel-art ATLAS of EIGHT medieval hanging trade signs, arranged exactly FOUR COLUMNS by TWO ROWS on solid magenta #ff00ff with very generous magenta gutters. One separate whole sign per cell. All in high3/4 town-game view, top-left light, dark1pixel-native silhouette. Native EACH sign assembly64x72 after mode reduction, board about42x40, easily nameable bold pictogram30x28. Upper row LEFT TO RIGHT: bakery a warm cream loaf with three diagonal slashes; apothecary a green bottle; tailor large silver scissors on wine-red board; scribe a cream quill with dark inkpot on blue-grey board. Lower row LEFT TO RIGHT: inn a clearly readable BED pictogram with headboard, pillow and blanket plus small tankard; smith silver hammer and anvil; cobbler brown boot; butcher a red ham. NO letters or labels. Boards must look like real physical objects, not heraldic badges: just single dark contour, lit top rim, 2px-native shaded right/bottom wooden thickness, two visible dark iron hooks suspended from a short wall bracket. Decorative frame is forbidden. Slight perspective, no round buttons; shape variation square/rectangular/angled boot-shaped board without rounded corners. Keep symbols bold and flat with2-3 shaded colour clusters, no texture-noise or tiny scratch lines. Short contained wall-contact shadow painted behind bracket only, no background wall patch. Warm dark timber/cream/stone colours matching reference. Draw large around2048x1152.",
+    "source": "r17-C7-source-trade-signs.png",
+    "tool": "built-in image tool"
+  }
+]

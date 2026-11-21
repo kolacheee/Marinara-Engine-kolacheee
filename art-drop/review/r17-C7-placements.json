@@ -1,0 +1,6892 @@
+[
+  {
+    "id": "curtain-48-48",
+    "file": null,
+    "bounds": [
+      48,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      48,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-144-48",
+    "file": null,
+    "bounds": [
+      144,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      144,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-240-48",
+    "file": null,
+    "bounds": [
+      240,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      240,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-336-48",
+    "file": null,
+    "bounds": [
+      336,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      336,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-432-48",
+    "file": null,
+    "bounds": [
+      432,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      432,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-528-48",
+    "file": null,
+    "bounds": [
+      528,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      528,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-624-48",
+    "file": null,
+    "bounds": [
+      624,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      624,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-720-48",
+    "file": null,
+    "bounds": [
+      720,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      720,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-816-48",
+    "file": null,
+    "bounds": [
+      816,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      816,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-912-48",
+    "file": null,
+    "bounds": [
+      912,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      912,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1008-48",
+    "file": null,
+    "bounds": [
+      1008,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1008,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1104-48",
+    "file": null,
+    "bounds": [
+      1104,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1104,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1200-48",
+    "file": null,
+    "bounds": [
+      1200,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1200,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1296-48",
+    "file": null,
+    "bounds": [
+      1296,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1296,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1392-48",
+    "file": null,
+    "bounds": [
+      1392,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1392,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1488-48",
+    "file": null,
+    "bounds": [
+      1488,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1488,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1584-48",
+    "file": null,
+    "bounds": [
+      1584,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1584,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1680-48",
+    "file": null,
+    "bounds": [
+      1680,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1680,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "curtain-1776-48",
+    "file": null,
+    "bounds": [
+      1776,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1776,
+      48,
+      96,
+      144
+    ]
+  },
+  {
+    "id": "north-walk-96",
+    "file": null,
+    "bounds": [
+      96,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-144",
+    "file": null,
+    "bounds": [
+      144,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-192",
+    "file": null,
+    "bounds": [
+      192,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-240",
+    "file": null,
+    "bounds": [
+      240,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-288",
+    "file": null,
+    "bounds": [
+      288,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-336",
+    "file": null,
+    "bounds": [
+      336,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-384",
+    "file": null,
+    "bounds": [
+      384,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-432",
+    "file": null,
+    "bounds": [
+      432,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-480",
+    "file": null,
+    "bounds": [
+      480,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-528",
+    "file": null,
+    "bounds": [
+      528,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-576",
+    "file": null,
+    "bounds": [
+      576,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-624",
+    "file": null,
+    "bounds": [
+      624,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-672",
+    "file": null,
+    "bounds": [
+      672,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-720",
+    "file": null,
+    "bounds": [
+      720,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-768",
+    "file": null,
+    "bounds": [
+      768,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-816",
+    "file": null,
+    "bounds": [
+      816,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-864",
+    "file": null,
+    "bounds": [
+      864,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-912",
+    "file": null,
+    "bounds": [
+      912,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-960",
+    "file": null,
+    "bounds": [
+      960,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1008",
+    "file": null,
+    "bounds": [
+      1008,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1056",
+    "file": null,
+    "bounds": [
+      1056,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1104",
+    "file": null,
+    "bounds": [
+      1104,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1152",
+    "file": null,
+    "bounds": [
+      1152,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1200",
+    "file": null,
+    "bounds": [
+      1200,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1248",
+    "file": null,
+    "bounds": [
+      1248,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1296",
+    "file": null,
+    "bounds": [
+      1296,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1344",
+    "file": null,
+    "bounds": [
+      1344,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1392",
+    "file": null,
+    "bounds": [
+      1392,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1440",
+    "file": null,
+    "bounds": [
+      1440,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1488",
+    "file": null,
+    "bounds": [
+      1488,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1536",
+    "file": null,
+    "bounds": [
+      1536,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1584",
+    "file": null,
+    "bounds": [
+      1584,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1632",
+    "file": null,
+    "bounds": [
+      1632,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1680",
+    "file": null,
+    "bounds": [
+      1680,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1728",
+    "file": null,
+    "bounds": [
+      1728,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-walk-1776",
+    "file": null,
+    "bounds": [
+      1776,
+      80,
+      48,
+      24
+    ],
+    "base": 192,
+    "layer": -1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-tower-0",
+    "file": "corner-bastion-c7",
+    "bounds": [
+      0,
+      0,
+      144,
+      192
+    ],
+    "base": 192,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      0,
+      96,
+      144,
+      96
+    ]
+  },
+  {
+    "id": "north-tower-1",
+    "file": "wall-tower-mid-v1-c7",
+    "bounds": [
+      432,
+      0,
+      96,
+      192
+    ],
+    "base": 192,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      432,
+      96,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "north-wall-stair",
+    "file": "wall-access-c5",
+    "bounds": [
+      912,
+      48,
+      96,
+      144
+    ],
+    "base": 192,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "north-tower-2",
+    "file": "wall-tower-mid-v2-c7",
+    "bounds": [
+      1008,
+      0,
+      96,
+      192
+    ],
+    "base": 192,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1008,
+      96,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "north-tower-3",
+    "file": "wall-tower-mid-c7",
+    "bounds": [
+      1488,
+      0,
+      96,
+      192
+    ],
+    "base": 192,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1488,
+      96,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "north-tower-4",
+    "file": "wall-tower-mid-v1-c7",
+    "bounds": [
+      1824,
+      0,
+      96,
+      192
+    ],
+    "base": 192,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1824,
+      96,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "side-wall-0-192",
+    "file": null,
+    "bounds": [
+      0,
+      192,
+      48,
+      144
+    ],
+    "base": 336,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-192",
+    "file": null,
+    "bounds": [
+      48,
+      192,
+      48,
+      144
+    ],
+    "base": 336,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-192",
+    "file": null,
+    "bounds": [
+      1824,
+      192,
+      48,
+      144
+    ],
+    "base": 336,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-192",
+    "file": null,
+    "bounds": [
+      1872,
+      192,
+      48,
+      144
+    ],
+    "base": 336,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "northwest-N-0",
+    "file": null,
+    "bounds": [
+      144,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      144,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-N-1",
+    "file": null,
+    "bounds": [
+      240,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      240,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-N-2",
+    "file": null,
+    "bounds": [
+      336,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      336,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-N-3",
+    "file": null,
+    "bounds": [
+      432,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      432,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-N-0",
+    "file": null,
+    "bounds": [
+      672,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      672,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-N-1",
+    "file": null,
+    "bounds": [
+      768,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      768,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-N-2",
+    "file": null,
+    "bounds": [
+      864,
+      240,
+      48,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      864,
+      336,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "civic-N-3",
+    "file": null,
+    "bounds": [
+      1008,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      1008,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-N-4",
+    "file": null,
+    "bounds": [
+      1104,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      1104,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-N-0",
+    "file": null,
+    "bounds": [
+      1248,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      1248,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-N-1",
+    "file": null,
+    "bounds": [
+      1344,
+      192,
+      96,
+      240
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 3,
+    "footprint": [
+      1344,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-N-2",
+    "file": null,
+    "bounds": [
+      1536,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      1536,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-N-3",
+    "file": null,
+    "bounds": [
+      1632,
+      240,
+      96,
+      192
+    ],
+    "base": 432,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      1632,
+      336,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "side-wall-0-336",
+    "file": null,
+    "bounds": [
+      0,
+      336,
+      48,
+      144
+    ],
+    "base": 480,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-336",
+    "file": null,
+    "bounds": [
+      48,
+      336,
+      48,
+      144
+    ],
+    "base": 480,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-336",
+    "file": null,
+    "bounds": [
+      1824,
+      336,
+      48,
+      144
+    ],
+    "base": 480,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-336",
+    "file": null,
+    "bounds": [
+      1872,
+      336,
+      48,
+      144
+    ],
+    "base": 480,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "northwest-N-4",
+    "file": null,
+    "bounds": [
+      528,
+      288,
+      48,
+      192
+    ],
+    "base": 480,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      528,
+      384,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "civic-N-5",
+    "file": null,
+    "bounds": [
+      624,
+      288,
+      48,
+      192
+    ],
+    "base": 480,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      624,
+      384,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "civic-N-6",
+    "file": null,
+    "bounds": [
+      912,
+      288,
+      96,
+      192
+    ],
+    "base": 480,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      912,
+      384,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-N-4",
+    "file": null,
+    "bounds": [
+      1440,
+      240,
+      96,
+      240
+    ],
+    "base": 480,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 3,
+    "footprint": [
+      1440,
+      384,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-well",
+    "file": "yard-0",
+    "bounds": [
+      288,
+      432,
+      48,
+      48
+    ],
+    "base": 480,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "northwest-laundry",
+    "file": "yard-1",
+    "bounds": [
+      336,
+      432,
+      48,
+      48
+    ],
+    "base": 480,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "sorting-table",
+    "file": "sorting-table-c7",
+    "bounds": [
+      1536,
+      432,
+      48,
+      48
+    ],
+    "base": 480,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "laundry-worker",
+    "file": "laundry-worker-c7",
+    "bounds": [
+      318,
+      480,
+      12,
+      24
+    ],
+    "base": 504,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "northwest-wood",
+    "file": "woodpile-c7",
+    "bounds": [
+      360,
+      480,
+      24,
+      24
+    ],
+    "base": 504,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "northwest-W-10",
+    "file": null,
+    "bounds": [
+      144,
+      336,
+      96,
+      192
+    ],
+    "base": 528,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 2,
+    "footprint": [
+      144,
+      432,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-E-12",
+    "file": null,
+    "bounds": [
+      1104,
+      336,
+      96,
+      192
+    ],
+    "base": 528,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 2,
+    "footprint": [
+      1104,
+      432,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-W-12",
+    "file": null,
+    "bounds": [
+      1248,
+      288,
+      96,
+      240
+    ],
+    "base": 528,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 3,
+    "footprint": [
+      1248,
+      432,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-N-5",
+    "file": null,
+    "bounds": [
+      1728,
+      336,
+      48,
+      192
+    ],
+    "base": 528,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      1728,
+      432,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "northwest-W-11",
+    "file": null,
+    "bounds": [
+      144,
+      384,
+      96,
+      192
+    ],
+    "base": 576,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 2,
+    "footprint": [
+      144,
+      528,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "northwest-E-12",
+    "file": null,
+    "bounds": [
+      480,
+      384,
+      96,
+      192
+    ],
+    "base": 576,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 2,
+    "footprint": [
+      480,
+      480,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-W-11",
+    "file": null,
+    "bounds": [
+      624,
+      384,
+      96,
+      192
+    ],
+    "base": 576,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 2,
+    "footprint": [
+      624,
+      480,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-E-13",
+    "file": null,
+    "bounds": [
+      1104,
+      384,
+      96,
+      192
+    ],
+    "base": 576,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 2,
+    "footprint": [
+      1104,
+      528,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "northeast-W-13",
+    "file": null,
+    "bounds": [
+      1248,
+      336,
+      96,
+      240
+    ],
+    "base": 576,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 3,
+    "footprint": [
+      1248,
+      528,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "northeast-E-14",
+    "file": null,
+    "bounds": [
+      1680,
+      336,
+      96,
+      240
+    ],
+    "base": 576,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-east-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 3,
+    "footprint": [
+      1680,
+      528,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "east-tower-0",
+    "file": "wall-tower-mid-v2-c7",
+    "bounds": [
+      1824,
+      384,
+      96,
+      192
+    ],
+    "base": 576,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1824,
+      480,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "side-wall-0-480",
+    "file": null,
+    "bounds": [
+      0,
+      480,
+      48,
+      144
+    ],
+    "base": 624,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-480",
+    "file": null,
+    "bounds": [
+      48,
+      480,
+      48,
+      144
+    ],
+    "base": 624,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-480",
+    "file": null,
+    "bounds": [
+      1824,
+      480,
+      48,
+      144
+    ],
+    "base": 624,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-480",
+    "file": null,
+    "bounds": [
+      1872,
+      480,
+      48,
+      144
+    ],
+    "base": 624,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "west-tower-0",
+    "file": "wall-tower-mid-v2-c7",
+    "bounds": [
+      0,
+      432,
+      96,
+      192
+    ],
+    "base": 624,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      0,
+      528,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-S-5",
+    "file": null,
+    "bounds": [
+      144,
+      480,
+      96,
+      192
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      144,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-S-6",
+    "file": null,
+    "bounds": [
+      240,
+      528,
+      96,
+      144
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-passage-w2-c6",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      240,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-S-7",
+    "file": null,
+    "bounds": [
+      336,
+      528,
+      96,
+      144
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-passage-w2-c6",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      336,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-S-8",
+    "file": null,
+    "bounds": [
+      432,
+      480,
+      96,
+      192
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      432,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northwest-S-9",
+    "file": null,
+    "bounds": [
+      528,
+      480,
+      48,
+      192
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w1-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w1-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w1-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      528,
+      576,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "civic-S-7",
+    "file": null,
+    "bounds": [
+      624,
+      432,
+      96,
+      240
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-sign-bay-v1-c5-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      },
+      {
+        "file": "sign-baker-c7",
+        "x": 0,
+        "y": 144,
+        "kind": "overlay",
+        "receiver": "own blank wall bay"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      624,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-S-8",
+    "file": null,
+    "bounds": [
+      720,
+      480,
+      96,
+      192
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      720,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-S-9",
+    "file": null,
+    "bounds": [
+      1008,
+      432,
+      96,
+      240
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1008,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "civic-S-10",
+    "file": null,
+    "bounds": [
+      1104,
+      432,
+      96,
+      240
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-sign-bay-v1-c5-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      },
+      {
+        "file": "sign-apothecary-c7",
+        "x": 0,
+        "y": 144,
+        "kind": "overlay",
+        "receiver": "own blank wall bay"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1104,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-S-6",
+    "file": null,
+    "bounds": [
+      1248,
+      432,
+      96,
+      240
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1248,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-S-7",
+    "file": null,
+    "bounds": [
+      1344,
+      432,
+      96,
+      240
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1344,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-S-8",
+    "file": null,
+    "bounds": [
+      1440,
+      528,
+      96,
+      144
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      1440,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-S-9",
+    "file": null,
+    "bounds": [
+      1536,
+      528,
+      96,
+      144
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      1536,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-S-10",
+    "file": null,
+    "bounds": [
+      1632,
+      432,
+      96,
+      240
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1632,
+      576,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "northeast-S-11",
+    "file": null,
+    "bounds": [
+      1728,
+      432,
+      48,
+      240
+    ],
+    "base": 672,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w1-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w1-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-north-w1-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1728,
+      576,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "guildhall",
+    "file": "guildhall-c7r1",
+    "bounds": [
+      816,
+      240,
+      192,
+      432
+    ],
+    "base": 672,
+    "layer": 1,
+    "parts": [],
+    "facing": "S",
+    "floors": 0,
+    "footprint": [
+      816,
+      480,
+      192,
+      192
+    ]
+  },
+  {
+    "id": "side-wall-0-624",
+    "file": null,
+    "bounds": [
+      0,
+      624,
+      48,
+      144
+    ],
+    "base": 768,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-624",
+    "file": null,
+    "bounds": [
+      48,
+      624,
+      48,
+      144
+    ],
+    "base": 768,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-624",
+    "file": null,
+    "bounds": [
+      1824,
+      624,
+      48,
+      144
+    ],
+    "base": 768,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-624",
+    "file": null,
+    "bounds": [
+      1872,
+      624,
+      48,
+      144
+    ],
+    "base": 768,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "church-precinct",
+    "file": "churchyard-c7",
+    "bounds": [
+      624,
+      672,
+      144,
+      96
+    ],
+    "base": 768,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      624,
+      672,
+      144,
+      96
+    ]
+  },
+  {
+    "id": "stall-0",
+    "file": "stall-0",
+    "bounds": [
+      816,
+      720,
+      48,
+      48
+    ],
+    "base": 768,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      816,
+      720,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "stall-1",
+    "file": "stall-1",
+    "bounds": [
+      864,
+      720,
+      48,
+      48
+    ],
+    "base": 768,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      864,
+      720,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "stall-2",
+    "file": "stall-2",
+    "bounds": [
+      912,
+      720,
+      48,
+      48
+    ],
+    "base": 768,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      912,
+      720,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "market-life-0",
+    "file": "person-customer-c4",
+    "bounds": [
+      824,
+      760,
+      16,
+      32
+    ],
+    "base": 792,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "market-life-1",
+    "file": "inn-patron-a-c7",
+    "bounds": [
+      872,
+      768,
+      12,
+      24
+    ],
+    "base": 792,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "market-life-2",
+    "file": "inn-patron-b-c7",
+    "bounds": [
+      920,
+      768,
+      12,
+      24
+    ],
+    "base": 792,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "craft-N-0",
+    "file": null,
+    "bounds": [
+      144,
+      624,
+      96,
+      192
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      144,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-N-1",
+    "file": null,
+    "bounds": [
+      240,
+      624,
+      96,
+      192
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      240,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-N-2",
+    "file": null,
+    "bounds": [
+      336,
+      624,
+      96,
+      192
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      336,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-N-3",
+    "file": null,
+    "bounds": [
+      480,
+      624,
+      48,
+      192
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w1-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w1-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w1-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      480,
+      720,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "inn-N-0",
+    "file": null,
+    "bounds": [
+      1200,
+      576,
+      96,
+      240
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 3,
+    "footprint": [
+      1200,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "inn-N-1",
+    "file": null,
+    "bounds": [
+      1296,
+      480,
+      96,
+      336
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 288,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 240,
+        "kind": "storey"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 192,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 5,
+    "footprint": [
+      1296,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "inn-N-2",
+    "file": null,
+    "bounds": [
+      1392,
+      576,
+      96,
+      240
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 3,
+    "footprint": [
+      1392,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-N-0",
+    "file": null,
+    "bounds": [
+      1536,
+      576,
+      96,
+      240
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 3,
+    "footprint": [
+      1536,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-N-1",
+    "file": null,
+    "bounds": [
+      1632,
+      576,
+      96,
+      240
+    ],
+    "base": 816,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "back-plain-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 3,
+    "footprint": [
+      1632,
+      720,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-N-2",
+    "file": null,
+    "bounds": [
+      1728,
+      624,
+      48,
+      240
+    ],
+    "base": 864,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "back-plain-w1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-north-w1-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 3,
+    "footprint": [
+      1728,
+      768,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "stall-3",
+    "file": "stall-3",
+    "bounds": [
+      816,
+      816,
+      48,
+      48
+    ],
+    "base": 864,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      816,
+      816,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "stall-4",
+    "file": "stall-4",
+    "bounds": [
+      864,
+      816,
+      48,
+      48
+    ],
+    "base": 864,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      864,
+      816,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "stall-5",
+    "file": "stall-5",
+    "bounds": [
+      912,
+      816,
+      48,
+      48
+    ],
+    "base": 864,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      912,
+      816,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "market-cross",
+    "file": "market-cross",
+    "bounds": [
+      960,
+      768,
+      48,
+      96
+    ],
+    "base": 864,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      960,
+      768,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "market-life-3",
+    "file": "laundry-worker-c7",
+    "bounds": [
+      824,
+      864,
+      12,
+      24
+    ],
+    "base": 888,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "market-life-4",
+    "file": "person-customer-c4",
+    "bounds": [
+      872,
+      856,
+      16,
+      32
+    ],
+    "base": 888,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "market-life-5",
+    "file": "inn-patron-a-c7",
+    "bounds": [
+      920,
+      864,
+      12,
+      24
+    ],
+    "base": 888,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-0-768",
+    "file": null,
+    "bounds": [
+      0,
+      768,
+      48,
+      144
+    ],
+    "base": 912,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-768",
+    "file": null,
+    "bounds": [
+      48,
+      768,
+      48,
+      144
+    ],
+    "base": 912,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-768",
+    "file": null,
+    "bounds": [
+      1824,
+      768,
+      48,
+      144
+    ],
+    "base": 912,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-768",
+    "file": null,
+    "bounds": [
+      1872,
+      768,
+      48,
+      144
+    ],
+    "base": 912,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "craft-W-9",
+    "file": null,
+    "bounds": [
+      144,
+      720,
+      96,
+      192
+    ],
+    "base": 912,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 2,
+    "footprint": [
+      144,
+      816,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-N-4",
+    "file": null,
+    "bounds": [
+      432,
+      720,
+      48,
+      192
+    ],
+    "base": 912,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-north-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 2,
+    "footprint": [
+      432,
+      816,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "craft-E-10",
+    "file": null,
+    "bounds": [
+      480,
+      720,
+      48,
+      192
+    ],
+    "base": 912,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w1-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-east-w1-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-east-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 2,
+    "footprint": [
+      480,
+      816,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "inn-W-5",
+    "file": null,
+    "bounds": [
+      1200,
+      768,
+      96,
+      144
+    ],
+    "base": 912,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 1,
+    "footprint": [
+      1200,
+      816,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "inn-E-6",
+    "file": null,
+    "bounds": [
+      1392,
+      768,
+      96,
+      144
+    ],
+    "base": 912,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 1,
+    "footprint": [
+      1392,
+      816,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-W-6",
+    "file": null,
+    "bounds": [
+      1536,
+      768,
+      96,
+      144
+    ],
+    "base": 912,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 1,
+    "footprint": [
+      1536,
+      816,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-E-7",
+    "file": null,
+    "bounds": [
+      1680,
+      768,
+      96,
+      144
+    ],
+    "base": 912,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 1,
+    "footprint": [
+      1680,
+      864,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "fountain",
+    "file": "fountain",
+    "bounds": [
+      1008,
+      864,
+      96,
+      96
+    ],
+    "base": 960,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1008,
+      864,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "market-life-6",
+    "file": "inn-patron-b-c7",
+    "bounds": [
+      980,
+      948,
+      12,
+      24
+    ],
+    "base": 972,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "market-life-7",
+    "file": "laundry-worker-c7",
+    "bounds": [
+      1090,
+      948,
+      12,
+      24
+    ],
+    "base": 972,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "craft-S-5",
+    "file": null,
+    "bounds": [
+      144,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-sign-bay-v0-c5-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      },
+      {
+        "file": "sign-smith-c7",
+        "x": 0,
+        "y": 96,
+        "kind": "overlay",
+        "receiver": "own blank wall bay"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      144,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-S-6",
+    "file": null,
+    "bounds": [
+      240,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      240,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-S-7",
+    "file": null,
+    "bounds": [
+      336,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      336,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-S-8",
+    "file": null,
+    "bounds": [
+      432,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-sign-bay-v0-c5-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      },
+      {
+        "file": "sign-cobbler-c7",
+        "x": 0,
+        "y": 96,
+        "kind": "overlay",
+        "receiver": "own blank wall bay"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      432,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "inn-S-3",
+    "file": null,
+    "bounds": [
+      1296,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      1296,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "inn-S-4",
+    "file": null,
+    "bounds": [
+      1392,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      1392,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-S-3",
+    "file": null,
+    "bounds": [
+      1536,
+      768,
+      96,
+      240
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-sign-bay-v0-c5-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      },
+      {
+        "file": "sign-tailor-c7",
+        "x": 0,
+        "y": 144,
+        "kind": "overlay",
+        "receiver": "own blank wall bay"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1536,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-S-4",
+    "file": null,
+    "bounds": [
+      1632,
+      768,
+      96,
+      240
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-sign-bay-v1-c5-w2",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      },
+      {
+        "file": "sign-scribe-c7",
+        "x": 0,
+        "y": 144,
+        "kind": "overlay",
+        "receiver": "own blank wall bay"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1632,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-trades-S-5",
+    "file": null,
+    "bounds": [
+      1728,
+      768,
+      48,
+      240
+    ],
+    "base": 1008,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w1-c7r1",
+        "x": 0,
+        "y": 192,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-north-w1-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "storey"
+      },
+      {
+        "file": "storey-north-w1-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-west-w1-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 3,
+    "footprint": [
+      1728,
+      912,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "west-tower-1",
+    "file": "wall-tower-mid-c7",
+    "bounds": [
+      0,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      0,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "inn-porch",
+    "file": "inn-west-c7r1",
+    "bounds": [
+      1200,
+      768,
+      96,
+      240
+    ],
+    "base": 1008,
+    "layer": 1,
+    "parts": [],
+    "facing": "W",
+    "floors": 0,
+    "footprint": [
+      1200,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "east-tower-1",
+    "file": "wall-tower-mid-c7",
+    "bounds": [
+      1824,
+      816,
+      96,
+      192
+    ],
+    "base": 1008,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1824,
+      912,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "craft-delivery",
+    "file": "delivery-c7",
+    "bounds": [
+      288,
+      1020,
+      48,
+      24
+    ],
+    "base": 1044,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-0-912",
+    "file": null,
+    "bounds": [
+      0,
+      912,
+      48,
+      144
+    ],
+    "base": 1056,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-912",
+    "file": null,
+    "bounds": [
+      48,
+      912,
+      48,
+      144
+    ],
+    "base": 1056,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-912",
+    "file": null,
+    "bounds": [
+      1824,
+      912,
+      48,
+      144
+    ],
+    "base": 1056,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-912",
+    "file": null,
+    "bounds": [
+      1872,
+      912,
+      48,
+      144
+    ],
+    "base": 1056,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "church",
+    "file": "church-b-c7",
+    "bounds": [
+      528,
+      624,
+      240,
+      432
+    ],
+    "base": 1056,
+    "layer": 1,
+    "parts": [],
+    "facing": "E",
+    "floors": 0,
+    "footprint": [
+      528,
+      768,
+      240,
+      288
+    ]
+  },
+  {
+    "id": "inn-bench",
+    "file": "bench-c7",
+    "bounds": [
+      1200,
+      1040,
+      24,
+      16
+    ],
+    "base": 1056,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "inn-patron-a",
+    "file": "inn-patron-a-c7",
+    "bounds": [
+      1210,
+      1032,
+      12,
+      24
+    ],
+    "base": 1056,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "inn-patron-b",
+    "file": "inn-patron-b-c7",
+    "bounds": [
+      1236,
+      1036,
+      12,
+      24
+    ],
+    "base": 1060,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "southwest-N-3-0",
+    "file": null,
+    "bounds": [
+      288,
+      1008,
+      48,
+      96
+    ],
+    "base": 1104,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      288,
+      1056,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southwest-N-4-0",
+    "file": null,
+    "bounds": [
+      336,
+      1008,
+      48,
+      96
+    ],
+    "base": 1104,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      336,
+      1056,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southwest-wood",
+    "file": "woodpile-c7",
+    "bounds": [
+      300,
+      1120,
+      24,
+      24
+    ],
+    "base": 1144,
+    "layer": 2,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": null
+  },
+  {
+    "id": "southwest-N-0",
+    "file": null,
+    "bounds": [
+      192,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      192,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southwest-N-4-1",
+    "file": null,
+    "bounds": [
+      336,
+      1056,
+      48,
+      96
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      336,
+      1104,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southwest-N-4",
+    "file": null,
+    "bounds": [
+      384,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      384,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southwest-N-5",
+    "file": null,
+    "bounds": [
+      480,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      480,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "south-artisans-N-0",
+    "file": null,
+    "bounds": [
+      624,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      624,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "south-artisans-N-1",
+    "file": null,
+    "bounds": [
+      720,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      720,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "south-artisans-N-2",
+    "file": null,
+    "bounds": [
+      1008,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      1008,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-N-0",
+    "file": null,
+    "bounds": [
+      1248,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      1248,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-N-1",
+    "file": null,
+    "bounds": [
+      1344,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      1344,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-N-2",
+    "file": null,
+    "bounds": [
+      1440,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      1440,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-N-3",
+    "file": null,
+    "bounds": [
+      1536,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      1536,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-N-4",
+    "file": null,
+    "bounds": [
+      1632,
+      1008,
+      96,
+      144
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-plain-ground-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-north-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      1632,
+      1056,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-N-5",
+    "file": null,
+    "bounds": [
+      1728,
+      1056,
+      48,
+      96
+    ],
+    "base": 1152,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "back-stair-w1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      1728,
+      1056,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "side-wall-0-1056",
+    "file": null,
+    "bounds": [
+      0,
+      1056,
+      48,
+      144
+    ],
+    "base": 1200,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-1056",
+    "file": null,
+    "bounds": [
+      48,
+      1056,
+      48,
+      144
+    ],
+    "base": 1200,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-1056",
+    "file": null,
+    "bounds": [
+      1824,
+      1056,
+      48,
+      144
+    ],
+    "base": 1200,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-1056",
+    "file": null,
+    "bounds": [
+      1872,
+      1056,
+      48,
+      144
+    ],
+    "base": 1200,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "southwest-E-14",
+    "file": null,
+    "bounds": [
+      480,
+      1056,
+      96,
+      144
+    ],
+    "base": 1200,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 1,
+    "footprint": [
+      480,
+      1152,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "south-artisans-W-8",
+    "file": null,
+    "bounds": [
+      624,
+      1056,
+      96,
+      144
+    ],
+    "base": 1200,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-west-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 1,
+    "footprint": [
+      624,
+      1152,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "south-artisans-S-3",
+    "file": null,
+    "bounds": [
+      1008,
+      1104,
+      48,
+      96
+    ],
+    "base": 1200,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      1008,
+      1152,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southeast-N-6",
+    "file": null,
+    "bounds": [
+      1200,
+      1104,
+      48,
+      96
+    ],
+    "base": 1200,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-west-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "W",
+    "floors": 1,
+    "footprint": [
+      1200,
+      1152,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southeast-S-7",
+    "file": null,
+    "bounds": [
+      1248,
+      1104,
+      48,
+      96
+    ],
+    "base": 1200,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      1248,
+      1152,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southeast-E-13",
+    "file": null,
+    "bounds": [
+      1680,
+      1056,
+      96,
+      144
+    ],
+    "base": 1200,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-east-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-east-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "E",
+    "floors": 1,
+    "footprint": [
+      1680,
+      1152,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "market-hall",
+    "file": "market-north-c7",
+    "bounds": [
+      816,
+      1056,
+      192,
+      144
+    ],
+    "base": 1200,
+    "layer": 1,
+    "parts": [],
+    "facing": "N",
+    "floors": 0,
+    "footprint": [
+      816,
+      1056,
+      192,
+      144
+    ]
+  },
+  {
+    "id": "southwest-N-6",
+    "file": null,
+    "bounds": [
+      144,
+      1152,
+      48,
+      96
+    ],
+    "base": 1248,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "N",
+    "floors": 1,
+    "footprint": [
+      144,
+      1152,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "southwest-S-1-3",
+    "file": null,
+    "bounds": [
+      192,
+      1152,
+      48,
+      96
+    ],
+    "base": 1248,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      192,
+      1200,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southwest-S-0-4",
+    "file": null,
+    "bounds": [
+      144,
+      1200,
+      48,
+      96
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      144,
+      1248,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southwest-S-1-4",
+    "file": null,
+    "bounds": [
+      192,
+      1200,
+      48,
+      96
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      192,
+      1248,
+      48,
+      48
+    ]
+  },
+  {
+    "id": "southwest-S-10",
+    "file": null,
+    "bounds": [
+      240,
+      1104,
+      96,
+      192
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-sign-bay-v1-c5-w2",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      },
+      {
+        "file": "sign-butcher-c7",
+        "x": 0,
+        "y": 96,
+        "kind": "overlay",
+        "receiver": "own blank wall bay"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      240,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southwest-S-11",
+    "file": null,
+    "bounds": [
+      336,
+      1152,
+      96,
+      144
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      336,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southwest-S-12",
+    "file": null,
+    "bounds": [
+      432,
+      1104,
+      96,
+      192
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      432,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southwest-S-13",
+    "file": null,
+    "bounds": [
+      528,
+      1200,
+      48,
+      96
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      528,
+      1200,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "south-artisans-S-4",
+    "file": null,
+    "bounds": [
+      624,
+      1200,
+      96,
+      96
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w2-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "review/r17-C7-critic3-clean-low-wing-b.png",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      624,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "south-artisans-S-5",
+    "file": null,
+    "bounds": [
+      720,
+      1200,
+      96,
+      96
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "review/r17-C7-critic3-clean-low-wing-a.png",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      720,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "south-artisans-S-6",
+    "file": null,
+    "bounds": [
+      816,
+      1200,
+      96,
+      96
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "review/r17-C7-critic3-clean-low-wing-a.png",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      816,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "south-artisans-S-7",
+    "file": null,
+    "bounds": [
+      912,
+      1200,
+      48,
+      96
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w1-c7r1",
+        "x": 0,
+        "y": 48,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-lean-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      912,
+      1200,
+      48,
+      96
+    ]
+  },
+  {
+    "id": "southeast-S-8",
+    "file": null,
+    "bounds": [
+      1296,
+      1152,
+      96,
+      144
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      1296,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-S-9",
+    "file": null,
+    "bounds": [
+      1392,
+      1104,
+      96,
+      192
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      1392,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-S-10",
+    "file": null,
+    "bounds": [
+      1488,
+      1152,
+      96,
+      144
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-b-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-b-w2-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      1488,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-S-11",
+    "file": null,
+    "bounds": [
+      1584,
+      1152,
+      96,
+      144
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-north-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "ground"
+      },
+      {
+        "file": "roof-corner-c7r1",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 1,
+    "footprint": [
+      1584,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "southeast-S-12",
+    "file": null,
+    "bounds": [
+      1680,
+      1104,
+      96,
+      192
+    ],
+    "base": 1296,
+    "layer": 0,
+    "parts": [
+      {
+        "file": "ground-a-w2-c7r1",
+        "x": 0,
+        "y": 144,
+        "kind": "ground"
+      },
+      {
+        "file": "storey-a-w2-c7r1",
+        "x": 0,
+        "y": 96,
+        "kind": "storey"
+      },
+      {
+        "file": "roof-a-w2-d2-c7",
+        "x": 0,
+        "y": 0,
+        "kind": "roof"
+      }
+    ],
+    "facing": "S",
+    "floors": 2,
+    "footprint": [
+      1680,
+      1200,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "side-wall-0-1200",
+    "file": null,
+    "bounds": [
+      0,
+      1200,
+      48,
+      144
+    ],
+    "base": 1344,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-48-1200",
+    "file": null,
+    "bounds": [
+      48,
+      1200,
+      48,
+      144
+    ],
+    "base": 1344,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1824-1200",
+    "file": null,
+    "bounds": [
+      1824,
+      1200,
+      48,
+      144
+    ],
+    "base": 1344,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "side-wall-1872-1200",
+    "file": null,
+    "bounds": [
+      1872,
+      1200,
+      48,
+      144
+    ],
+    "base": 1344,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": null
+  },
+  {
+    "id": "curtain-48-1344",
+    "file": null,
+    "bounds": [
+      48,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      48,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-144-1344",
+    "file": null,
+    "bounds": [
+      144,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      144,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-240-1344",
+    "file": null,
+    "bounds": [
+      240,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      240,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-336-1344",
+    "file": null,
+    "bounds": [
+      336,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      336,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-432-1344",
+    "file": null,
+    "bounds": [
+      432,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      432,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-528-1344",
+    "file": null,
+    "bounds": [
+      528,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      528,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-624-1344",
+    "file": null,
+    "bounds": [
+      624,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      624,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-720-1344",
+    "file": null,
+    "bounds": [
+      720,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      720,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-816-1344",
+    "file": null,
+    "bounds": [
+      816,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      816,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-912-1344",
+    "file": null,
+    "bounds": [
+      912,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      912,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-1200-1344",
+    "file": null,
+    "bounds": [
+      1200,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1200,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-1296-1344",
+    "file": null,
+    "bounds": [
+      1296,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1296,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-1392-1344",
+    "file": null,
+    "bounds": [
+      1392,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1392,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-1488-1344",
+    "file": null,
+    "bounds": [
+      1488,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1488,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-1584-1344",
+    "file": null,
+    "bounds": [
+      1584,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1584,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-1680-1344",
+    "file": null,
+    "bounds": [
+      1680,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1680,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "curtain-1776-1344",
+    "file": null,
+    "bounds": [
+      1776,
+      1344,
+      96,
+      96
+    ],
+    "base": 1440,
+    "layer": -2,
+    "parts": [],
+    "facing": null,
+    "floors": 2,
+    "footprint": [
+      1776,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "west-tower-2",
+    "file": "wall-tower-short-v1-c7",
+    "bounds": [
+      0,
+      1296,
+      96,
+      144
+    ],
+    "base": 1440,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      0,
+      1344,
+      96,
+      96
+    ]
+  },
+  {
+    "id": "south-tower-0",
+    "file": "wall-tower-short-c7",
+    "bounds": [
+      528,
+      1296,
+      96,
+      144
+    ],
+    "base": 1440,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      528,
+      1392,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "gate",
+    "file": "gate-assembly-c7",
+    "bounds": [
+      1032,
+      1248,
+      192,
+      192
+    ],
+    "base": 1440,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1008,
+      1248,
+      192,
+      192
+    ]
+  },
+  {
+    "id": "south-tower-1",
+    "file": "wall-tower-short-v2-c7",
+    "bounds": [
+      1536,
+      1296,
+      96,
+      144
+    ],
+    "base": 1440,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1536,
+      1392,
+      96,
+      48
+    ]
+  },
+  {
+    "id": "east-tower-2",
+    "file": "wall-tower-short-v1-c7",
+    "bounds": [
+      1824,
+      1296,
+      96,
+      144
+    ],
+    "base": 1440,
+    "layer": 1,
+    "parts": [],
+    "facing": null,
+    "floors": 0,
+    "footprint": [
+      1824,
+      1344,
+      96,
+      96
+    ]
+  }
+]

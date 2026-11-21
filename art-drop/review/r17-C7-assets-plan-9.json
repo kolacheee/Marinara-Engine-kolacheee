@@ -1,0 +1,8 @@
+[
+  {
+    "id": "corner-bastion",
+    "prompt": "Paint ONE angular CORNER BASTION for the northwest corner of a medieval town wall, isolated on pure magenta #ff00ff. High 3/4 top-down town sprite, exactly matching the reference's quiet warm grey-beige limestone, top-left light, one dark native pixel outline. A stout square polygonal bastion, much broader than an ordinary interval tower: broad squared battlement roof platform with an L-shaped corner walkway meeting wall doors on its south and east faces, thick stone shaft with arrow slits and buttressed foot. NOT a house, no roof tiles or wooden dormer, no round turret. Every edge is hard stair-stepped pixel art, no rounded corners. Intended native144x192, width3 cells, height4 cells, depth visible from above like game fantasy houses. Native stone blocks6-12px broad, sparse chips2-4px, no bright diagonal scratches. Whole ground base opaque, magenta outside silhouette, no cast ground shadow, no grass, loose stones, text or people. Draw large1536x2048 for mode reduction. Keep the top square parapet without jagged ornament. One full coherent assembly.",
+    "source": "r17-C7-source-corner-bastion.png",
+    "tool": "built-in image tool"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "file": "square-paving-0-c7.png",
+    "operation": "painted mortar preserved, close-value stone faces mapped to reference stone ramp",
+    "colours": 2
+  },
+  {
+    "file": "square-paving-1-c7.png",
+    "operation": "painted mortar preserved, close-value stone faces mapped to reference stone ramp",
+    "colours": 2
+  },
+  {
+    "file": "square-paving-2-c7.png",
+    "operation": "painted mortar preserved, close-value stone faces mapped to reference stone ramp",
+    "colours": 2
+  },
+  {
+    "file": "square-paving-3-c7.png",
+    "operation": "painted mortar preserved, close-value stone faces mapped to reference stone ramp",
+    "colours": 2
+  },
+  {
+    "file": "main-paving-c7.png",
+    "operation": "painted mortar preserved, close-value stone faces mapped to reference stone ramp",
+    "colours": 3
+  },
+  {
+    "file": "main-paving-v1-c7r1.png",
+    "operation": "painted mortar preserved, close-value stone faces mapped to reference stone ramp",
+    "colours": 3
+  },
+  {
+    "file": "main-paving-v2-c7r1.png",
+    "operation": "painted mortar preserved, close-value stone faces mapped to reference stone ramp",
+    "colours": 3
+  }
+]

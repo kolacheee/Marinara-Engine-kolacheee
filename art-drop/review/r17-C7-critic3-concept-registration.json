@@ -1,0 +1,122 @@
+[
+  {
+    "concept": "a",
+    "section": "sw",
+    "source": "r17-C7-critic3-source-concept-a-sw.png",
+    "source_size": [
+      1810,
+      869
+    ],
+    "native_size": [
+      1200,
+      576
+    ],
+    "painted_threshold": 474,
+    "painted_wall": 501,
+    "registered_lane": [
+      432,
+      480
+    ],
+    "source_is_larger": true
+  },
+  {
+    "concept": "a",
+    "section": "se",
+    "source": "r17-C7-critic3-source-concept-a-se.png",
+    "source_size": [
+      1493,
+      1053
+    ],
+    "native_size": [
+      816,
+      576
+    ],
+    "painted_threshold": 470,
+    "painted_wall": 500,
+    "registered_lane": [
+      432,
+      480
+    ],
+    "source_is_larger": true
+  },
+  {
+    "concept": "b",
+    "section": "sw",
+    "source": "r17-C7-critic3-source-concept-b-sw.png",
+    "source_size": [
+      1810,
+      869
+    ],
+    "native_size": [
+      1200,
+      576
+    ],
+    "painted_threshold": 461,
+    "painted_wall": 488,
+    "registered_lane": [
+      432,
+      480
+    ],
+    "source_is_larger": true
+  },
+  {
+    "concept": "b",
+    "section": "se",
+    "source": "r17-C7-critic3-source-concept-b-se.png",
+    "source_size": [
+      1493,
+      1053
+    ],
+    "native_size": [
+      816,
+      576
+    ],
+    "painted_threshold": 472,
+    "painted_wall": 500,
+    "registered_lane": [
+      432,
+      480
+    ],
+    "source_is_larger": true
+  },
+  {
+    "concept": "c",
+    "section": "sw",
+    "source": "r17-C7-critic3-source-concept-c-sw.png",
+    "source_size": [
+      1810,
+      869
+    ],
+    "native_size": [
+      1200,
+      576
+    ],
+    "painted_threshold": 450,
+    "painted_wall": 485,
+    "registered_lane": [
+      432,
+      480
+    ],
+    "source_is_larger": true
+  },
+  {
+    "concept": "c",
+    "section": "se",
+    "source": "r17-C7-critic3-source-concept-c-se.png",
+    "source_size": [
+      1493,
+      1053
+    ],
+    "native_size": [
+      816,
+      576
+    ],
+    "painted_threshold": 461,
+    "painted_wall": 482,
+    "registered_lane": [
+      432,
+      480
+    ],
+    "source_is_larger": true
+  }
+]

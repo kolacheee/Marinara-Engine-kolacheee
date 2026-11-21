@@ -1,0 +1,4351 @@
+{
+  "part": "C7",
+  "production_count": 126,
+  "sheets": 573,
+  "checks": [
+    {
+      "name": "hard-alpha production",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "zero RGB under transparent production",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production no isolated 1px/2px alpha components",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "exact 2x final",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-corner-w3-c7 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-corner-w3-c7 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-a-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-a-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-a-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-a-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-b-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-b-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-b-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-b-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-west-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-west-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-west-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-west-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-east-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-east-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-east-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-east-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-north-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-north-w1-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-north-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-north-w2-c7r1 fixed 0/47 course",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 0>0 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 0>1 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 0>2 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 0>3 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 0>4 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 1>0 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 1>1 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 1>2 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 1>3 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 1>4 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 2>0 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 2>1 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 2>2 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 2>3 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 2>4 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 3>0 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 3>1 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 3>2 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 3>3 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 3>4 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 4>0 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 4>1 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 4>2 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 4>3 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall 4>4 common two columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "civic facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "civic 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "civic disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "civic four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "civic cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northeast facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northeast 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northeast disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northeast four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northeast cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "craft facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "craft 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "craft disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "craft four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "craft cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "east-trades facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "east-trades 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "east-trades disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "east-trades four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "east-trades cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southwest facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southwest 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southwest disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southwest four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southwest cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-artisans facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-artisans 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-artisans disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-artisans four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-artisans cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southeast facings and floors change actual paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southeast 1-2 cell lot footprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southeast disjoint complete plan ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southeast four outward lot directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southeast cell-aligned plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all interval towers in perimeter wall band",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southeast real48x96 plan setback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main route width 96",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "public routes clear of building footprints",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual frontage layers at most twice in five",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "normal city signs retain at least 98 percent of painted pixels",
+      "passed": true,
+      "detail": [
+        {
+          "trade": "baker",
+          "painted_pixels": 3432,
+          "visible_pixels": 3432,
+          "fraction": 1.0
+        },
+        {
+          "trade": "apothecary",
+          "painted_pixels": 3335,
+          "visible_pixels": 3335,
+          "fraction": 1.0
+        },
+        {
+          "trade": "smith",
+          "painted_pixels": 3426,
+          "visible_pixels": 3398,
+          "fraction": 0.9918272037361354
+        },
+        {
+          "trade": "cobbler",
+          "painted_pixels": 2950,
+          "visible_pixels": 2912,
+          "fraction": 0.9871186440677966
+        },
+        {
+          "trade": "tailor",
+          "painted_pixels": 3404,
+          "visible_pixels": 3404,
+          "fraction": 1.0
+        },
+        {
+          "trade": "scribe",
+          "painted_pixels": 3386,
+          "visible_pixels": 3386,
+          "fraction": 1.0
+        },
+        {
+          "trade": "butcher",
+          "painted_pixels": 3125,
+          "visible_pixels": 3090,
+          "fraction": 0.9888
+        }
+      ]
+    },
+    {
+      "name": "tailor scissors sign completely visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "shadow opacity at most 50%",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-bench-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-bench-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-civic-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-civic-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-east-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-east-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-inn-b-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-inn-b-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-market-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-market-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-ne-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-ne-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-nw-a-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-nw-a-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-se-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-se-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-se-main-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-se-main-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-se-wing-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-se-wing-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-sm-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-sm-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-sw-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-sw-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-block-west-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-block-west-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-church-b-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-church-b-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-churchyard-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-churchyard-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-corner-bastion-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-corner-bastion-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-corner-house-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-corner-house-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-delivery-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-delivery-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-firewall-left-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-firewall-left-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-firewall-right-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-firewall-right-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-gate-assembly-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-gate-assembly-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-gate-c-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-gate-c-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-gate-stair-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-gate-stair-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-a-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-a-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-a-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-a-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-b-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-b-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-b-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-b-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-corner-w3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-corner-w3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-east-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-east-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-east-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-east-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-north-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-north-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-north-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-north-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-west-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-west-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-ground-west-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-ground-west-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-guard-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-guard-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-guildhall-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-guildhall-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-a-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-a-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-a-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-a-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-b-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-b-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-b-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-b-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-east-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-east-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-east-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-east-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-north-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-north-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-north-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-north-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-west-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-west-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-house-west-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-house-west-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-inn-patron-a-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-inn-patron-a-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-inn-patron-b-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-inn-patron-b-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-inn-west-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-inn-west-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-kerb-h-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-kerb-h-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-kerb-v-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-kerb-v-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-laundry-worker-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-laundry-worker-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-main-paving-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-main-paving-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-main-paving-v1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-main-paving-v1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-main-paving-v2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-main-paving-v2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-market-north-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-market-north-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-receiving-left-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-receiving-left-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-receiving-right-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-receiving-right-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w1-d2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w1-d2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w1-d3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w1-d3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w2-d2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w2-d2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w2-d3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w2-d3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w3-d2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w3-d2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-a-w3-d3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-a-w3-d3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-b-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-b-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-b-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-b-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-corner-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-corner-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-east-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-east-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-east-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-east-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-fill-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-fill-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-hip-left-d2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-hip-left-d2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-hip-left-d3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-hip-left-d3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-hip-right-d2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-hip-right-d2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-hip-right-d3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-hip-right-d3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-lean-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-lean-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-north-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-north-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-north-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-north-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-west-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-west-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-roof-west-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-roof-west-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-apothecary-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-apothecary-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-baker-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-baker-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-butcher-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-butcher-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-cobbler-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-cobbler-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-inn-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-inn-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-scribe-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-scribe-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-smith-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-smith-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sign-tailor-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sign-tailor-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-sorting-table-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-sorting-table-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-square-paving-0-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-square-paving-0-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-square-paving-1-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-square-paving-1-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-square-paving-2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-square-paving-2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-square-paving-3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-square-paving-3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-a-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-a-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-a-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-a-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-b-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-b-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-b-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-b-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-corner-w3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-corner-w3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-east-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-east-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-east-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-east-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-north-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-north-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-north-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-north-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-west-w1-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-west-w1-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-storey-west-w2-c7r1-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-storey-west-w2-c7r1-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-street-turn-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-street-turn-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-0-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-0-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-0-short-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-0-short-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-1-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-1-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-1-short-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-1-short-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-2-short-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-2-short-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-3-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-3-short-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-3-short-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-4-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-4-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-4-short-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-4-short-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-strip-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-strip-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-tower-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-tower-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-tower-mid-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-tower-mid-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-tower-mid-v1-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-tower-mid-v1-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-tower-mid-v2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-tower-mid-v2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-tower-short-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-tower-short-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-tower-short-v1-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-tower-short-v1-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-tower-short-v2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-tower-short-v2-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-wall-walk-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-wall-walk-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-piece-woodpile-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-self-seam-woodpile-c7-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-repeat-square-paving-0-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-repeat-square-paving-1-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-repeat-square-paving-2-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-repeat-square-paving-3-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-repeat-main-paving-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-repeat-street-turn-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-repeat-roof-fill-c7-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-trade-signs-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-wall-all-25-pairs-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-wall-five-module-strip-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-wall-five-module-strip-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-paving-variant-field-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-five-one-left-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-five-one-right-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-unequal-height-both-hands-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-house-vs-current-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-acceptance-16x12-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-acceptance-square-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-acceptance-vs-r15-today-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-city-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-concept-a-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-concept-b-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-concept-c-4x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-access-gate-portal-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-access-gate-stair-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-access-market-entrance-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-access-northwest-court-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r17-C7-access-church-porch-3x.png exact nearest-neighbour",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "square-paving-0-c7 literal nine copies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "square-paving-1-c7 literal nine copies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "square-paving-2-c7 literal nine copies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "square-paving-3-c7 literal nine copies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main-paving-c7 literal nine copies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "street-turn-c7 literal nine copies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof-fill-c7 literal nine copies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "only failed existing production PNGs changed",
+      "passed": true,
+      "detail": {
+        "changed": [
+          "art-drop/out/city17/block-se-c7.png",
+          "art-drop/out/city17/block-inn-b-c7.png",
+          "art-drop/out/city17/street-turn-c7.png",
+          "art-drop/out/city17/block-market-c7.png",
+          "art-drop/out/city17/corner-house-c7.png",
+          "art-drop/out/city17/roof-a-w1-d3-c7.png",
+          "art-drop/out/city17/roof-a-w2-d3-c7.png",
+          "art-drop/out/city17/roof-a-w3-d3-c7.png",
+          "art-drop/out/city17/ground-corner-w3-c7.png",
+          "art-drop/out/city17/storey-corner-w3-c7.png",
+          "art-drop/out/city17/roof-a-w1-d2-c7.png",
+          "art-drop/out/city17/roof-a-w2-d2-c7.png",
+          "art-drop/out/city17/roof-a-w3-d2-c7.png",
+          "art-drop/out/city17/roof-hip-left-d3-c7.png",
+          "art-drop/out/city17/roof-hip-left-d2-c7.png",
+          "art-drop/out/city17/roof-hip-right-d3-c7.png",
+          "art-drop/out/city17/roof-hip-right-d2-c7.png",
+          "art-drop/out/city17/roof-fill-c7.png",
+          "art-drop/out/city17/block-se-wing-c7.png",
+          "art-drop/out/city17/ground-a-w1-c7r1.png",
+          "art-drop/out/city17/storey-a-w1-c7r1.png",
+          "art-drop/out/city17/ground-b-w1-c7r1.png",
+          "art-drop/out/city17/storey-b-w1-c7r1.png",
+          "art-drop/out/city17/house-west-w1-c7r1.png",
+          "art-drop/out/city17/ground-west-w1-c7r1.png",
+          "art-drop/out/city17/storey-west-w1-c7r1.png",
+          "art-drop/out/city17/roof-west-w1-c7r1.png",
+          "art-drop/out/city17/ground-east-w1-c7r1.png",
+          "art-drop/out/city17/storey-east-w1-c7r1.png",
+          "art-drop/out/city17/ground-north-w1-c7r1.png",
+          "art-drop/out/city17/storey-north-w1-c7r1.png",
+          "art-drop/out/city17/inn-west-c7r1.png",
+          "art-drop/out/city17/roof-lean-c7r1.png",
+          "art-drop/out/city17/roof-corner-c7r1.png"
+        ],
+        "unexpected": [],
+        "missing": []
+      }
+    },
+    {
+      "name": "every failed production PNG replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "passing production files unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all three shadow receiver surfaces present",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all shadow receivers explicitly owned",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "concept a genuinely reduced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "concept b genuinely reduced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "concept c genuinely reduced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof depth 2 painted terrace source and native tile-scale registration",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof depth 3 painted terrace source and native tile-scale registration",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "stalls and cross bottom-left48px anchors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all trade signs occur once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall variation 1755",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall variation 3051",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "production": [
+    {
+      "file": "bench-c7.png",
+      "size": [
+        24,
+        16
+      ],
+      "colours": 13,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        245
+      ],
+      "sha256": "ebecaa85fe13cc55ba1ac9e05b4d0281e8a5a30b20a2d1720d7226b082f1139c"
+    },
+    {
+      "file": "block-civic-c7.png",
+      "size": [
+        576,
+        384
+      ],
+      "colours": 51,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        203349
+      ],
+      "sha256": "303f85bede3b569cf8c389dba6e0624b9718caaf149690b56c9d6cd55185b619"
+    },
+    {
+      "file": "block-east-c7.png",
+      "size": [
+        240,
+        336
+      ],
+      "colours": 57,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        71266
+      ],
+      "sha256": "2f8929bda839d0863c898407112024731b0ef5597f1a568a694a2dc40b50f489"
+    },
+    {
+      "file": "block-inn-b-c7.png",
+      "size": [
+        288,
+        528
+      ],
+      "colours": 57,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        124160
+      ],
+      "sha256": "019f53687e8c4ea647d343e153dfb99342b61bb24b31d05c97b6551e4d20d5fc"
+    },
+    {
+      "file": "block-market-c7.png",
+      "size": [
+        480,
+        336
+      ],
+      "colours": 52,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        134737
+      ],
+      "sha256": "d6c54ce5e1f97fe7108fa0fc95d549ca4f709f47abc5b1e5d7fe4d0f0c8f699a"
+    },
+    {
+      "file": "block-ne-c7.png",
+      "size": [
+        528,
+        384
+      ],
+      "colours": 60,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        181362
+      ],
+      "sha256": "0886a63a81273de6a58e4725de4afcd5293f758a8311b49ecd04c66f1d9c8174"
+    },
+    {
+      "file": "block-nw-a-c7.png",
+      "size": [
+        432,
+        384
+      ],
+      "colours": 51,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        152452
+      ],
+      "sha256": "7d6e7a457e624b90a6cc173601fdfbc803a791bcfaafc24c3447c3188c7493dc"
+    },
+    {
+      "file": "block-se-c7.png",
+      "size": [
+        576,
+        336
+      ],
+      "colours": 50,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        180519
+      ],
+      "sha256": "81d1288134b1a158093b0ecab638d9882de3673688983b4372fce9996489b484"
+    },
+    {
+      "file": "block-se-main-c7.png",
+      "size": [
+        432,
+        240
+      ],
+      "colours": 48,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        85375
+      ],
+      "sha256": "d79ed1184b2a448c9c8828a49a58f91959d09ff24815ba2beaaff945a4094c9a"
+    },
+    {
+      "file": "block-se-wing-c7.png",
+      "size": [
+        48,
+        144
+      ],
+      "colours": 18,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6241
+      ],
+      "sha256": "9f8060ecca5464a5b9870be3f9b9ea8362118331cb7f1acdd87471252e059244"
+    },
+    {
+      "file": "block-sm-c7.png",
+      "size": [
+        240,
+        240
+      ],
+      "colours": 27,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        50203
+      ],
+      "sha256": "55688b2b19ee289eb1a76ecaff22af1996367d77b5de449f460323f90094a5e3"
+    },
+    {
+      "file": "block-sw-c7.png",
+      "size": [
+        288,
+        240
+      ],
+      "colours": 43,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        63126
+      ],
+      "sha256": "c22cdfd34ea1a193accd0b7e182756ded4368f372f7d3f0b233bac4c70726178"
+    },
+    {
+      "file": "block-west-c7.png",
+      "size": [
+        288,
+        336
+      ],
+      "colours": 46,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        84611
+      ],
+      "sha256": "753de12be7659b3aa241aa034572cde80e298ed91d20c9d5f7fb792281a930df"
+    },
+    {
+      "file": "church-b-c7.png",
+      "size": [
+        240,
+        432
+      ],
+      "colours": 56,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        55883
+      ],
+      "sha256": "dbd594dd5e6f060767668961b3d7064ed393696b3bdebbad685679631910d6b5"
+    },
+    {
+      "file": "churchyard-c7.png",
+      "size": [
+        144,
+        96
+      ],
+      "colours": 43,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        12897
+      ],
+      "sha256": "fdda6eeb370b6839b7557332a0c3d139e77e13b01cd3b460b944897311f0cc09"
+    },
+    {
+      "file": "corner-bastion-c7.png",
+      "size": [
+        144,
+        192
+      ],
+      "colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        21747
+      ],
+      "sha256": "9ecc89f3d460c1889da7b1db4ec4f279776f55cad2f492001f5544d89498d0ca"
+    },
+    {
+      "file": "corner-house-c7.png",
+      "size": [
+        144,
+        240
+      ],
+      "colours": 52,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        30569
+      ],
+      "sha256": "979aa49ebbfa54f91d17d0423c1a5a9e26a4ab1754047bbfcf3e7f5c6d8e9b57"
+    },
+    {
+      "file": "delivery-c7.png",
+      "size": [
+        48,
+        24
+      ],
+      "colours": 25,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        665
+      ],
+      "sha256": "8963267fe13e81f265d07d6ab0533f35658f432346d498464d31e9393f1c7a8f"
+    },
+    {
+      "file": "firewall-left-c7.png",
+      "size": [
+        16,
+        48
+      ],
+      "colours": 7,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        768
+      ],
+      "sha256": "4a9f264f7fb277bee1c9bb36e9f39ab999322b6fc03f15466b0f73d8c9b48a18"
+    },
+    {
+      "file": "firewall-right-c7.png",
+      "size": [
+        16,
+        48
+      ],
+      "colours": 10,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        768
+      ],
+      "sha256": "e2f1e892df91d9ef7800e6005e576d4c589b78a9756af6b50c1cbd9e9183cf9e"
+    },
+    {
+      "file": "gate-assembly-c7.png",
+      "size": [
+        192,
+        192
+      ],
+      "colours": 37,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        23284
+      ],
+      "sha256": "86d205ed345a4da1f4366102536f452301bfbe33057e313131d563e3a0ef79e0"
+    },
+    {
+      "file": "gate-c-c7.png",
+      "size": [
+        144,
+        192
+      ],
+      "colours": 37,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        16743
+      ],
+      "sha256": "bc151a43f7093fa4816c84df4b2fcb46a90ea2748f5af033562ce4bf72141ecb"
+    },
+    {
+      "file": "gate-stair-c7.png",
+      "size": [
+        48,
+        192
+      ],
+      "colours": 27,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6541
+      ],
+      "sha256": "28c96fbef74ebdc34f2b277d4974993eb780dff230b915c047ab206488ea0459"
+    },
+    {
+      "file": "ground-a-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2061
+      ],
+      "sha256": "4975505ec5095993a484060e0c3579c220f44936aa6ccb6a52ba0f72bd84f0eb"
+    },
+    {
+      "file": "ground-a-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 43,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4170
+      ],
+      "sha256": "2c3d790e3c0c7423eb36cb818aee0fdef636667eb5b49c2a86717794a991d0cb"
+    },
+    {
+      "file": "ground-b-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2061
+      ],
+      "sha256": "4975505ec5095993a484060e0c3579c220f44936aa6ccb6a52ba0f72bd84f0eb"
+    },
+    {
+      "file": "ground-b-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 34,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4256
+      ],
+      "sha256": "4a9e39c5b84e95d55f246db54d02db950a38e5bfb6e32c367d5d10cddf1e341d"
+    },
+    {
+      "file": "ground-corner-w3-c7.png",
+      "size": [
+        144,
+        48
+      ],
+      "colours": 40,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6394
+      ],
+      "sha256": "052c4b5eea7d68d2511f6769b0d14978f9da1bc3dbe5b5946e4c516f85b8d2b1"
+    },
+    {
+      "file": "ground-east-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 30,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        1906
+      ],
+      "sha256": "65ab06c27541f552e99690aa7b12f443af51df85efe15e27052be9c2e619a080"
+    },
+    {
+      "file": "ground-east-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 37,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3807
+      ],
+      "sha256": "2afeb2f55b3997f3a84e75a0c810ff3ad69aaea9c5c7faaa54acedc41df30f8d"
+    },
+    {
+      "file": "ground-north-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 23,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2144
+      ],
+      "sha256": "6ffb09f4d06f392f39177e3ba3a814826bebdb1127fc5223446dca76eff4470b"
+    },
+    {
+      "file": "ground-north-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 26,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4258
+      ],
+      "sha256": "1dc9b01aa9cf6d7b2d1da40260df0972466e6b6fb70c2af631e3f6076ce78c25"
+    },
+    {
+      "file": "ground-west-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2025
+      ],
+      "sha256": "c6e4c41171dcc36c9a4bf4044d3a73de72f39e4c607eada86661871202229357"
+    },
+    {
+      "file": "ground-west-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 36,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3882
+      ],
+      "sha256": "938e9f0da10dd848a8453c54f9d39d2c75f87b002ad7bab45b57af6aa40dc922"
+    },
+    {
+      "file": "guard-c7.png",
+      "size": [
+        12,
+        24
+      ],
+      "colours": 18,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6,
+        167
+      ],
+      "sha256": "1b62af85d26326af1603d4e2de00249512c42157c50a8b95ea682ba623577635"
+    },
+    {
+      "file": "guildhall-c7r1.png",
+      "size": [
+        192,
+        336
+      ],
+      "colours": 44,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        42816
+      ],
+      "sha256": "91c3f7ae0e8a8b9b8e8dd09368bc769654a278205f3b289be3814758f618d3a9"
+    },
+    {
+      "file": "house-a-w1-c7r1.png",
+      "size": [
+        48,
+        192
+      ],
+      "colours": 38,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7554
+      ],
+      "sha256": "d4116f80eadd28b2a26b771d2fced52597fab702b73e7074769976b245f78194"
+    },
+    {
+      "file": "house-a-w2-c7r1.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 45,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        15592
+      ],
+      "sha256": "6a59c2ed8ef475180bd00189b5a1b27421f515ac503481e235ca555f565b7f31"
+    },
+    {
+      "file": "house-b-w1-c7r1.png",
+      "size": [
+        48,
+        192
+      ],
+      "colours": 38,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7554
+      ],
+      "sha256": "d4116f80eadd28b2a26b771d2fced52597fab702b73e7074769976b245f78194"
+    },
+    {
+      "file": "house-b-w2-c7r1.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 43,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        14917
+      ],
+      "sha256": "b9ab75caf831ad6cd80ba5b46b76454b092127cbd0004cfdf7824258f1e9ad11"
+    },
+    {
+      "file": "house-east-w1-c7r1.png",
+      "size": [
+        48,
+        192
+      ],
+      "colours": 38,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7398
+      ],
+      "sha256": "880355beef12580ddc72d0c2d67403c59dbb92412e7edd2b288b82f09e8b7847"
+    },
+    {
+      "file": "house-east-w2-c7r1.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 42,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        14824
+      ],
+      "sha256": "1647b07613df3d60c60f5b5cd099609dd9cc40e651fa45cb80ef6b4cc89f32ea"
+    },
+    {
+      "file": "house-north-w1-c7r1.png",
+      "size": [
+        48,
+        192
+      ],
+      "colours": 33,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7873
+      ],
+      "sha256": "84f0f3308451e698bb741c280924614f21ac9768dfcf7296a1df162d7e81ad7b"
+    },
+    {
+      "file": "house-north-w2-c7r1.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 39,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        15684
+      ],
+      "sha256": "4c813edaf5651837b8aff73486dfd934390ab8853a982fc57c5e2452f76e197f"
+    },
+    {
+      "file": "house-west-w1-c7r1.png",
+      "size": [
+        48,
+        192
+      ],
+      "colours": 38,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7409
+      ],
+      "sha256": "8c58685cee87c6485f80aa08a8948fc9ec24a57e436e568b9d62aa5cf2ccfa81"
+    },
+    {
+      "file": "house-west-w2-c7r1.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 41,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        14582
+      ],
+      "sha256": "8947a2351904006375f98c7adfc7381ef8d92a8d10a42f003235e9affc1e07fe"
+    },
+    {
+      "file": "inn-patron-a-c7.png",
+      "size": [
+        12,
+        24
+      ],
+      "colours": 16,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        152
+      ],
+      "sha256": "5fb0ff031a9a4b3d4e7426deea4db5477e41fabbf475ade6d7d452c588497bab"
+    },
+    {
+      "file": "inn-patron-b-c7.png",
+      "size": [
+        12,
+        24
+      ],
+      "colours": 12,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        151
+      ],
+      "sha256": "fbb603270bccf39594656be1a76cb980526036d391681115bed5ab7176bea0ed"
+    },
+    {
+      "file": "inn-west-c7r1.png",
+      "size": [
+        96,
+        240
+      ],
+      "colours": 54,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        19155
+      ],
+      "sha256": "a499035ce49635f084849ea2cb6b9537eb82bc71726103c5ae0f98239bbf9b7e"
+    },
+    {
+      "file": "kerb-h-c7.png",
+      "size": [
+        48,
+        3
+      ],
+      "colours": 3,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        144
+      ],
+      "sha256": "d147468a95d3108e237212be2af0ba306f07ff7db7bbd6737c3acd3c9000933a"
+    },
+    {
+      "file": "kerb-v-c7.png",
+      "size": [
+        3,
+        48
+      ],
+      "colours": 3,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        144
+      ],
+      "sha256": "2020fce638c91d98159379aff45c93f15f8fe747a371ed041e796d46deb08fa8"
+    },
+    {
+      "file": "laundry-worker-c7.png",
+      "size": [
+        12,
+        24
+      ],
+      "colours": 17,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        159
+      ],
+      "sha256": "8b2c7e8fa330a488e3acd209ef95d4908567131f6fd2c157f7fb294ba87a6b58"
+    },
+    {
+      "file": "main-paving-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 3,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "4279e1d83c04a53709de2c79a6c1736f7e80f6e282f69ad12109ce8e44674a42"
+    },
+    {
+      "file": "main-paving-v1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 3,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "3a839dd69cf63958269b38e557b22c76b2296833e7f0b255b66e6f8f8b1ef76a"
+    },
+    {
+      "file": "main-paving-v2-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 3,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "8d7ed6e123e4d2166bb675b5e01bd72cd0a8764460ca06d2cc2f701dcb79a194"
+    },
+    {
+      "file": "market-north-c7.png",
+      "size": [
+        192,
+        144
+      ],
+      "colours": 39,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        22200
+      ],
+      "sha256": "4f179d1ad2e6d4304327be38ad574496d778e16de272a2981994d9acf1bf1d2b"
+    },
+    {
+      "file": "receiving-left-c7.png",
+      "size": [
+        16,
+        144
+      ],
+      "colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2303
+      ],
+      "sha256": "28f3de9187d36545084f7f844bc2cdc5ecf643df4c94e6079e0432748e341e29"
+    },
+    {
+      "file": "receiving-right-c7.png",
+      "size": [
+        16,
+        144
+      ],
+      "colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2285
+      ],
+      "sha256": "d15ef2134e9028be1e9303869062cf3768585ae427d7c16599320b00c314e31e"
+    },
+    {
+      "file": "roof-a-w1-c7r1.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 30,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3462
+      ],
+      "sha256": "2f9b144a80cf8d569a90f31d33f9536697390149a582383c81e90085de3d40a2"
+    },
+    {
+      "file": "roof-a-w1-d2-c7.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4216
+      ],
+      "sha256": "a7cc3d0843613da1bf928a9e894fde7102cac95fabd6802209c213b8c7d5baf6"
+    },
+    {
+      "file": "roof-a-w1-d3-c7.png",
+      "size": [
+        48,
+        144
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6424
+      ],
+      "sha256": "09c6a2e43c05f54bc4fb2a1e0e39d4bb90d2881af1772548dc02aeb7a746e9d0"
+    },
+    {
+      "file": "roof-a-w2-c7r1.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 36,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7238
+      ],
+      "sha256": "d9da2e783d82e01994a673d955bb7957da8a6d560c03e237978842e243d34c48"
+    },
+    {
+      "file": "roof-a-w2-d2-c7.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        8816
+      ],
+      "sha256": "7df8ab891048b09d04119f64dc32f7283d4119f4d8cb1fe2943721d17af9b1b3"
+    },
+    {
+      "file": "roof-a-w2-d3-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        13328
+      ],
+      "sha256": "caac1d5d4efa88176a86b662302eb49c254eaf329b6dd85181772db0d3d23b50"
+    },
+    {
+      "file": "roof-a-w3-d2-c7.png",
+      "size": [
+        144,
+        96
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        13419
+      ],
+      "sha256": "ecddd0a4c72e149f115d2bfc699858f935fc889f368fb7e0df2cc0cbd650d9dc"
+    },
+    {
+      "file": "roof-a-w3-d3-c7.png",
+      "size": [
+        144,
+        144
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        20235
+      ],
+      "sha256": "2a8526750280687ed48007e0723f9bc5746547fa88ca3f35d204c9413d13ecda"
+    },
+    {
+      "file": "roof-b-w1-c7r1.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 30,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3462
+      ],
+      "sha256": "2f9b144a80cf8d569a90f31d33f9536697390149a582383c81e90085de3d40a2"
+    },
+    {
+      "file": "roof-b-w2-c7r1.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 40,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6448
+      ],
+      "sha256": "dcd9ec18830e522902f332fa651a06419b1adbc5435cf35c5b00b182d999d387"
+    },
+    {
+      "file": "roof-corner-c7r1.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 29,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7225
+      ],
+      "sha256": "d763e59ad99c04dc1dc6adf3704f2b3f15f6869ad62e349acfb65bd2a877d729"
+    },
+    {
+      "file": "roof-east-w1-c7r1.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 29,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3421
+      ],
+      "sha256": "3547c47a5c88e5b3056a72f5f9319423a776e607ba137dd571f312ca56347e4c"
+    },
+    {
+      "file": "roof-east-w2-c7r1.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 33,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6871
+      ],
+      "sha256": "7775320b7f1cfd362164619639f98ef43058fb462c428e6cc0021979aca231ad"
+    },
+    {
+      "file": "roof-fill-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 4,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "7c384128951d8be4875aae16370bb4573e4893c58fd6b62d742eeed6fc7f552d"
+    },
+    {
+      "file": "roof-hip-left-d2-c7.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4406
+      ],
+      "sha256": "84d18bec328da7e927fa8ccbbe6843aa6d290129e59e3fc86ed0b2f2386453a7"
+    },
+    {
+      "file": "roof-hip-left-d3-c7.png",
+      "size": [
+        48,
+        144
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6662
+      ],
+      "sha256": "02d6dd6735d44fa5d48875f3a9d1f764774319eee43f0d651c045849009b5336"
+    },
+    {
+      "file": "roof-hip-right-d2-c7.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 7,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4412
+      ],
+      "sha256": "e1c34a5e4975c62474194d96b2da44bc05ac9fb26e09c689656caaedc393762c"
+    },
+    {
+      "file": "roof-hip-right-d3-c7.png",
+      "size": [
+        48,
+        144
+      ],
+      "colours": 7,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6668
+      ],
+      "sha256": "5879427a18b341c9ea42ce7d928facf49c64cd822246f5b94820ecf1837e3a02"
+    },
+    {
+      "file": "roof-lean-c7r1.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 8,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4216
+      ],
+      "sha256": "a7cc3d0843613da1bf928a9e894fde7102cac95fabd6802209c213b8c7d5baf6"
+    },
+    {
+      "file": "roof-north-w1-c7r1.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 28,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3570
+      ],
+      "sha256": "51596244e451a7d9e414041412df37383f9a234dead88dbfd8d3ffbccbcd19d5"
+    },
+    {
+      "file": "roof-north-w2-c7r1.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        7152
+      ],
+      "sha256": "f02ebba038fbe8d95ec600d9a59fa6ab5c37c3ac63947be6c7d815e615590a22"
+    },
+    {
+      "file": "roof-west-w1-c7r1.png",
+      "size": [
+        48,
+        96
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3358
+      ],
+      "sha256": "ef3e227ab25770286240aaf03d2875efddb25c5fbf247c28b032583ddd8ad373"
+    },
+    {
+      "file": "roof-west-w2-c7r1.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 38,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6529
+      ],
+      "sha256": "7251abed7a6beb1d0fbb0965cef286422a9233bec7034ce879a0651e3fb97079"
+    },
+    {
+      "file": "sign-apothecary-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 44,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3335
+      ],
+      "sha256": "0b4eaadaa0d455237daf1ef0554f96ea12c2865170f1bb861bda0c3019e8ff56"
+    },
+    {
+      "file": "sign-baker-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 33,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3432
+      ],
+      "sha256": "a738f11b255cdee6e9dd3ae847068907324d34cd533ccf197dcce726bedfddbd"
+    },
+    {
+      "file": "sign-butcher-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 33,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3125
+      ],
+      "sha256": "02f6de2507a622b18069fb0c20d6d6306599138c3daaff65b3eee6cfa72752c1"
+    },
+    {
+      "file": "sign-cobbler-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 33,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2950
+      ],
+      "sha256": "e3312f360588806cb16099e64a97534e81fb1ba7c11dcd6fb9f60cf830cdc6b8"
+    },
+    {
+      "file": "sign-inn-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 37,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3494
+      ],
+      "sha256": "f1f70e56db0ffd9aeb8a46299211b99f8512527af3f75c5d0c8663c9e47ba4bf"
+    },
+    {
+      "file": "sign-scribe-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 41,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3386
+      ],
+      "sha256": "22d8fbc1aac0b4d94d882126e7a6c095fb710812f5fa2aa105c6462f16b32b47"
+    },
+    {
+      "file": "sign-smith-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 35,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3426
+      ],
+      "sha256": "f96d3161dd86cc1699e8d9619d58e6a3d34bd773b0007dd66bcab21e60a7f6e6"
+    },
+    {
+      "file": "sign-tailor-c7.png",
+      "size": [
+        64,
+        72
+      ],
+      "colours": 34,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        3404
+      ],
+      "sha256": "a1e4dc4e4ccba9bb40c57428005801753c6e42fc2a5b25299f89ff081be5dbec"
+    },
+    {
+      "file": "sorting-table-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 34,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        1695
+      ],
+      "sha256": "bbc9400900f6410f45680d4100eecb079b3804a759fbdbe08c53a1c16887227f"
+    },
+    {
+      "file": "square-paving-0-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 2,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "206721ffd3d1952bd33b6a11f6c0bdb27688f6e59265f5663fa2596c17280941"
+    },
+    {
+      "file": "square-paving-1-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 2,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "b1160813ed242f30bea1441a5d3b5a44ceb08ee8438cac1c7e042c3402d59e67"
+    },
+    {
+      "file": "square-paving-2-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 2,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "604c02a0856c83359e589ad9f00edf2a30ab3807a1a7d793efd6125aa8cc80d6"
+    },
+    {
+      "file": "square-paving-3-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 2,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "c23345012a94f8f7ee44b2648b531f506cff661585cf0d70548bf5a4a579a3cd"
+    },
+    {
+      "file": "storey-a-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 26,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2080
+      ],
+      "sha256": "7a99d2516c9fdf67f378cfe90c43398714b3cecbf523d2dd7d9969dbaffd540c"
+    },
+    {
+      "file": "storey-a-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 28,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4280
+      ],
+      "sha256": "dbede053f3eb94b7999d17afd6a008bd95f8cddd6fe8ad0315a9ff7d3fd2faa8"
+    },
+    {
+      "file": "storey-b-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 26,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2080
+      ],
+      "sha256": "7a99d2516c9fdf67f378cfe90c43398714b3cecbf523d2dd7d9969dbaffd540c"
+    },
+    {
+      "file": "storey-b-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 30,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4305
+      ],
+      "sha256": "f30cc847cb88aa12cf0ccc1f42d11469021d2d8eaa5790340697381b77230d97"
+    },
+    {
+      "file": "storey-corner-w3-c7.png",
+      "size": [
+        144,
+        48
+      ],
+      "colours": 38,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        6473
+      ],
+      "sha256": "901c09ed38c11d1f421af0d6876ea06a76be5e077eb75d94b96fcc8ce75c020c"
+    },
+    {
+      "file": "storey-east-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 33,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2102
+      ],
+      "sha256": "5b6d120f07eaf7dc3a0a542b548d8e88f05e85f322521321b5b44ee39b7a87d4"
+    },
+    {
+      "file": "storey-east-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 39,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4211
+      ],
+      "sha256": "6297aa6879a224dd3d9d9671cef68bbed59ebcb884c71517682b43fe5b4c0fa0"
+    },
+    {
+      "file": "storey-north-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 24,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2173
+      ],
+      "sha256": "e427068123f50d118852aa14803778336b70c2bc0c47efdac4775473040379a5"
+    },
+    {
+      "file": "storey-north-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4305
+      ],
+      "sha256": "bedb85be1236b4da9d5c2bce8f5dc54c5f966ffa815f17ea834f4f0d67e22b77"
+    },
+    {
+      "file": "storey-west-w1-c7r1.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 28,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2078
+      ],
+      "sha256": "d2db8964d429ca082fae1c7c3c93ee0a7a26a345881f34eeb973b46fc3a90cf8"
+    },
+    {
+      "file": "storey-west-w2-c7r1.png",
+      "size": [
+        96,
+        48
+      ],
+      "colours": 32,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        4275
+      ],
+      "sha256": "53adf4ecc95af25faa66bae9772ea11ff98af458ec3a91a90ddc49b95c8e2563"
+    },
+    {
+      "file": "street-turn-c7.png",
+      "size": [
+        48,
+        48
+      ],
+      "colours": 3,
+      "alpha": [
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        2304
+      ],
+      "sha256": "315c56f529361ec45c715e32a303dc8df4f38191ba59b8cb522c35744a7ecf56"
+    },
+    {
+      "file": "wall-0-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 29,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        13414
+      ],
+      "sha256": "d86d7e14e3ad1c856f311ca765120323125d926f791bc2a9bace913ee38fd9ec"
+    },
+    {
+      "file": "wall-0-short-c7.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 29,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        8806
+      ],
+      "sha256": "193b94f6c7dea707d9619ec54121a8b3505acd8356fd92cf6a9f2fcae4d34840"
+    },
+    {
+      "file": "wall-1-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        13391
+      ],
+      "sha256": "e1254a9d1ad192d61f01862d4fc4d610ddfcb4fd41c8026b08a99228d1fd7614"
+    },
+    {
+      "file": "wall-1-short-c7.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 31,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        8783
+      ],
+      "sha256": "aa9ae2b1288d5778b77fea4ab8bd52623db052a90aee82a11131ff1a5003728c"
+    },
+    {
+      "file": "wall-2-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 30,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        13399
+      ],
+      "sha256": "1c3a984a8adc0775169266f3618fc6ed80e4440e0d8ce2b2c96486cb92251098"
+    },
+    {
+      "file": "wall-2-short-c7.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 29,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        8791
+      ],
+      "sha256": "e891f635cad9fcff2292cf4cf6a02641a266ffc5e99fc388a20062acbc3e04b8"
+    },
+    {
+      "file": "wall-3-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 30,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        13413
+      ],
+      "sha256": "1e591110205c701c512c100472349c5e00e1048e37f8b777c94bb1228a54d64b"
+    },
+    {
+      "file": "wall-3-short-c7.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 30,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        8805
+      ],
+      "sha256": "56656d3fdc0f44003f8be9c12ca6f0aaf2ec7a39dc8530f088ecdfd542473d90"
+    },
+    {
+      "file": "wall-4-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 32,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        13407
+      ],
+      "sha256": "bd1f87feeba3b44a3cd3512784260cb93238b8f126237f9fce58b724d1f10ac3"
+    },
+    {
+      "file": "wall-4-short-c7.png",
+      "size": [
+        96,
+        96
+      ],
+      "colours": 29,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        8799
+      ],
+      "sha256": "84faa12523b4a0c9cb4066a1614b5b9fb9a6643fee8b63807766f4d8a477f3a8"
+    },
+    {
+      "file": "wall-strip-c7.png",
+      "size": [
+        480,
+        144
+      ],
+      "colours": 32,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        67024
+      ],
+      "sha256": "1e7e1be3c3b2ee6c44c38a9ce908566d76f9f342440d9105d09bdf49d61a3085"
+    },
+    {
+      "file": "wall-tower-c7.png",
+      "size": [
+        96,
+        240
+      ],
+      "colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        17836
+      ],
+      "sha256": "387b32d0876fb5b4cd7024ad3f67d2d6b389935663a26a7f3157583751ca26b0"
+    },
+    {
+      "file": "wall-tower-mid-c7.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        14336
+      ],
+      "sha256": "13a68129fc6007851136b97804bbb5af9249215e72b86cd5f6ccbb5013261f60"
+    },
+    {
+      "file": "wall-tower-mid-v1-c7.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 22,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        14828
+      ],
+      "sha256": "22d8c8bf8442f2bc5ee6cfc225e61c6d57624fa203c4e83b5d03ad807ddb3ef2"
+    },
+    {
+      "file": "wall-tower-mid-v2-c7.png",
+      "size": [
+        96,
+        192
+      ],
+      "colours": 39,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        14165
+      ],
+      "sha256": "7c3e3b71b615ce8429019a58b2a2baa91bf92bdb2bb606ff7f819bf0a63e47c9"
+    },
+    {
+      "file": "wall-tower-short-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        10832
+      ],
+      "sha256": "d12a2b3d5eed6102234017bf6b6e3c0a3fdbb6521f6bf1a5bf46c475a276e91f"
+    },
+    {
+      "file": "wall-tower-short-v1-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 22,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        11324
+      ],
+      "sha256": "e0ae23469b79d187ac69359a0fce2afa54f8f2c28ba237768cffc0c78e5c56e0"
+    },
+    {
+      "file": "wall-tower-short-v2-c7.png",
+      "size": [
+        96,
+        144
+      ],
+      "colours": 39,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        10661
+      ],
+      "sha256": "a7b104bc8c34996f7c5c25d2df0b06cb207041cc13c280bb44f79dec1401849f"
+    },
+    {
+      "file": "wall-walk-c7.png",
+      "size": [
+        48,
+        24
+      ],
+      "colours": 15,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        1151
+      ],
+      "sha256": "2714112ef6a903dcd1493bbc436998e389ca0cacf4138ed2a42434d8bc6043e0"
+    },
+    {
+      "file": "woodpile-c7.png",
+      "size": [
+        24,
+        24
+      ],
+      "colours": 14,
+      "alpha": [
+        0,
+        255
+      ],
+      "hidden_rgb": 0,
+      "components": [
+        417
+      ],
+      "sha256": "15051f6020d9c0ab43405cd6ec12497338ec27f188deaaf511acca1247e1b824"
+    }
+  ],
+  "access": [
+    {
+      "case": "gate-portal",
+      "feet": [
+        1104,
+        1350
+      ],
+      "box": [
+        1008,
+        1248,
+        1248,
+        1440
+      ],
+      "reveal_owners": [
+        "gate"
+      ],
+      "surface_owner": null,
+      "different_pixels": 7762,
+      "ordering": "ground actor by actual feet; stair actor between owned tread and cheek layers",
+      "runtime_claim": false
+    },
+    {
+      "case": "gate-stair",
+      "feet": [
+        1196,
+        1378
+      ],
+      "box": [
+        1008,
+        1248,
+        1248,
+        1440
+      ],
+      "reveal_owners": [
+        "gate"
+      ],
+      "surface_owner": "gate",
+      "different_pixels": 7770,
+      "ordering": "ground actor by actual feet; stair actor between owned tread and cheek layers",
+      "runtime_claim": false
+    },
+    {
+      "case": "market-entrance",
+      "feet": [
+        900,
+        1164
+      ],
+      "box": [
+        768,
+        1008,
+        1056,
+        1248
+      ],
+      "reveal_owners": [
+        "market-hall"
+      ],
+      "surface_owner": null,
+      "different_pixels": 14915,
+      "ordering": "ground actor by actual feet; stair actor between owned tread and cheek layers",
+      "runtime_claim": false
+    },
+    {
+      "case": "northwest-court",
+      "feet": [
+        348,
+        492
+      ],
+      "box": [
+        240,
+        336,
+        528,
+        672
+      ],
+      "reveal_owners": [
+        "northwest-S-5",
+        "northwest-S-6",
+        "northwest-S-7",
+        "northwest-S-8",
+        "northwest-S-9"
+      ],
+      "surface_owner": null,
+      "different_pixels": 20605,
+      "ordering": "ground actor by actual feet; stair actor between owned tread and cheek layers",
+      "runtime_claim": false
+    },
+    {
+      "case": "church-porch",
+      "feet": [
+        766,
+        1020
+      ],
+      "box": [
+        576,
+        864,
+        864,
+        1104
+      ],
+      "reveal_owners": [],
+      "surface_owner": null,
+      "different_pixels": 0,
+      "ordering": "ground actor by actual feet; stair actor between owned tread and cheek layers",
+      "runtime_claim": false
+    }
+  ],
+  "visual_acceptance": "Saved-art self-review; no independent critic or runtime collision approval asserted."
+}

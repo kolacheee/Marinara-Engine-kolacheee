@@ -1,0 +1,148 @@
+{
+  "part": "C7",
+  "repair": "critic-r17C7-2",
+  "items": [
+    {
+      "item": 1,
+      "title": "Perimeter enclosure",
+      "change": "Nine explicit rings, 107 outward/return lots, connected pitched rear wings, and only purposeful retained courts. Church west range and both market returns close former aprons.",
+      "evidence": "r17-C7-lot-ownership-1x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 2,
+      "title": "Street rank",
+      "change": "Measured96px main route with an orthogonal bend,48px ordinary routes and24px service passages. Southeast has a48x96 setback; stale road/lot overlaps were removed.",
+      "evidence": "r17-C7-footprints-clearance-1x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 3,
+      "title": "Civic square",
+      "change": "Guildhall north, attached church west, inn east and market with attached southern returns. The336x336 core, notch, six stalls and fountain approaches are retained.",
+      "evidence": "r17-C7-acceptance-square-1x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 4,
+      "title": "Roof and return family",
+      "change": "New terrace B supplies all six width/depth roofs and both hip hands; newly drawn whole corner and narrow west house supply real side volumes. Passing guildhall stays unchanged.",
+      "evidence": "r17-C7-critic2-roof-family-3x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 5,
+      "title": "Roof contacts",
+      "change": "Whole pitched rear roofs replace texture carpets. Native shared eaves and existing16px receivers join actual adjacent properties; shallow side elevations were lowered to avoid window clipping.",
+      "evidence": "r17-C7-unequal-height-both-hands-3x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 6,
+      "title": "Market",
+      "change": "Passing complete192x144 market retained; expanded southern ring and attached roofs enclose its sides and leave the north approach clear.",
+      "evidence": "r17-C7-piece-block-market-c7-4x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 7,
+      "title": "Gate",
+      "change": "Passing coherent gate chamber, bearings, landing and stair retained unchanged, with wall-line towers and96px portal.",
+      "evidence": "r17-C7-access-gate-stair-3x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 8,
+      "title": "Entries",
+      "change": "New inn blank sign bay preserves complete windows and porch. Courtyard arch interiors show existing painted pavement; jambs and thresholds are retained.",
+      "evidence": "r17-C7-piece-inn-west-c7r1-4x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 9,
+      "title": "Signs",
+      "change": "Passing physical signs remain unchanged. Inn sign moved to a measured clear bay; the tailor sign now retains every painted pixel in the normal city.",
+      "evidence": "r17-C7-trade-signs-1x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 10,
+      "title": "Curtain seams",
+      "change": "Passing wall variants, their two-column joints and all25 pair proofs retained and regenerated.",
+      "evidence": "r17-C7-wall-all-25-pairs-3x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 11,
+      "title": "Material scale",
+      "change": "New roof drawings use larger coherent clusters with identical native tile scale across widths/depths; no roof-fill carpets remain in city composition.",
+      "evidence": "r17-C7-critic2-roof-family-1x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 12,
+      "title": "Paving",
+      "change": "New48px image-painted turn palette-matched to the approved road, with registered painted edge joints; moved to the actual cell-aligned bend.",
+      "evidence": "r17-C7-repeat-street-turn-c7-4x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 13,
+      "title": "Shadows",
+      "change": "Continuous north-wall casts union without detached bright gaps; actual painted caster silhouettes and separate receiver masks retained, maximum alpha88.",
+      "evidence": "r17-C7-city-greyscale-1x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 14,
+      "title": "Wall circulation",
+      "change": "Passing north stair, walk and gate access art remain in wall bands with static access/reveal proofs.",
+      "evidence": "r17-C7-review.html",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 15,
+      "title": "Height hierarchy",
+      "change": "Peripheral housing is predominantly1\u20132 storeys. Civic neighbours were lowered; three-/five-storey merchants remain central/east.",
+      "evidence": "r17-city-final-squint.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 16,
+      "title": "Variation",
+      "change": "New corner bays/dormer; north and south rows now vary actual ground/storey/roof selections. Sliding five-lot runs are checked from selected layer filenames.",
+      "evidence": "r17-C7-QC.json",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 17,
+      "title": "Precinct",
+      "change": "Passing3x2-cell churchyard with slabs and market-side gate retained.",
+      "evidence": "r17-C7-piece-churchyard-c7-4x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 18,
+      "title": "Court work",
+      "change": "Northwest now uses the actual laundry rack, northeast sorting table is exposed by lower foreground lots, southwest woodpile moved inside its small court.",
+      "evidence": "r17-city-final-crop-street-3x.png",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 19,
+      "title": "Inhabitants",
+      "change": "Passing laundry worker, patrons, bench, delivery and stair guard retained beside their tasks; normal and reveal states regenerated.",
+      "evidence": "r17-C7-review.html",
+      "status": "repair implemented; visual review pending"
+    },
+    {
+      "item": 20,
+      "title": "Acceptance",
+      "change": "All current asset, seam, repeat,16x12, square, unequal-height, actor, whole-city, comparison and enlargement sheets regenerated from the repaired sources.",
+      "evidence": "r17-C7-review.html",
+      "status": "repair implemented; visual review pending"
+    }
+  ],
+  "precedence": "BRIEF-17 and coordinator structure rules control streets, lots and allocations. No panel waiver enlarges the gate, market or lots, reduces sign scale or authorizes cross-property overlays.",
+  "acceptance": "Measured static-art checks are not independent visual approval or runtime collision validation."
+}

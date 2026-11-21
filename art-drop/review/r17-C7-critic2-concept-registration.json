@@ -1,0 +1,74 @@
+[
+  {
+    "concept": "a",
+    "source": "r17-C7-critic2-source-concept-a-grid-composite.png",
+    "source_size": [
+      2688,
+      2016
+    ],
+    "native_size": [
+      1920,
+      1440
+    ],
+    "section_size": [
+      1448,
+      1086
+    ],
+    "overlap": [
+      208,
+      156
+    ],
+    "guide": "r17-C7-critic2-source-concept-a-grid-guide.png",
+    "layout_guide": "r17-C7-critic2-concept-layout-guide.png",
+    "operation": "Fresh large section drawings; minimum-difference source-pixel seams; reference palette; exact64-vote mode; hard alpha and one-pixel cleanup; existing painted ditch wrapped behind north wall",
+    "plan": "The measured nine-block plan is the paintover guide. Concept strokes are projected art; exact composer clearances are separately audited."
+  },
+  {
+    "concept": "b",
+    "source": "r17-C7-critic2-source-concept-b-grid-composite.png",
+    "source_size": [
+      2688,
+      2016
+    ],
+    "native_size": [
+      1920,
+      1440
+    ],
+    "section_size": [
+      1448,
+      1086
+    ],
+    "overlap": [
+      208,
+      156
+    ],
+    "guide": "r17-C7-critic2-source-concept-b-grid-guide.png",
+    "layout_guide": "r17-C7-critic2-concept-layout-guide.png",
+    "operation": "Fresh large section drawings; minimum-difference source-pixel seams; reference palette; exact64-vote mode; hard alpha and one-pixel cleanup; existing painted ditch wrapped behind north wall",
+    "plan": "The measured nine-block plan is the paintover guide. Concept strokes are projected art; exact composer clearances are separately audited."
+  },
+  {
+    "concept": "c",
+    "source": "r17-C7-critic2-source-concept-c-grid-composite.png",
+    "source_size": [
+      2688,
+      2016
+    ],
+    "native_size": [
+      1920,
+      1440
+    ],
+    "section_size": [
+      1448,
+      1086
+    ],
+    "overlap": [
+      208,
+      156
+    ],
+    "guide": "r17-C7-critic2-source-concept-c-grid-guide.png",
+    "layout_guide": "r17-C7-critic2-concept-layout-guide.png",
+    "operation": "Fresh large section drawings; minimum-difference source-pixel seams; reference palette; exact64-vote mode; hard alpha and one-pixel cleanup; existing painted ditch wrapped behind north wall",
+    "plan": "The measured nine-block plan is the paintover guide. Concept strokes are projected art; exact composer clearances are separately audited."
+  }
+]

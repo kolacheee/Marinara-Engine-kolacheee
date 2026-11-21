@@ -1,0 +1,65 @@
+[
+  {
+    "concept": "a",
+    "source": "r17-C7-critic2-source-concept-a-composite.png",
+    "source_size": [
+      2682,
+      2011
+    ],
+    "native_size": [
+      1920,
+      1440
+    ],
+    "section_size": [
+      1448,
+      1086
+    ],
+    "overlap": [
+      214,
+      161
+    ],
+    "operation": "minimum-difference source-pixel seam; palette lock; exact64-vote mode; no blending or procedural geometry"
+  },
+  {
+    "concept": "b",
+    "source": "r17-C7-critic2-source-concept-b-composite.png",
+    "source_size": [
+      2682,
+      2011
+    ],
+    "native_size": [
+      1920,
+      1440
+    ],
+    "section_size": [
+      1448,
+      1086
+    ],
+    "overlap": [
+      214,
+      161
+    ],
+    "operation": "minimum-difference source-pixel seam; palette lock; exact64-vote mode; no blending or procedural geometry"
+  },
+  {
+    "concept": "c",
+    "source": "r17-C7-critic2-source-concept-c-composite.png",
+    "source_size": [
+      2682,
+      2011
+    ],
+    "native_size": [
+      1920,
+      1440
+    ],
+    "section_size": [
+      1448,
+      1086
+    ],
+    "overlap": [
+      214,
+      161
+    ],
+    "operation": "minimum-difference source-pixel seam; palette lock; exact64-vote mode; no blending or procedural geometry"
+  }
+]

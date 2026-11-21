@@ -1,0 +1,44 @@
+[
+  {
+    "trade": "baker",
+    "visible_source_pixels": 3432,
+    "painted_pixels": 3432,
+    "fraction": 1.0
+  },
+  {
+    "trade": "apothecary",
+    "visible_source_pixels": 3335,
+    "painted_pixels": 3335,
+    "fraction": 1.0
+  },
+  {
+    "trade": "smith",
+    "visible_source_pixels": 3393,
+    "painted_pixels": 3426,
+    "fraction": 0.99
+  },
+  {
+    "trade": "cobbler",
+    "visible_source_pixels": 2912,
+    "painted_pixels": 2950,
+    "fraction": 0.987
+  },
+  {
+    "trade": "tailor",
+    "visible_source_pixels": 3404,
+    "painted_pixels": 3404,
+    "fraction": 1.0
+  },
+  {
+    "trade": "scribe",
+    "visible_source_pixels": 3386,
+    "painted_pixels": 3386,
+    "fraction": 1.0
+  },
+  {
+    "trade": "butcher",
+    "visible_source_pixels": 3090,
+    "painted_pixels": 3125,
+    "fraction": 0.989
+  }
+]

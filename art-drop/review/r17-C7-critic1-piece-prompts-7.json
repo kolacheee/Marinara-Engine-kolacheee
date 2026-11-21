@@ -1,0 +1,18 @@
+[
+  [
+    "roof-w2-d2-b",
+    "Use case: stylized-concept. Draw ONE roof only LARGE on pure solid magenta, high3/4 orthogonal RPG town camera, top-left light, crisp one-native-pixel outline. Long horizontal ridge, continuous main tile slope, thick horizontal eave, lit left hip/shaded right hip, broad modest profile, NO pointed cone, wall, dormer, chimney or pedestal. Warm terracotta material as reference. Small sharply distinct rectangular tiles of consistent size, no scratch bands, noise, mottle or rounded scales. Native size describes whole intended crop; the source must be large. Native96x96. SIXTEEN small rectangular tiles across the eave, TWENTY-FOUR horizontal courses deep. A continuous2-cell-deep hip roof with generous top plane. Do NOT substitute a dozen giant shingles. Same tiny tile size as attached complete fine roof but in smaller nativewidth/depth."
+  ],
+  [
+    "roof-w2-d3-b",
+    "Use case: stylized-concept. Draw ONE roof only LARGE on pure solid magenta, high3/4 orthogonal RPG town camera, top-left light, crisp one-native-pixel outline. Long horizontal ridge, continuous main tile slope, thick horizontal eave, lit left hip/shaded right hip, broad modest profile, NO pointed cone, wall, dormer, chimney or pedestal. Warm terracotta material as reference. Small sharply distinct rectangular tiles of consistent size, no scratch bands, noise, mottle or rounded scales. Native size describes whole intended crop; the source must be large. Native96x144. SIXTEEN small rectangular tiles across, THIRTY-SIX horizontal courses from ridge to eave. Continuous3-cell-deep hip roof, no shoulder or missing midsection. Horizontal ridge spans at least2/3width; almost parallel sides to avoid needle shape. Same tiny tile size as reference fine roof."
+  ],
+  [
+    "roof-w3-d2-b",
+    "Use case: stylized-concept. Draw ONE roof only LARGE on pure solid magenta, high3/4 orthogonal RPG town camera, top-left light, crisp one-native-pixel outline. Long horizontal ridge, continuous main tile slope, thick horizontal eave, lit left hip/shaded right hip, broad modest profile, NO pointed cone, wall, dormer, chimney or pedestal. Warm terracotta material as reference. Small sharply distinct rectangular tiles of consistent size, no scratch bands, noise, mottle or rounded scales. Native size describes whole intended crop; the source must be large. Native144x96. TWENTY-FOUR small rectangular tiles across eave, TWENTY-FOUR horizontal tilecourses deep. Broad continuous2-cell-depth hip roof; do not enlarge tileunits to fill space. Ridge spans top2/3width. Exactly same tilecluster scale as reference fine roof."
+  ],
+  [
+    "market-c",
+    "Use case: stylized-concept. Draw one complete covered medieval MARKET HALL on pure magenta, large4:3 sprite, native192x144. High3/4 town view, top-left light, crisp1px nativeoutline, calm reference palette. Continuous full192x96 terracotta pitched roof in upper two thirds,24tinytiles across,24rowsdeep, ridge, shadedright return,thickeave, NO chimney/dormers. Lower192x48 arcade has exactly FIVE main square timber posts at native x0,48,96,144,192 giving FOUR OPEN BAYS. Two outer bays have clear producecounters, two innerbays are open walk-through entries. Stonefeet/posts,counters andfloor are BELOW eave, NEVER above roof. North side opens toward square: far supports hidden under full roof, no rear walls. Southside also open; central entry goes through building. Magenta between supports. No extra rear arcade floating above roof. No groundslab/backdrop/people/text/noise or curved corners."
+  ]
+]

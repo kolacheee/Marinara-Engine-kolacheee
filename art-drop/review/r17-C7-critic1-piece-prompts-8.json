@@ -1,0 +1,18 @@
+[
+  [
+    "roof-field-d2",
+    "Paint one isolated complete medieval terracotta TERRACE ROOF, no building walls, on pure #FF00FF. The target is native192x96 (4cells wide2cells deep). View is EXACT high3/4 orthographic RPG town camera of attached market roof, top-left light. Use the MARKET ROOF reference's small quiet flat rectangular overlapping clay tiles, subdued low-contrast seams, little 6-8pixel tiles at native resolution, broken staggered tile joints. NO thick black horizontal bars, no metal slats, no huge shingles. Broad horizontal ridge in upper fifth, generous receding roof plane, shallow dark right return, 2pixel eave lip at bottom, modest left/right hip ends. Main red tile plane occupies almost entire rectangle, never tall taper or pyramid. Paint large on magenta for genuine reduction. Calm handmade pixel-art clusters and onepixel exposed outline, no noise or texture speckles."
+  ],
+  [
+    "roof-field-d3",
+    "Paint one isolated complete medieval terracotta TERRACE ROOF on pure #FF00FF, native192x144 (4cells wide3cells deep). Exact orthographic high3/4 RPG town view as market reference, light upper left. Low pitched broad horizontal ridge in top fifth and DEEP receding tiled surface. SAME quiet flat rectangular clay tiles and subdued seams as attached marketroof. Native tiles6-8px across3-4px rows, staggered joints with no continuous black ruled bars. Almost parallel outer ends, onepixel contour, shallow darkright return andthick2pixel eave, continuous complete144deep plane no deleted or duplicated band. No walls/dormer/chimney, no rounded scales, noisy scratches, longstripe slats or needlecone. Draw large crisp image onsolid magenta."
+  ],
+  [
+    "lean-roof",
+    "Paint a complete small attached lean-to roof at LARGE SIZE on solidmagenta. Intended native48x96, so slender rectangle with FULLWIDTH roof plane, near parallel left/right sides and horizontal straight ridge. Roof seen from high3/4 townview, depthrecedingnorth, top-leftlighting. Modest BROWN CLAY tiles, each6-8nativepixelswide and3-4high, understated seams, NO horizontalblackbars, same calmshading asmarketreference. No walls,nochimney,nopointedgable,nosilhouette taper,notthatchedhut. Roof joins neighboringbuilding atstraightpartymargins and has2pixelshadedeave. Nativehardpixelclusters, no blur/noise; solidmagenta only outside."
+  ],
+  [
+    "corner-roof-fine",
+    "Paint a complete isolated ninety-six-pixel-wide, ninety-six-pixel-deep medieval hipped terrace roof LARGE on magenta. Exact high3/4 towncamera ofmarketreference. Broad horizontal ridge halfway acrosswidth top, broad plane viewedabove, leftlit return/rightshade, mutedterracotta andquiet staggered6-8nativepixelrectangulartiles, rows3-4pixels, NO CONTINUOUS BLACK LINES BETWEEN ROWS. Tiles flat claylike notslats/scales/stairs. Lowprofile, no towercone. Roof fills width downlower2/3 and joinsotherroofat eave. Only roof,nohouse,nodormers,nostuff. Crisppixelclusters, onepixel exposedoutline, top-leftlight, puremagenta backdrop."
+  ]
+]
