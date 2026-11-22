@@ -39,3 +39,15 @@ Owner feedback on v3: the weapon stand's base sat about a cell below the wall's 
 - Draws side walls, south edges and wall tops over everything afterwards (only shadows were trimmed: 1480 px), and counts sprite pixels over those walls from each sprite's own mask.
 
 Result (`keep-lair-v4-placement.json`): 61 props; north foot - base - depth = 0 px for all 21 north pieces (base lines 3-8 px into the cell); south, west and east gaps 0 px; 0 sprite pixels over side walls, south edges or wall tops. `keep-lair-v4-debug-2x.png` draws each north base line (cyan), south edge (red) and prop foot line (yellow). Grid check: see overlay.
+
+## Slate style (2026-11-22): `keep-lair-slate*.png`
+
+Owner style change: more like her reference samples (third-party art, used as a style reference only and NOT stored in this repo): one cool slate/blue-grey palette with wood and gold accents, simple clean props with a 1 px outline, dark brick wall faces over light floors, props square to the grid, light only as a small glow around flames.
+
+Method:
+1. The image tool painted the empty keep in that style once (`keep-lair-slate-source-paint.png`); its layout drifted (685/713 cells), so it is used only as a source of pieces.
+2. `tools/slate/render.py` renders the rooms from the block-out by rule with pieces cut from that paint: brick wall faces (plain, arch, candle niche) on face cells, stone ribbons inside wall-top cells along floor edges, slate floors and an earth floor for the camp with sparse keyed brick marks, edge-on and front doors, stairs, and the hoard heap. Grid check: 713/713.
+3. All 24 prop kinds drawn together in one sheet in the same style (`keep-lair-slate-props-sheet.png`).
+4. `tools/slate/place.py` places them on their bases using the exact cell edges: short pieces against a back wall stop at the face (their sprite top is their back edge); tall pieces (shelves, racks, hearth, pillars, brazier) rise over it; side- and front-wall pieces are flush; 0 sprite pixels over side walls, front edges or wall tops; walls drawn over anything afterwards. Flame glow around torches, the brazier and the hearth only. Final palette 128 colours.
+
+Known: wall faces are one cell tall (the samples use about 1.5); the heap reads chunky; the big hall's middle is open floor around the nest.
