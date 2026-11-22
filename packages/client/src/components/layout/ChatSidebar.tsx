@@ -104,7 +104,13 @@ import { resolveLiveConversationStatus } from "../../lib/conversation-presence-s
 import { Modal } from "../ui/Modal";
 import { SHEET_CHOICE_GROUP_CLASS, SHEET_CHOICE_ROW_CLASS } from "../ui/neutral-surface-styles";
 import { Reorder } from "framer-motion";
-import { parseChatMetadata, getChatDisplayName, stripChatDateSuffix } from "../../lib/chat-display";
+import {
+  parseChatMetadata,
+  getChatDisplayName,
+  getChatDisplayParts,
+  splitAtDisplaySuffix,
+  stripChatDateSuffix,
+} from "../../lib/chat-display";
 import { buildChatBranchRows, hasChatBranchLineage, type BranchTreeRow } from "../../lib/chat-branch-tree";
 import {
   compareChatsByActivityDesc,
@@ -1229,6 +1235,7 @@ export function ChatSidebar() {
           key={row.chat.id}
           chatId={row.chat.id}
           name={name}
+          nameSuffix={getChatDisplayParts(row.chat).suffix}
           relativeTime={
             row.chat.lastMessageAt ? formatRelativeContact(row.chat.lastMessageAt, presenceNow.getTime()) : null
           }
@@ -2701,6 +2708,7 @@ const BRANCH_LEVEL_CLASS = "ml-2 flex flex-col gap-0.5 border-l border-[var(--ma
 function BranchRow({
   chatId,
   name,
+  nameSuffix = "",
   relativeTime,
   isActive,
   isSelected,
@@ -2715,6 +2723,7 @@ function BranchRow({
 }: {
   chatId: string;
   name: string;
+  nameSuffix?: string;
   relativeTime: string | null;
   isActive: boolean;
   isSelected: boolean;
@@ -2729,6 +2738,7 @@ function BranchRow({
 }) {
   // Same click semantics as every other row: multi-select selects, otherwise it opens the chat.
   const handleClick = multiSelectMode ? onToggleSelect : onSelect;
+  const [nameHead, nameTail] = splitAtDisplaySuffix(name, nameSuffix);
   return (
     <div
       role="button"
@@ -2758,11 +2768,13 @@ function BranchRow({
       )}
       <span
         className={cn(
-          "min-w-0 flex-1 truncate text-[0.8125rem]",
+          "flex min-w-0 flex-1 gap-[0.25em] text-[0.8125rem]",
           isActive ? "mari-chrome-text-strong font-medium" : "mari-chrome-text",
         )}
       >
-        {name}
+        {/* A long name gives way; its "· branch N" end stays (QC panel 3, F3). */}
+        <span className="min-w-0 truncate">{nameHead}</span>
+        {nameTail ? <span className="shrink-0 whitespace-nowrap">{nameTail}</span> : null}
       </span>
       {isBusy && <Spinner size="sm" className="shrink-0 text-[var(--muted-foreground)]" />}
       {!isActive && !multiSelectMode && unread > 0 && (
