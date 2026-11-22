@@ -96,7 +96,7 @@ Zakładka **Card** to główne miejsce pisania. Odnośniki u góry przeskakują 
 
 **Public Face** to to, co reszta obsady mogłaby zobaczyć lub wiedzieć o postaci: wygląd, sposób bycia, rola, reputacja i relacje, które nie są tajemnicą. Pomiń sekrety, wewnętrzne myśli, prywatną historię i instrukcje odgrywania postaci. To pole nigdy nie jest wysyłane jako część karty tej postaci. Prompt czyta je tylko tam, gdzie umieścisz makro `{{publicFace}}` albo `{{personaPublicFace}}` dla swojej persony. Zobacz [Makra promptów](../prompts/macros.md#identity-character-and-persona-macros). W czacie grupowym w trybie Roleplay z opcją Individual ustawienie **Others' Public Faces** (publiczne wizerunki innych postaci) wysyła je w turach pozostałych postaci. Zobacz [Więcej ustawień trybu Individual](../chats/group-chats.md#more-individual-settings). Agent, którego źródło **Postacie** lub **Persona** jest ustawione na **Public Face**, czyta je zamiast karty. Zobacz [Inne ustawienia](../agents/custom-agents.md#other-settings). Przy włączonym **Send Public Faces** (wysyłanie publicznych wizerunków) funkcja Impersonate w trybie Roleplay czyta je zamiast karty. Zobacz [Ustawienia Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-Przełącznik **Image Appearance Override** (osobny opis wyglądu do obrazów) znajduje się pod polem **Appearance** i domyślnie jest wyłączony. Włącz go, żeby pokazać drugie pole na krótkie tagi obrazu, na przykład słowo wyzwalające LoRA (słowo kluczowe, które włącza własny styl obrazu). Gdy przełącznik jest włączony, a pole wypełnione, prompty obrazów używają tych tagów dokładnie w zapisanej formie, a treść **Appearance** zostaje jako kontekst w tle. Z tego pola wypełnia się też wstępnie prompt awatara AI. Narrator zawsze widzi pełny tekst z **Appearance**.
+Sekcja **Wygląd** ma dwie zakładki: **Proza** i **Tagi obrazów**. **Proza** to sam tekst opisu wyglądu. **Tagi obrazów** zawierają krótkie tagi do promptów obrazów, na przykład słowo wyzwalające LoRA (słowo kluczowe, które włącza własny styl obrazu). Wpisanie tagów zaznacza **Używaj do promptów obrazów**, a kropka na zakładce pokazuje, że są używane. Gdy to pole jest zaznaczone, a tagi wpisane, prompty obrazów używają ich dokładnie w zapisanej formie, a proza zostaje jako kontekst w tle. Odznacz je, żeby zachować tagi bez używania ich: prompty obrazów wracają wtedy do zakładki **Proza**. Z tagów wypełnia się też wstępnie prompt awatara AI. Narrator zawsze widzi tekst z zakładki **Proza**. Zakładka **Obrazy** odsyła tutaj przyciskiem **Przejdź do wyglądu**.
 
 Sekcja **Dialogue & Greetings** ustala, jak zaczyna się czat i jak brzmi postać:
 
@@ -144,7 +144,7 @@ Zanim zaczniesz: dodaj połączenie do generowania obrazów. Przycisk awatara AI
 
 1. Najedź na kafelek awatara i kliknij przycisk różdżki. Otwiera się okno **Generate Character Avatar** (generowanie awatara postaci).
 2. Wybierz połączenie w polu **Image Generation Connection** (połączenie do generowania obrazów).
-3. Przejrzyj lub popraw pole **Avatar Prompt** (prompt awatara). Jeśli **Image Appearance Override** jest włączone i wypełnione, prompt zaczyna się od jego tekstu. W przeciwnym razie korzysta z pola **Appearance**, potem **Description**, a potem **Personality**, zależnie od tego, które pierwsze zawiera tekst.
+3. Przejrzyj lub popraw pole **Prompt awatara**. Prompt zaczyna się od tagów z zakładki **Tagi obrazów** w sekcji **Wygląd**, gdy zaznaczono **Używaj do promptów obrazów** i wpisano tagi. W przeciwnym razie korzysta z pola **Wygląd**, potem **Opis**, a potem **Osobowość**, zależnie od tego, które pierwsze zawiera tekst.
 4. Jeśli karta ma już awatar, można zaznaczyć pole wyboru **Use current avatar as a reference** (użycie bieżącego awatara jako referencji).
 5. Kliknij **Generate** (generuj). Żeby spróbować ponownie, kliknij **Regenerate**.
 6. Kiedy wynik ci się podoba, kliknij **Use Avatar** (użycie awatara).
@@ -188,6 +188,7 @@ Zasady:
 - Czat może używać tylko jednego wariantu danego pola. Zaznaczenie czatu w innym wariancie albo wybranie innego wariantu w Chat Settings przenosi go tam.
 - Bez zaznaczonych czatów wariant pozostaje nieaktywny na później.
 - Pusty wariant czyści to pole w swoich czatach.
+- Wariant pola **Wygląd** ma własne zakładki **Proza** i **Tagi obrazów**. W jego czatach jego tagi zastępują tagi karty. Gdy tagi wariantu są puste lub odznaczone, prompty obrazów używają prozy wariantu, nigdy tagów karty. Nowy wariant kopiuje też tagi karty.
 - Nadpisania scenariusza i wyglądu do obrazów ustawione dla konkretnego czatu nadal mają pierwszeństwo.
 - Warianty pola **Summary** pozostają metadanymi i nie trafiają do AI.
 - Jeśli postać opuści czat, jej przypisanie zostaje wstrzymane i wznawia się po ponownym dodaniu postaci.

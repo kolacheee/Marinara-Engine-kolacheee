@@ -64,7 +64,7 @@ Utilise **Diagnose model routing** quand tu as demandé un gros modèle comme Op
 
 ## OpenAI (ChatGPT)
 
-Ce service utilise ton compte ChatGPT via le CLI Codex. Marinara lit le fichier d'identification local de Codex et rafraîchit la session quand c'est possible.
+Ce service utilise ton compte ChatGPT via le CLI Codex. Marinara lit le fichier d'identification local de Codex et rafraîchit la session quand c'est possible. Chaque requête d'un chat porte la même clé de cache : le service peut ainsi réutiliser le début inchangé de ton prompt, ce qui consomme moins de ton forfait.
 
 Contrairement aux abonnements Claude et Grok, une identification ChatGPT prend en charge les appels d'outils : Professor Mari, les outils personnalisés ainsi que les dés et les outils de Game Mode fonctionnent donc avec elle.
 
@@ -78,6 +78,8 @@ Ce service fait tourner le CLI Grok sur l'ordinateur de Marinara. Deux choses le
 - Sa fenêtre de contexte est fixée par défaut à 32 000 tokens. Les tokens sont de petits morceaux de texte que les modèles comptent. Les gros prompts peuvent atteindre la limite de tour propre au CLI, donc la valeur par défaut reste basse. Tu peux définir une valeur **Max Context Window** (fenêtre de contexte maximale) plus grande sur le modèle.
 
 Dans l'éditeur de modèle, **Use the Grok CLI default** (utiliser le modèle par défaut du CLI Grok) laisse le modèle vide pour que le CLI choisisse le sien. L'éditeur présente `grok-composer-2.5-fast` comme le modèle en général le plus sûr pour le roleplay, car Marinara lance le CLI sans interface (headless), avec les outils, la mémoire, la recherche web, les plans et les sous-agents propres à Grok désactivés.
+
+Marinara exclut aussi ce que le CLI chargerait depuis ton dossier personnel pour le travail de programmation : règles de Claude Code et Cursor, fichiers `CLAUDE.md`, compétences, hooks et serveurs MCP. Tes requêtes de chat à xAI ne les contiennent pas, et chaque requête est plus petite. Les nombres de tokens des réponses de Grok viennent du CLI lui-même, y compris les tokens lus par xAI dans son cache.
 
 ## Consommation du forfait
 

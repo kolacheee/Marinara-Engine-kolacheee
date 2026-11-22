@@ -74,7 +74,7 @@ globalThis.__MARINARA_HOST__ = {
 | `components.Switch`, `components.Checkbox` | 从 Capability API 1.830 起，Engine 的共享开关和复选框，让包与宿主的外观保持一致。 |
 | `components.Spinner` | 从 Capability API 1.830 起，Engine 的共享加载圆环。默认对屏幕阅读器隐藏；传入 `label` 后，它会成为状态区域。 |
 | `components.Tabs` | 从 Capability API 1.832 起，Engine 的共享选项卡栏。`variant="pill"` 是用于切换视图的分段式选项卡；`variant="underline"` 是用于面板或对话框内各区域的文字选项卡。方向键、Home 和 End 可在选项卡之间移动。 |
-| `components.SearchInput` | 从 Capability API 1.832 起，Engine 的搜索框。传入 `value`、`onChange` 和供屏幕阅读器使用的 `label`。它带有清空按钮，Escape 会先清空文字。`resultCount` 显示“4 found”，`busy` 显示加载圆环，`size="compact"` 适合紧凑的工具栏，`slashShortcut` 允许按“/”让输入框获得焦点。 |
+| `components.SearchInput` | 从 Capability API 1.832 起，Engine 的搜索框。传入 `value`、`onChange` 和供屏幕阅读器使用的 `label`。它带有清空按钮，Escape 会先清空文字。`resultCount` 显示“找到 4 项”，`busy` 显示加载圆环，`size="compact"` 适合紧凑的工具栏，`slashShortcut` 允许按“/”让输入框获得焦点。 |
 | `components.showConfirmDialog` | 从 Capability API 1.830 起，Engine 的确认弹窗，与 `services.dialogs.showConfirmDialog` 是同一个函数。 |
 | `components.Select` | 从 Capability API 1.831 起，Engine 的下拉选择器：传入 `value`（字符串或 `null`）、`options`（`{ value, label, description?, icon?, group?, disabledReason? }`）、`onChange(next)` 和 `label`；可选参数有 `placeholder`、`disabled`、`id`、`title`、`aria-describedby`、`className`、`searchable` 和 `buttonRef`。桌面上打开弹出框，手机上打开面板；选项达到八个时提供搜索。用它代替原生 `<select>`。 |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` 模块。 |
@@ -685,7 +685,7 @@ Engine 托管两个虚拟形象智能体：`2d-avatars`(PNGTuber 立绘和网格
 }
 ```
 
-`worlds`(最多 32 个) 和 `tiles` 是可选的。世界文件可以带上它的世界故事脚本（worldgen W10），这个脚本作为地图的一部分随地图一起发布。版本 2 的世界文件还带有世界的 `snapshot`，也就是世界生成时的原样（W11）：世界生成器此后有所变化的 Engine 会从中读取世界，并完全按生成时的样子还原，因此地图包在 Engine 更新后依然可用。请通过游戏或资料库世界的 **Download**(下载)（或 `GET /api/game/:chatId/world/file`）写出这些文件，它们包含快照。地图包里的单个文件最大 8 MB，这是 Engine 读取的共享文件的最大尺寸（图块包保留自己更小的上限），所以文件更大的世界（非常大的世界快照）无法放进地图包。故事设置了 `intro` 的世界需要 Capability API 1.339(见[开场消息](../extending/writing-story-scripts.md#the-intro-message))。`tiles` 可以是图像图块包（图块包版本 2：网格单元上的 PNG 图集，精灵可以占据多个单元），这需要 Capability API 1.80；Engine 对每个包版本只解码并检查一次图集。开启这个 Experience 后，新游戏会锁定为地图包的设定包；如果地图包附带世界，玩家只能从中选择一个（含故事），不能另做世界。关闭这个 Experience，玩家自己的选择就会回来。`POST /api/game/create` 对游戏施加同样的锁定。游戏像任何游戏一样保留它的设定包和世界，所以即使移除了包也能继续玩；只要包仍然安装，就会用地图包的图块绘制它的大地图和城镇。
+`worlds`(最多 32 个) 和 `tiles` 是可选的。世界文件可以带上它的世界故事脚本（worldgen W10），这个脚本作为地图的一部分随地图一起发布。版本 2 的世界文件还带有世界的 `snapshot`，也就是世界生成时的原样（W11）：世界生成器此后有所变化的 Engine 会从中读取世界，并完全按生成时的样子还原，因此地图包在 Engine 更新后依然可用。请通过游戏或资料库世界的 **Download**(下载)（或 `GET /api/game/:chatId/world/file`）写出这些文件，它们包含快照。地图包里的单个文件最大 8 MB，这是 Engine 读取的共享文件的最大尺寸（图块包保留自己更小的上限），所以文件更大的世界（非常大的世界快照）无法放进地图包。故事设置了 `intro` 的世界需要 Capability API 1.339(见[开场消息](writing-story-scripts.md#the-intro-message))。`tiles` 可以是图像图块包（图块包版本 2：网格单元上的 PNG 图集，精灵可以占据多个单元），这需要 Capability API 1.80；Engine 对每个包版本只解码并检查一次图集。开启这个 Experience 后，新游戏会锁定为地图包的设定包；如果地图包附带世界，玩家只能从中选择一个（含故事），不能另做世界。关闭这个 Experience，玩家自己的选择就会回来。`POST /api/game/create` 对游戏施加同样的锁定。游戏像任何游戏一样保留它的设定包和世界，所以即使移除了包也能继续玩；只要包仍然安装，就会用地图包的图块绘制它的大地图和城镇。
 
 Engine 通过经过验证的资源路径读取这些文件（每个文件声明的大小最多 8 MB，并重新检查哈希），并像检查共享文件一样检查它们。只要有一个文件读不了、某个世界是用另一个设定包生成的或与设定包不符，或者文件字节不是已安装的那些，整个地图包就会被拒绝，并说明原因；这时这个 Experience 就无法开始游戏。规则集绝不会是地图包的一部分：需要自己规则的 Experience 要单独发布一个规则集包。
 
@@ -710,7 +710,7 @@ Engine 通过经过验证的资源路径读取这些文件（每个文件声明�
 }
 ```
 
-每首曲目也都是已声明资源，所有指定的曲目 ID 都必须属于 `tracks`。`places` 中的地点按 ID 指定，必须属于包中的某个世界。战斗之外，游戏播放该地点的曲目；没有则取包含该地点且设有曲目的最近一层地点，再没有则取 `default`；战斗中播放 `combat`。故事的 `music` 动作（见[编写 Game Mode 故事脚本](../extending/writing-story-scripts.md)）会用指定曲目覆盖以上所有选择，直到交还控制。以上均未设置时，播放 Engine 自己的音乐。玩家若选择了自己的音乐来源（Music DJ、Spotify），则播放该来源：玩家的选择始终优先。
+每首曲目也都是已声明资源，所有指定的曲目 ID 都必须属于 `tracks`。`places` 中的地点按 ID 指定，必须属于包中的某个世界。战斗之外，游戏播放该地点的曲目；没有则取包含该地点且设有曲目的最近一层地点，再没有则取 `default`；战斗中播放 `combat`。故事的 `music` 动作（见[编写 Game Mode 故事脚本](writing-story-scripts.md)）会用指定曲目覆盖以上所有选择，直到交还控制。以上均未设置时，播放 Engine 自己的音乐。玩家若选择了自己的音乐来源（Music DJ、Spotify），则播放该来源：玩家的选择始终优先。
 
 #### Capability API 1.346：人物
 
@@ -786,7 +786,7 @@ POST /api/game/experience/check
 
 #### Capability API 1.351：固定季节
 
-世界的故事可以无视日期，将地点固定在某个季节（`seasons` 和 `season` 动作，见[编写故事脚本](../extending/writing-story-scripts.md#seasons)），世界的战场也可以绘制季节（`seasons` 行和 `seasonKeys`）。带有任一种的地图包都需要 1.351。大地图通过 `GET /api/game/:chatId/overworld` 的 `seasons` 读取被固定的地点（地点 ID 映射到季节，`*` 表示整个世界）；制作的战场则在 `seasons` 中携带地块的初始季节，以 `"x,y"` 为键。
+世界的故事可以无视日期，将地点固定在某个季节（`seasons` 和 `season` 动作，见[编写故事脚本](writing-story-scripts.md#seasons)），世界的战场也可以绘制季节（`seasons` 行和 `seasonKeys`）。带有任一种的地图包都需要 1.351。大地图通过 `GET /api/game/:chatId/overworld` 的 `seasons` 读取被固定的地点（地点 ID 映射到季节，`*` 表示整个世界）；制作的战场则在 `seasons` 中携带地块的初始季节，以 `"x,y"` 为键。
 
 <a id="capability-api-1355-ruleset-overlays"></a>
 
@@ -851,7 +851,7 @@ Experience 的手绘地图可以采用自己的外观，不限于库中的洞穴
 
 #### Capability API 1.360：超过六人的队伍，以及永不参战的同伴
 
-故事战斗的变体可以面向超过六人的队伍，或不设上限（`"party": { "min": 7 }`），故事条件也可以检查队伍人数（`{ "partySize": { "is": ">=", "value": 7 } }`；见[编写故事脚本](../extending/writing-story-scripts.md#conditions)）。
+故事战斗的变体可以面向超过六人的队伍，或不设上限（`"party": { "min": 7 }`），故事条件也可以检查队伍人数（`{ "partySize": { "is": ">=", "value": 7 } }`；见[编写故事脚本](writing-story-scripts.md#conditions)）。
 
 人物文件中的同伴可以永不参战：
 
@@ -892,7 +892,7 @@ Experience 的手绘地图可以采用自己的外观，不限于库中的洞穴
 - `combatStyle`：`classic` 或 `tactical`。
 - 文本上限：`setting` 4,000 个字符，`language` 100 个，`playerGoals` 和 `preferences` 2,000 个，`gameSpecialInstructions` 2,000 个，`artStylePrompt` 500 个。
 
-`intro` 是 Game Master 的开场消息（1.339），规则与故事脚本的 `intro` 相同（见[编写故事脚本](../extending/writing-story-scripts.md#the-intro-message)）。只有这个值可以锁定。锁定的开场消息在向导中只读，无论设置提交什么，游戏都会用它开场。游戏保留开始时的开场消息（`chat.metadata.gameExperienceIntro`）。它优先于故事自身的 `intro`。导入设置文件时保留文件自己的值，关闭 Experience 也不会清空已填入的值。
+`intro` 是 Game Master 的开场消息（1.339），规则与故事脚本的 `intro` 相同（见[编写故事脚本](writing-story-scripts.md#the-intro-message)）。只有这个值可以锁定。锁定的开场消息在向导中只读，无论设置提交什么，游戏都会用它开场。游戏保留开始时的开场消息（`chat.metadata.gameExperienceIntro`）。它优先于故事自身的 `intro`。导入设置文件时保留文件自己的值，关闭 Experience 也不会清空已填入的值。
 
 ### Capability API 1.373：Experience 文件
 
@@ -1075,6 +1075,19 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 `chatComplete` 接受 `cacheTtl: "5m" | "1h"`：它决定在 Anthropic 上，到这次调用的 `cacheBreakpoint` 消息（1.814）为止的提示词会缓存多久。省略时，和以前一样使用连接自己的缓存时间。同一个前缀相隔五分钟以上才再次出现时，就选用 `"1h"`，例如玩家阅读期间、每个场景都会复用的故事上下文。1 小时缓存的写入费用高于 5 分钟缓存，所以只有在这一小时内再次读取该前缀时才划算。没有标记消息的调用会忽略此选项；自行缓存的服务商（OpenAI、Gemini、xAI、DeepSeek）和 Claude (Subscription) 也会忽略它，后者使用连接的缓存时间。
 
 旧版 Engine 会忽略此选项，因此包始终可以传入它。包依赖此选项时，请声明 1.815。
+
+<a id="capability-api-1835-prepare-voice-clips-ahead"></a>
+
+### Capability API 1.835：提前准备语音片段
+
+`services.tts.ttsService.prepareAudio(text, options?)` 为一行文本生成语音片段并放入共享音频缓存，但不播放。调用时使用与后续 `speak` 或 `speakSequence` 相同的文本和选项：`cacheKey`、`cacheAliases`、`voice`、`speaker`、`tone` 和 `audioConnectionId`。后续调用就能立即开始播放，无需再次合成。
+
+- 已缓存或正在由另一次调用生成的片段不会重复生成。
+- 不会停止或改变播放，因此包可以在播放当前片段时准备后续文本的语音。
+- 没有文本或 `cacheKey` 的行会被跳过，因为之后无法找到它的片段。
+- `options.signal` 只停止等待。已经发出的合成请求会继续执行，结果也会缓存，除非设置了 `abortCacheGenerationOnAbort`。
+
+不需要权限。旧版 Engine 没有这个方法，因此先检查 `typeof ttsService.prepareAudio === "function"`，并保留文本出现时再生成语音的方式。只有包离不开它时才声明 1.835。
 
 <a id="capability-api-1816-animated-gif-images"></a>
 
@@ -1476,6 +1489,8 @@ Engine 用 `view="widget"` 挂载包的客户端元素。除常见的 `packageId
 
 从 Capability API **1.381** 起，`__MARINARA_HOST__.services.audio` 提供由 Engine 管理的播放和素材选择。在包清单中声明该次版本，并随包一同更新 Engine。语音仍使用 `services.tts`，音乐和音效使用 `services.audio`。从 1.381 起，`services.tts.ttsService.speakSequence(requests, id?, options?)` 接受 `options.audioConnectionId`，将选中的语音连接应用到每个片段，同时保留各请求的声音。不设置时使用常规默认值；传入 `""` 可明确使用旧 TTS 设置。
 未知、已删除、被隔离或不属于语音的 `audioConnectionId` 会被忽略，并执行正常的语音解析：先使用已保存的语音选择，再尝试默认/回退连接，最后使用旧设置。如果已保存的语音选择本身不可用，就会拒绝播放，而不会借用另一个连接。要求使用特定连接的包应在播放前验证保存的 ID。
+
+要在文本播放前生成语音片段，见 [Capability API 1.835](#capability-api-1835-prepare-voice-clips-ahead)。
 
 - `createPlayer()` 返回独立的播放器，具有 `unlock()`、`playMusic(tag, assets?)`、`stopMusic(immediate?)`、`playSfx(tag, assets?, loopCount?)`、`setVolumes({ music, sfx })`、`setMuted(boolean)` 和 `dispose()`。音量范围是 0 到 1。`assets` 是以标签为键的记录，条目格式为 `{ path: string, url?: string }`；路径使用现有的 Game 素材服务器，`url` 则可指向包自己的素材。播放复用 Engine 的交叉淡化、自动播放重试和音效池。开始播放音频时，在用户操作中直接调用 `unlock()`；浏览器的自动播放规则仍然适用。
 - 为已挂载的包界面保留一个播放器，卸载时调用 `dispose()`。这会永久停止该播放器的音频，释放其上下文和手势监听器，并使之后的调用不再生效。它不会停止 Game 或另一个包的播放器。界面重新挂载时，创建新播放器。

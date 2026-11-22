@@ -96,7 +96,7 @@ Der Tab **Card** ist der zentrale Schreibbereich. Über die Sprunglinks oben err
 
 **Public Face** enthält das, was die anderen Charaktere über den Charakter sehen oder wissen könnten: Aussehen, Auftreten, Rolle, Ruf und Beziehungen, die kein Geheimnis sind. Lass Geheimnisse, innere Gedanken, private Vorgeschichte und Anweisungen zum Spielen des Charakters weg. Das Feld wird nie als Teil der Karte dieses Charakters gesendet. Ein Prompt liest es nur dort, wo du das Makro `{{publicFace}}` platzierst, oder `{{personaPublicFace}}` für deine Persona. Siehe [Prompt-Makros](../prompts/macros.md#identity-character-and-persona-macros). In einem Roleplay-Gruppenchat im Modus Individual sendet **Others' Public Faces** es bei den Zügen der anderen Charaktere mit. Siehe [Weitere Einstellungen für Individual](../chats/group-chats.md#more-individual-settings). Ein Agent, dessen Quelle **Charaktere** oder **Persona** auf **Public Face** steht, liest es anstelle der Karte. Siehe [Weitere Einstellungen](../agents/custom-agents.md#other-settings). Ist **Send Public Faces** eingeschaltet, liest Impersonate in Roleplay es anstelle der Karte. Siehe [Die Impersonate-Einstellungen](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-**Image Appearance Override** (eigene Aussehensbeschreibung für Bilder) liegt unter **Appearance** und ist standardmäßig aus. Schalte den Schalter ein, um ein zweites Feld für kurze Bild-Tags einzublenden, etwa ein LoRA-Triggerwort (ein Schlüsselwort, das einen eigenen Bildstil einschaltet). Ist er an und das Feld ausgefüllt, verwenden Bild-Prompts diese Tags genau so, wie sie dastehen, und **Appearance** dient als Hintergrund. Auch ein KI-Avatar-Prompt wird dann daraus vorbefüllt. Der Erzähler sieht immer den vollständigen Text aus **Appearance**.
+**Aussehen** hat zwei Tabs: **Prosa** und **Bild-Tags**. **Prosa** ist der eigentliche Aussehenstext. **Bild-Tags** enthält kurze Tags für Bild-Prompts, etwa ein LoRA-Triggerwort (ein Schlüsselwort, das einen eigenen Bildstil aktiviert). Wenn du Tags eingibst, wird **Für Bild-Prompts verwenden** angehakt. Ein Punkt auf dem Tab zeigt, dass sie verwendet werden. Solange die Option angehakt ist und die Tags ausgefüllt sind, verwenden Bild-Prompts diese Tags genau wie geschrieben; die Prosa bleibt als Hintergrund erhalten. Entferne das Häkchen, um die Tags zu behalten, ohne sie zu verwenden: Bild-Prompts greifen dann auf **Prosa** zurück. Auch ein KI-Avatar-Prompt wird aus den Tags vorbelegt. Der Erzähler sieht immer den Text aus **Prosa**. Der Tab **Bilder** verlinkt mit **Zu „Aussehen“** hierher.
 
 Der Abschnitt **Dialogue & Greetings** legt fest, wie ein Chat beginnt und wie der Charakter klingt:
 
@@ -144,7 +144,7 @@ Bevor du anfängst: Füg eine Verbindung zur Bildgenerierung hinzu. Die Schaltfl
 
 1. Zeig mit der Maus auf die Avatar-Kachel und klick auf die Zauberstab-Schaltfläche. Das Fenster **Generate Character Avatar** öffnet sich.
 2. Wähl eine **Image Generation Connection** (Verbindung zur Bildgenerierung).
-3. Prüf den **Avatar Prompt** und bearbeite ihn bei Bedarf. Er geht von **Image Appearance Override** aus, wenn der Schalter an und das Feld ausgefüllt ist. Andernfalls nimmt er **Appearance**, dann **Description**, dann **Personality** – je nachdem, welches Feld zuerst Text enthält.
+3. Prüfe oder bearbeite den **Avatar-Prompt**. Er startet mit den **Bild-Tags** unter **Aussehen**, wenn **Für Bild-Prompts verwenden** angehakt ist und sie ausgefüllt sind. Andernfalls nutzt er **Aussehen**, dann **Beschreibung**, dann **Persönlichkeit** – das erste Feld, das Text enthält.
 4. Hat die Karte bereits einen Avatar, kannst du **Use current avatar as a reference** ankreuzen.
 5. Klick auf **Generate**. Für einen weiteren Versuch klick auf **Regenerate**.
 6. Gefällt dir das Ergebnis, klick auf **Use Avatar**.
@@ -188,6 +188,7 @@ Regeln:
 - Ein Chat kann pro Feld nur eine Alternative verwenden. Kreuzt du einen Chat in einer anderen Alternative an oder wählst du in Chat Settings eine andere, wandert er dorthin.
 - Ohne angekreuzte Chats bleibt die Alternative für später inaktiv.
 - Eine leere Alternative leert das Feld in ihren Chats.
+- Eine Alternative für **Aussehen** hat eigene Tabs für **Prosa** und **Bild-Tags**. In ihren Chats ersetzen ihre Tags die der Karte. Sind ihre Tags leer oder nicht angehakt, verwenden Bild-Prompts die Prosa der Alternative, nie die Tags der Karte. Eine neue Alternative kopiert auch die Tags der Karte.
 - Chatspezifische Überschreibungen für Szenario und Bildaussehen haben weiterhin Vorrang.
 - Alternativen für **Summary** bleiben Metadaten und gehen nicht an die KI.
 - Verlässt der Charakter einen Chat, pausiert die Zuordnung und wird wieder aktiv, wenn du den Charakter erneut hinzufügst.

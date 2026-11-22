@@ -36,7 +36,7 @@ Si ça n'a pas marché : lis le message rouge à côté du fichier. Les autres f
 | | **No tags** : ignore-les. |
 | | **Existing only** : garde les tags déjà présents dans ta bibliothèque. |
 | **Imported regex scripts** (scripts regex importés) | **Character only** (par défaut) : les règles s'exécutent pour ce personnage. |
-| | **Global** : les règles vont dans **Presets → Regex** et peuvent s'exécuter dans plusieurs chats. |
+| | **Global** : les règles vont dans **Bibliothèque → Scripts regex** (**Presets → Regex** dans la disposition classique) et peuvent s'exécuter dans plusieurs chats. |
 | **Split description into fields** (répartir la description en champs) | Désactivée par défaut. Coche-la pour sortir de **Description** les passages de personnalité, d'apparence et autres annoncés par un intitulé, et placer chacun dans son propre champ. |
 | **Import tags** (importer les tags) | **Tag imported** (activé par défaut) : ajoute le tag **Imported**. |
 | | **Tag source** (activé par défaut) : ajoute l'origine du fichier : **ST** pour une fiche SillyTavern, **CharX** pour un fichier `.charx`, **Marinara** pour un export Marinara. |

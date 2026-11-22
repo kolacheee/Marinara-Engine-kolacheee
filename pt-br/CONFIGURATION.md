@@ -174,7 +174,6 @@ No próprio computador do servidor, essas ações costumam funcionar sem o segre
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | Ativa as ferramentas de script personalizadas. Mantenha desligado no caso de ferramentas não confiáveis ou importadas. |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Permite que os scripts de transformação de banco de dados da Professor Mari rodem em hosts sem sandbox do sistema operacional (macOS Seatbelt ou Linux Bubblewrap, usados quando existem). Mantenha desligado, a não ser que você tenha revisado o script. |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Ativa a pré-visualização e a sincronização manual de repositórios de agentes do GitHub na página Agentes. Veja [Repositórios de agentes personalizados](#custom-agent-repositories). |
-| `MARINARA_OVERWORLD_GAMES` | `false` | Permite que os jogadores criem partidas Overworld (um kit de cenário e um mundo gerado) e transformem uma partida antiga em uma delas. Desligado, o assistente oferece só partidas VN. |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | Primeira das duas travas para importar extensões de terceiros. Veja [Extensões externas](#external-extensions). |
 | `IMPORT_ALLOWED_ROOTS` | vazio | Pastas que a importação em massa pode ler sem token de seleção. |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456` (256 MiB) | Maior exportação de perfil em JSON, em um arquivo só, que o servidor monta. |
@@ -362,11 +361,12 @@ As contas de vídeo são configuradas dentro do aplicativo. Estas configuraçõe
 
 ### Lorebooks
 
-As duas vêm desligadas por padrão e valem na próxima geração depois de uma mudança no `.env`. Quando `LOREBOOK_STABLE_GROUP_WINNERS` está definida, ela prevalece sobre a chave **Stable lorebook picks** (seleções estáveis de lorebook) em **Configurações → Avançado → Lorebooks**. Caso contrário, a chave decide. Veja [Chaves de recursos](configuration/features.md).
+Todas vêm desligadas por padrão. `LOREBOOK_STABLE_GROUP_WINNERS` e `LOREBOOK_COMPACT_STORED_SCANS` valem na próxima geração depois de uma mudança no `.env`, e `LOREBOOK_NEW_BOOK_VECTORS`, no próximo lorebook criado. Quando `LOREBOOK_STABLE_GROUP_WINNERS` ou `LOREBOOK_NEW_BOOK_VECTORS` está definida, ela prevalece sobre a respectiva chave (**Stable lorebook picks** ou **Vetores ativados para novos lorebooks**) em **Configurações → Avançado → Lorebooks**. Caso contrário, a chave decide. Veja [Chaves de recursos](configuration/features.md).
 
 | Variável | Padrão | O que faz |
 | --- | --- | --- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | `false` | Mantém o mesmo vencedor do grupo de inclusão por chat enquanto os candidatos continuarem os mesmos, em vez de sortear de novo a cada geração. Mantém o início do prompt estável para o cache de prompt do provedor. |
+| `LOREBOOK_NEW_BOOK_VECTORS` | `false` | Inicia novos lorebooks com **Vetores** ativados, para que as entradas possam ser vetorizadas e encontradas pelo significado desde o início. Vale para lorebooks criados no aplicativo, importados sem configuração própria ou feitos pelo Game Mode e pelo Lorebook Keeper. Os lorebooks que a Professor Mari cria já começam com **Vetores** ativados. Os lorebooks existentes mantêm a própria configuração. |
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | Guarda o texto completo das entradas ativadas só na mensagem mais recente do assistente ou do narrador. As mensagens antigas mantêm os IDs, as chaves e as pontuações das entradas. Deixa muito menores os chats com lorebooks grandes. Se mensagens mais novas forem excluídas, Active Context e as novas tentativas de agentes mostram o texto atual da entrada para a mensagem que volta a ser a mais recente. |
 
 `scripts/compact-lorebook-scans.mjs` aplica a mesma regra aos chats mais antigos. Pare o servidor primeiro. O script só faz uma simulação, a não ser que você passe `--apply`, e faz backup das duas tabelas de mensagens antes de gravar.

@@ -113,7 +113,7 @@ Ce service fait tourner des modèles Stable Diffusion hébergés. Un modèle est
 
 ### NovelAI
 
-NovelAI se concentre sur le style anime. Avec les modèles V4, V4.5 et V5, Marinara envoie des prompts de personnage natifs, avec leurs positions, pour les storyboards à plusieurs personnages et les scènes de l'Illustrator. Les images de référence précises ne fonctionnent que sur un modèle V4.5.
+NovelAI se concentre sur le style anime. Avec les modèles V4, V4.5 et V5, Marinara envoie des prompts de personnage natifs, avec leurs positions, pour les storyboards à plusieurs personnages, les scènes de l'Illustrator et les images de Professor Mari. Les images de référence précises ne fonctionnent que sur un modèle V4.5.
 
 ### Venice.ai
 

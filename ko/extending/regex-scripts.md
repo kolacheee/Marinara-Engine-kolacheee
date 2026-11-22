@@ -183,7 +183,7 @@ She smiles Hello there.
 Marinara는 SillyTavern 캐릭터 카드에 함께 들어 있는 정규식 스크립트를 읽습니다. 카드를 가져오면 **Imported regex scripts**(가져온 정규식 스크립트) 섹션에 선택지 두 개가 나옵니다.
 
 - **Character only**(기본값): 스크립트가 그 캐릭터에게만 묶인 채로 남습니다.
-- **Global**: 스크립트가 **Presets**에 추가되어 모든 채팅에서 실행됩니다.
+- **Global**: 스크립트가 **Library → Regex scripts**(라이브러리 → 정규식 스크립트)(클래식 레이아웃에서는 **Presets → Regexes**)로 들어가며 여러 채팅에서 실행할 수 있습니다.
 
 이 선택지는 캐릭터 하나를 가져오는 대화 상자와, 여러 개를 한꺼번에 가져오는 **Import from SillyTavern Folder**(SillyTavern 폴더에서 가져오기) 과정에 나타납니다. 패턴이 비어 있거나 안전성 검사를 통과하지 못한 스크립트는 건너뜁니다. 스크립트만 담긴 일반 JSON 파일을 가져오려면 **Regexes**에서 **Import regexes from JSON**을 쓰세요. [SillyTavern에서 가져오기](../data/importing-from-sillytavern.md)를 참고하세요.
 
@@ -191,7 +191,7 @@ Marinara는 SillyTavern 캐릭터 카드에 함께 들어 있는 정규식 스�
 
 ### 정규식 팩 교체하기
 
-1. **Presets → Regexes**(프리셋 → 정규식)에서 **Select regex scripts**(정규식 스크립트 선택)를 고르세요.
+1. **Library → Regex scripts**(클래식 레이아웃에서는 **Presets → Regexes**)에서 **Select regex scripts**(정규식 스크립트 선택)를 고르세요.
 2. 이전 팩의 항목을 체크하거나 **Select all regex scripts**(모든 정규식 스크립트 선택)를 고르세요.
 3. 작업 바에서 **Export**(내보내기) 또는 **Delete**(삭제)를 쓰세요. 삭제는 한 번 확인을 거치며 되돌릴 수 없습니다.
 4. 업데이트된 팩을 가져오세요.

@@ -2,7 +2,7 @@
 
 部分服务器行为是可选的。所有开关初始都关闭，因此没有人开启这些开关的服务器会保持原有行为。它们位于 **Settings**(设置) 的不同位置：
 
-- **Stable lorebook picks**(稳定的世界书抽选) 和 **Lorebook activation stats**(世界书激活统计)：**Settings → Advanced → Lorebooks**(设置 → 高级 → 世界书)。
+- **Stable lorebook picks**(稳定的世界书抽选)、**Lorebook activation stats**(世界书激活统计) 和 **Vectors on for new lorebooks**(新世界书默认开启向量)：**Settings → Advanced → Lorebooks**(设置 → 高级 → 世界书)。
 - **Retry failed provider calls**(重试失败的服务商调用)：**Settings → Advanced → Timeouts & Retries**(设置 → 高级 → 超时与重试)。
 - **Recover deleted chat messages**(恢复已删除的聊天消息)：**Settings → Data → Backup & Restore**(设置 → 数据 → 备份与恢复)。
 
@@ -18,6 +18,7 @@
 | **Retry failed provider calls**(重试失败的服务商调用) | `providerRetry` | 关闭 | `PROVIDER_RETRY_TRANSIENT_ERRORS` |
 | **Lorebook activation stats**(世界书激活统计) | `usageAndActivationStats` | 关闭 | 无 |
 | **Recover deleted chat messages**(恢复已删除的聊天消息) | `messageTrash` | 关闭 | 无 |
+| **Vectors on for new lorebooks** | `newLorebookVectors` | 关闭 | `LOREBOOK_NEW_BOOK_VECTORS` |
 
 在设置中搜索开关名称即可找到它。
 
@@ -63,6 +64,16 @@ API 是 `GET` 和 `PUT /api/app-settings/features`。`PUT` 替换整个对象，
 
 关闭：删除的消息会立即移除。
 
+### 新世界书默认开启向量
+
+设置键：`newLorebookVectors`。环境变量：`LOREBOOK_NEW_BOOK_VECTORS`。
+
+开启：新世界书默认开启 **Vectors**(向量)，让条目可以立即向量化并按含义查找。
+
+关闭：新世界书默认关闭 **Vectors**。关键词仍然有效，以后也可以在世界书里开启 **Vectors**。
+
+它只决定创建时没有指定该设置的世界书的初始值：通过 **Create lorebook**(创建世界书) 创建的世界书（这里会显示开关，可以为这本书单独修改）、导入文件没有自带设置的世界书，以及 Game Mode 或 Lorebook Keeper 创建的世界书。已有世界书保留各自的设置。Professor Mari 创建的世界书本来就默认开启 **Vectors**。
+
 ## 优先级
 
 1. **环境变量。**只要设置了开关对应变量，无论开启还是关闭都优先于已保存开关。Settings 显示锁定状态及变量名。空值视为未设置。
@@ -73,6 +84,7 @@ API 是 `GET` 和 `PUT /api/app-settings/features`。`PUT` 替换整个对象，
 | --- | --- | --- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | 固定世界书选择 | `true`、`1`、`yes` 或 `on` 开启，其他值关闭。 |
 | `PROVIDER_RETRY_TRANSIENT_ERRORS` | 重试失败的服务商调用 | `true`、`1`、`yes` 或 `on` 开启，其他值关闭。 |
+| `LOREBOOK_NEW_BOOK_VECTORS` | 新世界书默认开启向量 | `true`、`1`、`yes` 或 `on` 开启，其他值关闭。 |
 
 每次检查都会读取环境变量，因此 `.env` 更改无需重启即可生效。
 

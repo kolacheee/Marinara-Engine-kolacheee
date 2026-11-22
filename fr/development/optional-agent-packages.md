@@ -722,7 +722,7 @@ Un package `game-surface` qui se configure dans l'assistant Game (`gameSurface.s
 }
 ```
 
-`worlds` (32 au maximum) et `tiles` sont facultatifs. Un fichier de monde peut contenir le script d'histoire de son monde (worldgen W10), qui est livré avec la carte et en fait partie. Un fichier de monde en version 2 contient aussi le `snapshot` du monde, c'est-à-dire le monde tel qu'il a été créé (W11) : un moteur dont le générateur de monde a changé depuis lit le monde à partir de lui, exactement tel qu'il a été créé, si bien qu'un pack continue de fonctionner d'une mise à jour d'Engine à l'autre. Écris les fichiers depuis **Download** (télécharger) sur une partie ou sur un monde de la bibliothèque (ou avec `GET /api/game/:chatId/world/file`) : ces fichiers l'incluent. Un fichier de pack est limité à 8 Mo, le plus gros fichier de partage que lit Engine (un pack de tuiles garde ses propres limites, plus petites) : un monde dont le fichier est plus gros (l'instantané d'un très grand monde) ne peut donc pas être livré dans un pack. Un monde dont l'histoire définit un `intro` exige Capability API 1.339 (voir [Le message d'introduction](../extending/writing-story-scripts.md#the-intro-message)). `tiles` peut être un pack de tuiles en images (pack de tuiles version 2 : des planches PNG sur une grille de cellules, avec des sprites de plusieurs cellules), qui exige Capability API 1.80 ; Engine décode et vérifie ses planches une fois par version de package. Avec l'Experience activée, une nouvelle partie est verrouillée sur le kit du pack ; si le pack livre des mondes, le joueur en choisit un (histoire comprise) et n'en crée aucun autre. Désactiver l'Experience rend au joueur ses propres choix. `POST /api/game/create` impose le même verrou à une partie. La partie garde son kit et son monde comme n'importe quelle partie : elle continue donc si le package est retiré, et dessine sa carte du monde et ses villes avec les tuiles du pack tant que le package est installé.
+`worlds` (32 au maximum) et `tiles` sont facultatifs. Un fichier de monde peut contenir le script d'histoire de son monde (worldgen W10), qui est livré avec la carte et en fait partie. Un fichier de monde en version 2 contient aussi le `snapshot` du monde, c'est-à-dire le monde tel qu'il a été créé (W11) : un moteur dont le générateur de monde a changé depuis lit le monde à partir de lui, exactement tel qu'il a été créé, si bien qu'un pack continue de fonctionner d'une mise à jour d'Engine à l'autre. Écris les fichiers depuis **Download** (télécharger) sur une partie ou sur un monde de la bibliothèque (ou avec `GET /api/game/:chatId/world/file`) : ces fichiers l'incluent. Un fichier de pack est limité à 8 Mo, le plus gros fichier de partage que lit Engine (un pack de tuiles garde ses propres limites, plus petites) : un monde dont le fichier est plus gros (l'instantané d'un très grand monde) ne peut donc pas être livré dans un pack. Un monde dont l'histoire définit un `intro` exige Capability API 1.339 (voir [Le message d'introduction](writing-story-scripts.md#the-intro-message)). `tiles` peut être un pack de tuiles en images (pack de tuiles version 2 : des planches PNG sur une grille de cellules, avec des sprites de plusieurs cellules), qui exige Capability API 1.80 ; Engine décode et vérifie ses planches une fois par version de package. Avec l'Experience activée, une nouvelle partie est verrouillée sur le kit du pack ; si le pack livre des mondes, le joueur en choisit un (histoire comprise) et n'en crée aucun autre. Désactiver l'Experience rend au joueur ses propres choix. `POST /api/game/create` impose le même verrou à une partie. La partie garde son kit et son monde comme n'importe quelle partie : elle continue donc si le package est retiré, et dessine sa carte du monde et ses villes avec les tuiles du pack tant que le package est installé.
 
 Engine lit les fichiers par le chemin de ressources vérifié (taille déclarée de 8 Mo au plus par fichier, empreinte contrôlée de nouveau) et les vérifie comme il vérifie les fichiers de partage. Un pack est refusé en entier, avec la raison, quand un fichier ne se lit pas, quand un monde a été créé avec un autre kit ou ne lui correspond pas, ou quand ses octets ne sont pas ceux qui ont été installés ; l'Experience ne peut alors lancer aucune partie. Un ensemble de règles ne fait jamais partie d'un pack de carte : une Experience qui a besoin de ses propres règles livre un package d'ensemble de règles distinct.
 
@@ -755,7 +755,7 @@ Chaque piste est aussi une ressource déclarée, et chaque identifiant de piste 
 `tracks`. Un lieu de `places` est un lieu d'un des mondes du pack, par son identifiant. Hors combat,
 la partie joue la piste du lieu, sinon celle du lieu englobant le plus proche qui en a une, sinon
 `default` ; pendant un combat, `combat`. L'action `music` d'une histoire (voir
-[Écrire des scripts d'histoire Game Mode](../extending/writing-story-scripts.md)) lance une piste à
+[Écrire des scripts d'histoire Game Mode](writing-story-scripts.md)) lance une piste à
 la place de toutes ces musiques jusqu'à ce qu'elle leur rende la main. Sans aucune de ces pistes,
 la musique du moteur joue. Un joueur qui a choisi sa propre source musicale (Music DJ, Spotify)
 entend celle-ci à la place : son choix l'emporte toujours.
@@ -871,7 +871,7 @@ les vérifications des fichiers s'arrêtent au premier problème, comme lors d'u
 #### Capability API 1.351 : saisons maintenues
 
 L'histoire d'un monde peut maintenir des lieux dans une saison quelle que soit la date (`seasons` et
-l'action `season` : voir [Écrire des scripts d'histoire](../extending/writing-story-scripts.md#seasons)),
+l'action `season` : voir [Écrire des scripts d'histoire](writing-story-scripts.md#seasons)),
 et les champs de bataille d'un monde peuvent être peints avec des saisons (lignes `seasons` et
 `seasonKeys`). Un pack de carte utilisant l'un ou l'autre nécessite 1.351. La carte du monde lit les
 lieux maintenus dans `seasons` (identifiant de lieu vers saison, `*` pour le monde entier) depuis
@@ -979,7 +979,7 @@ de carte avec `storyUses` nécessite 1.359.
 Les variantes d'un combat d'histoire peuvent viser des équipes de plus de six membres, ou être sans
 limite supérieure (`"party": { "min": 7 }`), et une condition d'histoire peut demander la taille de
 l'équipe (`{ "partySize": { "is": ">=", "value": 7 } }` ; voir
-[Écrire des scripts d'histoire](../extending/writing-story-scripts.md#conditions)).
+[Écrire des scripts d'histoire](writing-story-scripts.md#conditions)).
 
 Un compagnon du fichier de personnes peut ne jamais combattre :
 
@@ -1025,7 +1025,7 @@ toujours modifier chaque valeur :
 - Limites de texte : `setting` 4 000 caractères, `language` 100, `playerGoals` et `preferences` 2 000, `gameSpecialInstructions` 2 000, `artStylePrompt` 500.
 
 `intro` est le message d'introduction du Game Master (1.339), avec les mêmes règles que l'`intro` d'un
-script d'histoire (voir [Écrire des scripts d'histoire](../extending/writing-story-scripts.md#the-intro-message)).
+script d'histoire (voir [Écrire des scripts d'histoire](writing-story-scripts.md#the-intro-message)).
 C'est la seule valeur qui se verrouille. Une introduction verrouillée s'affiche en lecture seule dans
 l'assistant, et la partie s'ouvre avec elle quoi que la configuration envoie. La partie garde
 l'introduction telle qu'elle était au début de la partie (`chat.metadata.gameExperienceIntro`). Elle
@@ -1304,6 +1304,17 @@ dans l'heure. Un appel sans message marqué ignore l'option, tout comme les four
 
 Les anciens moteurs ignorent l'option : un package peut donc toujours la transmettre. Déclare 1.815 quand le package en
 dépend.
+
+### Capability API 1.835 : préparer les clips vocaux à l'avance
+
+`services.tts.ttsService.prepareAudio(text, options?)` prépare le clip d'une réplique dans le cache audio partagé sans le lire. Appelle cette méthode avec le même texte et les mêmes options que le futur appel à `speak` ou `speakSequence` : `cacheKey`, `cacheAliases`, `voice`, `speaker`, `tone` et `audioConnectionId`. Cet appel lance alors la lecture immédiatement, sans nouvelle synthèse.
+
+- Un clip déjà en cache ou en cours de création par un autre appel n'est pas créé à nouveau.
+- La lecture n'est jamais arrêtée ni modifiée : un package peut donc préparer les répliques suivantes pendant la lecture d'une réplique.
+- Une réplique sans texte ou sans `cacheKey` est ignorée, car rien ne pourrait retrouver son clip.
+- `options.signal` arrête seulement l'attente. La synthèse déjà lancée se poursuit et son résultat est mis en cache, sauf si `abortCacheGenerationOnAbort` est défini.
+
+Aucune permission n'est nécessaire. Les anciens moteurs n'ont pas cette méthode : vérifie donc `typeof ttsService.prepareAudio === "function"` et continue à lire les répliques au fur et à mesure qu'elles apparaissent. Ne déclare 1.835 que si le package ne peut pas fonctionner sans cette méthode.
 
 ### Capability API 1.834 : sprites enregistrés et règle de choix des images
 
@@ -1764,6 +1775,8 @@ Une `audioConnectionId` inconnue, supprimée, en quarantaine ou ne correspondant
 la sélection de source vocale enregistrée, puis la connexion par défaut/de secours, puis les anciens réglages.
 Si la sélection vocale enregistrée est elle-même indisponible, la lecture est refusée au lieu d'emprunter une autre connexion.
 Les paquets qui exigent une connexion précise devraient vérifier l'identifiant enregistré avant la lecture.
+
+Pour préparer les clips vocaux avant la lecture de leurs répliques, consulte [Capability API 1.835](#capability-api-1835-prepare-voice-clips-ahead).
 
 - `createPlayer()` renvoie un lecteur indépendant avec `unlock()`, `playMusic(tag, assets?)`,
   `stopMusic(immediate?)`, `playSfx(tag, assets?, loopCount?)`, `setVolumes({ music, sfx })`,

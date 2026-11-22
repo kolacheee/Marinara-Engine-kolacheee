@@ -35,7 +35,7 @@ Opcje **Resolution**: 512x512, 512x768, 768x768, 768x1024, 896x1152 i 1024x1024.
 
 **Send Avatar References** i **Attach Card Appearance** mają po cztery opcje: **Off**, **Images only**, **Videos only** i **Images and videos**.
 
-Jeśli karta lub persona ma włączone **Image Appearance Override** (w sekcji **Appearance** w edytorze), aplikacja wysyła ten tekst zamiast **Appearance**. Użyj tego, gdy **Appearance** jest napisane na potrzeby fabuły, a nie obrazów.
+Jeśli karta lub persona używa opcji **Tagi obrazów** (zakładka **Tagi obrazów** w sekcji **Wygląd** w edytorze, z zaznaczonym **Używaj do promptów obrazów**), Marinara wysyła je zamiast prozy z pola **Wygląd**. Wariant wyglądu aktywny w czacie używa własnych tagów lub prozy. Skorzystaj z tego, gdy pole **Wygląd** jest napisane na potrzeby fabuły, a nie obrazów.
 
 ## Poproś o selfie ręcznie
 

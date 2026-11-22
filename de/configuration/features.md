@@ -2,7 +2,7 @@
 
 Manche Serververhaltensweisen sind optional. Jeder Schalter ist anfangs aus. Solange niemand sie einschaltet, verhält sich der Server wie zuvor. Du findest sie an verschiedenen Stellen in **Settings** (Einstellungen):
 
-- **Stable lorebook picks** (stabile Lorebook-Auswahl) und **Lorebook activation stats** (Lorebook-Aktivierungsstatistik): **Settings → Advanced → Lorebooks**.
+- **Stabile Lorebook-Auswahl**, **Lorebook-Aktivierungsstatistik** und **Vektoren für neue Lorebooks einschalten**: **Einstellungen → Erweitert → Lorebooks**.
 - **Retry failed provider calls** (fehlgeschlagene Anbieteraufrufe wiederholen): **Settings → Advanced → Timeouts & Retries**.
 - **Recover deleted chat messages** (gelöschte Chat-Nachrichten wiederherstellen): **Settings → Data → Backup & Restore**.
 
@@ -20,6 +20,7 @@ Im klassischen Layout suchst du in Settings nach dem Namen des Schalters.
 | **Retry failed provider calls** | `providerRetry` | Aus | `PROVIDER_RETRY_TRANSIENT_ERRORS` |
 | **Lorebook activation stats** | `usageAndActivationStats` | Aus | keine |
 | **Recover deleted chat messages** | `messageTrash` | Aus | keine |
+| **Vektoren für neue Lorebooks einschalten** | `newLorebookVectors` | Aus | `LOREBOOK_NEW_BOOK_VECTORS` |
 
 Die Einstellungssuche nach dem Namen eines Schalters führt zu ihm.
 
@@ -77,6 +78,16 @@ An: Gelöschte Chat-Nachrichten landen im Tab **Trash** (Papierkorb) der Chat-Su
 
 Aus: Gelöschte Nachrichten werden sofort entfernt.
 
+### Vektoren für neue Lorebooks einschalten
+
+Einstellungsschlüssel: `newLorebookVectors`. Umgebungsvariable: `LOREBOOK_NEW_BOOK_VECTORS`.
+
+An: Ein neues Lorebook startet mit eingeschalteten **Vektoren**, damit seine Einträge sofort vektorisiert und anhand ihrer Bedeutung gefunden werden können.
+
+Aus: Ein neues Lorebook startet mit ausgeschalteten **Vektoren**. Schlüsselwörter funktionieren weiterhin, und du kannst **Vektoren** später im Lorebook einschalten.
+
+Dies bestimmt nur den Anfangswert für Lorebooks, die ohne einen solchen erstellt werden: **Lorebook erstellen** (zeigt den Schalter, damit du ihn für dieses Buch ändern kannst), Importe ohne eigene Einstellung in der Datei und Bücher, die Game Mode oder der Lorebook Keeper anlegt. Bestehende Lorebooks behalten ihre eigene Einstellung. Von Professor Mari erstellte Lorebooks starten bereits mit eingeschalteten **Vektoren**.
+
 <a id="precedence"></a>
 
 ## Vorrang
@@ -86,9 +97,10 @@ Aus: Gelöschte Nachrichten werden sofort entfernt.
 3. **Standard.** Aus.
 
 | Variable | Steuert | Werte |
-| --- | --- | --- |
+| --------------------------------- | ---------------------------- | -------------------------------------------------------------------- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | Stabile Lorebook-Auswahl | `true`, `1`, `yes` oder `on` schalten ein. Jeder andere Wert schaltet aus. |
 | `PROVIDER_RETRY_TRANSIENT_ERRORS` | Wiederholung fehlgeschlagener Anbieteraufrufe | `true`, `1`, `yes` oder `on` schalten ein. Jeder andere Wert schaltet aus. |
+| `LOREBOOK_NEW_BOOK_VECTORS` | Vektoren für neue Lorebooks einschalten | `true`, `1`, `yes` oder `on` schalten es ein. Jeder andere Wert schaltet es aus. |
 
 Umgebungsvariablen werden bei jeder Prüfung gelesen. Änderungen an `.env` gelten daher ohne Neustart.
 

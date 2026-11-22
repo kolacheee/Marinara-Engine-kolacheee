@@ -1,6 +1,8 @@
 # Escribir guiones de historia de Game Mode
 
-Un guion de historia guía cómo se desarrolla una partida de Game Mode: escenas que se reproducen cuando el grupo llega a algún sitio, cosas que se le piden al Game Master cuando se cumple una condición, objetivos que el jugador sigue en el diario y momentos que el propio Game Master puede marcar. Escribe uno si creas mundos para otras personas. Para jugar un mundo que tiene una historia, consulta [Crear un mundo](../game/getting-started.md#making-a-world).
+> **Nota:** Los guiones de historia pertenecen a las partidas de Overworld, que aún no están disponibles. Esta es una página para desarrolladores, excluida de Docs dentro de la app y de Professor Mari. Consulta [Partidas de Overworld (aún no disponibles)](overworld-games.md).
+
+Un guion de historia guía cómo se desarrolla una partida de Game Mode: escenas que se reproducen cuando el grupo llega a algún sitio, cosas que se le piden al Game Master cuando se cumple una condición, objetivos que el jugador sigue en el diario y momentos que el propio Game Master puede marcar. Escribe uno si creas mundos para otras personas. Para jugar un mundo que tiene una historia, consulta [Crear un mundo](overworld-games.md#making-a-world).
 
 Un guion de historia son datos, no código. Nada en él se ejecuta. El motor lo comprueba contra el mundo al que pertenece, lo reproduce turno a turno y rechaza todo lo que no encaje.
 
@@ -11,7 +13,7 @@ Antes de empezar, necesitas un mundo al que asociar la historia, y los IDs de su
 Una historia pertenece a un solo mundo. Nombra los lugares y los habitantes de ese mundo, así que solo tiene sentido con el mundo para el que se escribió (su semilla, su descripción y sus ediciones a mano).
 
 - En un **archivo de mundo** (`.world.json`), como un `story` de nivel superior junto a `world`. Una versión del motor que no conoce las historias sigue leyendo el mundo.
-- En el **paquete de mapas** de una Experience: cada archivo de mundo puede llevar su historia, y una partida nueva la toma junto con el mapa. Consulta [paquetes opcionales de agentes](../development/optional-agent-packages.md).
+- En el **paquete de mapas** de una Experience: cada archivo de mundo puede llevar su historia, y una partida nueva la toma junto con el mapa. Consulta [paquetes opcionales de agentes](optional-agent-packages.md).
 - En un mundo guardado en la biblioteca, fuera de cualquier partida: `GET`, `PUT` y `DELETE /api/game-worlds/:id/story`, igual que en una partida. Una partida nueva iniciada desde ese mundo se lleva la historia consigo.
 - En una partida, una vez iniciada: `GET`, `PUT` y `DELETE /api/game/:chatId/story` la leen, la guardan y la eliminan. Al guardarla se comprueba contra el mundo de la partida, ediciones a mano incluidas, y se rechazan las ediciones a mano que quitarían algo que la historia nombra.
 
@@ -211,7 +213,7 @@ Cualquier acción puede llevar su propio `if`: solo se realiza si sus condicione
 
 Las acciones realizadas se registran con la activación, para que las escenas y peticiones de un evento `gm` lleguen al turno siguiente tal como se realizaron cuando el Game Master lo marcó.
 
-Un compañero es un habitante del archivo de habitantes del paquete marcado como tal (consulta los habitantes del paquete de mapas en [paquetes opcionales de agentes](../development/optional-agent-packages.md)).
+Un compañero es un habitante del archivo de habitantes del paquete marcado como tal (consulta los habitantes del paquete de mapas en [paquetes opcionales de agentes](optional-agent-packages.md)).
 
 De los eventos `rest`, `travel` e `idle` que podrían ocurrir en un turno, solo ocurre uno: el de mayor `priority` (un entero de -100 a 100, 0 si se omite; el primero del guion en caso de empate). Así, la conversación de un compañero junto a la fogata, una discusión entre dos compañeros en el camino o un compañero que se acerca al jugador en una hora tranquila nunca se amontonan. Con una condición `party`, esa escena solo ocurre mientras esos compañeros viajan con el grupo.
 
@@ -406,7 +408,7 @@ Cada función de historia necesita una versión mínima de Capability API.
 - más de 64 indicadores necesitan 1.353 (el límite es 256);
 - las `variants` de pelea necesitan 1.356;
 - las condiciones `any`, un evento `fight` que nombra su pelea, un evento `leave`, el `min` o `max` de un indicador y un `if` en una acción o página necesitan 1.358;
-- un paquete de mapas cuya superposición del conjunto de reglas tiene una entrada `storyUses` (un uso de objeto que gasta un número de historia, que puede leer el `if` de un terreno de muerte retenida) necesita 1.359; consulta [objetos que cuestan un número de historia](../development/optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
+- un paquete de mapas cuya superposición del conjunto de reglas tiene una entrada `storyUses` (un uso de objeto que gasta un número de historia, que puede leer el `if` de un terreno de muerte retenida) necesita 1.359; consulta [objetos que cuestan un número de historia](optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
 - una condición `partySize`, una variante para un grupo de más de 6 o sin límite superior, o más de 6 variantes necesitan 1.360;
 - un compañero `noncombatant`, que queda fuera del tamaño del grupo, necesita 1.360;
 - una acción `season` con `over` sobre todo lo que contiene necesita 1.361;

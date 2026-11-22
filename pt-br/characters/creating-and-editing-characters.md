@@ -100,7 +100,7 @@ A aba **Card** é o espaço principal de escrita. Os links no topo levam a qualq
 
 **Public Face** é o que o restante do elenco poderia ver ou saber sobre o personagem: aparência, jeito, papel, reputação e relações que não são segredo. Deixe de fora segredos, pensamentos íntimos, história privada e instruções de como interpretar o personagem. Esse campo nunca é enviado como parte do card deste personagem. Um prompt só o lê onde você coloca a macro `{{publicFace}}`, ou `{{personaPublicFace}}` para a sua persona. Veja [Macros de prompt](../prompts/macros.md#identity-character-and-persona-macros). Em um chat em grupo de Roleplay no modo Individual, **Others' Public Faces** (faces públicas dos outros) envia esse campo nos turnos dos outros personagens. Veja [Mais configurações do modo Individual](../chats/group-chats.md#more-individual-settings). Um agente cuja fonte **Personagens** ou **Persona** esteja definida como **Public Face** lê esse campo no lugar do card. Veja [Outras configurações](../agents/custom-agents.md#other-settings). Com **Send Public Faces** (enviar faces públicas) ativado, o Impersonate no Roleplay lê esse campo no lugar do card. Veja [As configurações do Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-A opção **Image Appearance Override** (aparência alternativa para imagens) fica abaixo de **Appearance** e vem desativada por padrão. Ative-a para mostrar uma segunda caixa para tags curtas de imagem, como a palavra-gatilho de uma LoRA (uma palavra-chave que ativa um estilo de imagem personalizado). Enquanto a opção estiver ativada e a caixa estiver preenchida, os prompts de imagem usam essas tags exatamente como estão escritas, com **Appearance** mantido como contexto. O prompt de avatar gerado por IA também parte dessas tags. O narrador sempre vê o texto completo de **Appearance**.
+**Appearance** tem duas abas, **Prosa** e **Tags de imagem**. **Prosa** é o próprio texto da aparência. **Tags de imagem** contém tags curtas para prompts de imagem, como a palavra-gatilho de uma LoRA (uma palavra-chave que ativa um estilo de imagem personalizado). Digitar tags marca **Usar nos prompts de imagem**, e um ponto na aba mostra que elas estão em uso. Enquanto essa opção estiver marcada e as tags estiverem preenchidas, os prompts de imagem usam essas tags exatamente como estão escritas, com a prosa mantida como contexto. Desmarque-a para manter as tags sem usá-las: os prompts de imagem voltam a usar **Prosa**. O prompt de avatar gerado por IA também parte das tags. O narrador sempre vê o texto de **Prosa**. A aba **Images** leva até aqui com **Ir para Aparência**.
 
 A seção **Dialogue & Greetings** define como um chat começa e como o personagem soa:
 
@@ -150,7 +150,7 @@ Antes de começar: adicione uma conexão de geração de imagens. O botão de av
 
 1. Passe o mouse sobre o quadro do avatar e clique no botão de varinha. A janela **Generate Character Avatar** abre.
 2. Escolha uma **Image Generation Connection** (conexão de geração de imagens).
-3. Confira ou edite o **Avatar Prompt**. Ele parte de **Image Appearance Override** quando essa opção está ativada e preenchida. Caso contrário, usa **Appearance**, depois **Description** e depois **Personality**, o primeiro que tiver texto.
+3. Confira ou edite o **Avatar Prompt**. Ele parte das **Tags de imagem** de **Appearance** quando **Usar nos prompts de imagem** está marcado e elas estão preenchidas. Caso contrário, usa **Appearance**, depois **Description** e depois **Personality**, o primeiro que tiver texto.
 4. Se o card já tiver um avatar, você pode marcar **Use current avatar as a reference**.
 5. Clique em **Generate**. Para tentar de novo, clique em **Regenerate**.
 6. Clique em **Use Avatar** quando gostar do resultado.
@@ -196,6 +196,7 @@ Regras:
 - Um chat só pode usar uma alternativa por campo. Marcar um chat em outra alternativa, ou escolher outra em Chat Settings, move o chat para lá.
 - Sem chats marcados, a alternativa fica inativa para depois.
 - Uma alternativa vazia limpa esse campo nos chats dela.
+- Uma alternativa de **Appearance** tem as próprias abas **Prosa** e **Tags de imagem**. Nos chats dela, suas tags substituem as do card. Com as tags vazias ou desmarcadas, os prompts de imagem usam a prosa da alternativa, nunca as tags do card. Uma alternativa nova também copia as tags do card.
 - As substituições de cenário e de aparência para imagens específicas do chat continuam tendo prioridade.
 - Alternativas de **Summary** continuam sendo metadados e não são enviadas para a IA.
 - Se o personagem sair de um chat, a atribuição naquele chat fica suspensa e volta a valer quando você adicionar o personagem de novo.

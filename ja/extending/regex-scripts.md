@@ -183,7 +183,7 @@ She smiles Hello there.
 Marinaraは、SillyTavernのキャラクターカードに同梱された正規表現スクリプトを読み込みます。カードをインポートすると、**Imported regex scripts**(インポートした正規表現スクリプト)セクションに2つの選択肢が表示されます。
 
 - **Character only**(デフォルト): スクリプトはそのキャラクターに限定されたままです。
-- **Global**: スクリプトが**Presets**に追加され、すべてのチャットで動きます。
+- **Global**: スクリプトを**Library → Regex scripts**(ライブラリー → 正規表現スクリプト)(クラシックレイアウトでは**Presets → Regexes**)へ追加し、チャットをまたいで実行できるようにします。
 
 この選択は、キャラクターを1人ずつ取り込むウィンドウと、**Import from SillyTavern Folder**による一括インポートで表示されます。パターンが空のスクリプトや、安全性チェックに通らないパターンのスクリプトは飛ばされます。スクリプトだけの単純なJSONファイルをインポートするには、**Regexes**の**Import regexes from JSON**を使います。[SillyTavernからのインポート](../data/importing-from-sillytavern.md)を参照してください。
 
@@ -191,7 +191,7 @@ Marinaraは、SillyTavernのキャラクターカードに同梱された正規�
 
 ### Regexパックの入れ替え
 
-1. **Presets → Regexes**(プリセット → 正規表現)で、**Select regex scripts**(Regexスクリプトを選択)を選びます。
+1. **Library → Regex scripts**(ライブラリー → 正規表現スクリプト)(クラシックレイアウトでは**Presets → Regexes**)で、**Select regex scripts**(正規表現スクリプトを選択)を選びます。
 2. 古いパックの項目にチェックを入れます。**Select all regex scripts**(すべての正規表現スクリプトを選択)では、折りたたんだフォルダー内のものも含め、ライブラリー全体を選択します。
 3. 操作バーの**Delete**(削除)をクリックします。Marinaraが確認を求めます。先にコピーを残すには、削除する前に**Export**(エクスポート)をクリックしてください。
 4. 更新版のパックをインポートします。

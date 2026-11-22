@@ -98,7 +98,7 @@ Die Eigenschaft ist weder beschreibbar noch konfigurierbar, und der Namensraum s
 | `components.Switch`, `components.Checkbox` | Ab Capability API 1.830: der gemeinsame Schalter und das Kontrollkästchen der Engine, damit ein Paket zum Aussehen des Hosts passt. |
 | `components.Spinner` | Ab Capability API 1.830: der gemeinsame Ladering der Engine. Für Screenreader ist er verborgen, sofern du kein `label` übergibst, das ihn zu einem Statusbereich macht. |
 | `components.Tabs` | Ab Capability API 1.832: die gemeinsame Tab-Leiste der Engine. `variant="pill"` ist eine segmentierte Leiste zum Wechseln der Ansicht; `variant="underline"` bietet Text-Tabs für Abschnitte innerhalb eines Sheets oder Dialogfensters. Mit den Pfeiltasten, Pos1 und Ende wechselst du zwischen Tabs. |
-| `components.SearchInput` | Ab Capability API 1.832: das Suchfeld der Engine. Übergib `value`, `onChange` und ein `label` für Screenreader. Es hat eine Schaltfläche zum Leeren; Escape löscht zuerst den Text. `resultCount` zeigt „4 found“ an, `busy` einen Ladering. `size="compact"` passt in dicht belegte Werkzeugleisten, und mit `slashShortcut` fokussiert „/“ das Feld. |
+| `components.SearchInput` | Ab Capability API 1.832: das Suchfeld der Engine. Übergib `value`, `onChange` und ein `label` für Screenreader. Es hat eine Schaltfläche zum Leeren; Escape löscht zuerst den Text. `resultCount` zeigt „4 gefunden“ an, `busy` einen Ladering. `size="compact"` passt in dicht belegte Werkzeugleisten, und mit `slashShortcut` fokussiert „/“ das Feld. |
 | `components.showConfirmDialog` | Ab Capability API 1.830: der Bestätigungsdialog der Engine, dieselbe Funktion wie `services.dialogs.showConfirmDialog`. |
 | `components.Select` | Ab Capability API 1.831: die Dropdown-Auswahl der Engine. Übergib `value` (einen String oder `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` und ein `label`; optional sind `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` und `buttonRef`. Auf dem Desktop öffnet sie ein Popover, auf Smartphones ein Sheet, ab acht Optionen mit Suche. Verwende sie anstelle eines nativen `<select>`. |
 | `data.emojiCatalog` | Das Modul `lib/emoji-catalog.generated.ts`. |
@@ -718,7 +718,7 @@ Ein `game-surface`-Paket, das über den Game-Assistenten eingerichtet wird (`gam
 }
 ```
 
-`worlds` (höchstens 32) und `tiles` sind optional. Eine Weltdatei kann das Story-Skript ihrer Welt enthalten (worldgen W10), das als Teil der Karte mitgeliefert wird. Eine Weltdatei der Version 2 enthält außerdem den `snapshot` der Welt, also die Welt, wie sie erstellt wurde (W11): Eine Engine, deren Weltgenerator sich seitdem geändert hat, liest die Welt daraus, genau so, wie sie erstellt wurde. So funktioniert ein Paket auch über Engine-Updates hinweg. Schreib die Dateien über **Download** eines Spiels oder einer Welt aus der Weltbibliothek (oder über `GET /api/game/:chatId/world/file`); diese Dateien enthalten den Snapshot. Eine Paketdatei darf höchstens 8 MB groß sein, die größte Austauschdatei, die die Engine liest (ein Tile-Pack behält seine eigenen, kleineren Grenzen). Eine Welt mit größerer Datei (etwa durch den Snapshot einer sehr großen Welt) lässt sich daher nicht in einem Paket ausliefern. Eine Welt, deren Story ein `intro` festlegt, braucht Capability API 1.339 (siehe [Die Intro-Nachricht](../extending/writing-story-scripts.md#the-intro-message)). `tiles` kann ein Bild-Tile-Pack sein (Tile-Pack-Version 2: PNG-Sheets auf einem Raster aus Zellen, mit Sprites über mehrere Zellen), das Capability API 1.80 braucht; die Engine dekodiert und prüft seine Sheets einmal pro Paketversion. Ist die Experience eingeschaltet, ist ein neues Spiel fest an das Kit des Pakets gebunden; liefert das Paket Welten mit, wählt der Spieler eine davon (samt Story-Skript) und erstellt keine andere. Wird die Experience ausgeschaltet, gelten wieder die eigenen Entscheidungen des Spielers. `POST /api/game/create` setzt dieselbe Bindung für ein Spiel durch. Das Spiel behält wie jedes Spiel sein Kit und seine Welt. Es läuft also weiter, wenn das Paket entfernt wird, und zeichnet seine Oberwelt und Städte mit den Tiles des Pakets, solange das Paket installiert ist.
+`worlds` (höchstens 32) und `tiles` sind optional. Eine Weltdatei kann das Story-Skript ihrer Welt enthalten (worldgen W10), das als Teil der Karte mitgeliefert wird. Eine Weltdatei der Version 2 enthält außerdem den `snapshot` der Welt, also die Welt, wie sie erstellt wurde (W11): Eine Engine, deren Weltgenerator sich seitdem geändert hat, liest die Welt daraus, genau so, wie sie erstellt wurde. So funktioniert ein Paket auch über Engine-Updates hinweg. Schreib die Dateien über **Download** eines Spiels oder einer Welt aus der Weltbibliothek (oder über `GET /api/game/:chatId/world/file`); diese Dateien enthalten den Snapshot. Eine Paketdatei darf höchstens 8 MB groß sein, die größte Austauschdatei, die die Engine liest (ein Tile-Pack behält seine eigenen, kleineren Grenzen). Eine Welt mit größerer Datei (etwa durch den Snapshot einer sehr großen Welt) lässt sich daher nicht in einem Paket ausliefern. Eine Welt, deren Story ein `intro` festlegt, braucht Capability API 1.339 (siehe [Die Intro-Nachricht](writing-story-scripts.md#the-intro-message)). `tiles` kann ein Bild-Tile-Pack sein (Tile-Pack-Version 2: PNG-Sheets auf einem Raster aus Zellen, mit Sprites über mehrere Zellen), das Capability API 1.80 braucht; die Engine dekodiert und prüft seine Sheets einmal pro Paketversion. Ist die Experience eingeschaltet, ist ein neues Spiel fest an das Kit des Pakets gebunden; liefert das Paket Welten mit, wählt der Spieler eine davon (samt Story-Skript) und erstellt keine andere. Wird die Experience ausgeschaltet, gelten wieder die eigenen Entscheidungen des Spielers. `POST /api/game/create` setzt dieselbe Bindung für ein Spiel durch. Das Spiel behält wie jedes Spiel sein Kit und seine Welt. Es läuft also weiter, wenn das Paket entfernt wird, und zeichnet seine Oberwelt und Städte mit den Tiles des Pakets, solange das Paket installiert ist.
 
 Die Engine liest die Dateien über den verifizierten Asset-Weg (deklarierte Größe jeweils höchstens 8 MB, Hash erneut geprüft) und prüft sie so, wie sie Austauschdateien prüft. Ein Paket wird als Ganzes abgelehnt, mit Angabe des Grunds, wenn sich eine Datei nicht lesen lässt, wenn eine Welt mit einem anderen Kit erstellt wurde oder nicht dazu passt oder wenn ihre Bytes nicht die installierten sind; die Experience kann dann kein Spiel starten. Ein Regelsatz ist nie Teil eines Kartenpakets: Eine Experience, die eigene Regeln braucht, liefert ein separates Regelsatz-Paket mit.
 
@@ -743,7 +743,7 @@ Die Assets eines Pakets dürfen ab 1.345 Audiodateien sein: `.ogg`, `.mp3` oder 
 }
 ```
 
-Jeder Titel ist zugleich ein deklariertes Asset, und jede genannte Titel-ID gehört zu `tracks`. Ein Ort in `places` ist über seine ID ein Ort einer der Welten des Pakets. Außerhalb eines Kampfes spielt das Spiel den Titel des Ortes, andernfalls den des nächstgelegenen übergeordneten Ortes mit eigenem Titel, andernfalls `default`; in einem Kampf `combat`. Die `music`-Aktion einer Story (siehe [Story-Skripte für Game Mode schreiben](../extending/writing-story-scripts.md)) spielt einen Titel mit Vorrang vor allen diesen ab, bis sie die Wiedergabe wieder freigibt. Ohne eine dieser Vorgaben spielt die eigene Musik der Engine. Ein Spieler, der eine eigene Musikquelle gewählt hat (Music DJ, Spotify), hört stattdessen diese: Seine Wahl hat immer Vorrang.
+Jeder Titel ist zugleich ein deklariertes Asset, und jede genannte Titel-ID gehört zu `tracks`. Ein Ort in `places` ist über seine ID ein Ort einer der Welten des Pakets. Außerhalb eines Kampfes spielt das Spiel den Titel des Ortes, andernfalls den des nächstgelegenen übergeordneten Ortes mit eigenem Titel, andernfalls `default`; in einem Kampf `combat`. Die `music`-Aktion einer Story (siehe [Story-Skripte für Game Mode schreiben](writing-story-scripts.md)) spielt einen Titel mit Vorrang vor allen diesen ab, bis sie die Wiedergabe wieder freigibt. Ohne eine dieser Vorgaben spielt die eigene Musik der Engine. Ein Spieler, der eine eigene Musikquelle gewählt hat (Music DJ, Spotify), hört stattdessen diese: Seine Wahl hat immer Vorrang.
 
 #### Capability API 1.346: Personen
 
@@ -819,7 +819,7 @@ POST /api/game/experience/check
 
 #### Capability API 1.351: festgehaltene Jahreszeiten
 
-Die Story einer Welt kann Orte unabhängig vom Datum in einer Jahreszeit festhalten (`seasons` und die Aktion `season`: siehe [Story-Skripte schreiben](../extending/writing-story-scripts.md#seasons)), und die Schlachtfelder einer Welt können mit Jahreszeiten bemalt werden (`seasons`-Zeilen und `seasonKeys`). Ein Kartenpaket mit einem von beiden braucht 1.351. Die Oberwelt liest festgehaltene Orte als `seasons` (Orts-ID zu Jahreszeit, `*` für die ganze Welt) aus `GET /api/game/:chatId/overworld`; ein erstelltes Schlachtfeld führt die Anfangsjahreszeiten seiner Tiles als `seasons`, mit Schlüsseln im Format `"x,y"`.
+Die Story einer Welt kann Orte unabhängig vom Datum in einer Jahreszeit festhalten (`seasons` und die Aktion `season`: siehe [Story-Skripte schreiben](writing-story-scripts.md#seasons)), und die Schlachtfelder einer Welt können mit Jahreszeiten bemalt werden (`seasons`-Zeilen und `seasonKeys`). Ein Kartenpaket mit einem von beiden braucht 1.351. Die Oberwelt liest festgehaltene Orte als `seasons` (Orts-ID zu Jahreszeit, `*` für die ganze Welt) aus `GET /api/game/:chatId/overworld`; ein erstelltes Schlachtfeld führt die Anfangsjahreszeiten seiner Tiles als `seasons`, mit Schlüsseln im Format `"x,y"`.
 
 #### Capability API 1.355: Regelsatz-Overlays
 
@@ -880,7 +880,7 @@ Ein Overlay darf Gegenstände benennen, deren Benutzung Punkte von einem der Sto
 
 #### Capability API 1.360: Gruppen über sechs und Begleiter, die nie kämpfen
 
-Die Varianten eines Story-Kampfes dürfen für Gruppen über sechs oder ohne Obergrenze gelten (`"party": { "min": 7 }`), und eine Story-Bedingung darf nach der Gruppengröße fragen (`{ "partySize": { "is": ">=", "value": 7 } }`; siehe [Story-Skripte schreiben](../extending/writing-story-scripts.md#conditions)).
+Die Varianten eines Story-Kampfes dürfen für Gruppen über sechs oder ohne Obergrenze gelten (`"party": { "min": 7 }`), und eine Story-Bedingung darf nach der Gruppengröße fragen (`{ "partySize": { "is": ">=", "value": 7 } }`; siehe [Story-Skripte schreiben](writing-story-scripts.md#conditions)).
 
 Ein Begleiter der Personendatei darf niemals kämpfen:
 
@@ -921,7 +921,7 @@ Er reist mit der Gruppe und wird dem Game Master als niemals kämpfend mitgeteil
 - `combatStyle`: `classic` oder `tactical`.
 - Textgrenzen: `setting` 4.000 Zeichen, `language` 100, `playerGoals` und `preferences` 2.000, `gameSpecialInstructions` 2.000, `artStylePrompt` 500.
 
-`intro` ist die Intro-Nachricht des Game Master (1.339), mit denselben Regeln wie das `intro` eines Story-Skripts (siehe [Story-Skripte schreiben](../extending/writing-story-scripts.md#the-intro-message)). Es ist der einzige Wert, der gesperrt wird. Ein gesperrtes Intro wird im Assistenten schreibgeschützt angezeigt, und das Spiel beginnt damit, unabhängig davon, was die Einrichtung sendet. Das Spiel behält das Intro so, wie es bei Spielbeginn war (`chat.metadata.gameExperienceIntro`). Es wird vor dem eigenen `intro` der Story gelesen. Ein Import einer Einrichtungsdatei behält seine eigenen Werte, und das Ausschalten der Experience lässt die ausgefüllten Werte unverändert.
+`intro` ist die Intro-Nachricht des Game Master (1.339), mit denselben Regeln wie das `intro` eines Story-Skripts (siehe [Story-Skripte schreiben](writing-story-scripts.md#the-intro-message)). Es ist der einzige Wert, der gesperrt wird. Ein gesperrtes Intro wird im Assistenten schreibgeschützt angezeigt, und das Spiel beginnt damit, unabhängig davon, was die Einrichtung sendet. Das Spiel behält das Intro so, wie es bei Spielbeginn war (`chat.metadata.gameExperienceIntro`). Es wird vor dem eigenen `intro` der Story gelesen. Ein Import einer Einrichtungsdatei behält seine eigenen Werte, und das Ausschalten der Experience lässt die ausgefüllten Werte unverändert.
 
 ### Capability API 1.373: Experience-Dateien
 
@@ -1098,6 +1098,17 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 `chatComplete` nimmt `cacheTtl: "5m" | "1h"` an: wie lange der Prompt bis zu den `cacheBreakpoint`-Nachrichten des Aufrufs (1.814) bei Anthropic zwischengespeichert bleibt. Fehlt die Option, gilt wie bisher die eigene Cache-Zeit der Verbindung. Fordere `"1h"` an, wenn dasselbe Präfix in Abständen von mehr als fünf Minuten wiederkommt, etwa der Kontext einer Geschichte, den jede Szene wiederverwendet, während der Spieler liest. Das Schreiben in den 1-Stunden-Cache kostet mehr als in den 5-Minuten-Cache; es lohnt sich also nur, wenn das Präfix innerhalb dieser Stunde erneut gelesen wird. Ein Aufruf ohne markierte Nachricht ignoriert die Option, ebenso Anbieter, die von selbst zwischenspeichern (OpenAI, Gemini, xAI, DeepSeek), und Claude (Subscription), wo die Cache-Zeit der Verbindung gilt.
 
 Ältere Engines ignorieren die Option, ein Paket kann sie also immer übergeben. Deklariere 1.815, wenn das Paket darauf angewiesen ist.
+
+### Capability API 1.835: Sprachclips im Voraus vorbereiten
+
+`services.tts.ttsService.prepareAudio(text, options?)` erzeugt den Sprachclip einer Zeile im gemeinsamen Audio-Cache, ohne ihn abzuspielen. Ruf die Methode mit demselben Text und denselben Optionen auf, die später `speak` oder `speakSequence` verwenden wird: `cacheKey`, `cacheAliases`, `voice`, `speaker`, `tone` und `audioConnectionId`. Dieser spätere Aufruf startet dann sofort die Wiedergabe, ohne die Sprache erneut zu erzeugen.
+
+- Ein Clip, der bereits zwischengespeichert ist oder gerade von einem anderen Aufruf erzeugt wird, wird nicht erneut erzeugt.
+- Die Wiedergabe wird weder gestoppt noch verändert. Ein Paket kann deshalb die nächsten Zeilen vorbereiten, während eine Zeile abgespielt wird.
+- Eine Zeile ohne Text oder ohne `cacheKey` wird übersprungen, da ihr Clip nicht gefunden werden könnte.
+- `options.signal` beendet nur das Warten. Eine bereits angeforderte Sprachsynthese läuft weiter und wird zwischengespeichert, sofern `abortCacheGenerationOnAbort` nicht gesetzt ist.
+
+Dafür ist keine Berechtigung nötig. Ältere Engines bieten die Methode nicht an. Prüfe deshalb `typeof ttsService.prepareAudio === "function"` und lass die Zeilen weiterhin erst beim Erscheinen vorlesen. Deklariere 1.835 nur, wenn das Paket ohne die Methode nicht funktioniert.
 
 ### Capability API 1.834: gespeicherte Sprites und die Regel zur Bildauswahl
 
@@ -1536,6 +1547,8 @@ Eine unbekannte, gelöschte, unter Quarantäne stehende oder nicht für Sprachau
 zuerst die gespeicherte Auswahl für Sprachausgabe, dann die Standard-/Ersatzverbindung, dann die bisherigen Einstellungen.
 Ist die gespeicherte Auswahl selbst nicht verfügbar, startet die Wiedergabe nicht und weicht nicht auf eine andere Verbindung aus.
 Pakete, die eine bestimmte Verbindung brauchen, sollten die gespeicherte ID vor der Wiedergabe prüfen.
+
+Wie du Sprachclips vor ihrer Wiedergabe erzeugst, erfährst du unter [Capability API 1.835](#capability-api-1835-prepare-voice-clips-ahead).
 
 - `createPlayer()` liefert einen unabhängigen Player mit `unlock()`, `playMusic(tag, assets?)`,
   `stopMusic(immediate?)`, `playSfx(tag, assets?, loopCount?)`, `setVolumes({ music, sfx })`,

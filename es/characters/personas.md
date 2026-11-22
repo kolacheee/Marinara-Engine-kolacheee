@@ -99,7 +99,7 @@ La pestaña **Card** contiene los campos que te describen ante la IA. Cada uno t
 | **Public Face** (Faceta pública) | La tarjeta sin sus partes privadas. | Solo mediante `{{personaPublicFace}}`, o con la fuente **Persona** de un agente en **Public Face** |
 | **Example Dialogue** (Diálogo de ejemplo) | Intercambios de muestra. Sepáralos con `<START>`. Usa `{{user}}` para tu persona y `{{char}}` para el otro personaje. | Sí |
 
-**Image Appearance Override** (Apariencia alternativa para imágenes), debajo de **Appearance**, y **Public Face** funcionan igual que en los personajes. Consulta [Pestaña Card](creating-and-editing-characters.md#card-tab). Los cuadros de texto admiten macros.
+La pestaña **Image tags** (Etiquetas de imagen) de **Appearance** y **Public Face** funcionan igual que en los personajes. Consulta [Pestaña Card](creating-and-editing-characters.md#card-tab). Los cuadros de texto admiten macros.
 
 Estas funciones son iguales que en los personajes, pero con la persona como sujeto:
 

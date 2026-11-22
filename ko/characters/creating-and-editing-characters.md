@@ -100,7 +100,7 @@ Character Editor는 채팅 영역을 전체 화면 작업 공간으로 바꿉니
 
 **Public Face**는 다른 등장인물이 캐릭터에 대해 보거나 알 수 있는 내용입니다. 외모, 태도, 역할, 평판, 비밀이 아닌 인간관계 등이 해당합니다. 비밀, 속마음, 사적인 과거, 캐릭터를 연기하는 방법에 관한 지시사항은 빼세요. 이 내용은 해당 캐릭터 카드의 일부로 전송되지 않습니다. 프롬프트에서는 `{{publicFace}}` 매크로를 넣은 곳에서만 읽으며, 페르소나에는 `{{personaPublicFace}}`를 씁니다. [프롬프트 매크로](../prompts/macros.md#identity-character-and-persona-macros)를 참고하세요. Individual Roleplay 그룹 채팅에서는 **Others' Public Faces**가 다른 캐릭터의 턴에 이 내용을 보냅니다. [Individual 모드의 다른 설정](../chats/group-chats.md#more-individual-settings)을 참고하세요. **Characters**(캐릭터)나 **Persona**(페르소나) 소스가 **Public Face**로 설정된 에이전트는 카드 대신 이 내용을 읽습니다. [기타 설정](../agents/custom-agents.md#other-settings)을 참고하세요. **Send Public Faces**를 켜면 Roleplay의 Impersonate도 카드 대신 이 내용을 읽습니다. [Impersonate 설정](../chats/guided-and-impersonate.md#the-impersonate-settings)을 참고하세요.
 
-**Image Appearance Override**(이미지 외모 재정의)는 **Appearance** 아래에 있으며 기본값은 꺼짐입니다. 켜면 LoRA 트리거 단어(사용자 지정 이미지 스타일을 켜는 키워드)처럼 짧은 이미지 태그를 넣을 두 번째 상자가 나타납니다. 켜 두고 내용을 채우면 이미지 프롬프트는 그 태그를 적힌 그대로 쓰고, **Appearance**는 배경 정보로 남겨 둡니다. AI 아바타 프롬프트도 이 태그를 바탕으로 채워집니다. 내레이터는 항상 **Appearance**의 전체 내용을 봅니다.
+**Appearance**에는 **Prose**(서술문)와 **Image tags**(이미지 태그) 탭이 있습니다. **Prose**는 외모를 설명하는 본문입니다. **Image tags**에는 LoRA 트리거 단어(사용자 지정 이미지 스타일을 켜는 키워드)처럼 이미지 프롬프트용 짧은 태그를 넣습니다. 태그를 입력하면 **Use for image prompts**(이미지 프롬프트에 사용)가 체크되고, 탭의 점이 사용 중임을 보여 줍니다. 체크되어 있고 태그가 채워져 있으면 이미지 프롬프트는 태그를 입력한 그대로 사용하고 서술문은 배경 정보로 유지합니다. 태그를 보관만 하려면 체크를 해제하세요. 그러면 이미지 프롬프트는 **Prose**를 사용합니다. AI 아바타 프롬프트도 이 태그를 바탕으로 시작합니다. 내레이터는 항상 **Prose** 텍스트를 봅니다. **Images** 탭의 **Go to Appearance**(외모로 이동)로 이곳을 열 수 있습니다.
 
 **Dialogue & Greetings** 구역에서는 채팅이 어떻게 시작되고 캐릭터가 어떤 말투를 쓰는지 정합니다.
 
@@ -150,7 +150,7 @@ Character Editor는 채팅 영역을 전체 화면 작업 공간으로 바꿉니
 
 1. 아바타 타일 위에 마우스를 올리고 마법봉 버튼을 클릭하세요. **Generate Character Avatar**(캐릭터 아바타 생성) 창이 열립니다.
 2. **Image Generation Connection**(이미지 생성 연결)을 고르세요.
-3. **Avatar Prompt**(아바타 프롬프트)를 확인하거나 고치세요. **Image Appearance Override**가 켜져 있고 내용이 채워져 있으면 그 내용으로 시작합니다. 그렇지 않으면 **Appearance**, **Description**, **Personality** 중 먼저 텍스트가 있는 것을 씁니다.
+3. **Avatar Prompt**(아바타 프롬프트)를 확인하거나 고치세요. **Use for image prompts**가 체크되어 있고 **Appearance**의 **Image tags**가 채워져 있으면 그 태그로 시작합니다. 그렇지 않으면 **Appearance**, **Description**, **Personality** 중 먼저 텍스트가 있는 것을 씁니다.
 4. 카드에 이미 아바타가 있으면 **Use current avatar as a reference**(현재 아바타를 참조로 사용)를 체크할 수 있습니다.
 5. **Generate**(생성)를 클릭하세요. 다시 시도하려면 **Regenerate**(재생성)를 클릭하세요.
 6. 결과가 마음에 들면 **Use Avatar**(아바타 사용)를 클릭하세요.
@@ -196,6 +196,7 @@ Text to Speech가 꺼져 있거나 모든 캐릭터가 한 목소리를 함께 �
 - 한 채팅은 필드마다 대체 필드를 하나만 쓸 수 있습니다. 다른 대체 필드에서 그 채팅을 체크하거나 Chat Settings에서 다른 대체 필드를 고르면 그쪽으로 옮겨 갑니다.
 - 체크한 채팅이 없으면 대체 필드는 나중에 쓰도록 비활성 상태로 남습니다.
 - 비어 있는 대체 필드는 해당 채팅에서 그 필드를 비웁니다.
+- **Appearance** 대체 필드에는 자체 **Prose**와 **Image tags** 탭이 있습니다. 해당 채팅에서는 대체 필드의 태그가 카드의 태그를 대신합니다. 태그가 비어 있거나 체크가 해제되어 있으면 카드의 태그가 아니라 대체 필드의 서술문을 이미지 프롬프트에 사용합니다. 새 대체 필드는 카드의 태그도 복사합니다.
 - 채팅별 시나리오와 이미지 외형 덮어쓰기 설정은 계속 우선 적용됩니다.
 - **Summary** 대체 필드는 메타데이터로 남으며 AI에 전달되지 않습니다.
 - 캐릭터가 채팅에서 빠지면 그 할당은 일시 중지되며, 캐릭터를 다시 추가하면 재개됩니다.

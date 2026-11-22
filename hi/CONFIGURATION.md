@@ -166,7 +166,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | कस्टम स्क्रिप्ट टूल चालू करता है। भरोसे के बाहर या इंपोर्ट किए गए टूल के लिए इसे बंद रखें। |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Professor Mari की डेटाबेस बदलने वाली स्क्रिप्ट को उन होस्ट पर भी चलने देता है, जिनमें OS सैंडबॉक्स नहीं है (macOS Seatbelt या Linux Bubblewrap, जो मौजूद होने पर इस्तेमाल होते हैं)। जब तक आपने स्क्रिप्ट जाँची न हो, इसे बंद रखें। |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agents पेज पर GitHub एजेंट-रिपॉज़िटरी का मैन्युअल प्रीव्यू और सिंक चालू करता है। देखें [कस्टम एजेंट रिपॉज़िटरी](#custom-agent-repositories)। |
-| `MARINARA_OVERWORLD_GAMES` | `false` | खिलाड़ियों को Overworld गेम (एक सेटिंग किट और एक जेनरेट हुई दुनिया) बनाने और किसी पुराने गेम को Overworld गेम में बदलने देता है। बंद होने पर विज़ार्ड सिर्फ़ VN गेम देता है। |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | थर्ड-पार्टी एक्सटेंशन इंपोर्ट के दो गेट में से पहला। देखें [External Extensions](#external-extensions)। |
 | `IMPORT_ALLOWED_ROOTS` | खाली | वे फ़ोल्डर, जिन्हें बल्क इंपोर्ट बिना पिकर टोकन के पढ़ सकता है। |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456` (256 MiB) | सर्वर ज़्यादा से ज़्यादा इतना बड़ा एक JSON प्रोफ़ाइल एक्सपोर्ट बनाता है। |
@@ -342,11 +341,12 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### लोरबुक
 
-दोनों डिफ़ॉल्ट रूप से बंद हैं और `.env` बदलने के बाद अगली जेनरेशन पर लागू होते हैं। `LOREBOOK_STABLE_GROUP_WINNERS` सेट हो, तो वह **Settings → Advanced → Lorebooks** के **Stable lorebook picks** (स्थिर लोरबुक चुनाव) स्विच पर भारी पड़ता है। नहीं तो स्विच तय करता है। देखें [सुविधा स्विच](configuration/features.md)।
+सभी डिफ़ॉल्ट रूप से बंद हैं। `.env` बदलने के बाद `LOREBOOK_STABLE_GROUP_WINNERS` और `LOREBOOK_COMPACT_STORED_SCANS` अगले जेनरेशन पर लागू होते हैं, और `LOREBOOK_NEW_BOOK_VECTORS` अगली बनाई जाने वाली लोरबुक पर लागू होता है। `LOREBOOK_STABLE_GROUP_WINNERS` या `LOREBOOK_NEW_BOOK_VECTORS` सेट होने पर वह **Settings → Advanced → Lorebooks** में अपने स्विच (**Stable lorebook picks** या **Vectors on for new lorebooks** (नई लोरबुक में वेक्टर चालू रखें)) से ऊपर रहता है। वरना स्विच तय करता है। [फ़ीचर स्विच](configuration/features.md) देखें।
 
 | वेरिएबल | डिफ़ॉल्ट | यह क्या करता है |
 | --- | --- | --- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | `false` | जब तक उम्मीदवार वही रहें, हर चैट में समावेशन समूह का वही विजेता बनाए रखता है, हर जेनरेशन पर दोबारा चुनने के बजाय। इससे प्रोवाइडर की प्रॉम्प्ट कैशिंग के लिए प्रॉम्प्ट की शुरुआत एक जैसी रहती है। |
+| `LOREBOOK_NEW_BOOK_VECTORS` | `false` | नई लोरबुक में **Vectors** (वेक्टर) शुरू से चालू रखता है, ताकि उनकी एंट्री तुरंत वेक्टराइज़ की जा सकें और मतलब के आधार पर मिल सकें। ऐप में बनाई गई, अपनी सेटिंग के बिना इंपोर्ट की गई, या Game Mode और Lorebook Keeper की बनाई लोरबुक पर लागू होता है। Professor Mari की बनाई लोरबुक में **Vectors** पहले से चालू रहता है। मौजूदा लोरबुक की अपनी सेटिंग बनी रहती है। |
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | चालू हुई एंट्री का पूरा टेक्स्ट सिर्फ़ सबसे नए असिस्टेंट या नैरेटर संदेश पर सेव करता है। पुराने संदेशों में एंट्री ID, कीवर्ड और स्कोर रहते हैं। इससे बड़ी लोरबुक वाली चैट काफ़ी छोटी हो जाती हैं। नए संदेश डिलीट हो जाएँ, तो जो संदेश फिर से सबसे नया बनता है, उसके लिए Active Context और एजेंट की दोबारा कोशिश एंट्री का मौजूदा टेक्स्ट दिखाते हैं। |
 
 `scripts/compact-lorebook-scans.mjs` यही नियम पुरानी चैट पर लागू करती है। पहले सर्वर रोकें। जब तक आप `--apply` न दें, यह सिर्फ़ ड्राई रन होता है, और लिखने से पहले यह दोनों संदेश टेबल का बैकअप बनाती है।

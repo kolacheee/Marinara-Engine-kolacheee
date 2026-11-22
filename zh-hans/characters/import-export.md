@@ -36,7 +36,7 @@ Marinara 导出文件保留的细节最多。其他几种格式来自 SillyTaver
 | | **No tags**：跳过这些标签。 |
 | | **Existing only**：只保留角色库里已有的标签。 |
 | **Imported regex scripts**(导入的正则脚本) | **Character only**(默认)：规则只对这个角色生效。 |
-| | **Global**(全局)：规则会加进 **Presets → Regexes**(预设 → 正则)，在每一次聊天里都生效。 |
+| | **Global**：规则会放到 **Library → Regex scripts**(资料库 → 正则脚本)（经典布局里是 **Presets → Regexes**），可以跨聊天运行。 |
 | **Split description into fields**(将描述拆分到各字段) | 默认关闭。勾选后，**Description**(描述) 里标明为性格、外观等内容的文字会移到各自的字段里。 |
 | **Import tags**(导入标签) | **Tag imported**(标记为已导入)（默认开启）：添加 **Imported**(已导入) 标签。 |
 | | **Tag source**(标记来源)（默认开启）：添加文件来源标签：SillyTavern 角色卡用 **ST**，`.charx` 用 **CharX**，Marinara 导出文件用 **Marinara**。 |

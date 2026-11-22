@@ -1,6 +1,8 @@
 # Escrever roteiros de história de Game Mode
 
-Um roteiro de história conduz o rumo de uma partida de Game Mode: cenas que acontecem quando a equipe chega a algum lugar, pedidos feitos ao Game Master assim que uma condição é cumprida, objetivos que o jogador acompanha no Journal e momentos que o próprio Game Master pode marcar. Escreva um se você cria mundos para outras pessoas. Para jogar num mundo que tem uma história, veja [Criar um mundo](../game/getting-started.md#making-a-world).
+> **Nota:** Os roteiros de história pertencem às partidas Overworld, que ainda não foram lançadas. Esta é uma página para desenvolvedores, mantida fora da página Docs do aplicativo e da Professor Mari. Veja [Partidas Overworld (ainda não lançadas)](overworld-games.md).
+
+Um roteiro de história conduz o rumo de uma partida de Game Mode: cenas que acontecem quando a equipe chega a algum lugar, pedidos feitos ao Game Master assim que uma condição é cumprida, objetivos que o jogador acompanha no Journal e momentos que o próprio Game Master pode marcar. Escreva um se você cria mundos para outras pessoas. Para jogar num mundo que tem uma história, veja [Criar um mundo](overworld-games.md#making-a-world).
 
 Um roteiro de história é feito de dados, não de código. Nada nele é executado. O Engine confere o roteiro com o mundo para o qual ele foi escrito, aplica-o turno a turno e recusa tudo o que não se encaixa.
 
@@ -11,7 +13,7 @@ Antes de começar, você precisa de um mundo ao qual vincular a história e dos 
 Uma história pertence a um único mundo. Ela nomeia os lugares e as pessoas desse mundo, então só faz sentido com o mundo para o qual foi escrita (a semente, a descrição e as edições manuais dele).
 
 - Num **arquivo de mundo** (`.world.json`), como um `story` de nível superior ao lado de `world`. Uma versão do Engine que não conhece histórias continua lendo o mundo.
-- No **pacote de mapas** de uma Experience: cada arquivo de mundo pode levar a sua história, e uma partida nova a recebe junto com o mapa. Veja [pacotes opcionais de agentes](../development/optional-agent-packages.md).
+- No **pacote de mapas** de uma Experience: cada arquivo de mundo pode levar a sua história, e uma partida nova a recebe junto com o mapa. Veja [pacotes opcionais de agentes](optional-agent-packages.md).
 - Num mundo guardado na biblioteca, fora de qualquer partida: `GET`, `PUT` e `DELETE /api/game-worlds/:id/story`, como os de uma partida. Uma partida nova iniciada a partir desse mundo leva a história junto.
 - Numa partida, depois que ela começa: `GET`, `PUT` e `DELETE /api/game/:chatId/story` leem, salvam e removem a história. Cada gravação é conferida com o mundo da partida, incluindo as edições manuais, e edições manuais que tirariam algo que a história nomeia são recusadas.
 
@@ -211,7 +213,7 @@ Qualquer ação pode ter o próprio `if`: ela só é realizada quando as suas co
 
 As ações realizadas ficam registradas com o acionamento, então as cenas e os pedidos de um evento `gm` chegam no turno seguinte como foram realizados quando o Game Master o marcou.
 
-Um companheiro é uma pessoa marcada como tal no arquivo de pessoas do pacote (veja as pessoas do pacote de mapas em [pacotes opcionais de agentes](../development/optional-agent-packages.md)).
+Um companheiro é uma pessoa marcada como tal no arquivo de pessoas do pacote (veja as pessoas do pacote de mapas em [pacotes opcionais de agentes](optional-agent-packages.md)).
 
 Dos eventos `rest`, `travel` e `idle` que poderiam acontecer num turno, só um acontece: o de maior `priority` (um inteiro de -100 a 100, 0 quando omitido; o primeiro no roteiro em caso de empate). Assim, uma conversa de companheiro à fogueira, dois companheiros discutindo na estrada ou um companheiro procurando o jogador numa hora tranquila nunca se acumulam. Com uma condição `party`, uma cena assim só acontece enquanto esses companheiros viajam com a equipe.
 
@@ -406,7 +408,7 @@ Cada recurso de história exige uma versão mínima da Capability API.
 - mais de 64 sinalizadores exigem 1.353 (o limite é 256);
 - `variants` de lutas exigem 1.356;
 - condições `any`, um evento `fight` nomeando a sua luta, um evento `leave`, `min` ou `max` de um sinalizador e um `if` numa ação ou página exigem 1.358;
-- um pacote de mapas cuja sobreposição do conjunto de regras tem uma entrada `storyUses` (um uso de item que gasta um número da história, que um `if` de Held Ground pode ler) exige 1.359; veja [itens que custam um número da história](../development/optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
+- um pacote de mapas cuja sobreposição do conjunto de regras tem uma entrada `storyUses` (um uso de item que gasta um número da história, que um `if` de Held Ground pode ler) exige 1.359; veja [itens que custam um número da história](optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
 - uma condição `partySize`, uma variante para uma equipe acima de 6 membros ou sem limite superior, ou mais de 6 variantes exigem 1.360;
 - um companheiro `noncombatant`, deixado de fora do tamanho da equipe, exige 1.360;
 - uma ação `season` com `over` para tudo dentro dela exige 1.361;

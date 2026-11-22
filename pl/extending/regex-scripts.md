@@ -173,7 +173,7 @@ Pod trybami panel wypisuje przypisane skrypty każdej postaci, każdy z własnym
 Marinara odczytuje skrypty regex dołączone do karty postaci z aplikacji SillyTavern. Przy imporcie karty sekcja **Imported regex scripts** (zaimportowane skrypty regex) oferuje dwie możliwości:
 
 - **Character only** (tylko postać; domyślnie): skrypty pozostają przypisane do tej postaci.
-- **Global** (globalnie): skrypty trafiają do panelu **Presets** i działają w każdym czacie.
+- **Globalny**: skrypty trafiają do sekcji **Biblioteka → Skrypty regex** (**Presety → Regexy** w klasycznym układzie) i mogą działać w różnych czatach.
 
 Ten wybór pojawia się w oknie importu pojedynczej postaci i w zbiorczym imporcie **Import from SillyTavern Folder**. Skrypty z pustym wzorcem albo ze wzorcem, który nie przechodzi kontroli bezpieczeństwa, są pomijane. Żeby zaimportować zwykły plik JSON ze skryptami, użyj **Import regexes from JSON** w sekcji **Regexes**. Zobacz [Importowanie z SillyTavern](../data/importing-from-sillytavern.md).
 
@@ -181,7 +181,7 @@ Ten wybór pojawia się w oknie importu pojedynczej postaci i w zbiorczym imporc
 
 ### Zastępowanie pakietu regexów
 
-1. W **Presets → Regexes** (presety, skrypty regex) wybierz **Select regex scripts** (wybierz skrypty regex).
+1. W sekcji **Biblioteka → Skrypty regex** (**Presety → Regexy** w klasycznym układzie) wybierz **Zaznacz skrypty regex**.
 2. Zaznacz wpisy starego pakietu. **Zaznacz wszystkie skrypty regex** zaznacza całą bibliotekę, w tym skrypty w zwiniętych folderach.
 3. Kliknij **Usuń** na pasku akcji. Marinara prosi o potwierdzenie. Aby najpierw zachować kopię, przed usunięciem kliknij **Eksportuj**.
 4. Zaimportuj zaktualizowany pakiet.

@@ -36,7 +36,7 @@ Marinara 내보내기 파일이 정보를 가장 많이 담습니다. 나머지 
 | | **No tags**: 태그를 가져오지 않습니다. |
 | | **Existing only**: 라이브러리에 이미 있는 태그만 유지합니다. |
 | **Imported regex scripts**(가져온 정규식 스크립트) | **Character only**: 규칙이 이 캐릭터에 대해 작동합니다. 기본값입니다. |
-| | **Global**: 규칙이 **Presets → Regexes**(프리셋 → 정규식)에 추가되어 모든 채팅에서 작동합니다. |
+| | **Global**: 규칙이 **Library → Regex scripts**(라이브러리 → 정규식 스크립트)(클래식 레이아웃에서는 **Presets → Regexes**)로 들어가며 여러 채팅에서 실행할 수 있습니다. |
 | **Split description into fields**(설명을 필드별로 분할) | 기본값은 꺼짐입니다. 체크하면 라벨이 붙은 성격, 외모 같은 텍스트를 **Description**(설명)에서 꺼내 각자의 필드로 옮깁니다. |
 | **Import tags**(가져오기 태그) | **Tag imported**(가져옴 태그 지정)(기본값 켜짐): **Imported**(가져옴) 태그를 추가합니다. |
 | | **Tag source**(출처 태그 지정)(기본값 켜짐): 파일의 출처를 추가합니다. SillyTavern 카드는 **ST**, `.charx`는 **CharX**, Marinara에서 내보낸 파일은 **Marinara**입니다. |

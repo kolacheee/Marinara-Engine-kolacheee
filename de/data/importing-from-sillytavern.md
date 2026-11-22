@@ -8,7 +8,7 @@ Hol deine SillyTavern-Daten in Marinara Engine. Importiere jeweils eine Datei od
 | --- | --- |
 | Charaktere | Charaktere |
 | Chats und Gruppenchats | Chats |
-| Presets (ein gespeichertes Bündel mit Generierungseinstellungen) | Presets |
+| Presets | Presets (die Abschnitte des Prompts und die Sampler-Einstellungen des Presets) |
 | World Info | Lorebooks (Notizen, die die KI liest, wenn bestimmte Wörter vorkommen) |
 | Hintergründe | Chat-Hintergründe |
 | Personas | Personas (das Profil, das dich vertritt) |
@@ -45,11 +45,11 @@ Bevor du anfängst: Der Assistent liest Dateien auf dem Server-Rechner. Liegt Si
 3. Wähle deinen SillyTavern-Ordner. Nimm den Hauptordner, meist den, der `data/` oder `public/` enthält. Nutze einen dieser Wege:
    - Klicke auf **Browse** und wähle den Ordner.
    - Gibt es keine Ordnerauswahl (ein entfernter Server), öffnet sich ein Ordner-Browser in der App. Er listet nur Ordner im Home-Ordner des Benutzers, der den Server betreibt. Klicke auf **Select This Folder**.
-   - Tippe den Pfad in **SillyTavern Folder Path** ein, zum Beispiel `/path/to/SillyTavern`. Ein getippter Pfad funktioniert nur, wenn die Einstellung `IMPORT_ALLOWED_ROOTS` des Servers einen Ordner auflistet, der ihn enthält.
+   - Gib den Pfad in **Pfad zum SillyTavern-Ordner** ein, zum Beispiel `/home/you/SillyTavern`. Ein eingegebener Pfad funktioniert, wenn er innerhalb des Home-Ordners des Benutzers liegt, der den Server ausführt. Ist die Server-Einstellung `IMPORT_ALLOWED_ROOTS` gesetzt, muss er stattdessen in einem der dort angegebenen Ordner liegen.
 4. Klicke auf **Scan Folder**. Marinara zeigt, wie viele Elemente es in jeder Kategorie gefunden hat.
 5. Wähle unter **Choose exactly what to import** die gewünschten Elemente aus. Jede Kategorie hat die Schaltflächen **All** und **None** sowie einen Schalter **Show** oder **Hide** für die einzelnen Elemente.
 6. Klicke auf **Import Selected**. Ein Fortschrittsbalken zeigt das aktuelle Element und eine Zahl pro Kategorie.
-7. Bei **Import complete!** liest du die Zahl pro Kategorie und klickst auf **Done**.
+7. Sobald **Import abgeschlossen!** erscheint, lies die Anzahl je Kategorie und klick auf **Fertig**. Unter den Zahlen steht eine kurze Liste: wie viele Chats ihre Author's Note und Persona behalten haben, für welche SillyTavern-Benutzernamen hier keine Persona existierte und welche Preset-Einstellungen ausgelassen wurden.
 
 Die meisten Elemente sind vorausgewählt. Die Standard-Presets von SillyTavern, etwa `deterministic`, `neutral` und die `universal-*`-Presets, lässt Marinara unmarkiert, und ein Banner weist darauf hin. Lass sie unmarkiert, solange du keine Kopien willst.
 
@@ -64,24 +64,28 @@ Findet die Suche Charaktere, erscheinen zwei weitere Optionen:
 **Imported regex scripts** (Standard **Character only**):
 
 - **Character only** wendet die Skripte auf den jeweiligen Charakter an.
-- **Global** fügt sie zu **Voreinstellungen → Regex-Skripte** hinzu. Dort verwaltest du Skripte, die chatübergreifend laufen. Siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts).
+- **Global** fügt sie unter **Bibliothek → Regex-Skripte** hinzu (im klassischen Layout **Voreinstellungen → Regex-Skripte**). Dort verwaltest du Skripte, die chatübergreifend laufen. Siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts).
 
 Wenn es nicht funktioniert hat:
 
 - „Could not find SillyTavern data directory.“ heißt, dass Marinara diesen Ordner nicht lesen kann. Wähle den SillyTavern-Hauptordner.
-- „folderPath is not allowed“ heißt, dass der Server den Pfad abgelehnt hat. Klicke auf **Browse** und wähle stattdessen den Ordner. Der Betreiber des Servers kann mit der Einstellung `IMPORT_ALLOWED_ROOTS` begrenzen, welche Ordner importiert werden dürfen. Ist sie gesetzt, muss auch ein gewählter Ordner in einem dieser Ordner liegen. Frage den Betreiber des Servers oder lies die [Referenz zur Server-Konfiguration](../CONFIGURATION.md).
+- „Marinara can only read folders inside your home folder“ bedeutet, dass der Ordner außerhalb des Home-Ordners des Benutzers liegt, der den Server ausführt. Verschiebe den SillyTavern-Ordner dorthin oder bitte den Serverbetreiber, seinen Speicherort mit `IMPORT_ALLOWED_ROOTS` zu erlauben. Ist diese Einstellung gesetzt, muss auch ein ausgewählter Ordner innerhalb eines ihrer Ordner liegen. Siehe die [Server-Konfiguration – Referenz](../CONFIGURATION.md).
+- Erhält **Durchsuchen** einen eingegebenen Pfad außerhalb des Home-Ordners, öffnet sich der Ordnerbrowser stattdessen im Home-Ordner.
 - Schlägt ein Element fehl, überspringt Marinara es, macht weiter und listet es im letzten Schritt unter den Warnungen auf, zum Beispiel `Character "Foo": error message`.
 
 ## Was mit deinen Daten passiert
 
 - Chatdateien, die zu einem Charakter gehören, werden als Verzweigungen eines Chats importiert. Eine Verzweigung ist eine Kopie eines Chats, die du getrennt fortsetzt.
 - Gruppenchats werden als Roleplay-Chats importiert.
-- Importierte Elemente behalten das Änderungsdatum der Quelldatei, nicht das Datum des Imports.
+- Importierte Einträge behalten das Datum der letzten Änderung der Quelldatei, nicht das Importdatum. Jede Chat-Nachricht behält das Datum, mit dem SillyTavern sie gespeichert hat.
+- Die **Author's Note** eines Chats wird samt ihrer Tiefe übernommen. Hatte SillyTavern dafür eine andere Häufigkeit, Position oder Rolle, fügt Marinara sie trotzdem bei jeder Antwort in dieser Tiefe ein und weist beim Import darauf hin. Eine in SillyTavern ausgeschaltete Notiz bleibt aus.
+- Ein Chat wird mit der Persona verknüpft, die SillyTavern verwendet hat: mit der fest zugewiesenen Persona, sonst mit der Persona, die genauso heißt wie der Benutzer des Chats. Importiere Personas im selben Durchlauf oder lege vorher eine mit diesem Namen an. Gibt es keine passende, bleibt der Chat ohne Persona, und der Import nennt die fehlende Persona.
+- Ein Preset bringt seine Sampler-Einstellungen mit: Temperatur, Top P, Top K, Min P, Frequency und Presence Penalty sowie Reasoning Effort. Sie sind die Anfangswerte für Chats, die dieses Preset verwenden; eigene Werte der Verbindung oder des Chats haben weiterhin Vorrang. Maximale Antwortlänge und Kontextgröße bleiben bei deiner Verbindung. Für Top A und Repetition Penalty gibt es hier keine Einstellung; sie werden ausgelassen.
 - Charaktere, Personas, Lorebooks, Presets und Chats erhalten die Tags **Imported** und **ST**, sofern du nicht bei **Tag imported** oder **Tag source** oberhalb von **Import Selected** den Haken entfernst. Ihre Namen und Beschreibungen bleiben unverändert.
 
 ## Was sich nicht übernehmen lässt
 
-Der Assistent liest nur die Kategorien aus der ersten Tabelle. Andere SillyTavern-Daten, etwa globale App-Einstellungen und Quick Replies, werden nicht importiert.
+Der Assistent liest nur die Kategorien aus der ersten Tabelle. Andere SillyTavern-Daten wie globale App-Einstellungen, Schnellantworten, Instruct- und Kontextvorlagen sowie Verbindungsprofile werden nicht importiert. Vor dieser Korrektur importierte Chats erhielten den Importzeitpunkt als Nachrichtendatum. Um das bei einem Chat zu korrigieren, lösche ihn und importiere seine Datei erneut (entferne bei einem Ordnerimport das Häkchen bei **Bereits Vorhandenes überspringen**).
 
 ## Verwandte Anleitungen
 

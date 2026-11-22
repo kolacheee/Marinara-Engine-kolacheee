@@ -20,7 +20,7 @@ Pojęcia używane niżej:
 
 Oto profile wbudowane:
 
-- **Off**: nie dokłada żadnego stylu. Prompt trafia do usługi niemal dokładnie tak, jak został wpisany.
+- **Wyłączone**: nie dodaje stylu i domyślnie używa gramatyki **Wyłączone**, która zachowuje złożony tekst promptu bez czyszczenia. Jeśli masz zapisaną wersję tego profilu, wybierz **Wyłączone** w polu **Gramatyka promptu** albo użyj **Resetuj**, żeby przywrócić nową wartość domyślną.
 - **Auto**: wnioskuje spójny wygląd z postaci, gry, sceny i wybranego modelu obrazów. To profil domyślny.
 - **Anime**: ogólne tagi w stylu anime do czystej grafiki postaci.
 - **Danbooru / Illustrious**: tagi w stylu Danbooru pod checkpointy anime SDXL, takie jak Illustrious, Pony i NovelAI.
@@ -67,6 +67,23 @@ W zarządzaniu profilami pomagają dwa przyciski:
 - **Danbooru tags**: krótkie tagi w stylu Danbooru, rozdzielone przecinkami. Najlepsze do checkpointów anime SDXL, takich jak Illustrious, Pony i NovelAI.
 - **Tags**: krótkie słowa kluczowe rozdzielone przecinkami, bez konwencji Danbooru.
 - **Natural language**: zwykłe zdania. Najlepsze do modeli, które czytają prozę, na przykład DALL-E i modeli Z-Image Turbo.
+- **Wyłączone**: zachowuje złożony tekst promptu w pierwotnej kolejności, także powtórzone tagi. Wybierz tę opcję, gdy model obrazów wymaga dokładnej kolejności tagów.
+
+### Gramatyka promptu: Wyłączone
+
+Wybierz **Wyłączone**, żeby wyłączyć przetwarzanie gramatyki i czyszczenie promptu w dowolnym profilu stylu. Marinara nie dzieli ani nie przepisuje podanego tekstu, nie usuwa duplikatów, nie uzgadnia tagów płci ani nie przenosi zwrotów takich jak `no watermark` do promptu negatywnego. Spacje, podziały wierszy i interpunkcja wewnątrz każdego źródła pozostają bez zmian.
+
+Na przykład ta sekwencja zachowuje każdy znacznik uczestnika obok jego opisu:
+
+```text
+2boys, 3girls, 1boy, black hair, 1boy, brown hair, 1girl, long hair, 1girl, short hair, 1girl, red hair
+```
+
+Marinara nadal łączy skonfigurowane źródła, takie jak prefiksy połączenia, tagi profilu, wygenerowany tekst i twoje osobne opisy wyglądu. Między źródłami dodaje przecinek i spację. Opcja **Wyłączone** wyłącza też usuwanie skopiowanych wskazówek stylu z tekstów tworzonych przez modele piszące prompty obrazów. Nie steruje tym, co generuje model piszący prompt.
+
+Przy opcji **Wyłączone** agent Illustrator zachowuje skonfigurowane tagi **Ilustracja**, nawet gdy szablon promptu wspomina o panelach lub układach komiksowych. Pozostawia też złożony prompt negatywny bez zmian, zamiast usuwać powtórzone wykluczenia lub dodawać domyślne zakazy tekstu.
+
+Możesz wybrać gramatykę **Wyłączone** w profilu, który dodaje tagi stylu. Wbudowany profil **Wyłączone** pozostawia też puste pola stylu. Zapisane profile zachowują dotychczasową gramatykę, dopóki jej nie zmienisz.
 
 ## Sekcja Test bench
 
@@ -80,7 +97,7 @@ Sekcja Test bench pokazuje też krótką notatkę o czyszczeniu. Kiedy nic się 
 
 ## Jak Marinara czyści prompt
 
-Zanim jakiekolwiek żądanie obrazu opuści aplikację, Marinara składa prompt razem z aktywnym profilem. Kompilator:
+Zanim jakiekolwiek żądanie obrazu opuści aplikację, Marinara składa prompt razem z aktywnym profilem. Przy gramatyce **Wyłączone** łączy źródła bez czyszczenia. W pozostałych trybach gramatyki kompilator:
 
 - usuwa tagi bliskie duplikatom, na przykład powtórzony tag jakości;
 - przenosi proste zwroty przeczące, takie jak "avoid text" czy "no watermark", do promptu negatywnego;
@@ -124,6 +141,8 @@ Sekcja **Local image defaults** pojawia się wyłącznie przy usługach AUTOMATI
 Professor Mari sama pisze prompty obrazów, więc jej polecenie `mari images` wysyła je do twojego modelu obrazów dokładnie w napisanej przez nią postaci. Nie dodaje się profilu stylu, tagów dla pojedynczego obrazu ani prefiksu promptu z połączenia. Poproś ją o użycie twojego stylu, a doda `--style`, co stosuje profil wybrany powyżej (najpierw własny profil modelu obrazów, potem globalny **Default style**), albo `--style <name>` dla konkretnego profilu. Może wyświetlić listę twoich profili i przeczytać wybrany w całości, zanim podejmie decyzję.
 
 Każdy obraz, który tworzy, zapisuje jej oryginalny prompt, użyty profil (jeśli był) i dokładny wysłany prompt, dzięki czemu może pokazać, co zmienił styl.
+
+W modelu NovelAI V4 lub nowszym daje każdej postaci na obrazie osobny prompt, według tych samych zasad co agent Illustrator, żeby ich wyglądy się nie mieszały. Żądany przez nią rozmiar zostaje zachowany nawet wtedy, gdy w modelu włączone jest ustawienie **Wybieraj rozdzielczość na podstawie liczby postaci**; to ustawienie wybiera rozmiar tylko wtedy, gdy asystentka zostawia ten wybór modelowi.
 
 ## Powiązane przewodniki
 

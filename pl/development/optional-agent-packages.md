@@ -711,7 +711,7 @@ Pakiet `game-surface` konfigurowany w kreatorze Game (`gameSurface.setup`, 1.18)
 }
 ```
 
-`worlds` (maksymalnie 32) i `tiles` są opcjonalne. Plik świata może zawierać skrypt fabuły swojego świata (worldgen W10), który trafia do pakietu razem z mapą jako jej część. Plik świata w wersji 2 zawiera też `snapshot` świata, czyli świat w takiej postaci, w jakiej powstał (W11): Engine, którego generator światów od tego czasu się zmienił, odczytuje świat z tej migawki dokładnie w takiej postaci, w jakiej powstał, więc pakiet działa dalej po aktualizacjach Engine. Zapisuj pliki przyciskiem **Download** (pobranie) przy grze albo świecie z biblioteki (lub przez `GET /api/game/:chatId/world/file`), bo tak zapisane pliki zawierają migawkę. Plik pakietu może mieć najwyżej 8 MB, czyli tyle, ile największy plik do udostępniania odczytywany przez Engine (zestaw kafelków ma własne, mniejsze limity), więc świata z większym plikiem (migawka bardzo dużego świata) nie da się dostarczyć w pakiecie. Świat, którego fabuła ustawia `intro`, wymaga Capability API 1.339 (zobacz [Wiadomość otwierająca](../extending/writing-story-scripts.md#the-intro-message)). `tiles` może być graficznym zestawem kafelków (zestaw kafelków w wersji 2: arkusze PNG na siatce pól, ze sprite'ami zajmującymi kilka pól), co wymaga Capability API 1.80; Engine dekoduje i sprawdza jego arkusze raz na wersję pakietu. Gdy Experience jest włączone, nowa gra jest związana z zestawem realiów pakietu; jeśli pakiet dostarcza światy, gracz wybiera jeden z nich (razem z fabułą) i nie tworzy innego. Wyłączenie Experience przywraca graczowi własne wybory. `POST /api/game/create` wymusza tę samą blokadę. Gra zachowuje swój zestaw realiów i świat jak każda inna, więc działa dalej po usunięciu pakietu, a dopóki pakiet jest zainstalowany, rysuje mapę świata i miasta kafelkami z pakietu.
+`worlds` (maksymalnie 32) i `tiles` są opcjonalne. Plik świata może zawierać skrypt fabuły swojego świata (worldgen W10), który trafia do pakietu razem z mapą jako jej część. Plik świata w wersji 2 zawiera też `snapshot` świata, czyli świat w takiej postaci, w jakiej powstał (W11): Engine, którego generator światów od tego czasu się zmienił, odczytuje świat z tej migawki dokładnie w takiej postaci, w jakiej powstał, więc pakiet działa dalej po aktualizacjach Engine. Zapisuj pliki przyciskiem **Download** (pobranie) przy grze albo świecie z biblioteki (lub przez `GET /api/game/:chatId/world/file`), bo tak zapisane pliki zawierają migawkę. Plik pakietu może mieć najwyżej 8 MB, czyli tyle, ile największy plik do udostępniania odczytywany przez Engine (zestaw kafelków ma własne, mniejsze limity), więc świata z większym plikiem (migawka bardzo dużego świata) nie da się dostarczyć w pakiecie. Świat, którego fabuła ustawia `intro`, wymaga Capability API 1.339 (zobacz [Wiadomość otwierająca](writing-story-scripts.md#the-intro-message)). `tiles` może być graficznym zestawem kafelków (zestaw kafelków w wersji 2: arkusze PNG na siatce pól, ze sprite'ami zajmującymi kilka pól), co wymaga Capability API 1.80; Engine dekoduje i sprawdza jego arkusze raz na wersję pakietu. Gdy Experience jest włączone, nowa gra jest związana z zestawem realiów pakietu; jeśli pakiet dostarcza światy, gracz wybiera jeden z nich (razem z fabułą) i nie tworzy innego. Wyłączenie Experience przywraca graczowi własne wybory. `POST /api/game/create` wymusza tę samą blokadę. Gra zachowuje swój zestaw realiów i świat jak każda inna, więc działa dalej po usunięciu pakietu, a dopóki pakiet jest zainstalowany, rysuje mapę świata i miasta kafelkami z pakietu.
 
 Engine odczytuje pliki zweryfikowaną ścieżką zasobów (deklarowany rozmiar najwyżej 8 MB na plik, hash sprawdzany ponownie) i sprawdza je tak samo jak pliki do udostępniania. Pakiet jest odrzucany w całości, z podaniem powodu, gdy któregoś pliku nie da się odczytać, gdy świat powstał na innym zestawie realiów albo do niego nie pasuje lub gdy bajty pliku nie są tymi zainstalowanymi; Experience nie może wtedy rozpocząć gry. Zestaw zasad nigdy nie jest częścią pakietu map: Experience, które potrzebuje własnych zasad, dostarcza osobny pakiet zestawu zasad.
 
@@ -736,7 +736,7 @@ Od 1.345 zasoby pakietu mogą zawierać dźwięk: `.ogg`, `.mp3` lub `.wav`, ka�
 }
 ```
 
-Każdy utwór jest też zadeklarowanym zasobem, a każdy wskazany identyfikator utworu należy do `tracks`. Miejsce w `places` to miejsce jednego ze światów pakietu, wskazane identyfikatorem. Poza walką gra odtwarza utwór miejsca, w przeciwnym razie utwór najbliższego miejsca, w którego obrębie się znajduje i które ma utwór, a w dalszej kolejności `default`; podczas walki – `combat`. Akcja `music` fabuły (zobacz [Pisanie skryptów fabuły Game Mode](../extending/writing-story-scripts.md)) włącza jeden z utworów z pierwszeństwem przed wszystkimi tymi ustawieniami, dopóki nie odda im sterowania. Jeśli żadne z nich nie obowiązuje, gra własna muzyka Engine. Gracz, który wybrał własne źródło muzyki (Music DJ, Spotify), słyszy je zamiast niej: jego wybór zawsze wygrywa.
+Każdy utwór jest też zadeklarowanym zasobem, a każdy wskazany identyfikator utworu należy do `tracks`. Miejsce w `places` to miejsce jednego ze światów pakietu, wskazane identyfikatorem. Poza walką gra odtwarza utwór miejsca, w przeciwnym razie utwór najbliższego miejsca, w którego obrębie się znajduje i które ma utwór, a w dalszej kolejności `default`; podczas walki – `combat`. Akcja `music` fabuły (zobacz [Pisanie skryptów fabuły Game Mode](writing-story-scripts.md)) włącza jeden z utworów z pierwszeństwem przed wszystkimi tymi ustawieniami, dopóki nie odda im sterowania. Jeśli żadne z nich nie obowiązuje, gra własna muzyka Engine. Gracz, który wybrał własne źródło muzyki (Music DJ, Spotify), słyszy je zamiast niej: jego wybór zawsze wygrywa.
 
 #### Capability API 1.346: ludzie
 
@@ -812,7 +812,7 @@ POST /api/game/experience/check
 
 #### Capability API 1.351: utrzymywane pory roku
 
-Fabuła świata może utrzymywać w miejscach porę roku niezależnie od daty (`seasons` i akcja `season`: zobacz [Pisanie skryptów fabuły Game Mode](../extending/writing-story-scripts.md#seasons)), a pola bitwy świata mogą mieć namalowane pory roku (wiersze `seasons` i `seasonKeys`). Pakiet map z którymkolwiek z tych elementów wymaga 1.351. Mapa świata odczytuje takie miejsca jako `seasons` (identyfikator miejsca na porę roku, `*` dla całego świata) z `GET /api/game/:chatId/overworld`; gotowe pole bitwy zawiera początkowe pory roku kafelków jako `seasons`, z kluczami `"x,y"`.
+Fabuła świata może utrzymywać w miejscach porę roku niezależnie od daty (`seasons` i akcja `season`: zobacz [Pisanie skryptów fabuły Game Mode](writing-story-scripts.md#seasons)), a pola bitwy świata mogą mieć namalowane pory roku (wiersze `seasons` i `seasonKeys`). Pakiet map z którymkolwiek z tych elementów wymaga 1.351. Mapa świata odczytuje takie miejsca jako `seasons` (identyfikator miejsca na porę roku, `*` dla całego świata) z `GET /api/game/:chatId/overworld`; gotowe pole bitwy zawiera początkowe pory roku kafelków jako `seasons`, z kluczami `"x,y"`.
 
 #### Capability API 1.355: nakładki zestawów zasad
 
@@ -873,7 +873,7 @@ Nakładka może wskazywać przedmioty, których użycie zużywa jedną z flag li
 
 #### Capability API 1.360: drużyny powyżej sześciu osób i towarzysze, którzy nigdy nie walczą
 
-Warianty walki fabuły mogą dotyczyć drużyn większych niż sześcioosobowe albo nie mieć górnej granicy (`"party": { "min": 7 }`), a warunek fabuły może pytać o liczebność drużyny (`{ "partySize": { "is": ">=", "value": 7 } }`; zobacz [Pisanie skryptów fabuły Game Mode](../extending/writing-story-scripts.md#conditions)).
+Warianty walki fabuły mogą dotyczyć drużyn większych niż sześcioosobowe albo nie mieć górnej granicy (`"party": { "min": 7 }`), a warunek fabuły może pytać o liczebność drużyny (`{ "partySize": { "is": ">=", "value": 7 } }`; zobacz [Pisanie skryptów fabuły Game Mode](writing-story-scripts.md#conditions)).
 
 Towarzysz z pliku ludzi może nigdy nie walczyć:
 
@@ -914,7 +914,7 @@ Podróżuje z drużyną i jest opisywany Mistrzowi Gry jako nigdy niewalczący, 
 - `combatStyle`: `classic` lub `tactical`.
 - Limity tekstu: `setting` 4 000 znaków, `language` 100, `playerGoals` i `preferences` 2 000, `gameSpecialInstructions` 2 000, `artStylePrompt` 500.
 
-`intro` to wiadomość otwierająca Mistrza Gry (1.339), z takimi samymi zasadami jak `intro` skryptu fabuły (zobacz [Pisanie skryptów fabuły Game Mode](../extending/writing-story-scripts.md#the-intro-message)). To jedyna blokowana wartość. Zablokowana wiadomość otwierająca jest w kreatorze tylko do odczytu, a gra zaczyna się od niej niezależnie od tego, co wyśle konfiguracja. Gra zachowuje wiadomość w postaci z początku gry (`chat.metadata.gameExperienceIntro`). Jest ona odczytywana przed własnym `intro` fabuły. Import pliku konfiguracji zachowuje własne wartości, a wyłączenie Experience pozostawia wypełnione wartości bez zmian.
+`intro` to wiadomość otwierająca Mistrza Gry (1.339), z takimi samymi zasadami jak `intro` skryptu fabuły (zobacz [Pisanie skryptów fabuły Game Mode](writing-story-scripts.md#the-intro-message)). To jedyna blokowana wartość. Zablokowana wiadomość otwierająca jest w kreatorze tylko do odczytu, a gra zaczyna się od niej niezależnie od tego, co wyśle konfiguracja. Gra zachowuje wiadomość w postaci z początku gry (`chat.metadata.gameExperienceIntro`). Jest ona odczytywana przed własnym `intro` fabuły. Import pliku konfiguracji zachowuje własne wartości, a wyłączenie Experience pozostawia wypełnione wartości bez zmian.
 
 ### Capability API 1.373: pliki Experience
 
@@ -1088,6 +1088,17 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 `chatComplete` przyjmuje `cacheTtl: "5m" | "1h"`: jak długo prompt aż do wiadomości wywołania oznaczonych `cacheBreakpoint` (1.814) pozostaje w pamięci podręcznej usługi Anthropic. Bez tej opcji obowiązuje, tak jak dotąd, czas przechowywania w pamięci podręcznej ustawiony w połączeniu. Poproś o `"1h"`, gdy ten sam prefiks wraca w odstępach dłuższych niż pięć minut, na przykład kontekst opowieści, którego każda scena używa ponownie, gdy gracz czyta. Zapis do pamięci podręcznej na godzinę kosztuje więcej niż zapis na 5 minut, więc opłaca się tylko wtedy, gdy prefiks zostanie ponownie odczytany w ciągu tej godziny. Wywołanie bez oznaczonej wiadomości ignoruje tę opcję. Ignorują ją też dostawcy, którzy samodzielnie zapisują prompt w pamięci podręcznej (OpenAI, Gemini, xAI, DeepSeek), oraz Claude (Subscription), gdzie obowiązuje czas przechowywania w pamięci podręcznej ustawiony w połączeniu.
 
 Starsze wersje silnika ignorują tę opcję, więc pakiet może ją zawsze przekazywać. Zadeklaruj wersję 1.815, gdy pakiet na niej polega.
+
+### Capability API 1.835: przygotowywanie nagrań głosu z wyprzedzeniem
+
+`services.tts.ttsService.prepareAudio(text, options?)` tworzy nagranie kwestii we współdzielonej pamięci podręcznej audio bez odtwarzania go. Wywołaj tę metodę z tym samym tekstem i opcjami, których później użyje `speak` lub `speakSequence`: `cacheKey`, `cacheAliases`, `voice`, `speaker`, `tone` i `audioConnectionId`. Późniejsze wywołanie rozpocznie wtedy odtwarzanie od razu, bez ponownej syntezy.
+
+- Nagranie już zapisane w pamięci podręcznej lub tworzone przez inne wywołanie nie jest tworzone ponownie.
+- Odtwarzanie nigdy nie jest zatrzymywane ani zmieniane, więc pakiet może przygotowywać kolejne kwestie podczas odtwarzania bieżącej.
+- Kwestia bez tekstu lub `cacheKey` jest pomijana, bo nie dałoby się odnaleźć jej nagrania.
+- `options.signal` przerywa tylko oczekiwanie. Zlecona już synteza trwa dalej, a jej wynik trafia do pamięci podręcznej, chyba że ustawiono `abortCacheGenerationOnAbort`.
+
+Nie wymaga uprawnień. Starsze wersje silnika nie mają tej metody, więc sprawdź `typeof ttsService.prepareAudio === "function"` i nadal odczytuj kwestie na głos w miarę ich pojawiania się. Zadeklaruj 1.835 tylko wtedy, gdy pakiet nie może bez niej działać.
 
 ### Capability API 1.834: zapisane sprite'y i zasada wyboru grafiki
 
@@ -1514,6 +1525,8 @@ niż połączenie mowy, silnik go ignoruje i stosuje zwykłą kolejność wyboru
 następnie połączenie domyślne/zapasowe, a na końcu dawne ustawienia. Jeśli samo zapisane połączenie
 mowy jest niedostępne, odtwarzanie jest odrzucane zamiast korzystać z innego połączenia. Pakiety
 wymagające konkretnego połączenia powinny sprawdzać zapisany identyfikator przed odtwarzaniem.
+
+Aby przygotować nagrania głosu przed odtworzeniem ich kwestii, zobacz [Capability API 1.835](#capability-api-1835-prepare-voice-clips-ahead).
 
 - `createPlayer()` zwraca niezależny odtwarzacz z metodami `unlock()`, `playMusic(tag, assets?)`,
   `stopMusic(immediate?)`, `playSfx(tag, assets?, loopCount?)`, `setVolumes({ music, sfx })`,

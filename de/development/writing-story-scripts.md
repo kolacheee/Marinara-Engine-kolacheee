@@ -1,6 +1,8 @@
 # Story-Skripte für Game Mode schreiben
 
-Ein Story-Skript steuert, wie sich ein Game-Mode-Spiel entfaltet: Szenen, die abgespielt werden, wenn die Gruppe irgendwo ankommt, Aufgaben, um die der Game Master gebeten wird, sobald eine Bedingung erfüllt ist, Ziele, denen der Spieler im Journal folgt, und Momente, die der Game Master selbst markieren darf. Schreib eines, wenn du Welten für andere baust. Wenn du eine Welt spielen möchtest, die eine Story hat, sieh dir [Eine Welt erstellen](../game/getting-started.md#making-a-world) an.
+> **Hinweis:** Story-Skripte gehören zu Overworld-Spielen, die noch nicht veröffentlicht sind. Dies ist eine Entwicklerseite, die weder in den Docs der App noch für Professor Mari verfügbar ist. Siehe [Overworld-Spiele (unveröffentlicht)](overworld-games.md).
+
+Ein Story-Skript steuert, wie sich ein Game-Mode-Spiel entfaltet: Szenen, die abgespielt werden, wenn die Gruppe irgendwo ankommt, Aufgaben, um die der Game Master gebeten wird, sobald eine Bedingung erfüllt ist, Ziele, denen der Spieler im Journal folgt, und Momente, die der Game Master selbst markieren darf. Schreib eines, wenn du Welten für andere baust. Wenn du eine Welt spielen möchtest, die eine Story hat, sieh dir [Eine Welt erstellen](overworld-games.md#making-a-world) an.
 
 Ein Story-Skript enthält Daten, keinen Code. Nichts darin wird ausgeführt. Die Engine prüft es gegen die Welt, für die es geschrieben ist, spielt es Zug für Zug ab und lehnt alles ab, was nicht passt.
 
@@ -11,7 +13,7 @@ Bevor du anfängst, brauchst du eine Welt, an die du die Story hängst, und die 
 Eine Story gehört zu genau einer Welt. Sie nennt die Orte und Personen dieser Welt und ergibt daher nur mit der Welt Sinn, für die sie geschrieben wurde (mit ihrem Seed, ihrer Vorgabe und ihren manuellen Änderungen).
 
 - In einer **Weltdatei** (`.world.json`) als `story` auf oberster Ebene neben `world`. Eine Engine, die keine Storys kennt, liest die Welt trotzdem.
-- Im **Kartenpaket** einer Experience: Jede Weltdatei kann ihre Story mitbringen, und ein neues Spiel übernimmt sie zusammen mit der Karte. Siehe [optionale Agent-Pakete](../development/optional-agent-packages.md).
+- Im **Kartenpaket** einer Experience: Jede Weltdatei kann ihre Story mitbringen, und ein neues Spiel übernimmt sie zusammen mit der Karte. Siehe [optionale Agent-Pakete](optional-agent-packages.md).
 - In einer Welt, die außerhalb eines Spiels in der Bibliothek liegt: `GET`, `PUT` und `DELETE /api/game-worlds/:id/story`, genau wie bei einem Spiel. Ein neues Spiel, das mit dieser Welt beginnt, übernimmt die Story.
 - In einem Spiel, sobald es begonnen hat: `GET`, `PUT` und `DELETE /api/game/:chatId/story` lesen, speichern und entfernen sie. Beim Speichern wird sie gegen die Welt des Spiels geprüft, einschließlich ihrer manuellen Änderungen, und manuelle Änderungen, die etwas entfernen würden, das die Story nennt, werden abgelehnt.
 
@@ -211,7 +213,7 @@ Jede Aktion kann ein eigenes `if` haben: Sie wird nur ausgeführt, wenn ihre Bed
 
 Welche Aktionen ausgeführt wurden, wird beim Auslösen aufgezeichnet. Deshalb kommen Szenen und Bitten eines `gm`-Ereignisses im nächsten Zug so an, wie sie beim Markieren durch den Game Master ausgeführt wurden.
 
-Ein Begleiter ist eine entsprechend markierte Person in der Personendatei des Pakets (siehe die Personen des Kartenpakets in [optionale Agent-Pakete](../development/optional-agent-packages.md)).
+Ein Begleiter ist eine entsprechend markierte Person in der Personendatei des Pakets (siehe die Personen des Kartenpakets in [optionale Agent-Pakete](optional-agent-packages.md)).
 
 Von den `rest`-, `travel`- und `idle`-Ereignissen, die in einem Zug geschehen könnten, geschieht nur eines: das mit der höchsten `priority` (eine ganze Zahl von -100 bis 100, ohne Angabe 0; bei Gleichstand das erste im Skript). So häufen sich das Lagerfeuergespräch eines Begleiters, ein Streit zweier Begleiter auf der Straße oder der Besuch eines Begleiters beim Spieler in einer ruhigen Stunde nie an. Mit einer `party`-Bedingung geschieht eine solche Szene nur, solange diese Begleiter mit der Gruppe reisen.
 
@@ -406,7 +408,7 @@ Jede Story-Funktion braucht eine Mindestversion der Capability API.
 - mehr als 64 Flags brauchen 1.353 (die Obergrenze liegt bei 256);
 - Kampf-`variants` brauchen 1.356;
 - `any`-Bedingungen, ein `fight`-Ereignis mit benanntem Kampf, ein `leave`-Ereignis, `min` oder `max` eines Flags sowie ein `if` an einer Aktion oder Seite brauchen 1.358;
-- ein Kartenpaket, dessen Regelsatz-Overlay einen `storyUses`-Eintrag hat (die Benutzung eines Gegenstands, die eine Story-Zahl ausgibt und die ein `if` von Held Ground lesen kann), braucht 1.359; siehe [Gegenstände, die eine Story-Zahl kosten](../development/optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
+- ein Kartenpaket, dessen Regelsatz-Overlay einen `storyUses`-Eintrag hat (die Benutzung eines Gegenstands, die eine Story-Zahl ausgibt und die ein `if` von Held Ground lesen kann), braucht 1.359; siehe [Gegenstände, die eine Story-Zahl kosten](optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
 - eine `partySize`-Bedingung, eine Variante für eine Gruppe über 6 oder ohne Obergrenze oder mehr als 6 Varianten brauchen 1.360;
 - ein `noncombatant`-Begleiter, der bei der Gruppengröße nicht mitzählt, braucht 1.360;
 - eine `season`-Aktion mit `over` für alles darin braucht 1.361;

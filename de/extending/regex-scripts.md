@@ -181,7 +181,7 @@ Unter den Modi listet das Panel die gebundenen Skripte jedes Charakters, jedes m
 Marinara liest Regex-Skripte, die in einer SillyTavern-Charakterkarte mitgeliefert werden. Beim Import einer Karte bietet der Abschnitt **Imported regex scripts** (importierte Regex-Skripte) zwei Möglichkeiten:
 
 - **Character only** (Standard): Die Skripte bleiben an diesen Charakter gebunden.
-- **Global**: Die Skripte landen unter **Voreinstellungen → Regexes** und können in allen Chats laufen.
+- **Global**: Die Skripte landen unter **Bibliothek → Regex-Skripte** (im klassischen Layout **Voreinstellungen → Regex-Skripte**) und können chatübergreifend laufen.
 
 Die Auswahl erscheint im Importdialog für einzelne Charaktere und im Sammelimport über **Import from SillyTavern Folder**. Skripte mit leerem Muster oder mit einem Muster, das die Sicherheitsprüfung nicht besteht, werden übersprungen. Eine einfache JSON-Datei mit Skripten importierst du über **Import regexes from JSON** in **Regexes**. Siehe [Aus SillyTavern importieren](../data/importing-from-sillytavern.md).
 
@@ -189,7 +189,7 @@ Die Auswahl erscheint im Importdialog für einzelne Charaktere und im Sammelimpo
 
 ### Ein Regex-Paket ersetzen
 
-1. Wähle unter **Presets → Regexes** **Select regex scripts** (Regex-Skripte auswählen).
+1. Wähle unter **Bibliothek → Regex-Skripte** (im klassischen Layout **Voreinstellungen → Regex-Skripte**) die Option **Regex-Skripte auswählen**.
 2. Markiere die Einträge des alten Pakets. **Alle Regex-Skripte auswählen** wählt die gesamte Bibliothek aus, auch Skripte in zugeklappten Ordnern.
 3. Klick in der Aktionsleiste auf **Löschen**. Marinara bittet dich um Bestätigung. Möchtest du vorher eine Kopie behalten, klick vor dem Löschen auf **Exportieren**.
 4. Importiere das aktualisierte Paket.

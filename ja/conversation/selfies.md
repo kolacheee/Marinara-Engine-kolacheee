@@ -35,7 +35,7 @@
 
 **Send Avatar References**と**Attach Card Appearance**には、それぞれ**Off**、**Images only**、**Videos only**、**Images and videos**の選択肢があります。
 
-カードまたはペルソナで、エディターの**Appearance**にある**Image Appearance Override**がオンの場合、Marinaraは**Appearance**の代わりにそのテキストを使います。**Appearance**が、絵ではなく物語のために書かれているときに使ってください。
+カードやペルソナで**Image tags**(画像タグ)を使用中の場合(エディターの**Appearance**の**Image tags**タブで**Use for image prompts**(画像プロンプトに使用)にチェックが入っている場合)、Marinaraは**Appearance**の説明文の代わりにそのタグを送ります。チャットで有効なAppearanceの代替がある場合は、その代替のタグか説明文を使います。**Appearance**が画像向けではなく物語向けに書かれている場合に使ってください。
 
 ## 手動で自撮り写真を頼む
 

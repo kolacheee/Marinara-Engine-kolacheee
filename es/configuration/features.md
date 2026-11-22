@@ -2,7 +2,7 @@
 
 Algunos comportamientos del servidor son opcionales. Todos los interruptores empiezan desactivados, así que un servidor donde nadie los activa funciona igual que antes. Están en distintos lugares de **Settings** (Configuración):
 
-- **Stable lorebook picks** (Selecciones estables del lorebook) y **Lorebook activation stats** (Estadísticas de activación del lorebook): **Settings → Advanced → Lorebooks** (Configuración → Avanzado → Lorebooks).
+- **Stable lorebook picks** (Selecciones estables del lorebook), **Lorebook activation stats** (Estadísticas de activación del lorebook) y **Vectors on for new lorebooks** (Vectores activado para los lorebooks nuevos): **Settings → Advanced → Lorebooks** (Configuración → Avanzado → Lorebooks).
 - **Retry failed provider calls** (Reintentar llamadas fallidas al proveedor): **Settings → Advanced → Timeouts & Retries** (Configuración → Avanzado → Tiempos de espera y reintentos).
 - **Recover deleted chat messages** (Recuperar mensajes de chat eliminados): **Settings → Data → Backup & Restore** (Configuración → Datos → Copias de seguridad y restauración).
 
@@ -20,6 +20,7 @@ Los cambios se aplican de inmediato. No hace falta reiniciar el servidor ni reca
 | **Retry failed provider calls** (reintentar llamadas fallidas al proveedor) | `providerRetry` | Desactivado | `PROVIDER_RETRY_TRANSIENT_ERRORS` |
 | **Lorebook activation stats** (estadísticas de activación del lorebook) | `usageAndActivationStats` | Desactivado | ninguna |
 | **Recover deleted chat messages** (recuperar mensajes de chat eliminados) | `messageTrash` | Desactivado | ninguna |
+| **Vectors on for new lorebooks** | `newLorebookVectors` | Desactivado | `LOREBOOK_NEW_BOOK_VECTORS` |
 
 Buscar el nombre de un interruptor en los ajustes te lleva hasta él.
 
@@ -77,6 +78,16 @@ Activado: los mensajes de chat eliminados van a la pestaña **Trash** (Papelera)
 
 Desactivado: los mensajes eliminados se borran de inmediato.
 
+### Vectores activado para los lorebooks nuevos
+
+Clave: `newLorebookVectors`. Variable de entorno: `LOREBOOK_NEW_BOOK_VECTORS`.
+
+Activado: un lorebook nuevo empieza con **Vectors** (Vectores) activado, para que sus entradas puedan vectorizarse y encontrarse por su significado de inmediato.
+
+Desactivado: un lorebook nuevo empieza con **Vectors** desactivado. Las palabras clave siguen funcionando, y puedes activar **Vectors** en el lorebook más adelante.
+
+Solo decide el valor inicial de los lorebooks creados sin uno: **Create lorebook** (Crear lorebook), que muestra el interruptor para que puedas cambiarlo para ese libro, las importaciones cuyo archivo no tiene un ajuste propio y los libros creados por Game Mode o Lorebook Keeper. Los lorebooks existentes conservan su propio ajuste. Los lorebooks que crea Professor Mari ya empiezan con **Vectors** activado.
+
 <a id="precedence"></a>
 
 ## Prioridad
@@ -89,6 +100,7 @@ Desactivado: los mensajes eliminados se borran de inmediato.
 | --- | --- | --- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | Selecciones estables del lorebook | `true`, `1`, `yes` u `on` activan. Cualquier otro valor desactiva. |
 | `PROVIDER_RETRY_TRANSIENT_ERRORS` | Reintentos de llamadas fallidas al proveedor | `true`, `1`, `yes` u `on` activan. Cualquier otro valor desactiva. |
+| `LOREBOOK_NEW_BOOK_VECTORS` | Vectores activado para los lorebooks nuevos | `true`, `1`, `yes` u `on` activan. Cualquier otro valor desactiva. |
 
 Las variables se leen en cada comprobación, por lo que los cambios de `.env` no requieren reinicio.
 

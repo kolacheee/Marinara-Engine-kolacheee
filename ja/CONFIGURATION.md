@@ -166,7 +166,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | カスタムのスクリプトツールをオンにします。信頼できないツールやインポートしたツールを使う場合は、オフのままにしてください。 |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Professor Mariのデータベース変換スクリプトを、OSのサンドボックス(macOSのSeatbelt、LinuxのBubblewrap。ある場合は使います)がないホストでも実行できるようにします。スクリプトを自分で確認した場合以外は、オフのままにしてください。 |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agentsページで、GitHubのエージェントリポジトリーを手動でプレビューし、同期できるようにします。[カスタムエージェントのリポジトリー](#custom-agent-repositories)を参照してください。 |
-| `MARINARA_OVERWORLD_GAMES` | `false` | プレイヤーがOverworldゲーム(舞台設定キットと生成された世界)を作成し、以前の形式のゲームをOverworldゲームに変換できるようにします。オフの場合、ウィザードではVNゲームだけを作成できます。 |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | サードパーティー製の拡張機能をインポートするための2つの許可のうち、1つ目です。[外部拡張機能(External Extensions)](#external-extensions)を参照してください。 |
 | `IMPORT_ALLOWED_ROOTS` | 空 | ピッカーのトークンなしで一括インポートが読み取れるフォルダー。 |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456`(256 MiB) | サーバーが作成するJSONのプロファイルエクスポート1件の最大サイズ。 |
@@ -342,11 +341,12 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### ロアブック
 
-どちらもデフォルトでオフで、`.env`を変更した後の次の生成から適用されます。`LOREBOOK_STABLE_GROUP_WINNERS`を設定すると、**Settings → Advanced → Lorebooks**(設定 → 詳細設定 → ロアブック)の**Stable lorebook picks**(ロアブックの選択を固定)スイッチより優先されます。設定しない場合は、スイッチで決まります。[機能スイッチ](configuration/features.md)を参照してください。
+すべてデフォルトではオフです。`.env`の変更後、`LOREBOOK_STABLE_GROUP_WINNERS`と`LOREBOOK_COMPACT_STORED_SCANS`は次の生成から、`LOREBOOK_NEW_BOOK_VECTORS`は次に作成するロアブックから適用されます。`LOREBOOK_STABLE_GROUP_WINNERS`または`LOREBOOK_NEW_BOOK_VECTORS`を設定すると、**Settings → Advanced → Lorebooks**(設定 → 詳細設定 → ロアブック)内の対応するスイッチ(**Stable lorebook picks**(ロアブックの選択を固定)または**Vectors on for new lorebooks**(新しいロアブックのベクトルをオンにする))より優先されます。未設定の場合はスイッチに従います。[機能スイッチ](configuration/features.md)を参照してください。
 
 | 変数 | デフォルト | 説明 |
 | --- | --- | --- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | `false` | 候補が変わらないあいだ、包含グループで選ばれるエントリーをチャットごとに同じに保ち、生成のたびに選び直しません。プロバイダーのプロンプトキャッシュのために、プロンプトの先頭を安定させます。 |
+| `LOREBOOK_NEW_BOOK_VECTORS` | `false` | 新しいロアブックを**Vectors**(ベクトル)がオンの状態で作成し、エントリーをすぐにベクトル化して意味で検索できるようにします。アプリで作成するロアブック、独自の設定がないファイルからインポートするロアブック、Game ModeやLorebook Keeperが作成するロアブックに適用されます。Professor Mariが作成するロアブックは、すでに**Vectors**がオンの状態で作成されます。既存のロアブックはそれぞれの設定を維持します。 |
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | 有効化されたエントリーの全文を、最新のアシスタントまたはナレーターのメッセージにだけ保存します。古いメッセージには、エントリーのID、キー、スコアが残ります。大きなロアブックを使うチャットがかなり小さくなります。新しいメッセージを削除した場合、再び最新になったメッセージのActive Contextとエージェントの再試行では、そのエントリーの現在の本文を表示します。 |
 
 `scripts/compact-lorebook-scans.mjs`は、以前のチャットにも同じ規則を適用します。先にサーバーを停止してください。`--apply`を渡さないかぎり試行(ドライラン)だけを行い、書き込む前に両方のメッセージテーブルをバックアップします。

@@ -174,7 +174,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | 사용자 지정 스크립트 도구를 켭니다. 신뢰할 수 없거나 가져온 도구라면 꺼 두세요. |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | OS 샌드박스(macOS Seatbelt 또는 Linux Bubblewrap, 있으면 사용)가 없는 호스트에서도 Professor Mari의 데이터베이스 변환 스크립트를 실행할 수 있게 합니다. 스크립트를 검토하지 않았다면 꺼 두세요. |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agents 페이지에서 GitHub 에이전트 저장소를 수동으로 미리 보고 동기화할 수 있게 합니다. [사용자 지정 에이전트 저장소](#custom-agent-repositories)를 참고하세요. |
-| `MARINARA_OVERWORLD_GAMES` | `false` | 플레이어가 Overworld 게임(세계관 키트와 생성된 세계)을 만들고 예전 게임을 Overworld 게임으로 바꿀 수 있게 합니다. 꺼져 있으면 마법사는 VN 게임만 제공합니다. |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | 서드파티 확장 가져오기를 여는 두 관문 중 첫 번째입니다. [외부 확장](#external-extensions)을 참고하세요. |
 | `IMPORT_ALLOWED_ROOTS` | 비어 있음 | 선택기 토큰 없이 일괄 가져오기가 읽을 수 있는 폴더입니다. |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456`(256 MiB) | 서버가 만드는 단일 JSON 프로필 내보내기의 최대 크기입니다. |
@@ -362,11 +361,12 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### 로어북
 
-두 설정 모두 기본적으로 꺼져 있으며 `.env`를 바꾸면 다음 생성부터 적용됩니다. `LOREBOOK_STABLE_GROUP_WINNERS`를 설정하면 **Settings → Advanced → Lorebooks**의 **Stable lorebook picks**(안정적인 로어북 선택) 스위치보다 우선합니다. 설정하지 않으면 스위치가 결정합니다. [기능 스위치](configuration/features.md)를 참고하세요.
+모두 기본적으로 꺼져 있습니다. `.env`를 바꾸면 `LOREBOOK_STABLE_GROUP_WINNERS`와 `LOREBOOK_COMPACT_STORED_SCANS`는 다음 생성부터, `LOREBOOK_NEW_BOOK_VECTORS`는 다음에 만드는 로어북부터 적용됩니다. `LOREBOOK_STABLE_GROUP_WINNERS`나 `LOREBOOK_NEW_BOOK_VECTORS`를 설정하면 **Settings → Advanced → Lorebooks**의 해당 스위치(**Stable lorebook picks**(안정적인 로어북 선택) 또는 **Vectors on for new lorebooks**(새 로어북의 벡터 켜기))보다 우선합니다. 설정하지 않으면 스위치가 결정합니다. [기능 스위치](configuration/features.md)를 참고하세요.
 
 | 변수 | 기본값 | 설명 |
 | --- | --- | --- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | `false` | 후보가 그대로인 동안 채팅마다 같은 포함 그룹 승자를 유지하며, 생성할 때마다 다시 추첨하지 않습니다. 제공자 프롬프트 캐시를 위해 프롬프트 앞부분을 안정적으로 유지합니다. |
+| `LOREBOOK_NEW_BOOK_VECTORS` | `false` | 새 로어북을 **Vectors**(벡터)가 켜진 상태로 시작하여 항목을 바로 벡터화하고 의미로 찾을 수 있게 합니다. 앱에서 만들거나, 자체 설정 없이 가져오거나, Game Mode와 Lorebook Keeper가 만드는 로어북에 적용됩니다. Professor Mari가 만드는 로어북은 이미 **Vectors**가 켜진 상태로 시작합니다. 기존 로어북은 자체 설정을 유지합니다. |
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | 활성화된 항목의 전체 텍스트를 최신 어시스턴트 또는 내레이터 메시지에만 저장합니다. 이전 메시지는 항목 ID, 키, 점수만 보관합니다. 큰 로어북을 쓰는 채팅의 크기가 훨씬 작아집니다. 새 메시지를 삭제하면 다시 최신이 된 메시지에 대해 Active Context와 에이전트 재시도가 항목의 현재 텍스트를 보여 줍니다. |
 
 `scripts/compact-lorebook-scans.mjs`는 예전 채팅에도 같은 규칙을 적용합니다. 먼저 서버를 중지하세요. `--apply`를 넘기지 않으면 시험 실행만 하며, 쓰기 전에 두 메시지 테이블을 모두 백업합니다.

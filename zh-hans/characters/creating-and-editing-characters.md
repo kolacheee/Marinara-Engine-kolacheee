@@ -100,7 +100,7 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 
 **Public Face** 是其他角色能看到或知道的信息：外貌、举止、身份、名声，以及不是秘密的人际关系。不要写入秘密、内心想法、私人经历或如何扮演角色的指令。它从不随该角色的角色卡一起发送。提示词只会在你放入 `{{publicFace}}` 宏的位置读取它；用户角色则用 `{{personaPublicFace}}`。见[提示词宏](../prompts/macros.md#identity-character-and-persona-macros)。在 Individual 模式的 Roleplay 群聊里，**Others' Public Faces**(其他角色的公开形象) 会把它发送到其他角色的回合。见[更多 Individual 设置](../chats/group-chats.md#more-individual-settings)。智能体的 **Characters**(角色) 或 **Persona**(人设) 来源设为 **Public Face** 时，就会读取它来代替角色卡。见[其他设置](../agents/custom-agents.md#other-settings)。开启 **Send Public Faces**(发送公开形象) 后，Roleplay 中的 Impersonate 也会读取它来代替角色卡。见 [Impersonate 设置](../chats/guided-and-impersonate.md#the-impersonate-settings)。
 
-**Image Appearance Override**(图像专用外貌) 位于 **Appearance** 下方，默认关闭。打开后会显示第二个输入框，用来填写简短的图像标签，例如 LoRA 触发词（一个能开启自定义图像风格的关键词）。开关打开且输入框有内容时，图像提示词会原样使用这些标签，**Appearance** 则作为背景信息保留。AI 头像提示词也会以它为起点。旁白始终会看到 **Appearance** 的完整内容。
+**Appearance** 有两个标签页：**Prose**(文字描述) 和 **Image tags**(图片标签)。**Prose** 就是外貌文本本身。**Image tags** 保存图像提示词用的短标签，比如 LoRA 触发词（用于启用某种自定义图像风格的关键词）。输入标签会勾选 **Use for image prompts**(用于图片提示词)，标签页上的圆点表示它们正在使用。勾选且标签非空时，图像提示词会原样使用这些标签，文字描述则作为背景信息保留。取消勾选可以保留标签但不使用，图像提示词会回到 **Prose**。AI 头像提示词也会用这些标签作为初始内容。旁白始终看到 **Prose** 文本。**Images** 标签页里的 **Go to Appearance**(前往外貌) 会跳转到这里。
 
 **Dialogue & Greetings** 一节决定聊天怎么开场、角色说话是什么调子：
 
@@ -150,7 +150,7 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 
 1. 把鼠标移到头像方块上，点击魔杖按钮。**Generate Character Avatar**(生成角色头像) 窗口会打开。
 2. 选择一个 **Image Generation Connection**(图像生成连接)。
-3. 检查或修改 **Avatar Prompt**(头像提示词)。**Image Appearance Override** 打开且填有内容时，就以它为起点。否则依次使用 **Appearance**、**Description**、**Personality**，取第一个有内容的字段。
+3. 检查或修改 **Avatar Prompt**(头像提示词)。勾选 **Use for image prompts** 且 **Appearance** 的 **Image tags** 非空时，就以这些标签为起点。否则依次使用 **Appearance**、**Description**、**Personality**，取第一个有内容的字段。
 4. 如果角色卡已经有头像，可以勾选 **Use current avatar as a reference**(用当前头像作参考)。
 5. 点击 **Generate**(生成)。想再试一次就点 **Regenerate**(重新生成)。
 6. 对结果满意后，点击 **Use Avatar**(使用头像)。
@@ -196,6 +196,7 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 - 每个聊天的同一个字段只能用一个替代版本。在另一个替代版本里勾选某个聊天，或者在 Chat Settings 里选择另一个替代版本，都会把它移到那边。
 - 一个聊天都不勾选时，替代字段会保持停用，留待以后使用。
 - 留空的替代字段会清空它所在聊天里的对应字段。
+- **Appearance** 的替代版本有自己的 **Prose** 和 **Image tags** 标签页。在使用它的聊天里，它的标签会替代角色卡的标签。标签为空或未勾选时，图像提示词使用替代版本的文字描述，不会使用角色卡的标签。新建替代版本也会复制角色卡的标签。
 - 聊天专属的场景和图像外貌覆盖设置仍然优先。
 - **Summary** 的替代版本仍是元数据，不会发给 AI。
 - 角色离开某个聊天时，它的分配会暂停；重新添加这个角色后会恢复。

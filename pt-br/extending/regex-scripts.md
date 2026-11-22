@@ -183,7 +183,7 @@ Abaixo dos modos, o painel lista os scripts limitados de cada personagem, com um
 Marinara lê os scripts de regex que vêm dentro de um card de personagem do SillyTavern. Ao importar um card, uma seção **Imported regex scripts** (scripts de regex importados) oferece duas opções:
 
 - **Character only** (o padrão): os scripts ficam limitados àquele personagem.
-- **Global**: os scripts entram em **Presets** e rodam em todos os chats.
+- **Global**: os scripts entram em **Biblioteca → Scripts de regex** (**Presets → Regexes** no layout clássico) e rodam em todos os chats.
 
 Essa escolha aparece na janela de importação de um personagem e no fluxo em lote **Import from SillyTavern Folder**. Scripts com o padrão vazio, ou com um padrão que não passa na verificação de segurança, são ignorados. Para importar um arquivo JSON simples de scripts, use **Import regexes from JSON** em **Regexes**. Veja [Importar do SillyTavern](../data/importing-from-sillytavern.md).
 
@@ -191,7 +191,7 @@ Essa escolha aparece na janela de importação de um personagem e no fluxo em lo
 
 ### Substituir um pacote de regex
 
-1. Em **Presets → Regexes**, escolha **Select regex scripts** (selecionar scripts de regex).
+1. Em **Biblioteca → Scripts de regex** (**Presets → Regexes** no layout clássico), escolha **Select regex scripts** (selecionar scripts de regex).
 2. Marque as entradas do pacote antigo ou escolha **Select all regex scripts** (selecionar todos os scripts de regex).
 3. Use **Export** (exportar) ou **Delete** (excluir) na barra de ações. A exclusão pede uma única confirmação e não pode ser desfeita.
 4. Importe o pacote atualizado.

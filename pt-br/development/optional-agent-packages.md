@@ -712,7 +712,7 @@ Um pacote `game-surface` que faz a configuração pelo assistente de Game (`game
 }
 ```
 
-`worlds` (no máximo 32) e `tiles` são opcionais. Um arquivo de mundo pode trazer o roteiro de história do mundo (worldgen W10), que é distribuído junto com o mapa como parte dele. Um arquivo de mundo da versão 2 também traz o `snapshot` do mundo, o mundo como foi criado (W11): um Engine cujo gerador de mundos mudou desde então lê o mundo a partir dele, exatamente como foi criado, então um pacote continua funcionando depois das atualizações do Engine. Escreva os arquivos pelo **Download** de uma partida ou de um mundo da biblioteca (ou por `GET /api/game/:chatId/world/file`), que o incluem. Um arquivo do pacote tem no máximo 8 MB, o maior arquivo de compartilhamento que o Engine lê (um pacote de tiles mantém os próprios limites, menores), então um mundo cujo arquivo é maior (o snapshot de um mundo muito grande) não pode ir em um pacote. Um mundo cuja história define um `intro` precisa da Capability API 1.339 (veja [A mensagem de introdução](../extending/writing-story-scripts.md#the-intro-message)). `tiles` pode ser um pacote de tiles de imagem (pacote de tiles da versão 2: folhas PNG em uma grade de células, com sprites de várias células), que precisa da Capability API 1.80; o Engine decodifica e verifica as folhas uma vez por versão do pacote. Com a Experience ligada, uma partida nova fica travada no kit do pacote; se o pacote traz mundos, o jogador escolhe um deles (com a história) e não cria nenhum outro. Desligar a Experience devolve as escolhas ao jogador. `POST /api/game/create` mantém uma partida na mesma trava. A partida guarda o kit e o mundo como qualquer partida, então continua jogável se o pacote for removido, e desenha o overworld e as cidades com os tiles do pacote enquanto ele está instalado.
+`worlds` (no máximo 32) e `tiles` são opcionais. Um arquivo de mundo pode trazer o roteiro de história do mundo (worldgen W10), que é distribuído junto com o mapa como parte dele. Um arquivo de mundo da versão 2 também traz o `snapshot` do mundo, o mundo como foi criado (W11): um Engine cujo gerador de mundos mudou desde então lê o mundo a partir dele, exatamente como foi criado, então um pacote continua funcionando depois das atualizações do Engine. Escreva os arquivos pelo **Download** de uma partida ou de um mundo da biblioteca (ou por `GET /api/game/:chatId/world/file`), que o incluem. Um arquivo do pacote tem no máximo 8 MB, o maior arquivo de compartilhamento que o Engine lê (um pacote de tiles mantém os próprios limites, menores), então um mundo cujo arquivo é maior (o snapshot de um mundo muito grande) não pode ir em um pacote. Um mundo cuja história define um `intro` precisa da Capability API 1.339 (veja [A mensagem de introdução](writing-story-scripts.md#the-intro-message)). `tiles` pode ser um pacote de tiles de imagem (pacote de tiles da versão 2: folhas PNG em uma grade de células, com sprites de várias células), que precisa da Capability API 1.80; o Engine decodifica e verifica as folhas uma vez por versão do pacote. Com a Experience ligada, uma partida nova fica travada no kit do pacote; se o pacote traz mundos, o jogador escolhe um deles (com a história) e não cria nenhum outro. Desligar a Experience devolve as escolhas ao jogador. `POST /api/game/create` mantém uma partida na mesma trava. A partida guarda o kit e o mundo como qualquer partida, então continua jogável se o pacote for removido, e desenha o overworld e as cidades com os tiles do pacote enquanto ele está instalado.
 
 O Engine lê os arquivos pelo caminho de recursos verificado (tamanho declarado de no máximo 8 MB cada, hash conferido de novo) e os verifica como verifica os arquivos de compartilhamento. Um pacote é recusado inteiro, com o motivo, quando um arquivo não pode ser lido, quando um mundo foi feito com outro kit ou não combina com ele, ou quando os bytes dele não são os instalados; a Experience então não consegue iniciar uma partida. Um conjunto de regras nunca faz parte de um pacote de mapa: uma Experience que precisa de regras próprias distribui um pacote de conjunto de regras separado.
 
@@ -737,7 +737,7 @@ Os recursos de um pacote podem incluir áudio a partir da 1.345: `.ogg`, `.mp3` 
 }
 ```
 
-Cada faixa também é um recurso declarado, e todo ID de faixa nomeado está em `tracks`. Um lugar em `places` é um lugar de um dos mundos do pacote, pelo ID. Fora de uma luta, a partida toca a faixa do lugar; caso não haja, a do lugar mais próximo que o contém e tem uma faixa; caso não haja, `default`; numa luta, `combat`. A ação `music` de uma história (veja [Escrever roteiros de história de Game Mode](../extending/writing-story-scripts.md)) coloca uma das faixas sobre todas essas até devolver o controle. Sem nenhuma delas, toca a música do próprio Engine. Um jogador que escolheu a própria fonte de música (o Music DJ, o Spotify) ouve essa fonte: a escolha dele sempre prevalece.
+Cada faixa também é um recurso declarado, e todo ID de faixa nomeado está em `tracks`. Um lugar em `places` é um lugar de um dos mundos do pacote, pelo ID. Fora de uma luta, a partida toca a faixa do lugar; caso não haja, a do lugar mais próximo que o contém e tem uma faixa; caso não haja, `default`; numa luta, `combat`. A ação `music` de uma história (veja [Escrever roteiros de história de Game Mode](writing-story-scripts.md)) coloca uma das faixas sobre todas essas até devolver o controle. Sem nenhuma delas, toca a música do próprio Engine. Um jogador que escolheu a própria fonte de música (o Music DJ, o Spotify) ouve essa fonte: a escolha dele sempre prevalece.
 
 #### Capability API 1.346: pessoas
 
@@ -813,7 +813,7 @@ POST /api/game/experience/check
 
 #### Capability API 1.351: estações mantidas
 
-A história de um mundo pode manter lugares numa estação independentemente da data (`seasons` e a ação `season`: veja [escrever roteiros de história](../extending/writing-story-scripts.md#seasons)), e os campos de batalha de um mundo podem ser pintados com estações (linhas `seasons` e `seasonKeys`). Um pacote de mapas com qualquer um desses recursos exige 1.351. O overworld lê os lugares mantidos como `seasons` (ID de lugar para estação, `*` para o mundo inteiro) de `GET /api/game/:chatId/overworld`; um campo de batalha criado traz as estações iniciais dos seus tiles como `seasons`, indexadas por `"x,y"`.
+A história de um mundo pode manter lugares numa estação independentemente da data (`seasons` e a ação `season`: veja [escrever roteiros de história](writing-story-scripts.md#seasons)), e os campos de batalha de um mundo podem ser pintados com estações (linhas `seasons` e `seasonKeys`). Um pacote de mapas com qualquer um desses recursos exige 1.351. O overworld lê os lugares mantidos como `seasons` (ID de lugar para estação, `*` para o mundo inteiro) de `GET /api/game/:chatId/overworld`; um campo de batalha criado traz as estações iniciais dos seus tiles como `seasons`, indexadas por `"x,y"`.
 
 <a id="capability-api-1355-ruleset-overlays"></a>
 
@@ -879,7 +879,7 @@ Uma sobreposição pode nomear itens cujo uso gasta (ou acrescenta a) um dos sin
 
 #### Capability API 1.360: equipes com mais de seis e companheiros que nunca lutam
 
-As variantes de uma luta de história podem ser para equipes com mais de seis membros ou sem limite superior (`"party": { "min": 7 }`), e uma condição de história pode perguntar o tamanho da equipe (`{ "partySize": { "is": ">=", "value": 7 } }`; veja [escrever roteiros de história](../extending/writing-story-scripts.md#conditions)).
+As variantes de uma luta de história podem ser para equipes com mais de seis membros ou sem limite superior (`"party": { "min": 7 }`), e uma condição de história pode perguntar o tamanho da equipe (`{ "partySize": { "is": ">=", "value": 7 } }`; veja [escrever roteiros de história](writing-story-scripts.md#conditions)).
 
 Um companheiro do arquivo de pessoas pode nunca lutar:
 
@@ -920,7 +920,7 @@ Ele viaja com a equipe e é descrito ao Game Master como alguém que nunca luta,
 - `combatStyle`: `classic` ou `tactical`.
 - Limites de texto: `setting` 4.000 caracteres, `language` 100, `playerGoals` e `preferences` 2.000, `gameSpecialInstructions` 2.000, `artStylePrompt` 500.
 
-`intro` é a mensagem de introdução do Game Master (1.339), com as mesmas regras do `intro` de um roteiro de história (veja [Escrever roteiros de história](../extending/writing-story-scripts.md#the-intro-message)). É o único valor que fica travado. Uma introdução travada aparece como somente leitura no assistente, e a partida começa com ela independentemente do que a configuração envie. A partida mantém a introdução como era quando começou (`chat.metadata.gameExperienceIntro`). Ela é lida antes do `intro` da própria história. A importação de um arquivo de configuração mantém os próprios valores, e desligar a Experience deixa os valores preenchidos como estão.
+`intro` é a mensagem de introdução do Game Master (1.339), com as mesmas regras do `intro` de um roteiro de história (veja [Escrever roteiros de história](writing-story-scripts.md#the-intro-message)). É o único valor que fica travado. Uma introdução travada aparece como somente leitura no assistente, e a partida começa com ela independentemente do que a configuração envie. A partida mantém a introdução como era quando começou (`chat.metadata.gameExperienceIntro`). Ela é lida antes do `intro` da própria história. A importação de um arquivo de configuração mantém os próprios valores, e desligar a Experience deixa os valores preenchidos como estão.
 
 ### Capability API 1.373: arquivos de Experience
 
@@ -1100,6 +1100,17 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 `chatComplete` aceita `cacheTtl: "5m" | "1h"`: por quanto tempo o prompt até as mensagens `cacheBreakpoint` da chamada (1.814) fica em cache na Anthropic. Se a opção for omitida, vale o tempo de cache da própria conexão, como antes. Peça `"1h"` quando o mesmo prefixo voltar com mais de cinco minutos de intervalo, por exemplo o contexto de uma história que cada cena reutiliza enquanto o jogador lê. Uma escrita de cache de 1 hora custa mais que uma de 5 minutos, então só compensa quando o prefixo é lido de novo dentro dessa hora. Uma chamada sem mensagem marcada ignora a opção, assim como os provedores que guardam em cache por conta própria (OpenAI, Gemini, xAI, DeepSeek) e o Claude (Subscription), em que vale o tempo de cache da conexão.
 
 Engines mais antigos ignoram a opção, então um pacote sempre pode passá-la. Declare 1.815 quando o pacote depender dela.
+
+### Capability API 1.835: preparar trechos de voz com antecedência
+
+`services.tts.ttsService.prepareAudio(text, options?)` gera o áudio de uma fala no cache de áudio compartilhado sem reproduzi-lo. Chame o método com o mesmo texto e as mesmas opções que uma chamada posterior a `speak` ou `speakSequence` vai usar: `cacheKey`, `cacheAliases`, `voice`, `speaker`, `tone` e `audioConnectionId`. Essa chamada começa então a reprodução de imediato, sem uma segunda síntese.
+
+- Um trecho já em cache, ou em geração por outra chamada, não é gerado de novo.
+- A reprodução nunca é interrompida nem alterada, então um pacote pode preparar as próximas falas enquanto uma é reproduzida.
+- Uma fala sem texto ou sem `cacheKey` é ignorada, pois nada poderia encontrar seu áudio.
+- `options.signal` interrompe apenas a espera. A síntese já enviada continua e é guardada em cache, a menos que `abortCacheGenerationOnAbort` esteja definido.
+
+Não exige nenhuma permissão. Engines mais antigos não incluem o método, então verifique `typeof ttsService.prepareAudio === "function"` e continue gerando a voz das falas conforme elas aparecem. Declare 1.835 apenas quando o pacote não puder funcionar sem ele.
 
 ### Capability API 1.834: sprites salvos e a regra de escolha da arte
 
@@ -1500,6 +1511,8 @@ Pacotes do servidor podem usar `api.runtime.integrations` para acessar os servi�
 ### Áudio de pacotes
 
 A partir da Capability API **1.381**, `__MARINARA_HOST__.services.audio` fornece reprodução e seleção de recursos pelo Engine. Declare essa versão secundária no manifesto do pacote e atualize o Engine junto com o pacote. A fala continua em `services.tts`; música e efeitos sonoros usam `services.audio`. `services.tts.ttsService.speakSequence(requests, id?, options?)` aceita `options.audioConnectionId` desde a versão 1.381, aplicando a conexão de fala selecionada a cada trecho e mantendo a voz de cada solicitação. Deixe o valor indefinido para usar o padrão normal ou passe `""` para usar explicitamente as configurações antigas de TTS. Um `audioConnectionId` desconhecido, excluído, em quarentena ou que não seja de fala é ignorado, e a resolução normal de fala é executada: primeiro a seleção de fala salva, depois a conexão padrão/de fallback e, por fim, as configurações antigas. Se a própria seleção de fala salva estiver indisponível, a reprodução é recusada em vez de usar outra conexão. Pacotes que exigem uma conexão específica devem validar o ID salvo antes da reprodução.
+
+Para gerar trechos de voz antes de reproduzir as falas, veja [Capability API 1.835](#capability-api-1835-prepare-voice-clips-ahead).
 
 - `createPlayer()` retorna um player independente com `unlock()`, `playMusic(tag, assets?)`, `stopMusic(immediate?)`, `playSfx(tag, assets?, loopCount?)`, `setVolumes({ music, sfx })`, `setMuted(boolean)` e `dispose()`. Os volumes vão de 0 a 1. `assets` é um registro indexado por tag, cujas entradas têm `{ path: string, url?: string }`; os caminhos usam o servidor de recursos existente de Game, enquanto `url` pode apontar para um recurso do pacote. A reprodução reutiliza o crossfade, a nova tentativa de reprodução automática e o pool de efeitos sonoros do Engine. Chame `unlock()` diretamente em uma interação do usuário ao iniciar o áudio; as regras de reprodução automática do navegador continuam valendo.
 - Mantenha um player para a interface montada do pacote e chame `dispose()` ao desmontá-la. A limpeza para permanentemente o áudio daquele player, libera o contexto e os listeners de gestos e torna inertes as chamadas posteriores. Não para o Game nem o player de outro pacote. Crie outro player quando a interface for montada de novo.

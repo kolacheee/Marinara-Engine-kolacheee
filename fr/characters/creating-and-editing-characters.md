@@ -100,7 +100,7 @@ L'onglet **Card** est l'espace principal de rédaction. Les liens en haut permet
 
 **Public Face** décrit ce que les autres personnages pourraient voir ou savoir du personnage : apparence, manière d'être, rôle, réputation et relations qui ne sont pas secrètes. N'y mets ni secrets, ni pensées intérieures, ni passé privé, ni instructions sur la façon de jouer le personnage. Ce texte n'est jamais envoyé avec la fiche de ce personnage. Un prompt ne le lit que là où tu places la macro `{{publicFace}}`, ou `{{personaPublicFace}}` pour ton persona. Voir [Macros de prompt](../prompts/macros.md#identity-character-and-persona-macros). Dans un chat de groupe Roleplay en mode Individual, **Others' Public Faces** (faces publiques des autres) l'envoie lors des tours des autres personnages. Voir [Autres réglages Individual](../chats/group-chats.md#more-individual-settings). Un agent dont la source **Personnages** ou **Persona** est réglée sur **Public Face** le lit à la place de la fiche. Voir [Autres réglages](../agents/custom-agents.md#other-settings). Avec **Send Public Faces** (envoyer les faces publiques) activé, Impersonate en Roleplay le lit à la place de la fiche. Voir [Les réglages d'Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-L'interrupteur **Image Appearance Override** (apparence propre aux images) se trouve sous **Appearance** et est désactivé par défaut. Active-le pour afficher un second champ destiné à de courts tags d'image, comme le mot déclencheur d'un LoRA (un mot qui active un style d'image personnalisé). S'il est activé et que le champ est rempli, les prompts d'image utilisent ces tags tels quels, **Appearance** servant de contexte. Le prompt d'avatar IA est aussi prérempli à partir de ce champ. Le narrateur reçoit toujours le texte complet du champ **Appearance**.
+**Apparence** a deux onglets, **Prose** et **Tags d'image**. **Prose** contient le texte de l'apparence lui-même. **Tags d'image** contient des tags courts pour les prompts d'image, comme un mot déclencheur de LoRA (un mot-clé qui active un style d'image personnalisé). Saisir des tags coche **Utiliser pour les prompts d'image**, et un point sur l'onglet indique qu'ils sont utilisés. Tant que la case est cochée et que les tags sont remplis, les prompts d'image utilisent ces tags tels quels, en gardant la prose comme contexte. Décoche-la pour garder les tags sans les utiliser : les prompts d'image reviennent alors à **Prose**. Le prompt d'avatar IA part lui aussi des tags. Le narrateur voit toujours le texte de **Prose**. L'onglet **Images** y mène avec **Aller à Apparence**.
 
 La section **Dialogue & Greetings** définit l'ouverture du chat et le ton du personnage :
 
@@ -150,7 +150,7 @@ Avant de commencer : ajoute une connexion de génération d'images. Le bouton d'
 
 1. Survole la vignette de l'avatar et clique sur le bouton baguette. La fenêtre **Generate Character Avatar** (générer l'avatar du personnage) s'ouvre.
 2. Choisis une connexion dans **Image Generation Connection** (connexion de génération d'images).
-3. Vérifie ou modifie le champ **Avatar Prompt** (prompt d'avatar). Il part du champ **Image Appearance Override** quand celui-ci est activé et rempli. Sinon, il utilise **Appearance**, puis **Description**, puis **Personality** : le premier qui contient du texte.
+3. Vérifie ou modifie le **Prompt de l'avatar**. Il part des **Tags d'image** de **Apparence** quand **Utiliser pour les prompts d'image** est coché et qu'ils sont remplis. Sinon, il utilise **Apparence**, puis **Description**, puis **Personnalité**, le premier champ qui contient du texte.
 4. Si la fiche a déjà un avatar, tu peux cocher **Use current avatar as a reference** (utiliser l'avatar actuel comme référence).
 5. Clique sur **Generate** (générer). Pour un nouvel essai, clique sur **Regenerate** (régénérer).
 6. Quand le résultat te convient, clique sur **Use Avatar** (utiliser l'avatar).
@@ -196,6 +196,7 @@ Règles :
 - Un chat ne peut utiliser qu'une seule alternative par champ. Cocher un chat dans une autre alternative, ou en choisir une autre dans Chat Settings, l'y déplace.
 - Sans chat coché, l'alternative reste inactive pour plus tard.
 - Une alternative vide efface ce champ dans ses chats.
+- Une alternative de **Apparence** a ses propres onglets **Prose** et **Tags d'image**. Dans ses chats, ses tags remplacent ceux de la fiche. Si ses tags sont vides ou décochés, les prompts d'image utilisent la prose de l'alternative, jamais les tags de la fiche. Une nouvelle alternative copie aussi les tags de la fiche.
 - Les remplacements de scénario et d'apparence pour les images propres au chat restent prioritaires.
 - Les alternatives de **Summary** restent des métadonnées et ne sont pas envoyées à l'IA.
 - Si le personnage quitte un chat, son affectation est suspendue, puis reprend quand tu ajoutes à nouveau le personnage.

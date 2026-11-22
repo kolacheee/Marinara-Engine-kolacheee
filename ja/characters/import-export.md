@@ -34,7 +34,7 @@ Marinaraが受け付けるファイル形式は4種類です。
 | | **No tags**: タグを取り込みません。 |
 | | **Existing only**: ライブラリーにすでにあるタグだけを残します。 |
 | **Imported regex scripts**(インポートした正規表現スクリプト) | **Character only**(デフォルト): ルールはこのキャラクターに対して動きます。 |
-| | **Global**: ルールは**Presets → Regexes**に入り、複数のチャットにまたがって実行できます。 |
+| | **Global**: ルールを**Library → Regex scripts**(ライブラリー → 正規表現スクリプト)(クラシックレイアウトでは**Presets → Regexes**)へ追加し、チャットをまたいで実行できるようにします。 |
 | **Split description into fields**(説明を各欄に分割) | デフォルトではオフです。チェックを入れると、見出しの付いた性格、外見などのテキストが**Description**(説明)からそれぞれの欄へ移ります。 |
 | **Import tags**(インポート用タグ) | **Tag imported**(インポート済みをタグ付け、デフォルトでオン): **Imported**タグを追加します。 |
 | | **Tag source**(出典をタグ付け、デフォルトでオン): ファイルの入手元を追加します。SillyTavernのカードは**ST**、`.charx`は**CharX**、Marinaraのエクスポートは**Marinara**です。 |

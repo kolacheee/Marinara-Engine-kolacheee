@@ -96,7 +96,7 @@ La pestaña **Card** es el espacio principal de escritura. Los enlaces de la par
 
 **Public Face** es lo que el resto del elenco podría ver o saber del personaje: apariencia, maneras, papel, reputación y relaciones que no sean secretas. Deja fuera los secretos, los pensamientos íntimos, la historia privada y las instrucciones sobre cómo interpretar al personaje. Nunca se envía como parte de la tarjeta de este personaje. Un prompt lo lee solo donde colocas la macro `{{publicFace}}`, o `{{personaPublicFace}}` para tu persona. Consulta [Macros de prompt](../prompts/macros.md#identity-character-and-persona-macros). En un chat grupal de Roleplay en modo Individual, **Others' Public Faces** (Facetas públicas de los demás) lo envía a los turnos de los otros personajes. Consulta [Más ajustes de Individual](../chats/group-chats.md#more-individual-settings). Un agente cuya fuente **Characters** (Personajes) o **Persona** esté en **Public Face** lo lee en lugar de la tarjeta. Consulta [Otros ajustes](../agents/custom-agents.md#other-settings). Con **Send Public Faces** (Enviar facetas públicas) activado, Impersonate en Roleplay lo lee en lugar de la tarjeta. Consulta [Los ajustes de Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-**Image Appearance Override** (Apariencia alternativa para imágenes) está debajo de **Appearance** y está desactivado de forma predeterminada. Actívalo para mostrar un segundo cuadro para etiquetas de imagen breves, como la palabra de activación de una LoRA (una palabra clave que activa un estilo de imagen personalizado). Mientras está activado y tiene texto, los prompts de imagen usan esas etiquetas tal como están escritas, y **Appearance** se mantiene como contexto de fondo. El prompt de avatar de IA también parte de ellas. El narrador siempre ve el texto completo de **Appearance**.
+**Appearance** tiene dos pestañas, **Prose** (Prosa) e **Image tags** (Etiquetas de imagen). **Prose** es el texto de apariencia en sí. **Image tags** contiene etiquetas breves para los prompts de imagen, como una palabra de activación de LoRA (una palabra clave que activa un estilo de imagen personalizado). Al escribir etiquetas se marca **Use for image prompts** (Usar para los prompts de imagen), y un punto en la pestaña indica que están en uso. Mientras esté marcado y haya etiquetas, los prompts de imagen usan esas etiquetas tal como están escritas, con la prosa como contexto. Desmárcalo para conservar las etiquetas sin usarlas: los prompts de imagen vuelven a usar **Prose**. El prompt de avatar con IA también parte de las etiquetas. El narrador siempre ve el texto de **Prose**. La pestaña **Images** enlaza aquí con **Go to Appearance** (Ir a Apariencia).
 
 La sección **Dialogue & Greetings** define cómo se abre un chat y cómo suena el personaje:
 
@@ -144,7 +144,7 @@ Antes de empezar: añade una conexión de generación de imágenes. El botón de
 
 1. Pasa el cursor sobre la casilla del avatar y haz clic en el botón de varita. Se abre la ventana **Generate Character Avatar** (Generar avatar de personaje).
 2. Elige una **Image Generation Connection** (Conexión de generación de imágenes).
-3. Revisa o edita el **Avatar Prompt** (Prompt del avatar). Parte de **Image Appearance Override** cuando está activado y tiene texto. Si no, usa **Appearance**, luego **Description** y luego **Personality**, el primero que tenga texto.
+3. Revisa o edita el **Avatar Prompt** (Prompt del avatar). Parte de las **Image tags** de **Appearance** cuando **Use for image prompts** está marcado y hay etiquetas. Si no, usa **Appearance**, luego **Description** y luego **Personality**, el primero que tenga texto.
 4. Si la tarjeta ya tiene un avatar, puedes marcar **Use current avatar as a reference** (Usar el avatar actual como referencia).
 5. Haz clic en **Generate** (Generar). Para volver a intentarlo, haz clic en **Regenerate** (Regenerar).
 6. Haz clic en **Use Avatar** (Usar avatar) cuando te guste el resultado.
@@ -188,6 +188,7 @@ Reglas:
 - Un chat solo puede usar una alternativa por campo. Marcar un chat en otra alternativa, o elegir otra en Chat Settings, lo traslada allí.
 - Sin chats marcados, la alternativa queda inactiva para más adelante.
 - Una alternativa vacía borra ese campo en sus chats.
+- Una alternativa de **Appearance** tiene sus propias pestañas **Prose** e **Image tags**. En sus chats, sus etiquetas reemplazan las de la tarjeta. Con las etiquetas vacías o desmarcadas, los prompts de imagen usan la prosa de la alternativa, nunca las etiquetas de la tarjeta. Una alternativa nueva también copia las etiquetas de la tarjeta.
 - Las sustituciones de escenario y de apariencia para imágenes específicas del chat siguen teniendo prioridad.
 - Las alternativas de **Summary** siguen siendo metadatos y no se envían a la IA.
 - Si el personaje sale de un chat, su asignación se pausa y se reanuda cuando vuelves a añadir al personaje.

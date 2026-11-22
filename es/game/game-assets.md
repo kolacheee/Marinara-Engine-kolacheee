@@ -139,16 +139,6 @@ Una barra muestra "All folders included" (Todas las carpetas incluidas) o cuánt
 
 <a id="a-settings-own-art-and-music"></a>
 
-### Arte y música propios de una ambientación
-
-Un juego que empezó con un kit de ambientación tiene una familia artística, que aparece en **Art and music** (Arte y música) cuando cambias las palabras del kit: `fantasy`, `scifi`, `modern`, `wuxia`, `jazz_age`, `wasteland` o una propia del kit. El juego usa las carpetas con el nombre de su familia y todas las carpetas que no llevan el nombre de ninguna familia, y deja fuera las carpetas de las demás familias. Un juego cyberpunk nunca reproduce música de batalla de fantasía ni muestra el bosque encantado. Cuando nada de su familia ni de las carpetas compartidas encaja, no suena nada en lugar de una pista de otra familia. Un juego sin kit de ambientación usa todas las carpetas.
-
-- **Music**: pon las pistas de la ambientación en `music/<state>/<family>/<intensity>`, como `combat/wuxia/intense`. Se reproducen antes que las pistas compartidas.
-- **Backgrounds**: `backgrounds/<family>`. Los fondos generados en un juego con kit de ambientación también se guardan ahí.
-- **Sonidos de combate**: un sonido en `sfx/combat/<family>` con el mismo nombre que uno incluido, como `sword-swing`, lo reemplaza en los juegos de esa familia. Los sonidos de combate incluidos son de fantasía, así que los combates de otras familias quedan en silencio hasta que añadas los suyos.
-
-Los fondos iniciales incluidos cuentan como compartidos, excepto los de fantasía (`ancient_library`, `castle_cliff`, `enchanted_forest`) y el moderno `city_night`. Un kit de ambientación guardado antes de que existieran las familias artísticas sigue funcionando: uno creado a partir de un kit inicial usa la familia de ese kit inicial, y cualquier otro usa todas las carpetas hasta que elijas una familia en **Art and music**. La barra de selección de arriba muestra la familia del juego abierto.
-
 <a id="generated-sound-effects-and-music"></a>
 
 ## Efectos de sonido y música generados

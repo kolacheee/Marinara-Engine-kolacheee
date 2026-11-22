@@ -34,7 +34,7 @@ Wenn es nicht funktioniert hat: Lies die rote Meldung neben der Datei. Die übri
 | | **No tags**: die Tags überspringen. |
 | | **Existing only**: nur Tags behalten, die es in deiner Bibliothek schon gibt. |
 | **Imported regex scripts** (importierte Regex-Skripte) | **Character only** (Standard): Die Regeln laufen für diesen Charakter. |
-| | **Global**: Die Regeln landen unter **Voreinstellungen → Regex-Skripte** und können chatübergreifend laufen. |
+| | **Global**: Die Regeln landen unter **Bibliothek → Regex-Skripte** (im klassischen Layout **Voreinstellungen → Regex-Skripte**) und können chatübergreifend laufen. |
 | **Split description into fields** (Beschreibung in Felder aufteilen) | Standardmäßig aus. Hake es an, um gekennzeichneten Text zu Persönlichkeit, Aussehen und Ähnlichem aus **Description** (Beschreibung) in eigene Felder zu verschieben. |
 | **Import tags** (Tags importieren) | **Tag imported** (standardmäßig an): fügt das Tag **Imported** hinzu. |
 | | **Tag source** (standardmäßig an): fügt ein Tag für die Herkunft der Datei hinzu: **ST** bei einer SillyTavern-Karte, **CharX** bei einer `.charx` und **Marinara** bei einem Marinara-Export. |

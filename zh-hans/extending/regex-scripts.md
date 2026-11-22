@@ -183,7 +183,7 @@ She smiles Hello there.
 Marinara 能读取打包在 SillyTavern 角色卡里的正则脚本。导入角色卡时，**Imported regex scripts**(已导入的正则脚本) 区块会提供两个选择：
 
 - **Character only**(仅该角色)（默认）：脚本保持限定给该角色。
-- **Global**(全局)：脚本加入 **Presets**，在每个聊天里运行。
+- **Global**：脚本会放到 **Library → Regex scripts**(资料库 → 正则脚本)（经典布局里是 **Presets → Regexes**），可以跨聊天运行。
 
 单个角色的导入对话框和批量的 **Import from SillyTavern Folder**(从 SillyTavern 文件夹导入) 流程都会出现这个选择。模式为空或未通过安全检查的脚本会被跳过。要导入纯 JSON 格式的脚本文件，使用 **Regexes** 中的 **Import regexes from JSON**。见[从 SillyTavern 导入](../data/importing-from-sillytavern.md)。
 
@@ -191,7 +191,7 @@ Marinara 能读取打包在 SillyTavern 角色卡里的正则脚本。导入角�
 
 ### 替换正则脚本包
 
-1. 在 **Presets → Regexes**(预设 → 正则) 中，选择 **Select regex scripts**(选择正则脚本)。
+1. 在 **Library → Regex scripts**（经典布局里是 **Presets → Regexes**）中，选择 **Select regex scripts**。
 2. 勾选旧脚本包的条目，或选择 **Select all regex scripts**(选择全部正则脚本)。
 3. 使用操作栏中的 **Export**(导出) 或 **Delete**(删除)。删除只会确认一次，且无法撤销。
 4. 导入更新后的脚本包。

@@ -64,7 +64,7 @@ curl -fsSL https://x.ai/cli/install.sh | bash
 
 ## OpenAI (ChatGPT)
 
-这个服务通过 Codex CLI 使用你的 ChatGPT 账号。Marinara 会读取本机的 Codex 登录文件，并在条件允许时刷新会话。
+这个服务通过 Codex CLI 使用你的 ChatGPT 账号。Marinara 读取本地 Codex 登录文件，并在可以时刷新会话。同一个聊天的每次请求都携带相同的缓存键，让服务商可以复用提示词开头未变的部分，减少套餐用量。
 
 与 Claude 和 Grok 订阅不同，ChatGPT 登录支持工具调用，因此 Professor Mari、自定义工具以及 Game Mode 的骰子和工具都能使用。
 
@@ -78,6 +78,8 @@ curl -fsSL https://x.ai/cli/install.sh | bash
 - 它的上下文窗口默认是 32,000 Token。Token 是模型计数时使用的小段文本。提示词太长会撞上 CLI 自身的单轮上限，所以默认值定得比较低。可以在模型上设一个更大的 **Max Context Window**(最大上下文窗口)。
 
 在模型编辑器里，**Use the Grok CLI default**(使用 Grok CLI 默认值) 会把模型留空，让 CLI 自己选。编辑器指出，角色扮演时最稳妥的通常是 `grok-composer-2.5-fast`，因为 Marinara 以无界面方式运行 CLI，并关闭了 Grok 自带的工具、记忆、网络搜索、计划和子智能体。
+
+Marinara 也会排除 CLI 原本会从主目录加载的编程内容：Claude Code 和 Cursor 规则、`CLAUDE.md` 文件、技能、钩子和 MCP 服务器。发给 xAI 的聊天请求不会携带这些内容，每次请求也更小。Grok 回复的 Token 计数来自 CLI 本身，包括 xAI 从缓存读取的 Token。
 
 ## 套餐用量
 

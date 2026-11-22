@@ -35,7 +35,7 @@ Options de **Resolution** : 512x512, 512x768, 768x768, 768x1024, 896x1152 et 102
 
 **Send Avatar References** et **Attach Card Appearance** proposent chacun **Off**, **Images only**, **Videos only** et **Images and videos**.
 
-Si la fiche ou la persona a **Image Appearance Override** activé (sous **Appearance** dans l'éditeur), Marinara envoie ce texte à la place de **Appearance**. Utilise-le quand **Appearance** est écrit pour l'histoire, pas pour les images.
+Si la fiche ou le persona utilise des **Tags d'image** (l'onglet **Tags d'image** de **Apparence** dans l'éditeur, avec **Utiliser pour les prompts d'image** coché), Marinara les envoie à la place de la prose de **Apparence**. Une alternative d'apparence active dans le chat utilise ses propres tags ou sa propre prose. Utilise cette option quand **Apparence** est écrit pour l'histoire, pas pour les images.
 
 ## Demander un selfie à la main
 

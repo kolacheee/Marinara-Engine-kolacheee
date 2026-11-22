@@ -8,7 +8,7 @@ Empieza con **Memory Recall**. Funciona sin configuración adicional, porque Mar
 
 | Función | Qué hace | Funciona en |
 | --- | --- | --- |
-| **Memory Recall** | Busca en los mensajes más antiguos las partes relacionadas con lo que acabas de decir y las agrega al prompt (las instrucciones enviadas a la IA). | Todos los modos |
+| **Memory Recall** | Busca en los mensajes antiguos que ya no caben en el prompt (las instrucciones enviadas a la IA) las partes relacionadas con lo que acabas de decir y las agrega. | Todos los modos |
 | **Chat Summary** | Reemplaza los mensajes antiguos con recapitulaciones cortas. | Roleplay |
 | **Automatic Summarization** | Resume cada día y luego cada semana. Siempre activado. | Conversation |
 | **Advanced Memory Recall** | Gestiona conjuntamente el historial actual, los resúmenes de escenas y los fragmentos recuperados. Opcional. | Roleplay y Game Mode |
@@ -68,6 +68,19 @@ La barra de herramientas tiene iconos para exportar, importar, reconstruir y bor
 - El icono de borrar todo abre **Clear Memories**. Confirma con **Clear**. Esto elimina las memorias de recuperación, no los mensajes de tu chat.
 - El icono de actualizar reconstruye cada fragmento a partir de los mensajes actuales. Úsalo después de cambiar el modelo de embeddings.
 - Exportar guarda un archivo `.marinara.json`. Importar acepta archivos `.json` o `.marinara` y los fusiona con las memorias existentes.
+
+### Qué agrega Memory Recall
+
+Memory Recall solo recupera mensajes que el prompt ya no contiene. Mientras todo el chat quepa en la ventana de contexto, no agrega nada, porque la IA ya lee todos los mensajes. Cuando se dejan fuera mensajes antiguos para que el prompt quepa, busca entre ellos.
+
+- Un fragmento solo se recupera cuando ninguno de sus mensajes está en el prompt.
+- Los recuerdos también ocupan espacio. Al agregarlos, pueden dejarse fuera los mensajes más antiguos que aún cabrían para hacerles espacio. Memory Recall también puede recuperarlos.
+- Los mensajes excluidos por **Context message limit** (Límite de mensajes de contexto) cuentan como fuera del prompt.
+- Los recuerdos importados de otro chat pueden recuperarse en cualquier momento.
+
+Para permitir que se elija cualquier mensaje anterior, activa **Recall from the whole chat** (Recuperar mensajes de todo el chat) debajo de **Enable Memory Recall**. En ese caso, los recuerdos suelen repetir mensajes que el prompt ya contiene. Las repeticiones cuestan tokens y, como los recuerdos se sitúan antes del historial del chat y cambian en cada turno, la caché de prompts del servicio no puede reutilizar el historial.
+
+La vista previa en vivo de [Ver el prompt](../chats/peek-prompt.md) no ejecuta Memory Recall. Con la recuperación activada, puede mostrar más historial del que recibe una respuesta.
 
 ### Cómo se comporta Memory Recall
 
@@ -293,6 +306,7 @@ Los chats de Game Mode activan Advanced Memory Recall en **Chat Settings → Mem
 | Memory Recall no recupera nada | Comprueba que haya una fuente de embeddings configurada. Si los fragmentos muestran **Embedding unavailable**, configura un modelo en **Semantic search (embeddings)** o usa el modelo integrado. Consulta [Configuración del modelo integrado](../connections/local-model.md). |
 | Los fragmentos muestran **Waiting for vector** | Dales tiempo. Las huellas se construyen después de las respuestas. |
 | Nada parece relacionado | La recuperación solo agrega memorias muy relacionadas. No agregar nada es normal. |
+| Memory Recall no agrega nada mientras el chat es corto | Es lo esperado. Solo agrega mensajes que ya no caben en la ventana de contexto. Consulta [Qué agrega Memory Recall](#what-memory-recall-adds). |
 | La recuperación empeoró después de cambiar de modelo de embeddings | Usa el icono de reconstruir en **Memories for This Chat**. |
 | Los resúmenes no se generan | El chat necesita una cuenta de texto que funcione. Chat Summary usa **Summary Provider**. Si ninguna funciona, se omite la generación. |
 | Los resúmenes de IA nunca aparecen | Puede que **Review Agent Outputs** esté esperando tu aprobación. |
@@ -310,7 +324,7 @@ Detalles que la mayoría de las personas no necesita. Los ajustes de arriba func
 - La detección de escenas se ejecuta después de guardar la respuesta principal de Roleplay. Cuando llegan tantos mensajes nuevos como indica el intervalo, el detector recibe todos los mensajes desde la última comprobación (hasta el doble del intervalo), el mensaje en el que terminó la última comprobación, las instrucciones de escena y el formato de salida. Devuelve el mensaje exacto que cierra cada escena, o ninguno si la escena continúa. Cuentan tanto los mensajes de tu persona como los de los personajes.
 - Con el modo de decisión desactivado, una comprobación programada comparte una llamada apta de un tracker de posprocesamiento cuando la visibilidad y el presupuesto de contexto lo permiten. Si no, el auxiliar hace su propia llamada. Las transiciones dudosas dejan la escena abierta.
 - Solo un final detectado inicia en segundo plano la preparación del resumen y del índice de mensajes de esa escena. **Chat Settings → Agent activity** muestra el progreso como **Advanced Recall**, incluso con los agentes normales desactivados.
-- Cada solicitud de resumen de escena contiene las instrucciones de resumen, los mensajes aptos de la escena, las correcciones por rango aplicables y el formato de salida JSON. Las escenas demasiado grandes para una sola solicitud se procesan en lotes guardados y luego se combinan. Las recapitulaciones piden de 2 a 3 párrafos. El prompt predeterminado escribe una recapitulación histórica sin sección de situación actual. Siguen aplicándose los prompts personalizados elegidos en **Summaries**.
+- Cada solicitud de resumen de escena contiene las instrucciones de resumen, los mensajes aptos de la escena, las correcciones por rango aplicables y el formato de salida JSON. Las escenas demasiado grandes para una sola solicitud se procesan en lotes guardados y luego se combinan. Las recapitulaciones usan el prompt seleccionado en **Summaries**, incluido el predeterminado. Cada solicitud de recapitulación también pide una recapitulación histórica sin sección de situación actual.
 - La detección inicial del historial puede usar el modelo principal o el auxiliar. Los resúmenes siempre usan el auxiliar.
 - Cada resumen también registra quién participó. Un nombre de participante distinto del de la tarjeta, como "Kaito" para **Kaito Nakamura**, cuenta cuando corresponde exactamente a un personaje y no es el nombre de tu persona. Los nombres compartidos, las descripciones como "Kaito's sister" y los nombres con notas como "(mentioned)" no dan acceso. Cuando el auxiliar no dice quién participó, la escena se asigna a todos los personajes, y en un chat grupal se marca con **Check who was there**. Una escena que solo te incluye a ti sigue reservada al narrador. Las escenas guardadas antes de que existieran las comprobaciones de participantes siguen reservadas al narrador hasta que **Fix** o **Prepare existing history** las comprueben. Cada respuesta que termina una escena también comprueba hasta tres.
 - En un chat grupal antiguo en el que los personajes responden de uno en uno, confirma una vez los intervalos de conocimiento que falten. La primera intervención de un personaje no demuestra que conociera todo lo anterior. Elige un personaje real como **Narrator** solo si debe saltarse los límites de participación. **Hide from AI** global solo quita un turno de la transcripción activa. Advanced Memory sigue analizándolo, resumiéndolo e indexándolo. Los marcadores de inicio recortan la transcripción activa.

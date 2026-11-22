@@ -101,7 +101,7 @@ L'onglet **Card** contient les champs qui te décrivent à l'IA. Chacun affiche 
 | **Public Face** (face publique) | La fiche sans ses parties privées. | Seulement via `{{personaPublicFace}}`, ou avec la source **Persona** d'un agent réglée sur **Public Face** |
 | **Example Dialogue** (exemples de dialogue) | Des exemples d'échanges. Sépare-les avec `<START>`. Utilise `{{user}}` pour ton persona et `{{char}}` pour l'autre personnage. | Oui |
 
-**Image Appearance Override** (apparence propre aux images), sous **Appearance**, et **Public Face** fonctionnent comme pour les personnages. Voir [Onglet Card](creating-and-editing-characters.md#card-tab). Les zones de texte acceptent les macros.
+L'onglet **Tags d'image** de **Apparence** et **Profil public** fonctionnent comme pour les personnages. Voir [Onglet Fiche](creating-and-editing-characters.md#card-tab). Les zones de texte prennent en charge les macros.
 
 Ces fonctions marchent comme sur les personnages, avec le persona pour sujet :
 

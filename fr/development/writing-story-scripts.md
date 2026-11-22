@@ -1,6 +1,8 @@
 # Écrire des scripts d'histoire Game Mode
 
-Un script d'histoire oriente le déroulement d'une partie Game Mode : des scènes qui se jouent quand l'équipe arrive quelque part, des choses que le Game Master (le maître du jeu) doit faire une fois une condition remplie, des objectifs que le joueur suit dans le journal, et des moments que le Game Master peut marquer lui-même. Écris-en un si tu crées des mondes pour d'autres. Pour jouer dans un monde qui a une histoire, consulte [Créer un monde](../game/getting-started.md#making-a-world).
+> **Note :** Les scripts d'histoire appartiennent aux parties Overworld, qui ne sont pas encore disponibles. Cette page est destinée aux développeurs ; elle est exclue de la documentation intégrée et de Professor Mari. Voir [Parties Overworld (non disponibles)](overworld-games.md).
+
+Un script d'histoire oriente le déroulement d'une partie Game Mode : des scènes qui se jouent quand l'équipe arrive quelque part, des choses que le Game Master (le maître du jeu) doit faire une fois une condition remplie, des objectifs que le joueur suit dans le journal, et des moments que le Game Master peut marquer lui-même. Écris-en un si tu crées des mondes pour d'autres. Pour jouer dans un monde qui a une histoire, consulte [Créer un monde](overworld-games.md#making-a-world).
 
 Un script d'histoire, ce sont des données, pas du code. Rien ne s'y exécute. Le moteur le vérifie par rapport au monde auquel il est destiné, le joue tour par tour et refuse tout ce qui ne convient pas.
 
@@ -11,7 +13,7 @@ Avant de commencer, il te faut un monde auquel rattacher l'histoire, ainsi que l
 Une histoire appartient à un seul monde. Elle nomme les lieux et les personnes de ce monde : elle n'a donc de sens qu'avec le monde pour lequel elle a été écrite (sa graine, sa description et ses modifications manuelles).
 
 - Dans un **fichier de monde** (`.world.json`), comme clé `story` de premier niveau à côté de `world`. Une version du moteur qui ne connaît pas les histoires lit quand même le monde.
-- Dans le **pack de carte** d'une Experience : chaque fichier de monde peut porter son histoire, et une nouvelle partie la reprend avec la carte. Consulte [Packages d'agents et de capacités optionnels](../development/optional-agent-packages.md).
+- Dans le **pack de carte** d'une Experience : chaque fichier de monde peut porter son histoire, et une nouvelle partie la reprend avec la carte. Consulte [Packages d'agents et de capacités optionnels](optional-agent-packages.md).
 - Dans un monde gardé dans la bibliothèque, hors de toute partie : `GET`, `PUT` et `DELETE /api/game-worlds/:id/story`, comme pour une partie. Une nouvelle partie lancée depuis ce monde emporte l'histoire avec elle.
 - Dans une partie, une fois lancée : `GET`, `PUT` et `DELETE /api/game/:chatId/story` lisent, enregistrent et suppriment l'histoire. Un enregistrement est vérifié par rapport au monde de la partie, modifications manuelles comprises, et les modifications manuelles qui retireraient un élément nommé par l'histoire sont refusées.
 
@@ -209,7 +211,7 @@ Toute action peut avoir son propre `if` : elle n'est exécutée que si ses condi
 
 Les actions exécutées sont consignées avec le déclenchement : les scènes et demandes d'un événement `gm` arrivent donc au tour suivant telles qu'elles ont été exécutées quand le Game Master l'a marqué.
 
-Un compagnon est une personne marquée comme telle dans le fichier de personnes du pack (voir les personnes du pack de carte dans [Packages d'agents et de capacités optionnels](../development/optional-agent-packages.md)).
+Un compagnon est une personne marquée comme telle dans le fichier de personnes du pack (voir les personnes du pack de carte dans [Packages d'agents et de capacités optionnels](optional-agent-packages.md)).
 
 Parmi les événements `rest`, `travel` et `idle` qui pourraient se produire pendant un même tour, un seul se produit : celui dont la `priority` est la plus élevée (un entier de -100 à 100, 0 si elle est omise ; le premier du script en cas d'égalité). Ainsi, le récit d'un compagnon au feu de camp, une dispute entre deux compagnons sur la route ou la visite d'un compagnon au joueur à une heure calme ne s'accumulent jamais. Avec une condition `party`, une telle scène ne se produit que si ces compagnons voyagent avec l'équipe.
 
@@ -404,7 +406,7 @@ Chaque fonctionnalité d'histoire nécessite une version minimale de Capability 
 - plus de 64 drapeaux nécessitent 1.353 (la limite est de 256) ;
 - les `variants` de combat nécessitent 1.356 ;
 - les conditions `any`, un événement `fight` nommant son combat, un événement `leave`, le `min` ou le `max` d'un drapeau et un `if` sur une action ou une page nécessitent 1.358 ;
-- un pack de carte dont la surcouche d'ensemble de règles a une entrée `storyUses` (l'utilisation d'un objet qui dépense un nombre d'histoire, que le `if` d'un terrain retenu peut lire) nécessite 1.359 ; consulte [objets qui coûtent un nombre d'histoire](../development/optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number) ;
+- un pack de carte dont la surcouche d'ensemble de règles a une entrée `storyUses` (l'utilisation d'un objet qui dépense un nombre d'histoire, que le `if` d'un terrain retenu peut lire) nécessite 1.359 ; consulte [objets qui coûtent un nombre d'histoire](optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number) ;
 - une condition `partySize`, une variante pour une équipe de plus de 6 membres ou sans limite supérieure, ou plus de 6 variantes nécessitent 1.360 ;
 - un compagnon `noncombatant`, exclu de la taille de l'équipe, nécessite 1.360 ;
 - une action `season` passant `over` tout ce qu'elle contient nécessite 1.361 ;

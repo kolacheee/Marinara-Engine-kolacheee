@@ -36,7 +36,7 @@ Se não funcionou: leia a mensagem vermelha ao lado do arquivo. Os outros arquiv
 | | **No tags**: ignora as tags. |
 | | **Existing only**: mantém as tags que já existem na sua biblioteca. |
 | **Imported regex scripts** (scripts de regex importados) | **Character only** (padrão): as regras valem para este personagem. |
-| | **Global**: as regras vão para **Presets → Regexes** e valem em todos os chats. |
+| | **Global**: as regras vão para **Biblioteca → Scripts de regex** (**Presets → Regexes** no layout clássico) e valem em todos os chats. |
 | **Split description into fields** (dividir a descrição em campos) | Desligada por padrão. Marque a opção para tirar de **Description** (descrição) o texto rotulado de personalidade, aparência e similares e colocá-lo nos campos próprios. |
 | **Tags de importação** | **Tag de importado** (ativada por padrão): adiciona a tag **Imported**. |
 | | **Tag de origem** (ativada por padrão): adiciona a origem do arquivo: **ST** para um card do SillyTavern, **CharX** para um arquivo `.charx`, **Marinara** para uma exportação do Marinara. |

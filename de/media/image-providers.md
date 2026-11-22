@@ -113,7 +113,7 @@ Der Dienst führt gehostete Stable-Diffusion-Modelle aus. Ein Modell ist Pflicht
 
 ### NovelAI
 
-NovelAI hat seinen Schwerpunkt auf Artwork im Anime-Stil. Bei V4-, V4.5- und V5-Modellen sendet Marinara für Storyboards und Illustrator-Szenen mit mehreren Figuren native Figuren-Prompts samt Positionen. Präzise Referenzbilder funktionieren nur auf einem V4.5-Modell.
+NovelAI konzentriert sich auf Bilder im Anime-Stil. Bei V4-, V4.5- und V5-Modellen sendet Marinara native Prompts mit Positionen pro Charakter für Storyboards mit mehreren Charakteren, Illustrator-Szenen und Professor Maris Bilder. Präzise Referenzbilder funktionieren nur mit einem V4.5-Modell.
 
 ### Venice.ai
 

@@ -181,7 +181,7 @@ Sous les modes, le panneau liste les scripts limités de chaque personnage, avec
 Marinara lit les scripts regex intégrés à une fiche de personnage SillyTavern. Quand tu importes une fiche, une section **Imported regex scripts** (scripts regex importés) propose deux choix :
 
 - **Character only** (par défaut) : les scripts restent limités à ce personnage.
-- **Global** : les scripts vont dans **Presets → Regex** et peuvent s'exécuter dans tous les chats.
+- **Global** : les scripts vont dans **Bibliothèque → Scripts regex** (**Presets → Regex** dans la disposition classique) et peuvent s'exécuter dans plusieurs chats.
 
 Ce choix apparaît dans la fenêtre d'import d'un personnage seul et dans l'import groupé **Import from SillyTavern Folder** (importer depuis un dossier SillyTavern). Les scripts dont le motif est vide, ou dont le motif échoue au contrôle de sécurité, sont ignorés. Pour importer un simple fichier JSON de scripts, utilise **Import regexes from JSON** dans **Regexes**. Voir [Importer depuis SillyTavern](../data/importing-from-sillytavern.md).
 
@@ -189,7 +189,7 @@ Ce choix apparaît dans la fenêtre d'import d'un personnage seul et dans l'impo
 
 ### Remplacer un ensemble de scripts regex
 
-1. Dans **Presets → Regexes**, choisis **Select regex scripts** (sélectionner des scripts regex).
+1. Dans **Bibliothèque → Scripts regex** (**Presets → Regex** dans la disposition classique), choisis **Sélectionner des scripts regex**.
 2. Coche les entrées de l'ancien pack. **Sélectionner tous les scripts regex** sélectionne toute la bibliothèque, y compris les scripts des dossiers repliés.
 3. Clique sur **Supprimer** dans la barre d'actions. Marinara te demande de confirmer. Pour garder une copie, clique sur **Exporter** avant de supprimer.
 4. Importe l'ensemble à jour.

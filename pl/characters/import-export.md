@@ -34,7 +34,7 @@ Jeśli to nie zadziałało: przeczytaj czerwony komunikat obok pliku. Pozostałe
 | | **No tags**: pominięcie tagów. |
 | | **Existing only**: zachowanie tylko tych tagów, które już są w twojej bibliotece. |
 | **Imported regex scripts** (importowane skrypty regex) | **Character only** (domyślnie): reguły działają dla tej postaci. |
-| | **Global**: reguły trafiają do sekcji **Presets → Regexes** (presety, regexy) i działają w każdym czacie. |
+| | **Globalny**: reguły trafiają do sekcji **Biblioteka → Skrypty regex** (**Presety → Regexy** w klasycznym układzie) i działają w każdym czacie. |
 | **Split description into fields** (podział opisu na pola) | Domyślnie wyłączona. Zaznacz ją, żeby teksty opatrzone etykietami, takie jak osobowość czy wygląd, przenieść z pola **Description** (opis) do osobnych pól. |
 | **Tagi importu** | **Oznacz jako zaimportowane** (domyślnie włączone): dodaje tag **Zaimportowane**. |
 | | **Tag źródła** (domyślnie włączone): dodaje źródło pliku: **ST** dla karty z aplikacji SillyTavern, **CharX** dla pliku `.charx`, **Marinara** dla eksportu z aplikacji Marinara. |

@@ -34,7 +34,7 @@ Si no funcionó: lee el mensaje rojo junto al archivo. Los demás archivos del l
 | | **No tags** (Sin etiquetas): las omite. |
 | | **Existing only** (Solo las existentes): conserva las etiquetas que ya están en tu biblioteca. |
 | **Imported regex scripts** (Scripts de regex importados) | **Character only** (Solo el personaje, predeterminado): las reglas se ejecutan para este personaje. |
-| | **Global**: las reglas van a **Presets → Regexes** y pueden ejecutarse en varios chats. |
+| | **Global**: las reglas van a **Library → Regex scripts** (Biblioteca → Scripts regex), **Presets → Regexes** en el diseño clásico, y pueden ejecutarse en varios chats. |
 | **Split description into fields** (Dividir la descripción en campos) | Desactivado de forma predeterminada. Márcalo para sacar de **Description** (Descripción) el texto etiquetado de personalidad, apariencia y similares, y llevarlo a sus propios campos. |
 | **Import tags** (Importar etiquetas) | **Tag imported** (Etiquetar como importado; activado de forma predeterminada): añade la etiqueta **Imported** (Importado). |
 | | **Tag source** (Etiquetar el origen; activado de forma predeterminada): añade de dónde procede el archivo: **ST** para una tarjeta de SillyTavern, **CharX** para un `.charx` y **Marinara** para una exportación de Marinara. |

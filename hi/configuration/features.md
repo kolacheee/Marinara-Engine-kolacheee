@@ -2,7 +2,7 @@
 
 सर्वर के कुछ व्यवहार वैकल्पिक हैं। हर स्विच शुरू में बंद है, इसलिए जहाँ कोई इन्हें चालू न करे, सर्वर पहले जैसा काम करता है। ये **Settings** में अलग-अलग जगहों पर हैं:
 
-- **Stable lorebook picks** और **Lorebook activation stats**: **Settings → Advanced → Lorebooks**।
+- **Stable lorebook picks**, **Lorebook activation stats** और **Vectors on for new lorebooks** (नई लोरबुक में वेक्टर चालू रखें): **Settings → Advanced → Lorebooks**।
 - **Retry failed provider calls**: **Settings → Advanced → Timeouts & Retries**।
 - **Recover deleted chat messages**: **Settings → Data → Backup & Restore**।
 
@@ -20,6 +20,7 @@
 | **Retry failed provider calls** (असफल प्रोवाइडर कॉल दोहराएँ) | `providerRetry` | बंद | `PROVIDER_RETRY_TRANSIENT_ERRORS` |
 | **Lorebook activation stats** (लोरबुक सक्रियण के स्टैट) | `usageAndActivationStats` | बंद | कोई नहीं |
 | **Recover deleted chat messages** (डिलीट किए गए चैट संदेश वापस लाएँ) | `messageTrash` | बंद | कोई नहीं |
+| **Vectors on for new lorebooks** | `newLorebookVectors` | बंद | `LOREBOOK_NEW_BOOK_VECTORS` |
 
 सेटिंग्स में स्विच के नाम से खोजने पर वह मिल जाता है।
 
@@ -77,6 +78,16 @@ API `GET` और `PUT /api/app-settings/features` है। `PUT` पूरा �
 
 बंद: डिलीट किए गए संदेश तुरंत हट जाते हैं।
 
+### नई लोरबुक में वेक्टर चालू रखें
+
+सेटिंग कुंजी: `newLorebookVectors`। एनवायरनमेंट वेरिएबल: `LOREBOOK_NEW_BOOK_VECTORS`।
+
+चालू: नई लोरबुक में **Vectors** (वेक्टर) शुरू से चालू रहता है, ताकि उसकी एंट्री तुरंत वेक्टराइज़ की जा सकें और मतलब के आधार पर मिल सकें।
+
+बंद: नई लोरबुक में **Vectors** शुरू से बंद रहता है। कीवर्ड अब भी काम करते हैं, और आप बाद में लोरबुक में **Vectors** चालू कर सकते हैं।
+
+यह सिर्फ़ उन लोरबुक की शुरुआती वैल्यू तय करता है जिनकी अपनी वैल्यू नहीं दी गई: **Create lorebook** (लोरबुक बनाएँ) से बनी लोरबुक (जहाँ स्विच दिखता है ताकि आप उस लोरबुक के लिए उसे बदल सकें), ऐसी इंपोर्ट फ़ाइलें जिनकी अपनी सेटिंग नहीं है, और Game Mode या Lorebook Keeper की बनाई लोरबुक। मौजूदा लोरबुक की अपनी सेटिंग बनी रहती है। Professor Mari की बनाई लोरबुक में **Vectors** पहले से चालू रहता है।
+
 <a id="precedence"></a>
 
 ## प्राथमिकता
@@ -86,9 +97,10 @@ API `GET` और `PUT /api/app-settings/features` है। `PUT` पूरा �
 3. **डिफ़ॉल्ट।** बंद।
 
 | वेरिएबल | नियंत्रण | मान |
-| --- | --- | --- |
+| --------------------------------- | ---------------------------- | -------------------------------------------------------------------- |
 | `LOREBOOK_STABLE_GROUP_WINNERS` | स्थिर लोरबुक चुनाव | `true`, `1`, `yes` या `on` चालू करते हैं। कोई और मान बंद करता है। |
 | `PROVIDER_RETRY_TRANSIENT_ERRORS` | असफल प्रोवाइडर कॉल दोहराना | `true`, `1`, `yes` या `on` चालू करते हैं। कोई और मान बंद करता है। |
+| `LOREBOOK_NEW_BOOK_VECTORS` | नई लोरबुक में वेक्टर चालू रखें | `true`, `1`, `yes` या `on` इसे चालू करते हैं। कोई भी दूसरी वैल्यू इसे बंद करती है। |
 
 हर जाँच पर वेरिएबल पढ़े जाते हैं, इसलिए `.env` बदलाव रीस्टार्ट के बिना लागू होते हैं।
 

@@ -113,7 +113,7 @@ OpenAI 允许更多帧，但没有公布一个 GIF 最多可以有多少像素�
 
 ### NovelAI
 
-NovelAI 专注于动漫风格的图像。使用 V4、V4.5 和 V5 模型时，Marinara 会为多角色分镜和 Illustrator 场景发送带位置的原生角色提示词。精确参考图只能在 V4.5 模型上使用。
+NovelAI 专注于动漫风格的图像。使用 V4、V4.5 和 V5 模型时，Marinara 会为多角色分镜、Illustrator 场景和 Professor Mari 的图片发送带位置的原生角色提示词。精确参考图只能在 V4.5 模型上使用。
 
 ### Venice.ai
 

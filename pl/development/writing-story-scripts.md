@@ -1,6 +1,8 @@
 # Pisanie skryptów fabuły Game Mode
 
-Skrypt fabuły kieruje tym, jak toczy się gra w trybie Game Mode: scenami, które odtwarzają się, gdy drużyna gdzieś dotrze, rzeczami, o które Mistrz Gry zostaje poproszony po spełnieniu warunku, celami, które gracz śledzi w dzienniku, i momentami, które Mistrz Gry może oznaczyć samodzielnie. Napisz go, jeśli tworzysz światy dla innych osób. Jeśli chcesz zagrać w świat, który ma fabułę, zobacz sekcję [Tworzenie świata](../game/getting-started.md#making-a-world).
+> **Uwaga:** Skrypty fabuły należą do gier Overworld, które nie zostały jeszcze wydane. To strona dla deweloperów, niedostępna w dokumentacji w aplikacji ani dla asystentki Professor Mari. Zobacz [Gry Overworld (jeszcze niewydane)](overworld-games.md).
+
+Skrypt fabuły kieruje tym, jak toczy się gra w trybie Game Mode: scenami, które odtwarzają się, gdy drużyna gdzieś dotrze, rzeczami, o które Mistrz Gry zostaje poproszony po spełnieniu warunku, celami, które gracz śledzi w dzienniku, i momentami, które Mistrz Gry może oznaczyć samodzielnie. Napisz go, jeśli tworzysz światy dla innych osób. Jeśli chcesz zagrać w świat, który ma fabułę, zobacz sekcję [Tworzenie świata](overworld-games.md#making-a-world).
 
 Skrypt fabuły to dane, nie kod. Nic się w nim nie wykonuje. Engine sprawdza go względem świata, dla którego powstał, odtwarza go tura po turze i odrzuca wszystko, co nie pasuje.
 
@@ -11,7 +13,7 @@ Zanim zaczniesz, potrzebujesz świata, do którego dołączysz fabułę, oraz id
 Fabuła należy do jednego świata. Wymienia miejsca i ludzi tego świata, więc ma sens tylko ze światem, dla którego ją napisano (z jego ziarnem, opisem i ręcznymi zmianami).
 
 - W **pliku świata** (`.world.json`), jako `story` na najwyższym poziomie, obok `world`. Wersja Engine, która nie zna fabuł, nadal odczyta świat.
-- W **pakiecie map** dla Experience: każdy plik świata może zawierać swoją fabułę, a nowa gra przejmuje ją razem z mapą. Zobacz przewodnik [Opcjonalne pakiety agentów i możliwości](../development/optional-agent-packages.md).
+- W **pakiecie map** dla Experience: każdy plik świata może zawierać swoją fabułę, a nowa gra przejmuje ją razem z mapą. Zobacz przewodnik [Opcjonalne pakiety agentów i możliwości](optional-agent-packages.md).
 - W świecie przechowywanym w bibliotece, poza jakąkolwiek grą: `GET`, `PUT` i `DELETE /api/game-worlds/:id/story`, tak samo jak w przypadku gry. Nowa gra rozpoczęta z tego świata przejmuje razem z nim fabułę.
 - W grze, gdy już się rozpocznie: `GET`, `PUT` i `DELETE /api/game/:chatId/story` odczytują, zapisują i usuwają fabułę. Zapis jest sprawdzany względem świata gry, łącznie z ręcznymi zmianami, a ręczne zmiany, które usunęłyby coś wymienionego w fabule, są odrzucane.
 
@@ -211,7 +213,7 @@ Każda akcja może mieć własne `if`: jest wykonywana tylko wtedy, gdy jej waru
 
 Zapis uruchomienia obejmuje to, które akcje wykonano, więc sceny i prośby zdarzenia `gm` przychodzą w następnej turze w postaci wykonanej, gdy Mistrz Gry je oznaczył.
 
-Towarzysz to osoba oznaczona w ten sposób w pliku ludzi pakietu (zobacz opis ludzi w pakiecie map w przewodniku [Opcjonalne pakiety agentów i możliwości](../development/optional-agent-packages.md)).
+Towarzysz to osoba oznaczona w ten sposób w pliku ludzi pakietu (zobacz opis ludzi w pakiecie map w przewodniku [Opcjonalne pakiety agentów i możliwości](optional-agent-packages.md)).
 
 Spośród zdarzeń `rest`, `travel` i `idle`, które mogłyby zajść w jednej turze, zachodzi tylko jedno: to z najwyższym `priority` (liczbą całkowitą od -100 do 100, domyślnie 0; przy remisie pierwsze w skrypcie). Rozmowa towarzysza przy ognisku, sprzeczka pary towarzyszy w drodze albo podejście towarzysza do gracza w spokojnej chwili nigdy się więc nie nakładają. Z warunkiem `party` taka scena zachodzi tylko wtedy, gdy ci towarzysze podróżują z drużyną.
 
@@ -406,7 +408,7 @@ Każda funkcja fabuły wymaga minimalnej wersji Capability API.
 - ponad 64 flagi wymagają 1.353 (limit wynosi 256);
 - `variants` walk wymagają 1.356;
 - warunki `any`, zdarzenie `fight` wskazujące swoją walkę, zdarzenie `leave`, `min` lub `max` flagi oraz `if` akcji lub strony wymagają 1.358;
-- pakiet map, którego nakładka zestawu zasad ma wpis `storyUses` (użycie przedmiotu zużywające liczbę fabuły, którą może odczytać `if` Held Ground), wymaga 1.359; zobacz [przedmioty zużywające liczbę fabuły](../development/optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
+- pakiet map, którego nakładka zestawu zasad ma wpis `storyUses` (użycie przedmiotu zużywające liczbę fabuły, którą może odczytać `if` Held Ground), wymaga 1.359; zobacz [przedmioty zużywające liczbę fabuły](optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number);
 - warunek `partySize`, wariant dla drużyny większej niż 6 osób albo bez górnej granicy lub ponad 6 wariantów wymagają 1.360;
 - towarzysz `noncombatant`, pomijany w liczebności drużyny, wymaga 1.360;
 - akcja `season` obejmująca przez `over` wszystko w swoim obrębie wymaga 1.361;

@@ -1,6 +1,8 @@
 # 编写 Game Mode 故事脚本
 
-故事脚本掌控一局 Game Mode(游戏模式) 游戏如何展开：队伍到达某地时播放的场景、条件满足后请 Game Master(游戏主持人) 去做的事、玩家在冒险日志里跟进的目标，以及 Game Master 自己可以标记的时刻。如果你为别人构建世界，就写一份故事脚本。要游玩带故事的世界，见[创建世界](../game/getting-started.md#making-a-world)。
+> **注意：** 故事脚本属于尚未发布的 Overworld 游戏。这是开发者页面，应用内 Docs 和 Professor Mari 不会读取它。见 [Overworld 游戏（尚未发布）](overworld-games.md)。
+
+故事脚本掌控一局 Game Mode(游戏模式) 游戏如何展开：队伍到达某地时播放的场景、条件满足后请 Game Master(游戏主持人) 去做的事、玩家在冒险日志里跟进的目标，以及 Game Master 自己可以标记的时刻。如果你为别人构建世界，就写一份故事脚本。要游玩带故事的世界，见[创建世界](overworld-games.md#making-a-world)。
 
 故事脚本是数据，不是代码，其中没有任何内容会运行。Engine 会对照它所属的世界检查它，逐回合播放，并拒绝任何不符合的内容。
 
@@ -11,7 +13,7 @@
 一个故事属于一个世界。它会指名那个世界的地点和人物，因此只有搭配它所针对的世界（种子、简述和手动编辑）才有意义。
 
 - 在**世界文件**（`.world.json`）中，作为与 `world` 并列的顶层 `story`。不认识故事的 Engine 仍然能读取其中的世界。
-- 在 Experience 的**地图包**中：每个世界文件都可以携带自己的故事，新游戏会连同地图一起采用它。见[可选智能体包](../development/optional-agent-packages.md)。
+- 在 Experience 的**地图包**中：每个世界文件都可以携带自己的故事，新游戏会连同地图一起采用它。见[可选智能体包](optional-agent-packages.md)。
 - 在保存在库中、不属于任何游戏的世界里：`GET`、`PUT` 和 `DELETE /api/game-worlds/:id/story`，用法与游戏的相同。从这个世界开始的新游戏会带上这个故事。
 - 在已经开始的游戏里：`GET`、`PUT` 和 `DELETE /api/game/:chatId/story` 分别读取、保存和删除故事。保存时会对照游戏的世界检查，手动编辑也包括在内；会拿走故事所指名内容的手动编辑会被拒绝。
 
@@ -211,7 +213,7 @@ ID 由 1 到 40 个小写字母、数字、`_` 或 `-` 组成，在各自的列�
 
 哪些动作已执行会随触发一起记录下来，因此 `gm` 事件的场景和请求在下一回合到达时，保持 Game Master 标记该事件时的执行情况。
 
-同伴是包的人物文件中被标记为同伴的人物（见[可选智能体包](../development/optional-agent-packages.md)中地图包的人物部分）。
+同伴是包的人物文件中被标记为同伴的人物（见[可选智能体包](optional-agent-packages.md)中地图包的人物部分）。
 
 同一回合可能发生的 `rest`、`travel` 和 `idle` 事件中，只会发生一个：`priority` 最高的那个（-100 到 100 的整数，省略时为 0；相同时取脚本中最靠前的）。这样，同伴的篝火闲谈、两名同伴在路上的争执，或同伴趁安静时来找玩家，就不会堆在一起。带 `party` 条件时，只有这些同伴随队旅行时才会出现这样的场景。
 
@@ -406,7 +408,7 @@ Engine 会就地响应每个标签，每个事件每回合最多一次，其他�
 - 超过 64 个标志需要 1.353(上限为 256 个)；
 - 战斗的 `variants` 需要 1.356；
 - `any` 条件、指定战斗的 `fight` 事件、`leave` 事件、标志的 `min` 或 `max`，以及动作或页面上的 `if` 需要 1.358；
-- 规则集叠加层带有 `storyUses` 条目（一种消耗故事数值的物品用法，Held Ground 的 `if` 可以读取这个数值）的地图包需要 1.359；见[消耗故事数值的物品](../development/optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number)；
+- 规则集叠加层带有 `storyUses` 条目（一种消耗故事数值的物品用法，Held Ground 的 `if` 可以读取这个数值）的地图包需要 1.359；见[消耗故事数值的物品](optional-agent-packages.md#capability-api-1359-items-that-cost-a-story-number)；
 - `partySize` 条件、面向超过 6 人的队伍或无人数上限的变体，或超过 6 个变体，需要 1.360；
 - 不计入队伍人数的 `noncombatant` 同伴需要 1.360；
 - 对内部一切生效的 `over` 型 `season` 动作需要 1.361；

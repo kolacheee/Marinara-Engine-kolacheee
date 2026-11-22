@@ -113,7 +113,7 @@ Roda modelos Stable Diffusion hospedados. Um modelo é obrigatório, então digi
 
 ### NovelAI
 
-A NovelAI é focada em arte no estilo anime. Nos modelos V4, V4.5 e V5, Marinara envia prompts nativos de personagem, com posições, para storyboards e cenas do Illustrator com vários personagens. As imagens de referência precisas só funcionam em um modelo V4.5.
+A NovelAI é focada em arte no estilo anime. Nos modelos V4, V4.5 e V5, Marinara envia prompts nativos de personagem, com posições, para storyboards, cenas do Illustrator e imagens da Professor Mari com vários personagens. As imagens de referência precisas só funcionam em um modelo V4.5.
 
 ### Venice.ai
 

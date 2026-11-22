@@ -8,7 +8,7 @@ Przenieś dane z aplikacji SillyTavern do aplikacji Marinara Engine. Możesz zai
 | --- | --- |
 | Postacie | Postacie |
 | Czaty i czaty grupowe | Czaty |
-| Presety | Presety (zapisany zestaw ustawień generowania) |
+| Presety | Presety (sekcje promptu i ustawienia samplerów presetu) |
 | World Info | Lorebooki (notatki, które AI czyta, gdy w czacie padną określone słowa) |
 | Tła | Tła czatu |
 | Persony | Persony (profil, który występuje w twoim imieniu) |
@@ -45,11 +45,11 @@ Zanim zaczniesz: kreator czyta pliki na komputerze serwera. Jeśli SillyTavern j
 3. Wskaż folder SillyTavern. Wybierz folder główny, zwykle ten, który zawiera folder `data/` lub `public/`. Masz do wyboru jeden z tych sposobów:
    - Kliknij **Browse** (przeglądaj) i wskaż folder.
    - Jeśli nie ma okna wyboru folderu (zdalny serwer), otwiera się wbudowana przeglądarka folderów. Pokazuje tylko foldery w folderze domowym użytkownika, który uruchamia serwer. Kliknij **Select This Folder**.
-   - Wpisz ścieżkę w polu **SillyTavern Folder Path**, na przykład `/path/to/SillyTavern`. Wpisana ścieżka działa tylko wtedy, gdy ustawienie serwera `IMPORT_ALLOWED_ROOTS` zawiera folder, w którym ona leży.
+   - Wpisz ścieżkę w polu **Ścieżka folderu SillyTavern**, na przykład `/home/you/SillyTavern`. Wpisana ścieżka działa, jeśli znajduje się wewnątrz folderu domowego użytkownika, który uruchamia serwer. Jeśli na serwerze ustawiono `IMPORT_ALLOWED_ROOTS`, musi zamiast tego znajdować się wewnątrz jednego z wymienionych tam folderów.
 4. Kliknij **Scan Folder** (skanuj folder). Aplikacja pokazuje, ile elementów znalazła w każdej kategorii.
 5. W oknie **Choose exactly what to import** zaznacz elementy, które chcesz zaimportować. Przy każdej kategorii są przyciski **All** i **None** oraz przełącznik **Show** lub **Hide**, który pokazuje lub ukrywa pojedyncze elementy.
 6. Kliknij **Import Selected** (importuj zaznaczone). Pasek postępu pokazuje bieżący element i liczbę dla każdej kategorii.
-7. Gdy pojawi się komunikat **Import complete!**, przeczytaj liczbę elementów w każdej kategorii i kliknij **Done**.
+7. Gdy zobaczysz **Import zakończony!**, sprawdź liczbę elementów w każdej kategorii i kliknij **Gotowe**. Pod licznikami krótka lista podaje, ile czatów zachowało notatkę autora i personę, które nazwy użytkowników z aplikacji SillyTavern nie miały tutaj persony i które ustawienia presetów pominięto.
 
 Większość elementów jest na początku zaznaczona. Aplikacja zostawia niezaznaczone standardowe presety SillyTavern, takie jak `deterministic`, `neutral` i presety `universal-*`, a baner o tym informuje. Zostaw je niezaznaczone, chyba że naprawdę potrzebujesz ich kopii.
 
@@ -64,24 +64,28 @@ Jeśli skanowanie znajdzie postacie, pojawiają się dwie dodatkowe opcje:
 **Imported regex scripts** (domyślnie **Character only**):
 
 - **Character only** stosuje skrypty do każdej postaci osobno.
-- **Global** dodaje je do **Presets → Regexes** (presety, regexy), gdzie możesz zarządzać skryptami działającymi we wszystkich czatach. Zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts).
+- **Globalny** dodaje je do sekcji **Biblioteka → Skrypty regex** (**Presety → Regexy** w klasycznym układzie), gdzie możesz zarządzać skryptami działającymi w różnych czatach. Zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts).
 
 Jeśli to nie zadziałało:
 
 - Komunikat "Could not find SillyTavern data directory." oznacza, że aplikacja nie może odczytać tego folderu. Wybierz główny folder SillyTavern.
-- Komunikat "folderPath is not allowed" oznacza, że serwer odrzucił tę ścieżkę. Kliknij **Browse** i wskaż folder w ten sposób. Właściciel serwera może ograniczyć, które foldery wolno importować, za pomocą ustawienia `IMPORT_ALLOWED_ROOTS`. Jeśli jest ustawione, nawet wskazany folder musi leżeć w jednym z tych folderów. Zapytaj osobę, która obsługuje serwer, albo zobacz [Dokumentację konfiguracji serwera](../CONFIGURATION.md).
+- "Marinara can only read folders inside your home folder" oznacza, że folder znajduje się poza folderem domowym użytkownika, który uruchamia serwer. Przenieś do niego folder SillyTavern albo poproś osobę prowadzącą serwer o dopuszczenie jego lokalizacji przez ustawienie `IMPORT_ALLOWED_ROOTS`. Jeśli to ustawienie jest ustawione, nawet folder wybrany w oknie musi znajdować się wewnątrz jednego z wymienionych folderów. Zobacz [Konfiguracja serwera](../CONFIGURATION.md).
+- Jeśli do **Przeglądaj** trafi wpisana ścieżka spoza folderu domowego, przeglądarka folderów otworzy się zamiast tego w folderze domowym.
 - Jeśli jeden element się nie powiedzie, aplikacja pomija go, pracuje dalej i wypisuje go w ostrzeżeniach na ostatnim kroku, na przykład `Character "Foo": error message`.
 
 ## Co dzieje się z twoimi danymi
 
 - Pliki czatów należące do jednej postaci trafiają do jednego czatu jako jego gałęzie. Gałąź to kopia czatu, którą kontynuujesz osobno.
 - Czaty grupowe importują się jako czaty w trybie Roleplay.
-- Zaimportowane elementy zachowują datę ostatniej zmiany pliku źródłowego, a nie datę importu.
+- Importowane elementy zachowują datę ostatniej zmiany pliku źródłowego, a nie datę importu. Każda wiadomość czatu zachowuje datę, z którą zapisała ją aplikacja SillyTavern.
+- **Notatka autora** czatu przenosi się razem ze swoją głębokością. Jeśli w aplikacji SillyTavern miała inną częstotliwość, pozycję lub rolę, Marinara i tak dodaje ją przy każdej odpowiedzi na tej głębokości, a import o tym informuje. Notatka wyłączona w aplikacji SillyTavern pozostaje wyłączona.
+- Czat zostaje powiązany z personą używaną w aplikacji SillyTavern: personą przypisaną na stałe do czatu, a jeśli takiej nie było, personą o tej samej nazwie co użytkownik czatu. Zaimportuj persony w tym samym przebiegu albo wcześniej utwórz personę o tej nazwie. Gdy nie ma dopasowania, czat nie ma persony, a import podaje nazwę brakującej persony.
+- Preset przenosi ustawienia samplerów: temperaturę, Top P, Top K, Min P, kary za częstotliwość i obecność oraz wysiłek rozumowania. To wartości początkowe dla czatów używających presetu; własne wartości połączenia lub czatu nadal mają pierwszeństwo. Maksymalna długość odpowiedzi i rozmiar kontekstu pozostają w połączeniu. Top A i kara za powtórzenia nie mają tu ustawienia i są pomijane.
 - Postacie, persony, lorebooki, presety i czaty otrzymują tagi **Zaimportowane** i **ST**, chyba że odznaczysz **Oznacz jako zaimportowane** lub **Tag źródła** nad przyciskiem **Importuj zaznaczone**. Ich nazwy i opisy pozostają bez zmian.
 
 ## Czego nie da się przenieść
 
-Kreator czyta tylko kategorie z pierwszej tabeli. Pozostałych danych z aplikacji SillyTavern, takich jak globalne ustawienia aplikacji i szybkie odpowiedzi, nie importuje.
+Kreator odczytuje tylko kategorie z pierwszej tabeli. Inne dane aplikacji SillyTavern, takie jak globalne ustawienia aplikacji, szybkie odpowiedzi, szablony instruct i kontekstu oraz profile połączeń, nie są importowane. Czaty zaimportowane przed tą poprawką dostały czas importu jako daty wiadomości. Żeby poprawić taki czat, usuń go i ponownie zaimportuj jego plik (przy imporcie folderu odznacz **Pomiń to, co już tu jest**).
 
 ## Powiązane przewodniki
 

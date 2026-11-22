@@ -715,7 +715,7 @@ Game 마법사로 설정하는 `game-surface` 패키지(`gameSurface.setup`, 1.1
 }
 ```
 
-`worlds`(최대 32개)와 `tiles`는 선택 사항입니다. 월드 파일에는 그 월드의 스토리 스크립트(worldgen W10)가 들어 있을 수 있으며, 스토리 스크립트는 지도의 일부로 함께 배포됩니다. 버전 2 월드 파일에는 월드를 만든 당시 모습인 `snapshot`(W11)도 들어 있습니다. 그 뒤로 월드 생성기가 바뀐 Engine도 이 스냅샷에서 월드를 만든 그대로 읽으므로, 팩은 Engine을 업데이트해도 계속 동작합니다. 파일은 게임이나 라이브러리 월드의 **Download**(또는 `GET /api/game/:chatId/world/file`)로 만드세요. 이렇게 만든 파일에는 스냅샷이 들어 있습니다. 팩 파일은 최대 8 MB로, Engine이 읽는 가장 큰 공유 파일 크기입니다(타일 팩은 자체적으로 더 작은 한도를 유지합니다). 따라서 파일이 그보다 큰 월드(아주 큰 월드의 스냅샷)는 팩에 넣어 배포할 수 없습니다. 스토리에서 `intro`를 설정하는 월드는 Capability API 1.339가 필요합니다([도입 메시지](../extending/writing-story-scripts.md#the-intro-message) 참고). `tiles`는 이미지 타일 팩(타일 팩 버전 2: 셀 격자 위의 PNG 시트이며, 여러 셀에 걸친 스프라이트를 포함할 수 있음)일 수도 있으며, 이 경우 Capability API 1.80이 필요합니다. Engine은 패키지 버전마다 한 번 시트를 디코딩하고 검사합니다. Experience를 켜면 새 게임은 팩의 키트로 고정됩니다. 팩에 월드가 있으면 플레이어는 그중 하나를(스토리 포함) 고르고 다른 월드는 만들지 않습니다. Experience를 끄면 플레이어가 다시 직접 고를 수 있습니다. `POST /api/game/create`도 게임에 같은 고정을 적용합니다. 게임은 여느 게임처럼 키트와 월드를 보관하므로 패키지를 제거해도 계속 플레이할 수 있고, 패키지가 설치되어 있는 동안에는 오버월드와 마을을 팩의 타일로 그립니다.
+`worlds`(최대 32개)와 `tiles`는 선택 사항입니다. 월드 파일에는 그 월드의 스토리 스크립트(worldgen W10)가 들어 있을 수 있으며, 스토리 스크립트는 지도의 일부로 함께 배포됩니다. 버전 2 월드 파일에는 월드를 만든 당시 모습인 `snapshot`(W11)도 들어 있습니다. 그 뒤로 월드 생성기가 바뀐 Engine도 이 스냅샷에서 월드를 만든 그대로 읽으므로, 팩은 Engine을 업데이트해도 계속 동작합니다. 파일은 게임이나 라이브러리 월드의 **Download**(또는 `GET /api/game/:chatId/world/file`)로 만드세요. 이렇게 만든 파일에는 스냅샷이 들어 있습니다. 팩 파일은 최대 8 MB로, Engine이 읽는 가장 큰 공유 파일 크기입니다(타일 팩은 자체적으로 더 작은 한도를 유지합니다). 따라서 파일이 그보다 큰 월드(아주 큰 월드의 스냅샷)는 팩에 넣어 배포할 수 없습니다. 스토리에서 `intro`를 설정하는 월드는 Capability API 1.339가 필요합니다([도입 메시지](writing-story-scripts.md#the-intro-message) 참고). `tiles`는 이미지 타일 팩(타일 팩 버전 2: 셀 격자 위의 PNG 시트이며, 여러 셀에 걸친 스프라이트를 포함할 수 있음)일 수도 있으며, 이 경우 Capability API 1.80이 필요합니다. Engine은 패키지 버전마다 한 번 시트를 디코딩하고 검사합니다. Experience를 켜면 새 게임은 팩의 키트로 고정됩니다. 팩에 월드가 있으면 플레이어는 그중 하나를(스토리 포함) 고르고 다른 월드는 만들지 않습니다. Experience를 끄면 플레이어가 다시 직접 고를 수 있습니다. `POST /api/game/create`도 게임에 같은 고정을 적용합니다. 게임은 여느 게임처럼 키트와 월드를 보관하므로 패키지를 제거해도 계속 플레이할 수 있고, 패키지가 설치되어 있는 동안에는 오버월드와 마을을 팩의 타일로 그립니다.
 
 Engine은 검증된 에셋 경로로 파일을 읽고(파일마다 선언 크기 최대 8 MB, 해시 재확인), 공유 파일을 검사하는 방식 그대로 검사합니다. 파일을 읽을 수 없거나, 월드가 다른 키트로 만들어졌거나 키트에 맞지 않거나, 바이트가 설치된 것과 다르면 팩 전체를 이유와 함께 거부합니다. 그러면 그 Experience로는 게임을 시작할 수 없습니다. 규칙 집합은 지도 팩에 절대 들어가지 않습니다. 자체 규칙이 필요한 Experience는 별도의 규칙 집합 패키지를 배포합니다.
 
@@ -740,7 +740,7 @@ Engine은 검증된 에셋 경로로 파일을 읽고(파일마다 선언 크기
 }
 ```
 
-각 트랙도 선언된 에셋이며, 지정한 모든 트랙 ID는 `tracks` 중 하나여야 합니다. `places`의 장소는 팩의 월드 중 하나에 있는 장소를 ID로 지정합니다. 전투 밖에서는 해당 장소의 트랙, 없으면 파티가 속한 가장 가까운 상위 장소의 트랙, 그것도 없으면 `default`를 재생합니다. 전투 중에는 `combat`을 재생합니다. 스토리의 `music` 동작([Game Mode 스토리 스크립트 작성하기](../extending/writing-story-scripts.md) 참고)은 이 모든 음악보다 우선해 트랙 하나를 재생하며, 제어를 돌려줄 때까지 유지됩니다. 해당 설정이 모두 없으면 Engine 자체 음악을 재생합니다. 플레이어가 직접 음악 소스(Music DJ, Spotify)를 골랐다면 그것을 듣습니다. 플레이어의 선택이 항상 우선합니다.
+각 트랙도 선언된 에셋이며, 지정한 모든 트랙 ID는 `tracks` 중 하나여야 합니다. `places`의 장소는 팩의 월드 중 하나에 있는 장소를 ID로 지정합니다. 전투 밖에서는 해당 장소의 트랙, 없으면 파티가 속한 가장 가까운 상위 장소의 트랙, 그것도 없으면 `default`를 재생합니다. 전투 중에는 `combat`을 재생합니다. 스토리의 `music` 동작([Game Mode 스토리 스크립트 작성하기](writing-story-scripts.md) 참고)은 이 모든 음악보다 우선해 트랙 하나를 재생하며, 제어를 돌려줄 때까지 유지됩니다. 해당 설정이 모두 없으면 Engine 자체 음악을 재생합니다. 플레이어가 직접 음악 소스(Music DJ, Spotify)를 골랐다면 그것을 듣습니다. 플레이어의 선택이 항상 우선합니다.
 
 #### Capability API 1.346: 인물
 
@@ -816,7 +816,7 @@ POST /api/game/experience/check
 
 #### Capability API 1.351: 계절 고정
 
-월드의 스토리는 날짜와 무관하게 장소를 특정 계절로 고정할 수 있으며(`seasons`와 `season` 동작: [스토리 스크립트 작성하기](../extending/writing-story-scripts.md#seasons) 참고), 월드의 전장에도 계절을 칠할 수 있습니다(`seasons` 행과 `seasonKeys`). 어느 쪽이든 지도 팩에 있으면 1.351이 필요합니다. 오버월드는 `GET /api/game/:chatId/overworld`에서 고정된 장소를 `seasons`로 읽습니다(장소 ID에서 계절로의 매핑이며 월드 전체는 `*`). 만들어진 전장은 타일의 시작 계절을 `"x,y"`를 키로 하는 `seasons`에 담습니다.
+월드의 스토리는 날짜와 무관하게 장소를 특정 계절로 고정할 수 있으며(`seasons`와 `season` 동작: [스토리 스크립트 작성하기](writing-story-scripts.md#seasons) 참고), 월드의 전장에도 계절을 칠할 수 있습니다(`seasons` 행과 `seasonKeys`). 어느 쪽이든 지도 팩에 있으면 1.351이 필요합니다. 오버월드는 `GET /api/game/:chatId/overworld`에서 고정된 장소를 `seasons`로 읽습니다(장소 ID에서 계절로의 매핑이며 월드 전체는 `*`). 만들어진 전장은 타일의 시작 계절을 `"x,y"`를 키로 하는 `seasons`에 담습니다.
 
 <a id="capability-api-1355-ruleset-overlays"></a>
 
@@ -881,7 +881,7 @@ Experience에서 직접 만든 지도는 라이브러리의 동굴, 지하 묘�
 
 #### Capability API 1.360: 6명을 넘는 파티와 전투하지 않는 동료
 
-스토리 전투의 변형은 6명을 넘는 파티용이거나 상한이 없을 수 있으며(`"party": { "min": 7 }`), 스토리 조건으로 파티 규모를 확인할 수 있습니다(`{ "partySize": { "is": ">=", "value": 7 } }`. [스토리 스크립트 작성하기](../extending/writing-story-scripts.md#conditions) 참고).
+스토리 전투의 변형은 6명을 넘는 파티용이거나 상한이 없을 수 있으며(`"party": { "min": 7 }`), 스토리 조건으로 파티 규모를 확인할 수 있습니다(`{ "partySize": { "is": ">=", "value": 7 } }`. [스토리 스크립트 작성하기](writing-story-scripts.md#conditions) 참고).
 
 인물 파일의 동료를 전투에 전혀 참여하지 않게 할 수 있습니다.
 
@@ -922,7 +922,7 @@ Experience에서 직접 만든 지도는 라이브러리의 동굴, 지하 묘�
 - `combatStyle`: `classic` 또는 `tactical`입니다.
 - 텍스트 제한: `setting` 4,000자, `language` 100자, `playerGoals`와 `preferences` 2,000자, `gameSpecialInstructions` 2,000자, `artStylePrompt` 500자입니다.
 
-`intro`는 Game Master의 도입 메시지(1.339)이며 스토리 스크립트의 `intro`와 같은 규칙을 따릅니다([스토리 스크립트 작성하기](../extending/writing-story-scripts.md#the-intro-message) 참고). 잠기는 값은 이것뿐입니다. 잠긴 도입 메시지는 마법사에서 읽기 전용으로 표시되고 설정에서 무엇을 보내든 이 메시지로 게임을 시작합니다. 게임은 시작 당시의 도입 메시지를 보관합니다(`chat.metadata.gameExperienceIntro`). 스토리 자체의 `intro`보다 먼저 읽습니다. 설정 파일을 가져오면 파일 자체의 값을 유지하고, Experience를 꺼도 채워진 값은 그대로 둡니다.
+`intro`는 Game Master의 도입 메시지(1.339)이며 스토리 스크립트의 `intro`와 같은 규칙을 따릅니다([스토리 스크립트 작성하기](writing-story-scripts.md#the-intro-message) 참고). 잠기는 값은 이것뿐입니다. 잠긴 도입 메시지는 마법사에서 읽기 전용으로 표시되고 설정에서 무엇을 보내든 이 메시지로 게임을 시작합니다. 게임은 시작 당시의 도입 메시지를 보관합니다(`chat.metadata.gameExperienceIntro`). 스토리 자체의 `intro`보다 먼저 읽습니다. 설정 파일을 가져오면 파일 자체의 값을 유지하고, Experience를 꺼도 채워진 값은 그대로 둡니다.
 
 ### Capability API 1.373: Experience 파일
 
@@ -1102,6 +1102,17 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 `chatComplete`는 `cacheTtl: "5m" | "1h"`를 받습니다. 호출의 `cacheBreakpoint` 메시지(1.814)까지의 프롬프트가 Anthropic에서 얼마나 오래 캐시에 남는지 정합니다. 생략하면 이전처럼 연결 자체의 캐시 시간이 적용됩니다. 같은 앞부분이 5분보다 긴 간격을 두고 다시 쓰일 때는 `"1h"`를 요청하세요. 예를 들어 플레이어가 읽는 동안 장면마다 재사용하는 이야기의 컨텍스트가 그렇습니다. 1시간 캐시 쓰기는 5분 캐시 쓰기보다 비싸므로, 그 1시간 안에 앞부분을 다시 읽을 때만 이득입니다. 표시된 메시지가 없는 호출은 이 옵션을 무시합니다. 자체적으로 캐시하는 제공자(OpenAI, Gemini, xAI, DeepSeek)와 연결의 캐시 시간이 적용되는 Claude (Subscription)도 마찬가지입니다.
 
 이전 Engine은 이 옵션을 무시하므로 패키지는 언제든 이 옵션을 넘길 수 있습니다. 패키지가 이 옵션에 의존한다면 1.815를 선언하세요.
+
+### Capability API 1.835: 음성 클립 미리 준비하기
+
+`services.tts.ttsService.prepareAudio(text, options?)`는 대사의 음성 클립을 재생하지 않고 공유 오디오 캐시에 만듭니다. 나중에 `speak`나 `speakSequence`에서 사용할 것과 같은 텍스트와 옵션으로 호출하세요. 옵션은 `cacheKey`, `cacheAliases`, `voice`, `speaker`, `tone`, `audioConnectionId`입니다. 그러면 나중에 호출할 때 다시 합성하지 않고 즉시 재생을 시작합니다.
+
+- 이미 캐시에 있거나 다른 호출이 만들고 있는 클립은 다시 만들지 않습니다.
+- 재생을 멈추거나 바꾸지 않으므로, 패키지는 한 대사가 재생되는 동안 다음 대사를 준비할 수 있습니다.
+- 텍스트나 `cacheKey`가 없는 대사는 건너뜁니다. 클립을 찾을 방법이 없기 때문입니다.
+- `options.signal`은 대기만 중단합니다. 이미 요청한 합성은 `abortCacheGenerationOnAbort`가 설정되어 있지 않으면 계속 진행되며 결과가 캐시에 저장됩니다.
+
+권한은 필요 없습니다. 이전 Engine에는 이 메서드가 없으므로 `typeof ttsService.prepareAudio === "function"`을 확인하고, 없으면 대사가 나올 때마다 음성을 재생하는 방식을 유지하세요. 이 메서드 없이는 패키지가 작동할 수 없을 때만 1.835를 선언하세요.
 
 ### Capability API 1.834: 저장된 스프라이트와 그림 선택 규칙
 
@@ -1517,6 +1528,8 @@ Capability API **1.381**부터 `__MARINARA_HOST__.services.audio`는 Engine이 �
 저장된 음성 선택, 기본/대체 연결, 기존 설정 순으로 결정합니다.
 저장된 음성 선택 자체를 사용할 수 없으면 다른 연결을 빌려 쓰지 않고 재생을 거부합니다.
 특정 연결이 필요한 패키지는 재생 전에 저장된 ID를 검증하세요.
+
+대사가 재생되기 전에 음성 클립을 만들려면 [Capability API 1.835](#capability-api-1835-prepare-voice-clips-ahead)를 참고하세요.
 
 - `createPlayer()`는 `unlock()`, `playMusic(tag, assets?)`,
   `stopMusic(immediate?)`, `playSfx(tag, assets?, loopCount?)`, `setVolumes({ music, sfx })`,

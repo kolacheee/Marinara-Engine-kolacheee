@@ -113,7 +113,7 @@ Udostępnia hostowane modele Stable Diffusion. Model jest wymagany, więc wpisz 
 
 ### NovelAI
 
-Usługa NovelAI skupia się na grafice w stylu anime. Przy modelach V4, V4.5 i V5 Marinara wysyła natywne prompty poszczególnych postaci wraz z ich pozycjami dla storyboardów i scen agenta Illustrator z wieloma postaciami. Precyzyjne obrazy referencyjne działają wyłącznie na modelu V4.5.
+Usługa NovelAI skupia się na grafice w stylu anime. Przy modelach V4, V4.5 i V5 Marinara wysyła natywne prompty poszczególnych postaci wraz z ich pozycjami dla storyboardów, scen agenta Illustrator i obrazów asystentki Professor Mari z wieloma postaciami. Precyzyjne obrazy referencyjne działają wyłącznie na modelu V4.5.
 
 ### Venice.ai
 

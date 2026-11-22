@@ -8,7 +8,7 @@ Fang mit **Memory Recall** an. Es funktioniert ohne zusätzliche Einrichtung, we
 
 | Funktion | Was sie tut | Gilt für |
 | --- | --- | --- |
-| **Memory Recall** | Durchsucht ältere Nachrichten nach den Stellen, die zu deiner letzten Eingabe passen, und fügt sie in den Prompt ein. | Alle Modi |
+| **Memory Recall** | Durchsucht ältere Nachrichten, die nicht mehr in den Prompt passen, nach den Stellen, die zu deiner letzten Eingabe passen, und fügt sie in den Prompt ein. | Alle Modi |
 | **Chat Summary** | Ersetzt alte Nachrichten durch kurze Rückblicke. | Roleplay |
 | **Automatic Summarization** | Fasst jeden Tag zusammen, dann jede Woche. Immer an. | Conversation |
 | **Advanced Memory Recall** (erweiterter Erinnerungsabruf) | Verwaltet Live-Verlauf, Szenenzusammenfassungen und abgerufene Auszüge gemeinsam. Optional. | Roleplay und Game Mode |
@@ -68,6 +68,19 @@ Die Symbolleiste hat Symbole zum Exportieren, Importieren, Neuaufbauen und Leere
 - Das Symbol zum Leeren aller Erinnerungen öffnet **Clear Memories**. Bestätige mit **Clear**. Das entfernt die Erinnerungen für den Abruf, nicht deine Chat-Nachrichten.
 - Das Aktualisieren-Symbol baut jeden Chunk aus den aktuellen Nachrichten neu auf. Nutze es, nachdem du das Embedding-Modell gewechselt hast.
 - Der Export speichert eine `.marinara.json`-Datei. Der Import akzeptiert `.json`- oder `.marinara`-Dateien und führt sie mit den vorhandenen Erinnerungen zusammen.
+
+### Was Memory Recall hinzufügt
+
+Memory Recall holt nur Nachrichten zurück, die nicht mehr im Prompt stehen. Solange der ganze Chat ins Kontextfenster passt, fügt es nichts hinzu, weil die KI bereits jede Nachricht liest. Sobald ältere Nachrichten weggelassen werden, damit der Prompt hineinpasst, durchsucht der Erinnerungsabruf diese Nachrichten.
+
+- Ein Chunk wird nur abgerufen, wenn keine seiner Nachrichten im Prompt steht.
+- Auch Erinnerungen brauchen Platz. Werden sie hinzugefügt, können dafür die ältesten Nachrichten wegfallen, die sonst noch hineinpassen würden. Der Erinnerungsabruf kann auch diese zurückholen.
+- Nachrichten, die wegen **Limit für Kontextnachrichten** wegfallen, gelten als außerhalb des Prompts.
+- Aus einem anderen Chat importierte Erinnerungen können jederzeit abgerufen werden.
+
+Damit der Erinnerungsabruf jede frühere Nachricht auswählen kann, schalte **Erinnerungen aus dem ganzen Chat abrufen** unter **Memory Recall aktivieren** ein. Erinnerungen wiederholen dann oft Nachrichten, die bereits im Prompt stehen. Die Wiederholungen kosten Tokens. Weil die Erinnerungen vor dem Chatverlauf stehen und sich bei jedem Zug ändern, kann der Prompt-Cache des Dienstes den Verlauf nicht wiederverwenden.
+
+Die Live-Vorschau in [Prompt ansehen](../chats/peek-prompt.md) führt Memory Recall nicht aus. Bei eingeschaltetem Erinnerungsabruf kann sie mehr Verlauf anzeigen, als eine Antwort erhält.
 
 ### Wie sich Memory Recall verhält
 
@@ -293,6 +306,7 @@ In Game-Chats schaltest du Advanced Memory Recall genauso unter **Chat Settings 
 | Memory Recall ruft nichts ab | Prüf, ob eine Embedding-Quelle eingerichtet ist. Zeigen die Chunks **Embedding unavailable**, leg ein Modell unter **Semantic search (embeddings)** fest oder nutze das eingebaute Modell. Siehe [Eingebautes Modell einrichten](../connections/local-model.md). |
 | Chunks zeigen **Waiting for vector** | Gib ihnen etwas Zeit. Die Fingerabdrücke entstehen nach den Antworten. |
 | Nichts scheint zu passen | Der Abruf ergänzt nur eng passende Erinnerungen. Dass nichts dazukommt, ist normal. |
+| Memory Recall fügt nichts hinzu, solange der Chat kurz ist | Das ist zu erwarten. Der Erinnerungsabruf fügt nur Nachrichten hinzu, die nicht mehr ins Kontextfenster passen. Siehe [Was Memory Recall hinzufügt](#what-memory-recall-adds). |
 | Der Abruf ist nach einem Wechsel des Embedding-Modells schlechter geworden | Nutze das Symbol zum Neuaufbauen in **Memories for This Chat**. |
 | Es entstehen keine Zusammenfassungen | Der Chat braucht ein funktionierendes Textkonto. Chat Summary nutzt den **Summary Provider**. Funktioniert keins, entfällt die Generierung. |
 | KI-Zusammenfassungen erscheinen nie | **Review Agent Outputs** wartet vielleicht auf deine Freigabe. |
@@ -310,7 +324,7 @@ Einzelheiten, die die meisten nicht brauchen. Die Einstellungen oben funktionier
 - Die Szenenerkennung läuft, nachdem die Hauptantwort in Roleplay gespeichert wurde. Sobald so viele neue Nachrichten eingegangen sind, wie das Intervall vorgibt, erhält der Prüfer jede Nachricht seit der letzten Prüfung (höchstens doppelt so viele wie das Intervall), die Nachricht, bei der die letzte Prüfung endete, Szenenanweisungen und das Ausgabeformat. Er nennt die genaue Nachricht, mit der jede Szene endet, oder keine, wenn die Szene weiterläuft. Persona- und Charakternachrichten zählen beide.
 - Bei ausgeschaltetem Decision-Modus teilt sich eine fällige Prüfung einen geeigneten nachgelagerten Tracker-Aufruf, wenn Sichtbarkeit und Kontextbudget es erlauben. Sonst macht der Helfer einen eigenen Aufruf. Unsichere Übergänge lassen die Szene offen.
 - Nur ein erkanntes Ende startet im Hintergrund die Vorbereitung von Zusammenfassung und Nachrichtenindex dieser Szene. **Chat Settings → Agent activity** zeigt den Fortschritt als **Advanced Recall**, auch wenn normale Agenten aus sind.
-- Jede Anfrage für eine Szenenzusammenfassung enthält die Zusammenfassungsanweisungen, die zulässigen Nachrichten der Szene, passende Bereichskorrekturen und das JSON-Ausgabeformat. Szenen, die für eine Anfrage zu groß sind, werden in gespeicherten Teilen verarbeitet und dann kombiniert. Rückblicke sollen 2 bis 3 Absätze umfassen. Der Standard-Prompt schreibt einen historischen Rückblick ohne Abschnitt zur aktuellen Situation. Eigene Prompts, die unter **Summaries** ausgewählt sind, gelten weiterhin.
+- Jede Anfrage für eine Szenenzusammenfassung enthält die Zusammenfassungsanweisungen, die zulässigen Nachrichten der Szene, passende Bereichskorrekturen und das JSON-Ausgabeformat. Szenen, die für eine Anfrage zu groß sind, werden in gespeicherten Teilen verarbeitet und dann kombiniert. Rückblicke verwenden den unter **Zusammenfassungen** gewählten Prompt, auch den Standard-Prompt. Jede Anfrage für einen Rückblick verlangt außerdem einen historischen Rückblick ohne Abschnitt zur aktuellen Lage.
 - Die Szenenerkennung beim ersten Vorbereiten des Verlaufs kann Haupt- oder Hilfsmodell nutzen. Zusammenfassungen nutzen immer das Hilfsmodell.
 - Jede Zusammenfassung hält außerdem fest, wer daran teilgenommen hat. Ein Teilnehmername, der von der Karte abweicht, etwa „Kaito“ für **Kaito Nakamura**, zählt, wenn er auf genau einen Charakter passt und nicht der Name deiner Persona ist. Gemeinsame Namen, Beschreibungen wie „Kaitos Schwester“ und Namen mit Anmerkungen wie „(erwähnt)“ geben keinen Zugriff. Sagt der Helfer nicht, wer beteiligt war, geht die Szene an jeden Charakter, und in einem Gruppenchat wird sie mit **Check who was there** markiert. Eine Szene, die nur dich nennt, bleibt dem Erzähler vorbehalten. Szenen, die gespeichert wurden, bevor es Teilnehmerprüfungen gab, bleiben dem Erzähler vorbehalten, bis **Fix** oder **Prepare existing history** sie prüft. Jede Antwort, die eine Szene abschließt, prüft außerdem bis zu drei davon.
 - Bestätige bei einem älteren Gruppenchat, in dem die Charaktere einzeln nacheinander antworten, fehlende Wissensbereiche einmal. Die erste Zeile eines Charakters belegt nicht, dass er alles davor kannte. Wähle einen tatsächlichen Charakter nur dann als **Narrator**, wenn er Teilnahmegrenzen umgehen soll. Globales **Hide from AI** entfernt einen Zug nur aus dem Live-Verlauf. Advanced Memory durchsucht ihn weiterhin, fasst ihn zusammen und indexiert ihn. Startmarkierungen kürzen den Live-Verlauf.
