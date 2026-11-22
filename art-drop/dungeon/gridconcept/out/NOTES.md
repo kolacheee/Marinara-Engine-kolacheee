@@ -30,3 +30,12 @@ The image tool does not follow furniture placement, so placement is no longer le
 Density vs the master mock: mock 52 floor cells / 15 props = 3.5 cells per prop. Here 239 floor cells / 62 props (with the nest) = 3.85 (stairwell 8/3, store 10/4, camp 45/12, hall 100/24, back stair 6/2, hoard room 70/17 plus the heap). Hung items: 21 on wall faces.
 
 Grid check: 712/713 cells. Known: the hoard's toppled goblet reads oddly; the big hall's middle holds only the nest (open by design).
+
+## Version 4 (2026-11-22): `keep-lair-v4*.png`, props anchored on their base
+
+Owner feedback on v3: the weapon stand's base sat about a cell below the wall's base line (the check had measured the sprite box, not the base), and props against south and side walls were drawn over the wall. `tools/place.py` now:
+- Detects each wall edge per cell from the room pixels: the north base line is the row just under the face's dark outline (the wall's shadow on the floor counts as floor); side and south edges are where the floor ends and the wall lip begins.
+- Gives every prop type a footprint depth (racks/shelves 10 px, crates/barrels/tables 22, flat items their full height) and places north-wall pieces so the back of the footprint sits on the base line (foot = base + depth); tall pieces rise over the face but never above its top. South-wall pieces stand with their feet on the south edge; side-wall pieces end exactly at the floor/wall boundary, clamped against the tightest edge over every row they span. Tall pieces never go on south walls.
+- Draws side walls, south edges and wall tops over everything afterwards (only shadows were trimmed: 1480 px), and counts sprite pixels over those walls from each sprite's own mask.
+
+Result (`keep-lair-v4-placement.json`): 61 props; north foot - base - depth = 0 px for all 21 north pieces (base lines 3-8 px into the cell); south, west and east gaps 0 px; 0 sprite pixels over side walls, south edges or wall tops. `keep-lair-v4-debug-2x.png` draws each north base line (cyan), south edge (red) and prop foot line (yellow). Grid check: see overlay.
