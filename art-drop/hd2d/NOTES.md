@@ -218,3 +218,27 @@ Previews: `scratch/E/<name>-x8.png` and `scratch/E/<name>-2x2x4.png` for each of
 - Validation: `python3 tools/px.py check out/textures/plaster_wall.png`: 64×64, 6 colours, off_palette=0, semi_alpha=0, lone=0.1%, seam=0.94.
 - Generated using `tools/px.py tile4` and `tools/px.py zoom … 8`, then visually inspected native size, 8× zoom and 2×2 tiling. Previews: `scratch/F/plaster_wall-x8.png` and `scratch/F/plaster_wall-2x2x4.png`. Revised identical initial chips into distinct shapes and opened up one overly solid trowel patch. No visible straight wrap seam or isolated noisy grain in the final previews.
 - Honest limitations: the fixed palette gives the trowel marks more contrast than real limewash. The deliberately small exposed areas suggest stone without room for detailed masonry; the cracks and grime rhythm can still be recognized on a large repeated surface. Grime is restrained and broken, rather than a continuous dark stripe, to keep the wall usable as background and preserve vertical tiling.
+
+## G — wall cap, stair tread, and compatible brick variants (2026-11-22)
+
+All four files were drawn directly at native resolution with Python/PIL, using only exact ramp colours; no interpolation, antialiasing, image-generation pass, or quantisation was needed. Reproduction script: `scratch/G/draw_textures.py`. The user-requested 64×64 wallcap replaces the previous 32×32 asset; the former 16-texel seam restriction was not applied. Nothing in `repo/` was touched.
+
+- **`out/textures/wallcap.png` — 64×64, RGB.** Periodic, irregular cap-stone courses with shared jogged mortar paths, large flat grey-brown faces, cob/stone ramp facets, sparse connected chips, and a lighter two-pixel worn upper lip following the stones' contours. Lighting favours the upper and left edges. A cyclic vertical placement brings the upper cap lips to the tile's top side without breaking periodic geometry. Weakness: four principal stone shapes give the repeat a recognisable rhythm over very large areas; this is restrained, stylised stone rather than the full richness of hand-painted environment art.
+- **`out/textures/stair_tread.png` — 32×32, RGB.** Flag-ramp stone with darker, chipped outer wear zones, a smoother middle with short horizontal polish highlights, and a two-pixel light front nosing near the bottom plus a narrow rounded shoulder. The first bright central patch was reduced after visual inspection because it read as a stain. Weakness: the central wear silhouette repeats on each step, and the projecting nose is a colour cue that will benefit from the actual stair geometry and lighting in-engine.
+- **`out/textures/brick_c.png` — 64×64, RGB.** Edited directly from `brick_a.png`: irregular soot patches with narrow descending cores, a secondary stain, and three brick-tone substitutions. Original stone palette, running-bond geometry, dark mortar, and chipped silhouettes retained. A three-pixel frame remains pixel-identical to the source. Weakness: the six-colour source ramp makes the deepest soot transitions visibly stepped; shading details are necessarily sparse on 16×8 bricks.
+- **`out/textures/brick_d.png` — 64×64, RGB.** A separate tonal damp/soot arrangement concentrated on opposite areas, with a different set of three replaced bricks. Same source-derived geometry, exact palette, and immutable three-pixel perimeter as `brick_c`. Weakness: moisture is conveyed through darker stone tones only, so the material reads as dry staining rather than shiny wet stone; no additional wet-shine or moss colours were introduced.
+
+### Validation and visual review
+
+`python3 tools/px.py check` results:
+
+| File | Size | Colours | off_palette | semi_alpha | Lone pixels | Seam |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| wallcap.png | 64×64 | 5 | 0 | 0 | 0.0% | 0.92 |
+| stair_tread.png | 32×32 | 5 | 0 | 0 | 0.0% | 1.02 |
+| brick_c.png | 64×64 | 6 | 0 | 0 | 0.1% | 1.11 |
+| brick_d.png | 64×64 | 6 | 0 | 0 | 0.1% | 0.98 |
+
+All output pixels are opaque. The script asserts that both variants use exactly the same set of six colours as `brick_a`, retain its exact darkest-mortar mask, and match every pixel in its three-pixel perimeter. This includes exact left/right/top/bottom edge matches, preserving all source cross-tile transitions when the variants alternate. SHA-256 verification confirms `brick_a.png` and `brick_b.png` are byte-for-byte unchanged; baseline hashes are in `scratch/G/original-bricks.sha256`.
+
+Generated every 2×2 tiling and 8× nearest-neighbour zoom using `tools/px.py tile4` and `tools/px.py zoom`. Opened and visually inspected all of them, as well as the native-size contact sheet and a 3×3 mixed `brick_a`/`brick_c`/`brick_d` tiling. Previews remain in `scratch/G/` (`*-2x2x4.png`, `*-x8.png`, `native-review.png`, and `brick-mixed-3x3x4.png`); final texture directory contains only the requested game assets from this task. No visible discontinuity appeared at the tile boundaries in these previews. In-engine lighting and mapping have not been evaluated.
