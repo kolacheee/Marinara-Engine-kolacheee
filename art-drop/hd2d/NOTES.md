@@ -209,3 +209,12 @@ Viewed each delivered tile at native 1×, each `px.py zoom ... 8` preview, and e
 
 Reproducible source: `scratch/E/draw_walls.py`.
 Previews: `scratch/E/<name>-x8.png` and `scratch/E/<name>-2x2x4.png` for each of the three names. Native scratch copies match the final files. No files in `repo/` were read or changed.
+
+## plaster_wall.png — plaster variety revision
+
+- Output: `out/textures/plaster_wall.png`, 64×64, opaque RGB, seamless repeat in both axes.
+- Made procedurally in Python/PIL at native resolution with hand-authored irregular polygons and single-pixel lines. Reproducible source: `scratch/F/revise_plaster.py`; original saved as `scratch/F/plaster_wall-before.png`. No resampling, anti-aliasing, blur, or dithering.
+- Kept the warm off-white lime-plaster base and original hairline crack paths. Added uneven two-tone trowel patches using adjacent cloth-ramp cream and beige; the next darker cloth tone defines the cracks. Three differently shaped small losses expose the stone ramp, with recessed upper edges and restrained light stone facets. Broken beige grime gathers toward the bottom and wraps into the top; shapes are drawn periodically across both axes.
+- Validation: `python3 tools/px.py check out/textures/plaster_wall.png`: 64×64, 6 colours, off_palette=0, semi_alpha=0, lone=0.1%, seam=0.94.
+- Generated using `tools/px.py tile4` and `tools/px.py zoom … 8`, then visually inspected native size, 8× zoom and 2×2 tiling. Previews: `scratch/F/plaster_wall-x8.png` and `scratch/F/plaster_wall-2x2x4.png`. Revised identical initial chips into distinct shapes and opened up one overly solid trowel patch. No visible straight wrap seam or isolated noisy grain in the final previews.
+- Honest limitations: the fixed palette gives the trowel marks more contrast than real limewash. The deliberately small exposed areas suggest stone without room for detailed masonry; the cracks and grime rhythm can still be recognized on a large repeated surface. Grime is restrained and broken, rather than a continuous dark stripe, to keep the wall usable as background and preserve vertical tiling.
