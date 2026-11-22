@@ -133,3 +133,79 @@ The set targets the requested fantasy material language within the fixed
 palette, but the small native canvas requires simpler faces and ornament
 than the reference game's most elaborate character art. `repo/` was not
 accessed or modified.
+# Revision pass D — wallcap, goblin, floor_worn
+
+Read SPEC.md and tools/px.py before work. Inspected the five other delivered sprites plus the original goblin at native size and enlarged. Used Python/PIL at native resolution for all three revisions; no image-generation, resizing of final artwork, anti-aliasing, or new palette colours. Only the three requested PNGs were replaced in out/. Intermediates, original backups, reproducible drawing code, checks, and previews are in scratch/D/. Did not touch repo/.
+
+## out/textures/wallcap.png
+
+- 32×32 opaque RGB. Redrawn with four individually authored, irregular stone contours on the required 16-pixel joint grid. Chips interrupt the contours; darker lower/right ledges, stepped fracture planes, and short pits break up the faces. Broken top-left lips carry the light. Uses stone steps 0–4, omitting the brightest step.
+- Native Python/PIL polygons and orthogonal strokes, followed by tools/px.py's wrap-aware despeckle. Inspected the 8× enlargement and 2×2 tiling; added a second pass of cleavage ledges after the initial review looked too broad and flat.
+- Check: 5 colours; off_palette=0; semi_alpha=0; lone=0.1%; seam=1.00.
+- Honest weakness: a 32-pixel texture with four stones still has a recognisable four-stone repeat over a large field. The rough, recessed joints are quite dark; this should read best on the narrow wall-top surface for which it is intended. Small pits and fractures remain deliberately simplified at this resolution.
+
+## out/sprites/goblin.png
+
+- 32×48 RGBA canvas; final opaque bounds (3,13)–(29,48), **26 pixels wide × 35 pixels tall**, feet on the bottom row. The original was 26×46.
+- Hand-authored native Python/PIL silhouette and body: raised back/shoulder, short torso, bent spread legs, lowered weapon, flared ears, compact leather jerkin with diagonal strap. Repositioned and selectively repainted the original cap/face to preserve its design and the existing set's leaf greens, brown leather, red cloth, dull iron, and exact #24161f outline. No whole-sprite scaling. Compared the final result against all five other sprites on a shared baseline.
+- Ran the requested Aseprite cleanup on the final drawing (input and output both scratch/D/goblin.png), with fw=32, fh=48, colour=#24161f and /home/kolache/Downloads/marinara-agent-handoff/tools/aseprite-scripts/cleanup.lua. Copied the checked result into out/sprites/goblin.png. The executable was /home/kolache/Downloads/marinara-agent-handoff/tools/aseprite/build/bin/aseprite.
+- Check: 15 colours; off_palette=0; semi_alpha=0; lone=2.3%; on_bottom=True. Additional explicit inspection of every four-neighbour silhouette edge found **zero non-outline boundary pixels**, including the feet.
+- Honest weakness: the large retained head makes the shorter figure more caricatured than the humans. The hunched stance compresses the chest and scarf, so its torso has fewer readable detail clusters. Some isolated pixels remain at staircase outline turns, within the requested limit.
+
+## out/textures/floor_worn.png
+
+- 128×128 opaque RGB, darker flag ramp. Retained the original running-bond slab arrangement, slab sizes, tone assignment, outer bevels, corner chips, and crack paths. Replaced interior wear and split-plane shading using a separate deterministic seed for every slab.
+- Each of 48 slabs has an independently constructed connected wear mask with varied location, width, height, and stepped edge profile; no shared patch stamp. Verified 48 distinct cropped-mask hashes, recorded with the row spans in scratch/D/wear-records.json. Optional small cuts and flecks also vary. Placement wraps across the image edges, preserving the partial slabs at the boundary. Finished with wrap-aware despeckle.
+- Check: 5 colours; off_palette=0; semi_alpha=0; lone=0.1%; seam=1.15. Reviewed both full 8× enlargement and 2×2 tiling; no exceptional boundary seam was visible.
+- Honest weakness: the original cracks and regular 16-pixel courses remain recognisable. Every wear mask within the texture is different, but the complete 128×128 texture necessarily repeats when tiled. This pass preserves the existing broad planar treatment rather than adding a finer-grained stone texture.
+
+## Final verification and preview locations
+
+Ran `python3 tools/px.py check out/textures/wallcap.png out/textures/floor_worn.png out/sprites/goblin.png`; exact output is in scratch/D/check.txt. Additional assertions checked dimensions, opacity, allowed texture-specific ramps, goblin bounds, boundary outline colour, and lone-pixel ratios below 3%.
+
+Used `tools/px.py tile4` and `tools/px.py zoom ... 8` on final-file copies, and opened every final preview with the image viewer:
+
+- scratch/D/previews/textures/wallcap-2x2x4.png and wallcap-x8.png
+- scratch/D/previews/textures/floor_worn-2x2x4.png and floor_worn-x8.png
+- scratch/D/previews/sprites/goblin-2x2x4.png and goblin-x8.png (sprite repetition is a consistency preview, not a tiling requirement)
+- scratch/D/previews/native.png — native-size final images
+- scratch/D/previews/sprite-lineup.png — native and 4× final comparison with the five existing sprites
+
+Source: scratch/D/revise.py. The script produces pre-Aseprite artwork in scratch/D/; the goblin requires the Aseprite command above before delivery. Original files are backed up in scratch/D/originals/.
+
+## E — additional seamless wall textures
+
+Three new opaque RGB PNG textures, each **64×64**, drawn procedurally at native resolution with Python/Pillow. Read `SPEC.md` and `tools/px.py` first; inspected `brick_a.png`, `ashlar.png`, and `floor_hall.png` for palette restraint, clustered wear, bevels, and scale. No antialiasing, blur, intermediate RGB shades, or image generation was used. All drawing colours come directly from `tools/ramps.json`; direct palette drawing made quantization unnecessary. Lighting is top-left wherever there is relief.
+
+### `out/textures/plaster_wall.png`
+
+- Warm lime plaster using cloth steps 2–4, with short cob step 3 and earth step 3 incisions in two thin, branching shrinkage cracks.
+- A periodic, thresholded field makes sparse, coherent mottling; hand-placed short trowel strokes add directional surface character. All crack strokes wrap across boundaries. The first version had broad, camouflage-like patches; visual review prompted smaller, much sparser marks and softer cracks.
+- Weaknesses: the fixed cloth ramp makes mottling visibly stepped rather than extremely subtle. The two cracks become recognizable when many tiles are repeated. Intentionally restrained relief may need scene lighting to convey the full plaster surface.
+
+### `out/textures/wainscot.png`
+
+- Dark oak using only wood steps 0–3. Two tall recessed panels have raised frames, top-left outer bevels, reverse bevels around the recesses, and continuous top/bottom rails that meet across vertical repeats.
+- Hand-placed elongated grain lines bend around small knots; knot position and stile markings vary between the panels. Rail grain wraps horizontally.
+- Weaknesses: the joinery is deliberately regular, with a 32-pixel panel rhythm. Grain is stylized and sparse, and the two knots repeat every tile. Vertically tiled rails produce stacked panel courses; for conventional room-height wainscoting, use the material on a single appropriate-height band.
+
+### `out/textures/crypt_stone.png`
+
+- Approximately 32×16 cut ashlar blocks in alternating running bond. Slate steps 0–4 and iron steps 2–3 give cool grey-blue faces, chipped highlights, and dark damp lower corners; leaf steps 0–2 supply small moss colonies in selected joints.
+- Each block is drawn independently, then wrapped onto the canvas. Broad shaded facets and sparse horizontal flaking match the existing ashlar's cluster scale. A few short fractures interrupt the upper lips. A cyclic horizontal crop changes the tile origin without changing any adjacency.
+- Weaknesses: dampness is conveyed through dark lower facets and moss rather than glossy reflections. Eight block faces and sparse moss clusters are recognizable over large expanses; this is still a small 64-pixel repeat. The iron face variant has a slight violet cast in the supplied palette.
+
+### Validation and visual inspection
+
+Ran `python3 tools/px.py check` on all three delivered files:
+
+| File | Size | Colours | off_palette | semi_alpha | Lone pixels | Seam |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| plaster_wall.png | 64×64 | 5 | 0 | 0 | 0.2% | 1.00 |
+| wainscot.png | 64×64 | 4 | 0 | 0 | 0.2% | 1.08 |
+| crypt_stone.png | 64×64 | 10 | 0 | 0 | 0.0% | 1.00 |
+
+Viewed each delivered tile at native 1×, each `px.py zoom ... 8` preview, and each `px.py tile4` 2×2 tiled preview at 4×. Re-inspected plaster and crypt after their revisions. No visible tile-boundary discontinuities, semitransparent pixels, smearing, or excessive isolated-pixel noise were observed. A seam score compares only the outer and central cross-sections, so it is supporting evidence rather than a substitute for tiled visual inspection. Plaster and crypt use cyclic crops with representative seam-check cross-sections; no edge pixels were patched to force matching borders.
+
+Reproducible source: `scratch/E/draw_walls.py`.
+Previews: `scratch/E/<name>-x8.png` and `scratch/E/<name>-2x2x4.png` for each of the three names. Native scratch copies match the final files. No files in `repo/` were read or changed.
