@@ -1,0 +1,13 @@
+# English changed between 827ae36bd (the packs' current sourceCommit) and the source commit
+# see: git diff 827ae36bd <source> -- docs/<file>
+UPGRADING.md
+agents/memory.md
+chats/peek-prompt.md
+chats/sending-and-streaming.md
+data/coming-from-sillytavern.md
+data/importing-from-sillytavern.md
+extending/regex-scripts.md
+home/professor-mari.md
+home/welcome.md
+installation/android-termux.md
+prompts/presets.md
