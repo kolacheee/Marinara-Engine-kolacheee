@@ -144,7 +144,7 @@ Marinara는 GitHub에 새 버전이 있는지 확인할 수 있습니다. 일부
 
 - **Latest Stable:** 태그가 붙은 `vX.Y.Z` 릴리스입니다. 보통은 이쪽을 고르면 됩니다.
 - **Staging/UAT:** 출시 전 테스터용 빌드로, 아직 미완성일 수 있습니다. 이 채널을 고르면 "Staging builds are pre-release tester builds. Back up your app data before applying them."라는 경고가 표시됩니다.
-- **UI overhaul (playtest):** 새 레이아웃을 시험하는 플레이테스터용 `ui/kolacheee` 브랜치입니다. staging을 따릅니다. 먼저 앱 데이터를 백업하세요. 데이터가 업그레이드되면 다음 릴리스가 나올 때까지 **Latest Stable**에서 읽지 못할 수 있습니다. Git 설치(Windows, macOS, Linux, Termux)는 여기서 이 채널로 전환할 수 있습니다. Docker에는 이 채널의 이미지가 없으므로 컨테이너에서는 안내만 표시됩니다.
+- **ui/kolacheee (UI overhaul playtest):** 새 레이아웃을 시험하는 플레이테스터용 `ui/kolacheee` 브랜치입니다. staging을 따릅니다. 먼저 앱 데이터를 백업하세요. 데이터가 업그레이드되면 다음 릴리스가 나올 때까지 **Latest Stable**에서 읽지 못할 수 있습니다. Git 설치(Windows, macOS, Linux, Termux)는 여기서 이 채널로 전환할 수 있습니다. Docker에는 이 채널의 이미지가 없으므로 컨테이너에서는 안내만 표시됩니다.
 
 서버를 실행하는 컴퓨터의 브라우저에서 다른 채널을 고르면 업데이트 버튼이 **Switch to** 뒤에 채널 이름이 붙은 형태로 바뀝니다. 이 버튼은 앱 안의 일반 업데이트가 꺼져 있어도 동작하며, 실행하는 동안 **Switching…**(전환 중…)이 표시됩니다. 원격 기기는 아래 **Apply Update**(업데이트 적용) 조건을 충족해야만 이 작업을 할 수 있습니다.
 

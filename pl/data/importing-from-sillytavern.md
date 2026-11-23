@@ -12,12 +12,13 @@ Przenieś dane z aplikacji SillyTavern do aplikacji Marinara Engine. Możesz zai
 | World Info | Lorebooki (notatki, które AI czyta, gdy w czacie padną określone słowa) |
 | Tła | Tła czatu |
 | Persony | Persony (profil, który występuje w twoim imieniu) |
+| Skrypty regex | Skrypty regex: przypisane do poszczególnych kart i presetów oraz globalne z pliku `settings.json` (import folderu) |
 
 ## Szybki import pojedynczych plików
 
 1. Otwórz **Ustawienia → Dane → Import z SillyTavern**.
 2. Kliknij przycisk dla swojego typu pliku.
-3. Wybierz plik.
+3. Wybierz plik. **Importuj postać**, **Importuj preset** i **Importuj lorebook** otwierają to samo okno co **Importuj** w Bibliotece, z tymi samymi opcjami i takim samym raportem o tym, co przeniesiono, a czego nie.
 
 | Przycisk | Plik |
 | --- | --- |
@@ -26,15 +27,15 @@ Przenieś dane z aplikacji SillyTavern do aplikacji Marinara Engine. Możesz zai
 | **Import Preset (JSON)** (import presetu) | Preset w pliku `.json`. |
 | **Import Lorebook (JSON)** (import lorebooka) | Plik World Info w formacie `.json`. |
 
-Nad przyciskami opcje **Oznacz jako zaimportowane** i **Tag źródła** (obie domyślnie włączone) dodają tagi **Zaimportowane** i **ST** do importowanych elementów. Odznacz jedną z nich, żeby nie dodawać danego tagu. Importowane elementy zachowują swoje nazwy i opisy. Poza tym te przyciski nie mają opcji. Import postaci zachowuje wszystkie tagi ze źródła i ogranicza skrypty regex do tej jednej postaci. Skrypt regex to reguła znajdź-i-zamień dla tekstu. Aby wybrać te opcje samodzielnie, użyj przycisku **Importuj** na stronie **Biblioteka → Postacie**. Zobacz [Importowanie i eksportowanie kart postaci](../characters/import-export.md).
+Nad przyciskami opcje **Oznacz jako zaimportowane** i **Tag źródła** (obie domyślnie włączone) dodają tagi **Zaimportowane** i **ST** do importowanych elementów. Odznacz jedną z nich, żeby nie dodawać danego tagu. Okno, które się otwiera, zaczyna z tym samym wyborem. Importowane elementy zachowują swoje nazwy i opisy. Skrypt regex to reguła znajdź-i-zamień dla tekstu. Zobacz [Importowanie i eksportowanie kart postaci](../characters/import-export.md).
 
-Jeśli karta postaci zawiera w środku lorebook, przeglądarka pyta, czy zaimportować go jako osobny lorebook. Kliknij **OK**, aby zachować go jako lorebook do ponownego użycia, albo **Cancel** (anuluj), aby zaimportować tylko postać.
+Jeśli karta postaci zawiera w środku lorebook, okno Importuj postać pyta, co z nim zrobić: **Importuj lorebook** zachowuje go jako lorebook do ponownego użycia, **Importuj jako ukryty** zachowuje powiązanie z postacią, ale ukrywa go na liście lorebooków, a **Skip lorebook** (pominięcie lorebooka) importuje tylko postać.
 
-Przycisk **Import Chat (JSONL)** tworzy czat w trybie Roleplay, chyba że plik zapisuje inny tryb, i od razu go otwiera.
+Przycisk **Import Chat (JSONL)** tworzy czat w trybie Roleplay, chyba że plik zapisuje inny tryb, i od razu go otwiera. Krótki komunikat podaje, co przeniesiono: notatkę autora, personę i wiadomości, które pozostają ukryte przed AI.
 
 ### Import czatu do wybranego trybu
 
-Aby wybrać tryb, użyj przycisku importu na górze listy czatów. Jego podpowiedź brzmi **Import SillyTavern or Marinara chat JSONL**. Przycisk importuje do trybu z aktualnie otwartej zakładki (Conversation, Roleplay lub Game). Zobacz [Eksport i import czatów](../chats/export-import.md).
+Aby wybrać tryb, użyj przycisku importu na górze listy czatów. Jego podpowiedź brzmi **Import SillyTavern or Marinara chat JSONL**. W oknie, które się otwiera, opcja **Otwórz jako** ustawia tryb Roleplay lub Conversation dla pliku z aplikacji SillyTavern. Eksport aplikacji Marinara zachowuje własny typ. Zobacz [Eksport i import czatów](../chats/export-import.md).
 
 ## Import folderu SillyTavern
 
@@ -49,7 +50,9 @@ Zanim zaczniesz: kreator czyta pliki na komputerze serwera. Jeśli SillyTavern j
 4. Kliknij **Scan Folder** (skanuj folder). Aplikacja pokazuje, ile elementów znalazła w każdej kategorii.
 5. W oknie **Choose exactly what to import** zaznacz elementy, które chcesz zaimportować. Przy każdej kategorii są przyciski **All** i **None** oraz przełącznik **Show** lub **Hide**, który pokazuje lub ukrywa pojedyncze elementy.
 6. Kliknij **Import Selected** (importuj zaznaczone). Pasek postępu pokazuje bieżący element i liczbę dla każdej kategorii.
-7. Gdy zobaczysz **Import zakończony!**, sprawdź liczbę elementów w każdej kategorii i kliknij **Gotowe**. Pod licznikami krótka lista podaje, ile czatów zachowało notatkę autora i personę, które nazwy użytkowników z aplikacji SillyTavern nie miały tutaj persony i które ustawienia presetów pominięto.
+7. Gdy zobaczysz **Import zakończony!**, sprawdź liczbę elementów w każdej kategorii i kliknij **Gotowe**. Każdy wiersz podaje, ile elementów zaimportowano, a ile pominięto, bo już je masz. Pod licznikami lista **Nie przeniesiono** wymienia dane folderu, które nie mają tutaj odpowiadającej im funkcji, a krótka lista podaje, ile czatów zachowało notatkę autora i personę, które nazwy użytkowników z aplikacji SillyTavern nie miały tutaj persony, jak presety rozmieszczają World Info i które ustawienia presetów pominięto.
+
+Opcja **Pomiń to, co już tu jest** (domyślnie włączona) pomija postacie, czaty i persony, które już masz, niezależnie od tego, czy pochodzą z wcześniejszego importu folderu, czy z importu pojedynczych plików. Persona z aplikacji SillyTavern o tej samej nazwie co jedna z twoich nie jest kopiowana: jej czaty zostają powiązane z twoją personą. Czaty zaimportowane pojedynczo przed tą zmianą nie są rozpoznawane i trafiają tu jeszcze raz.
 
 Większość elementów jest na początku zaznaczona. Aplikacja zostawia niezaznaczone standardowe presety SillyTavern, takie jak `deterministic`, `neutral` i presety `universal-*`, a baner o tym informuje. Zostaw je niezaznaczone, chyba że naprawdę potrzebujesz ich kopii.
 
@@ -75,17 +78,20 @@ Jeśli to nie zadziałało:
 
 ## Co dzieje się z twoimi danymi
 
-- Pliki czatów należące do jednej postaci trafiają do jednego czatu jako jego gałęzie. Gałąź to kopia czatu, którą kontynuujesz osobno.
-- Czaty grupowe importują się jako czaty w trybie Roleplay.
+- Pliki czatów należące do jednej postaci trafiają do jednego czatu jako jego gałęzie. Gałąź to kopia czatu, którą kontynuujesz osobno. Każdy czat otrzymuje nazwę swojego pliku z aplikacji SillyTavern, tak jak przy imporcie pojedynczego pliku. Plik, który nadal nazywa się "New Chat", otrzymuje imię postaci.
+- Czaty grupowe importują się jako czaty Roleplay w trybie **Indywidualnie**, więc każda postać odpowiada po kolei, w kolejności wypowiedzi z aplikacji SillyTavern.
+- Wiadomości ukryte przed AI w aplikacji SillyTavern pozostają ukryte.
 - Importowane elementy zachowują datę ostatniej zmiany pliku źródłowego, a nie datę importu. Każda wiadomość czatu zachowuje datę, z którą zapisała ją aplikacja SillyTavern.
 - **Notatka autora** czatu przenosi się razem ze swoją głębokością. Jeśli w aplikacji SillyTavern miała inną częstotliwość, pozycję lub rolę, Marinara i tak dodaje ją przy każdej odpowiedzi na tej głębokości, a import o tym informuje. Notatka wyłączona w aplikacji SillyTavern pozostaje wyłączona.
 - Czat zostaje powiązany z personą używaną w aplikacji SillyTavern: personą przypisaną na stałe do czatu, a jeśli takiej nie było, personą o tej samej nazwie co użytkownik czatu. Zaimportuj persony w tym samym przebiegu albo wcześniej utwórz personę o tej nazwie. Gdy nie ma dopasowania, czat nie ma persony, a import podaje nazwę brakującej persony.
+- Preset zachowuje dwa miejsca na World Info z aplikacji SillyTavern. **World Info (before)** (World Info przed) i **World Info (after)** (World Info po) stają się osobnymi sekcjami, więc wpisy ustawione za postacią nadal trafiają za nią. Preset, który wyłącza jedną z nich, pomija te wpisy, tak jak SillyTavern. Preset z tylko jednym miejscem na World Info otrzymuje jedną sekcję **World Info**, która wysyła obie grupy. Preset zaimportowany przed tą zmianą ma jedną sekcję **World Info**. Żeby to poprawić, zaimportuj go ponownie albo w jego sekcji **Kolejność promptów** dodaj **Lorebook Marker (Before)** (znacznik lorebooka przed) i **Lorebook Marker (After)** (znacznik lorebooka po) w wybranych miejscach i usuń starą sekcję **World Info**.
+- Wpisy World Info umieszczone wokół notatki autora w aplikacji SillyTavern trafiają na głębokość 4 z rolą systemową, tam, gdzie jest notatka autora (wpisy za notatką trafiają tuż za tymi przed nią). Wpisy umieszczone wokół przykładowych wiadomości trafiają za definicje postaci. Import podaje, ile wpisów przeniesiono.
 - Preset przenosi ustawienia samplerów: temperaturę, Top P, Top K, Min P, kary za częstotliwość i obecność oraz wysiłek rozumowania. To wartości początkowe dla czatów używających presetu; własne wartości połączenia lub czatu nadal mają pierwszeństwo. Maksymalna długość odpowiedzi i rozmiar kontekstu pozostają w połączeniu. Top A i kara za powtórzenia nie mają tu ustawienia i są pomijane.
 - Postacie, persony, lorebooki, presety i czaty otrzymują tagi **Zaimportowane** i **ST**, chyba że odznaczysz **Oznacz jako zaimportowane** lub **Tag źródła** nad przyciskiem **Importuj zaznaczone**. Ich nazwy i opisy pozostają bez zmian.
 
 ## Czego nie da się przenieść
 
-Kreator odczytuje tylko kategorie z pierwszej tabeli. Inne dane aplikacji SillyTavern, takie jak globalne ustawienia aplikacji, szybkie odpowiedzi, szablony instruct i kontekstu oraz profile połączeń, nie są importowane. Czaty zaimportowane przed tą poprawką dostały czas importu jako daty wiadomości. Żeby poprawić taki czat, usuń go i ponownie zaimportuj jego plik (przy imporcie folderu odznacz **Pomiń to, co już tu jest**).
+Kreator odczytuje tylko kategorie z pierwszej tabeli. Inne dane aplikacji SillyTavern, takie jak globalne ustawienia aplikacji i profile połączeń, nie są importowane. Lista **Nie przeniesiono** w wyniku importu folderu podaje liczbę znalezionych elementów bez odpowiadającej im tutaj funkcji: zestawów Quick Reply, szablonów instruct, szablonów kontekstu i promptów systemowych. Czaty zaimportowane przed tą poprawką dostały czas importu jako daty wiadomości. Żeby poprawić taki czat, usuń go i ponownie zaimportuj jego plik (przy imporcie folderu odznacz **Pomiń to, co już tu jest**).
 
 ## Powiązane przewodniki
 

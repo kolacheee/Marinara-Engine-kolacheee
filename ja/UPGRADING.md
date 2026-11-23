@@ -134,7 +134,7 @@ MarinaraはGitHubを確認して、新しいバージョンがあるかを調べ
 
 - **Latest Stable:** `vX.Y.Z`のタグが付いたリリースです。通常はこちらを選びます。
 - **Staging/UAT:** リリース前のテスター向けビルドで、未完成の場合があります。選ぶと「Staging builds are pre-release tester builds. Back up your app data before applying them.」という警告が表示されます。
-- **UI overhaul (playtest):** 新しいレイアウトを試すプレイテスター向けの`ui/kolacheee`ブランチです。stagingに追従します。先にアプリのデータをバックアップしてください。データがアップグレードされると、次のリリースまで**Latest Stable**で読み込めなくなることがあります。Gitでインストールした環境(Windows、macOS、Linux、Termux)では、ここで切り替えられます。Docker用のイメージはないため、コンテナーではこのチャンネルの案内だけが表示されます。
+- **ui/kolacheee (UI overhaul playtest):** 新しいレイアウトを試すプレイテスター向けの`ui/kolacheee`ブランチです。stagingに追従します。先にアプリのデータをバックアップしてください。データがアップグレードされると、次のリリースまで**Latest Stable**で読み込めなくなることがあります。Gitでインストールした環境(Windows、macOS、Linux、Termux)では、ここで切り替えられます。Docker用のイメージはないため、コンテナーではこのチャンネルの案内だけが表示されます。
 
 サーバーを動かしているコンピューター上のブラウザーで別のチャンネルを選ぶと、アップデートのボタンが**Switch to**とチャンネル名の表示に変わります。このボタンは通常のアプリ内アップデートがオフでも動き、実行中は**Switching…**と表示されます。別のデバイスからは、後述の**Apply Update**(アップデートの適用)の条件を満たさないかぎり、この操作はできません。
 

@@ -75,7 +75,7 @@ Das Suchmuster. Schreib nur das Muster, ohne Schrägstrich am Anfang oder Ende. 
 
 ### Replace With
 
-Der Text, der jeden Treffer ersetzt. Lass das Feld leer, um den Treffer zu löschen. Erfassten Text verwendest du mit `$1`, `$2` und so weiter wieder. Diese Umwandlungen der Groß- und Kleinschreibung wirken vor einer Erfassung:
+Der Text, der jeden Treffer ersetzt. Lass das Feld leer, um den Treffer zu löschen. Erfassten Text verwendest du mit `$1`, `$2` und so weiter wieder. `$0`, `$&` und `{{match}}` fügen wie in SillyTavern den gesamten Treffer wieder ein. Diese Umwandlungen der Groß- und Kleinschreibung wirken vor einer Erfassung:
 
 | Eingabe | Ergebnis |
 | --- | --- |
@@ -100,7 +100,14 @@ Umschalter, die steuern, wie das Muster Treffer findet. Bei einem neuen Skript s
 
 ### Trim Strings
 
-Eine optionale Liste einfacher Zeichenfolgen, die nach der Ersetzung entfernt werden. Mit **Add trim string** (Zeichenfolge hinzufügen) fügst du eine Zeile hinzu, mit der Schaltfläche **X** entfernst du eine. Das eignet sich für ein festes Textstück, das sich leichter eintippen als mit einem Muster treffen lässt.
+Eine optionale Liste einfacher Zeichenfolgen, die entfernt werden sollen. Mit **Add trim string** (Zeichenfolge hinzufügen) fügst du eine Zeile hinzu, mit der Schaltfläche **X** entfernst du eine. Das eignet sich für ein festes Textstück, das sich leichter eintippen als mit einem Muster treffen lässt.
+
+Sobald ein Skript eine zu entfernende Zeichenfolge hat, legt **Entfernen aus** fest, wo sie entfernt werden:
+
+- **Gesamtem Ergebnis**: aus der gesamten Nachricht nach der Ersetzung, auch dort, wo das Muster nicht passt. Neue Skripte beginnen mit dieser Einstellung.
+- **Gefundenem Text (wie in SillyTavern)**: nur aus dem gefundenen Text, den `$0`, `{{match}}` oder `$1` wieder einfügen. Text, den du unter **Ersetzen durch** eingegeben hast, und der Rest der Nachricht bleiben unverändert. Wo das Muster nicht passt, ändert sich nichts.
+
+Aus SillyTavern importierte Skripte verwenden **Gefundenem Text**. Skripte, die vor der Einführung dieser Option importiert wurden, verwendeten **Gesamtem Ergebnis**. Entfernt eines davon jetzt zu viel, importiere es erneut oder stell es auf **Gefundenem Text** um.
 
 ### Live Test
 

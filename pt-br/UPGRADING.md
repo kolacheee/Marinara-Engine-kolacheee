@@ -144,7 +144,7 @@ Marinara pode consultar o GitHub para ver se existe uma versão mais nova. Algum
 
 - **Latest Stable:** as versões marcadas como `vX.Y.Z`. É a escolha normal.
 - **Staging/UAT:** compilações de teste, anteriores ao lançamento, que podem estar inacabadas. Ao escolher esse canal, aparece o aviso "Staging builds are pre-release tester builds. Back up your app data before applying them."
-- **UI overhaul (playtest):** a branch `ui/kolacheee` com o novo layout, para participantes dos testes. Ela acompanha staging. Faça um backup dos dados do aplicativo primeiro: depois que ela atualizar os dados, **Latest Stable** talvez não consiga lê-los até a próxima versão. Instalações Git (Windows, macOS, Linux e Termux) podem mudar para ela aqui. O Docker não tem uma imagem para ela, então, em um contêiner, o canal só mostra uma orientação.
+- **ui/kolacheee (UI overhaul playtest):** a branch `ui/kolacheee` com o novo layout, para participantes dos testes. Ela acompanha staging. Faça um backup dos dados do aplicativo primeiro: depois que ela atualizar os dados, **Latest Stable** talvez não consiga lê-los até a próxima versão. Instalações Git (Windows, macOS, Linux e Termux) podem mudar para ela aqui. O Docker não tem uma imagem para ela, então, em um contêiner, o canal só mostra uma orientação.
 
 Quando você escolhe outro canal em um navegador no próprio computador do servidor, o botão de atualização mostra **Switch to** (mudar para) seguido do nome do canal. Ele funciona mesmo com as atualizações normais dentro do aplicativo desligadas, e mostra **Switching…** enquanto roda. Os dispositivos remotos só conseguem fazer isso se atenderem às condições de **Apply Update** (aplicar a atualização) descritas abaixo.
 

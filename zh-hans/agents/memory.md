@@ -80,6 +80,8 @@ Memory Recall 只会找回提示词里已放不下的消息。整个聊天都能
 
 要让记忆功能选择任意较早消息，开启 **Enable Memory Recall** 下方的 **Recall from the whole chat**(从整个聊天中回忆)。这样，记忆往往会重复提示词里已有的消息。这些重复内容会消耗 Token；而且记忆放在聊天历史前面，每回合都会变化，所以服务商的提示词缓存无法复用聊天历史。
 
+召回的记忆会紧挨着聊天历史之前插入。要自行安排位置，在聊天的预设里添加一个 **Memory Recall** 标记。见[为提示词缓存安排小节顺序](../prompts/presets.md#order-sections-for-prompt-caching)。在 Conversation 提示词里，用 `{{memories}}` 宏放置这些记忆。
+
 [查看提示词](../chats/peek-prompt.md)里的实时预览不会运行 Memory Recall。开启记忆功能时，预览列出的历史消息可能比实际回复收到的更多。
 
 ### Memory Recall 的行为细节

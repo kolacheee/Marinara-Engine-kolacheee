@@ -144,7 +144,7 @@ Lista rozwijana **Release Channel** (kanał wydań) określa, które wersje śle
 
 - **Latest Stable**: wydania oznaczone tagiem `vX.Y.Z`. To normalny wybór.
 - **Staging/UAT**: przedpremierowe wersje testowe, które mogą być niedokończone. Wybór tej opcji wyświetla ostrzeżenie "Staging builds are pre-release tester builds. Back up your app data before applying them."
-- **UI overhaul (playtest):** gałąź `ui/kolacheee` z nowym układem, przeznaczona dla testerów. Bazuje na staging. Najpierw zrób kopię zapasową danych aplikacji: gdy zaktualizuje dane, **Latest Stable** może nie odczytać ich aż do następnego wydania. Instalacje oparte na Git (Windows, macOS, Linux i Termux) mogą się na nią tutaj przełączyć. Nie ma dla niej obrazu Docker, więc w kontenerze kanał pokazuje tylko wskazówkę.
+- **ui/kolacheee (UI overhaul playtest):** gałąź `ui/kolacheee` z nowym układem, przeznaczona dla testerów. Bazuje na staging. Najpierw zrób kopię zapasową danych aplikacji: gdy zaktualizuje dane, **Latest Stable** może nie odczytać ich aż do następnego wydania. Instalacje oparte na Git (Windows, macOS, Linux i Termux) mogą się na nią tutaj przełączyć. Nie ma dla niej obrazu Docker, więc w kontenerze kanał pokazuje tylko wskazówkę.
 
 Gdy wybierzesz inny kanał w przeglądarce na komputerze, na którym działa serwer, przycisk aktualizacji zmienia napis na **Switch to** (przełącz na) z nazwą kanału. Działa nawet wtedy, gdy zwykłe aktualizacje w aplikacji są wyłączone, a na czas pracy pokazuje **Switching…**. Urządzenia zdalne nie mogą tego zrobić, chyba że spełniają opisane niżej warunki przycisku **Apply Update**.
 

@@ -57,7 +57,7 @@ Hast du einen anderen `PORT` gesetzt, nimm diese Nummer. Für ein App-ähnliches
 
 ## Marinara starten und stoppen
 
-Mit der App: Öffne sie und tipp auf **Install / Start Marinara**, wenn der Server gestoppt ist. Um zwischen App und Browser zu wechseln, nutze im Launcher **Open in browser** und danach **Retry connection** (Verbindung erneut versuchen). Aus der App heraus kommst du über **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Einstellungen → Darstellung → Layout → Android-Launcher öffnen (App oder Browser)) zurück zum Launcher.
+Mit der App: Öffne sie und tipp auf **Install / Start Marinara**, wenn der Server gestoppt ist. Um zwischen App und Browser zu wechseln, nutze im Launcher **Open in browser** und danach **Retry connection** (Verbindung erneut versuchen). Aus der App heraus (nur in der Android-App) kommst du über **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Einstellungen → Darstellung → Layout → Android-Launcher öffnen (App oder Browser)) zurück zum Launcher.
 
 Bei einer manuellen Installation öffnest du Termux und führst Folgendes aus:
 
@@ -71,6 +71,17 @@ Um den Server zu stoppen, drück in Termux <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 ## Marinara aktualisieren
 
 Bei jedem Aufruf von `./start-termux.sh` prüft der Launcher auf GitHub, ob es eine neuere Version gibt, und aktualisiert vor dem Start. Um ohne Update zu starten, häng `--skip-update` an. Auf einem Test-Branch, etwa dem Playtest für die überarbeitete Oberfläche, folgt der Launcher diesem Branch auf GitHub. Wurde dessen Verlauf dort neu geschrieben, wechselt deine Kopie von selbst zur neuen Version, solange du keine eigenen Commits erstellt hast. Weitere Optionen und die Schritte für ein APK-Update findest du unter [Marinara Engine aktualisieren](../UPGRADING.md#android-termux).
+
+Um den Playtest des neuen Layouts auszuprobieren, öffne in Marinara **Einstellungen → Erweitert → Updates → Release-Kanal → ui/kolacheee** und dann **Zu ui/kolacheee wechseln**. Oder führe in Termux Folgendes aus:
+
+```bash
+cd ~/Marinara-Engine
+git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
+git checkout -B ui/kolacheee origin/ui/kolacheee
+./start-termux.sh
+```
+
+Die Android-App (APK) kehrt immer zu ihrem Release zurück. Nutze deshalb für den Playtest die Termux-Installation.
 
 Bei Updates entfernt der Launcher außerdem nicht mehr benötigte Pakete aus seinem lokalen pnpm-Cache. So belegen alte Releases nicht mehrere Gigabyte Speicherplatz. Deine Chats und Einstellungen bleiben dabei unangetastet.
 

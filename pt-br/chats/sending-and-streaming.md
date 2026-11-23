@@ -7,9 +7,9 @@ Digite uma mensagem, envie e veja a resposta aparecer. Este guia trata do envio,
 Antes de começar: o seu chat precisa de um modelo. Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md).
 
 1. Digite na barra de entrada, na parte de baixo do chat.
-2. Clique em **Send** (enviar) ou pressione <kbd>Enter</kbd>, se **Send on Enter** (enviar com Enter) estiver ativado para aquele modo de chat.
+2. Clique em **Send** (enviar). No Roleplay, pressione <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>⌘</kbd>+<kbd>Enter</kbd> no Mac). No Conversation e no Game, pressione <kbd>Enter</kbd>. O texto provisório da caixa de mensagem e uma dica exibida uma única vez também informam isso.
 
-A sua mensagem aparece e, em seguida, a resposta chega em streaming. Cada chat gera uma resposta por vez. Enquanto uma resposta está em streaming, **Send** vira um botão de parar.
+A sua mensagem aparece e, em seguida, a resposta aparece enquanto é escrita, no ritmo definido em **Velocidade do streaming**. Cada chat gera uma resposta por vez. Enquanto uma resposta está em streaming, **Send** vira um botão de parar.
 
 Se não funcionou: sem um modelo definido para o chat, a resposta falha na hora, com um aviso de que nenhuma conexão está configurada. Escolha um em [Chat Settings](chat-settings.md).
 
@@ -19,7 +19,7 @@ Ele fica em **Configurações → Conversando → Caixa de mensagem**. Há um bo
 
 | Modo de chat | Padrão | Quando está desligado |
 | --- | --- | --- |
-| Roleplay | Desligado | <kbd>Enter</kbd> adiciona uma nova linha. Clique em **Send**. |
+| Roleplay | Desligado | <kbd>Enter</kbd> adiciona uma nova linha; <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> no Mac) envia, assim como **Send**. |
 | Conversations | Ligado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> no Mac) envia. |
 | Game | Ligado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> no Mac) envia. |
 

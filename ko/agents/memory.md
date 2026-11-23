@@ -82,6 +82,8 @@ Memory Recall은 프롬프트에 더 이상 없는 메시지만 다시 가져옵
 
 이전 메시지 전체에서 회상하게 하려면 **Enable Memory Recall** 아래의 **Recall from the whole chat**(전체 채팅에서 회상)을 켜세요. 그러면 프롬프트에 이미 있는 메시지가 기억에 자주 반복됩니다. 반복된 내용도 토큰을 쓰며, 기억은 채팅 기록 앞에 놓이고 매 턴 바뀌므로 서비스의 프롬프트 캐시가 기록을 재사용할 수 없습니다.
 
+회상된 기억은 채팅 기록 바로 앞에 들어갑니다. 위치를 직접 정하려면 채팅의 프리셋에 **Memory Recall** 마커를 추가하세요. [프롬프트 캐시를 위한 섹션 순서 정하기](../prompts/presets.md#order-sections-for-prompt-caching)를 참고하세요. Conversation 프롬프트에서는 `{{memories}}` 매크로로 배치합니다.
+
 [Peek Prompt](../chats/peek-prompt.md)의 실시간 미리보기는 Memory Recall을 실행하지 않습니다. 회상이 켜져 있으면 실제 답변에 들어가는 것보다 많은 기록이 표시될 수 있습니다.
 
 ### Memory Recall의 동작 방식

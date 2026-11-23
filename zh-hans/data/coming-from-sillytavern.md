@@ -34,8 +34,8 @@
 
 - **没有指令模板或上下文模板。** Marinara 发送聊天消息，由模型服务器套用模型自己的模板，因此没有对应 SillyTavern **Advanced Formatting**(高级格式设置) 的选项。预设分区代替了故事字符串。
 - **采样器。** 预设的设置是使用它的聊天的初始值。连接或聊天里设置的值优先。最大回复长度和上下文大小由连接设置。这里没有 Top A 和重复惩罚的对应设置。
-- **作者备注。** 每次回复都会把它作为系统消息，按指定深度放入聊天。SillyTavern 的频率、位置和角色设置在这里没有对应项。
-- **群聊。** Roleplay 默认由一个旁白为所有角色发声，这样消耗的 Token 更少。要像 SillyTavern 一样让每个角色轮流回复，打开 Chat Settings → **Group Chat**(群聊)，切换模式。
+- **作者备注。** 每次回复都会按指定深度把它放入聊天。**Post-processing messages**(后处理消息) 设为 **Apply**(应用)（默认值）时，它会随附近的用户消息一起发送。SillyTavern 的频率、位置和角色设置在这里没有对应项。**Peek prompt**(查看提示词) 会标出它的位置。
+- **群聊。** Roleplay 默认由一个旁白为所有角色发声，这样消耗的 Token 更少。要像 SillyTavern 一样让每个角色轮流回复，打开 Chat Settings → **Group Chat**(群聊)，切换模式。从 SillyTavern 导入的群聊已经使用 **Individual**(单独) 模式。
 - **按键。** 聊天里按 Enter 换行，按 **Ctrl+Enter** 发送。要用 Enter 发送，在 Settings → **Chatting**(聊天) 中开启 **Send on Enter**(按 Enter 发送)。只有在同一标签页开启 **Intuitive swipe navigation**(直观的候选回复导航)，方向键才会切换备选回复。
 - **快捷回复。** 这里指 **Send** 旁边的一键操作（代写、引导回复）。SillyTavern 的 Quick Reply 集合不会导入。
 

@@ -34,8 +34,8 @@ SillyTavern에서 쓰던 기능은 대부분 Marinara Engine(이하 Marinara)에
 
 - **지시 및 컨텍스트 템플릿 없음.** Marinara는 채팅 메시지를 보내고 모델 서버가 모델 자체 템플릿을 적용하므로 SillyTavern의 **Advanced Formatting**에서 고를 항목이 없습니다. 프리셋의 섹션이 스토리 문자열을 대신합니다.
 - **샘플러.** 프리셋의 설정은 해당 프리셋을 쓰는 채팅의 시작값입니다. 연결이나 채팅에 설정한 값이 우선합니다. 최대 답변 길이와 컨텍스트 크기는 연결에서 정합니다. Top A와 반복 페널티는 여기에서 설정할 수 없습니다.
-- **작가 노트.** 매 답변마다 지정한 깊이에 시스템 메시지로 들어갑니다. SillyTavern의 빈도, 위치와 역할 설정에 해당하는 항목은 없습니다.
-- **그룹 채팅.** Roleplay에서는 기본적으로 내레이터 한 명이 모든 캐릭터를 연기하여 토큰을 덜 사용합니다. SillyTavern처럼 캐릭터마다 차례로 답하게 하려면 Chat Settings → **Group Chat**(그룹 채팅)을 열고 모드를 바꾸세요.
+- **작가 노트.** 매 답변마다 지정한 깊이에 들어갑니다. **Post-processing messages**(메시지 후처리)가 기본값인 **Apply**(적용)로 설정되어 있으면 가까운 사용자 메시지 안에 포함되어 전송됩니다. SillyTavern의 빈도, 위치와 역할 설정에 해당하는 항목은 없습니다. **Peek prompt**(프롬프트 미리보기)에 삽입된 위치가 표시됩니다.
+- **그룹 채팅.** Roleplay에서는 기본적으로 내레이터 한 명이 모든 캐릭터를 연기하여 토큰을 덜 사용합니다. SillyTavern처럼 캐릭터마다 차례로 답하게 하려면 Chat Settings → **Group Chat**(그룹 채팅)을 열고 모드를 바꾸세요. SillyTavern에서 가져온 그룹은 이미 **Individual**(개별) 모드를 사용합니다.
 - **키.** 채팅에서 Enter는 새 줄을 추가하고 **Ctrl+Enter**는 전송합니다. Enter로 보내려면 Settings → **Chatting**(채팅)에서 **Send on Enter**(엔터 키로 전송)를 켜세요. 화살표 키로 스와이프 사이를 이동하려면 같은 탭의 **Intuitive swipe navigation**(직관적인 스와이프 탐색)을 켜야 합니다.
 - **Quick Replies.** 여기서는 **Send** 옆의 한 번 클릭하는 동작(대신 말하기, 가이드 답장)을 뜻합니다. SillyTavern의 Quick Reply 세트는 가져오지 않습니다.
 

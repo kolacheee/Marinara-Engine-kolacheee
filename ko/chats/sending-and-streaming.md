@@ -7,9 +7,9 @@
 시작하기 전에: 채팅에 모델이 지정되어 있어야 합니다. [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요.
 
 1. 채팅 아래쪽의 입력 막대에 글을 입력하세요.
-2. **Send**(전송)를 클릭하거나, 해당 채팅 모드에서 **Send on Enter**(엔터 키로 전송)가 켜져 있다면 <kbd>Enter</kbd>를 누르세요.
+2. **Send**(전송)를 클릭하세요. Roleplay에서는 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac에서는 <kbd>⌘</kbd>+<kbd>Enter</kbd>)를 누르세요. Conversation과 Game에서는 <kbd>Enter</kbd>를 누르세요. 메시지 상자의 플레이스홀더와 한 번 표시되는 팁에도 이 안내가 나옵니다.
 
-보낸 메시지가 나타나고, 이어서 답변이 스트리밍됩니다. 한 채팅에서 동시에 생성할 수 있는 답변은 하나뿐입니다. 답변이 스트리밍되는 동안 **Send**는 정지 버튼으로 바뀝니다.
+보낸 메시지가 나타나고, 이어서 답변이 작성되는 대로 **Streaming speed**(스트리밍 속도)에 설정된 속도로 표시됩니다. 한 채팅에서 동시에 생성할 수 있는 답변은 하나뿐입니다. 답변이 스트리밍되는 동안 **Send**는 정지 버튼으로 바뀝니다.
 
 작동하지 않는 경우: 채팅에 모델이 설정되어 있지 않으면 답변이 바로 실패하고, 설정된 연결이 없다는 메시지가 나타납니다. [채팅 설정](chat-settings.md)에서 모델을 고르세요.
 
@@ -19,7 +19,7 @@
 
 | 채팅 모드 | 기본값 | 꺼져 있을 때 |
 | --- | --- | --- |
-| Roleplay | 꺼짐 | <kbd>Enter</kbd>를 누르면 줄이 바뀝니다. **Send**를 클릭하세요. |
+| Roleplay | 꺼짐 | <kbd>Enter</kbd>를 누르면 줄이 바뀌고, <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac에서는 <kbd>Cmd</kbd>+<kbd>Enter</kbd>)나 **Send**로 보냅니다. |
 | Conversations | 켜짐 | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac에서는 <kbd>Cmd</kbd>+<kbd>Enter</kbd>)로 보냅니다. |
 | Game | 켜짐 | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac에서는 <kbd>Cmd</kbd>+<kbd>Enter</kbd>)로 보냅니다. |
 

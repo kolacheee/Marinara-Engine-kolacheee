@@ -7,9 +7,9 @@
 始める前に: チャットにはモデルが必要です。[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。
 
 1. チャット下部の入力バーに入力します。
-2. **Send**(送信)をクリックします。そのチャットモードで**Send on Enter**(Enterで送信)がオンなら、<kbd>Enter</kbd>を押しても送信できます。
+2. **Send**(送信)をクリックします。Roleplayでは<kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Macでは<kbd>⌘</kbd>+<kbd>Enter</kbd>)を押します。ConversationとGameでは<kbd>Enter</kbd>を押します。メッセージ欄のプレースホルダーと、一度だけ表示されるヒントにも案内があります。
 
-送ったメッセージが表示され、続いて返信がストリーミングで表示されます。1つのチャットで同時に生成できる返信は1つだけです。返信のストリーミング中は、**Send**が停止ボタンに変わります。
+送ったメッセージが表示され、続いて返信が書かれるそばから、**Streaming speed**(ストリーミングの速度)で設定した速さで表示されます。1つのチャットで同時に生成できる返信は1つだけです。返信のストリーミング中は、**Send**が停止ボタンに変わります。
 
 うまくいかなかった場合: チャットにモデルが設定されていないと、返信はすぐに失敗し、接続が設定されていないというメッセージが表示されます。[Chat Settings](chat-settings.md)でモデルを選んでください。
 
@@ -19,7 +19,7 @@
 
 | チャットモード | デフォルト | オフのとき |
 | --- | --- | --- |
-| Roleplay | オフ | <kbd>Enter</kbd>で改行が入ります。**Send**をクリックして送信します。 |
+| Roleplay | オフ | <kbd>Enter</kbd>で改行が入り、<kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Macでは<kbd>Cmd</kbd>+<kbd>Enter</kbd>)で送信します。**Send**でも送信できます。 |
 | Conversations | オン | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Macでは<kbd>Cmd</kbd>+<kbd>Enter</kbd>)で送信します。 |
 | Game | オン | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Macでは<kbd>Cmd</kbd>+<kbd>Enter</kbd>)で送信します。 |
 

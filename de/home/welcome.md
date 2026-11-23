@@ -7,15 +7,15 @@ Marinara Engine ist eine App zum Chatten und Rollenspielen mit KI-Charakteren. S
 Bevor du anfängst: Du brauchst einen API-Key (einen geheimen Code, ähnlich einem Passwort) von einem KI-Dienst oder das weiter unten beschriebene **Built-in model** (eingebautes Modell).
 
 1. Installiere Marinara Engine und öffne die App im Browser. Deine Plattform wählst du unter [Marinara Engine installieren](../INSTALLATION.md).
-2. Leg ein Konto an. Ein Konto ist ein API-Key für einen KI-Dienst. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
-3. Wähl die Modelle, die das Konto nutzen soll. Wie das geht, zeigt dieselbe Anleitung.
+2. Füge eine Verbindung hinzu: einen API-Key für einen KI-Dienst oder das **Integrierte Modell**. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
+3. Wähl die Modelle, die die Verbindung nutzen soll. Wie das geht, zeigt dieselbe Anleitung.
 4. Erstelle oder importiere einen Charakter. Öffne **Library → Characters** (Bibliothek → Charaktere), indem du oben rechts auf **Library** klickst, und klick dann auf **New character** (neuer Charakter). Oder klick auf **Import** (Importieren), um eine Karte aus einer Datei hereinzuholen. Siehe [Charaktere anlegen und bearbeiten](../characters/creating-and-editing-characters.md).
 5. Klick auf der Startseite auf **Conversation**, **Roleplay** oder **Game**. Oder öffne deine Chats: Klick oben rechts auf **Bibliothek**, wähle oben in der Seitenleiste **Chats**, dann den Tab **Convo**, **Roleplay** oder **Game** und klick auf **Neu**.
-6. Folge dem Einrichtungsfenster, das sich öffnet, und klick dann auf **Create Chat** (Chat erstellen).
+6. Die Einrichtungsseite öffnet sich im neuen Tab. Wähl einen Charakter und die Option unter **Inhalt**, dann klick auf **Roleplay starten** (oder **Chat beginnen** für Conversation, **Welt erstellen** für Game).
 
 Was du siehst: Der neue Chat öffnet sich, und du kannst deine erste Nachricht schreiben.
 
-Hast du noch kein Konto, öffnet sich zuerst das Fenster zum Hinzufügen eines Kontos, und es endet mit **Start chatting** (Chat beginnen). Fragt dich ein Fenster **Set Up** nach einem Konto, wähl eines aus der Liste und klick dann auf **Create Chat**.
+Hast du noch keine Verbindung, öffnet Marinara zuerst das Fenster zum Hinzufügen einer Verbindung.
 
 Eine Online-KI bringt Marinara nicht mit. Die meisten verbinden sich mit einem Online-Dienst. Du kannst auch das **Built-in model** herunterladen, ein kleines Modell, das ohne API-Key auf deinem Computer läuft. Es eignet sich für leichte Hilfsaufgaben, nicht für deinen Haupt-Chat. Siehe [Eingebautes Modell einrichten](../connections/local-model.md).
 

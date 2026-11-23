@@ -57,7 +57,7 @@ http://127.0.0.1:7860
 
 ## 启动和停止 Marinara
 
-使用应用时，打开应用；如果服务器已停止，点击 **Install / Start Marinara**。要在应用和浏览器之间切换，在启动界面使用 **Open in browser**，然后点击 **Retry connection**(重试连接)。在应用里，可以通过 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(设置 → 外观 → 布局 → 打开 Android 启动界面(应用或浏览器)) 回到启动界面。
+使用应用时，打开应用；如果服务器已停止，点击 **Install / Start Marinara**。要在应用和浏览器之间切换，在启动界面使用 **Open in browser**，然后点击 **Retry connection**(重试连接)。在应用里（仅限 Android 应用），可以通过 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(设置 → 外观 → 布局 → 打开 Android 启动界面(应用或浏览器)) 回到启动界面。
 
 手动安装时，打开 Termux 运行：
 
@@ -71,6 +71,17 @@ cd Marinara-Engine
 ## 更新 Marinara
 
 每次运行 `./start-termux.sh`，启动脚本都会去 GitHub 查有没有新版本，有就先更新再启动。想不更新直接启动，就加上 `--skip-update`。使用测试分支时，例如 UI 改版的试玩分支，启动脚本会跟随 GitHub 上的该分支。如果远端分支被重写，只要你没有自己的提交，本地副本就会自动跟上新版。更多选项和 APK 的更新步骤见[升级 Marinara Engine](../UPGRADING.md#android-termux)。
+
+要试用 UI 改版：在 Marinara 里打开 **Settings → Advanced → Updates → Release Channel → ui/kolacheee**(设置 → 高级 → 更新 → 发布通道 → ui/kolacheee)，然后点击 **Switch to ui/kolacheee**(切换到 ui/kolacheee)。也可以在 Termux 中运行：
+
+```bash
+cd ~/Marinara-Engine
+git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
+git checkout -B ui/kolacheee origin/ui/kolacheee
+./start-termux.sh
+```
+
+Android 应用（APK）总会回到它自己的发布版本，所以试玩请使用 Termux 安装。
 
 更新时，启动脚本还会从本地 pnpm 缓存里清掉没用到的包，免得旧版本越堆越多、占掉好几个 GB 的存储空间。这个清理不会碰你的聊天和设置。
 

@@ -75,7 +75,7 @@ El patrón de búsqueda. Escribe solo el patrón, sin barra al principio ni al f
 
 ### Replace With
 
-El texto que reemplaza cada coincidencia. Déjalo vacío para borrar la coincidencia. Reutiliza el texto capturado con `$1`, `$2`, y así sucesivamente. Estos cambios de mayúsculas funcionan antes de una captura:
+El texto que reemplaza cada coincidencia. Déjalo vacío para borrar la coincidencia. Reutiliza el texto capturado con `$1`, `$2`, y así sucesivamente. `$0`, `$&` y `{{match}}` vuelven a insertar la coincidencia completa, como en SillyTavern. Estos cambios de mayúsculas funcionan antes de una captura:
 
 | Escribe | Resultado |
 | --- | --- |
@@ -100,7 +100,14 @@ Botones de interruptor que cambian cómo coincide el patrón. Un script nuevo em
 
 ### Trim Strings
 
-Una lista opcional de cadenas de texto simples que se eliminan después de ejecutarse el reemplazo. Haz clic en **Add trim string** (Añadir cadena a recortar) para añadir una fila y en el botón **X** para quitar una. Úsala para un fragmento de texto fijo que es más fácil de escribir que de coincidir con un patrón.
+Una lista opcional de cadenas de texto simples para eliminar. Haz clic en **Add trim string** (Añadir cadena a recortar) para añadir una fila y en el botón **X** para quitar una. Úsala para un fragmento de texto fijo que es más fácil de escribir que de coincidir con un patrón.
+
+Cuando un script tiene una cadena a recortar, **Trim from** (Recortar de) decide de dónde se eliminan:
+
+- **Whole result** (Resultado completo): de todo el mensaje después del reemplazo, incluso donde el patrón no coincide. Los scripts nuevos empiezan aquí.
+- **Matched text (like SillyTavern)** (Texto coincidente (como en SillyTavern)): solo del texto coincidente que `$0`, `{{match}}` o `$1` vuelven a insertar. El texto que escribiste en **Replace With** y el resto del mensaje se conservan tal como están, y nada cambia donde el patrón no coincide.
+
+Los scripts importados desde SillyTavern usan **Matched text** (Texto coincidente). Los scripts importados antes de que existiera esta opción usaban **Whole result**; si alguno ahora elimina demasiado, impórtalo de nuevo o cámbialo a **Matched text**.
 
 ### Live Test
 

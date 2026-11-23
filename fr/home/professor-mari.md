@@ -265,6 +265,8 @@ Sous **Runtime** (environnement d'exécution), tu peux choisir **Pi (experimenta
 
 **Read the handbook before the first write** (lire le manuel avant la première écriture), également sous **Runtime**, est activé par défaut. Sa première modification dans un domaine couvert par une Skill intégrée est refusée tant qu'elle n'a pas lu cette Skill. Cela aide les petits modèles. Toi seul peux le désactiver.
 
+**Emplacement du contexte du tour**, sous **Environnement d'exécution**, définit où elle lit le contexte de chaque tour : l'heure actuelle, les chats joints, les liens @ et ses notes des tours précédents. Le choix par défaut, **Au-dessus des 2 derniers messages**, le place au-dessus de sa dernière réponse et de ton message : ta demande vient donc après, et elle risque moins de poursuivre une histoire qu'on lui a montrée. Avec **À la fin, après ton message**, elle le lit en dernier. Chaque cran vers le haut réduit un peu la part du chat réutilisée depuis le cache de prompt de ton fournisseur. Ses instructions restent toujours en premier et ne bougent pas.
+
 ### Ce qu'elle peut atteindre sur ton ordinateur
 
 Elle peut lire et modifier les propres fichiers de programme de Marinara et exécuter des commandes en bac à sable, pour pouvoir réparer l'application. La plupart des gens n'en ont jamais besoin.

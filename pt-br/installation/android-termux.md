@@ -57,7 +57,7 @@ Se você definiu outro `PORT`, use esse número. Para ter um ícone parecido com
 
 ## Iniciar e parar Marinara
 
-Com o aplicativo, abra-o e toque em **Install / Start Marinara** se o servidor estiver parado. Para alternar entre o aplicativo e o navegador, use **Open in browser** no inicializador e depois **Retry connection** (tentar conectar novamente). De dentro do aplicativo, volte ao inicializador por **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Configurações → Aparência → Layout → Abrir o inicializador Android: aplicativo ou navegador).
+Com o aplicativo, abra-o e toque em **Install / Start Marinara** se o servidor estiver parado. Para alternar entre o aplicativo e o navegador, use **Open in browser** no inicializador e depois **Retry connection** (tentar conectar novamente). De dentro do aplicativo (somente no aplicativo Android), volte ao inicializador por **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Configurações → Aparência → Layout → Abrir o inicializador Android: aplicativo ou navegador).
 
 Em uma instalação manual, abra o Termux e execute:
 
@@ -71,6 +71,17 @@ Para parar o servidor, pressione <kbd>Ctrl</kbd>+<kbd>C</kbd> no Termux.
 ## Atualizar Marinara
 
 Toda vez que você roda `./start-termux.sh`, o inicializador consulta o GitHub em busca de uma versão mais nova e atualiza antes de iniciar. Para iniciar sem atualizar, acrescente `--skip-update`. Em uma branch de testes, como a de teste da reformulação da interface, o inicializador acompanha essa branch no GitHub. Se a branch foi reescrita lá, a sua cópia passa para a nova versão por conta própria, desde que você não tenha feito commits próprios. Para mais opções e os passos de atualização do APK, veja [Atualizando Marinara Engine](../UPGRADING.md#android-termux).
+
+Para experimentar o teste da reformulação da interface: no Marinara, abra **Configurações → Avançado → Atualizações → Canal de versões → ui/kolacheee** e depois **Mudar para ui/kolacheee**. Ou, no Termux:
+
+```bash
+cd ~/Marinara-Engine
+git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
+git checkout -B ui/kolacheee origin/ui/kolacheee
+./start-termux.sh
+```
+
+O aplicativo Android (APK) sempre volta à sua versão de lançamento, então use a instalação pelo Termux para participar do teste.
 
 Durante as atualizações, o inicializador também remove pacotes sem uso do cache local do pnpm. Assim as versões antigas não ocupam vários gigabytes de armazenamento. Isso não mexe nos seus chats nem nas suas configurações.
 

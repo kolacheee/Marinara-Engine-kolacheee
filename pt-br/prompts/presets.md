@@ -127,6 +127,7 @@ Um **Prompt Block** é um texto que você escreve: instruções de sistema, regr
 | **Lorebook Marker (All)** | Todas as entradas de lorebook ativas. |
 | **Lorebook Marker (Before)** | As entradas de lorebook configuradas para ir antes. |
 | **Lorebook Marker (After)** | As entradas de lorebook configuradas para ir depois. |
+| **Recuperação de memórias** | As lembranças que a [Recuperação de memórias](../agents/memory.md) encontra para cada resposta. Sem este marcador, elas ficam logo antes do histórico do chat. |
 
 A linha de um marcador mostra o selo **MARKER**. Não é possível digitar na maioria dos marcadores. Use **Lorebook Marker (All)**, a menos que você queira dividir as entradas de lorebook entre antes e depois.
 
@@ -202,6 +203,12 @@ Abaixo do menu suspenso, um selo mostra de onde vem o prompt.
 A caixa de texto mostra o prompt em uso. Edite-a para criar uma cópia local deste chat. Se o seu texto for idêntico ao do preset ou ao padrão, Marinara o considera não personalizado. Enquanto existe uma edição personalizada, aparece um ícone de redefinir (dica **Reset to default prompt**).
 
 Os chats de Game acrescentam mais controles. **Estilo da história**, **Violência**, **Limites de conteúdo** e **Diretrizes de classificação** definem o que a história do jogo pode conter. Veja [Alterar durante um jogo](../game/getting-started.md#change-them-during-a-game). Mais dois controles moldam o prompt. **GM prompt style** (estilo de prompt do GM) substitui só o prompt de Game, e uma edição local do chat ainda prevalece. **Extra instructions** (instruções extras) acrescenta texto ao prompt de Game, até 2000 caracteres, como "Write in the style of Terry Pratchett."
+
+## Ordenar seções para o cache de prompts
+
+O cache de prompts permite que um serviço reutilize o início de um prompt que já leu, para que chats longos custem menos e respondam mais rápido. O serviço reutiliza o prompt só até o primeiro texto que mudou desde a última mensagem. As lembranças recuperadas mudam a quase toda mensagem, então, antes do histórico do chat, elas deixam o histórico inteiro fora do cache.
+
+Para posicioná-las você mesmo, adicione um marcador **Recuperação de memórias** ao preset. Arraste-o para baixo de **Histórico do chat** ou defina a **Posição** dele como **Profundidade (a partir do fim do chat)** para colocá-lo dentro do histórico. As lembranças lidas antes da história mantêm as respostas mais próximas delas, por isso a posição padrão continua sendo antes do histórico.
 
 ## Blocos de decisão e cache de prompts
 

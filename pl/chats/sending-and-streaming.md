@@ -7,9 +7,9 @@ Wpisz wiadomość, wyślij ją i patrz, jak pojawia się odpowiedź. Ten przewod
 Zanim zaczniesz: czat potrzebuje modelu. Zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md).
 
 1. Wpisz wiadomość na pasku wpisywania na dole czatu.
-2. Kliknij **Send** (wysłanie) albo naciśnij <kbd>Enter</kbd>, jeśli dla danego trybu czatu włączona jest opcja **Send on Enter** (wysyłanie klawiszem Enter).
+2. Kliknij **Send** (wysłanie). W trybie Roleplay naciśnij <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (na komputerze Mac <kbd>⌘</kbd>+<kbd>Enter</kbd>). W trybach Conversation i Game naciśnij <kbd>Enter</kbd>. Informują o tym też tekst zastępczy pola wiadomości i jednorazowa wskazówka.
 
-Pojawia się twoja wiadomość, a potem napływa odpowiedź. W jednym czacie naraz generuje się tylko jedna odpowiedź. Podczas streamingu odpowiedzi przycisk **Send** zmienia się w przycisk zatrzymania.
+Pojawia się twoja wiadomość, a potem odpowiedź pojawia się w trakcie pisania, w tempie ustawionym w opcji **Szybkość strumieniowania**. W jednym czacie naraz generuje się tylko jedna odpowiedź. Podczas streamingu odpowiedzi przycisk **Send** zmienia się w przycisk zatrzymania.
 
 Jeśli to nie zadziałało: gdy czat nie ma ustawionego modelu, odpowiedź od razu kończy się błędem z informacją, że nie skonfigurowano żadnego połączenia. Wybierz je w panelu **Chat Settings** (ustawienia czatu) – zobacz [Panel **Chat Settings** – przegląd](chat-settings.md).
 
@@ -19,7 +19,7 @@ Znajdziesz je w **Ustawienia → Czatowanie → Pole wiadomości**. Każdy tryb 
 
 | Tryb czatu | Domyślnie | Gdy wyłączone |
 | --- | --- | --- |
-| Roleplay | Wyłączone | <kbd>Enter</kbd> dodaje nową linię. Kliknij **Send**. |
+| Roleplay | Wyłączone | <kbd>Enter</kbd> dodaje nową linię; <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (na komputerze Mac <kbd>Cmd</kbd>+<kbd>Enter</kbd>) wysyła wiadomość, tak samo jak **Send**. |
 | Conversations | Włączone | Wiadomość wysyła <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (na komputerze Mac <kbd>Cmd</kbd>+<kbd>Enter</kbd>). |
 | Game | Włączone | Wiadomość wysyła <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (na komputerze Mac <kbd>Cmd</kbd>+<kbd>Enter</kbd>). |
 

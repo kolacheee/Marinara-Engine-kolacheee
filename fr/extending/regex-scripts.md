@@ -75,7 +75,7 @@ Le motif de recherche. N'écris que le motif, sans barre oblique au début ni à
 
 ### Replace With
 
-Le texte qui remplace chaque correspondance. Laisse-le vide pour supprimer la correspondance. Réutilise le texte capturé avec `$1`, `$2`, et ainsi de suite. Ces changements de casse fonctionnent devant une capture :
+Le texte qui remplace chaque correspondance. Laisse-le vide pour supprimer la correspondance. Réutilise le texte capturé avec `$1`, `$2`, et ainsi de suite. `$0`, `$&` et `{{match}}` réinsèrent la correspondance entière, comme dans SillyTavern. Ces changements de casse fonctionnent devant une capture :
 
 | Écris | Résultat |
 | --- | --- |
@@ -100,7 +100,14 @@ Des boutons à activer ou désactiver, qui changent la façon dont le motif trou
 
 ### Trim Strings
 
-Une liste facultative de chaînes simples retirées une fois le remplacement effectué. Clique sur **Add trim string** (ajouter une chaîne à retirer) pour ajouter une ligne, et sur le bouton **X** pour en enlever une. Sers-t'en pour un texte fixe plus simple à taper qu'à décrire par un motif.
+Une liste facultative de chaînes simples à retirer. Clique sur **Add trim string** (ajouter une chaîne à retirer) pour ajouter une ligne, et sur le bouton **X** pour en enlever une. Sers-t'en pour un texte fixe plus simple à taper qu'à décrire par un motif.
+
+Dès qu'un script a une chaîne à retirer, **Retirer de** détermine où les chaînes sont retirées :
+
+- **Résultat entier** : dans le message entier après le remplacement, même là où le motif ne correspond pas. C'est le choix initial des nouveaux scripts.
+- **Texte correspondant (comme dans SillyTavern)** : seulement dans le texte correspondant que `$0`, `{{match}}` ou `$1` réinsèrent. Le texte que tu as saisi dans **Remplacer par** et le reste du message restent tels quels, et rien ne change là où le motif ne correspond pas.
+
+Les scripts importés depuis SillyTavern utilisent **Texte correspondant**. Les scripts importés avant l'arrivée de cette option utilisaient **Résultat entier** ; si l'un d'eux retire maintenant trop de texte, importe-le à nouveau ou passe-le sur **Texte correspondant**.
 
 ### Live Test
 

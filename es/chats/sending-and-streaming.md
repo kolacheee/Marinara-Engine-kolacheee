@@ -7,9 +7,9 @@ Escribe un mensaje, envíalo y mira cómo aparece la respuesta. Esta guía cubre
 Antes de empezar: tu chat necesita un modelo. Consulta [Conectarte a un proveedor de IA](../connections/connecting-to-a-provider.md).
 
 1. Escribe en la barra de entrada de la parte inferior del chat.
-2. Haz clic en **Send** (Enviar), o pulsa <kbd>Enter</kbd> si **Send on Enter** (Enviar con Enter) está activado para ese modo de chat.
+2. Haz clic en **Send** (Enviar). En Roleplay, pulsa <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>⌘</kbd>+<kbd>Enter</kbd> en una Mac). En Conversation y Game, pulsa <kbd>Enter</kbd>. El marcador de posición del cuadro de mensaje y un consejo que se muestra una sola vez también lo indican.
 
-Tu mensaje aparece y luego la respuesta llega con streaming. Solo puede generarse una respuesta por chat a la vez. Mientras una respuesta está en streaming, **Send** se convierte en un botón de detener.
+Tu mensaje aparece y luego la respuesta aparece a medida que se escribe, al ritmo configurado en **Streaming speed** (Velocidad del streaming). Solo puede generarse una respuesta por chat a la vez. Mientras una respuesta está en streaming, **Send** se convierte en un botón de detener.
 
 Si no funcionó: si el chat no tiene ningún modelo configurado, la respuesta falla de inmediato con un mensaje que dice que no hay ninguna conexión configurada. Elige una en [Chat Settings](chat-settings.md).
 
@@ -19,7 +19,7 @@ Está en **Settings → Chatting → Message Box** (Configuración → Chateando
 
 | Modo de chat | Predeterminado | Cuando está desactivado |
 | --- | --- | --- |
-| Roleplay | Desactivado | <kbd>Enter</kbd> añade una línea nueva. Haz clic en **Send**. |
+| Roleplay | Desactivado | <kbd>Enter</kbd> añade una línea nueva; <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> en Mac) envía, al igual que **Send**. |
 | Conversations | Activado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> en Mac) envía. |
 | Game | Activado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> en Mac) envía. |
 

@@ -127,6 +127,7 @@ W zakładce **Sections** budujesz prompt. Sekcje składają się w całość od 
 | **Lorebook Marker (All)** | Wszystkie aktywne wpisy z lorebooków. |
 | **Lorebook Marker (Before)** | Wpisy z lorebooków ustawione na wstawianie przed. |
 | **Lorebook Marker (After)** | Wpisy z lorebooków ustawione na wstawianie po. |
+| **Przywoływanie pamięci** | Wspomnienia, które funkcja [Memory Recall](../agents/memory.md) znajduje dla każdej odpowiedzi. Bez tego znacznika trafiają tuż przed historię czatu. |
 
 Wiersz znacznika ma plakietkę **MARKER**. W większości znaczników nie da się nic wpisać. Używaj **Lorebook Marker (All)**, chyba że chcesz rozdzielić wpisy z lorebooków na te przed i te po.
 
@@ -202,6 +203,12 @@ Pod listą rozwijaną plakietka pokazuje, skąd pochodzi prompt.
 Pole tekstowe pokazuje prompt, który jest w użyciu. Edytuj je, żeby utworzyć lokalną kopię dla tego czatu. Jeśli twój tekst dokładnie odpowiada presetowi lub wartości domyślnej, Marinara traktuje go jako niezmieniony. Dopóki istnieje własna zmiana, widać ikonę resetowania (podpowiedź **Reset to default prompt**).
 
 Czaty Game mają więcej kontrolek. **Styl historii**, **Przemoc**, **Granice treści** i **Wytyczne kategorii wiekowej** określają, co może zawierać fabuła gry. Zobacz [Zmiana podczas gry](../game/getting-started.md#change-them-during-a-game). Dwie kolejne kontrolki kształtują prompt. **GM prompt style** (styl promptu mistrza gry) zastępuje tylko prompt trybu Game, a lokalna zmiana w czacie nadal ma pierwszeństwo. **Extra instructions** (dodatkowe instrukcje) dodaje tekst do promptu trybu Game, do 2000 znaków, na przykład "Write in the style of Terry Pratchett."
+
+## Kolejność sekcji a pamięć podręczna promptów
+
+Pamięć podręczna promptów pozwala usłudze ponownie wykorzystać początek promptu, który już przeczytała, dzięki czemu długie czaty kosztują mniej i szybciej otrzymują odpowiedzi. Usługa wykorzystuje prompt ponownie tylko do pierwszego tekstu, który zmienił się od ostatniej wiadomości. Przywołane wspomnienia zmieniają się przy prawie każdej wiadomości, więc umieszczone przed historią czatu wykluczają całą historię z pamięci podręcznej.
+
+Żeby samodzielnie wybrać ich miejsce, dodaj do presetu znacznik **Przywoływanie pamięci**. Przeciągnij go pod **Historia czatu** albo ustaw jego pole **Pozycja** na **Głębokość (od końca czatu)**, żeby umieścić go wewnątrz historii. Wspomnienia czytane przed opowieścią sprawiają, że odpowiedzi trzymają się ich bliżej, więc domyślnie pozostają przed historią.
 
 ## Bloki decyzyjne i pamięć podręczna promptu
 

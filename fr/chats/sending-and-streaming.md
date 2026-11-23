@@ -7,9 +7,9 @@ Saisis un message, envoie-le et regarde la réponse apparaître. Ce guide couvre
 Avant de commencer : ton chat a besoin d'un modèle. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
 
 1. Saisis ton texte dans la barre de saisie, en bas du chat.
-2. Clique sur **Send** (envoyer), ou appuie sur <kbd>Enter</kbd> si **Send on Enter** (envoyer avec Enter) est activé pour ce mode de chat.
+2. Clique sur **Envoyer**. En Roleplay, appuie sur <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>⌘</kbd>+<kbd>Enter</kbd> sur un Mac). En Conversation et en Game Mode, appuie sur <kbd>Enter</kbd>. Le texte indicatif de la zone de message et un conseil affiché une seule fois le précisent aussi.
 
-Ton message apparaît, puis la réponse arrive en streaming. Un chat ne peut générer qu'une réponse à la fois. Pendant le streaming d'une réponse, **Send** se change en bouton d'arrêt.
+Ton message apparaît, puis la réponse s'affiche au fil de son écriture, au rythme défini dans **Vitesse de streaming**. Un chat ne peut générer qu'une réponse à la fois. Pendant le streaming d'une réponse, **Send** se change en bouton d'arrêt.
 
 Si ça n'a pas marché : si aucun modèle n'est défini pour le chat, la réponse échoue aussitôt avec un message qui indique qu'aucune connexion n'est configurée. Choisis-en un dans [Chat Settings](chat-settings.md).
 
@@ -19,7 +19,7 @@ Ce réglage se trouve dans **Settings → Chatting → Message Box** (Paramètre
 
 | Mode de chat | Par défaut | Quand il est désactivé |
 | --- | --- | --- |
-| Roleplay | Désactivé | <kbd>Enter</kbd> ajoute une nouvelle ligne. Clique sur **Send**. |
+| Roleplay | Désactivé | <kbd>Enter</kbd> ajoute une nouvelle ligne ; <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> sur Mac) envoie le message, tout comme **Envoyer**. |
 | Conversations | Activé | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> sur Mac) envoie le message. |
 | Game | Activé | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> sur Mac) envoie le message. |
 

@@ -80,6 +80,8 @@ Memory Recall przywołuje tylko wiadomości, których prompt już nie zawiera. D
 
 Żeby przywoływanie mogło wybierać dowolne wcześniejsze wiadomości, włącz **Przywołuj z całego czatu** pod **Włącz przywoływanie pamięci**. Wspomnienia często powtarzają wtedy wiadomości, które prompt już zawiera. Powtórzenia kosztują tokeny, a ponieważ wspomnienia znajdują się przed historią czatu i zmieniają się co turę, pamięć podręczna promptów usługi nie może ponownie wykorzystać historii.
 
+Przywołane wspomnienia trafiają tuż przed historię czatu. Żeby samodzielnie wybrać ich miejsce, dodaj do presetu czatu znacznik **Przywoływanie pamięci**. Zobacz [Kolejność sekcji a pamięć podręczna promptów](../prompts/presets.md#order-sections-for-prompt-caching). W prompcie trybu Conversation umieszcza je makro `{{memories}}`.
+
 Podgląd na żywo w [Podglądzie promptu](../chats/peek-prompt.md) nie uruchamia Memory Recall. Przy włączonym przywoływaniu może pokazywać więcej historii, niż trafia do generowania odpowiedzi.
 
 ### Jak zachowuje się Memory Recall

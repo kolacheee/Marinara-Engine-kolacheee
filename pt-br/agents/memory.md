@@ -80,6 +80,8 @@ Memory Recall recupera apenas mensagens que já não estão no prompt. Enquanto 
 
 Para permitir que a recuperação escolha qualquer mensagem anterior, ative **Recuperar mensagens do chat inteiro** abaixo de **Enable Memory Recall**. As lembranças passam a repetir com frequência mensagens que já estão no prompt. As repetições custam tokens e, como as lembranças ficam antes do histórico do chat e mudam a cada turno, o cache de prompt do serviço não consegue reutilizar o histórico.
 
+As lembranças recuperadas ficam logo antes do histórico do chat. Para posicioná-las você mesmo, adicione um marcador **Recuperação de memórias** ao preset do chat. Veja [Ordenar seções para o cache de prompts](../prompts/presets.md#order-sections-for-prompt-caching). Em um prompt de Conversation, a macro `{{memories}}` as posiciona.
+
 A prévia ao vivo de [Espiar o prompt](../chats/peek-prompt.md) não executa o Memory Recall. Com a recuperação ativada, ela pode listar mais histórico do que uma resposta recebe.
 
 ### Como o Memory Recall se comporta

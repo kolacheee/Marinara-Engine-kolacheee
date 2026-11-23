@@ -1,6 +1,6 @@
 {
   "language": "ja",
-  "sourceCommit": "827ae36bd097c16cec4a737e0d25a07711050a0c",
+  "sourceCommit": "c5b62366788c093c87fbf329ae30e090ab6793f2",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -29,8 +29,8 @@
     },
     {
       "path": "UPGRADING.md",
-      "sha256": "8a4140ce4d6406b12b345a29217e1250d8a35199d28909a5ad64ac957df7e2ae",
-      "bytes": 24962
+      "sha256": "63e5eff99950a16901ecc8a8be45343e29953a0450dd2e3c32963246328236f1",
+      "bytes": 24975
     },
     {
       "path": "agents/agents-overview.md",
@@ -69,8 +69,8 @@
     },
     {
       "path": "agents/memory.md",
-      "sha256": "a4996b70ca9f10b0b48f39dde39d2a89f4ec5a8c90dd98430163c9079505e38c",
-      "bytes": 65997
+      "sha256": "3612ec7cae4b7ad08b9b10ec6d46a9809352256d66db2462c0bf15262adbb32d",
+      "bytes": 66440
     },
     {
       "path": "agents/noodle-settings.md",
@@ -214,13 +214,13 @@
     },
     {
       "path": "chats/peek-prompt.md",
-      "sha256": "e895e932f12f46c7356176285b75bf8a1913db2bd1c2e11541104058ec6613b5",
-      "bytes": 12370
+      "sha256": "8adc37d3c619912fb6ac5a347386891a7827b21a6ae33ca302945dd35d59d22b",
+      "bytes": 13104
     },
     {
       "path": "chats/sending-and-streaming.md",
-      "sha256": "a18791cbfce32b4147b10707a7340a99febdd68b301e17c15968b3d135136449",
-      "bytes": 10197
+      "sha256": "8a746ce156b37627e63de2a3f6e6f9dec0dcc4e22e88dc83eac8547593441d6b",
+      "bytes": 10501
     },
     {
       "path": "chats/settings-profiles.md",
@@ -324,13 +324,13 @@
     },
     {
       "path": "data/coming-from-sillytavern.md",
-      "sha256": "148be73f9e7d1fbb9db8256ebc875a4e387dc494e139a4efc18f479f5ae348cc",
-      "bytes": 8469
+      "sha256": "989eff603be092089ff51afc5dff02a93147e37dbb209a4f077a7746279fb705",
+      "bytes": 8812
     },
     {
       "path": "data/importing-from-sillytavern.md",
-      "sha256": "483063d32ce3c684139f0023ac2098982619501b7ce34189e5b259d4c365cbe5",
-      "bytes": 12176
+      "sha256": "e0ef27015ac3817e119bf278e7a8ded4eb3a94f06af58a66f6a7ed3c68ca4d1f",
+      "bytes": 15896
     },
     {
       "path": "data/where-data-is-stored.md",
@@ -449,8 +449,8 @@
     },
     {
       "path": "extending/regex-scripts.md",
-      "sha256": "4078f211622c4738b11c22fe9140ff7b751326d4dcef44332f65f9c5a4381ea0",
-      "bytes": 22267
+      "sha256": "e4a1f3425af1c3a1cc6962ce5171ca8cd425ed3434bc8589c318c8a34769896b",
+      "bytes": 23374
     },
     {
       "path": "extending/ruleset-catalogs.md",
@@ -584,8 +584,8 @@
     },
     {
       "path": "home/professor-mari.md",
-      "sha256": "fa857457b4a2f024c833f6c7490b2c4e05bed913eee2516f4302d13fca5bd100",
-      "bytes": 37415
+      "sha256": "07b85f9bcde57c160144bc31e039d3ca704e9c946a4b970417cb613bde7edc45",
+      "bytes": 38342
     },
     {
       "path": "home/tabs-and-drafts.md",
@@ -599,13 +599,13 @@
     },
     {
       "path": "home/welcome.md",
-      "sha256": "816f8a69d185485cbfd2df7c6e57447828663bab71e8539d9480df83dbc351f5",
-      "bytes": 15332
+      "sha256": "311e9edc7b2a9a593cee5474f5419634fe65abf0664d47d1763eead0d9ede957",
+      "bytes": 15295
     },
     {
       "path": "installation/android-termux.md",
-      "sha256": "098c040d63c697d6efcb48571954d940609b9ff69b0cfbcba8674dc7095931f3",
-      "bytes": 9380
+      "sha256": "0894c16884c8c25241a77802886ca8e6659a3eb92495aa62da34ff4fc20deb6b",
+      "bytes": 10101
     },
     {
       "path": "installation/containers.md",
@@ -744,8 +744,8 @@
     },
     {
       "path": "prompts/presets.md",
-      "sha256": "46938bfb9d0d44c8714f249882d058463e6c35ea6df3ae811369dbbb2fc7d0bf",
-      "bytes": 25716
+      "sha256": "30b3fae017b6f31abfc7a0c95363c4ea4b81dc5b55e748d319da28b73cb3fd62",
+      "bytes": 26905
     },
     {
       "path": "prompts/prompt-overrides.md",

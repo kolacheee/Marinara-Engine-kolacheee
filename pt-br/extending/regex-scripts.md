@@ -77,7 +77,7 @@ O padrão de busca. Escreva só o padrão, sem barra no começo nem no fim. O te
 
 ### Replace With
 
-O texto que substitui cada correspondência. Deixe vazio para excluir a correspondência. Reaproveite o texto capturado com `$1`, `$2` e assim por diante. Estas mudanças de caixa funcionam antes de uma captura:
+O texto que substitui cada correspondência. Deixe vazio para excluir a correspondência. Reaproveite o texto capturado com `$1`, `$2` e assim por diante. `$0`, `$&` e `{{match}}` reinserem a correspondência inteira, como no SillyTavern. Estas mudanças de caixa funcionam antes de uma captura:
 
 | Escreva | Resultado |
 | --- | --- |
@@ -102,7 +102,14 @@ Botões liga/desliga que mudam a forma como o padrão encontra o texto. Um scrip
 
 ### Trim Strings
 
-Uma lista opcional de textos simples removidos depois que a substituição roda. Clique em **Add trim string** (adicionar texto a remover) para incluir uma linha e no botão **X** para tirar uma. Use para um trecho fixo de texto que é mais fácil de digitar do que de encontrar com um padrão.
+Uma lista opcional de textos simples a remover. Clique em **Add trim string** (adicionar texto a remover) para incluir uma linha e no botão **X** para tirar uma. Use para um trecho fixo de texto que é mais fácil de digitar do que de encontrar com um padrão.
+
+Quando um script tem um texto a remover, **Remover de** define de onde os textos são removidos:
+
+- **Resultado inteiro**: da mensagem inteira depois da substituição, mesmo onde o padrão não encontra correspondência. Os scripts novos começam com esta opção.
+- **Texto encontrado (como no SillyTavern)**: apenas do texto encontrado que `$0`, `{{match}}` ou `$1` reinserem. O texto que você digitou em **Replace With** e o restante da mensagem ficam como estão, e nada muda onde o padrão não encontra correspondência.
+
+Os scripts importados do SillyTavern usam **Texto encontrado**. Os scripts importados antes de esta opção existir usavam **Resultado inteiro**; se um deles agora remove texto demais, importe-o de novo ou mude para **Texto encontrado**.
 
 ### Live Test
 

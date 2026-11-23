@@ -144,7 +144,7 @@ Marinara 可以向 GitHub 检查有没有新版本。部分安装方式还能直
 
 - **Latest Stable**：打了 `vX.Y.Z` 标签的正式发布版本，一般选这个。
 - **Staging/UAT**：预发布的测试版构建，可能还没做完。选中它会出现警告“Staging builds are pre-release tester builds. Back up your app data before applying them.”
-- **UI overhaul (playtest):**(界面改版，试玩) 面向试玩者、采用新版布局的 `ui/kolacheee` 分支。它跟随 staging。先备份应用数据：一旦它升级了数据，**Latest Stable** 可能要等到下次发布后才能读取。Git 安装（Windows、macOS、Linux 和 Termux）可以在这里切换到它。Docker 没有对应的镜像，所以容器里这个通道只会显示一条提示。
+- **ui/kolacheee (UI overhaul playtest):**(ui/kolacheee，界面改版试玩) 面向试玩者、采用新版布局的 `ui/kolacheee` 分支。它跟随 staging。先备份应用数据：一旦它升级了数据，**Latest Stable** 可能要等到下次发布后才能读取。Git 安装（Windows、macOS、Linux 和 Termux）可以在这里切换到它。Docker 没有对应的镜像，所以容器里这个通道只会显示一条提示。
 
 在服务器所在电脑的浏览器里选中另一个通道时，更新按钮会变成 **Switch to** 加通道名。即使普通的应用内更新已经关闭，它照样能用，运行期间显示 **Switching…**。远程设备只有满足下面 **Apply Update**(应用更新) 的条件，才能这样切换。
 

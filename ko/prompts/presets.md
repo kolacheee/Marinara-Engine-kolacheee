@@ -127,6 +127,7 @@
 | **Lorebook Marker (All)** | 활성 로어북 항목 전체. |
 | **Lorebook Marker (Before)** | 앞에 들어가도록 설정한 로어북 항목. |
 | **Lorebook Marker (After)** | 뒤에 들어가도록 설정한 로어북 항목. |
+| **Memory Recall**(기억 회상) | [Memory Recall](../agents/memory.md)이 답변마다 찾는 기억. 이 마커가 없으면 채팅 기록 바로 앞에 들어갑니다. |
 
 마커 행에는 **MARKER**(마커) 배지가 붙습니다. 대부분의 마커에는 직접 입력할 수 없습니다. 로어북 항목을 앞과 뒤로 나누려는 것이 아니라면 **Lorebook Marker (All)**을 쓰세요.
 
@@ -202,6 +203,12 @@
 텍스트 상자에는 사용 중인 프롬프트가 표시됩니다. 내용을 고치면 채팅 전용 사본이 만들어집니다. 입력한 글이 프리셋이나 기본값과 완전히 같으면 Marinara는 사용자 지정이 아닌 것으로 처리합니다. 사용자 지정 편집본이 있는 동안에는 툴팁이 **Reset to default prompt**(기본 프롬프트로 초기화)인 초기화 아이콘이 나타납니다.
 
 Game 채팅에는 컨트롤이 더 있습니다. **Story style**, **Violence**, **Content boundaries**, **Rating guidelines**(등급 지침)는 게임 이야기에 포함될 수 있는 내용을 정합니다. [게임 중에 바꾸기](../game/getting-started.md#change-them-during-a-game)를 참고하세요. 나머지 두 컨트롤은 프롬프트를 조정합니다. **GM prompt style**(GM 프롬프트 스타일)은 Game 프롬프트만 대체하며, 채팅 전용 편집본이 여전히 우선합니다. **Extra instructions**(추가 지침)는 Game 프롬프트에 글을 덧붙입니다. 길이는 2000자까지이며, "Write in the style of Terry Pratchett." 같은 지시를 넣을 수 있습니다.
+
+## 프롬프트 캐시를 위한 섹션 순서 정하기
+
+프롬프트 캐시를 사용하면 서비스가 이미 읽은 프롬프트의 앞부분을 재사용할 수 있어, 긴 채팅의 비용이 줄고 답변이 빨라집니다. 서비스는 지난 메시지 이후 처음으로 바뀐 텍스트 앞까지만 프롬프트를 재사용합니다. 회상된 기억은 거의 매 메시지마다 바뀌므로 채팅 기록 앞에 놓으면 기록 전체가 캐시에서 제외됩니다.
+
+위치를 직접 정하려면 프리셋에 **Memory Recall** 마커를 추가하세요. **Chat History** 아래로 끌어다 놓거나, **Position**을 **Depth (from end of chat)**로 설정해 기록 안에 배치하세요. 이야기보다 먼저 기억을 읽으면 답변이 그 기억을 더 잘 따르므로, 기본 위치는 기록 앞으로 유지됩니다.
 
 ## 판정 블록과 프롬프트 캐시
 

@@ -80,6 +80,8 @@ Memory Recall holt nur Nachrichten zurück, die nicht mehr im Prompt stehen. Sol
 
 Damit der Erinnerungsabruf jede frühere Nachricht auswählen kann, schalte **Erinnerungen aus dem ganzen Chat abrufen** unter **Memory Recall aktivieren** ein. Erinnerungen wiederholen dann oft Nachrichten, die bereits im Prompt stehen. Die Wiederholungen kosten Tokens. Weil die Erinnerungen vor dem Chatverlauf stehen und sich bei jedem Zug ändern, kann der Prompt-Cache des Dienstes den Verlauf nicht wiederverwenden.
 
+Abgerufene Erinnerungen stehen direkt vor dem Chatverlauf. Um ihre Position selbst festzulegen, füge dem Preset des Chats einen **Memory Recall**-Marker hinzu. Siehe [Abschnitte für den Prompt-Cache anordnen](../prompts/presets.md#order-sections-for-prompt-caching). In einem Conversation-Prompt legt das Makro `{{memories}}` ihre Position fest.
+
 Die Live-Vorschau in [Prompt ansehen](../chats/peek-prompt.md) führt Memory Recall nicht aus. Bei eingeschaltetem Erinnerungsabruf kann sie mehr Verlauf anzeigen, als eine Antwort erhält.
 
 ### Wie sich Memory Recall verhält

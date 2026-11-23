@@ -73,7 +73,7 @@ Wzorzec wyszukiwania. Wpisz sam wzorzec, bez ukośnika na początku ani na końc
 
 ### Pole **Replace With**
 
-Tekst, który zastępuje każde dopasowanie. Zostaw je puste, żeby usunąć dopasowanie. Przechwycony tekst wykorzystasz ponownie przez `$1`, `$2` i kolejne. Przed przechwyceniem działają takie zmiany wielkości liter:
+Tekst, który zastępuje każde dopasowanie. Zostaw je puste, żeby usunąć dopasowanie. Przechwycony tekst wykorzystasz ponownie przez `$1`, `$2` i kolejne. `$0`, `$&` i `{{match}}` wstawiają z powrotem całe dopasowanie, tak jak w aplikacji SillyTavern. Przed przechwyceniem działają takie zmiany wielkości liter:
 
 | Zapis | Wynik |
 | --- | --- |
@@ -98,7 +98,14 @@ Przyciski przełączające (flagi wyrażenia regularnego), które zmieniają spo
 
 ### Sekcja **Trim Strings**
 
-Opcjonalna lista zwykłych fragmentów tekstu (przycinanych ciągów), które są usuwane po wykonaniu zamiany. Kliknij **Add trim string** (dodanie przycinanego ciągu), żeby dodać wiersz, a przycisk **X**, żeby go usunąć. Użyj tego dla stałego fragmentu tekstu, który łatwiej wpisać, niż dopasować wzorcem.
+Opcjonalna lista zwykłych fragmentów tekstu (przycinanych ciągów) do usunięcia. Kliknij **Add trim string** (dodanie przycinanego ciągu), żeby dodać wiersz, a przycisk **X**, żeby go usunąć. Użyj tego dla stałego fragmentu tekstu, który łatwiej wpisać, niż dopasować wzorcem.
+
+Gdy skrypt ma choć jeden przycinany ciąg, opcja **Usuwaj z** określa, skąd są usuwane:
+
+- **Całego wyniku**: z całej wiadomości po zamianie, nawet tam, gdzie wzorzec nie pasuje. Nowe skrypty zaczynają z tym ustawieniem.
+- **Dopasowanego tekstu (jak w aplikacji SillyTavern)**: tylko z dopasowanego tekstu, który `$0`, `{{match}}` lub `$1` wstawiają z powrotem. Tekst wpisany w **Zastąp przez** i reszta wiadomości pozostają bez zmian, a tam, gdzie wzorzec nie pasuje, nic się nie zmienia.
+
+Skrypty importowane z aplikacji SillyTavern używają opcji **Dopasowanego tekstu**. Skrypty zaimportowane przed dodaniem tej opcji używały ustawienia **Całego wyniku**; jeśli któryś usuwa teraz zbyt wiele, zaimportuj go ponownie albo przełącz na **Dopasowanego tekstu**.
 
 ### Sekcja **Live Test**
 

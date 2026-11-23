@@ -144,7 +144,7 @@ Marinara kann bei GitHub nach einer neueren Version suchen. Manche Installatione
 
 - **Latest Stable:** getaggte `vX.Y.Z`-Releases. Das ist die übliche Wahl.
 - **Staging/UAT:** Vorab-Builds für Testende, die unfertig sein können. Bei dieser Wahl erscheint die Warnung „Staging builds are pre-release tester builds. Back up your app data before applying them.“
-- **UI overhaul (playtest):** der Branch `ui/kolacheee` mit dem neuen Layout für Playtester. Er folgt Staging. Erstelle zuerst ein Backup deiner App-Daten: Sobald er deine Daten aktualisiert hat, kann **Latest Stable** sie möglicherweise bis zum nächsten Release nicht mehr lesen. Git-Installationen (Windows, macOS, Linux und Termux) können hier zu diesem Kanal wechseln. Für Docker gibt es kein Image dafür, daher zeigt der Kanal in einem Container nur einen Hinweis.
+- **ui/kolacheee (UI overhaul playtest):** der Branch `ui/kolacheee` mit dem neuen Layout für Playtester. Er folgt Staging. Erstelle zuerst ein Backup deiner App-Daten: Sobald er deine Daten aktualisiert hat, kann **Latest Stable** sie möglicherweise bis zum nächsten Release nicht mehr lesen. Git-Installationen (Windows, macOS, Linux und Termux) können hier zu diesem Kanal wechseln. Für Docker gibt es kein Image dafür, daher zeigt der Kanal in einem Container nur einen Hinweis.
 
 Wählst du in einem Browser auf dem Rechner des Servers einen anderen Kanal, heißt die Update-Schaltfläche **Switch to**, gefolgt vom Kanalnamen. Sie funktioniert selbst dann, wenn gewöhnliche Updates in der App abgeschaltet sind, und zeigt **Switching…**, solange der Wechsel läuft. Entfernte Geräte können das nur, wenn sie die Bedingungen für **Apply Update** (Update einspielen) unten erfüllen.
 

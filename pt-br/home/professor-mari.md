@@ -265,6 +265,8 @@ Em **Runtime** (ambiente de execução), você pode escolher **Pi (experimental)
 
 **Read the handbook before the first write** (ler o guia antes da primeira alteração), também em **Runtime**, vem ativado por padrão. A primeira mudança dela em uma área com uma skill integrada é recusada até que ela leia essa skill. Isso ajuda modelos menores. Só você pode desligar essa opção.
 
+**Posição do contexto do turno**, abaixo de **Runtime**, define onde ela lê o contexto de cada turno: a hora atual, os chats anexados, os links com @ e as notas dela de turnos anteriores. O padrão, **Acima das últimas 2 mensagens**, coloca esse contexto acima da última resposta dela e da sua mensagem, para que o seu pedido venha depois dele e ela tenha menos chance de continuar uma história que lhe foi mostrada. Com **No fim, depois da sua mensagem**, ela o lê por último. A cada posição mais para trás, um pouco menos do chat é reutilizado do cache de prompts do provedor. As instruções dela sempre vêm primeiro e não mudam de lugar.
+
 ### O que ela alcança no seu computador
 
 Ela pode ler e alterar os próprios arquivos de programa do Marinara e rodar comandos em ambiente isolado, para conseguir consertar o aplicativo. Quase ninguém precisa disso.

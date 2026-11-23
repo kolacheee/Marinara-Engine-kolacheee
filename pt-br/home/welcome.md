@@ -7,15 +7,15 @@ Marinara Engine é um aplicativo para conversar e fazer roleplay com personagens
 Antes de começar: você precisa de uma chave de API (um código secreto, parecido com uma senha) de um serviço de IA, ou do **Built-in model** (modelo embutido) descrito abaixo.
 
 1. Instale Marinara Engine e abra o aplicativo no navegador. Escolha a sua plataforma em [Instalação do Marinara Engine](../INSTALLATION.md).
-2. Adicione uma conta. Uma conta é uma chave de API de um serviço de IA. Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md).
-3. Escolha os modelos que a conta deve usar. O mesmo guia mostra como.
+2. Adicione uma conexão: uma chave de API de um serviço de IA, ou o **Built-in model**. Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md).
+3. Escolha os modelos que a conexão deve usar. O mesmo guia mostra como.
 4. Crie ou importe um personagem. Abra **Library → Characters** (Biblioteca → Personagens; clique em **Library** no canto superior direito) e clique em **New character** (novo personagem), ou clique em **Import** para trazer um card de um arquivo. Veja [Criando e editando personagens](../characters/creating-and-editing-characters.md).
 5. Clique em **Conversation**, **Roleplay** ou **Game** na tela inicial. Ou abra os seus chats: clique em **Library** no canto superior direito, escolha **Chats** no topo da barra lateral, escolha a aba **Convo**, **Roleplay** ou **Game** e clique em **New**.
-6. Siga a janela de configuração que se abre e clique em **Create Chat** (criar chat).
+6. A página de configuração abre na nova aba. Escolha um personagem e a opção de **Conteúdo**, depois clique em **Iniciar roleplay** (ou **Começar a conversar** para um Conversation, **Criar mundo** para um Game).
 
 O que você vê: o chat novo se abre, e você pode escrever a sua primeira mensagem.
 
-Se você ainda não tiver nenhuma conta, a janela de adicionar conta abre antes e termina com **Start chatting** (começar a conversar). Se uma janela **Set Up** pedir que você escolha uma conta, escolha uma da lista e clique em **Create Chat**.
+Se você ainda não tiver nenhuma conexão, Marinara abre primeiro a janela de adicionar conexão.
 
 Marinara não inclui uma IA online. A maioria das pessoas se conecta a um serviço online. Você também pode baixar o **Built-in model**, um modelo pequeno que roda no seu computador sem chave de API. Ele serve para tarefas auxiliares leves, não para o seu chat principal. Veja [Como configurar o Built-in model](../connections/local-model.md).
 

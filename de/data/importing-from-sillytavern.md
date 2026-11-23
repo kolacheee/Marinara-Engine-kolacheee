@@ -12,12 +12,13 @@ Hol deine SillyTavern-Daten in Marinara Engine. Importiere jeweils eine Datei od
 | World Info | Lorebooks (Notizen, die die KI liest, wenn bestimmte Wörter vorkommen) |
 | Hintergründe | Chat-Hintergründe |
 | Personas | Personas (das Profil, das dich vertritt) |
+| Regex-Skripte | Regex-Skripte: die jeder Karte, die eines Presets und die globalen aus `settings.json` (Ordnerimport) |
 
 ## Schneller Import einzelner Dateien
 
 1. Öffne **Settings → Data → SillyTavern Import** (Einstellungen → Daten → SillyTavern-Import).
 2. Klick auf die Schaltfläche für deinen Dateityp.
-3. Wähle die Datei.
+3. Wähle die Datei. **Charakter importieren**, **Preset importieren** und **Lorebook importieren** öffnen dasselbe Fenster wie **Importieren** in der Bibliothek, mit denselben Optionen und demselben Bericht darüber, was übernommen wurde und was nicht.
 
 | Schaltfläche | Datei |
 | --- | --- |
@@ -26,15 +27,15 @@ Hol deine SillyTavern-Daten in Marinara Engine. Importiere jeweils eine Datei od
 | **Import Preset (JSON)** | Ein `.json`-Preset. |
 | **Import Lorebook (JSON)** | Eine `.json`-World-Info-Datei. |
 
-Über den Schaltflächen fügen **Tag imported** (als importiert markieren) und **Tag source** (Quelle markieren), die beide standardmäßig eingeschaltet sind, den importierten Elementen die Tags **Imported** und **ST** hinzu. Entferne bei einer der Optionen den Haken, wenn der entsprechende Tag nicht hinzugefügt werden soll. Namen und Beschreibungen der Importe bleiben erhalten. Ansonsten haben die Schaltflächen keine Optionen. Ein Charakterimport behält alle Tags der Quelle und beschränkt jedes Regex-Skript auf diesen Charakter. Ein Regex-Skript ist eine Suchen-und-Ersetzen-Regel für Text. Um diese Optionen selbst zu wählen, nimm **Import** auf der Seite **Library → Characters** (Bibliothek → Charaktere). Siehe [Charakterkarten importieren und exportieren](../characters/import-export.md).
+Über den Schaltflächen fügen **Tag imported** (als importiert markieren) und **Tag source** (Quelle markieren), die beide standardmäßig eingeschaltet sind, den importierten Elementen die Tags **Imported** und **ST** hinzu. Entferne bei einer der Optionen den Haken, wenn der entsprechende Tag nicht hinzugefügt werden soll. Das Fenster, das sich öffnet, übernimmt diese Auswahl. Namen und Beschreibungen der Importe bleiben erhalten. Ein Regex-Skript ist eine Suchen-und-Ersetzen-Regel für Text. Siehe [Charakterkarten importieren und exportieren](../characters/import-export.md).
 
-Enthält eine Charakterkarte ein Lorebook, fragt dein Browser, ob er es als eigenes Lorebook importieren soll. Klicke auf **OK**, um es als wiederverwendbares Lorebook zu behalten, oder auf **Cancel**, um nur den Charakter zu importieren.
+Enthält eine Charakterkarte ein Lorebook, fragt das Fenster „Charakter importieren“, was damit geschehen soll: **Lorebook importieren** behält es als wiederverwendbares Lorebook, **Ausgeblendet importieren** behält es mit dem Charakter verknüpft, zeigt es aber nicht in der Lorebook-Liste an, und **Skip lorebook** importiert nur den Charakter.
 
-**Import Chat (JSONL)** erstellt einen Roleplay-Chat, sofern die Datei keinen anderen Modus festhält, und öffnet ihn.
+**Import Chat (JSONL)** erstellt einen Roleplay-Chat, sofern die Datei keinen anderen Modus festhält, und öffnet ihn. Eine kurze Meldung zeigt, was übernommen wurde: die Autorennotizen, die Persona und Nachrichten, die für die KI ausgeblendet bleiben.
 
 ### Einen Chat in einen Modus deiner Wahl importieren
 
-Um den Modus zu wählen, nutze die Import-Schaltfläche oben in der Chatliste. Ihr Tooltip lautet **Import SillyTavern or Marinara chat JSONL**. Sie importiert in den Modus-Tab, den du gerade geöffnet hast (Conversation, Roleplay oder Game). Siehe [Chats exportieren und importieren](../chats/export-import.md).
+Um den Modus zu wählen, nutze die Import-Schaltfläche oben in der Chatliste. Ihr Tooltip lautet **Import SillyTavern or Marinara chat JSONL**. Im Fenster, das sich öffnet, legt **Öffnen als** für eine SillyTavern-Datei Roleplay oder Conversation fest. Ein Marinara-Export behält seinen eigenen Typ. Siehe [Chats exportieren und importieren](../chats/export-import.md).
 
 ## Einen SillyTavern-Ordner importieren
 
@@ -49,7 +50,9 @@ Bevor du anfängst: Der Assistent liest Dateien auf dem Server-Rechner. Liegt Si
 4. Klicke auf **Scan Folder**. Marinara zeigt, wie viele Elemente es in jeder Kategorie gefunden hat.
 5. Wähle unter **Choose exactly what to import** die gewünschten Elemente aus. Jede Kategorie hat die Schaltflächen **All** und **None** sowie einen Schalter **Show** oder **Hide** für die einzelnen Elemente.
 6. Klicke auf **Import Selected**. Ein Fortschrittsbalken zeigt das aktuelle Element und eine Zahl pro Kategorie.
-7. Sobald **Import abgeschlossen!** erscheint, lies die Anzahl je Kategorie und klick auf **Fertig**. Unter den Zahlen steht eine kurze Liste: wie viele Chats ihre Author's Note und Persona behalten haben, für welche SillyTavern-Benutzernamen hier keine Persona existierte und welche Preset-Einstellungen ausgelassen wurden.
+7. Sobald **Import abgeschlossen!** erscheint, lies die Anzahl je Kategorie und klick auf **Fertig**. Jede Zeile zeigt, wie viele Elemente importiert und wie viele übersprungen wurden, weil du sie schon hattest. Unter den Zahlen nennt **Nicht übernommen** die Inhalte des Ordners, für die es hier keine passende Funktion gibt. Eine kurze Liste zeigt, wie viele Chats ihre Autorennotizen und Persona behalten haben, für welche SillyTavern-Benutzernamen hier keine Persona existierte, wo Presets World Info einfügen und welche Preset-Einstellungen ausgelassen wurden.
+
+**Bereits Vorhandenes überspringen** (standardmäßig an) lässt Charaktere, Chats und Personas aus, die du schon hast – ob aus einem früheren Ordnerimport oder einzeln importiert. Eine SillyTavern-Persona mit demselben Namen wie eine deiner Personas wird nicht kopiert: Ihre Chats werden mit deiner verknüpft. Chats, die vor dieser Änderung einzeln importiert wurden, werden nicht erkannt und noch einmal importiert.
 
 Die meisten Elemente sind vorausgewählt. Die Standard-Presets von SillyTavern, etwa `deterministic`, `neutral` und die `universal-*`-Presets, lässt Marinara unmarkiert, und ein Banner weist darauf hin. Lass sie unmarkiert, solange du keine Kopien willst.
 
@@ -75,17 +78,20 @@ Wenn es nicht funktioniert hat:
 
 ## Was mit deinen Daten passiert
 
-- Chatdateien, die zu einem Charakter gehören, werden als Verzweigungen eines Chats importiert. Eine Verzweigung ist eine Kopie eines Chats, die du getrennt fortsetzt.
-- Gruppenchats werden als Roleplay-Chats importiert.
+- Chatdateien, die zu einem Charakter gehören, werden als Verzweigungen eines Chats importiert. Eine Verzweigung ist eine Kopie eines Chats, die du getrennt fortsetzt. Jeder Chat wird nach seiner SillyTavern-Datei benannt, wie beim Einzelimport. Heißt eine Datei noch „New Chat“, bekommt der Chat den Namen des Charakters.
+- Gruppenchats werden als Roleplay-Chats im Modus **Einzeln** importiert, sodass jeder Charakter der Reihe nach antwortet, in SillyTaverns Sprechreihenfolge.
+- Nachrichten, die in SillyTavern für die KI ausgeblendet waren, bleiben ausgeblendet.
 - Importierte Einträge behalten das Datum der letzten Änderung der Quelldatei, nicht das Importdatum. Jede Chat-Nachricht behält das Datum, mit dem SillyTavern sie gespeichert hat.
 - Die **Author's Note** eines Chats wird samt ihrer Tiefe übernommen. Hatte SillyTavern dafür eine andere Häufigkeit, Position oder Rolle, fügt Marinara sie trotzdem bei jeder Antwort in dieser Tiefe ein und weist beim Import darauf hin. Eine in SillyTavern ausgeschaltete Notiz bleibt aus.
 - Ein Chat wird mit der Persona verknüpft, die SillyTavern verwendet hat: mit der fest zugewiesenen Persona, sonst mit der Persona, die genauso heißt wie der Benutzer des Chats. Importiere Personas im selben Durchlauf oder lege vorher eine mit diesem Namen an. Gibt es keine passende, bleibt der Chat ohne Persona, und der Import nennt die fehlende Persona.
+- Ein Preset behält SillyTaverns zwei Positionen für World Info. **World Info (vorher)** und **World Info (nachher)** werden zu eigenen Abschnitten, sodass Einträge, die nach dem Charakter stehen sollen, weiterhin danach kommen. Schaltet ein Preset eine der beiden Positionen aus, lässt es diese Einträge aus, wie SillyTavern. Ein Preset mit nur einer World-Info-Position erhält einen **World Info**-Abschnitt, der beide sendet. Ein vor dieser Änderung importiertes Preset hat einen **World Info**-Abschnitt. Um das zu korrigieren, importiere es erneut oder füge unter **Prompt-Reihenfolge** die Marker **Lorebook Marker (Before)** und **Lorebook Marker (After)** an den gewünschten Stellen ein und entferne den alten **World Info**-Abschnitt.
+- World-Info-Einträge, die in SillyTavern vor oder nach den Autorennotizen stehen, werden als Systemnachrichten in Tiefe 4 eingefügt, wo die Autorennotizen stehen (Einträge nach der Notiz folgen direkt auf die Einträge davor). Einträge, die vor oder nach den Beispielnachrichten stehen, werden nach den Charakterdefinitionen eingefügt. Der Import zeigt, wie viele verschoben wurden.
 - Ein Preset bringt seine Sampler-Einstellungen mit: Temperatur, Top P, Top K, Min P, Frequency und Presence Penalty sowie Reasoning Effort. Sie sind die Anfangswerte für Chats, die dieses Preset verwenden; eigene Werte der Verbindung oder des Chats haben weiterhin Vorrang. Maximale Antwortlänge und Kontextgröße bleiben bei deiner Verbindung. Für Top A und Repetition Penalty gibt es hier keine Einstellung; sie werden ausgelassen.
 - Charaktere, Personas, Lorebooks, Presets und Chats erhalten die Tags **Imported** und **ST**, sofern du nicht bei **Tag imported** oder **Tag source** oberhalb von **Import Selected** den Haken entfernst. Ihre Namen und Beschreibungen bleiben unverändert.
 
 ## Was sich nicht übernehmen lässt
 
-Der Assistent liest nur die Kategorien aus der ersten Tabelle. Andere SillyTavern-Daten wie globale App-Einstellungen, Schnellantworten, Instruct- und Kontextvorlagen sowie Verbindungsprofile werden nicht importiert. Vor dieser Korrektur importierte Chats erhielten den Importzeitpunkt als Nachrichtendatum. Um das bei einem Chat zu korrigieren, lösche ihn und importiere seine Datei erneut (entferne bei einem Ordnerimport das Häkchen bei **Bereits Vorhandenes überspringen**).
+Der Assistent liest nur die Kategorien aus der ersten Tabelle. Andere SillyTavern-Daten wie globale App-Einstellungen und Verbindungsprofile werden nicht importiert. Die Liste **Nicht übernommen** im Ergebnis des Ordnerimports zählt die gefundenen Inhalte ohne passende Funktion hier auf: Schnellantwort-Sets, Instruct-Vorlagen, Kontextvorlagen und System-Prompts. Vor dieser Korrektur importierte Chats erhielten den Importzeitpunkt als Nachrichtendatum. Um das bei einem Chat zu korrigieren, lösche ihn und importiere seine Datei erneut (entferne bei einem Ordnerimport das Häkchen bei **Bereits Vorhandenes überspringen**).
 
 ## Verwandte Anleitungen
 

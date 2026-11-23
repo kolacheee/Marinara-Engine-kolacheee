@@ -7,9 +7,9 @@
 开始之前：你的聊天需要一个模型。见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。
 
 1. 在聊天底部的输入栏里打字。
-2. 点击 **Send**(发送)；如果这个聊天模式开启了 **Send on Enter**(按 Enter 发送)，也可以按 <kbd>Enter</kbd>。
+2. 点击 **Send**(发送)。在 Roleplay 中，按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac 上是 <kbd>⌘</kbd>+<kbd>Enter</kbd>)。在 Conversation 和 Game 中，按 <kbd>Enter</kbd>。消息框的占位文字和一次性提示也会说明这些按键。
 
-你的消息会先出现，接着回复以流式输出的方式逐步显示。同一个聊天同时只能生成一条回复。回复流式输出期间，**Send** 会变成停止按钮。
+你的消息会先出现，接着回复会边写边显示，速度由 **Streaming speed**(流式输出速度) 设置。同一个聊天同时只能生成一条回复。回复流式输出期间，**Send** 会变成停止按钮。
 
 如果没有成功：聊天没有设置模型时，回复会立刻失败，并提示没有配置连接。在[聊天设置](chat-settings.md)里选一个。
 
@@ -19,7 +19,7 @@
 
 | 聊天模式 | 默认 | 关闭时 |
 | --- | --- | --- |
-| Roleplay | 关闭 | 按 <kbd>Enter</kbd> 会换行，需要点击 **Send** 发送。 |
+| Roleplay | 关闭 | 按 <kbd>Enter</kbd> 会换行；按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac 上是 <kbd>Cmd</kbd>+<kbd>Enter</kbd>) 或点击 **Send** 发送。 |
 | Conversations | 开启 | 按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac 上是 <kbd>Cmd</kbd>+<kbd>Enter</kbd>) 发送。 |
 | Game | 开启 | 按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac 上是 <kbd>Cmd</kbd>+<kbd>Enter</kbd>) 发送。 |
 

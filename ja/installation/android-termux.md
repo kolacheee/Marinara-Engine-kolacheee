@@ -57,7 +57,7 @@ http://127.0.0.1:7860
 
 ## Marinaraの起動と停止
 
-アプリを使っている場合は、アプリを開き、サーバーが停止していれば**Install / Start Marinara**(Marinaraのインストール/起動)をタップします。アプリとブラウザーを切り替えるには、ランチャーの**Open in browser**(ブラウザーで開く)を使ってから、**Retry connection**(接続を再試行)を使います。アプリ内からは、**Settings → Appearance → Layout → Open Android launcher (app or browser)**(設定 → 外観 → レイアウト → Androidランチャーを開く(アプリまたはブラウザー))でランチャーに戻れます。
+アプリを使っている場合は、アプリを開き、サーバーが停止していれば**Install / Start Marinara**(Marinaraのインストール/起動)をタップします。アプリとブラウザーを切り替えるには、ランチャーの**Open in browser**(ブラウザーで開く)を使ってから、**Retry connection**(接続を再試行)を使います。アプリ内からは(Androidアプリのみ)、**Settings → Appearance → Layout → Open Android launcher (app or browser)**(設定 → 外観 → レイアウト → Androidランチャーを開く(アプリまたはブラウザー))でランチャーに戻れます。
 
 手動でインストールした場合は、Termuxを開いて次を実行します。
 
@@ -71,6 +71,17 @@ cd Marinara-Engine
 ## Marinaraのアップデート
 
 `./start-termux.sh`を実行するたびに、起動スクリプトはGitHubで新しいバージョンを確認し、アップデートしてから起動します。アップデートせずに起動するには、`--skip-update`を付けます。UI刷新のプレイテストなどのテスト用ブランチでは、ランチャーはGitHub上のそのブランチに追従します。GitHub側でブランチが書き換えられた場合、自分でコミットを作っていなければ、手元のコピーも自動的に新しいバージョンに移ります。そのほかのオプションとAPKのアップデート手順は、[Marinara Engineのアップデート](../UPGRADING.md#android-termux)を参照してください。
+
+UI刷新のプレイテストを試すには、Marinaraで**Settings → Advanced → Updates → Release Channel → ui/kolacheee**(設定 → 詳細設定 → アップデート → リリースチャンネル → ui/kolacheee)を開き、**Switch to ui/kolacheee**(ui/kolacheeeに切り替え)を選びます。Termuxでは、次を実行することもできます。
+
+```bash
+cd ~/Marinara-Engine
+git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
+git checkout -B ui/kolacheee origin/ui/kolacheee
+./start-termux.sh
+```
+
+Androidアプリ(APK)は常にリリース版に戻るため、プレイテストにはTermuxでのインストールを使ってください。
 
 起動スクリプトは、アップデートのときにローカルのpnpmキャッシュから使われていないパッケージも削除します。これで、古いリリースがストレージを数ギガバイトも埋めてしまうのを防ぎます。チャットや設定には影響しません。
 
