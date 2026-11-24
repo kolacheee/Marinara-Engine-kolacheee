@@ -52,6 +52,8 @@ import type {
   WorldInterior,
   WorldTown,
   WorldTownVisit,
+  WorldTownHd2dSpot,
+  WorldTownHd2dBrief,
   WorldSeason,
   WorldWalk,
   GameLightHold,
@@ -1127,7 +1129,9 @@ export function useTownInterior(chatId: string, buildingId: string | null) {
 export function useTownVisit() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (data: { chatId: string; to: string }) =>
+    // HD-2D towns (fork): `walked` (3D town cells since the last visit) and, for a building the world never
+    // named (to "spot"), its words.
+    mutationFn: (data: { chatId: string; to: string; label?: string; walked?: number }) =>
       api.post<{
         visit: WorldTownVisit;
         at: string;
@@ -1135,7 +1139,11 @@ export function useTownVisit() {
         path?: Array<{ x: number; y: number }>;
         minutes: number;
         formatted: string;
-      }>(`/game/${data.chatId}/town/visit`, { to: data.to }),
+      }>(`/game/${data.chatId}/town/visit`, {
+        to: data.to,
+        ...(data.label ? { label: data.label } : {}),
+        ...(data.walked !== undefined ? { walked: data.walked } : {}),
+      }),
     // The party is where it walked at once, so the town never shows it back where it set out.
     onSuccess: (res, variables) => {
       qc.setQueriesData<{ town: TownState | null }>({ queryKey: gameKeys.town(variables.chatId) }, (old) =>
@@ -1146,6 +1154,17 @@ export function useTownVisit() {
       qc.invalidateQueries({ queryKey: gameKeys.town(variables.chatId) });
       qc.invalidateQueries({ queryKey: chatKeys.detail(variables.chatId) });
     },
+  });
+}
+
+/** HD-2D towns (fork): where the party stands in the 3D town, and the town's layout for the Game Master. */
+export function useTownHd2dSave() {
+  return useMutation({
+    mutationFn: (data: { chatId: string; spot?: WorldTownHd2dSpot; brief?: WorldTownHd2dBrief }) =>
+      api.post<{ ok: true }>(`/game/${data.chatId}/town/hd2d`, {
+        ...(data.spot ? { spot: data.spot } : {}),
+        ...(data.brief ? { brief: data.brief } : {}),
+      }),
   });
 }
 

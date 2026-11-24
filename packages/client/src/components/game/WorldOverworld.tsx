@@ -87,6 +87,7 @@ import {
 } from "../../lib/overworld-paint";
 import { cn } from "../../lib/utils";
 import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
+import { useHd2dPrebuild } from "../../hooks/use-hd2d-prebuild";
 
 /** How much larger an image pack's settlement marker is drawn, by the place's tier (hamlet to city). */
 const MARKER_GROWTH = [1.25, 1.75, 2.25, 3] as const;
@@ -190,6 +191,8 @@ export function WorldOverworld({
   const byId = useMemo(() => new Map(world.places.map((place) => [place.id, place])), [world]);
   const top = Math.max(1, kit.sizes.length - 1);
   const here = overworld?.here ?? null;
+  // HD-2D towns (fork): the cities near the party made ahead, so entering one is quick.
+  useHd2dPrebuild(game, here, overworld?.walk?.to ?? null);
   const ruined = useMemo(() => new Set(overworld?.ruined ?? []), [overworld?.ruined]);
   const scale = Math.max(2, Math.min(4, Math.floor(Math.min(size.width / 400, size.height / 260))));
   // The world's sites (a cave, a mine, a ruin out in the world), gone to and into as settlements are.

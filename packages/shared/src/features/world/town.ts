@@ -782,6 +782,8 @@ export const worldTownVisitSchema = z
       .array(z.object({ x: z.number().int().min(0).max(255), y: z.number().int().min(0).max(255) }).strict())
       .max(WORLD_WALK_STEPS_MAX)
       .optional(),
+    /** HD-2D towns (fork): a visit to a building the world never named ("spot"), in the client's words. */
+    label: z.string().min(1).max(120).optional(),
   })
   .strict();
 export type WorldTownVisit = z.infer<typeof worldTownVisitSchema>;
@@ -914,6 +916,11 @@ export function worldTownPeopleAt(town: WorldTown, at: string, hour: number): Wo
   return town.people.filter((person) => worldTownWhere(town, person.id, hour) === at);
 }
 
+/** HD-2D towns (fork): a visit to a building the world never named, told by the client's words. */
+export const WORLD_TOWN_SPOT = "spot";
+/** HD-2D town cells walked in a game minute (a 3D town cell is smaller than a 2D town's). */
+export const WORLD_TOWN_HD2D_CELLS_PER_MINUTE = 16;
+
 /** What the Game Master is told of a spot in words: a named place, a trade's workplace, the seat of
  *  the place's keepers, a home (and whose), or the square. */
 function spotWords(town: WorldTown, at: string): string {
@@ -943,7 +950,7 @@ export function worldTownVisitText(
     .filter((person) => person.named)
     .slice(0, 6)
     .map((person) => `${person.name} (${person.role})`);
-  return `In ${settlement?.name ?? "town"}, the party has walked to ${spotWords(town, visit.to)}.${
+  return `In ${settlement?.name ?? "town"}, the party has walked to ${visit.to === WORLD_TOWN_SPOT && visit.label ? visit.label : spotWords(town, visit.to)}.${
     inside ? ` ${inside}` : ""
   }${there.length ? ` There now: ${there.join(", ")}.` : ""} That time is counted already: tell what the party finds there.`;
 }

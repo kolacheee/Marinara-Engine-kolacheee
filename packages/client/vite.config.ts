@@ -277,6 +277,10 @@ export default defineConfig({
               "**/{pngtuber,mesh-avatar,vrm}-renderer-*.js",
               "**/vendor-three*.js",
               "**/vendor-mesh-avatar*.js",
+              // HD-2D towns (fork): their textures and code load when a town opens.
+              "hd2d/**",
+              "**/town-scene-*.js",
+              "**/town-index-*.js",
             ],
             navigateFallbackAllowlist: [],
             runtimeCaching: [

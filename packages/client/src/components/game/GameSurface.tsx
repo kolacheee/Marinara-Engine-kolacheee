@@ -259,6 +259,7 @@ import type {
   GenerateSpatialMapDraftResponse,
   PendingSpatialTransition,
 } from "@marinara-engine/shared";
+import { worldTownHd2d, worldTownHd2dSpotsFromMetadata } from "@marinara-engine/shared";
 import type { AvatarCrop, CombatIconChoice, Persona, SceneSegmentEffect } from "@marinara-engine/shared";
 import { GAME_LIGHT_HOURS, normalizeWeatherType, type GameLightHold } from "@marinara-engine/shared";
 import {
@@ -1693,6 +1694,11 @@ const DungeonMapView = lazy(async () => {
 const TownView = lazy(async () => {
   const module = await import("./TownView");
   return { default: module.TownView };
+});
+// HD-2D towns (fork): a fantasy game's settlements open as walkable 3D towns.
+const Hd2dTownView = lazy(async () => {
+  const module = await import("./Hd2dTownView");
+  return { default: module.Hd2dTownView };
 });
 
 const GameSessionReplay = lazy(async () => {
@@ -14142,7 +14148,19 @@ function GameSurfaceComponent({
                       };
                       return (
                         <Suspense fallback={null}>
-                          {townShown ? (
+                          {townShown && worldTownHd2d(gameWorld) ? (
+                            <Hd2dTownView
+                              chatId={view.chatId}
+                              game={view.game}
+                              turnKey={view.turnKey}
+                              time={view.time}
+                              clockRunning={view.clockRunning}
+                              canWalk={view.canWalk}
+                              handleRef={view.handleRef}
+                              spots={worldTownHd2dSpotsFromMetadata(chatMeta)}
+                              onLeave={() => setWorldView("overworld")}
+                            />
+                          ) : townShown ? (
                             <TownView {...view} onLeave={() => setWorldView("overworld")} />
                           ) : (
                             <WorldOverworld {...view} onEnterTown={() => setWorldView("town")} />
@@ -15328,32 +15346,32 @@ function GameSurfaceComponent({
         {/* The top controls are windows that minimize to bubbles in a row at the top right (below the tactical
           combat bar while it shows, as the old buttons moved down). */}
         {overhaulActive && ovGameSettingsSlot && createPortal(renderOvGameSettings(), ovGameSettingsSlot)}
-      {/* The new layout has no game controls window, and switching between the map and the scene is
+        {/* The new layout has no game controls window, and switching between the map and the scene is
           something a player does all game long: keep the switch on the surface, not only in Chat settings. */}
-      {overhaulActive && !introCinematicActive && !replayActive && (dungeonMapOpen || gameWorld) && (
-        <div className="pointer-events-auto absolute left-3 top-3 z-[30] flex gap-1.5" data-ov-view-switch>
-          {dungeonMapOpen && (
-            <button
-              type="button"
-              onClick={handleToggleDungeonView}
-              className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
-            >
-              {dungeonShown ? <Film size={13} /> : <MapIcon size={13} />}
-              {dungeonShown ? t("game.dungeon.showScene") : t("game.dungeon.show")}
-            </button>
-          )}
-          {gameWorld && !dungeonShown && (
-            <button
-              type="button"
-              onClick={handleToggleWorldView}
-              className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
-            >
-              {overworldShown ? <Film size={13} /> : <MapIcon size={13} />}
-              {overworldShown ? t("game.overworld.showScene") : t("game.overworld.show")}
-            </button>
-          )}
-        </div>
-      )}
+        {overhaulActive && !introCinematicActive && !replayActive && (dungeonMapOpen || gameWorld) && (
+          <div className="pointer-events-auto absolute left-3 top-3 z-[30] flex gap-1.5" data-ov-view-switch>
+            {dungeonMapOpen && (
+              <button
+                type="button"
+                onClick={handleToggleDungeonView}
+                className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
+              >
+                {dungeonShown ? <Film size={13} /> : <MapIcon size={13} />}
+                {dungeonShown ? t("game.dungeon.showScene") : t("game.dungeon.show")}
+              </button>
+            )}
+            {gameWorld && !dungeonShown && (
+              <button
+                type="button"
+                onClick={handleToggleWorldView}
+                className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
+              >
+                {overworldShown ? <Film size={13} /> : <MapIcon size={13} />}
+                {overworldShown ? t("game.overworld.showScene") : t("game.overworld.show")}
+              </button>
+            )}
+          </div>
+        )}
         {!introCinematicActive && !replayActive && !boardFightOnScreen && (
           <>
             {!overhaulActive && (

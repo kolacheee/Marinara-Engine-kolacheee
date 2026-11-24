@@ -356,6 +356,12 @@ import {
   WORLD_WALK_STEPS_MAX,
   worldTownSpotFromMetadata,
   worldTownVisitFromMetadata,
+  WORLD_TOWN_SPOT,
+  WORLD_TOWN_HD2D_CELLS_PER_MINUTE,
+  worldTownHd2dSpotSchema,
+  worldTownHd2dBriefSchema,
+  worldTownHd2dSpotsWith,
+  worldTownHd2dSpotsFromMetadata,
   dungeonSetFor,
   dungeonSetForPlace,
   gameDungeonMapFromPlaceMap,
@@ -11848,7 +11854,15 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
   // stands kept, and the visit kept for the next turn to tell the Game Master.
   app.post<{ Params: { chatId: string } }>("/:chatId/town/visit", async (req, reply) => {
     const { chatId } = req.params;
-    const { to } = z.object({ to: z.string().min(1).max(16) }).parse(req.body);
+    // HD-2D towns (fork): the client tells how far the party walked (3D town cells) and, for a building the
+    // world never named, the words for it.
+    const { to, label, walked } = z
+      .object({
+        to: z.string().min(1).max(16),
+        label: z.string().trim().min(1).max(120).optional(),
+        walked: z.number().min(0).max(20000).optional(),
+      })
+      .parse(req.body);
     const chats = createChatsStorage(app.db);
     const chat = await chats.getById(chatId);
     if (!chat) return reply.status(404).send({ error: "Chat not found" });
@@ -11856,10 +11870,18 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
     const found = world ? await townOf(chatId, meta, world) : null;
     if (!found) return reply.status(400).send({ error: "The party is not in a town." });
-    if (!worldTownDoor(found.town, to)) return reply.status(400).send({ error: "No such place in this town." });
-    if (to === found.at) return reply.status(400).send({ error: "The party is already there." });
-    const path = worldTownPath(found.town, found.at, to) ?? [];
-    const minutes = worldTownMinutes(found.town, found.at, to);
+    const spot = to === WORLD_TOWN_SPOT;
+    if (spot && !label) return reply.status(400).send({ error: "A spot needs its words." });
+    if (!spot && !worldTownDoor(found.town, to))
+      return reply.status(400).send({ error: "No such place in this town." });
+    if (to === found.at && walked === undefined)
+      return reply.status(400).send({ error: "The party is already there." });
+    // A walk in the 3D town is not on the 2D town's grid: its minutes are the cells the client walked.
+    const path = walked === undefined ? (worldTownPath(found.town, found.at, to) ?? []) : [];
+    const minutes =
+      walked === undefined
+        ? worldTownMinutes(found.town, found.at, to)
+        : Math.max(1, Math.round(walked / WORLD_TOWN_HD2D_CELLS_PER_MINUTE));
     let visit: WorldTownVisit | undefined;
     let time: GameTime | undefined;
     const updated = await chats.patchMetadata(chatId, (fresh) => {
@@ -11878,9 +11900,15 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         minutes: (found.visit?.minutes ?? 0) + minutes,
         // Every cell walked since the last turn told, for the story's step events (map events).
         steps: [...(found.visit?.steps ?? []), ...path].slice(-WORLD_WALK_STEPS_MAX),
+        ...(spot ? { label } : {}),
       };
       time = addMinutes((fresh.gameTime as GameTime) ?? createInitialTime(), minutes);
-      return { gameTownVisit: visit, gameTownSpot: { settlementId: found.town.settlementId, at: to }, gameTime: time };
+      return {
+        gameTownVisit: visit,
+        // A spot is no door of the 2D town: the party is still where it last stood there.
+        gameTownSpot: { settlementId: found.town.settlementId, at: spot ? found.at : to },
+        gameTime: time,
+      };
     });
     if (!updated || !visit || !time) return reply.status(404).send({ error: "Chat not found" });
     await updateLatestGameStateWithTrackerLocks(createGameStateStorage(app.db), chatId, {
@@ -11888,6 +11916,26 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     });
     await passGameInventoryTime(app.db, chatId, minutes);
     return { visit, at: to, path, minutes, time, formatted: formatGameTime(time) };
+  });
+
+  // ── POST /game/:chatId/town/hd2d (fork) ──
+  // The 3D town the party is in: where in it the party stands (kept for the next visit and a reload) and
+  // the town's own streets, quarters and landmarks for the Game Master, as the client laid them out.
+  app.post<{ Params: { chatId: string } }>("/:chatId/town/hd2d", async (req, reply) => {
+    const { chatId } = req.params;
+    const body = z
+      .object({ spot: worldTownHd2dSpotSchema.optional(), brief: worldTownHd2dBriefSchema.optional() })
+      .strict()
+      .parse(req.body);
+    const chats = createChatsStorage(app.db);
+    const updated = await chats.patchMetadata(chatId, (fresh) => ({
+      ...(body.spot
+        ? { gameTownHd2dSpots: worldTownHd2dSpotsWith(worldTownHd2dSpotsFromMetadata(fresh), body.spot) }
+        : {}),
+      ...(body.brief ? { gameTownHd2dBrief: body.brief } : {}),
+    }));
+    if (!updated) return reply.status(404).send({ error: "Chat not found" });
+    return { ok: true };
   });
 
   // ── Dungeon, cave and station maps ──

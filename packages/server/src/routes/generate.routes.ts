@@ -312,6 +312,9 @@ import {
   type WorldWalk,
   worldTown,
   worldTownVisitFromMetadata,
+  worldTownHd2dBriefFromMetadata,
+  worldTownHd2dBriefText,
+  worldTownHd2dSpotsFromMetadata,
   worldTownVisitSchema,
   worldTownVisitTags,
   worldTownVisitText,
@@ -5729,8 +5732,19 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                   visit && visitTown
                     ? `${worldTownVisitText(promptWorld, visitTown, visit, turnHour, visitInside ? worldInteriorWords(visitInside, worldKitArtFamily(promptWorld.kit)) : undefined)}\n`
                     : "";
+                // HD-2D towns (fork): the town's own streets, quarters and landmarks, while the party walks it.
+                const hd2dBrief = worldTownHd2dBriefFromMetadata(chatMeta);
+                const hd2dPlace =
+                  hd2dBrief &&
+                  chatMeta.gameWorldView === "town" &&
+                  worldTownHd2dSpotsFromMetadata(chatMeta)[0]?.settlementId === hd2dBrief.settlementId
+                    ? promptWorld.world.places.find((place) => place.id === hd2dBrief.settlementId)
+                    : undefined;
+                const layoutLine =
+                  hd2dBrief && hd2dPlace ? `${worldTownHd2dBriefText(hd2dBrief, hd2dPlace.name)}\n` : "";
                 const walked =
-                  walk && visit && visit.settlementId !== walk.to ? visitLine + walkLine : walkLine + visitLine;
+                  layoutLine +
+                  (walk && visit && visit.settlementId !== walk.to ? visitLine + walkLine : walkLine + visitLine);
                 if (!before?.name) {
                   const start = promptWorld.world.places.find((place) => place.id === promptWorld.world.startId);
                   return walked + worldWhereYouAreText(promptWorld, { place: start, met: promptMet, present });
