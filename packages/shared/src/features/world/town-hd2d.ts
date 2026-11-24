@@ -13,7 +13,8 @@
 // told by the words the client gives it (a spot visit).
 // ──────────────────────────────────────────────
 import { z } from "zod";
-import { worldTerrainEntries, type WorldPlace } from "./compile.js";
+import { worldTerrainEntries, type WorldPlace, type WorldProsperity } from "./compile.js";
+import type { WorldTownChronicle } from "./chronicle.js";
 import type { GameWorld } from "./game-world.js";
 import { worldKitArtFamily } from "./art-family.js";
 
@@ -36,7 +37,7 @@ export interface WorldTownHd2dSpec {
   cpop: number;
   basis: "market" | "road" | "bridge" | "port" | "fishing" | "mining";
   /** A city's site. */
-  csite: "river" | "coast" | "plain";
+  csite: "river" | "coast" | "plain" | "lake";
   ground: "hill" | "flat";
   planted: boolean;
   /** The year the city stands in (the Dissolution and the exchange are gated by it). */
@@ -81,14 +82,18 @@ function groundAround(game: GameWorld, place: WorldPlace, reach: number) {
 }
 
 /** The settlement's spec for the town generator, or null for a place that is not a settlement. */
-export function worldTownHd2dSpec(game: GameWorld, settlementId: string): WorldTownHd2dSpec | null {
+export function worldTownHd2dSpec(
+  game: GameWorld,
+  settlementId: string,
+  prosperityNow?: WorldProsperity,
+): WorldTownHd2dSpec | null {
   const place = game.world.places.find((each) => each.id === settlementId);
   if (!place || place.rank === undefined) return null;
   const tags = place.tags.join(" ").toLowerCase();
   const top = Math.max(1, game.kit.sizes.length - 1);
   // Where the settlement sits on the kit's ladder, 0 (the smallest) to 1 (the biggest).
   const step = Math.min(1, Math.max(0, place.rank / top));
-  const prosperity = place.prosperity ?? "modest";
+  const prosperity = prosperityNow ?? place.prosperity ?? "modest";
   const around = groundAround(game, place, 1);
   const coast = around.water >= 0.12 || around.harbour || /port|harbo|coast|fishing|dock/.test(tags);
   const river = around.river > 0 || /river|bridge|ford/.test(tags);
@@ -191,4 +196,74 @@ export function worldTownHd2dBriefFromMetadata(
 /** What the Game Master is told of the 3D town the party is in, once it is there. */
 export function worldTownHd2dBriefText(brief: WorldTownHd2dBrief, settlementName: string): string {
   return `<town_layout>\nThe party is in ${settlementName}, walking its streets. ${brief.text}\nUse these streets, quarters and landmarks when the party moves about the town.\n</town_layout>`;
+}
+
+// ── The town as first seen, kept with the game (the chronicle draws over it, never moves its streets) ──
+
+export const worldTownHd2dSpecSchema = z
+  .object({
+    seed: z.number().int().min(1).max(99991),
+    rank: z.union([z.literal(0), z.literal(1), z.literal(2)]),
+    cpop: z.number().int().min(0).max(40000),
+    basis: z.enum(["market", "road", "bridge", "port", "fishing", "mining"]),
+    csite: z.enum(["river", "coast", "plain", "lake"]),
+    ground: z.enum(["hill", "flat"]),
+    planted: z.boolean(),
+    cyear: z.number().int().min(1100).max(1600),
+    cflags: z.string().max(200),
+    region: z.enum(["en", "lc"]),
+    trade: z.enum(["", "cloth", "tanning"]),
+    lake: z.boolean().optional(),
+  })
+  .strict();
+
+export const worldTownHd2dKeptSchema = z
+  .object({ settlementId: z.string().min(1).max(16), spec: worldTownHd2dSpecSchema })
+  .strict();
+export type WorldTownHd2dKept = z.infer<typeof worldTownHd2dKeptSchema>;
+
+/** The towns kept as first seen: every settlement the party has walked (a long game's worth). */
+export const WORLD_TOWN_HD2D_KEPT_MAX = 400;
+export function worldTownHd2dKeptFromMetadata(
+  metadata: Record<string, unknown> | null | undefined,
+): WorldTownHd2dKept[] {
+  const raw = metadata?.gameTownHd2dKept;
+  if (!Array.isArray(raw)) return [];
+  return raw.flatMap((each) => {
+    const parsed = worldTownHd2dKeptSchema.safeParse(each);
+    return parsed.success ? [parsed.data] : [];
+  });
+}
+/** The kept towns with one more; a town already kept stays as it was first seen. */
+export function worldTownHd2dKeptWith(kept: WorldTownHd2dKept[], town: WorldTownHd2dKept): WorldTownHd2dKept[] {
+  if (kept.some((each) => each.settlementId === town.settlementId)) return kept;
+  return [...kept, town].slice(-WORLD_TOWN_HD2D_KEPT_MAX);
+}
+
+/** What the 3D town draws of its chronicle: shares of houses empty and plots burned, the refugees and their
+ *  camp, the burial ground and memorial, how its market is doing. */
+export interface WorldTownHd2dChronicle {
+  empty: number;
+  ruined: number;
+  lost: number;
+  refugees: number;
+  camp: boolean;
+  burialGround: boolean;
+  memorial: boolean;
+  prosperity: WorldProsperity;
+}
+export function worldTownHd2dChronicle(
+  chronicle: WorldTownChronicle | null,
+  prosperity: WorldProsperity,
+): WorldTownHd2dChronicle {
+  return {
+    empty: chronicle?.empty ?? 0,
+    ruined: chronicle?.ruined ?? 0,
+    lost: chronicle?.lost ?? 0,
+    refugees: chronicle?.refugees ?? 0,
+    camp: chronicle?.camp ?? false,
+    burialGround: chronicle?.burialGround ?? false,
+    memorial: chronicle?.memorial ?? false,
+    prosperity,
+  };
 }

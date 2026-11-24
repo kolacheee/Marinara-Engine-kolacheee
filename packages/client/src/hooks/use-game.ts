@@ -54,6 +54,9 @@ import type {
   WorldTownVisit,
   WorldTownHd2dSpot,
   WorldTownHd2dBrief,
+  WorldTownHd2dSpec,
+  WorldTownHd2dKept,
+  WorldTownHd2dChronicle,
   WorldSeason,
   WorldWalk,
   GameLightHold,
@@ -1101,7 +1104,12 @@ export function useOverworldWalk() {
 // ── The town (worldgen W8b) ──
 
 /** The town the party is in, where in it the party stands, and the visit its next turn tells. */
-export type TownState = WorldTown & { at: string; visit: WorldTownVisit | null };
+export type TownState = WorldTown & {
+  at: string;
+  visit: WorldTownVisit | null;
+  /** HD-2D towns (fork): the town's plan as first seen, and its chronicle drawn over it (older servers: none). */
+  hd2d?: { spec: WorldTownHd2dSpec; kept: boolean; chron: WorldTownHd2dChronicle } | null;
+};
 
 export function useTown(chatId: string, turnKey: string | null, enabled: boolean) {
   return useQuery({
@@ -1160,10 +1168,16 @@ export function useTownVisit() {
 /** HD-2D towns (fork): where the party stands in the 3D town, and the town's layout for the Game Master. */
 export function useTownHd2dSave() {
   return useMutation({
-    mutationFn: (data: { chatId: string; spot?: WorldTownHd2dSpot; brief?: WorldTownHd2dBrief }) =>
+    mutationFn: (data: {
+      chatId: string;
+      spot?: WorldTownHd2dSpot;
+      brief?: WorldTownHd2dBrief;
+      kept?: WorldTownHd2dKept;
+    }) =>
       api.post<{ ok: true }>(`/game/${data.chatId}/town/hd2d`, {
         ...(data.spot ? { spot: data.spot } : {}),
         ...(data.brief ? { brief: data.brief } : {}),
+        ...(data.kept ? { kept: data.kept } : {}),
       }),
   });
 }

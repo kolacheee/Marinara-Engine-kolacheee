@@ -17,5 +17,5 @@ export function townBrief(index: Hd2dTownIndex): string;
 export function spotWords(
   index: Hd2dTownIndex,
   key: string,
-  info?: { inn?: boolean; shop?: boolean; ward?: number; street?: string },
+  info?: { inn?: boolean; shop?: boolean; empty?: boolean; ward?: number; street?: string },
 ): string;

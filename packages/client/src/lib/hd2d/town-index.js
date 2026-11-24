@@ -126,6 +126,6 @@ export function spotWords(index, key, info = {}) {
   const q = index.quarterOf(g ? g.ward : info.ward);
   const where = q ? ` in ${q.name}` : info.street ? ` on ${info.street}` : '';
   if (g) return `the ${lc(g.label)}${where}`;
-  const kind = info.inn ? 'an alehouse' : info.shop ? (q ? `a ${q.trade.replace(/s$/, '')}'s shop` : 'a shop') : 'a house';
+  const kind = info.empty ? 'an empty house' : info.inn ? 'an alehouse' : info.shop ? (q ? `a ${q.trade.replace(/s$/, '')}'s shop` : 'a shop') : 'a house';
   return `${kind}${where}`.slice(0, 120);
 }

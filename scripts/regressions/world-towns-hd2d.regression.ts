@@ -6,6 +6,7 @@
  *     towns or walled towns, the biggest settlements cities of 5,000 to 40,000; every spec stays inside the
  *     generator's ranges.
  *   - A visit to a building the world never named carries its words and is told by them.
+ *   - A town's plan is kept as first seen; its chronicle is drawn over it.
  *   - The party's spot is kept one per settlement, the latest first, at most WORLD_TOWN_HD2D_SPOTS_MAX.
  */
 import assert from "node:assert/strict";
@@ -21,6 +22,11 @@ import {
   worldTownHd2d,
   worldTownHd2dSpec,
   worldTownHd2dSpotsWith,
+  worldTownHd2dSpecSchema,
+  worldTownHd2dKeptWith,
+  worldTownHd2dKeptFromMetadata,
+  worldTownHd2dChronicle,
+  worldTownChronicle,
   worldTownVisitSchema,
   worldTownVisitText,
   type GameWorld,
@@ -89,5 +95,22 @@ assert.equal(spots.length, WORLD_TOWN_HD2D_SPOTS_MAX);
 spots = worldTownHd2dSpotsWith(spots, { settlementId: "s10", c: 2, x: 5, y: 6 });
 assert.equal(spots[0]!.settlementId, "s10");
 assert.equal(spots.filter((each) => each.settlementId === "s10").length, 1);
+
+// ── The town as first seen: every world's spec keeps, and a kept town is never replaced ──
+const first = worldTownHd2dSpec(game, settlement.id)!;
+assert.ok(worldTownHd2dSpecSchema.safeParse(first).success, "a world's spec is one the game keeps");
+let kept = worldTownHd2dKeptWith([], { settlementId: settlement.id, spec: first });
+kept = worldTownHd2dKeptWith(kept, { settlementId: settlement.id, spec: { ...first, rank: 2, cpop: 20000 } });
+assert.equal(kept.length, 1);
+assert.deepEqual(kept[0]!.spec, first, "the plan stays as first seen");
+assert.deepEqual(worldTownHd2dKeptFromMetadata({ gameTownHd2dKept: [...kept, { settlementId: "x" }] }), kept);
+
+// ── What the 3D town draws of its chronicle ──
+const quiet = worldTownHd2dChronicle(null, "modest");
+assert.equal(quiet.empty + quiet.ruined + quiet.refugees, 0);
+assert.equal(quiet.camp || quiet.burialGround || quiet.memorial, false);
+const drawn = worldTownHd2dChronicle(worldTownChronicle(game, settlement.id), "struggling");
+assert.equal(drawn.prosperity, "struggling");
+assert.ok(drawn.empty >= 0 && drawn.empty <= 1 && drawn.ruined >= 0 && drawn.ruined <= 1);
 
 console.log("world-towns-hd2d: ok");

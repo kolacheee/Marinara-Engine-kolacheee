@@ -88,8 +88,14 @@ export function Hd2dTownView({
 
   const settlementId = town?.settlementId ?? null;
   const settlement = settlementId ? game.world.places.find((place) => place.id === settlementId) : undefined;
-  const spec = useMemo(() => (settlementId ? worldTownHd2dSpec(game, settlementId) : null), [game, settlementId]);
-  const specKey = spec ? JSON.stringify(spec) : "";
+  // The town as first seen (the server keeps it), else as the world lays it out now.
+  const spec = useMemo(
+    () => town?.hd2d?.spec ?? (settlementId ? worldTownHd2dSpec(game, settlementId) : null),
+    [game, settlementId, town?.hd2d?.spec],
+  );
+  // Its chronicle, drawn over the plan: empty houses, burned plots, a camp, a burial ground, the market.
+  const chron = town?.hd2d?.chron ?? null;
+  const specKey = spec ? JSON.stringify(spec) + JSON.stringify(chron) : "";
   const clockMinutes = time ? (time.day * 24 + time.hour) * 60 + time.minute + pendingMinutes : null;
   const hour = clockMinutes === null ? 11 : (clockMinutes / 60) % 24;
   const held = overworld?.seasons;
@@ -133,7 +139,7 @@ export function Hd2dTownView({
         if (cancelled) return;
         const kept = live.current.spots.find((spot) => spot.settlementId === settlementId);
         api = await mountHd2dTown(host, {
-          spec: spec as unknown as Record<string, unknown>,
+          spec: { ...spec, chron } as unknown as Record<string, unknown>,
           hour: live.current.hour,
           season: live.current.season,
           clock: false,
@@ -180,7 +186,12 @@ export function Hd2dTownView({
                 placingRef.current = { index, byKey, spotWords: (key, info) => indexLib.spotWords(index, key, info) };
                 // For the end-to-end check: where the world's buildings stand.
                 (window as unknown as { __hd2dPlacing?: unknown }).__hd2dPlacing = { byKey: [...byKey] };
-                saveMutation.mutate({ chatId, brief: { settlementId, text: indexLib.townBrief(index) } });
+                saveMutation.mutate({
+                  chatId,
+                  brief: { settlementId, text: indexLib.townBrief(index) },
+                  // The town's plan kept as first seen, so its streets never move.
+                  ...(live.current.town?.hd2d && !live.current.town.hd2d.kept ? { kept: { settlementId, spec } } : {}),
+                });
                 keepSpot();
               } catch (error) {
                 console.warn("[hd2d] town index", error);

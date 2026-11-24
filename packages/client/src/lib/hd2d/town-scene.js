@@ -342,6 +342,28 @@ function buildWorld(spec, day, season, arriveAt) {
   };
   const awn = new Set();   // street cells under a shop's awning or sign: no lamp posts there
   const shopSign = [['cloth_red', 0xb03a2a], ['cloth_teal', 0x2a8a8a], ['cloth_green', 0x6a9a50], ['cloth_ochre', 0xd0a040], ['cloth_linen', 0xe8e0d0]];
+  // the town's chronicle (fork): what its past left: houses empty, plots burned, refugees camped, the dead buried; drawn over the plan,
+  // never changing it, so the streets the party knows stay where they were (spec.chron: empty, ruined, camp, refugees, burialGround, memorial, lost, prosperity)
+  const CH = spec.chron || window.CHRON || null, h01 = (k) => ((Math.imul(k + 1, 2654435761) ^ Math.imul(seed + 977, 40503)) >>> 0) / 4294967296;
+  const lotFate = (L) => { if (!CH) return ''; const k = (L.plot ?? L.id) * 3; if (L.dist !== 'rich' && L.dist !== 'ware' && h01(k + 1) < (CH.ruined || 0)) return 'burnt';
+    if (['common', 'poor', 'craft', 'cottage', 'miner'].includes(L.dist) && h01(k + 2) < (CH.empty || 0) / .85) return 'empty'; return ''; };
+  const campTents = [];
+  // a burned house: a low stone footing, the charred posts of its frame standing to uneven heights, its stone chimney stack still up,
+  // ash and fallen beams on the floor
+  const burnt = (L, W, D, lbox) => { P.chronAt.burnt.push([L.x + L.w / 2, L.y + L.d / 2]); const rb = rngOf(seed * 131 + ((L.plot ?? L.id) + 1) * 17), t = .18;
+    lbox('stone', -.02, -.05, 0, W + .02, D + .02, .12, 32, 32, 'b'); lbox('soil', .1, .1, .12, W - .1, D - .1, .14, 32, 32, '');
+    for (let k = 0; k < 4 + Math.floor(rb() * 3); k++) { const a = .3 + rb() * (W - .6), d = .3 + rb() * (D - .6), r0 = .25 + rb() * .35; lbox('dark', a - r0, d - r0 * .7, .14, a + r0, d + r0 * .7, .155, 16, 16, ''); }   // ash
+    for (const [a0, d0, a1, d1] of [[0, 0, W, 0], [0, D - t, W, D], [0, 0, t, D], [W - t, 0, W, D]]) lbox('stone', a0, d0, .12, a1, d1, .32 + rb() * .12, 32, 32, '');   // the footing
+    // posts at the corners and along the front and back, each burned down to its own height; a few still carry a stub of the rail
+    const posts = []; for (const d of [0, D - .12]) for (let a = 0; a <= W + .01; a += Math.max(.4, W / Math.max(1, Math.round(W / .9)))) posts.push([Math.min(W - .12, a), d]);
+    for (const a of [0, W - .12]) for (let d = Math.max(.4, D / Math.max(1, Math.round(D / .9))); d < D - .2; d += Math.max(.4, D / Math.max(1, Math.round(D / .9)))) posts.push([a, d]);
+    for (const [a, d] of posts) { if (rb() < .18) continue; const h = .5 + rb() * rb() * 2.4; lbox('dark', a, d, .3, a + .12, d + .12, .3 + h, 16, 16, '');
+      if (h > 1.3 && rb() < .5) lbox('dark', a - .02, d - .02, .3 + h - .12, a + .14 + (a < W / 2 ? .35 : -.35) * (d < D / 2 ? 1 : 1), d + .14, .3 + h - .02, 16, 16, ''); }
+    { const ca = rb() < .5 ? .15 : W - .7, cd = D - .7; lbox('stone', ca, cd, .12, ca + .55, cd + .55, 2.6 + rb() * .8, 32, 32, ''); lbox('dark', ca + .1, cd + .1, 2.4, ca + .45, cd + .45, 3.5, 16, 16, ''); }   // the chimney stack
+    for (let k = 0; k < 2 + Math.floor(rb() * 2); k++) { const along = rb() < .5, c = .35 + rb() * ((along ? D : W) - .7), y = .15 + k * .07;   // fallen beams
+      if (along) lbox('dark', .25, c - .06, y, W - .25, c + .06, y + .12, 16, 16, ''); else lbox('dark', c - .06, .25, y, c + .06, D - .25, y + .12, 16, 16, ''); }
+    for (let k = 0; k < 5 + Math.floor(rb() * 5); k++) { const a = .3 + rb() * (W - .6), d = .3 + rb() * (D - .6), sz = .07 + rb() * .12; lbox(rb() < .6 ? 'stone' : 'dark', a - sz, d - sz, .14, a + sz, d + sz * .8, .14 + sz * 1.2, 16, 16, ''); } };
+  P.campTents = campTents; P.chronAt = { burnt: [], burial: null, memorial: null };
   const houseInfo = [], HOUSES = []; window.__HOUSES = HOUSES; P.HOUSES = HOUSES;   // HOUSES: each house's shell, read by the interior planner
   // blocks: connected building ground; a block keeps one roof covering per district (a few houses re-roofed), so corners read as one roofscape
   const comp = new Int16Array(MW * MH).fill(-1); { let n = 0; for (let i = 0; i < MW * MH; i++) if (P.g[i] === 'lot' && comp[i] < 0) { const q = [i]; comp[i] = n;
@@ -355,7 +377,9 @@ function buildWorld(spec, day, season, arriveAt) {
   for (const L of lots) {
     if (dropLot.has(L.id)) continue;
     Bk.setLift(lotPlat[L.id]);
-    const isInn = L === innLot, hj = .9 + r() * .2;
+    // each house draws from its own stream (fork): a house burned or left empty leaves every other house as it was
+    const r = rngOf(seed * 977 + ((L.plot ?? L.id) + 1) * 7919), ri = (a, b) => a + Math.floor(r() * (b - a + 1)), pick = (a) => a[Math.floor(r() * a.length)];
+    const isInn = L === innLot, hj = .9 + r() * .2, fate = isInn ? '' : lotFate(L);
     // a city quarter keeps its own walls, roofs and timber framing (its chief trade colours the shop signs); the poor and the rich keep theirs
     const sty0 = STY[L.dist], qk = P.nav && L.ward >= 0 ? P.nav.quarter(L.ward) : null;
     const sty = qk ? { ...sty0, walls: L.dist === 'poor' || L.dist === 'cottage' ? sty0.walls : qk.walls, roofs: L.dist === 'poor' || L.dist === 'cottage' ? sty0.roofs : qk.roofs, ground: L.dist === 'rich' ? sty0.ground : qk.ground, timber: qk.timber } : sty0;
@@ -371,6 +395,7 @@ function buildWorld(spec, day, season, arriveAt) {
       const [x, z] = toW(Math.min(W - .5, Math.max(.5, a)), Math.min(D - .5, Math.max(.5, d)));
       const [x0, z0] = toW(Math.min(W - .5, Math.max(.5, a)) + (dir === 'r' ? 1 : dir === 'l' ? -1 : 0), Math.min(D - .5, Math.max(.5, d)) + (dir === 'b' ? 1 : dir === 'f' ? -1 : 0));
       const ox = Math.floor(x0), oz = Math.floor(z0); return !(occ(ox, oz) && lotId[I(ox, oz)] !== L.id); };
+    if (fate === 'burnt') { burnt(L, W, D, lbox); continue; }
     let st = ri(sty.st[0], sty.st[1]);
     // never more than a storey's step from a neighbour already standing: no cliffs of blank party wall
     { const ns = new Set(); for (let y = L.y - 1; y <= L.y + L.d; y++) for (let x = L.x - 1; x <= L.x + L.w; x++) { if (x >= L.x && x < L.x + L.w && y >= L.y && y < L.y + L.d) continue; const o = x >= 0 && y >= 0 && x < MW && y < MH ? lotId[I(x, y)] : -1; if (o >= 0 && lotSt.has(o)) ns.add(lotSt.get(o)); }
@@ -384,11 +409,12 @@ function buildWorld(spec, day, season, arriveAt) {
     if (L.f === 'N') st = Math.min(st, L.street === 'square' ? 2 : 2), st = L.street === 'alley' || L.street === 'lane' ? 1 : st;
     lotSt.set(L.id, st);
     const timber = r() < sty.timber && st > 1, wallK = pick(sty.walls), gk = pick(sty.ground), groundK = gk === 'plaster' ? wallK : gk;
-    const bk = comp[I(L.x, L.y)] + ':' + L.dist; if (!blockRoof.has(bk)) blockRoof.set(bk, pick(sty.roofs)); let roofK = r() < .15 ? pick(sty.roofs) : blockRoof.get(bk); const roofVar = roofK + '#' + Math.floor(r() * 4);
-    const jet = timber ? .55 : 0, shutter = pick(['shutter_g', 'shutter_b', 'shutter_r', 'door']), flowers = L.dist !== 'poor' && r() < .45, flowerK = pick(['fl_r', 'fl_y', 'fl_w', 'fl_p']);
+    // the block's own roof, from the block's own stream: the same whichever house in it is drawn first (one may be burned)
+    const bk = comp[I(L.x, L.y)] + ':' + L.dist; if (!blockRoof.has(bk)) { const rb0 = rngOf(seed * 31 + (comp[I(L.x, L.y)] + 1) * 1013 + Object.keys(STY).indexOf(L.dist) * 7); blockRoof.set(bk, sty.roofs[Math.floor(rb0() * sty.roofs.length)]); } let roofK = r() < .15 ? pick(sty.roofs) : blockRoof.get(bk); const roofVar = roofK + '#' + Math.floor(r() * 4);
+    const jet = timber ? .55 : 0, shutter = pick(['shutter_g', 'shutter_b', 'shutter_r', 'door']), flowers = L.dist !== 'poor' && r() < .45 && fate !== 'empty', flowerK = pick(['fl_r', 'fl_y', 'fl_w', 'fl_p']);
     const byGate = P.gates.some((G) => Math.hypot(L.x + L.w / 2 - G.cx, L.y + L.d / 2 - G.cy) < 5.5);   // just inside the gate: plain fronts, no awnings or signs poking into the passage view
-    const isShop = !isInn && !byGate && L.dist !== 'cottage' && L.dist !== 'miner' && L.dist !== 'ware' && (L.street === 'main' || L.street === 'square' || L.street === 'quay' || (L.street === 'street' && r() < .35)) && W >= 2 && !aleLots.has(L.id);
-    const HS = { id: L.id, plot: L.plot, ward: L.ward, x: L.x, y: L.y, w: L.w, d: L.d, f: L.f, street: L.street, dist: L.dist, W, D, st, timber, shop: isShop, inn: isInn, ale: aleLots.has(L.id), plat: lotPlat[L.id] }; HOUSES.push(HS);
+    const isShop = !isInn && !byGate && L.dist !== 'cottage' && L.dist !== 'miner' && L.dist !== 'ware' && (L.street === 'main' || L.street === 'square' || L.street === 'quay' || (L.street === 'street' && r() < .35)) && W >= 2 && !aleLots.has(L.id) && fate !== 'empty';
+    const HS = { id: L.id, plot: L.plot, ward: L.ward, empty: fate === 'empty', x: L.x, y: L.y, w: L.w, d: L.d, f: L.f, street: L.street, dist: L.dist, W, D, st, timber, shop: isShop, inn: isInn, ale: aleLots.has(L.id), plat: lotPlat[L.id] }; HOUSES.push(HS);
     if (isShop) { const [fx2, fz2] = { S: [0, 1], N: [0, -1], E: [1, 0], W: [-1, 0] }[L.f]; for (let i = 0; i < L.w; i++) for (let j = 0; j < L.d; j++) { const x = L.x + i, y = L.y + j; if (at(x + fx2, y + fz2) !== 'lot') awn.add(I(x + fx2, y + fz2)); } }
     const hs = []; let y = 0; // storey bands
     for (let i = 0; i < st; i++) { const h = (i === 0 ? GH : UH) * (i === 0 ? 1 : hj); hs.push([y, y + h, i ? jet * Math.min(i, 2) : 0]); y += h; }
@@ -424,11 +450,11 @@ function buildWorld(spec, day, season, arriveAt) {
     lbox('stone', -.02, -.05, 0, W + .02, D + .02, .16, 32, 32, 'b');
     { const [xa, za] = toW(0, -jet), [xb, zb] = toW(W, D); const x0 = Math.min(xa, xb), x1 = Math.max(xa, xb), z0 = Math.min(za, zb), z1 = Math.max(za, zb); quad('floor', V(x0, .3, z1), V(x1, .3, z1), V(x1, .3, z0), V(x0, .3, z0), 128, 128); }
     // windows: front on every storey, back and open sides on upper storeys; glass, frame, sill, shutters
-    const litWin = () => { const v = r() < .55; return !day && v; };   // always draws, so night builds the same town as day
+    const litWin = () => { const v = r() < .55; return !day && v && fate !== 'empty'; };   // always draws, so night builds the same town as day
     const win = (face, a, y0, w, h, jj, quiet) => { // face: front/back; quiet: draw from a side stream so the town's random sequence is unchanged
       const out = face === 'f' ? -jj : D, s = face === 'f' ? -1 : 1, o = out + s * .002;
       const dO = (v) => out + s * v; // depth outward from the wall
-      const g = (quiet ? !day && L.id % 2 : litWin()) ? 'glass_lit' : 'glass';
+      const g = (quiet ? !day && L.id % 2 && fate !== 'empty' : litWin()) ? 'glass_lit' : 'glass';
       lbox(g, a - w / 2, Math.min(o, dO(.01)), y0, a + w / 2, Math.max(o, dO(.01)), y0 + h, 16, 16, '');
       lbox('wood', a - w / 2 - .06, Math.min(out, dO(.05)), y0 - .02, a - w / 2, Math.max(out, dO(.05)), y0 + h + .02, 32, 32, '');
       lbox('wood', a + w / 2, Math.min(out, dO(.05)), y0 - .02, a + w / 2 + .06, Math.max(out, dO(.05)), y0 + h + .02, 32, 32, '');
@@ -438,7 +464,8 @@ function buildWorld(spec, day, season, arriveAt) {
       lbox('stone', a - w / 2 - .1, Math.min(out, dO(.13)), y0 - .09, a + w / 2 + .1, Math.max(out, dO(.13)), y0, 32, 32, '');      // sill
       if (face === 'f' && y0 > 1 && flowers && !snow) { lbox('wood', a - w / 2, Math.min(out, dO(.2)), y0 - .2, a + w / 2, Math.max(out, dO(.2)), y0 - .08, 32, 32, '');
         for (let k = 0; k < 4; k++) { const fa = a - w / 2 + .07 + k * (w - .14) / 3; lbox(k % 2 ? 'fl_g' : flowerK, fa - .05, Math.min(out, dO(.18)), y0 - .08, fa + .05, Math.max(out, dO(.08)), y0 + .02 + (k % 2) * .03, 16, 16, ''); } }
-      if (shutter !== 'door' && face === 'f') for (const sg of [-1, 1]) lbox(shutter, a + sg * (w / 2 + .06), Math.min(out, dO(.04)), y0, a + sg * (w / 2 + .06 + w * .48), Math.max(out, dO(.04)), y0 + h, 32, 32, '');
+      if (fate === 'empty' && face === 'f') lbox(shutter === 'door' ? 'door' : shutter, a - w / 2 - .03, Math.min(out, dO(.075)), y0 - .03, a + w / 2 + .03, Math.max(out, dO(.075)), y0 + h + .03, 32, 32, '');   // an empty house: shutters closed
+      else if (shutter !== 'door' && face === 'f') for (const sg of [-1, 1]) lbox(shutter, a + sg * (w / 2 + .06), Math.min(out, dO(.04)), y0, a + sg * (w / 2 + .06 + w * .48), Math.max(out, dO(.04)), y0 + h, 32, 32, '');
       if (face === 'f' && !quiet && r() < .25 && !day) {} };
     const nWin = Math.max(1, Math.round(W / .95));
     hs.forEach(([y0, y1, j], i) => {
@@ -469,7 +496,8 @@ function buildWorld(spec, day, season, arriveAt) {
       const frontOK = (a) => { const [fx, fz] = toW(a, -.5); return WALKK.has(at(Math.floor(fx), Math.floor(fz))); };
       let doorA = W >= 2 ? (r() < .5 ? .55 : W - .55) : W / 2;
       if (W >= 2 && !frontOK(doorA)) { const alt = [W - doorA, ...Array.from({ length: W }, (_, k) => k + .5)].find((a) => frontOK(a)); if (alt != null) doorA = alt; }
-      const door = (a, hw = .36) => { HS.doorA = a; HS.door = toW(a, -.45); HS.doorW = hw * 2; houseInfo.push({ door: toW(a, -.45), kind: isInn ? 'inn' : isShop ? 'shop' : 'home', hid: HS.id }); lbox('door', a - hw, -.03, .16, a + hw, 0, 1.45, 32, 32, ''); lbox('stone', a - hw - .1, -.08, .16, a - hw, 0, 1.55, 32, 32, ''); lbox('stone', a + hw, -.08, .16, a + hw + .1, 0, 1.55, 32, 32, '');
+      const door = (a, hw = .36) => { HS.doorA = a; HS.door = toW(a, -.45); HS.doorW = hw * 2; houseInfo.push({ door: toW(a, -.45), kind: isInn ? 'inn' : isShop ? 'shop' : 'home', hid: HS.id, empty: fate === 'empty' });
+        if (fate === 'empty') for (const py of [.5, 1.05]) lbox('wood', a - hw - .14, -.09, py, a + hw + .14, -.04, py + .13, 32, 32, '');   // boarded up lbox('door', a - hw, -.03, .16, a + hw, 0, 1.45, 32, 32, ''); lbox('stone', a - hw - .1, -.08, .16, a - hw, 0, 1.55, 32, 32, ''); lbox('stone', a + hw, -.08, .16, a + hw + .1, 0, 1.55, 32, 32, '');
         lbox('stone', a - hw - .1, -.08, 1.45, a + hw + .1, 0, 1.58, 32, 32, ''); lbox('stone', a - hw - .14, -.32, 0, a + hw + .14, 0, .1, 32, 32, '');   // jambs, lintel, step
         lbox('iron', a + .18, -.06, .75, a + .24, -.03, .82, 16, 16, ''); };
       if (isShop) {
@@ -827,8 +855,8 @@ function buildWorld(spec, day, season, arriveAt) {
   // stalls stand where the whole stall fits on the square, clear of the fountain, the landmarks' fronts and the road through
   const inGh = (x, z, m) => gh && x > gh.x - m && x < gh.x + gh.w + m && z > gh.y - m && z < gh.y + gh.d + 1 + m;
   const sqAll = (x0, z0, x1, z1) => { for (let y = Math.floor(z0); y <= Math.floor(z1); y++) for (let x = Math.floor(x0); x <= Math.floor(x1); x++) if (at(x, y) !== 'square') return false; return true; };
-  const stallSpots = [];
-  if (P.fountain) for (const [ox, oz] of [[4, -2.5], [6.5, -2.5], [-4, 2], [-6.5, 2], [9, -2.5], [4.5, 2.2], [-4, -2.5], [-6.5, -2.5], [7, 2.2], [-9, 2]]) { if (stallSpots.length >= [2, 4, 6, 6][P.rank]) break; const sx = fx + ox, sz = fz + oz;
+  const stallSpots = [], stallBase = [2, 4, 6, 6][P.rank], stallCap = !CH ? stallBase : CH.prosperity === 'struggling' ? Math.max(1, Math.floor(stallBase / 2)) : CH.prosperity === 'thriving' ? stallBase + 2 : stallBase;   // a struggling market keeps fewer stalls
+  if (P.fountain) for (const [ox, oz] of [[4, -2.5], [6.5, -2.5], [-4, 2], [-6.5, 2], [9, -2.5], [4.5, 2.2], [-4, -2.5], [-6.5, -2.5], [7, 2.2], [-9, 2]]) { if (stallSpots.length >= stallCap) break; const sx = fx + ox, sz = fz + oz;
     if (!sqAll(sx - 1, sz - .5, sx + 1.4, sz + .8) || inGh(sx, sz, 1.6) || Math.abs(sx - (P.mx + 1.5)) < 2.4 || (ch && Math.abs(sx - (ch.x + 1.5)) < 3.6 && sz < ch.y + 16.5) || stallSpots.some(([a, b]) => Math.abs(a - sx) < 2.3 && Math.abs(b - sz) < 1.6)) continue; stallSpots.push([sx, sz]); }
   stallSpots.forEach(([sx, sz], i) => { const [ck, gc] = STALL[i];
     cube('wood', sx - .7, .55, sz - .1, sx + .7, .7, sz + .4, 32, 32, ''); cube('wood', sx - .65, 0, sz, sx + .65, .55, sz + .35, 32, 32, '');
@@ -899,6 +927,52 @@ function buildWorld(spec, day, season, arriveAt) {
     const cx = L.f === 'E' ? L.x + L.w + .3 : L.f === 'W' ? L.x - .3 : L.x + .3 + r() * (L.w - .6), cz = L.f === 'S' ? L.y + L.d + .3 : L.f === 'N' ? L.y - .3 : L.y + .3 + r() * (L.d - .6);
     const k = at(Math.floor(cx), Math.floor(cz)); if (k === 'street' || k === 'main') { const sw = at(Math.floor(cx) + dx, Math.floor(cz) + dy); if (k === 'main' && sw !== 'main') {} else place(r() < .5 ? 'barrel' : 'crate_sacks', cx, cz, r() * 6, .7); } }
   { const G = P.gates.find((G) => G.dir === 's'); if (G && ['out', 'field'].includes(at(Math.floor(G.u + 5.2), Math.floor(G.line + 3.8))) && ['out', 'field'].includes(at(Math.floor(G.u + 5.2), Math.floor(G.line + 3.2)))) place('cart', G.u + 5.2, G.line + 3.8, .3, 1); }   // parked on the verge outside the gate, never across a lane of the road
+  // ---------- the chronicle outside the walls (fork): a refugee camp by a gate, the burial ground of the latest plague ----------
+  if (CH && (CH.camp || CH.burialGround)) { Bk.setLift(null);
+    const WAYO = new Set(['main', 'street', 'lane', 'alley', 'square', 'road', 'bridge', 'quay']), OPEN = new Set(['out', 'field']);
+    const outside = (x, y) => !(P.walls && P.walls.ins) || P.walls.ins[I(x, y)] !== 1;
+    const nearWay = (x, y) => { for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (WAYO.has(at(x + dx, y + dy))) return true; return false; };
+    const blocked = (x0, z0, x1, z1) => solids.some((b) => x1 > b[0] && x0 < b[2] && z1 > b[1] && z0 < b[3]);
+    const ground = (x0, y0, w, h) => { for (let y = y0; y < y0 + h; y++) for (let x = x0; x < x0 + w; x++) if (!inG(x, y) || !OPEN.has(at(x, y)) || nearWay(x, y) || !outside(x, y)) return false; return !blocked(x0, y0, x0 + w, y0 + h); };
+    // where to look: just outside each gate, along its road; a town without walls, round the edge of the built ground nearest the market
+    const OUT = { s: [0, 1], n: [0, -1], e: [1, 0], w: [-1, 0] };
+    let seeds = P.gates.filter((G) => !G.water && OUT[G.dir]).map((G) => [Math.round(G.cx + OUT[G.dir][0] * 5), Math.round(G.cy + OUT[G.dir][1] * 5)]);
+    if (!seeds.length) { const mx = P.mx ?? MW / 2, my = P.my ?? MH / 2; seeds = [[Math.round(mx), Math.round(my)]]; }
+    const rc2 = rngOf(seed * 61 + 5), sites = [];
+    for (const [sx, sy] of seeds) { const cand = []; for (let y = 1; y < MH - 1; y++) for (let x = 1; x < MW - 1; x++) if (OPEN.has(at(x, y)) && !nearWay(x, y) && outside(x, y)) cand.push([Math.hypot(x - sx, y - sy), x, y]); cand.sort((a, b) => a[0] - b[0]); sites.push(cand); }
+    const used = [], free2 = (x, y, w, h) => !used.some(([a, b, c, d]) => x < c + 1 && x + w > a - 1 && y < d + 1 && y + h > b - 1);
+    // the camp: a few households to a fire, tents and lean-tos in rows, a handcart
+    if (CH.camp && sites[0]) { const want = Math.max(4, Math.min(14, Math.round((CH.refugees || .05) * 80)));
+      for (const [, x, y] of sites[0]) { if (campTents.length >= want) break; if (Math.hypot(x - sites[0][0][1], y - sites[0][0][2]) > 12) break; if (!ground(x, y, 2, 2) || !free2(x, y, 2, 2)) continue; used.push([x, y, x + 2, y + 2]);
+        const cx = x + 1, cz = y + .9, kind = campTents.length % 4 === 3 ? 'lean' : 'tent', cloth = ['cloth_linen', 'cloth_ochre', 'cloth_linen', 'wood'][campTents.length % 4];
+        group(() => { if (kind === 'tent') { const hw = .58, hl = .78, top = 1.0, k = cloth === 'wood' ? 'cloth_linen' : cloth;   // a ridge tent, its end and door to the street side (south)
+          for (const sd of [-1, 1]) { const a = V(cx + sd * hw, .02, cz - hl), b = V(cx + sd * hw, .02, cz + hl), c = V(cx, top, cz + hl), d = V(cx, top, cz - hl); quad(k, a, b, c, d, 32, 32); quad(k, d, c, b, a, 32, 32); }
+          for (const ez of [-hl, hl]) { const a = V(cx - hw, .02, cz + ez), b = V(cx + hw, .02, cz + ez), c = V(cx, top, cz + ez); tri(k, a, b, c, 32, 32); tri(k, c, b, a, 32, 32); }
+          { const z = cz + hl + .01, a = V(cx - .22, .02, z), b = V(cx + .22, .02, z), c = V(cx, .62, z); tri('dark', a, b, c, 16, 16); tri('dark', c, b, a, 16, 16); }   // the door flap open
+          cube('beam', cx - .03, 0, cz + hl - .02, cx + .03, top + .14, cz + hl + .04, 16, 16, ''); cube('beam', cx - .03, 0, cz - hl - .04, cx + .03, top + .14, cz - hl + .02, 16, 16, '');
+          cube('beam', cx - .02, top - .02, cz - hl, cx + .02, top + .03, cz + hl, 16, 16, ''); }
+        else { cube('wood', cx - .8, 0, cz - .5, cx + .8, .95, cz - .38, 32, 32, ''); for (const ex of [-.8, .74]) cube('wood', cx + ex, 0, cz - .5, cx + ex + .06, .95, cz + .45, 32, 32, ''); cube('wood', cx - .9, .95, cz - .55, cx + .9, 1.02, cz + .5, 32, 32, ''); cube('cloth_linen', cx - .7, 0, cz + .1, cx - .1, .14, cz + .4, 16, 16, ''); } });
+        solids.push([cx - .85, cz - .65, cx + .85, cz + .65]); campTents.push([cx, cz]); }
+      // a fire to every three households: a ring of stones, logs and embers
+      for (let i = 0; i < campTents.length; i += 3) { const [tx, tz] = campTents[i], fx2 = tx + (i % 2 ? -1.2 : 1.2), fz2 = tz + 1.3; if (!OPEN.has(at(Math.floor(fx2), Math.floor(fz2)))) continue;
+        group(() => { for (let k = 0; k < 7; k++) { const a = k / 7 * Math.PI * 2; cube('stone', fx2 + Math.cos(a) * .28 - .06, 0, fz2 + Math.sin(a) * .28 - .06, fx2 + Math.cos(a) * .28 + .06, .1, fz2 + Math.sin(a) * .28 + .06, 16, 16, ''); }
+        cube('dark', fx2 - .2, 0, fz2 - .05, fx2 + .2, .08, fz2 + .05, 16, 16, ''); cube('dark', fx2 - .05, .04, fz2 - .2, fx2 + .05, .12, fz2 + .2, 16, 16, ''); cube('lamp', fx2 - .09, .06, fz2 - .09, fx2 + .09, .14, fz2 + .09, 16, 16, ''); }); }
+      if (campTents.length) { const [tx, tz] = campTents[campTents.length - 1]; if (OPEN.has(at(Math.floor(tx + 1.8), Math.floor(tz)))) place('cart', tx + 1.8, tz, rc2() * 6, .9); } }
+    // the plague dead: a walled ground of fresh mounds in rows, wooden crosses, a gate in the wall; no building just south of it,
+    // where it would stand between the ground and the camera
+    const allOut = (x, y0, w, h) => { if (x < 3 || y0 < 3 || x + w > MW - 3 || y0 + h > MH - 3) return false; for (let y = y0; y < y0 + h; y++) for (let x1 = x; x1 < x + w; x1++) if (at(x1, y) !== 'out') return false; return true; };   // on grass, never in a ploughed field
+    const clearSouth = (x, y0, w) => { for (let y = y0; y < y0 + 5; y++) for (let x1 = x; x1 < x + w; x1++) if (inG(x1, y) && !OPEN.has(at(x1, y)) && !WAYO.has(at(x1, y))) return false; return true; };
+    if (CH.burialGround) { let at0 = null;
+      // on grass if the town has any to spare, else at a field's edge
+      for (const grass of [true, false]) { for (const list of [sites[1], sites[0]].filter(Boolean)) { for (const [, x, y] of list) { if (ground(x, y, 4, 3) && free2(x, y, 4, 3) && clearSouth(x, y + 3, 4) && (!grass || allOut(x, y, 4, 3))) { at0 = [x, y]; break; } } if (at0) break; } if (at0) break; }
+      if (at0) { const [x, y] = at0, w = 4, h = 3; P.chronAt.burial = [x + w / 2, y + h / 2]; used.push([x, y, x + w, y + h]); group(() => {
+        for (let k = 0; k <= 4; k++) for (const z of [y, y + h - .08]) cube('wood', x + k * (w - .08) / 4, 0, z, x + k * (w - .08) / 4 + .08, .75, z + .08, 16, 16, '');
+        for (const xx of [x, x + w - .08]) for (let k = 1; k < 3; k++) cube('wood', xx, 0, y + k * h / 3, xx + .08, .75, y + k * h / 3 + .08, 16, 16, '');
+        for (const z of [y + .02, y + h - .06]) for (const hh of [.28, .56]) { if (z > y + 1 && hh) { cube('wood', x, hh, z, x + 1.4, hh + .06, z + .04, 16, 16, ''); cube('wood', x + 2.4, hh, z, x + w, hh + .06, z + .04, 16, 16, ''); } else cube('wood', x, hh, z, x + w, hh + .06, z + .04, 16, 16, ''); }   // a gap for the gate on the near side
+        for (const xx of [x + .02, x + w - .06]) for (const hh of [.28, .56]) cube('wood', xx, hh, y, xx + .04, hh + .06, y + h, 16, 16, '');
+        for (let row = 0; row < 2; row++) for (let i = 0; i < 3; i++) { const gx = x + .4 + i * 1.15, gz = y + .55 + row * 1.15; cube('soil', gx, 0, gz, gx + .75, .13, gz + .45, 32, 32, 'b'); cube('soil', gx + .08, .13, gz + .07, gx + .67, .23, gz + .38, 32, 32, '');   // a fresh mound, heaped
+          cube('wood', gx + .32, 0, gz - .1, gx + .42, .95, gz, 16, 16, ''); cube('wood', gx + .16, .62, gz - .1, gx + .58, .71, gz, 16, 16, ''); } });   // a cross at every head
+        solids.push([x, y, x + w, y + h - 1.2]); solids.push([x, y + h - 1.2, x + 1.4, y + h]); solids.push([x + 2.4, y + h - 1.2, x + w, y + h]); } } }
   // ---------- the town's trade: boats, cranes, nets, pitheads, spoil, smelters, mills ----------
   const oquad = (key, a, b, c, d, out) => { const n = new THREE.Vector3().subVectors(b, a).cross(new THREE.Vector3().subVectors(d, a)), m = a.clone().add(b).add(c).add(d).multiplyScalar(.25); if (n.dot(new THREE.Vector3().subVectors(m, out)) < 0) quad(key, d, c, b, a, 32, 32); else quad(key, a, b, c, d, 32, 32); };
   const beamTo = (key, p0, p1, w = .1) => { const m = new THREE.Matrix4().lookAt(p0, p1, Math.abs(p1.y - p0.y) > .9 * p0.distanceTo(p1) ? V(0, 0, 1) : V(0, 1, 0)); m.setPosition(p0.clone().add(p1).multiplyScalar(.5)); geo(key, new THREE.BoxGeometry(w, w, p0.distanceTo(p1)), m); };
@@ -985,6 +1059,9 @@ function buildWorld(spec, day, season, arriveAt) {
       if (fr.length) { const [cx, cy] = fr[Math.floor(fr.length / 2)]; for (let k = 0; k < 2; k++) cube('ashlar', cx + .1 + k * .1, k * .16, cy + .1 + k * .1, cx + .9 - k * .1, (k + 1) * .16, cy + .9 - k * .1, 64, 64, 'b');
         cube('ashlar', cx + .42, .32, cy + .42, cx + .58, 2.3, cy + .58, 64, 64, 'b'); cube('ashlar', cx + .28, 1.9, cy + .44, cx + .72, 2.02, cy + .56, 64, 64, ''); solids.push([cx + .1, cy + .1, cx + .9, cy + .9]); }
       const crossAt = fr.length ? fr[Math.floor(fr.length / 2)] : null;
+      // the chronicle: the war dead remembered at the churchyard cross, a wreath on its shaft and fresh flowers at its foot
+      if (crossAt && CH && CH.memorial && b.apron === 'burial') { const [cx, cy] = crossAt; P.chronAt.memorial = [cx + .5, cy + .5]; for (let k = 0; k < 8; k++) { const a = k / 8 * Math.PI * 2; cube(k % 2 ? 'fl_g' : 'fl_r', cx + .5 + Math.cos(a) * .16 - .04, 1.45, cy + .5 + Math.sin(a) * .16 - .04, cx + .5 + Math.cos(a) * .16 + .04, 1.55, cy + .5 + Math.sin(a) * .16 + .04, 16, 16, ''); }
+        for (const [ox, oz, k] of [[.2, .95, 'fl_y'], [.55, .98, 'fl_w'], [.78, .92, 'fl_r']]) cube(k, cx + ox - .07, 0, cy + oz - .04, cx + ox + .07, .1, cy + oz + .06, 16, 16, ''); }
       for (const [x, y] of cs) { if (ring(x, y) || dn(x, y) || crossAt && Math.abs(x - crossAt[0]) <= 1 && Math.abs(y - crossAt[1]) <= 1) continue;
         if (b.apron === 'burial') { if ((x - mx) % 2 || (y - my) % 2 || rr() > .8) continue; const k = rr(), gx = x + .2 + rr() * .2, gz = y + .25;
           if (k < .3) cube('soil', gx, 0, gz, gx + .55, .14, gz + .34, 32, 32, 'b');   // a fresh mound, low enough to step over
@@ -1108,11 +1185,13 @@ function buildWorld(spec, day, season, arriveAt) {
     const nearFree = (x, y) => { const cx = Math.floor(x), cy = Math.floor(y); for (let rr = 0; rr < 3; rr++) for (let dy = -rr; dy <= rr; dy++) for (let dx = -rr; dx <= rr; dx++) { const X = cx + dx, Y = cy + dy; if (X >= 0 && Y >= 0 && X < MW && Y < MH && free[I(X, Y)]) return I(X, Y); } return -1; };
     // places: every door (home, shop, inn), spots on the square, the gates
     const PL = []; const addP = (x, y, kind, hid) => { const c = nearFree(x, y); if (c < 0) return -1; const same = c === I(Math.floor(x), Math.floor(y)); PL.push({ x: same ? x : c % MW + .5, y: same ? y : Math.floor(c / MW) + .5, c, kind, hid }); return PL.length - 1; };
-    for (const h of houseInfo) if (h.door) addP(h.door[0], h.door[1], h.kind || 'home', h.hid);
+    for (const h of houseInfo) if (h.door && !h.empty) addP(h.door[0], h.door[1], h.kind || 'home', h.hid);
+    // refugees (the chronicle): a household to each tent of the camp, at home in the open
+    for (const t of campTents) addP(t[0], t[1] + 1.1, 'camp');
     const sqCells = []; for (let y = 0; y < MH; y++) for (let x = 0; x < MW; x++) if ((at(x, y) === 'square' || at(x, y) === 'quay') && free[I(x, y)]) sqCells.push([x, y]);
     for (let k = 0; k < Math.min(40, sqCells.length); k++) { const [x, y] = sqCells[Math.floor(rc() * sqCells.length)]; addP(x + .2 + rc() * .6, y + .2 + rc() * .6, 'square'); }
     const idx = (kind) => PL.map((p, i) => i).filter((i) => PL[i].kind === kind);
-    const homes = PL.map((p, i) => i).filter((i) => PL[i].kind === 'home' || PL[i].kind === 'shop'), shops = idx('shop'), inns = idx('inn'), squares = idx('square');
+    const homes = PL.map((p, i) => i).filter((i) => PL[i].kind === 'home' || PL[i].kind === 'shop' || PL[i].kind === 'camp'), shops = idx('shop'), inns = idx('inn'), squares = idx('square');
     const fields = new Map(), q = new Int32Array(MW * MH);
     const field = (c) => { let f = fields.get(c); if (f) return f; f = new Int16Array(MW * MH).fill(-1); let h = 0, t = 0; f[c] = 0; q[t++] = c;
       while (h < t) { const i = q[h++], x = i % MW, d = f[i] + 1; if (x > 0 && free[i - 1] && f[i - 1] < 0) { f[i - 1] = d; q[t++] = i - 1; } if (x < MW - 1 && free[i + 1] && f[i + 1] < 0) { f[i + 1] = d; q[t++] = i + 1; }
@@ -1144,6 +1223,7 @@ function buildWorld(spec, day, season, arriveAt) {
     const n = window.CROWD_N ? Math.min(window.CROWD_N, P_home.length) : P_home.length, residents = n;
     // where someone wants to be at hour h: a place index, or -2 = free (errands)
     const want = (i, h) => { h = ((h - P_jit[i]) % 24 + 24) % 24; const role = P_role[i], home = P_home[i];
+      if (WX.indoors && ((Math.imul(i + 1, 2654435761) >>> 0) / 4294967296) < WX.indoors) return home;   // the weather keeps them in
       if (role === 3) return h >= 11 ? P_work[i] : home;
       if (h >= 7 && h < 18) return role === 0 ? (P_work[i] >= 0 ? P_work[i] : -2) : -2;
       if (h >= 18 && h < 21) { const t = P_third[i]; if (t === 1 && inns.length) return inns[i % inns.length]; if (t === 2) return home; return squares.length ? squares[i % squares.length] : home; }
@@ -1152,7 +1232,7 @@ function buildWorld(spec, day, season, arriveAt) {
     const st = new Uint8Array(n), at0 = new Int32Array(n), dest = new Int32Array(n), until = new Float32Array(n), errand = new Uint8Array(n);
     const ax = new Float32Array(n), ay = new Float32Array(n), ox = new Float32Array(n), oy = new Float32Array(n), face = new Float32Array(n), ph = new Float32Array(n);
     const look = new Float32Array(n), flip = new Float32Array(n);
-    const outdoor = (p) => p >= 0 && PL[p].kind === 'square';
+    const outdoor = (p) => p >= 0 && (PL[p].kind === 'square' || PL[p].kind === 'camp');
     const goTo = (i, p) => { if (p === at0[i] && st[i] !== ST_WALK) return; if (st[i] === ST_IN) { const D0 = PL[at0[i]]; ax[i] = D0.x; ay[i] = D0.y; } if (field(PL[p].c)[Math.min(MW * MH - 1, Math.max(0, I(Math.floor(ax[i]), Math.floor(ay[i]))))] < 0) return; st[i] = ST_WALK; dest[i] = p; };
     const arrive = (i, p, clock) => { at0[i] = p; if (outdoor(p)) { st[i] = ST_STAND; until[i] = clock + (5 + rc() * 25) / 60; } else st[i] = ST_IN; if (errand[i] && p !== P_home[i]) until[i] = clock + (outdoor(p) ? (P_role[i] === 2 ? 30 + rc() * 60 : 15 + rc() * 35) : 10 + rc() * 25) / 60; else if (errand[i]) { errand[i] = 0; until[i] = clock + (90 + rc() * 120) / 60; } };   // an errand or two a day: walking takes real seconds, so time at home is long
     const errandPick = (i) => { const u = rc(), pool = u < (P_role[i] === 2 ? .8 : .45) && squares.length ? squares : shops.length && u < .85 ? shops : homes, H = PL[P_home[i]]; let best = pool[0], bd = 1e9;   // the nearest of a few: people shop close to home
@@ -1264,7 +1344,7 @@ function rebuildWalk() {
   const t = new THREE.DataTexture(d, TW, TH, THREE.RGBAFormat, THREE.FloatType); t.magFilter = t.minFilter = THREE.NearestFilter; t.needsUpdate = true; if (U.walk.value) U.walk.value.dispose(); U.walk.value = t; }
 // a gen2 town over several maps plays the part of a city plan: its maps are the plan's cells
 const G2 = () => true, MULTI = () => townNow().W * townNow().H > 1;
-const g2spec = () => ({ seed: +S.seed, basis: S.basis, rank: Math.min(2, +S.rank), planted: !!S.planted, ground: S.ground || 'hill', gen: 2, multi: true, region: S.region || 'en', specs: S.trade ? [S.trade] : [], cpop: S.cpop || 0, csite: S.csite || 'river', cyear: S.cyear || 1500, cflags: S.cflags || '' });
+const g2spec = () => ({ chron: S.chron || null, seed: +S.seed, basis: S.basis, rank: Math.min(2, +S.rank), planted: !!S.planted, ground: S.ground || 'hill', gen: 2, multi: true, region: S.region || 'en', specs: S.trade ? [S.trade] : [], cpop: S.cpop || 0, csite: S.csite || 'river', cyear: S.cyear || 1500, cflags: S.cflags || '' });
 function townNow() { const T = townOf(g2spec()), [w, h] = T.maps, mk = T.Q.market; const core = mk ? Math.min(h - 1, Math.floor(mk.cy / MH)) * w + Math.min(w - 1, Math.floor(mk.cx / MW)) : 0; return { W: w, H: h, built: new Int8Array(w * h), core }; }
 const curCell = () => S.tcell >= 0 && S.tcell < townNow().W * townNow().H ? S.tcell : (S.tcell = townNow().core);
 function cellAtG(x, y) { const P = townNow(); return x < 0 || y < 0 || x >= P.W || y >= P.H ? -1 : y * P.W + x; }
@@ -1332,7 +1412,52 @@ const SPEED = 4.2;
 let zEff = 1.35; const camGoal = () => { const L = world.lead; const z = zEff; return new THREE.Vector3(L.pos.x, (window.CAMH || 9.4) * z + (world.camY || 0), L.pos.y + (window.CAMD || 8.4) * z); };
 let clock = 0, lastCell = -1, shadowTick = 0, walkedAcc = 0, readyOnce = false;
 // what the Engine is told of a door the party walks through: the building's town-wide key and its words
-const doorInfo = (h) => ({ key: h.gen2 ? 'b' + h.bid : h.plot != null ? 'p' + h.plot : h.gate ? 'gate' : 'other', label: h.label || (h.inn ? 'Inn' : h.shop ? 'Shop' : h.gate ? 'Gatehouse' : 'House'), inn: !!h.inn, shop: !!h.shop, ward: h.ward ?? -1, street: world && h.door ? world.where(Math.floor(h.door[0]), Math.floor(h.door[1])) : '', tcell: S.tcell });
+const doorInfo = (h) => ({ key: h.gen2 ? 'b' + h.bid : h.plot != null ? 'p' + h.plot : h.gate ? 'gate' : 'other', label: h.label || (h.empty ? 'Empty house' : h.inn ? 'Inn' : h.shop ? 'Shop' : h.gate ? 'Gatehouse' : 'House'), inn: !!h.inn, shop: !!h.shop, empty: !!h.empty, ward: h.ward ?? -1, street: world && h.door ? world.where(Math.floor(h.door[0]), Math.floor(h.door[1])) : '', tcell: S.tcell });
+// ---------- the weather (fork): the world's weather where the party stands, drawn over the town: the sky, light and fog it
+// brings, rain, snow, hail or dust falling round the party, lightning in a storm, and fewer people out in it ----------
+// dim: light (tone exposure); fogN/fogF: how near the fog closes in; tint/tm: the sky and fog colour it turns to, and how far;
+// p/n: what falls and how much of it; fall: its speed; wind: how hard it drives across; indoors: the share of people who stay in
+const WXT = {
+  clear: { dim: 1, fogN: 1, fogF: 1, indoors: 0 },
+  cloudy: { dim: .86, fogN: .92, fogF: .92, tint: 0xb4bcc6, tm: .3, indoors: 0 },
+  overcast: { dim: .72, fogN: .82, fogF: .82, tint: 0x99a1ab, tm: .55, indoors: .1 },
+  rain: { dim: .62, fogN: .7, fogF: .72, tint: 0x8a929c, tm: .6, p: 'rain', n: 1600, fall: 13, wind: .6, indoors: .55 },
+  heavy_rain: { dim: .52, fogN: .5, fogF: .58, tint: 0x78808a, tm: .7, p: 'rain', n: 3000, fall: 15, wind: 1.2, indoors: .8 },
+  storm: { dim: .42, fogN: .45, fogF: .52, tint: 0x5c6472, tm: .75, p: 'rain', n: 3400, fall: 16, wind: 3, flash: true, indoors: .9 },
+  snow: { dim: .82, fogN: .7, fogF: .72, tint: 0xd6dbe2, tm: .55, p: 'snow', n: 1800, fall: 1.1, wind: .4, indoors: .4 },
+  blizzard: { dim: .7, fogN: .25, fogF: .36, tint: 0xe2e6ec, tm: .85, p: 'snow', n: 4000, fall: 2.4, wind: 5, indoors: .85 },
+  fog: { dim: .8, fogN: .12, fogF: .34, tint: 0xc6cace, tm: .8, indoors: .2 },
+  wind: { dim: 1, fogN: 1, fogF: 1, p: 'leaf', n: 140, fall: .7, wind: 3.5, indoors: .15 },
+  hail: { dim: .56, fogN: .62, fogF: .66, tint: 0x8a929c, tm: .6, p: 'hail', n: 1600, fall: 11, wind: .8, indoors: .85 },
+  sandstorm: { dim: .62, fogN: .22, fogF: .38, tint: 0xc4a274, tm: .85, p: 'dust', n: 3000, fall: .4, wind: 7, indoors: .85 },
+  heat_wave: { dim: 1.08, fogN: .9, fogF: 1, tint: 0xf2e2c2, tm: .25, indoors: .35 },
+};
+let WX = WXT.clear, wxKind = '', wxP = null, wxFlash = 0, wxNext = 3;
+const wxSky = new THREE.Color(), wxTint = new THREE.Color();
+function setWeather(kind) { const k = WXT[kind] ? kind : 'clear'; if (k === wxKind) return; wxKind = k; WX = WXT[k]; S.weather = k;
+  if (wxP) { MS.remove(wxP.obj); wxP.obj.geometry.dispose(); wxP.obj.material.dispose(); wxP = null; } if (WX.p) wxP = wxMake(WX.p, WX.n); }
+function wxMake(kind, n) { const box = [28, 12, 24], line = kind === 'rain', base = new Float32Array(n * 3), pos = new Float32Array(n * (line ? 6 : 3));
+  for (let i = 0; i < n * 3; i += 3) { base[i] = Math.random() * box[0]; base[i + 1] = Math.random() * box[1]; base[i + 2] = Math.random() * box[2]; }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const obj = line ? new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: 0xbfcadb, transparent: true, opacity: .42, depthWrite: false }))
+    : new THREE.Points(g, new THREE.PointsMaterial({ color: { snow: 0xffffff, hail: 0xe6edf4, dust: 0xbf9a68, leaf: 0x7a8a3a }[kind], size: { snow: .085, hail: .055, dust: .06, leaf: .13 }[kind], transparent: true, opacity: kind === 'dust' ? .45 : .92, depthWrite: false }));
+  obj.frustumCulled = false; obj.renderOrder = 5; MS.add(obj); return { kind, n, obj, base, box, line }; }
+// each frame: what falls round the party, the light, the sky and fog drawn from the world's own (never changed)
+function wxTick(W, L, dt) { const day = S.day, fog = MS.fog;
+  if (!W.wxBase) W.wxBase = { sky: W.scene.background.clone(), fog: W.scene.fog.color.clone() };
+  if (WX.tint) { wxTint.setHex(WX.tint); if (!day) wxTint.multiplyScalar(.22); }
+  wxSky.copy(W.wxBase.sky); if (WX.tint) wxSky.lerp(wxTint, WX.tm); MS.background = wxSky;
+  fog.color.copy(W.wxBase.fog); if (WX.tint) fog.color.lerp(wxTint, WX.tm); fog.near *= WX.fogN; fog.far *= WX.fogF;
+  let ex = day ? WX.dim : 1 - (1 - WX.dim) * .5;
+  if (WX.flash) { wxNext -= dt; if (wxNext <= 0) { wxFlash = .16; wxNext = 3 + Math.random() * 9; } if (wxFlash > 0) { wxFlash -= dt; ex *= 1 + 2.6 * Math.max(0, wxFlash) / .16; } }
+  renderer.toneMappingExposure = ex;
+  if (!wxP) return; const { n, base, box, line } = wxP, a = wxP.obj.geometry.attributes.position.array, fall = WX.fall, wind = WX.wind || 0;
+  const ox = L.pos.x - box[0] / 2, oy = W.camY - 1, oz = L.pos.y - box[2] + 6, t = clock, leaf = wxP.kind === 'leaf';
+  for (let i = 0, j = 0; i < n * 3; i += 3) { const ph = base[i] * 1.7 + base[i + 2];
+    const y = ((base[i + 1] - fall * t) % box[1] + box[1]) % box[1], x = ((base[i] + wind * t + (leaf || wxP.kind === 'snow' ? Math.sin(t * 1.3 + ph) * .35 : 0)) % box[0] + box[0]) % box[0], z = base[i + 2];
+    const X = ox + x, Y = oy + (leaf ? y * .35 : y), Z = oz + z;
+    a[j++] = X; a[j++] = Y; a[j++] = Z; if (line) { a[j++] = X - wind * .035; a[j++] = Y - .42; a[j++] = Z; } }
+  wxP.obj.geometry.attributes.position.needsUpdate = true; }
 function tick(dt, force) {
   if (world && !IN) { const pr = $('prompt'), c = flapNear(.55); if (c) { pr.hidden = false; pr.textContent = 'Cellar steps: E to go down'; } else if (!pr.hidden) pr.hidden = true; }
   if (MULTI() && !force) { const L0 = world.lead, dx = L0.pos.x < 0 ? -1 : L0.pos.x >= MW ? 1 : 0, dz = L0.pos.y < 0 ? -1 : L0.pos.y >= MH ? 1 : 0; if ((dx || dz) && shiftTo(dx, dz)) return tick(dt, true); }
@@ -1378,6 +1503,7 @@ function tick(dt, force) {
   { const want = S.zoom * (W.P.at(L.cell[0], L.cell[1]) === 'square' ? 1.22 : 1); zEff = force ? want : zEff + (want - zEff) * Math.min(1, dt * 2.5); }
   cam.position.lerp(camGoal(), force ? 1 : Math.min(1, dt * 5));
   MS.fog.near = 13 * zEff + 4; MS.fog.far = 13 * zEff + 34;
+  wxTick(W, L, dt);
   cam.lookAt(cam.position.x, .75 + W.camY, cam.position.z - (window.CAMD || 8.4) * zEff - .5);
   U.inside.value = W.P.walls && W.P.walls.ins[W.I(Math.max(0, Math.min(MW - 1, L.cell[0])), Math.max(0, Math.min(MH - 1, L.cell[1])))] ? 1 : 0; U.party.value.set(L.pos.x, .8 + W.hAt(L.pos.x, L.pos.y), L.pos.y); { const T = world.party[world.party.length - 1]; U.tail.value.set(T.pos.x, .8 + W.hAt(T.pos.x, T.pos.y), T.pos.y); const pm = (i) => world.party[Math.min(i, world.party.length - 1)]; for (const [u, C] of [[U.p1, pm(1)], [U.p2, pm(2)]]) u.value.set(C.pos.x, .8 + W.hAt(C.pos.x, C.pos.y), C.pos.y); } U.cam.value.copy(cam.position);
 }
@@ -1445,14 +1571,17 @@ function inTick(dt, force) { const { W } = IN; let vx = 0, vy = 0; for (const k 
   cam.position.lerp(W.camGoal(IN.zEff), force ? 1 : Math.min(1, dt * 5)); W.lookAt(cam, IN.zEff);
   if (W.exited) leaveHouse(); }
 const __in = { PLANNERS, planKeep, planGuild, inward, enterHouse, enterPlan, flapNear, get IN() { return IN; }, leaveHouse, doorNear, inTick }; const __walk = { Raycaster: THREE.Raycaster, get worlds() { return worlds; }, get gtao() { return gtao; }, get composer() { return composer; }, renderer, U, step: (n, dt = .05) => { for (let i = 0; i < n; i++) { clock += dt; tick(dt); } composer.render(); }, stepNR: (n, dt = .05) => { for (let i = 0; i < n; i++) { clock += dt; tick(dt); } }, get world() { return world; }, get cam() { return cam; }, keys, S, load };
+setWeather(S.weather || 'clear');
 
 Object.assign(S, opts.spec || {}, { hour: opts.hour ?? S.hour, season: opts.season || S.season, hq: opts.hq ?? S.hq });
 S.day = S.hour >= 6 && S.hour < 20; S.gen = 2; S.place = 'town'; S.rank = Math.min(2, +S.rank || 0); if (opts.tcell != null) S.tcell = opts.tcell;
+setWeather(opts.weather || 'clear');
 load(opts.arriveAt || null);
 const api = {
   S, __in, __walk, get world() { return world; }, get inside() { return IN; },
   setHour(h) { if (!world || IN) { S.hour = h; return; } const d = h >= 6 && h < 20; S.hour = h; if (d !== S.day && !world.switching) { world.switching = true; S.day = d; load(world.lead.cell); } },
   setSeason(s) { if (s && s !== S.season && world) { S.season = s; load(world.lead.cell); } },
+  setWeather(w) { setWeather(w || 'clear'); },
   setHq(v) { S.hq = !!v; if (gtao) gtao.enabled = S.hq; tilts.forEach((p) => (p.enabled = S.hq)); },
   pause(v) { paused = !!v; keys.clear(); },
   focus() { renderer.domElement.focus({ preventScroll: true }); },

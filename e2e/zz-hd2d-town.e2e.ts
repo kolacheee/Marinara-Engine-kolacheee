@@ -108,6 +108,14 @@ test(`HD-2D ${SIZE} opens from the overworld`, async ({ page, request }, testInf
         { timeout: 60_000 },
       )
       .toMatch(/people/u);
+    // The town's plan is kept as first seen, and its chronicle comes with it.
+    const keptTown = (
+      (await (await request.get(`/api/game/${chatId}/town`)).json()) as {
+        town: { hd2d?: { kept: boolean; spec: { seed: number }; chron: { prosperity: string } } | null } | null;
+      }
+    ).town?.hd2d;
+    expect(keptTown?.kept).toBe(true);
+    expect(keptTown?.chron.prosperity).toMatch(/thriving|modest|struggling/u);
     // Walk through the nearest door: a visit, told on the next turn.
     const entered = await page.evaluate(() => {
       const api = (

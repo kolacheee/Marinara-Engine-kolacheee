@@ -5,6 +5,8 @@ export interface Hd2dDoor {
   label: string;
   inn: boolean;
   shop: boolean;
+  /** A house left empty by the town's past (its chronicle). */
+  empty?: boolean;
   ward: number;
   street: string;
   tcell: number;
@@ -22,6 +24,8 @@ export interface Hd2dTownOptions {
   /** The town map to open on (-1: the town's own start) and the cell there. */
   tcell?: number;
   arriveAt?: [number, number] | null;
+  /** The weather where the party stands (WeatherType), drawn from the first frame. */
+  weather?: string | null;
   /** false: the hour is set by the Engine (setHour), not run by the scene. */
   clock?: boolean;
   focus?: boolean;
@@ -36,6 +40,8 @@ export interface Hd2dTownOptions {
 export interface Hd2dTownApi {
   setHour(hour: number): void;
   setSeason(season: string): void;
+  /** The weather where the party stands (WeatherType): sky, light, fog, what falls, and how many stay in. */
+  setWeather(weather: string | null): void;
   setHq(on: boolean): void;
   pause(on: boolean): void;
   focus(): void;

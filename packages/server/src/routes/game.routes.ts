@@ -362,6 +362,13 @@ import {
   worldTownHd2dBriefSchema,
   worldTownHd2dSpotsWith,
   worldTownHd2dSpotsFromMetadata,
+  worldTownHd2d,
+  worldTownHd2dSpec,
+  worldTownHd2dKeptSchema,
+  worldTownHd2dKeptWith,
+  worldTownHd2dKeptFromMetadata,
+  worldTownHd2dChronicle,
+  worldTownChronicle,
   dungeonSetFor,
   dungeonSetForPlace,
   gameDungeonMapFromPlaceMap,
@@ -11822,7 +11829,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       town.buildings.find((building) => named && building.placeId === named)?.id ??
       "square";
     const visit = worldTownVisitFromMetadata(meta);
-    return { town, at, visit: visit?.settlementId === town.settlementId ? visit : null, pending: visit };
+    return { town, at, visit: visit?.settlementId === town.settlementId ? visit : null, pending: visit, present };
   };
 
   // ── GET /game/:chatId/town ──
@@ -11832,7 +11839,22 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const meta = parseMeta(chat.metadata);
     const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
     const found = world ? await townOf(req.params.chatId, meta, world) : null;
-    return { town: found ? { ...found.town, at: found.at, visit: found.visit } : null };
+    if (!world || !found) return { town: null };
+    // HD-2D towns (fork): the town's plan as first seen (its streets never move), and its chronicle drawn
+    // over it: empty houses, burned plots, a refugee camp, the burial ground, how its market is doing.
+    const id = found.town.settlementId;
+    const kept = worldTownHd2dKeptFromMetadata(meta).find((each) => each.settlementId === id);
+    const spec = worldTownHd2d(world) ? (kept?.spec ?? worldTownHd2dSpec(world, id)) : null;
+    const settlement = world.world.places.find((place) => place.id === id);
+    const prosperity = found.present.prosperity[id] ?? settlement?.prosperity ?? "modest";
+    const hd2d = spec
+      ? {
+          spec,
+          kept: !!kept,
+          chron: worldTownHd2dChronicle(worldTownChronicle(world, id, found.present), prosperity),
+        }
+      : null;
+    return { town: { ...found.town, at: found.at, visit: found.visit, hd2d } };
   });
 
   // ── GET /game/:chatId/town/interior?building= (worldgen W13) ──
@@ -11924,7 +11946,11 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
   app.post<{ Params: { chatId: string } }>("/:chatId/town/hd2d", async (req, reply) => {
     const { chatId } = req.params;
     const body = z
-      .object({ spot: worldTownHd2dSpotSchema.optional(), brief: worldTownHd2dBriefSchema.optional() })
+      .object({
+        spot: worldTownHd2dSpotSchema.optional(),
+        brief: worldTownHd2dBriefSchema.optional(),
+        kept: worldTownHd2dKeptSchema.optional(),
+      })
       .strict()
       .parse(req.body);
     const chats = createChatsStorage(app.db);
@@ -11933,6 +11959,10 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         ? { gameTownHd2dSpots: worldTownHd2dSpotsWith(worldTownHd2dSpotsFromMetadata(fresh), body.spot) }
         : {}),
       ...(body.brief ? { gameTownHd2dBrief: body.brief } : {}),
+      // The town as first seen: kept once, never replaced.
+      ...(body.kept
+        ? { gameTownHd2dKept: worldTownHd2dKeptWith(worldTownHd2dKeptFromMetadata(fresh), body.kept) }
+        : {}),
     }));
     if (!updated) return reply.status(404).send({ error: "Chat not found" });
     return { ok: true };
