@@ -25,7 +25,7 @@ import {
 } from "./edits.js";
 import type { GameWorld } from "./game-world.js";
 import type { WorldPresent } from "./ledger.js";
-import { WORLD_PEOPLE_DEFAULTS, worldCast, type WorldPerson } from "./people.js";
+import { WORLD_PEOPLE_DEFAULTS, worldCast, worldPeopleNow, type WorldPerson } from "./people.js";
 import { worldBuildingHasRooms, worldInteriorEditIssues, worldInteriorUse, worldNamedPlaceUse } from "./interior.js";
 import type { WorldInteriorUse } from "./furniture.js";
 import { worldMapEditIssues, worldSiteEditIssues } from "./place-maps.js";
@@ -142,6 +142,8 @@ export function worldTown(
     town,
     (present?.places ?? []).filter((place) => place.parentId === settlementId),
   );
+  // Those who died in play are followed by their successors, in the same homes and work (the chronicle).
+  if (present?.deaths?.length) town.people = worldPeopleNow(game, town.people, present);
   return town;
 }
 

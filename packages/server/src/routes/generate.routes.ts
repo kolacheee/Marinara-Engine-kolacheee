@@ -10720,7 +10720,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 : startPlace;
               return found ? [found.id] : [];
             });
-            const named = worldPeopleNamed(turnWorld, placeIds, fullResponse);
+            const named = worldPeopleNamed(turnWorld, placeIds, fullResponse, turnPresent ?? undefined);
             // Tracked once the reply is saved (below), so a discarded or stopped reply adds nobody.
             if (named.length > 0) worldNpcsNamed = { world: turnWorld, people: named };
           }

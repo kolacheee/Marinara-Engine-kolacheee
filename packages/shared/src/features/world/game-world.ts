@@ -19,7 +19,7 @@ import { worldBeyondText } from "./beyond.js";
 import { applyWorldEdits, checkWorldEdits, worldEditsSchema, worldPlaceNamed, type WorldEdits } from "./edits.js";
 import { worldEditsFightable } from "./battlefield-maps.js";
 import { WORLD_RESOURCE_WORDS } from "./land.js";
-import { worldCast, worldCastSize, worldPersonSheet } from "./people.js";
+import { worldCastNow, worldCastSize, worldPersonSheet } from "./people.js";
 import { worldHistory, worldHistoryLine, worldNotablePast, worldPlacePast } from "./history.js";
 import { worldFaithsAt, worldFolkAndFaithLines, worldFolkOf } from "./faiths.js";
 import { worldAddedPeoples, worldPeopleLines, worldPeoples, worldPeoplesNear } from "./peoples.js";
@@ -474,7 +474,7 @@ export function worldWhereYouAreText(
     const past = worldPlacePast(history, home, 4);
     if (past.length) lines.push(`- Its past: ${past.map(worldHistoryLine).join(" ")}`);
     // What its past still leaves in the town (the chronicle).
-    const chronicle = worldTownChronicle(game, home.id, present?.prosperity[home.id]);
+    const chronicle = worldTownChronicle(game, home.id, present);
     const felt = chronicle ? worldChronicleLine(chronicle) : undefined;
     if (felt) lines.push(`- ${felt}`);
     // What the party has done here, latest last.
@@ -534,7 +534,7 @@ export function worldWhereYouAreText(
   }
   // The people here not met yet (worldgen W2), so someone new in the scene is one of them, not a name
   // the model reaches for.
-  const unmet = worldCast(game, place.id)
+  const unmet = worldCastNow(game, place.id, present)
     .filter((person) => person.named && !at.met?.has(person.id))
     .slice(0, WHERE_YOU_ARE_PEOPLE);
   if (unmet.length) {

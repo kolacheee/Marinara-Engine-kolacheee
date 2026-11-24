@@ -12,6 +12,7 @@
 // ──────────────────────────────────────────────
 import { worldStream, type WorldPlace, type WorldProsperity } from "./compile.js";
 import type { GameWorld } from "./game-world.js";
+import type { WorldChangeKind } from "../../schemas/world-kit.schema.js";
 import { worldHistory, type WorldHistoryEvent } from "./history.js";
 
 /** The kinds of woe a chronicle tells apart. */
@@ -76,6 +77,8 @@ export interface WorldPersonFate {
   relation: WorldSuccession;
   /** Who put an outsider or an appointed successor in. */
   by?: string;
+  /** How they died, as the story told it (a death in play). */
+  note?: string;
 }
 
 /** The woe an event of the past is, read from what it says happened; none for the rest. */
@@ -140,31 +143,61 @@ function causeOf(woe: WorldWoe, event: WorldHistoryEvent): string {
           : "in the troubles";
 }
 
-/** A settlement's chronicle; null for a place that is not a settlement. */
+/** What the chronicle reads of the world as play left it (the ledger's present). */
+export interface WorldChroniclePresent {
+  day: number;
+  prosperity: Record<string, WorldProsperity>;
+  ruined: string[];
+  news: ReadonlyArray<{
+    day: number;
+    kind: WorldChangeKind;
+    text: string;
+    placeId?: string;
+    severe?: true;
+    brewing?: true;
+  }>;
+  arrivals?: ReadonlyArray<{ placeId: string; origin: string; kind: "refugees" | "settlers"; day: number }>;
+}
+
+/** A settlement's chronicle, as history left it and play since; null for a place that is not a settlement. */
 export function worldTownChronicle(
   game: GameWorld,
   settlementId: string,
-  prosperityNow?: WorldProsperity,
+  present?: WorldChroniclePresent,
 ): WorldTownChronicle | null {
   const settlement = game.world.places.find((place) => place.id === settlementId);
   if (!settlement || settlement.rank === undefined) return null;
-  const prosperity = prosperityNow ?? settlement.prosperity ?? "modest";
+  const prosperity = present?.prosperity[settlementId] ?? settlement.prosperity ?? "modest";
+  // The years since play began: the past moves back as the story goes on.
+  const played = (present?.day ?? 0) / 365;
   const woes: WorldChronicleWoe[] = [];
   let lost = 0;
   let menLost = 0;
   let ruined = 0;
-  for (const event of eventsAt(game, settlement)) {
+  const befell = [
+    ...eventsAt(game, settlement).map((event) => ({ event, years: event.yearsAgo + played })),
+    // What befell it in play: the severe news there, the Game Master's and the world's own.
+    ...(present?.news ?? [])
+      .filter((news) => news.placeId === settlementId && news.severe && !news.brewing)
+      .map((news) => ({
+        event: { kind: news.kind, text: news.text, severe: true as const },
+        years: Math.max(0, (present!.day - news.day) / 365),
+      })),
+  ];
+  for (const { event, years } of befell) {
     const woe = worldEventWoe(event);
     if (!woe) continue;
-    const felt = worldChronicleFelt(event.yearsAgo);
+    const felt = worldChronicleFelt(years);
     if (felt <= 0) continue;
-    woes.push({ woe, yearsAgo: event.yearsAgo, text: event.text, felt });
+    woes.push({ woe, yearsAgo: Math.floor(years), text: event.text, felt });
     // A plague carried on from elsewhere takes fewer than where it broke out.
     const scale = woe === "plague" && /spread from/.test(event.text) ? 0.6 : 1;
-    lost += LOSS[woe].people * scale * fade(event.yearsAgo, REFILL[prosperity]);
-    menLost += LOSS[woe].men * fade(event.yearsAgo, 20);
-    ruined += LOSS[woe].ruin * fade(event.yearsAgo, REBUILD[prosperity]);
+    lost += LOSS[woe].people * scale * fade(years, REFILL[prosperity]);
+    menLost += LOSS[woe].men * fade(years, 20);
+    ruined += LOSS[woe].ruin * fade(years, REBUILD[prosperity]);
   }
+  // A settlement the story ruined is mostly ruins.
+  if (present?.ruined.includes(settlementId)) ruined = Math.max(ruined, 0.3);
   // People come from elsewhere: those who fled a war to here, and those of the places lost nearby.
   const arrivals: WorldChronicleArrival[] = [];
   const nameLower = settlement.name.toLowerCase();
@@ -174,9 +207,9 @@ export function worldTownChronicle(
     if (woe === "war" && fled && fled[2]!.toLowerCase() === nameLower) {
       arrivals.push({
         from: fled[1]!,
-        yearsAgo: event.yearsAgo,
+        yearsAgo: Math.floor(event.yearsAgo + played),
         kind: "refugees",
-        lodging: 0.08 * fade(event.yearsAgo, LODGE_YEARS),
+        lodging: 0.08 * fade(event.yearsAgo + played, LODGE_YEARS),
       });
       continue;
     }
@@ -185,15 +218,26 @@ export function worldTownChronicle(
     if (gone) {
       arrivals.push({
         from: gone[1]!,
-        yearsAgo: event.yearsAgo,
+        yearsAgo: Math.floor(event.yearsAgo + played),
         kind: "refugees",
-        lodging: 0.05 * fade(event.yearsAgo, LODGE_YEARS),
+        lodging: 0.05 * fade(event.yearsAgo + played, LODGE_YEARS),
       });
       continue;
     }
     const moved = /^(.+?) was abandoned(?: as its people moved|:)/.exec(event.text);
-    if (moved && event.yearsAgo <= WORLD_CHRONICLE_FULL)
-      arrivals.push({ from: moved[1]!, yearsAgo: event.yearsAgo, kind: "settlers", lodging: 0 });
+    if (moved && event.yearsAgo + played <= WORLD_CHRONICLE_FULL)
+      arrivals.push({ from: moved[1]!, yearsAgo: Math.floor(event.yearsAgo + played), kind: "settlers", lodging: 0 });
+  }
+  // Those who came in play.
+  for (const each of present?.arrivals ?? []) {
+    if (each.placeId !== settlementId) continue;
+    const years = Math.max(0, (present!.day - each.day) / 365);
+    arrivals.push({
+      from: each.origin,
+      yearsAgo: Math.floor(years),
+      kind: each.kind,
+      lodging: each.kind === "refugees" ? 0.06 * fade(years, LODGE_YEARS) : 0,
+    });
   }
   arrivals.sort((a, b) => a.yearsAgo - b.yearsAgo || a.from.localeCompare(b.from));
   const refugees = Math.min(
@@ -229,7 +273,7 @@ const SHARE_WORDS: Array<[number, string]> = [
   [0.02, "one or two in fifty"],
 ];
 const share = (value: number) => SHARE_WORDS.find(([at]) => value >= at)?.[1];
-const ago = (years: number) => (years <= 1 ? "last year" : `${years} years ago`);
+const ago = (years: number) => (years <= 0 ? "lately" : years <= 1 ? "last year" : `${years} years ago`);
 
 /** What is still felt in a settlement, in a line for the Game Master; none when nothing is. */
 export function worldChronicleLine(chronicle: WorldTownChronicle): string | undefined {
@@ -348,6 +392,15 @@ export function worldCastFates(
   return fates;
 }
 
+/** How a successor comes in play, by the one who died: their group appoints a leader's successor; the
+ *  rest are kin, a journeyman or an outsider, by the roll. */
+export function worldPlaySuccession(role: string, age: string, roll: number): WorldSuccession {
+  if (LEADER.test(role)) return "appointed";
+  if (roll < (age === "young" ? 0.5 : 0.4)) return "spouse";
+  if (roll < 0.7 && age !== "young") return "child";
+  return roll < 0.9 ? "journeyman" : "outsider";
+}
+
 const OLDER: Record<string, string> = {
   young: "in their prime",
   "in their prime": "middle-aged",
@@ -394,5 +447,5 @@ export function worldFateText(fate: WorldPersonFate): string {
       : fate.relation === "appointed"
         ? `was put in by ${fate.by ?? "the town"} after ${fate.name}`
         : `took over from ${fate.name}, ${kin}`;
-  return `${put}, who died ${fate.cause} ${ago(fate.yearsAgo)}`;
+  return `${put}, who died ${fate.cause ? `${fate.cause} ` : ""}${ago(fate.yearsAgo)}${fate.note ? ` (${fate.note})` : ""}`;
 }

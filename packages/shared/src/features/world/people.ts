@@ -10,7 +10,15 @@ import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import type { GameNpc } from "../../types/game.js";
 import { worldStream, type WorldPlace } from "./compile.js";
 import { worldPlaceNamed } from "./edits.js";
-import { worldCastFates, worldFateText, worldSuccessorAge, type WorldPersonFate } from "./chronicle.js";
+import {
+  worldCastFates,
+  worldEventWoe,
+  worldFateText,
+  worldPlaySuccession,
+  worldSuccessorAge,
+  type WorldPersonFate,
+  type WorldSuccession,
+} from "./chronicle.js";
 import type { GameWorld } from "./game-world.js";
 
 /** The words a kit's people are drawn in when the kit leaves them out. Plain, setting-neutral words. */
@@ -234,41 +242,8 @@ export function worldCast(game: GameWorld, placeId: string): WorldPerson[] {
   for (const [index, fate] of worldCastFates(game, place.id, people)) {
     const before = people[index]!;
     if (renamed.has(before.id)) continue;
-    const drawn = worldStream(seed, "successor", before.id);
-    const kin = fate.relation === "spouse" || fate.relation === "child";
-    const from =
-      fate.relation === "outsider" && fate.by ? world.places.find((each) => each.name === fate.by) : undefined;
-    const culture = from?.culture ?? (fate.relation === "outsider" ? place.culture : before.culture);
-    const names = brief.peopleNames.find((group) => group.culture === culture);
-    let name = "";
-    for (let attempt = 0; attempt < 12 && names?.given.length; attempt++) {
-      let full = worldFullName(names, drawn);
-      if (kin && before.named) full = worldWithFamilyName(full, before.name, names.order);
-      if (!used.has(full.toLowerCase())) {
-        name = full;
-        break;
-      }
-    }
-    // A world with no names for this culture keeps calling them by their role.
-    if (!name && names?.given.length) continue;
-    if (!name) name = before.name;
-    else used.add(name.toLowerCase());
-    people[index] = {
-      ...before,
-      name,
-      named: name !== before.name || before.named,
-      culture,
-      ...(from ? { origin: from.name } : {}),
-      temperament: pick(words.temperaments, drawn),
-      value: pick(words.values, drawn),
-      speech: pick(words.speech, drawn),
-      age: worldSuccessorAge(before.age, fate.relation, fate.yearsAgo, words.ages),
-      build: pick(words.builds, drawn),
-      hair: pick(words.hair, drawn),
-      mark: pick(words.marks, drawn),
-      succeeds: { ...fate, name: before.named ? before.name : `the last ${before.role}` },
-    };
-    if (fate.relation === "outsider" && !from) delete people[index]!.origin;
+    const after = worldSuccessorOf(game, before, fate, used, worldStream(seed, "successor", before.id));
+    if (after) people[index] = after;
   }
   // The hand edits (W9c): people renamed, and people added, each drawn the rest of the way from their
   // own id so they read the same every time.
@@ -298,6 +273,112 @@ export function worldCast(game: GameWorld, placeId: string): WorldPerson[] {
   return people;
 }
 
+/**
+ * Who takes up a person's work and house when they die: drawn from `random`, of their own people (an
+ * outsider of the place they came from), a spouse or child keeping their family name; `name` is the
+ * successor the story named, when it did. None in a world whose culture has names but none free.
+ */
+export function worldSuccessorOf(
+  game: GameWorld,
+  before: WorldPerson,
+  fate: WorldPersonFate,
+  used: Set<string>,
+  random: () => number,
+  name?: string,
+): WorldPerson | undefined {
+  const { kit, brief, world } = game;
+  const words = peopleWords(kit);
+  const place = world.places.find((each) => each.id === before.placeId);
+  const kin = fate.relation === "spouse" || fate.relation === "child";
+  const from = fate.relation === "outsider" && fate.by ? world.places.find((each) => each.name === fate.by) : undefined;
+  const culture = from?.culture ?? (fate.relation === "outsider" ? (place?.culture ?? before.culture) : before.culture);
+  const names = brief.peopleNames.find((group) => group.culture === culture);
+  let chosen = name?.trim() ?? "";
+  for (let attempt = 0; !chosen && attempt < 12 && names?.given.length; attempt++) {
+    let full = worldFullName(names, random);
+    if (kin && before.named) full = worldWithFamilyName(full, before.name, names.order);
+    if (!used.has(full.toLowerCase())) chosen = full;
+  }
+  // A world with no names for this culture keeps calling them by their role.
+  if (!chosen && names?.given.length) return undefined;
+  if (!chosen) chosen = before.name;
+  else used.add(chosen.toLowerCase());
+  const { origin: _origin, succeeds: _succeeds, ...rest } = before;
+  return {
+    ...rest,
+    name: chosen,
+    named: chosen !== before.name || before.named,
+    culture,
+    ...(from
+      ? { origin: from.name }
+      : kin || fate.relation === "journeyman"
+        ? before.origin
+          ? { origin: before.origin }
+          : {}
+        : {}),
+    temperament: pick(words.temperaments, random),
+    value: pick(words.values, random),
+    speech: pick(words.speech, random),
+    age: worldSuccessorAge(before.age, fate.relation, fate.yearsAgo, words.ages),
+    build: pick(words.builds, random),
+    hair: pick(words.hair, random),
+    mark: pick(words.marks, random),
+    succeeds: { ...fate, name: before.named ? before.name : `the last ${before.role}` },
+  };
+}
+
+/** A death in play (the ledger), as it reaches the people of a place. */
+export interface WorldDeathInPlay {
+  personId: string;
+  day: number;
+  note?: string;
+  successor?: string;
+  relation?: WorldSuccession;
+}
+
+/**
+ * People as they are now: each who died in play replaced by their successor (the one the story named,
+ * or one the world draws, the same every time), in the order they died, so a successor can die too.
+ */
+export function worldPeopleNow(
+  game: GameWorld,
+  people: readonly WorldPerson[],
+  present: { day: number; deaths?: readonly WorldDeathInPlay[] } | undefined,
+): WorldPerson[] {
+  const deaths = present?.deaths ?? [];
+  if (!deaths.length) return [...people];
+  const now = [...people];
+  const used = new Set(now.map((person) => person.name.toLowerCase()));
+  for (const death of deaths) {
+    const index = now.findIndex((person) => person.id === death.personId);
+    if (index < 0) continue;
+    const before = now[index]!;
+    const random = worldStream(game.seed, "successor-play", before.id, death.day);
+    const relation = death.relation ?? worldPlaySuccession(before.role, before.age, random());
+    const fate: WorldPersonFate = {
+      name: before.name,
+      yearsAgo: Math.max(0, Math.floor((present!.day - death.day) / 365)),
+      woe: death.note ? (worldEventWoe({ kind: "catastrophe", text: death.note, severe: true }) ?? "harm") : "harm",
+      cause: "",
+      relation,
+      ...(death.note ? { note: death.note } : {}),
+      ...(relation === "appointed" ? { by: before.group ?? "the town" } : {}),
+    };
+    const after = worldSuccessorOf(game, before, fate, used, random, death.successor);
+    if (after) now[index] = after;
+  }
+  return now;
+}
+
+/** A place's people as they are now (its cast, with the deaths of play). */
+export function worldCastNow(
+  game: GameWorld,
+  placeId: string,
+  present: { day: number; deaths?: readonly WorldDeathInPlay[] } | undefined,
+): WorldPerson[] {
+  return worldPeopleNow(game, worldCast(game, placeId), present);
+}
+
 /** One line telling a person apart: role, one trait, and how they look. */
 export function worldPersonSheet(kit: WorldKit, person: WorldPerson): string {
   const culture = kit.cultures.find((each) => each.id === person.culture)?.label ?? person.culture;
@@ -324,13 +405,18 @@ const fullNameMatcher = (name: string) => {
 
 /** The people of these places a text names in full (a reply that brings them in), each name once.
  *  People the world could not name are never matched: their role is not a name. */
-export function worldPeopleNamed(game: GameWorld, placeIds: readonly string[], text: string): WorldPerson[] {
+export function worldPeopleNamed(
+  game: GameWorld,
+  placeIds: readonly string[],
+  text: string,
+  present?: { day: number; deaths?: readonly WorldDeathInPlay[] },
+): WorldPerson[] {
   // One person per name: when two of these places each have someone of that name, the place listed
   // first (where the scene is now) is the one the reply means.
   const seen = new Set<string>();
   const named: WorldPerson[] = [];
   for (const placeId of placeIds) {
-    for (const person of worldCast(game, placeId)) {
+    for (const person of worldCastNow(game, placeId, present)) {
       const key = person.name.toLowerCase();
       if (!person.named || seen.has(key) || !fullNameMatcher(person.name).test(text)) continue;
       seen.add(key);

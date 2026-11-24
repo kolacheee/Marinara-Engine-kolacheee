@@ -27,6 +27,8 @@ import type { GameWorld } from "./game-world.js";
 import { worldHistory } from "./history.js";
 import { worldPeoples, type WorldPeopleTemper } from "./peoples.js";
 import { WORLD_PEOPLE_TEMPERS } from "../../schemas/world-brief.schema.js";
+import { WORLD_SUCCESSIONS } from "./chronicle.js";
+import { worldCastNow, type WorldDeathInPlay, type WorldPerson } from "./people.js";
 
 /** What the story can do to a world, and the kind of change each one is. */
 export const WORLD_DEED_KINDS = Object.freeze({
@@ -74,6 +76,13 @@ export interface WorldLedgerEntry {
   release?: string;
   /** Where an answered place tag put the party, read from the replies, never written. */
   at?: string;
+  /** A named person who died (the chronicle), and who takes up their work: by name, and how they are kin. */
+  died?: string;
+  successor?: string;
+  relation?: string;
+  /** People who came to a place: refugees or settlers, and where from (any words). */
+  arrived?: string;
+  origin?: string;
   /** Only ever the first entry: the living world a session starts from (W11), folded on from. */
   from?: WorldFold;
 }
@@ -105,6 +114,11 @@ export interface WorldPresent extends WorldEngineState {
   renown: number;
   /** The places the party took, and for which group. */
   taken: Record<string, string>;
+  /** The named people who died in play, in order, and their successors when the story named them; the
+   *  settlement they lived in. Missing from a fold made before them. */
+  deaths?: Array<WorldDeathInPlay & { placeId: string }>;
+  /** People who came to a settlement in play. Missing from a fold made before them. */
+  arrivals?: Array<{ placeId: string; origin: string; kind: "refugees" | "settlers"; day: number }>;
 }
 
 /** The two grounds on which the Game Master may hold a pending outcome (worldgen plan section 7). */
@@ -162,6 +176,34 @@ function known(game: GameWorld, present: WorldPresent) {
   return { places, groups };
 }
 
+/** A named person of the world's settlements (and the places inside them), alive now, by full name. */
+function worldPersonNamedNow(
+  game: GameWorld,
+  present: WorldPresent,
+  name: string,
+  near?: string,
+): WorldPerson | undefined {
+  const key = name.trim().toLowerCase();
+  if (!key) return undefined;
+  const byId = new Map(game.world.places.map((place) => [place.id, place]));
+  // Names repeat across a world: the people of the settlement named (or the one a place is in) first.
+  const at = near
+    ? worldSettlementOf(game, game.world.places.find((place) => place.name.toLowerCase() === near.toLowerCase())?.id)
+    : undefined;
+  const order = at
+    ? [...game.world.places.filter((place) => place.id === at.id || place.parentId === at.id), ...game.world.places]
+    : game.world.places;
+  for (const place of order) {
+    const settlement = place.rank !== undefined ? place : place.parentId ? byId.get(place.parentId) : undefined;
+    if (!settlement || settlement.rank === undefined) continue;
+    const found = worldCastNow(game, place.id, present).find(
+      (person) => person.named && person.name.toLowerCase() === key,
+    );
+    if (found) return found;
+  }
+  return undefined;
+}
+
 /**
  * Every world tag in a reply, answered in place: a deed of a kind the world allows, on places and
  * groups it has, is ok (with their names as the world spells them); anything else is refused with the
@@ -192,6 +234,11 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
       "seat",
       "note",
       "temper",
+      "died",
+      "successor",
+      "relation",
+      "arrived",
+      "origin",
     ] as const) {
       const value = values.get(key);
       if (value) (entry as Record<string, string>)[key] = value;
@@ -200,6 +247,26 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
     const placeName = (value: string | undefined) => (value ? places.get(value.toLowerCase()) : undefined);
     const groupName = (value: string | undefined) => (value ? groups.get(value.toLowerCase()) : undefined);
 
+    // A named person dies (the chronicle): someone of the world, alive now; their successor as named.
+    if (entry.died !== undefined) {
+      const person = worldPersonNamedNow(game, present, entry.died, entry.place);
+      if (!person) return refuse("unknown-person");
+      entry.died = person.name;
+      if (entry.relation && !WORLD_SUCCESSIONS.some((each) => each === entry.relation)) delete entry.relation;
+      if (entry.successor !== undefined && !entry.successor.trim()) delete entry.successor;
+      ledger.push(entry);
+      return serialize(entry, { result: "ok" });
+    }
+    // People come to a place: refugees or settlers, from anywhere the story says.
+    if (entry.arrived !== undefined) {
+      if (entry.arrived !== "refugees" && entry.arrived !== "settlers") return refuse("unreadable");
+      if (!entry.origin?.trim()) return refuse("unreadable");
+      const place = placeName(entry.place);
+      if (!place) return refuse("unknown-place");
+      entry.place = place;
+      ledger.push(entry);
+      return serialize(entry, { result: "ok" });
+    }
     // A people the story brings in: a name no people of the world has, what they are, and where they live.
     if (entry.fact === "people") {
       if (!entry.name || !entry.kind) return refuse("unreadable");
@@ -494,6 +561,31 @@ function foldPresent(
       });
       continue;
     }
+    if (entry.died !== undefined) {
+      const person = worldPersonNamedNow(game, present, entry.died, entry.place);
+      const home = person ? worldSettlementOf(game, person.placeId)?.id : undefined;
+      if (!person || !home) continue;
+      const relation = WORLD_SUCCESSIONS.find((each) => each === entry.relation);
+      (present.deaths ??= []).push({
+        personId: person.id,
+        placeId: home,
+        day: present.day,
+        ...(entry.note ? { note: entry.note } : {}),
+        ...(entry.successor ? { successor: entry.successor } : {}),
+        ...(relation ? { relation } : {}),
+      });
+      present.done[home] = [
+        ...(present.done[home] ?? []),
+        `${person.name} died${entry.note ? ` (${entry.note})` : ""}.`,
+      ];
+      continue;
+    }
+    if (entry.arrived !== undefined) {
+      const at = worldSettlementOf(game, worldPlaceId(entry.place))?.id;
+      if (!at || !entry.origin || (entry.arrived !== "refugees" && entry.arrived !== "settlers")) continue;
+      (present.arrivals ??= []).push({ placeId: at, origin: entry.origin, kind: entry.arrived, day: present.day });
+      continue;
+    }
     const note = entry.note ? ` (${entry.note})` : "";
     if (entry.fact === "place" && entry.name && entry.in) {
       // Inside a place the story added, it is within that place's own world place.
@@ -609,6 +701,8 @@ export function worldLedgerInstructions(game: GameWorld): string {
           `- A people who are not human the story brings in, new to this world: [world: fact="people" name="Name" kind="what they are, in a few words" in="Where they live" temper="${WORLD_PEOPLE_TEMPERS.join('" | "')}" note="anything else"]. Their ways and past are made for them, and told to you from then on.`,
         ]
       : []),
+    `- A named person of this world dies: [world: died="Their full name" place="Where they lived" note="how"]. Someone steps into their work and house; name them with successor="Full name" relation="${WORLD_SUCCESSIONS.join('" | "')}", or leave it and the world names them.`,
+    `- People come to a settlement: [world: arrived="refugees" origin="where they came from" place="Name"], or arrived="settlers".`,
     `- When time passes in the story (a journey, a night's rest, a wait), say how long: [world: days="N"]. The world goes on with its own business a week at a time, and its news reaches the party as it travels.`,
     ...(kindsOn.length
       ? [

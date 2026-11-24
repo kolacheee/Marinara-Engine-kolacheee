@@ -206,6 +206,7 @@ const personSchema = z
         cause: z.string().min(1).max(300),
         relation: z.enum(WORLD_SUCCESSIONS),
         by: word.optional(),
+        note: z.string().min(1).max(300).optional(),
       })
       .strict()
       .optional(),

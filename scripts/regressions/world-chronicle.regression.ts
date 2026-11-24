@@ -23,6 +23,12 @@ import {
   worldPersonSheet,
   worldTownChronicle,
   worldWhereYouAreText,
+  applyWorldTags,
+  readWorldLedger,
+  worldPresent,
+  worldTown,
+  worldCastNow,
+  worldLedgerInstructions,
   type GameWorld,
   type WorldKit,
 } from "../../packages/shared/src/index.js";
@@ -164,6 +170,85 @@ assert.ok(relations.size >= 4, `kinds of succession seen: ${[...relations]}`);
     }
   }
   assert.ok(checked > 0);
+}
+
+// ── In play: deaths, successors and arrivals the Game Master records, and the woes of play ──
+{
+  const parsed = parseWorldKit(WORLD_STARTER_KITS.find((each) => each.id === "high_fantasy")!);
+  assert.ok(parsed.ok);
+  const game = rivalWorld(parsed.kit, 2);
+  const instructions = worldLedgerInstructions(game);
+  assert.match(instructions, /died="Their full name"/);
+  assert.match(instructions, /arrived="refugees"/);
+  const town = game.world.places.filter((each) => each.rank !== undefined).sort((a, b) => b.rank! - a.rank!)[0]!;
+  const cast = worldCast(game, town.id).filter((person) => person.named && !person.succeeds);
+  assert.ok(cast.length >= 3, "a town with people to lose");
+  const [first, second, third] = cast;
+  const replies: string[] = [];
+  const say = (text: string) => {
+    const answered = applyWorldTags(text, game, readWorldLedger(replies));
+    replies.push(answered);
+    return answered;
+  };
+  assert.match(say(`[world: died="Nobody Atall"]`), /result="refused"[^\]]*reason="unknown-person"/);
+  assert.match(
+    say(`[world: died="${first!.name.toUpperCase()}" place="${town.name}" note="killed by bandits on the road"]`),
+    /result="ok"/,
+  );
+  // The same name again is someone else of that name, or nobody: never the dead twice.
+  say(`[world: died="${first!.name}" place="${town.name}"]`);
+  assert.match(
+    say(`[world: died="${second!.name}" place="${town.name}" successor="Brand Newman" relation="outsider"]`),
+    /result="ok"/,
+  );
+  assert.match(say(`[world: days="400"]`), /result="ok"/);
+  assert.match(
+    say(`[world: died="Brand Newman" place="${town.name}" note="of a fever"]`),
+    /result="ok"/,
+    "a successor from play can die too",
+  );
+  assert.match(say(`[world: arrived="refugees" origin="the burned hamlets" place="${town.name}"]`), /result="ok"/);
+  assert.match(say(`[world: arrived="pilgrims" origin="x" place="${town.name}"]`), /unreadable/);
+  assert.match(
+    say(`[world: event="Plague struck ${town.name}; many died." kind="catastrophe" place="${town.name}"]`),
+    /result="ok"/,
+  );
+  const present = worldPresent(game, readWorldLedger(replies));
+  const deaths = present.deaths ?? [];
+  assert.equal(new Set(deaths.map((each) => `${each.personId}|${each.day}`)).size, deaths.length);
+  assert.ok(!deaths.slice(1).some((each) => each.personId === first!.id), "the dead do not die twice");
+  assert.ok(deaths.length >= 3);
+  const now = worldCastNow(game, town.id, present);
+  const firstNow = now.find((person) => person.id === first!.id)!;
+  assert.notEqual(firstNow.name, first!.name, "the dead are followed");
+  assert.equal(firstNow.succeeds?.name, first!.name);
+  assert.equal(firstNow.succeeds?.note, "killed by bandits on the road");
+  assert.equal(firstNow.role, first!.role, "the successor takes up their work");
+  const secondNow = now.find((person) => person.id === second!.id)!;
+  assert.notEqual(secondNow.name, "Brand Newman", "the named successor died in turn");
+  assert.equal(secondNow.succeeds?.name, "Brand Newman");
+  assert.ok(
+    now.some((person) => person.id === third!.id && person.name === third!.name),
+    "the living stay",
+  );
+  assert.deepEqual(worldCastNow(game, town.id, present), now, "the same successors every time");
+  const laidOut = worldTown(game, town.id, present)!;
+  assert.ok(
+    laidOut.people.some((person) => person.id === first!.id && person.name === firstNow.name),
+    "the town has the successor",
+  );
+  assert.ok(!laidOut.people.some((person) => person.name === first!.name), "and not the dead");
+  const where = worldWhereYouAreText(game, { place: town, present });
+  assert.ok(!where.includes(`  - ${first!.name}:`), "the GM is not offered the dead");
+  assert.match(where, /Still felt here:[^\n]*Plague struck/);
+  assert.match(where, /refugees from the burned hamlets lodge in town/);
+  assert.match(where, new RegExp(`${first!.name} died \\(killed by bandits`));
+  const chronicle = worldTownChronicle(game, town.id, present)!;
+  assert.ok(chronicle.lost > 0 && chronicle.burialGround, "a plague in play leaves its mark");
+  assert.ok(chronicle.arrivals.some((each) => each.from === "the burned hamlets" && each.lodging > 0));
+  // The past moves back as play goes on: a year of play is a year further from the history's woes.
+  const later = { ...present, day: present.day + 365 * 40 };
+  assert.ok(worldTownChronicle(game, town.id, later)!.lost < chronicle.lost, "the past fades as play goes on");
 }
 
 console.log(`world-chronicle regression passed (${warTowns} war towns, ${successors} successors, ${felt} towns felt)`);
