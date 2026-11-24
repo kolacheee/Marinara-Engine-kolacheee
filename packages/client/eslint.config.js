@@ -3,7 +3,8 @@ import tseslint from "typescript-eslint";
 import reactHooks from "eslint-plugin-react-hooks";
 
 export default tseslint.config(
-  { ignores: ["dist/**", "public/**"] },
+  // HD-2D towns (fork): the town generator is plain JavaScript ported as it is from the prototype.
+  { ignores: ["dist/**", "public/**", "src/lib/hd2d/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
