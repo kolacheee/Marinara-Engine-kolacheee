@@ -2295,6 +2295,9 @@ export function ConversationInput({
         onPointerDown={(event) => {
           if (hasActiveTextSelection()) return;
           const target = event.target as HTMLElement;
+          // React bubbles events out of portals: a tap inside a sheet opened from this bar (the Quick Switcher)
+          // reaches here too, and must not focus the message box and raise the keyboard.
+          if (!event.currentTarget.contains(target)) return;
           if (target.closest("button, input, textarea, select, a, [role='button']")) return;
           event.preventDefault();
           const textarea = textareaRef.current;
