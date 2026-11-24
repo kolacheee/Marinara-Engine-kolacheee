@@ -110,7 +110,17 @@ export function useOverworldClock(
       void flush();
     };
   }, [flush]);
-  return { pendingMinutes, flush };
+  // Minutes a view spent some other way (a walk about a 3D town between doors), sent with the clock's own.
+  const addMinutes = useCallback(
+    (minutes: number) => {
+      if (!(minutes > 0)) return;
+      pendingRef.current += minutes;
+      setPendingMinutes(pendingRef.current);
+      if (pendingRef.current >= FLUSH_MINUTES) void flush();
+    },
+    [flush],
+  );
+  return { pendingMinutes, flush, addMinutes };
 }
 
 // ── Tile packs (worldgen W9a) ──

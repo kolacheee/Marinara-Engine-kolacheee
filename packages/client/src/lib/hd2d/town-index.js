@@ -59,7 +59,7 @@ export function townIndex(spec) {
     if (!sp.planner && !b.planner) continue;
     greats.push({ key: 'b' + b.id, type: b.type, role: b.role, label: sp.label || b.type, ruin: b.variant === 'R', x: b.cx, y: b.cy, ward: b.ward ?? -1, d: Math.hypot(b.cx - mk.x, b.cy - mk.y) });
   }
-  const lots = T.lots.map((L) => ({ key: 'p' + L.plot, street: L.street, dist: L.dist, x: L.x + L.w / 2, y: L.y + L.d / 2, ward: L.ward ?? -1, d: Math.hypot(L.x + L.w / 2 - mk.x, L.y + L.d / 2 - mk.y) }));
+  const lots = T.lots.map((L) => ({ key: 'p' + L.plot, plot: L.plot, street: L.street, dist: L.dist, x: L.x + L.w / 2, y: L.y + L.d / 2, ward: L.ward ?? -1, d: Math.hypot(L.x + L.w / 2 - mk.x, L.y + L.d / 2 - mk.y) }));
   greats.sort((a, b) => a.d - b.d || (a.key < b.key ? -1 : 1));
   lots.sort((a, b) => a.d - b.d || (a.key < b.key ? -1 : 1));
   const marks = S ? landmarks(S, T.L, CITY_LATIN) : [];
@@ -75,7 +75,18 @@ export function townIndex(spec) {
  *  Named places first, then the hall, the workplaces, the homes (the named people's first); each takes the
  *  nearest planned building its words ask for, else the nearest free house (places and work on the market
  *  and main streets first). A world building with no room left stays off the 3D map. */
-export function placeWorldTown(index, worldTown) {
+/** What the town's chronicle did to a house lot: 'burnt', 'empty' or ''. The same rule as the scene's lotFate
+ *  (town-scene.js), so a house the scene draws boarded up or burned is never given to the world's people. */
+export function lotFate(seed, chron, lot) {
+  if (!chron) return '';
+  const h01 = (k) => ((Math.imul(k + 1, 2654435761) ^ Math.imul(+seed + 977, 40503)) >>> 0) / 4294967296;
+  const k = lot.plot * 3;
+  if (lot.dist !== 'rich' && lot.dist !== 'ware' && h01(k + 1) < (chron.ruined || 0)) return 'burnt';
+  if (['common', 'poor', 'craft', 'cottage', 'miner'].includes(lot.dist) && h01(k + 2) < (chron.empty || 0) / .85) return 'empty';
+  return '';
+}
+
+export function placeWorldTown(index, worldTown, chron = null) {
   const byKey = new Map(), byWorld = new Map();
   if (!worldTown) return { byKey, byWorld };
   const named = new Set(worldTown.people.filter((p) => p.named).map((p) => p.id));
@@ -93,7 +104,7 @@ export function placeWorldTown(index, worldTown) {
       if (want) pick = index.greats.find((g) => !used.has(g.key) && !g.ruin && want[1].test(g.type));
     }
     if (!pick) {
-      const lots = index.lots.filter((l) => !used.has(l.key));
+      const lots = index.lots.filter((l) => !used.has(l.key) && !lotFate(index.spec.seed, chron, l));
       pick = (wb.kind !== 'home' ? lots.find((l) => front.has(l.street)) : null) ?? (wb.kind === 'home' ? lots.find((l) => !front.has(l.street)) : null) ?? lots[0] ?? null;
     }
     if (!pick) continue;

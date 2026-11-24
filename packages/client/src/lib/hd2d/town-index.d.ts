@@ -12,6 +12,8 @@ export function townIndex(spec: Record<string, unknown>): Hd2dTownIndex;
 export function placeWorldTown(
   index: Hd2dTownIndex,
   town: WorldTown | null | undefined,
+  /** The town's chronicle: its empty and burned houses are given to no one. */
+  chron?: { empty: number; ruined: number } | null,
 ): { byKey: Map<string, string>; byWorld: Map<string, string> };
 export function townBrief(index: Hd2dTownIndex): string;
 export function spotWords(

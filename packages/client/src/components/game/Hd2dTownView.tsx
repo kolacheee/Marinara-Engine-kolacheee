@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import {
   WORLD_TOWN_SPOT,
+  WORLD_TOWN_HD2D_CELLS_PER_MINUTE,
   worldDrawnSeason,
   worldTownHd2dSpec,
   type GameWorld,
@@ -92,7 +93,7 @@ export function Hd2dTownView({
   const [ready, setReady] = useState(false);
   const [where, setWhere] = useState<Hd2dWhere | null>(null);
   const [failed, setFailed] = useState<string | null>(null);
-  const { pendingMinutes } = useOverworldClock(chatId, clockRunning, () => movingRef.current, handleRef);
+  const { pendingMinutes, addMinutes } = useOverworldClock(chatId, clockRunning, () => movingRef.current, handleRef);
 
   const settlementId = town?.settlementId ?? null;
   const settlement = settlementId ? game.world.places.find((place) => place.id === settlementId) : undefined;
@@ -206,7 +207,7 @@ export function Hd2dTownView({
               if (cancelled) return;
               try {
                 const index = indexLib.townIndex(indexLib.g2specOf(spec as unknown as Record<string, unknown>));
-                const { byKey } = indexLib.placeWorldTown(index, live.current.town);
+                const { byKey } = indexLib.placeWorldTown(index, live.current.town, chron);
                 placingRef.current = { index, byKey, spotWords: (key, info) => indexLib.spotWords(index, key, info) };
                 // For the end-to-end check: where the world's buildings stand.
                 (window as unknown as { __hd2dPlacing?: unknown }).__hd2dPlacing = { byKey: [...byKey] };
@@ -265,6 +266,13 @@ export function Hd2dTownView({
     const timer = window.setInterval(() => {
       const step = apiRef.current?.takeWalked() ?? 0;
       walkedRef.current = Math.min(20000, walkedRef.current + step);
+      // A walk about town that goes through no door still takes its time: whole minutes go on the clock as
+      // they are walked, and a door visit tells only what is left over.
+      const minutes = Math.floor(walkedRef.current / WORLD_TOWN_HD2D_CELLS_PER_MINUTE);
+      if (minutes > 0 && !movingRef.current) {
+        walkedRef.current -= minutes * WORLD_TOWN_HD2D_CELLS_PER_MINUTE;
+        addMinutes(minutes);
+      }
       movingRef.current = step > 0.05;
       moved += step;
       if (moved > 0.5 && Date.now() - lastSave > SAVE_EVERY_MS) {
@@ -274,10 +282,14 @@ export function Hd2dTownView({
       }
     }, 500);
     return () => window.clearInterval(timer);
-  }, [ready, keepSpot]);
+  }, [ready, keepSpot, addMinutes]);
 
   const leave = () => {
     keepSpot();
+    // The walk since the last door, on the clock before the party leaves town.
+    const walked = walkedRef.current + (apiRef.current?.takeWalked() ?? 0);
+    walkedRef.current = 0;
+    addMinutes(Math.round(walked / WORLD_TOWN_HD2D_CELLS_PER_MINUTE));
     onLeave();
   };
 
