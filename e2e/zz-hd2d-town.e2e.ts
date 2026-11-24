@@ -97,6 +97,11 @@ test(`HD-2D ${SIZE} opens from the overworld`, async ({ page, request }, testInf
     console.log("town up", Date.now() - entering, "ms after entering");
     await page.waitForTimeout(6000);
     await page.screenshot({ path: testInfo.outputPath(`hd2d-${SIZE}-arrive.png`) });
+    // The weather is drawn over the town and changes without a rebuild.
+    await page.evaluate(() => (window as unknown as { __hd2d: { setWeather(w: string): void } }).__hd2d.setWeather("storm"));
+    await page.waitForTimeout(3000);
+    await page.screenshot({ path: testInfo.outputPath(`hd2d-${SIZE}-storm.png`) });
+    await page.evaluate(() => (window as unknown as { __hd2d: { setWeather(w: string): void } }).__hd2d.setWeather("clear"));
     // The layout for the Game Master is kept once the town is up.
     await expect
       .poll(

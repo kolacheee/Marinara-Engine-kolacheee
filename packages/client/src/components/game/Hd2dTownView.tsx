@@ -15,12 +15,14 @@ import {
   worldDrawnSeason,
   worldTownHd2dSpec,
   type GameWorld,
+  type WeatherType,
   type WorldTownHd2dSpot,
 } from "@marinara-engine/shared";
 import { useOverworld, useTown, useTownHd2dSave, useTownVisit } from "../../hooks/use-game";
 import { useOverworldClock, type OverworldClockHandle } from "../../hooks/use-overworld-view";
 import type { Hd2dDoor, Hd2dTownApi, Hd2dWhere } from "../../lib/hd2d/town-scene";
 import type { Hd2dTownIndex } from "../../lib/hd2d/town-index";
+import { loadOverworldWeatherArt, overworldWeatherIcon, type OverworldWeatherArt } from "./overworld-weather";
 
 interface Hd2dTownViewProps {
   chatId: string;
@@ -31,6 +33,10 @@ interface Hd2dTownViewProps {
   canWalk: boolean;
   /** Where the party stood in each settlement's 3D town, as the game keeps it. */
   spots: WorldTownHd2dSpot[];
+  /** The weather where the party is, as the chat has it (a scene may have set it). */
+  partyWeather?: WeatherType | null;
+  /** Weather drawn in the town (the player's weather effects setting). */
+  weatherEffects?: boolean;
   handleRef?: MutableRefObject<OverworldClockHandle | null>;
   onLeave: () => void;
 }
@@ -64,6 +70,8 @@ export function Hd2dTownView({
   clockRunning,
   canWalk,
   spots,
+  partyWeather = null,
+  weatherEffects = true,
   handleRef,
   onLeave,
 }: Hd2dTownViewProps) {
@@ -102,9 +110,24 @@ export function Hd2dTownView({
   const season = sceneSeason(
     (settlementId && held?.[settlementId]) || held?.["*"] || (time ? worldDrawnSeason(game, time.day) : undefined),
   );
+  // The weather where the party stands: the Game Master's hold on this town, else the chat's, else a hold on
+  // the whole world. Drawn in the scene (sky, light, fog, what falls, fewer people out) and shown in the corner.
+  const heldWeather = overworld?.weathers;
+  const weather: WeatherType | null =
+    (settlementId && heldWeather?.[settlementId]) || partyWeather || heldWeather?.["*"] || null;
+  const sceneWeather = weatherEffects ? (weather ?? "clear") : "clear";
+  const [weatherArt, setWeatherArt] = useState<OverworldWeatherArt | null>(null);
+  useEffect(() => {
+    let alive = true;
+    void loadOverworldWeatherArt().then((art) => alive && setWeatherArt(art));
+    return () => {
+      alive = false;
+    };
+  }, []);
+  const weatherIcon = weatherArt && weather ? weatherArt.frames[overworldWeatherIcon(weather, Math.floor(hour))] : null;
   // Read once a town is mounted, never to remount it.
-  const live = useRef({ hour, season, canWalk, town, spots });
-  live.current = { hour, season, canWalk, town, spots };
+  const live = useRef({ hour, season, canWalk, town, spots, sceneWeather });
+  live.current = { hour, season, canWalk, town, spots, sceneWeather };
 
   const keepSpot = useCallback(() => {
     const at = apiRef.current?.position();
@@ -142,6 +165,7 @@ export function Hd2dTownView({
           spec: { ...spec, chron } as unknown as Record<string, unknown>,
           hour: live.current.hour,
           season: live.current.season,
+          weather: live.current.sceneWeather,
           clock: false,
           tcell: kept ? kept.c : -1,
           arriveAt: kept ? [Math.floor(kept.x), Math.floor(kept.y)] : null,
@@ -228,6 +252,9 @@ export function Hd2dTownView({
   useEffect(() => {
     apiRef.current?.setSeason(season);
   }, [season]);
+  useEffect(() => {
+    apiRef.current?.setWeather(sceneWeather);
+  }, [sceneWeather]);
 
   // The clock holds while the party walks (a walk's minutes go on the clock with the visit), and the
   // party's spot is kept now and then.
@@ -274,6 +301,27 @@ export function Hd2dTownView({
           )}
           {!ready && !failed && <Loader2 size={13} className="animate-spin text-white/60" />}
         </div>
+        {weatherArt && weather && weatherIcon && (
+          <div
+            className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 py-0.5 pl-1 pr-2.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md"
+            data-component="Hd2dTownView.Weather"
+            role="status"
+          >
+            <span
+              aria-hidden
+              className="block shrink-0"
+              style={{
+                width: weatherIcon[2] * 2,
+                height: weatherIcon[3] * 2,
+                backgroundImage: `url(${weatherArt.image.src})`,
+                backgroundPosition: `${-weatherIcon[0] * 2}px ${-weatherIcon[1] * 2}px`,
+                backgroundSize: `${weatherArt.image.naturalWidth * 2}px ${weatherArt.image.naturalHeight * 2}px`,
+                imageRendering: "pixelated",
+              }}
+            />
+            {t(`game.combat.weather.type.${weather}`)}
+          </div>
+        )}
         {ready && (
           <div className="rounded-md bg-black/50 px-2 py-1 text-[0.6875rem] text-white/75 max-sm:hidden">
             {t("game.town3d.help")}

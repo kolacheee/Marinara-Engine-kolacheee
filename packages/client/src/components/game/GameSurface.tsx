@@ -14158,6 +14158,8 @@ function GameSurfaceComponent({
                               canWalk={view.canWalk}
                               handleRef={view.handleRef}
                               spots={worldTownHd2dSpotsFromMetadata(chatMeta)}
+                              partyWeather={view.partyWeather}
+                              weatherEffects={view.weatherEffects}
                               onLeave={() => setWorldView("overworld")}
                             />
                           ) : townShown ? (

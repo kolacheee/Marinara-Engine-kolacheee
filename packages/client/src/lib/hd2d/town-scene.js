@@ -1415,22 +1415,22 @@ let clock = 0, lastCell = -1, shadowTick = 0, walkedAcc = 0, readyOnce = false;
 const doorInfo = (h) => ({ key: h.gen2 ? 'b' + h.bid : h.plot != null ? 'p' + h.plot : h.gate ? 'gate' : 'other', label: h.label || (h.empty ? 'Empty house' : h.inn ? 'Inn' : h.shop ? 'Shop' : h.gate ? 'Gatehouse' : 'House'), inn: !!h.inn, shop: !!h.shop, empty: !!h.empty, ward: h.ward ?? -1, street: world && h.door ? world.where(Math.floor(h.door[0]), Math.floor(h.door[1])) : '', tcell: S.tcell });
 // ---------- the weather (fork): the world's weather where the party stands, drawn over the town: the sky, light and fog it
 // brings, rain, snow, hail or dust falling round the party, lightning in a storm, and fewer people out in it ----------
-// dim: light (tone exposure); fogN/fogF: how near the fog closes in; tint/tm: the sky and fog colour it turns to, and how far;
+// dim: light (tone exposure); sun: how much of the sun (and its shadows) gets through; fogN/fogF: how near the fog closes in; tint/tm: the sky and fog colour it turns to, and how far;
 // p/n: what falls and how much of it; fall: its speed; wind: how hard it drives across; indoors: the share of people who stay in
 const WXT = {
-  clear: { dim: 1, fogN: 1, fogF: 1, indoors: 0 },
-  cloudy: { dim: .86, fogN: .92, fogF: .92, tint: 0xb4bcc6, tm: .3, indoors: 0 },
-  overcast: { dim: .72, fogN: .82, fogF: .82, tint: 0x99a1ab, tm: .55, indoors: .1 },
-  rain: { dim: .62, fogN: .7, fogF: .72, tint: 0x8a929c, tm: .6, p: 'rain', n: 1600, fall: 13, wind: .6, indoors: .55 },
-  heavy_rain: { dim: .52, fogN: .5, fogF: .58, tint: 0x78808a, tm: .7, p: 'rain', n: 3000, fall: 15, wind: 1.2, indoors: .8 },
-  storm: { dim: .42, fogN: .45, fogF: .52, tint: 0x5c6472, tm: .75, p: 'rain', n: 3400, fall: 16, wind: 3, flash: true, indoors: .9 },
-  snow: { dim: .82, fogN: .7, fogF: .72, tint: 0xd6dbe2, tm: .55, p: 'snow', n: 1800, fall: 1.1, wind: .4, indoors: .4 },
-  blizzard: { dim: .7, fogN: .25, fogF: .36, tint: 0xe2e6ec, tm: .85, p: 'snow', n: 4000, fall: 2.4, wind: 5, indoors: .85 },
-  fog: { dim: .8, fogN: .12, fogF: .34, tint: 0xc6cace, tm: .8, indoors: .2 },
-  wind: { dim: 1, fogN: 1, fogF: 1, p: 'leaf', n: 140, fall: .7, wind: 3.5, indoors: .15 },
-  hail: { dim: .56, fogN: .62, fogF: .66, tint: 0x8a929c, tm: .6, p: 'hail', n: 1600, fall: 11, wind: .8, indoors: .85 },
-  sandstorm: { dim: .62, fogN: .22, fogF: .38, tint: 0xc4a274, tm: .85, p: 'dust', n: 3000, fall: .4, wind: 7, indoors: .85 },
-  heat_wave: { dim: 1.08, fogN: .9, fogF: 1, tint: 0xf2e2c2, tm: .25, indoors: .35 },
+  clear: { dim: 1, sun: 1, fogN: 1, fogF: 1, indoors: 0 },
+  cloudy: { dim: .94, sun: .55, fogN: .92, fogF: .92, tint: 0xb4bcc6, tm: .3, indoors: 0 },
+  overcast: { dim: .86, sun: .25, fogN: .82, fogF: .82, tint: 0x99a1ab, tm: .55, indoors: .1 },
+  rain: { dim: .8, sun: .18, fogN: .7, fogF: .72, tint: 0x8a929c, tm: .6, p: 'rain', n: 2200, fall: 13, wind: .6, indoors: .55 },
+  heavy_rain: { dim: .72, sun: .12, fogN: .5, fogF: .58, tint: 0x78808a, tm: .7, p: 'rain', n: 3800, fall: 15, wind: 1.2, indoors: .8 },
+  storm: { dim: .62, sun: .08, fogN: .45, fogF: .52, tint: 0x5c6472, tm: .75, p: 'rain', n: 4200, fall: 16, wind: 3, flash: true, indoors: .9 },
+  snow: { dim: .95, sun: .35, fogN: .7, fogF: .72, tint: 0xd6dbe2, tm: .55, p: 'snow', n: 2400, fall: 1.1, wind: .4, indoors: .4 },
+  blizzard: { dim: .88, sun: .15, fogN: .25, fogF: .36, tint: 0xe2e6ec, tm: .85, p: 'snow', n: 5000, fall: 2.4, wind: 5, indoors: .85 },
+  fog: { dim: .9, sun: .3, fogN: .02, fogF: .17, tint: 0xc6cace, tm: .8, indoors: .2 },
+  wind: { dim: 1, sun: 1, fogN: 1, fogF: 1, p: 'leaf', n: 140, fall: .7, wind: 3.5, indoors: .15 },
+  hail: { dim: .75, sun: .15, fogN: .62, fogF: .66, tint: 0x8a929c, tm: .6, p: 'hail', n: 2200, fall: 11, wind: .8, indoors: .85 },
+  sandstorm: { dim: .8, sun: .3, fogN: .22, fogF: .38, tint: 0xc4a274, tm: .85, p: 'dust', n: 3400, fall: .4, wind: 7, indoors: .85 },
+  heat_wave: { dim: 1.06, sun: 1.1, fogN: .9, fogF: 1, tint: 0xf2e2c2, tm: .25, indoors: .35 },
 };
 let WX = WXT.clear, wxKind = '', wxP = null, wxFlash = 0, wxNext = 3;
 const wxSky = new THREE.Color(), wxTint = new THREE.Color();
@@ -1439,15 +1439,17 @@ function setWeather(kind) { const k = WXT[kind] ? kind : 'clear'; if (k === wxKi
 function wxMake(kind, n) { const box = [28, 12, 24], line = kind === 'rain', base = new Float32Array(n * 3), pos = new Float32Array(n * (line ? 6 : 3));
   for (let i = 0; i < n * 3; i += 3) { base[i] = Math.random() * box[0]; base[i + 1] = Math.random() * box[1]; base[i + 2] = Math.random() * box[2]; }
   const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const obj = line ? new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: 0xbfcadb, transparent: true, opacity: .42, depthWrite: false }))
-    : new THREE.Points(g, new THREE.PointsMaterial({ color: { snow: 0xffffff, hail: 0xe6edf4, dust: 0xbf9a68, leaf: 0x7a8a3a }[kind], size: { snow: .085, hail: .055, dust: .06, leaf: .13 }[kind], transparent: true, opacity: kind === 'dust' ? .45 : .92, depthWrite: false }));
+  const obj = line ? new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: 0xd4dcea, transparent: true, opacity: .62, depthWrite: false }))
+    : new THREE.Points(g, new THREE.PointsMaterial({ color: { snow: 0xffffff, hail: 0xe6edf4, dust: 0xbf9a68, leaf: 0x7a8a3a }[kind], size: { snow: .15, hail: .07, dust: .07, leaf: .14 }[kind], transparent: true, opacity: kind === 'dust' ? .45 : .92, depthWrite: false }));
   obj.frustumCulled = false; obj.renderOrder = 5; MS.add(obj); return { kind, n, obj, base, box, line }; }
 // each frame: what falls round the party, the light, the sky and fog drawn from the world's own (never changed)
 function wxTick(W, L, dt) { const day = S.day, fog = MS.fog;
   if (!W.wxBase) W.wxBase = { sky: W.scene.background.clone(), fog: W.scene.fog.color.clone() };
   if (WX.tint) { wxTint.setHex(WX.tint); if (!day) wxTint.multiplyScalar(.22); }
   wxSky.copy(W.wxBase.sky); if (WX.tint) wxSky.lerp(wxTint, WX.tm); MS.background = wxSky;
-  fog.color.copy(W.wxBase.fog); if (WX.tint) fog.color.lerp(wxTint, WX.tm); fog.near *= WX.fogN; fog.far *= WX.fogF;
+  fog.color.copy(W.wxBase.fog); if (WX.tint) fog.color.lerp(wxTint, WX.tm);
+  { const d0 = 13 * zEff; fog.near = d0 + (fog.near - d0) * WX.fogN; fog.far = d0 + (fog.far - d0) * WX.fogF; }   // measured past the party, never in front of it
+  if (W.sun.userData.i0 === undefined) W.sun.userData.i0 = W.sun.intensity; W.sun.intensity = W.sun.userData.i0 * (day ? WX.sun : 1);
   let ex = day ? WX.dim : 1 - (1 - WX.dim) * .5;
   if (WX.flash) { wxNext -= dt; if (wxNext <= 0) { wxFlash = .16; wxNext = 3 + Math.random() * 9; } if (wxFlash > 0) { wxFlash -= dt; ex *= 1 + 2.6 * Math.max(0, wxFlash) / .16; } }
   renderer.toneMappingExposure = ex;
@@ -1456,7 +1458,7 @@ function wxTick(W, L, dt) { const day = S.day, fog = MS.fog;
   for (let i = 0, j = 0; i < n * 3; i += 3) { const ph = base[i] * 1.7 + base[i + 2];
     const y = ((base[i + 1] - fall * t) % box[1] + box[1]) % box[1], x = ((base[i] + wind * t + (leaf || wxP.kind === 'snow' ? Math.sin(t * 1.3 + ph) * .35 : 0)) % box[0] + box[0]) % box[0], z = base[i + 2];
     const X = ox + x, Y = oy + (leaf ? y * .35 : y), Z = oz + z;
-    a[j++] = X; a[j++] = Y; a[j++] = Z; if (line) { a[j++] = X - wind * .035; a[j++] = Y - .42; a[j++] = Z; } }
+    a[j++] = X; a[j++] = Y; a[j++] = Z; if (line) { a[j++] = X - wind * .04; a[j++] = Y - .6; a[j++] = Z; } }
   wxP.obj.geometry.attributes.position.needsUpdate = true; }
 function tick(dt, force) {
   if (world && !IN) { const pr = $('prompt'), c = flapNear(.55); if (c) { pr.hidden = false; pr.textContent = 'Cellar steps: E to go down'; } else if (!pr.hidden) pr.hidden = true; }
