@@ -4,6 +4,7 @@
 // inputs once and kept as its snapshot (W11, snapshot.ts), which every read after that uses; a world with
 // no snapshot (one made before W11, on a development build) is compiled from them on every read.
 // ──────────────────────────────────────────────
+import { worldChronicleLine, worldTownChronicle } from "./chronicle.js";
 import { z } from "zod";
 import { gameWorldKitFromMetadata, type WorldKit } from "../../schemas/world-kit.schema.js";
 import { checkWorldBrief, worldBriefSchema, type WorldBrief } from "../../schemas/world-brief.schema.js";
@@ -472,6 +473,10 @@ export function worldWhereYouAreText(
       .forEach((people, index) => lines.push(...worldPeopleLines(people, index === 0, peoples)));
     const past = worldPlacePast(history, home, 4);
     if (past.length) lines.push(`- Its past: ${past.map(worldHistoryLine).join(" ")}`);
+    // What its past still leaves in the town (the chronicle).
+    const chronicle = worldTownChronicle(game, home.id, present?.prosperity[home.id]);
+    const felt = chronicle ? worldChronicleLine(chronicle) : undefined;
+    if (felt) lines.push(`- ${felt}`);
     // What the party has done here, latest last.
     const done = [home.id, ...(place.id !== home.id ? [place.id] : []), ...(added ? [added.place.id] : [])].flatMap(
       (id) => present?.done[id] ?? [],

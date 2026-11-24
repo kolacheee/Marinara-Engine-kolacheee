@@ -6,6 +6,7 @@
 // places added on top. A new Engine reads an old snapshot as it was, like a save state, and never
 // remakes it from the recipe.
 // ──────────────────────────────────────────────
+import { WORLD_SUCCESSIONS, WORLD_WOES } from "./chronicle.js";
 import { z } from "zod";
 import { WORLD_RESOURCE_KINDS } from "./land.js";
 import { WORLD_CHANGE_KINDS, parseWorldKit, type WorldKit } from "../../schemas/world-kit.schema.js";
@@ -196,6 +197,18 @@ const personSchema = z
     build: word,
     hair: word,
     mark: word,
+    // Whom they followed (the chronicle), kept as made.
+    succeeds: z
+      .object({
+        name: word,
+        yearsAgo: z.number().int().min(0).max(100_000),
+        woe: z.enum(WORLD_WOES),
+        cause: z.string().min(1).max(300),
+        relation: z.enum(WORLD_SUCCESSIONS),
+        by: word.optional(),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 

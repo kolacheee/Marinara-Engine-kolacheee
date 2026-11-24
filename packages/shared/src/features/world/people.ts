@@ -10,6 +10,7 @@ import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import type { GameNpc } from "../../types/game.js";
 import { worldStream, type WorldPlace } from "./compile.js";
 import { worldPlaceNamed } from "./edits.js";
+import { worldCastFates, worldFateText, worldSuccessorAge, type WorldPersonFate } from "./chronicle.js";
 import type { GameWorld } from "./game-world.js";
 
 /** The words a kit's people are drawn in when the kit leaves them out. Plain, setting-neutral words. */
@@ -88,6 +89,8 @@ export interface WorldPerson {
   build: string;
   hair: string;
   mark: string;
+  /** Whom they followed, when the one who stood here before them died in the town's past (the chronicle). */
+  succeeds?: WorldPersonFate;
 }
 
 function peopleWords(kit: WorldKit) {
@@ -121,6 +124,16 @@ export function worldFullName(
   if (!family) return given;
   const gap = UNSPACED_SCRIPT.test(given) && UNSPACED_SCRIPT.test(family) ? "" : " ";
   return names.order === "family-given" ? `${family}${gap}${given}` : `${given}${gap}${family}`;
+}
+
+/** A name drawn for a spouse or child, with the family name of the one they followed. */
+function worldWithFamilyName(full: string, kinName: string, order: "given-family" | "family-given" | "given"): string {
+  if (order === "given") return full;
+  const [mine, theirs] = [full.split(" "), kinName.split(" ")];
+  if (mine.length < 2 || theirs.length < 2) return full;
+  return order === "family-given"
+    ? [theirs[0], ...mine.slice(1)].join(" ")
+    : [...mine.slice(0, -1), theirs.at(-1)].join(" ");
 }
 
 function weighted<T>(items: ReadonlyArray<{ item: T; weight: number }>, random: () => number): T {
@@ -215,6 +228,48 @@ export function worldCast(game: GameWorld, placeId: string): WorldPerson[] {
       mark: pick(words.marks, random),
     });
   }
+  // The town's past (the chronicle): some of its people died, and someone took up their work and house.
+  // A person renamed by hand is the one the owner meant, so they lived.
+  const renamed = new Set((edits?.people ?? []).map((each) => each.id));
+  for (const [index, fate] of worldCastFates(game, place.id, people)) {
+    const before = people[index]!;
+    if (renamed.has(before.id)) continue;
+    const drawn = worldStream(seed, "successor", before.id);
+    const kin = fate.relation === "spouse" || fate.relation === "child";
+    const from =
+      fate.relation === "outsider" && fate.by ? world.places.find((each) => each.name === fate.by) : undefined;
+    const culture = from?.culture ?? (fate.relation === "outsider" ? place.culture : before.culture);
+    const names = brief.peopleNames.find((group) => group.culture === culture);
+    let name = "";
+    for (let attempt = 0; attempt < 12 && names?.given.length; attempt++) {
+      let full = worldFullName(names, drawn);
+      if (kin && before.named) full = worldWithFamilyName(full, before.name, names.order);
+      if (!used.has(full.toLowerCase())) {
+        name = full;
+        break;
+      }
+    }
+    // A world with no names for this culture keeps calling them by their role.
+    if (!name && names?.given.length) continue;
+    if (!name) name = before.name;
+    else used.add(name.toLowerCase());
+    people[index] = {
+      ...before,
+      name,
+      named: name !== before.name || before.named,
+      culture,
+      ...(from ? { origin: from.name } : {}),
+      temperament: pick(words.temperaments, drawn),
+      value: pick(words.values, drawn),
+      speech: pick(words.speech, drawn),
+      age: worldSuccessorAge(before.age, fate.relation, fate.yearsAgo, words.ages),
+      build: pick(words.builds, drawn),
+      hair: pick(words.hair, drawn),
+      mark: pick(words.marks, drawn),
+      succeeds: { ...fate, name: before.named ? before.name : `the last ${before.role}` },
+    };
+    if (fate.relation === "outsider" && !from) delete people[index]!.origin;
+  }
   // The hand edits (W9c): people renamed, and people added, each drawn the rest of the way from their
   // own id so they read the same every time.
   for (const rename of edits?.people ?? []) {
@@ -252,6 +307,7 @@ export function worldPersonSheet(kit: WorldKit, person: WorldPerson): string {
     `${person.temperament}, cares about ${person.value}, ${person.speech}`,
     `${person.age}, ${person.build}, ${person.hair}, ${person.mark}`,
     person.origin ? `${culture}, from ${person.origin}` : culture,
+    person.succeeds ? worldFateText(person.succeeds) : "",
   ]
     .filter(Boolean)
     .join("; ");
