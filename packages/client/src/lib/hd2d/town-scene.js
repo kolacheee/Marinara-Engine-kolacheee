@@ -192,6 +192,8 @@ const guardTex = (() => { const t = charTex.knight, c = document.createElement('
   const iv = setInterval(() => { if (t.image && t.image.width) { clearInterval(iv); draw(); } }, 50); return tt; })();
 let world = null;
 function buildWorld(spec, day, season, arriveAt) {
+  // a lake's shore, not the sea's (fork): greener, still water, timber banks and jetties, no quays or tide
+  const LAKE = !!(spec.lake || spec.csite === 'lake');
   const seed = spec.seed, P = spec.gen === 2 ? plan2(spec) : plan(spec), { at, I, sq, ch, gh, r, ri, pick } = P, inG = (x, y) => x >= 0 && y >= 0 && x < MW && y < MH;
   const { lots, lotId } = P.carved || carve(P);
   // ---------- ground height: a hill crowned by the church, falling to the water; every building stands on a level platform ----------
@@ -251,12 +253,14 @@ function buildWorld(spec, day, season, arriveAt) {
   const scene = new THREE.Scene();
   const sky = day ? 0xa9c4dc : 0x0e1428; scene.background = new THREE.Color(sky); scene.fog = new THREE.Fog(sky, 18, 40);
   const Mt = mats(day, season), Bk = Buckets(), { quad, tri, cube, geo, V, group } = Bk;
+  if (LAKE && !Mt.lakeWater) { Mt.lakeWater = Mt.water.clone(); if (season !== 'winter') { Mt.lakeWater.color.setHex(0x6f9c80); Mt.lakeWater.roughness = .05; } }
   const snow = season === 'winter', autumn = season === 'autumn';
   const lights = [], solids = [], blockedCell = new Set(), openCell = new Set(), zoneName = new Map();   // openCell: building cells the party may walk (the guildhall's arcade)
   const addLight = (x, y, z, power, dist, color = 0xffa04a, prio = 1) => lights.push({ x, y: y + (Bk.lift ?? hAt(x, z)), z, power, dist, color, prio });
 
   // ground: merged per texture, 4-cell texture span
   const GT = { cliff: 'grass', main: 'setts', road: 'path', street: 'cobble', alley: 'cobble', lane: 'dirt', square: 'pave', yard: 'grass', yardC: 'grass', out: 'grass', lot: 'dirt', church: 'pave', guild: 'pave', wall: 'dirt', bridge: 'floor_wood', ditch: 'water', river: 'water', stream: 'water', sea: 'sea', quay: 'setts', pier: 'floor_wood', beach: 'sand', field: 'field', works: 'dirt', spoil: 'dirt', bld: 'pave', court: 'pave' };
+  if (LAKE) GT.beach = 'path';   // a lake's shore is shingle and gravel, not sand
   const TEXF = { sand: 'snow', field: 'dirt', riser: 'ashlar' };   // ground kinds that reuse a texture under a tint
   const byTex = {};
   const planeAt = (x, y, h, span, dip) => { const g = new THREE.PlaneGeometry(1, 1); g.rotateX(-Math.PI / 2); g.translate(x + .5, h, y + .5);
@@ -292,11 +296,11 @@ function buildWorld(spec, day, season, arriveAt) {
   for (const [t, geos] of Object.entries(byTex)) { const over = t === 'leaves_fall' || t === 'snowdust';
     if (t === 'snowfull') { const m = new THREE.Mesh(mergeGeometries(geos), new THREE.MeshStandardMaterial({ map: tex('m/snow'), roughness: .9 })); m.receiveShadow = true; scene.add(m); continue; }   // lanes in shade keep their snow: bare cobbles read as black holes
     if (t === 'snowdust') { const m = new THREE.Mesh(mergeGeometries(geos), new THREE.MeshStandardMaterial({ map: tex('m/snowpatch'), alphaTest: .5, roughness: .9 })); m.receiveShadow = true; scene.add(m); continue; }
-    const mat = t === 'sea' ? Mt.water : t === 'water' ? (snow ? new THREE.MeshStandardMaterial({ color: 0xc8d8e8, roughness: .3, metalness: .1 }) : Mt.water) : new THREE.MeshStandardMaterial({ map: tex('m/' + (t === 'snowdust' ? 'snow' : TEXF[t] || t)), roughness: t === 'pave' ? .75 : .95, color: groundTint[t] ?? 0xffffff, transparent: over, opacity: t === 'snowdust' ? .55 : 1, alphaTest: t === 'leaves_fall' ? .5 : 0, depthWrite: !over });
+    const mat = t === 'sea' ? (LAKE ? Mt.lakeWater : Mt.water) : t === 'water' ? (snow ? new THREE.MeshStandardMaterial({ color: 0xc8d8e8, roughness: .3, metalness: .1 }) : Mt.water) : new THREE.MeshStandardMaterial({ map: tex('m/' + (t === 'snowdust' ? 'snow' : TEXF[t] || t)), roughness: t === 'pave' ? .75 : .95, color: groundTint[t] ?? 0xffffff, transparent: over, opacity: t === 'snowdust' ? .55 : 1, alphaTest: t === 'leaves_fall' ? .5 : 0, depthWrite: !over });
     const m = new THREE.Mesh(mergeGeometries(geos), mat); m.receiveShadow = true; scene.add(m); }
   // banks: dressed stone where water meets land, timber under piers; the beach slopes in on its own
   for (let y = gy0; y < gy1; y++) for (let x = gx0; x < gx1; x++) { if (!WATERK.has(at(x, y))) continue;
-    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const n = at(x + dx, y + dy); if (WATERK.has(n) || n === 'beach') continue; const k = n === 'pier' ? 'wood' : 'stone';
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const n = at(x + dx, y + dy); if (WATERK.has(n) || n === 'beach') continue; const k = n === 'pier' || (LAKE && !spec.cpop) ? 'wood' : 'stone';
       if (dy < 0) cube(k, x, -.4, y - .08, x + 1, .02, y, 32, 32, 'b'); else if (dy > 0) cube(k, x, -.4, y + 1, x + 1, .02, y + 1.08, 32, 32, 'b');
       else if (dx < 0) cube(k, x - .08, -.4, y, x, .02, y + 1, 32, 32, 'b'); else cube(k, x + 1, -.4, y, x + 1.08, .02, y + 1, 32, 32, 'b'); } }
   // terraces: where one cell's ground stands above its neighbour's (a house platform, a churchyard wall, a cut into the hill) a dressed-stone face fills the step
@@ -986,6 +990,14 @@ function buildWorld(spec, day, season, arriveAt) {
       for (const a of [-L * .2, L * .15]) cube('wood', ...(() => { const p = Pw(a, 0, 0); return [p.x - .06, y0 - .12, p.z - .06, p.x + .06, y0 - .06, p.z + .06]; })(), 32, 32, '');
       if (F.mast) { const m0 = Pw(-L * .05, 0, y0 - Hh * .5), m1 = Pw(-L * .05, 0, y0 + 2.4 * s); beamTo('beam', m0, m1, .08); const y1 = y0 + 1.1 * s; beamTo('beam', Pw(-L * .05, 0, y1), Pw(-L * .45, 0, y1 + .05), .06); beamTo('cloth_linen', Pw(-L * .08, 0, y1 + .08), Pw(-L * .42, 0, y1 + .1), .16); } });
     if (F.beached) solids.push([F.x - L * .5, F.z - L * .5, F.x + L * .5, F.z + L * .5].map((v, i) => i % 2 ? F.z + (v - F.z) * (Math.abs(c) > .5 ? .45 : 1) : F.x + (v - F.x) * (Math.abs(c) > .5 ? 1 : .45))); };
+  // a lake town's jetties (fork): timber walks on posts out over the still water from the shingle, a boat tied at the end
+  if (LAKE && !spec.cpop) { Bk.setLift(null); const WK = new Set(['sea']); let lastX = -99;
+    for (let x = 3; x < MW - 3; x++) for (let y = 2; y < MH - 4; y++) { if ((at(x, y) !== 'beach' && at(x, y) !== 'quay') || !WK.has(at(x, y + 1)) || x - lastX < 11) continue;
+      if (![1, 2, 3].every((k) => WK.has(at(x, y + k)))) continue; if ((P.feats || []).some((F) => F.k === 'boat' && Math.abs(F.x - (x + .5)) < 2.6 && Math.abs(F.z - (y + 2)) < 3.5)) continue; lastX = x; const z0 = y + .4, z1 = y + 3.6;
+      group(() => { cube('wood', x + .1, .06, z0, x + .9, .14, z1, 32, 32, '');   // the walk
+        for (let z = z0 + .3; z < z1; z += 1) for (const px of [x + .12, x + .8]) cube('beam', px, -.45, z, px + .08, .2, z + .08, 16, 16, '');   // its posts
+        cube('beam', x + .12, .14, z1 - .12, x + .2, .5, z1 - .04, 16, 16, ''); });   // a mooring post
+      boat({ x: x + 1.6, z: z1 - .6, rot: Math.PI / 2, s: .8 }); break; } }
   P.WORKS = [];
   for (const F of P.feats) {
     if (F.k === 'boat') boat(F);
@@ -1166,7 +1178,7 @@ function buildWorld(spec, day, season, arriveAt) {
   party.forEach((C, i) => { C.pos.set(start[0] + .5 + (i % 2 ? .3 : -.3) * (i ? 1 : 0), start[1] + .5 + i * .7); });
   const where = (x, y) => { const k = at(x, y); if (zoneName.get(I(x, y))) return zoneName.get(I(x, y));
     const d = P.district(x, y), SN = { poor: 'Tanner Row', craft: 'Smiths’ Street', ware: 'Warehouse Lane', cottage: P.basis === 'fishing' ? 'Shore Lane' : 'Back Lane', miner: 'Miners’ Row', rich: 'Bell Street', common: 'Bell Street' };
-    return { main: 'High Street', square: P.basis === 'road' ? 'Market street' : P.basis === 'fishing' ? 'Fish market' : 'Market square', street: SN[d], alley: P.basis === 'port' && y > 30 ? 'Quay lane' : 'Alley', lane: P.walls ? 'Wall lane' : SN[d], yardC: 'Churchyard', yard: 'Back yards', road: P.walls ? 'Road out of town' : 'Road', bridge: 'Bridge', out: P.walls ? 'Outside the walls' : 'Meadow', field: 'Fields', wall: 'Town wall', quay: P.basis === 'bridge' ? 'Riverside' : 'Quay', pier: 'Pier', beach: P.basis === 'fishing' ? 'Beach' : 'Shore' }[k] || 'Town'; };
+    return { main: 'High Street', square: P.basis === 'road' ? 'Market street' : P.basis === 'fishing' ? 'Fish market' : 'Market square', street: SN[d], alley: P.basis === 'port' && y > 30 ? 'Quay lane' : 'Alley', lane: P.walls ? 'Wall lane' : SN[d], yardC: 'Churchyard', yard: 'Back yards', road: P.walls ? 'Road out of town' : 'Road', bridge: 'Bridge', out: P.walls ? 'Outside the walls' : 'Meadow', field: 'Fields', wall: 'Town wall', quay: P.basis === 'bridge' ? 'Riverside' : LAKE ? 'Lakeside' : 'Quay', pier: LAKE ? 'Jetty' : 'Pier', beach: LAKE ? 'Lake shore' : P.basis === 'fishing' ? 'Beach' : 'Shore' }[k] || 'Town'; };
   const cellTop = new Float32Array(MW * MH); { const topOf = new Map(); for (const h of houseInfo) if (h.id !== undefined) topOf.set(h.id, Math.max(topOf.get(h.id) || 0, h.top));
     for (let i = 0; i < MW * MH; i++) { const k = P.g[i]; cellTop[i] = k === 'lot' ? (topOf.get(lotId[i]) ?? 4) : k === 'church' ? 12 : k === 'guild' ? 8 : k === 'wall' ? 3.6 : k === 'pwall' ? 2.1 : k === 'works' ? 4 : k === 'spoil' ? 1.2 : 0; } }
   const top = (x, y) => (x < 0 || y < 0 || x >= MW || y >= MH) ? 0 : cellTop[I(x, y)];
@@ -1344,7 +1356,7 @@ function rebuildWalk() {
   const t = new THREE.DataTexture(d, TW, TH, THREE.RGBAFormat, THREE.FloatType); t.magFilter = t.minFilter = THREE.NearestFilter; t.needsUpdate = true; if (U.walk.value) U.walk.value.dispose(); U.walk.value = t; }
 // a gen2 town over several maps plays the part of a city plan: its maps are the plan's cells
 const G2 = () => true, MULTI = () => townNow().W * townNow().H > 1;
-const g2spec = () => ({ chron: S.chron || null, seed: +S.seed, basis: S.basis, rank: Math.min(2, +S.rank), planted: !!S.planted, ground: S.ground || 'hill', gen: 2, multi: true, region: S.region || 'en', specs: S.trade ? [S.trade] : [], cpop: S.cpop || 0, csite: S.csite || 'river', cyear: S.cyear || 1500, cflags: S.cflags || '' });
+const g2spec = () => ({ chron: S.chron || null, seed: +S.seed, basis: S.basis, rank: Math.min(2, +S.rank), planted: !!S.planted, ground: S.ground || 'hill', gen: 2, multi: true, region: S.region || 'en', specs: S.trade ? [S.trade] : [], cpop: S.cpop || 0, csite: S.csite || 'river', lake: !!(S.lake || S.csite === 'lake'), cyear: S.cyear || 1500, cflags: S.cflags || '' });
 function townNow() { const T = townOf(g2spec()), [w, h] = T.maps, mk = T.Q.market; const core = mk ? Math.min(h - 1, Math.floor(mk.cy / MH)) * w + Math.min(w - 1, Math.floor(mk.cx / MW)) : 0; return { W: w, H: h, built: new Int8Array(w * h), core }; }
 const curCell = () => S.tcell >= 0 && S.tcell < townNow().W * townNow().H ? S.tcell : (S.tcell = townNow().core);
 function cellAtG(x, y) { const P = townNow(); return x < 0 || y < 0 || x >= P.W || y >= P.H ? -1 : y * P.W + x; }

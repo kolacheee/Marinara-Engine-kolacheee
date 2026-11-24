@@ -39,7 +39,7 @@ const plural = (label) => (/ of /.test(label) ? label.replace(/^(.*?)([a-z]+)( o
 const wordsOf = (b) => `${b.name || ''} ${b.role || ''} ${b.use || ''} ${b.kind === 'landmark' ? 'hall' : ''}`.toLowerCase();
 
 /** The town generator's spec as the scene builds it (the same object shape, so one cached town serves both). */
-export const g2specOf = (S) => ({ seed: +S.seed, basis: S.basis || 'market', rank: Math.min(2, +S.rank || 0), planted: !!S.planted, ground: S.ground || 'hill', gen: 2, multi: true, region: S.region || 'en', specs: S.trade ? [S.trade] : [], cpop: S.cpop || 0, csite: S.csite || 'river', cyear: S.cyear || 1500, cflags: S.cflags || '' });
+export const g2specOf = (S) => ({ seed: +S.seed, basis: S.basis || 'market', rank: Math.min(2, +S.rank || 0), planted: !!S.planted, ground: S.ground || 'hill', gen: 2, multi: true, region: S.region || 'en', specs: S.trade ? [S.trade] : [], cpop: S.cpop || 0, csite: S.csite || 'river', lake: !!(S.lake || S.csite === 'lake'), cyear: S.cyear || 1500, cflags: S.cflags || '' });
 
 /** The town's index: its planned buildings and house lots town-wide, its quarters and landmarks. */
 export function townIndex(spec) {

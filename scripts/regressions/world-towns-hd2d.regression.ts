@@ -51,6 +51,7 @@ for (const kit of WORLD_STARTER_KITS) {
 const fantasy = WORLD_STARTER_KITS.filter((kit) => kit.family === "fantasy");
 assert.ok(fantasy.length > 0);
 let cities = 0;
+let lakes = 0;
 let villages = 0;
 for (const kit of fantasy)
   for (const seed of [41, 42, 43]) {
@@ -66,10 +67,23 @@ for (const kit of fantasy)
       assert.ok(spec.cyear >= 1100 && spec.cyear <= 1600, label);
       if (place.rank! / top < 0.45) assert.ok(spec.rank === 0 && !spec.cpop, `${label}: a small place is a village`);
       if (place.rank! / top >= 0.7) assert.ok(spec.cpop > 0, `${label}: a big place is a city`);
+      // A lake's shore is never the sea's: a lake town keeps the shore layout and is drawn as a lake.
+      if (spec.lake) {
+        lakes++;
+        assert.ok(spec.basis === "port" || spec.basis === "fishing", `${label}: a lake town lives by its water`);
+        assert.equal(spec.csite, "lake", label);
+      } else assert.notEqual(spec.csite, "lake", label);
+      assert.ok(worldTownHd2dSpecSchema.safeParse(spec).success, `${label}: every spec is one the game keeps`);
       if (spec.cpop) cities++;
       if (!spec.cpop && spec.rank === 0) villages++;
     }
   }
+// Generated worlds have lakes (small closed water bodies, whatever the kit calls its water), and towns on them.
+for (let seed = 1; seed <= 40 && !lakes; seed++) {
+  const game = gameOf(fantasy[0]!.id, seed);
+  for (const place of game.world.places) if (place.rank !== undefined && worldTownHd2dSpec(game, place.id)?.lake) lakes++;
+}
+assert.ok(lakes > 0, "some towns stand on a lake");
 assert.ok(cities > 0 && villages > 0, "the ladder runs from villages to cities");
 assert.equal(worldTownHd2dSpec(gameOf(fantasy[0]!.id, 41), "nowhere"), null);
 

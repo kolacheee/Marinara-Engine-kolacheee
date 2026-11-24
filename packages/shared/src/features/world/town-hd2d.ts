@@ -48,15 +48,49 @@ export interface WorldTownHd2dSpec {
   region: "en" | "lc";
   /** A chief trade the town lives by, when its tags say one. */
   trade: "" | "cloth" | "tanning";
+  /** On a lake's shore, not the sea's: jetties and boats, no quays or tide. */
+  lake?: boolean;
 }
 
 const hash = (text: string) => [...text].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7);
+
+/** The most cells a lake covers on the world map; a bigger body of water, or one reaching the map's edge, is sea. */
+const WORLD_LAKE_MAX_CELLS = 80;
 
 /** The kinds of ground round a settlement, within `reach` cells: water, hills, and how much river. */
 function groundAround(game: GameWorld, place: WorldPlace, reach: number) {
   const { world } = game;
   const kinds = new Map(worldTerrainEntries(game.kit).map((entry) => [entry.id, entry.kind]));
+  // A small water body closed off from the map's edge is a lake, whatever the kit calls its water (worldgen
+  // shares small closed bodies out as lakes, compile.ts).
+  const isWater = (x: number, y: number) => {
+    const id = world.terrain[parseInt(world.ground[y * world.width + x] ?? "0", 36)] ?? "";
+    return kinds.get(id) === "water" || /sea|ocean|lake|water/.test(id);
+  };
+  const lakeOf = new Map<number, boolean>();
+  const inLake = (x0: number, y0: number) => {
+    const start = y0 * world.width + x0;
+    if (lakeOf.has(start)) return lakeOf.get(start)!;
+    const part = [start];
+    const seen = new Set(part);
+    let edge = false;
+    for (let i = 0; i < part.length && part.length <= WORLD_LAKE_MAX_CELLS; i++) {
+      const [x, y] = [part[i]! % world.width, Math.floor(part[i]! / world.width)];
+      if (x === 0 || y === 0 || x === world.width - 1 || y === world.height - 1) edge = true;
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+        const [nx, ny] = [x + dx, y + dy];
+        const at = ny * world.width + nx;
+        if (nx < 0 || ny < 0 || nx >= world.width || ny >= world.height || seen.has(at) || !isWater(nx, ny)) continue;
+        seen.add(at);
+        part.push(at);
+      }
+    }
+    const lake = !edge && part.length <= WORLD_LAKE_MAX_CELLS;
+    for (const cell of part) lakeOf.set(cell, lake);
+    return lake;
+  };
   let water = 0;
+  let lake = 0;
   let hills = 0;
   let cells = 0;
   for (let y = place.at.y - reach; y <= place.at.y + reach; y++)
@@ -64,7 +98,10 @@ function groundAround(game: GameWorld, place: WorldPlace, reach: number) {
       if (x < 0 || y < 0 || x >= world.width || y >= world.height) continue;
       const id = world.terrain[parseInt(world.ground[y * world.width + x] ?? "0", 36)] ?? "";
       cells++;
-      if (kinds.get(id) === "water" || /sea|ocean|lake|water/.test(id)) water++;
+      if (kinds.get(id) === "water" || /sea|ocean|lake|water/.test(id)) {
+        water++;
+        if (/lake|pond|loch|mere|lagoon/.test(id) || inLake(x, y)) lake++;
+      }
       if (/hill|mountain|highland|ridge/.test(id)) hills++;
     }
   let river = 0;
@@ -78,7 +115,8 @@ function groundAround(game: GameWorld, place: WorldPlace, reach: number) {
     (each) =>
       each.kind === "harbor" && Math.max(Math.abs(each.at.x - place.at.x), Math.abs(each.at.y - place.at.y)) <= 2,
   );
-  return { water: cells ? water / cells : 0, hills: cells ? hills / cells : 0, river, harbour };
+  // Fresh water: most of the water round it is a lake's.
+  return { water: cells ? water / cells : 0, lake: water > 0 && lake * 2 > water, hills: cells ? hills / cells : 0, river, harbour };
 }
 
 /** The settlement's spec for the town generator, or null for a place that is not a settlement. */
@@ -134,13 +172,14 @@ export function worldTownHd2dSpec(
     rank,
     cpop,
     basis,
-    csite: coast ? "coast" : river ? "river" : "plain",
+    csite: coast ? (around.lake ? "lake" : "coast") : river ? "river" : "plain",
     ground: around.hills >= 0.2 || /hill|mountain|highland|crag/.test(tags) ? "hill" : "flat",
     planted: /planted|new town|bastide|founded|colony/.test(tags),
     cyear: year,
     cflags: flags.join(","),
     region,
     trade: /cloth|wool|weav|dye|textile/.test(tags) ? "cloth" : /tann|leather|hide/.test(tags) ? "tanning" : "",
+    ...(coast && around.lake ? { lake: true } : {}),
   };
 }
 
