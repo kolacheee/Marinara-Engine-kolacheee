@@ -1,0 +1,935 @@
+{
+  "layers": {
+    "beard/full@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "beard/full@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "body/man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "body/woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "feature/elf-ears@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "feature/elf-ears@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "feature/horns@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "feature/horns@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "hair/braid@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "hair/braid@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "hair/long@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "hair/long@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "hair/short@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "hair/short@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "head/hood@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "head/hood@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "held/staff@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "held/staff@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "outfit/labourer@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "outfit/labourer@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "outfit/mage@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "outfit/mage@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "outfit/ranger@man.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    },
+    "outfit/ranger@woman.png": {
+      "size": [
+        288,
+        256
+      ],
+      "off_palette": 0,
+      "semi_alpha": 0,
+      "lone_pixels": 0,
+      "wrong_source_region": 0
+    }
+  },
+  "failures": [],
+  "body_geometry": {
+    "man": [
+      {
+        "direction": "down",
+        "frame": 0,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 1,
+        "bbox": [
+          15,
+          7,
+          33,
+          64
+        ],
+        "height": 57,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 2,
+        "bbox": [
+          15,
+          5,
+          33,
+          64
+        ],
+        "height": 59,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 3,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 4,
+        "bbox": [
+          15,
+          7,
+          33,
+          64
+        ],
+        "height": 57,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 5,
+        "bbox": [
+          15,
+          5,
+          33,
+          64
+        ],
+        "height": 59,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 0,
+        "bbox": [
+          12,
+          6,
+          34,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 1,
+        "bbox": [
+          14,
+          7,
+          32,
+          64
+        ],
+        "height": 57,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 2,
+        "bbox": [
+          19,
+          5,
+          29,
+          64
+        ],
+        "height": 59,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 3,
+        "bbox": [
+          12,
+          6,
+          34,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 4,
+        "bbox": [
+          14,
+          7,
+          32,
+          64
+        ],
+        "height": 57,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 5,
+        "bbox": [
+          19,
+          5,
+          29,
+          64
+        ],
+        "height": 59,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 0,
+        "bbox": [
+          14,
+          6,
+          36,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 1,
+        "bbox": [
+          16,
+          7,
+          34,
+          64
+        ],
+        "height": 57,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 2,
+        "bbox": [
+          19,
+          5,
+          29,
+          64
+        ],
+        "height": 59,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 3,
+        "bbox": [
+          14,
+          6,
+          36,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 4,
+        "bbox": [
+          16,
+          7,
+          34,
+          64
+        ],
+        "height": 57,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 5,
+        "bbox": [
+          19,
+          5,
+          29,
+          64
+        ],
+        "height": 59,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 0,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 1,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 2,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 3,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 4,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 5,
+        "bbox": [
+          15,
+          6,
+          33,
+          64
+        ],
+        "height": 58,
+        "feet_row_63": true
+      }
+    ],
+    "woman": [
+      {
+        "direction": "down",
+        "frame": 0,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 1,
+        "bbox": [
+          16,
+          10,
+          32,
+          64
+        ],
+        "height": 54,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 2,
+        "bbox": [
+          16,
+          8,
+          32,
+          64
+        ],
+        "height": 56,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 3,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 4,
+        "bbox": [
+          16,
+          10,
+          32,
+          64
+        ],
+        "height": 54,
+        "feet_row_63": true
+      },
+      {
+        "direction": "down",
+        "frame": 5,
+        "bbox": [
+          16,
+          8,
+          32,
+          64
+        ],
+        "height": 56,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 0,
+        "bbox": [
+          12,
+          9,
+          34,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 1,
+        "bbox": [
+          14,
+          10,
+          32,
+          64
+        ],
+        "height": 54,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 2,
+        "bbox": [
+          19,
+          8,
+          29,
+          64
+        ],
+        "height": 56,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 3,
+        "bbox": [
+          12,
+          9,
+          34,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 4,
+        "bbox": [
+          14,
+          10,
+          32,
+          64
+        ],
+        "height": 54,
+        "feet_row_63": true
+      },
+      {
+        "direction": "left",
+        "frame": 5,
+        "bbox": [
+          19,
+          8,
+          29,
+          64
+        ],
+        "height": 56,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 0,
+        "bbox": [
+          14,
+          9,
+          36,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 1,
+        "bbox": [
+          16,
+          10,
+          34,
+          64
+        ],
+        "height": 54,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 2,
+        "bbox": [
+          19,
+          8,
+          29,
+          64
+        ],
+        "height": 56,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 3,
+        "bbox": [
+          14,
+          9,
+          36,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 4,
+        "bbox": [
+          16,
+          10,
+          34,
+          64
+        ],
+        "height": 54,
+        "feet_row_63": true
+      },
+      {
+        "direction": "right",
+        "frame": 5,
+        "bbox": [
+          19,
+          8,
+          29,
+          64
+        ],
+        "height": 56,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 0,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 1,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 2,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 3,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 4,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      },
+      {
+        "direction": "up",
+        "frame": 5,
+        "bbox": [
+          16,
+          9,
+          32,
+          64
+        ],
+        "height": 55,
+        "feet_row_63": true
+      }
+    ]
+  },
+  "walk": {
+    "man": {
+      "near_minus_far_foot_x": [
+        -16,
+        -12,
+        0,
+        16,
+        12,
+        0
+      ],
+      "crossings": 2,
+      "hand_x_range": 10,
+      "bob": [
+        0,
+        1,
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "contact_heel_separation": 16,
+      "down_feet_y": [
+        [
+          63,
+          61
+        ],
+        [
+          63,
+          61
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          63,
+          61
+        ]
+      ]
+    },
+    "woman": {
+      "near_minus_far_foot_x": [
+        -16,
+        -12,
+        0,
+        16,
+        12,
+        0
+      ],
+      "crossings": 2,
+      "hand_x_range": 10,
+      "bob": [
+        0,
+        1,
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "contact_heel_separation": 16,
+      "down_feet_y": [
+        [
+          63,
+          61
+        ],
+        [
+          63,
+          61
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          63,
+          61
+        ]
+      ]
+    }
+  },
+  "head_translation_mismatches": [],
+  "alignment": {
+    "composition_cases": 432,
+    "hair_disconnections": [],
+    "uncovered_sleeve_or_foot_masks": []
+  },
+  "black_hair_R_ge_B": true,
+  "limitations": [
+    "Alignment checks prove mask coverage and head overlap, not aesthetic fit.",
+    "Body height is specified at standing F0; bob changes walking height by one pixel.",
+    "The shared opaque head mask is 7x8; ears and profile nose are separate protrusions."
+  ]
+}
