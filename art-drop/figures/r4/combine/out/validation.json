@@ -1,0 +1,1045 @@
+{
+  "characters": {
+    "wren": {
+      "palette_size": 29,
+      "frames": [
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 0,
+          "bbox": [
+            8,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1067
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 1,
+          "bbox": [
+            8,
+            8,
+            38,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1056
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 2,
+          "bbox": [
+            9,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1067
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 3,
+          "bbox": [
+            9,
+            6,
+            39,
+            64
+          ],
+          "height": 58,
+          "components": [
+            1074
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 4,
+          "bbox": [
+            9,
+            7,
+            39,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1064
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 5,
+          "bbox": [
+            9,
+            6,
+            38,
+            64
+          ],
+          "height": 58,
+          "components": [
+            1078
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 0,
+          "bbox": [
+            6,
+            7,
+            35,
+            64
+          ],
+          "height": 57,
+          "components": [
+            914
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 1,
+          "bbox": [
+            10,
+            8,
+            36,
+            64
+          ],
+          "height": 56,
+          "components": [
+            885
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 2,
+          "bbox": [
+            12,
+            7,
+            36,
+            64
+          ],
+          "height": 57,
+          "components": [
+            833
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 3,
+          "bbox": [
+            7,
+            6,
+            35,
+            64
+          ],
+          "height": 58,
+          "components": [
+            905
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 4,
+          "bbox": [
+            6,
+            7,
+            35,
+            64
+          ],
+          "height": 57,
+          "components": [
+            900
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 5,
+          "bbox": [
+            12,
+            6,
+            35,
+            64
+          ],
+          "height": 58,
+          "components": [
+            832
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 0,
+          "bbox": [
+            13,
+            7,
+            36,
+            64
+          ],
+          "height": 57,
+          "components": [
+            836
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 1,
+          "bbox": [
+            13,
+            7,
+            36,
+            64
+          ],
+          "height": 57,
+          "components": [
+            836
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 2,
+          "bbox": [
+            13,
+            7,
+            36,
+            64
+          ],
+          "height": 57,
+          "components": [
+            836
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 3,
+          "bbox": [
+            13,
+            7,
+            36,
+            64
+          ],
+          "height": 57,
+          "components": [
+            836
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 4,
+          "bbox": [
+            13,
+            7,
+            36,
+            64
+          ],
+          "height": 57,
+          "components": [
+            836
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 5,
+          "bbox": [
+            13,
+            7,
+            36,
+            64
+          ],
+          "height": 57,
+          "components": [
+            836
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 0,
+          "bbox": [
+            10,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1069
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 1,
+          "bbox": [
+            10,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1069
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 2,
+          "bbox": [
+            10,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1069
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 3,
+          "bbox": [
+            10,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1069
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 4,
+          "bbox": [
+            10,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1069
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 5,
+          "bbox": [
+            10,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1069
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 0,
+          "bbox": [
+            9,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1096
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 1,
+          "bbox": [
+            9,
+            6,
+            38,
+            64
+          ],
+          "height": 58,
+          "components": [
+            1121
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 2,
+          "bbox": [
+            9,
+            6,
+            38,
+            64
+          ],
+          "height": 58,
+          "components": [
+            1118
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 3,
+          "bbox": [
+            8,
+            7,
+            38,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1096
+          ]
+        }
+      ]
+    },
+    "hadrik": {
+      "palette_size": 32,
+      "frames": [
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 0,
+          "bbox": [
+            7,
+            8,
+            41,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1271
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 1,
+          "bbox": [
+            7,
+            9,
+            41,
+            64
+          ],
+          "height": 55,
+          "components": [
+            1256
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 2,
+          "bbox": [
+            7,
+            8,
+            41,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1278
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 3,
+          "bbox": [
+            7,
+            7,
+            41,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1289
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 4,
+          "bbox": [
+            7,
+            8,
+            41,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1275
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 0,
+          "col": 5,
+          "bbox": [
+            7,
+            7,
+            41,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1294
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 0,
+          "bbox": [
+            8,
+            8,
+            38,
+            64
+          ],
+          "height": 56,
+          "components": [
+            935
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 1,
+          "bbox": [
+            12,
+            9,
+            35,
+            64
+          ],
+          "height": 55,
+          "components": [
+            879
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 2,
+          "bbox": [
+            14,
+            8,
+            34,
+            64
+          ],
+          "height": 56,
+          "components": [
+            848
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 3,
+          "bbox": [
+            9,
+            7,
+            34,
+            64
+          ],
+          "height": 57,
+          "components": [
+            904
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 4,
+          "bbox": [
+            8,
+            8,
+            36,
+            64
+          ],
+          "height": 56,
+          "components": [
+            918
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 1,
+          "col": 5,
+          "bbox": [
+            14,
+            7,
+            34,
+            64
+          ],
+          "height": 57,
+          "components": [
+            853
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 0,
+          "bbox": [
+            14,
+            8,
+            34,
+            64
+          ],
+          "height": 56,
+          "components": [
+            875
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 1,
+          "bbox": [
+            14,
+            8,
+            34,
+            64
+          ],
+          "height": 56,
+          "components": [
+            875
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 2,
+          "bbox": [
+            14,
+            8,
+            34,
+            64
+          ],
+          "height": 56,
+          "components": [
+            875
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 3,
+          "bbox": [
+            14,
+            8,
+            34,
+            64
+          ],
+          "height": 56,
+          "components": [
+            875
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 4,
+          "bbox": [
+            14,
+            8,
+            34,
+            64
+          ],
+          "height": 56,
+          "components": [
+            875
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 2,
+          "col": 5,
+          "bbox": [
+            14,
+            8,
+            34,
+            64
+          ],
+          "height": 56,
+          "components": [
+            875
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 0,
+          "bbox": [
+            7,
+            8,
+            40,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1258
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 1,
+          "bbox": [
+            7,
+            8,
+            40,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1258
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 2,
+          "bbox": [
+            7,
+            8,
+            40,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1258
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 3,
+          "bbox": [
+            7,
+            8,
+            40,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1258
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 4,
+          "bbox": [
+            7,
+            8,
+            40,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1258
+          ]
+        },
+        {
+          "kind": "sheet",
+          "row": 3,
+          "col": 5,
+          "bbox": [
+            7,
+            8,
+            40,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1258
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 0,
+          "bbox": [
+            7,
+            8,
+            41,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1315
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 1,
+          "bbox": [
+            7,
+            7,
+            41,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1346
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 2,
+          "bbox": [
+            7,
+            7,
+            41,
+            64
+          ],
+          "height": 57,
+          "components": [
+            1343
+          ]
+        },
+        {
+          "kind": "idle",
+          "row": 0,
+          "col": 3,
+          "bbox": [
+            7,
+            8,
+            41,
+            64
+          ],
+          "height": 56,
+          "components": [
+            1311
+          ]
+        }
+      ]
+    }
+  },
+  "previews": {
+    "walk.gif": {
+      "frames": 12,
+      "durations_ms": [
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110
+      ]
+    },
+    "idle.gif": {
+      "frames": 4,
+      "durations_ms": [
+        220,
+        220,
+        220,
+        220
+      ]
+    },
+    "lineup.png": {
+      "size": [
+        896,
+        440
+      ]
+    },
+    "in-world.png": {
+      "size": [
+        1280,
+        760
+      ]
+    },
+    "in-world-close.png": {
+      "size": [
+        1280,
+        760
+      ]
+    },
+    "consistency.png": {
+      "size": [
+        1376,
+        2366
+      ]
+    }
+  },
+  "master_lock": {
+    "wren-down": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "wren-left": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hadrik-down": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hadrik-left": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "gif_master_lock": {
+    "wren-down": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "wren-left": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hadrik-down": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hadrik-left": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "idle_master_lock": {
+    "wren": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "hadrik": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "masters": {
+    "wren-down": {
+      "sha256": "0b52b7ba825daa9eca2ef111211f2d5102d9e89a7d0d5ab773ae5841420ad6bc",
+      "bbox": [
+        9,
+        7,
+        38,
+        64
+      ]
+    },
+    "wren-left": {
+      "sha256": "dcf790f2fc52e27b50ec0f1cec136be18ad25c019e2a5f6b0a885cf831a569cd",
+      "bbox": [
+        12,
+        7,
+        35,
+        64
+      ]
+    },
+    "wren-up": {
+      "sha256": "6711a605edefa2227a5e872495fd224bb6f6ab78f2c3507a3e0fa729c3ef0266",
+      "bbox": [
+        10,
+        7,
+        38,
+        64
+      ]
+    },
+    "hadrik-down": {
+      "sha256": "3ab3d00673f4503a7456a38b6dd7afe09fd37e857dd5261411668b101231320d",
+      "bbox": [
+        7,
+        8,
+        41,
+        64
+      ]
+    },
+    "hadrik-left": {
+      "sha256": "208dfbabe9c83300cdb1ac591ebdeb2a56673dd1094ffe28378760d973f9b230",
+      "bbox": [
+        14,
+        8,
+        34,
+        64
+      ]
+    },
+    "hadrik-up": {
+      "sha256": "f9245aec4b39c69df0a5f03a7ecd8c99641330a61f1ec0101e157f5d03c62bef",
+      "bbox": [
+        7,
+        8,
+        40,
+        64
+      ]
+    }
+  },
+  "result": "PASS"
+}
