@@ -8,6 +8,17 @@
 // In play (worldgen W5) the fold also steps the world as the Game Master says time passes, a week at a
 // time, with the party where the replies last put it, so its own business goes on around the story.
 // ──────────────────────────────────────────────
+import {
+  WORLD_HOME_ENDS,
+  WORLD_HOME_HOWS,
+  WORLD_HOME_STATUSES,
+  worldHomeLine,
+  worldHomeOwners,
+  worldHomePrice,
+  worldHomesInstructions,
+  worldHomesWith,
+  type WorldHome,
+} from "./homes.js";
 import { WORLD_CHANGE_KINDS, type WorldChangeKind } from "../../schemas/world-kit.schema.js";
 import { lastGamePlace } from "../../utils/game-place-tag.js";
 import { readGmTagAttributes } from "../../utils/skill-check-tag.js";
@@ -83,6 +94,13 @@ export interface WorldLedgerEntry {
   /** People who came to a place: refugees or settlers, and where from (any words). */
   arrived?: string;
   origin?: string;
+  /** A home of the players' characters (homes.ts): the house in words, its owners, how it came to them (or
+   *  went), what it cost or its month's rent, and the kind of house it is. */
+  owned?: string;
+  owner?: string;
+  how?: string;
+  price?: string;
+  status?: string;
   /** Only ever the first entry: the living world a session starts from (W11), folded on from. */
   from?: WorldFold;
 }
@@ -119,6 +137,8 @@ export interface WorldPresent extends WorldEngineState {
   deaths?: Array<WorldDeathInPlay & { placeId: string }>;
   /** People who came to a settlement in play. Missing from a fold made before them. */
   arrivals?: Array<{ placeId: string; origin: string; kind: "refugees" | "settlers"; day: number }>;
+  /** The homes the players' characters own or rent. Missing from a fold made before them. */
+  homes?: WorldHome[];
 }
 
 /** The two grounds on which the Game Master may hold a pending outcome (worldgen plan section 7). */
@@ -239,6 +259,11 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
       "relation",
       "arrived",
       "origin",
+      "owned",
+      "owner",
+      "how",
+      "price",
+      "status",
     ] as const) {
       const value = values.get(key);
       if (value) (entry as Record<string, string>)[key] = value;
@@ -254,6 +279,19 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
       entry.died = person.name;
       if (entry.relation && !WORLD_SUCCESSIONS.some((each) => each === entry.relation)) delete entry.relation;
       if (entry.successor !== undefined && !entry.successor.trim()) delete entry.successor;
+      ledger.push(entry);
+      return serialize(entry, { result: "ok" });
+    }
+    // A home of the players' characters: in a settlement of the world, by a way the world knows.
+    if (entry.owned !== undefined) {
+      if (!entry.owned.trim() || !WORLD_HOME_HOWS.some((how) => how === entry.how)) return refuse("unreadable");
+      const place = placeName(entry.place);
+      if (!place) return refuse("unknown-place");
+      entry.place = place;
+      const ends = WORLD_HOME_ENDS.some((how) => how === entry.how);
+      if (!ends && !worldHomeOwners(entry.owner).length) return refuse("unreadable");
+      if (entry.status && !WORLD_HOME_STATUSES.some((status) => status === entry.status)) delete entry.status;
+      if (entry.price !== undefined && worldHomePrice(entry.price) === undefined) delete entry.price;
       ledger.push(entry);
       return serialize(entry, { result: "ok" });
     }
@@ -580,6 +618,39 @@ function foldPresent(
       ];
       continue;
     }
+    if (entry.owned !== undefined) {
+      const at = worldSettlementOf(game, worldPlaceId(entry.place))?.id;
+      const how = WORLD_HOME_HOWS.find((each) => each === entry.how);
+      if (!at || !how || !entry.owned.trim()) continue;
+      const owners = worldHomeOwners(entry.owner);
+      const status = WORLD_HOME_STATUSES.find((each) => each === entry.status);
+      const price = worldHomePrice(entry.price);
+      const was = (present.homes ?? []).find(
+        (home) => home.placeId === at && home.words.toLowerCase() === entry.owned!.trim().toLowerCase(),
+      );
+      present.homes = worldHomesWith(present.homes ?? [], {
+        placeId: at,
+        words: entry.owned.trim(),
+        how,
+        owners,
+        day: present.day,
+        ...(price !== undefined ? { price } : {}),
+        ...(status ? { status } : {}),
+      });
+      // A home bought, rented, sold or lost in play is something the party did here; one held from the start is not.
+      if (how !== "start") {
+        const home = present.homes.find(
+          (each) => each.placeId === at && each.words.toLowerCase() === entry.owned!.trim().toLowerCase(),
+        );
+        const line = home
+          ? `${worldHomeLine(home)}.`
+          : was
+            ? `${was.owners.join(" and ")} ${how === "sold" ? "sold" : "lost"} ${was.words}.`
+            : undefined;
+        if (line) present.done[at] = [...(present.done[at] ?? []), line];
+      }
+      continue;
+    }
     if (entry.arrived !== undefined) {
       const at = worldSettlementOf(game, worldPlaceId(entry.place))?.id;
       if (!at || !entry.origin || (entry.arrived !== "refugees" && entry.arrived !== "settlers")) continue;
@@ -703,6 +774,7 @@ export function worldLedgerInstructions(game: GameWorld): string {
       : []),
     `- A named person of this world dies: [world: died="Their full name" place="Where they lived" note="how"]. Someone steps into their work and house; name them with successor="Full name" relation="${WORLD_SUCCESSIONS.join('" | "')}", or leave it and the world names them.`,
     `- People come to a settlement: [world: arrived="refugees" origin="where they came from" place="Name"], or arrived="settlers".`,
+    ...worldHomesInstructions(),
     `- When time passes in the story (a journey, a night's rest, a wait), say how long: [world: days="N"]. The world goes on with its own business a week at a time, and its news reaches the party as it travels.`,
     ...(kindsOn.length
       ? [

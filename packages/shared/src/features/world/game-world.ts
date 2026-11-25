@@ -5,6 +5,7 @@
 // no snapshot (one made before W11, on a development build) is compiled from them on every read.
 // ──────────────────────────────────────────────
 import { worldChronicleLine, worldTownChronicle } from "./chronicle.js";
+import { worldHomesLines } from "./homes.js";
 import { z } from "zod";
 import { gameWorldKitFromMetadata, type WorldKit } from "../../schemas/world-kit.schema.js";
 import { checkWorldBrief, worldBriefSchema, type WorldBrief } from "../../schemas/world-brief.schema.js";
@@ -477,6 +478,8 @@ export function worldWhereYouAreText(
     const chronicle = worldTownChronicle(game, home.id, present);
     const felt = chronicle ? worldChronicleLine(chronicle) : undefined;
     if (felt) lines.push(`- ${felt}`);
+    // The players' own homes: here first, then the rest.
+    lines.push(...worldHomesLines(present?.homes, home.id, (id) => byId.get(id)?.name));
     // What the party has done here, latest last.
     const done = [home.id, ...(place.id !== home.id ? [place.id] : []), ...(added ? [added.place.id] : [])].flatMap(
       (id) => present?.done[id] ?? [],
