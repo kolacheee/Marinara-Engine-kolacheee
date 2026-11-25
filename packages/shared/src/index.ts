@@ -116,6 +116,7 @@ export * from "./features/world/town.js";
 export * from "./features/world/town-hd2d.js";
 export * from "./features/world/chronicle.js";
 export * from "./features/world/homes.js";
+export * from "./features/world/figures.js";
 export * from "./features/world/interior.js";
 export * from "./features/world/edges.js";
 export * from "./features/world/land.js";
