@@ -1,0 +1,11 @@
+{
+ "seed": 478196,
+ "steps": 28,
+ "cfg": 7,
+ "sampler": "euler_ancestral",
+ "clip_skip": 2,
+ "lora_strength": 1.0,
+ "positive": "score_9, score_8_up, score_7_up, source_anime, 1girl, solo, adult woman, ranger, green hooded cloak, hood up, leather armor, leather bracers, belt with pouches, boots, quiver, standing, full body, front view, looking at viewer, simple background, flat grey background",
+ "negative": "score_4, score_5, score_6, child, loli, nsfw, monochrome, blurry, text, watermark, signature, multiple views, cropped",
+ "gen_seconds": 87.2
+}
