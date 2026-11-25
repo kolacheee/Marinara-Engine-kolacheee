@@ -63,3 +63,33 @@ def draw_single(kind, path, w=1024):
 
 for kind in ("front", "side", "back"):
     draw_single(kind, f"single-{kind}-1024x640.png")
+
+# Round 9: 4-frame side walk (contact, pass, contact mirrored, pass mirrored), facing right, same 448 px height.
+def walk_frame(cx, phase):
+    k = view(cx, "side")
+    y0 = FEET - FIG
+    a = [1, 0, -1, 0][phase]          # leg swing: +1 right leg forward
+    lift = [0, 1, 0, 1][phase]        # passing frames lift the body slightly
+    dy = -s(6) * lift
+    for i in list(k):
+        k[i] = (k[i][0], k[i][1] + dy)
+    hip = s(255) + dy
+    def leg(knee_i, ank_i, fwd):
+        kx = cx + s(34) * fwd; ax = cx + s(52) * fwd
+        k[knee_i] = (kx, y0 + s(350) + dy - (s(8) if fwd < 0 else 0))
+        k[ank_i] = (ax, y0 + s(440))
+    if a:
+        leg(9, 10, a); leg(12, 13, -a)
+    else:  # passing: one leg under body, the other bent behind
+        k[9], k[10] = (cx + s(6), y0 + s(350) + dy), (cx + s(4), y0 + s(440))
+        k[12], k[13] = (cx - s(4), y0 + s(345) + dy), (cx - s(22), y0 + s(420))
+    # arms swing opposite to legs
+    k[3], k[4] = (cx - s(16) * a + s(4), y0 + s(195) + dy), (cx - s(30) * a + s(6), y0 + s(258) + dy)
+    k[6], k[7] = (cx + s(16) * a - s(4), y0 + s(195) + dy), (cx + s(30) * a - s(6), y0 + s(258) + dy)
+    return k
+
+old = W
+W = 1024
+for p in range(4):
+    draw([walk_frame(512, p)], f"walk-side-{p}-1024x640.png")
+W = old
