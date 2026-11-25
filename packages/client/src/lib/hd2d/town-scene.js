@@ -1424,7 +1424,7 @@ const SPEED = 4.2;
 let zEff = 1.35; const camGoal = () => { const L = world.lead; const z = zEff; return new THREE.Vector3(L.pos.x, (window.CAMH || 9.4) * z + (world.camY || 0), L.pos.y + (window.CAMD || 8.4) * z); };
 let clock = 0, lastCell = -1, shadowTick = 0, walkedAcc = 0, readyOnce = false;
 // what the Engine is told of a door the party walks through: the building's town-wide key and its words
-const doorInfo = (h) => ({ key: h.gen2 ? 'b' + h.bid : h.plot != null ? 'p' + h.plot : h.gate ? 'gate' : 'other', label: h.label || (h.empty ? 'Empty house' : h.inn ? 'Inn' : h.shop ? 'Shop' : h.gate ? 'Gatehouse' : 'House'), inn: !!h.inn, shop: !!h.shop, empty: !!h.empty, ward: h.ward ?? -1, street: world && h.door ? world.where(Math.floor(h.door[0]), Math.floor(h.door[1])) : '', tcell: S.tcell });
+const doorInfo = (h) => ({ key: h.gen2 ? 'b' + h.bid : h.plot != null ? 'p' + h.plot : h.gate ? 'gate' : 'other', label: h.label || (h.empty ? 'Empty house' : h.inn ? 'Inn' : h.shop ? 'Shop' : h.gate ? 'Gatehouse' : 'House'), inn: !!h.inn, shop: !!h.shop, empty: !!h.empty, house: h.plot != null && h.W ? { w: h.W, d: h.D, st: h.st, dist: h.dist } : null, ward: h.ward ?? -1, street: world && h.door ? world.where(Math.floor(h.door[0]), Math.floor(h.door[1])) : '', tcell: S.tcell });
 // ---------- the weather (fork): the world's weather where the party stands, drawn over the town: the sky, light and fog it
 // brings, rain, snow, hail or dust falling round the party, lightning in a storm, and fewer people out in it ----------
 // dim: light (tone exposure); sun: how much of the sun (and its shadows) gets through; fogN/fogF: how near the fog closes in; tint/tm: the sky and fog colour it turns to, and how far;

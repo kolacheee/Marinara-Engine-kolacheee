@@ -22,6 +22,13 @@ import {
   worldLedgerInstructions,
   worldPresent,
   worldWhereYouAreText,
+  worldHomeAsk,
+  worldHomeEverydayPrice,
+  worldHomeSaid,
+  worldHomeStatusOf,
+  worldHomeTag,
+  worldHomesPendingFromMetadata,
+  readToldLedger,
   type GameWorld,
 } from "../../packages/shared/src/index.js";
 
@@ -67,14 +74,14 @@ const bought = homes.find((home) => home.words === "the empty house by the well"
 assert.deepEqual(bought.owners, ["Mara", "Tobin"]);
 assert.equal(bought.price, 120);
 assert.ok(
-  (now().done[town.id] ?? []).some((line) => /Mara and Tobin bought the empty house by the well for 120/u.test(line)),
+  (now().done[town.id] ?? []).some((line) => /Mara and Tobin bought the empty house by the well for 120 crowns/u.test(line)),
 );
 
 // ── Told to the Game Master, here and elsewhere ──
 const text = worldWhereYouAreText(game, { place: town, present: now() });
 assert.match(
   text,
-  /Homes the party has here: Mara has lived in a timber house on Bell Street; Mara and Tobin bought the empty house by the well for 120\./u,
+  /Homes the party has here: Mara has lived in a timber house on Bell Street; Mara and Tobin bought the empty house by the well for 120 crowns\./u,
 );
 assert.match(
   text,
@@ -109,5 +116,43 @@ const told = worldLedgerInstructions(game);
 assert.match(told, /\[world: owned=/u);
 assert.match(told, /how="start"/u);
 assert.match(told, /wealth and standing/u);
+
+// ── For sale at the door: priced by floor, district and how the town does, in the game's money ──
+const coins = [
+  { name: "copper", value: 1 },
+  { name: "silver", value: 10 },
+  { name: "gold", value: 100 },
+];
+const everyday = worldHomeEverydayPrice([2, 1, 1, 10, 10, 50, 50, 100, 500, 2500, 1000]);
+assert.equal(everyday, 1);
+const common = worldHomeAsk({ w: 3, d: 4, st: 2, dist: "common" }, "modest", everyday);
+assert.deepEqual(common, { price: 6000, rent: 60 });
+assert.equal(worldHomeSaid(common.price, coins), "60 gold");
+assert.equal(worldHomeSaid(825, coins), "8 gold 2 silver");
+const rich = worldHomeAsk({ w: 4, d: 5, st: 3, dist: "rich" }, "thriving", everyday).price;
+const poor = worldHomeAsk({ w: 2, d: 3, st: 1, dist: "cottage" }, "struggling", everyday, true).price;
+assert.ok(rich > common.price * 4 && poor < common.price / 8, "a rich house costs many cottages");
+assert.equal(worldHomeStatusOf("ware"), "rich");
+assert.equal(worldHomeStatusOf("craft"), "common");
+
+// ── The Engine's tag for a buy at a door: told with the next reply, the house found by its key ──
+const tag = worldHomeTag({
+  words: "the house on Bell Street",
+  place: town.name,
+  owners: ["Mara"],
+  how: "bought",
+  price: "60 gold",
+  status: "common",
+  key: "p12",
+});
+assert.deepEqual(worldHomesPendingFromMetadata({ gameHomesPending: [tag, "junk", 3] }), [tag]);
+assert.equal(readToldLedger(tag)[0]!.house, "p12");
+assert.match(say(`${tag}The keys are yours.`), /result="ok"/u);
+const doorHome = now().homes!.find((home) => home.key === "p12")!;
+assert.equal(doorHome.priceWords, "60 gold");
+assert.match(worldWhereYouAreText(game, { place: town, present: now() }), /Mara bought the house on Bell Street for 60 gold/u);
+// A second house with the same words is another house, by its key.
+say(worldHomeTag({ words: "the house on Bell Street", place: town.name, owners: ["Tobin"], how: "rented", price: "6 silver", key: "p13" }));
+assert.equal(now().homes!.filter((home) => home.words === "the house on Bell Street").length, 2);
 
 console.log("world-homes: ok");

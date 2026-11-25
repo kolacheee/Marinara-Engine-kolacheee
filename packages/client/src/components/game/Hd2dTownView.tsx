@@ -19,7 +19,16 @@ import {
   type WeatherType,
   type WorldTownHd2dSpot,
 } from "@marinara-engine/shared";
-import { useOverworld, useTown, useTownHd2dSave, useTownVisit } from "../../hooks/use-game";
+import {
+  townHomeAsk,
+  useOverworld,
+  useTown,
+  useTownHd2dSave,
+  useTownHome,
+  useTownVisit,
+  type TownHomeQuote,
+} from "../../hooks/use-game";
+import { ApiError } from "../../lib/api-client";
 import { useOverworldClock, type OverworldClockHandle } from "../../hooks/use-overworld-view";
 import type { Hd2dDoor, Hd2dTownApi, Hd2dWhere } from "../../lib/hd2d/town-scene";
 import type { Hd2dTownIndex } from "../../lib/hd2d/town-index";
@@ -93,6 +102,14 @@ export function Hd2dTownView({
   const [ready, setReady] = useState(false);
   const [where, setWhere] = useState<Hd2dWhere | null>(null);
   const [failed, setFailed] = useState<string | null>(null);
+  // Homes (fork): an empty house for sale, its card shown while the party is inside it.
+  const [forSale, setForSale] = useState<{
+    door: Hd2dDoor & { house: NonNullable<Hd2dDoor["house"]> };
+    words: string;
+    quote: TownHomeQuote | null;
+    error: string | null;
+  } | null>(null);
+  const homeMutation = useTownHome();
   const { pendingMinutes, addMinutes } = useOverworldClock(chatId, clockRunning, () => movingRef.current, handleRef);
 
   const settlementId = town?.settlementId ?? null;
@@ -145,6 +162,54 @@ export function Hd2dTownView({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatId, settlementId]);
 
+  // ── Homes for sale (fork): an empty house's door offers it, priced by the Engine ──
+  const offerHome = (door: Hd2dDoor) => {
+    const house = door.house;
+    if (!door.empty || !house || !/^p\d+$/.test(door.key) || !live.current.canWalk) return;
+    const homes = live.current.town?.homes ?? [];
+    if (homes.some((home) => home.key === door.key)) return;
+    // Its words, unique among the party's homes here: "the house on Bell Street", "the second house on …".
+    const placing = placingRef.current;
+    const where = (placing ? placing.spotWords(door.key, { ...door, empty: false, inn: false, shop: false }) : "a house")
+      .replace(/^a house/, "house");
+    const ordinals = ["", "second ", "third ", "fourth ", "fifth "];
+    const taken = new Set(homes.map((home) => home.words.toLowerCase()));
+    const words =
+      ordinals.map((each) => `the ${each}${where}`).find((each) => !taken.has(each.toLowerCase())) ?? `the ${where}`;
+    const ask = { key: door.key, house, empty: true };
+    setForSale({ door: { ...door, house }, words, quote: null, error: null });
+    townHomeAsk(chatId, ask).then(
+      (quote) => setForSale((now) => (now?.door.key === door.key ? { ...now, quote } : now)),
+      (error) =>
+        setForSale((now) =>
+          now?.door.key === door.key
+            ? { ...now, error: error instanceof Error && error.message ? error.message : t("game.town3d.home.noMoney") }
+            : now,
+        ),
+    );
+  };
+  const takeHome = (how: "bought" | "rented") => {
+    if (!forSale) return;
+    const { door, words } = forSale;
+    homeMutation.mutate(
+      { chatId, key: door.key, house: door.house, empty: true, how, words },
+      {
+        onSuccess: (res) => {
+          setForSale(null);
+          toast.success(t(how === "bought" ? "game.town3d.home.bought" : "game.town3d.home.rented", { owner: res.owner, words, price: res.said }));
+        },
+        onError: (error) =>
+          toast.error(
+            error instanceof ApiError && error.status === 402
+              ? t("game.town3d.home.cannotAfford")
+              : error instanceof Error && error.message
+                ? error.message
+                : t("game.town3d.home.failed"),
+          ),
+      },
+    );
+  };
+
   // ── The town, built once a settlement ──
   useEffect(() => {
     const host = hostRef.current;
@@ -173,7 +238,9 @@ export function Hd2dTownView({
           busyText: t("game.town3d.building"),
           debug: true,
           onWhere: (next) => setWhere(next),
+          onExit: () => setForSale(null),
           onEnter: (door) => {
+            offerHome(door);
             const placing = placingRef.current;
             const walked = walkedRef.current + (apiRef.current?.takeWalked() ?? 0);
             walkedRef.current = 0;
@@ -350,6 +417,64 @@ export function Hd2dTownView({
           {t("game.town.leave")}
         </button>
       </div>
+      {forSale && (
+        <div
+          className="pointer-events-auto absolute bottom-16 left-1/2 z-20 w-[min(22rem,calc(100%-2rem))] -translate-x-1/2 rounded-xl border border-amber-200/25 bg-black/80 p-3 text-white shadow-2xl backdrop-blur-md"
+          data-component="Hd2dTownView.ForSale"
+          role="dialog"
+          aria-label={t("game.town3d.home.forSale")}
+        >
+          <div className="text-[0.6875rem] font-semibold uppercase tracking-wider text-amber-200/90">
+            {t("game.town3d.home.forSale")}
+          </div>
+          <div className="mt-0.5 text-sm font-semibold first-letter:uppercase">{forSale.words}</div>
+          {forSale.error ? (
+            <p className="mt-1.5 text-xs text-white/70">{forSale.error}</p>
+          ) : !forSale.quote ? (
+            <Loader2 size={14} className="mt-2 animate-spin text-white/60" />
+          ) : forSale.quote.owned ? (
+            <p className="mt-1.5 text-xs text-white/70">{t("game.town3d.home.owned")}</p>
+          ) : (
+            <>
+              <p className="mt-1.5 text-xs text-white/85">
+                {t("game.town3d.home.asking", { price: forSale.quote.priceSaid, rent: forSale.quote.rentSaid })}
+              </p>
+              <p className="mt-0.5 text-xs text-white/55">{t("game.town3d.home.purse", { purse: forSale.quote.purseSaid })}</p>
+            </>
+          )}
+          <div className="mt-2.5 flex gap-2">
+            {forSale.quote && !forSale.quote.owned && !forSale.error && (
+              <>
+                <button
+                  type="button"
+                  disabled={homeMutation.isPending || forSale.quote.purse < forSale.quote.price}
+                  title={forSale.quote.purse < forSale.quote.price ? t("game.town3d.home.cannotAfford") : undefined}
+                  onClick={() => takeHome("bought")}
+                  className="rounded-md bg-amber-500/85 px-3 py-1 text-xs font-semibold text-black transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  {t("game.town3d.home.buy")}
+                </button>
+                <button
+                  type="button"
+                  disabled={homeMutation.isPending || forSale.quote.purse < forSale.quote.rent}
+                  title={forSale.quote.purse < forSale.quote.rent ? t("game.town3d.home.cannotAfford") : undefined}
+                  onClick={() => takeHome("rented")}
+                  className="rounded-md bg-white/15 px-3 py-1 text-xs font-semibold transition-colors hover:bg-white/25 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  {t("game.town3d.home.rent")}
+                </button>
+              </>
+            )}
+            <button
+              type="button"
+              onClick={() => setForSale(null)}
+              className="ml-auto rounded-md px-2 py-1 text-xs text-white/65 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              {t("game.town3d.home.notNow")}
+            </button>
+          </div>
+        </div>
+      )}
       {failed && (
         <div className="absolute inset-0 z-30 grid place-items-center bg-black/80 p-6 text-center text-sm text-white/80">
           <div>

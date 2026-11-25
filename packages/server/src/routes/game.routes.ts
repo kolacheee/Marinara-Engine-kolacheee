@@ -366,6 +366,13 @@ import {
   worldTownHd2dSpec,
   worldTownHd2dKeptSchema,
   worldTownHd2dKeptWith,
+  WORLD_HOME_KEY,
+  readToldLedger,
+  WORLD_HOMES_PENDING_MAX,
+  worldHomeHouseSchema,
+  worldHomeStatusOf,
+  worldHomeTag,
+  worldHomesPendingFromMetadata,
   worldTownHd2dKeptFromMetadata,
   worldTownHd2dChronicle,
   worldTownChronicle,
@@ -593,9 +600,17 @@ import {
 import {
   loadGameFightItems,
   loadGameFightUseEffects,
+  commitGameInventoryChange,
   loadGameInventoryItemBook,
   passGameInventoryTime,
 } from "../services/game/game-inventory.service.js";
+import {
+  gameHomeMoney,
+  gameHomePay,
+  gameHomePlayerName,
+  gameHomeQuote,
+  gameHomeStacks,
+} from "../services/game/game-homes.service.js";
 import { gameRepliesBefore, isGameMasterReply } from "../services/game/game-market.service.js";
 import { rollGameFightItemGate } from "../services/game/game-item-use.service.js";
 import { gameSetupBlueprintSchema } from "../services/game/game-setup-blueprint.js";
@@ -11775,7 +11790,12 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
   // force, as a turn reads it.
   const overworldPlace = async (chatId: string, meta: Record<string, unknown>, world: GameWorld) => {
     const replies = await gameRepliesBefore(app.db, chatId);
-    const present = worldPresent(world, replies.ledger);
+    // Homes bought at a door count from the moment they are paid for, before a reply tells them (fork).
+    const homesPending = worldHomesPendingFromMetadata(meta);
+    const present = worldPresent(
+      world,
+      homesPending.length ? [...replies.ledger, ...readToldLedger(homesPending.join(""))] : replies.ledger,
+    );
     // The sites the story keeps closed until the Game Master opens them (design-game-overworld-sites.md).
     // Reveals from every session (carried ones first), not only this one's.
     const story = gameStoryFromMetadata(meta, world);
@@ -11854,7 +11874,9 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
           chron: worldTownHd2dChronicle(worldTownChronicle(world, id, found.present), prosperity),
         }
       : null;
-    return { town: { ...found.town, at: found.at, visit: found.visit, hd2d } };
+    // The party's homes in this town (fork): the 3D town marks them, and offers no sale at their doors.
+    const homes = (found.present.homes ?? []).filter((home) => home.placeId === id);
+    return { town: { ...found.town, at: found.at, visit: found.visit, hd2d, homes } };
   });
 
   // ── GET /game/:chatId/town/interior?building= (worldgen W13) ──
@@ -11869,6 +11891,118 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     if (!world || !found) return reply.status(400).send({ error: "The party is not in a town." });
     const interior = worldInterior(world, found.town, building);
     return interior ? { interior } : reply.status(404).send({ error: "No such building in this town." });
+  });
+
+  // ── Homes (fork): a house for sale at its door in the 3D town ──
+  const homeAskSchema = z
+    .object({
+      key: z.string().regex(WORLD_HOME_KEY),
+      house: worldHomeHouseSchema,
+      empty: z.boolean().default(false),
+    })
+    .strict();
+  const homeQuote = async (chatId: string, body: unknown) => {
+    const asked = homeAskSchema.parse(body);
+    const chats = createChatsStorage(app.db);
+    const chat = await chats.getById(chatId);
+    if (!chat) throw Object.assign(new Error("Chat not found"), { statusCode: 404 });
+    const meta = parseMeta(chat.metadata);
+    const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
+    const found = world ? await townOf(chatId, meta, world) : null;
+    if (!world || !found) throw Object.assign(new Error("The party is not in a town."), { statusCode: 400 });
+    const money = await gameHomeMoney(app.db, chatId);
+    if (!money) throw Object.assign(new Error("This game has no money to buy a house with."), { statusCode: 400 });
+    const id = found.town.settlementId;
+    const settlement = world.world.places.find((place) => place.id === id);
+    const prosperity = found.present.prosperity[id] ?? settlement?.prosperity ?? "modest";
+    const pending = worldHomesPendingFromMetadata(meta);
+    const owned =
+      (found.present.homes ?? []).some((home) => home.placeId === id && home.key === asked.key) ||
+      pending.some((tag) => tag.includes(` house="${asked.key}"`));
+    const quote = gameHomeQuote(money, asked.house, prosperity, asked.empty, gameHomeStacks(chat.metadata));
+    return { asked, meta, world, found, money, settlement, pending, owned, quote };
+  };
+  app.post<{ Params: { chatId: string } }>("/:chatId/town/home/ask", async (req, reply) => {
+    try {
+      const { quote, owned } = await homeQuote(req.params.chatId, req.body);
+      return { ...quote, owned };
+    } catch (error) {
+      const status = (error as { statusCode?: number }).statusCode;
+      if (status) return reply.status(status).send({ error: (error as Error).message });
+      throw error;
+    }
+  });
+  // ── POST /game/:chatId/town/home ──
+  // Buy a house for sale, or rent it (the first month paid now): the price out of the party's purses, and
+  // the home's tag kept for the next reply to tell the Game Master.
+  app.post<{ Params: { chatId: string } }>("/:chatId/town/home", async (req, reply) => {
+    const { chatId } = req.params;
+    const body = z
+      .object({
+        how: z.enum(["bought", "rented"]),
+        words: z.string().trim().min(3).max(80),
+      })
+      .passthrough()
+      .parse(req.body);
+    let read: Awaited<ReturnType<typeof homeQuote>>;
+    try {
+      const { how: _how, words: _words, ...ask } = req.body as Record<string, unknown>;
+      read = await homeQuote(chatId, ask);
+    } catch (error) {
+      const status = (error as { statusCode?: number }).statusCode;
+      if (status) return reply.status(status).send({ error: (error as Error).message });
+      throw error;
+    }
+    const { asked, money, settlement, owned, quote } = read;
+    if (owned) return reply.status(409).send({ error: "The party already has this house." });
+    if (!settlement) return reply.status(400).send({ error: "The party is not in a town." });
+    const owner = (await gameHomePlayerName(app.db, chatId)) ?? "the party";
+    const owed = body.how === "bought" ? quote.price : quote.rent;
+    const said = body.how === "bought" ? quote.priceSaid : quote.rentSaid;
+    const tag = worldHomeTag({
+      words: body.words,
+      place: settlement.name,
+      owners: [owner],
+      how: body.how,
+      price: said,
+      status: worldHomeStatusOf(asked.house.dist),
+      key: asked.key,
+    });
+    const committed = await commitGameInventoryChange<{ ok: boolean; reason: string }>(app.db, chatId, (stacks, metadata) => {
+      const pending = worldHomesPendingFromMetadata(metadata);
+      if (pending.some((each) => each.includes(` house="${asked.key}"`)) || pending.length >= WORLD_HOMES_PENDING_MAX) {
+        return { stacks, journal: [], value: { ok: false, reason: "pending" } };
+      }
+      const paid = gameHomePay(stacks, money, owed);
+      if (!paid.ok) return { stacks, journal: [], value: { ok: false, reason: paid.reason } };
+      return {
+        stacks: paid.stacks,
+        journal: [
+          ...paid.paid.map((each) => ({ item: each.name, action: "used" as const, quantity: each.count })),
+          ...paid.change.map((each) => ({ item: each.name, action: "acquired" as const, quantity: each.count })),
+        ],
+        events: [
+          {
+            title: body.how === "bought" ? "Bought a house" : "Rented a house",
+            content: `${owner} ${body.how === "bought" ? "bought" : "rents"} ${body.words} in ${settlement.name} for ${said}${body.how === "rented" ? " a month" : ""}.`,
+          },
+        ],
+        metadata: { gameHomesPending: [...pending, tag] },
+        value: { ok: true, reason: "" },
+      };
+    });
+    if (!committed) return reply.status(404).send({ error: "Chat not found" });
+    if (!committed.value.ok) {
+      return reply
+        .status(committed.value.reason === "cannot-afford" ? 402 : 409)
+        .send({
+          error:
+            committed.value.reason === "cannot-afford"
+              ? `The party cannot afford ${said}.`
+              : "Another home is waiting to be told; play a turn first.",
+        });
+    }
+    return { ok: true, how: body.how, said, owner, key: asked.key, tag };
   });
 
   // ── POST /game/:chatId/town/visit ──

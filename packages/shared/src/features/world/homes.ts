@@ -17,6 +17,8 @@ export type WorldHomeHow = (typeof WORLD_HOME_HOWS)[number];
 export const WORLD_HOME_STATUSES = Object.freeze(["rich", "common", "poor"] as const);
 export type WorldHomeStatus = (typeof WORLD_HOME_STATUSES)[number];
 
+import { z } from "zod";
+
 export interface WorldHome {
   /** The settlement it stands in. */
   placeId: string;
@@ -27,6 +29,8 @@ export interface WorldHome {
   how: (typeof WORLD_HOME_GAINS)[number];
   /** What it cost, or for a rented home what it costs a month, in the game's money. */
   price?: number;
+  /** The price as the tag said it, coins and all ("61 gold"), when it names them. */
+  priceWords?: string;
   status?: WorldHomeStatus;
   /** The game day it became theirs. */
   day: number;
@@ -61,14 +65,20 @@ export function worldHomesWith(
     how: WorldHomeHow;
     owners: string[];
     price?: number;
+    priceWords?: string;
     status?: WorldHomeStatus;
     day: number;
+    key?: string;
   },
 ): WorldHome[] {
-  const rest = homes.filter((home) => !(home.placeId === change.placeId && same(home.words, change.words)));
+  // The same house: by the 3D town's house where both name one, else by its words.
+  const isIt = (home: WorldHome) =>
+    home.placeId === change.placeId &&
+    (home.key && change.key ? home.key === change.key : same(home.words, change.words));
+  const rest = homes.filter((home) => !isIt(home));
   if ((WORLD_HOME_ENDS as readonly string[]).includes(change.how)) return rest;
   if (!change.owners.length) return homes;
-  const before = homes.find((home) => home.placeId === change.placeId && same(home.words, change.words));
+  const before = homes.find(isIt);
   return [
     ...rest,
     {
@@ -78,13 +88,13 @@ export function worldHomesWith(
       owners: change.owners,
       how: change.how as WorldHome["how"],
       ...(change.price !== undefined
-        ? { price: change.price }
+        ? { price: change.price, ...(change.priceWords ? { priceWords: change.priceWords } : {}) }
         : before?.price !== undefined
-          ? { price: before.price }
+          ? { price: before.price, ...(before.priceWords ? { priceWords: before.priceWords } : {}) }
           : {}),
       ...(change.status ? { status: change.status } : before?.status ? { status: before.status } : {}),
       day: change.day,
-      ...(before?.key ? { key: before.key } : {}),
+      ...(change.key ? { key: change.key } : before?.key ? { key: before.key } : {}),
     },
   ];
 }
@@ -101,12 +111,13 @@ const HOW_WORDS: Record<WorldHome["how"], string> = {
 export function worldHomeLine(home: WorldHome, money?: string): string {
   const who =
     home.owners.length > 1 ? `${home.owners.slice(0, -1).join(", ")} and ${home.owners.at(-1)}` : home.owners[0];
+  const said = home.priceWords ?? `${home.price}${money ? ` ${money}` : ""}`;
   const cost =
     home.price !== undefined
       ? home.how === "rented"
-        ? ` for ${home.price}${money ? ` ${money}` : ""} a month`
+        ? ` for ${said} a month`
         : home.how === "bought"
-          ? ` for ${home.price}${money ? ` ${money}` : ""}`
+          ? ` for ${said}`
           : ""
       : "";
   return `${who} ${HOW_WORDS[home.how]} ${home.words}${cost}`;
@@ -142,4 +153,124 @@ export function worldHomesInstructions(): string[] {
     `- A home that belongs to the players' characters: [world: owned="the house in a few words, e.g. a house on Bell Street" place="Settlement" owner="Character name" how="${WORLD_HOME_GAINS.join('" | "')}" price="what it cost, or a month's rent" status="${WORLD_HOME_STATUSES.join('" | "')}"]. Several owners: owner="Name, Name". When it stops being theirs: how="sold" or how="lost". status is the kind of house it is, by its owners' wealth and standing.`,
     `- At the start of a game (or when a character joins), when it makes sense that a character already has a home, or the player says where they live, record it with how="start": a house that fits their wealth and standing, in the settlement they live in.`,
   ];
+}
+
+// ── For sale at the door (homes step 2) ──
+
+/** The 3D town's house as its door tells it: the footprint in cells, its storeys, and its district's kind. */
+export const worldHomeHouseSchema = z
+  .object({
+    w: z.number().int().min(1).max(12),
+    d: z.number().int().min(1).max(12),
+    st: z.number().int().min(1).max(5),
+    dist: z.enum(["rich", "ware", "common", "craft", "poor", "cottage"]),
+  })
+  .strict();
+export type WorldHomeHouse = z.infer<typeof worldHomeHouseSchema>;
+
+/** A 3D town house's key: "p<plot>" (a house), as the scene names it. */
+export const WORLD_HOME_KEY = /^p\d{1,6}$/;
+
+/** The kind of house a district's house is, by its owners' wealth and standing. */
+export function worldHomeStatusOf(dist: WorldHomeHouse["dist"]): WorldHomeStatus {
+  return dist === "rich" || dist === "ware" ? "rich" : dist === "poor" || dist === "cottage" ? "poor" : "common";
+}
+
+/**
+ * An everyday price in the game's money (its smallest coin): the middle of the cheapest third of what
+ * a market sells, a meal or a mug of ale. A day's labour is about ten of it, the yardstick a house is
+ * priced by (a craftsman's town house of the 1400s cost some two years of a labourer's wages).
+ */
+export function worldHomeEverydayPrice(prices: readonly number[]): number {
+  const cheap = [...prices].filter((each) => Number.isFinite(each) && each > 0).sort((a, b) => a - b);
+  if (!cheap.length) return 1;
+  const third = cheap.slice(0, Math.max(1, Math.ceil(cheap.length / 3)));
+  return Math.max(1, third[Math.floor((third.length - 1) / 2)]!);
+}
+
+const DIST_TIMES: Record<WorldHomeHouse["dist"], number> = {
+  rich: 1.7,
+  ware: 1.4,
+  common: 1,
+  craft: 1,
+  poor: 0.65,
+  cottage: 0.55,
+};
+const PROSPERITY_TIMES: Record<string, number> = { thriving: 1.25, modest: 1, struggling: 0.7 };
+/** Days of a labourer's wage one cell of floor is worth, on each storey. */
+const DAYS_PER_CELL = 25;
+/** A month's rent is about a hundredth of the price. */
+export const WORLD_HOME_RENT_SHARE = 0.01;
+
+/** A round price: two figures, so 6,134 is 6,100 and 87 is 87. */
+function roundPrice(value: number): number {
+  if (value < 100) return Math.max(1, Math.round(value));
+  const step = 10 ** (Math.floor(Math.log10(value)) - 1);
+  return Math.round(value / step) * step;
+}
+
+/**
+ * What a house costs to buy, and a month's rent, in the game's smallest coin: by its floor (cells on
+ * each storey), its district, how the town is doing now, and an everyday price of the game's money. A
+ * house left empty by the town's past sells for less: it needs work.
+ */
+export function worldHomeAsk(
+  house: WorldHomeHouse,
+  prosperity: string | undefined,
+  everyday: number,
+  empty = false,
+): { price: number; rent: number } {
+  const floor = house.w * house.d * Math.min(house.st, 4);
+  const wage = Math.max(1, everyday) * 10;
+  const raw =
+    floor * DAYS_PER_CELL * wage * DIST_TIMES[house.dist] * (PROSPERITY_TIMES[prosperity ?? ""] ?? 1) * (empty ? 0.85 : 1);
+  const price = roundPrice(raw);
+  return { price, rent: roundPrice(Math.max(1, price * WORLD_HOME_RENT_SHARE)) };
+}
+
+/** An amount of the smallest coin said in a family's coins, largest first ("61 gold", "6 gold 5 silver"). */
+export function worldHomeSaid(
+  amount: number,
+  family: ReadonlyArray<{ name: string; value: number; one?: string }>,
+): string {
+  const coins = [...family].filter((coin) => coin.value > 0).sort((a, b) => b.value - a.value);
+  if (!coins.length) return String(amount);
+  let rest = Math.round(amount);
+  const parts: string[] = [];
+  for (const coin of coins) {
+    const count = Math.floor(rest / coin.value);
+    if (count > 0) parts.push(`${count} ${count === 1 && coin.one ? coin.one : coin.name}`);
+    rest -= count * coin.value;
+    if (parts.length === 2) break;
+  }
+  return parts.join(" ") || `0 ${coins.at(-1)!.name}`;
+}
+
+const quoted = (text: string) => text.replace(/["\[\]]/g, "").trim();
+
+/** The tag the Engine writes for a home bought or rented at its door, told with the next reply. */
+export function worldHomeTag(home: {
+  words: string;
+  place: string;
+  owners: readonly string[];
+  how: "bought" | "rented";
+  /** The price as said, coins and all ("61 gold"). */
+  price: string;
+  status?: WorldHomeStatus;
+  key?: string;
+}): string {
+  return `[world: owned="${quoted(home.words)}" place="${quoted(home.place)}" owner="${home.owners
+    .map(quoted)
+    .join(", ")}" how="${home.how}" price="${home.price}"${home.status ? ` status="${home.status}"` : ""}${
+    home.key ? ` house="${home.key}"` : ""
+  }]`;
+}
+
+/** The home tags the Engine has written and the next reply tells, kept on the game. */
+export const WORLD_HOMES_PENDING_MAX = 8;
+export function worldHomesPendingFromMetadata(metadata: Record<string, unknown>): string[] {
+  const raw = metadata.gameHomesPending;
+  return Array.isArray(raw)
+    ? raw.filter((each): each is string => typeof each === "string" && each.startsWith("[world: owned=")).slice(0, WORLD_HOMES_PENDING_MAX)
+    : [];
 }

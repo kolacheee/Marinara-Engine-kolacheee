@@ -281,6 +281,8 @@ import {
   applyStoryTags,
   gameStoryFromMetadata,
   readToldLedger,
+  worldHomesPendingFromMetadata,
+  worldHomeLine,
   refuseStoryTags,
   storyGivesById,
   storyIsRef,
@@ -2239,6 +2241,19 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               return worldTownVisitFromMetadata(chatMeta);
             })()
           : Promise.resolve(null);
+      // Homes bought or rented at a door (fork, homes step 2), as the visit is told: their tags go before the
+      // reply. A regeneration tells again the ones the reply it replaces told.
+      const turnHomesPromise: Promise<string[]> =
+        chatMode === "game" && !input.impersonate && !input.continueMessageId
+          ? (async () => {
+              if (input.regenerateMessageId) {
+                const replaced = await chats.getMessage(input.regenerateMessageId);
+                const own = parseExtra(replaced?.extra).worldHomesTold;
+                if (Array.isArray(own)) return own.filter((each): each is string => typeof each === "string");
+              }
+              return worldHomesPendingFromMetadata(chatMeta);
+            })()
+          : Promise.resolve([]);
       // A walk on a dungeon map and a leaving this turn tells, as the town visit is told. A regeneration
       // tells again what the reply it replaces told.
       const turnDungeonPromise: Promise<{
@@ -2321,7 +2336,8 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 const walkTags = walk ? worldWalkTags(game, walk) : "";
                 const visitTags = visit && town ? worldTownVisitTags(town, visit) : "";
                 const told =
-                  walk && visit && visit.settlementId !== walk.to ? visitTags + walkTags : walkTags + visitTags;
+                  (walk && visit && visit.settlementId !== walk.to ? visitTags + walkTags : walkTags + visitTags) +
+                  (await turnHomesPromise).join("");
                 const toldEntries = readToldLedger(told);
                 const present = worldPresent(game, [...before, ...toldEntries]);
                 const own = replies.all.slice(replies.carried?.tags ? 1 : 0);
@@ -5720,7 +5736,10 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           const promptWhereYouAre = promptWorld
             ? await (async () => {
                 // The world as the story has left it (worldgen W4): the ledger in all the replies.
-                const present = worldPresent(promptWorld, (await promptRepliesAll()).ledger);
+                const present = worldPresent(promptWorld, [
+                  ...(await promptRepliesAll()).ledger,
+                  ...readToldLedger((await turnHomesPromise).join("")),
+                ]);
                 const before = await promptPlace();
                 const walk = await turnWalkPromise;
                 const visit = await turnVisitPromise;
@@ -5742,9 +5761,22 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                     : undefined;
                 const layoutLine =
                   hd2dBrief && hd2dPlace ? `${worldTownHd2dBriefText(hd2dBrief, hd2dPlace.name)}\n` : "";
+                // Homes bought or rented at a door since the last turn (fork): the Game Master narrates them.
+                const homesTold = (await turnHomesPromise).length
+                  ? readToldLedger((await turnHomesPromise).join("")).flatMap((entry) => {
+                      const home = present.homes?.find(
+                        (each) => each.words.toLowerCase() === entry.owned?.trim().toLowerCase(),
+                      );
+                      return home ? [`${worldHomeLine(home)}.`] : [];
+                    })
+                  : [];
+                const homesLine = homesTold.length
+                  ? `Since the last turn, at the house's door (already paid, narrate it): ${homesTold.join(" ")}\n`
+                  : "";
                 const walked =
                   layoutLine +
-                  (walk && visit && visit.settlementId !== walk.to ? visitLine + walkLine : walkLine + visitLine);
+                  (walk && visit && visit.settlementId !== walk.to ? visitLine + walkLine : walkLine + visitLine) +
+                  homesLine;
                 if (!before?.name) {
                   const start = promptWorld.world.places.find((place) => place.id === promptWorld.world.startId);
                   return walked + worldWhereYouAreText(promptWorld, { place: start, met: promptMet, present });
@@ -10540,6 +10572,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           let turnTravel: WorldTravel | null = null;
           let turnToldWalk: WorldWalk | null = null;
           let turnToldVisit: WorldTownVisit | null = null;
+          let turnToldHomes: string[] = [];
           let turnClockDays = 0;
           // A game with no ruleset has its setting kit's market (worldgen W6b).
           const turnKitItems =
@@ -10603,8 +10636,11 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 turnToldVisit = visit;
               }
               // In the order they happened, so the place the reply leaves the party in is the last one.
+              const homes = fullResponse.trim() ? await turnHomesPromise : [];
+              if (homes.length) turnToldHomes = homes;
               const told =
-                walk && visit && visit.settlementId !== walk.to ? visitTags + walkTags : walkTags + visitTags;
+                (walk && visit && visit.settlementId !== walk.to ? visitTags + walkTags : walkTags + visitTags) +
+                homes.join("");
               // The story (worldgen W10): the Game Master's own story tags answered first, against the story
               // as this turn's trips left it; then what the turn tripped goes before the reply, after the
               // walk and the visit it may have tripped on.
@@ -11130,7 +11166,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           }
           // The walk the reply told (worldgen W8) stays with it, so a regeneration tells it again, and is
           // no longer pending; the days the Game Master's telling passed go on the game's clock.
-          if (savedMsg?.id && (turnToldWalk || turnToldVisit || turnClockDays > 0)) {
+          if (savedMsg?.id && (turnToldWalk || turnToldVisit || turnToldHomes.length || turnClockDays > 0)) {
             try {
               // Cleared first, so a failed write never leaves a told walk pending to be told twice.
               let clock: GameTime | undefined;
@@ -11141,6 +11177,13 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 ...(turnToldVisit && worldTownVisitFromMetadata(fresh)?.id === turnToldVisit.id
                   ? { gameTownVisit: null }
                   : {}),
+                ...(turnToldHomes.length
+                  ? {
+                      gameHomesPending: worldHomesPendingFromMetadata(fresh).filter(
+                        (tag) => !turnToldHomes.includes(tag),
+                      ),
+                    }
+                  : {}),
                 ...(turnClockDays > 0
                   ? {
                       gameTime: (clock = addMinutes(
@@ -11150,10 +11193,11 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                     }
                   : {}),
               }));
-              if (turnToldWalk || turnToldVisit) {
+              if (turnToldWalk || turnToldVisit || turnToldHomes.length) {
                 await chats.updateMessageExtra(savedMsg.id, {
                   ...(turnToldWalk ? { worldWalk: turnToldWalk } : {}),
                   ...(turnToldVisit ? { worldTownVisit: turnToldVisit } : {}),
+                  ...(turnToldHomes.length ? { worldHomesTold: turnToldHomes } : {}),
                 });
               }
               const latest = clock ? await gameStateStore.getLatest(input.chatId) : null;

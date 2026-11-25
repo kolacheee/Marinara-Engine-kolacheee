@@ -190,6 +190,51 @@ test(`HD-2D ${SIZE} opens from the overworld`, async ({ page, request }, testInf
       .toBe(inn!.id);
     await page.waitForTimeout(3000);
     await page.screenshot({ path: testInfo.outputPath(`hd2d-${SIZE}-world-place.png`) });
+    // Homes (fork): an empty house's door offers it for sale, priced in the game's money; buying it takes
+    // the coins and keeps the home's tag for the next reply.
+    await page.evaluate(() => (window as unknown as { __hd2d: { __in: { leaveHouse: () => void } } }).__hd2d.__in.leaveHouse());
+    await page.waitForTimeout(1500);
+    await request.patch(`/api/chats/${chatId}/metadata`, {
+      data: { gameInventory: [{ id: "purse-gold", name: "gold", item: "coin:gold", quantity: 400 }] },
+    });
+    const sale = await page.evaluate(() => {
+      const w = window as unknown as {
+        __hd2d: {
+          world: { P: { HOUSES: Array<{ plot?: number; door?: number[]; empty?: boolean; W?: number; gen2?: unknown }> } };
+          __in: { enterHouse: (h: unknown) => unknown };
+        };
+      };
+      const houses = w.__hd2d.world.P.HOUSES.filter((h) => h.door && h.plot != null && h.W && !h.gen2);
+      const house = houses.find((h) => h.empty) ?? houses[0];
+      if (!house) return null;
+      // A town whose past left no house empty: one is made empty for the check.
+      house.empty = true;
+      w.__hd2d.__in.enterHouse(house);
+      return "p" + house.plot;
+    });
+    expect(sale).not.toBeNull();
+    const card = page.locator('[data-component="Hd2dTownView.ForSale"]');
+    await expect(card).toBeVisible({ timeout: 20_000 });
+    await expect(card.getByRole("button", { name: "Buy" })).toBeEnabled({ timeout: 20_000 });
+    console.log("for sale", await card.innerText());
+    await page.screenshot({ path: testInfo.outputPath(`hd2d-${SIZE}-for-sale.png`) });
+    await card.getByRole("button", { name: "Buy" }).click();
+    await expect(card).toBeHidden({ timeout: 20_000 });
+    const homeMeta = (await (await request.get(`/api/chats/${chatId}`)).json()) as { metadata: unknown };
+    const afterBuy = (typeof homeMeta.metadata === "string" ? JSON.parse(homeMeta.metadata) : homeMeta.metadata) as {
+      gameHomesPending?: string[];
+      gameInventory?: Array<{ item?: string; quantity: number }>;
+    };
+    console.log("bought", JSON.stringify(afterBuy.gameHomesPending), JSON.stringify(afterBuy.gameInventory));
+    expect(afterBuy.gameHomesPending?.[0]).toContain(`house="${sale}"`);
+    const goldLeft = (afterBuy.gameInventory ?? [])
+      .filter((stack) => stack.item === "coin:gold")
+      .reduce((sum, stack) => sum + stack.quantity, 0);
+    expect(goldLeft).toBeLessThan(400);
+    const homesNow = (
+      (await (await request.get(`/api/game/${chatId}/town`)).json()) as { town: { homes?: Array<{ key?: string }> } }
+    ).town.homes;
+    expect(homesNow?.some((home) => home.key === sale)).toBe(true);
     // The party's spot is kept, and a reload opens the town where it stood.
     const meta = async () => {
       const chat = (await (await request.get(`/api/chats/${chatId}`)).json()) as { metadata: unknown };

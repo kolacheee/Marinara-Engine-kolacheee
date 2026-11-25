@@ -57,6 +57,8 @@ import type {
   WorldTownHd2dSpec,
   WorldTownHd2dKept,
   WorldTownHd2dChronicle,
+  WorldHome,
+  WorldHomeHouse,
   WorldSeason,
   WorldWalk,
   GameLightHold,
@@ -1109,7 +1111,42 @@ export type TownState = WorldTown & {
   visit: WorldTownVisit | null;
   /** HD-2D towns (fork): the town's plan as first seen, and its chronicle drawn over it (older servers: none). */
   hd2d?: { spec: WorldTownHd2dSpec; kept: boolean; chron: WorldTownHd2dChronicle } | null;
+  /** Homes (fork): the party's homes in this town, those paid for at a door and not yet told among them. */
+  homes?: WorldHome[];
 };
+
+/** A house for sale at its door (fork, homes step 2): what it costs, its rent, and the party's purses. */
+export interface TownHomeQuote {
+  price: number;
+  rent: number;
+  priceSaid: string;
+  rentSaid: string;
+  purse: number;
+  purseSaid: string;
+  owned: boolean;
+}
+export type TownHomeAsk = { key: string; house: WorldHomeHouse; empty: boolean };
+
+export function townHomeAsk(chatId: string, ask: TownHomeAsk) {
+  return api.post<TownHomeQuote>(`/game/${chatId}/town/home/ask`, ask);
+}
+
+export function useTownHome() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (data: TownHomeAsk & { chatId: string; how: "bought" | "rented"; words: string }) => {
+      const { chatId, ...body } = data;
+      return api.post<{ ok: true; how: "bought" | "rented"; said: string; owner: string; key: string }>(
+        `/game/${chatId}/town/home`,
+        body,
+      );
+    },
+    onSettled: (_res, _error, variables) => {
+      qc.invalidateQueries({ queryKey: gameKeys.town(variables.chatId) });
+      qc.invalidateQueries({ queryKey: chatKeys.detail(variables.chatId) });
+    },
+  });
+}
 
 export function useTown(chatId: string, turnKey: string | null, enabled: boolean) {
   return useQuery({

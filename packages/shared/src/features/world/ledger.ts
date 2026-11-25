@@ -17,6 +17,7 @@ import {
   worldHomePrice,
   worldHomesInstructions,
   worldHomesWith,
+  WORLD_HOME_KEY,
   type WorldHome,
 } from "./homes.js";
 import { WORLD_CHANGE_KINDS, type WorldChangeKind } from "../../schemas/world-kit.schema.js";
@@ -101,6 +102,8 @@ export interface WorldLedgerEntry {
   how?: string;
   price?: string;
   status?: string;
+  /** The 3D town's house for a home ("p<plot>"), when the Engine wrote the tag at its door. */
+  house?: string;
   /** Only ever the first entry: the living world a session starts from (W11), folded on from. */
   from?: WorldFold;
 }
@@ -264,6 +267,7 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
       "how",
       "price",
       "status",
+      "house",
     ] as const) {
       const value = values.get(key);
       if (value) (entry as Record<string, string>)[key] = value;
@@ -292,6 +296,7 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
       if (!ends && !worldHomeOwners(entry.owner).length) return refuse("unreadable");
       if (entry.status && !WORLD_HOME_STATUSES.some((status) => status === entry.status)) delete entry.status;
       if (entry.price !== undefined && worldHomePrice(entry.price) === undefined) delete entry.price;
+      if (entry.house !== undefined && !WORLD_HOME_KEY.test(entry.house)) delete entry.house;
       ledger.push(entry);
       return serialize(entry, { result: "ok" });
     }
@@ -635,7 +640,9 @@ function foldPresent(
         owners,
         day: present.day,
         ...(price !== undefined ? { price } : {}),
+        ...(price !== undefined && /[^\d\s.,]/.test(entry.price ?? "") ? { priceWords: entry.price!.trim() } : {}),
         ...(status ? { status } : {}),
+        ...(entry.house && WORLD_HOME_KEY.test(entry.house) ? { key: entry.house } : {}),
       });
       // A home bought, rented, sold or lost in play is something the party did here; one held from the start is not.
       if (how !== "start") {
