@@ -53,3 +53,13 @@ def draw(views, path):
     img.save(path)
 
 draw([view(320, "front"), view(768, "side"), view(1216, "back")], "turnaround-1536x640.png")
+
+# Round 8b: single-view canvases (same 448 px skeleton height) so each view gets its own prompt.
+def draw_single(kind, path, w=1024):
+    global W
+    old = W; W = w
+    draw([view(w // 2, kind)], path)
+    W = old
+
+for kind in ("front", "side", "back"):
+    draw_single(kind, f"single-{kind}-1024x640.png")
