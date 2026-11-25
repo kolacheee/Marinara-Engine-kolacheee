@@ -21,6 +21,10 @@ import {
 } from "@marinara-engine/shared";
 import {
   townHomeAsk,
+  townHomeStore,
+  useTownHomeEnd,
+  useTownHomeStore,
+  type TownHomeStore,
   useOverworld,
   useTown,
   useTownHd2dSave,
@@ -108,8 +112,21 @@ export function Hd2dTownView({
     words: string;
     quote: TownHomeQuote | null;
     error: string | null;
+    /** Who will own it (homes step 4): the player's character unless more are picked. */
+    owners: string[];
   } | null>(null);
   const homeMutation = useTownHome();
+  // Storage at home: the Home card, while the party is inside one of its homes.
+  const [atHome, setAtHome] = useState<{
+    words: string;
+    door: Hd2dDoor;
+    store: TownHomeStore | null;
+    error: string | null;
+  } | null>(null);
+  const storeMutation = useTownHomeStore();
+  const endMutation = useTownHomeEnd();
+  /** The party's homes in the 3D town: house key -> the home's words. */
+  const homeWordsRef = useRef<Map<string, string>>(new Map());
   const { pendingMinutes, addMinutes } = useOverworldClock(chatId, clockRunning, () => movingRef.current, handleRef);
 
   const settlementId = town?.settlementId ?? null;
@@ -121,7 +138,9 @@ export function Hd2dTownView({
   );
   // Its chronicle, drawn over the plan: empty houses, burned plots, a camp, a burial ground, the market.
   const chron = town?.hd2d?.chron ?? null;
-  const specKey = spec ? JSON.stringify(spec) + JSON.stringify(chron) : "";
+  // The party's homes here (fork, homes step 3): lived in again whatever the past left them, with a sign.
+  const homesKey = JSON.stringify((town?.homes ?? []).map((home) => [home.words, home.key ?? "", home.status ?? ""]));
+  const specKey = spec ? JSON.stringify(spec) + JSON.stringify(chron) + homesKey : "";
   const clockMinutes = time ? (time.day * 24 + time.hour) * 60 + time.minute + pendingMinutes : null;
   const hour = clockMinutes === null ? 11 : (clockMinutes / 60) % 24;
   const held = overworld?.seasons;
@@ -162,12 +181,29 @@ export function Hd2dTownView({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatId, settlementId]);
 
+  // A door's words for the Game Master: a home of the party's is told as theirs ("Mara's home, the house on …").
+  const doorWords = (door: Hd2dDoor) => {
+    const words = homeWordsRef.current.get(door.key);
+    if (words) {
+      const home = (live.current.town?.homes ?? []).find((each) => each.words === words);
+      const owners = home?.owners ?? [];
+      const whose =
+        owners.length === 0
+          ? "the party's"
+          : owners.length === 1
+            ? `${owners[0]}'s`
+            : `${owners.slice(0, -1).join(", ")} and ${owners.at(-1)}'s`;
+      return `${whose} home, ${words}`.slice(0, 120);
+    }
+    return placingRef.current?.spotWords(door.key, door) ?? door.label;
+  };
+
   // ── Homes for sale (fork): an empty house's door offers it, priced by the Engine ──
   const offerHome = (door: Hd2dDoor) => {
     const house = door.house;
     if (!door.empty || !house || !/^p\d+$/.test(door.key) || !live.current.canWalk) return;
     const homes = live.current.town?.homes ?? [];
-    if (homes.some((home) => home.key === door.key)) return;
+    if (door.owned || homeWordsRef.current.has(door.key) || homes.some((home) => home.key === door.key)) return;
     // Its words, unique among the party's homes here: "the house on Bell Street", "the second house on …".
     const placing = placingRef.current;
     const where = (placing ? placing.spotWords(door.key, { ...door, empty: false, inn: false, shop: false }) : "a house")
@@ -177,9 +213,12 @@ export function Hd2dTownView({
     const words =
       ordinals.map((each) => `the ${each}${where}`).find((each) => !taken.has(each.toLowerCase())) ?? `the ${where}`;
     const ask = { key: door.key, house, empty: true };
-    setForSale({ door: { ...door, house }, words, quote: null, error: null });
+    setForSale({ door: { ...door, house }, words, quote: null, error: null, owners: [] });
     townHomeAsk(chatId, ask).then(
-      (quote) => setForSale((now) => (now?.door.key === door.key ? { ...now, quote } : now)),
+      (quote) =>
+        setForSale((now) =>
+          now?.door.key === door.key ? { ...now, quote, owners: quote.party?.slice(0, 1) ?? [] } : now,
+        ),
       (error) =>
         setForSale((now) =>
           now?.door.key === door.key
@@ -188,11 +227,56 @@ export function Hd2dTownView({
         ),
     );
   };
+  const loadHome = (words: string) =>
+    townHomeStore(chatId, words).then(
+      (store) => setAtHome((now) => (now?.words === words ? { ...now, store, error: null } : now)),
+      (error) =>
+        setAtHome((now) =>
+          now?.words === words
+            ? { ...now, error: error instanceof Error && error.message ? error.message : t("game.town3d.home.failed") }
+            : now,
+        ),
+    );
+  const openHome = (door: Hd2dDoor) => {
+    const words = homeWordsRef.current.get(door.key);
+    if (!words || !live.current.canWalk) return;
+    setAtHome({ words, door, store: null, error: null });
+    void loadHome(words);
+  };
+  const endHome = (how: "sold" | "left") => {
+    if (!atHome) return;
+    const { words, door } = atHome;
+    endMutation.mutate(
+      { chatId, home: words, how, ...(door.house ? { house: door.house } : {}) },
+      {
+        onSuccess: (res) => {
+          setAtHome(null);
+          toast.success(
+            t(how === "sold" ? "game.town3d.home.sold" : "game.town3d.home.left", { words, price: res.said ?? "" }),
+          );
+        },
+        onError: (error) =>
+          toast.error(error instanceof Error && error.message ? error.message : t("game.town3d.home.failed")),
+      },
+    );
+  };
+  const moveStack = (id: string, take: boolean) => {
+    if (!atHome) return;
+    const words = atHome.words;
+    storeMutation.mutate(
+      { chatId, home: words, id, take },
+      {
+        onSuccess: () => void loadHome(words),
+        onError: (error) =>
+          toast.error(error instanceof Error && error.message ? error.message : t("game.town3d.home.failed")),
+      },
+    );
+  };
   const takeHome = (how: "bought" | "rented") => {
     if (!forSale) return;
-    const { door, words } = forSale;
+    const { door, words, owners } = forSale;
     homeMutation.mutate(
-      { chatId, key: door.key, house: door.house, empty: true, how, words },
+      { chatId, key: door.key, house: door.house, empty: true, how, words, ...(owners.length ? { owners } : {}) },
       {
         onSuccess: (res) => {
           setForSale(null);
@@ -226,9 +310,23 @@ export function Hd2dTownView({
           import("../../lib/hd2d/town-index.js"),
         ]);
         if (cancelled) return;
+        // Each home's house: the one bought at its door, else (a home from the start) one of its kind.
+        const homes = live.current.town?.homes ?? [];
+        const plots = new Map<number, string>();
+        for (const home of homes) if (home.key?.startsWith("p")) plots.set(Number(home.key.slice(1)), home.words);
+        let earlyIndex: Hd2dTownIndex | null = null;
+        const keyless = homes.filter((home) => !home.key);
+        if (keyless.length) {
+          earlyIndex = indexLib.townIndex(indexLib.g2specOf(spec as unknown as Record<string, unknown>));
+          for (const found of indexLib.homeLots(earlyIndex, keyless, chron, [...plots.keys()])) {
+            plots.set(found.plot, found.words);
+          }
+        }
+        homeWordsRef.current = new Map([...plots].map(([plot, words]) => [`p${plot}`, words]));
+        const sceneChron = plots.size ? { ...(chron ?? {}), owned: [...plots.keys()] } : chron;
         const kept = live.current.spots.find((spot) => spot.settlementId === settlementId);
         api = await mountHd2dTown(host, {
-          spec: { ...spec, chron } as unknown as Record<string, unknown>,
+          spec: { ...spec, chron: sceneChron } as unknown as Record<string, unknown>,
           hour: live.current.hour,
           season: live.current.season,
           weather: live.current.sceneWeather,
@@ -238,26 +336,31 @@ export function Hd2dTownView({
           busyText: t("game.town3d.building"),
           debug: true,
           onWhere: (next) => setWhere(next),
-          onExit: () => setForSale(null),
+          onExit: () => {
+            setForSale(null);
+            setAtHome(null);
+          },
           onEnter: (door) => {
             offerHome(door);
+            openHome(door);
             const placing = placingRef.current;
             const walked = walkedRef.current + (apiRef.current?.takeWalked() ?? 0);
             walkedRef.current = 0;
             keepSpot();
-            if (!placing || !live.current.canWalk) return;
-            const worldId = placing.byKey.get(door.key);
+            if (!live.current.canWalk) return;
+            // Before the world's buildings are placed (the first moments of a town), a door is told by its words.
+            const worldId = placing?.byKey.get(door.key);
             visitMutation.mutate(
               worldId
                 ? { chatId, to: worldId, walked }
-                : { chatId, to: WORLD_TOWN_SPOT, label: placing.spotWords(door.key, door), walked },
+                : { chatId, to: WORLD_TOWN_SPOT, label: doorWords(door), walked },
               {
                 onSuccess: () =>
                   toast.success(
                     t("game.town.walked", {
                       name: worldId
                         ? (live.current.town?.buildings.find((each) => each.id === worldId)?.name ?? door.label)
-                        : placing.spotWords(door.key, door),
+                        : doorWords(door),
                     }),
                   ),
                 onError: (error) =>
@@ -273,8 +376,9 @@ export function Hd2dTownView({
             window.setTimeout(() => {
               if (cancelled) return;
               try {
-                const index = indexLib.townIndex(indexLib.g2specOf(spec as unknown as Record<string, unknown>));
-                const { byKey } = indexLib.placeWorldTown(index, live.current.town, chron);
+                const index =
+                  earlyIndex ?? indexLib.townIndex(indexLib.g2specOf(spec as unknown as Record<string, unknown>));
+                const { byKey } = indexLib.placeWorldTown(index, live.current.town, sceneChron);
                 placingRef.current = { index, byKey, spotWords: (key, info) => indexLib.spotWords(index, key, info) };
                 // For the end-to-end check: where the world's buildings stand.
                 (window as unknown as { __hd2dPlacing?: unknown }).__hd2dPlacing = { byKey: [...byKey] };
@@ -417,6 +521,76 @@ export function Hd2dTownView({
           {t("game.town.leave")}
         </button>
       </div>
+      {atHome && (
+        <div
+          className="pointer-events-auto absolute bottom-16 left-1/2 z-20 w-[min(24rem,calc(100%-2rem))] -translate-x-1/2 rounded-xl border border-emerald-200/25 bg-black/80 p-3 text-white shadow-2xl backdrop-blur-md"
+          data-component="Hd2dTownView.Home"
+          role="dialog"
+          aria-label={t("game.town3d.home.home")}
+        >
+          <div className="text-[0.6875rem] font-semibold uppercase tracking-wider text-emerald-200/90">
+            {t("game.town3d.home.home")}
+          </div>
+          <div className="mt-0.5 text-sm font-semibold first-letter:uppercase">{atHome.words}</div>
+          <p className="mt-0.5 text-xs text-white/55">{t("game.town3d.home.rest")}</p>
+          {atHome.error ? (
+            <p className="mt-1.5 text-xs text-white/70">{atHome.error}</p>
+          ) : !atHome.store ? (
+            <Loader2 size={14} className="mt-2 animate-spin text-white/60" />
+          ) : (
+            <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
+              {(
+                [
+                  ["kept", atHome.store.kept, true],
+                  ["carried", atHome.store.carried, false],
+                ] as const
+              ).map(([which, list, take]) => (
+                <div key={which} className="min-w-0">
+                  <div className="mb-1 font-semibold text-white/70">{t(`game.town3d.home.${which}`)}</div>
+                  <ul className="max-h-36 space-y-0.5 overflow-y-auto pr-1">
+                    {list.length === 0 && <li className="text-white/40">{t("game.town3d.home.nothing")}</li>}
+                    {list.map((stack) => (
+                      <li key={stack.id} className="flex items-center gap-1">
+                        <span className="min-w-0 flex-1 truncate" title={stack.name}>
+                          {stack.quantity > 1 ? `${stack.quantity} ` : ""}
+                          {stack.name}
+                        </span>
+                        <button
+                          type="button"
+                          disabled={storeMutation.isPending}
+                          onClick={() => moveStack(stack.id, take)}
+                          className="shrink-0 rounded bg-white/10 px-1.5 py-0.5 text-[0.6875rem] hover:bg-white/20 disabled:opacity-40"
+                        >
+                          {t(take ? "game.town3d.home.take" : "game.town3d.home.leave")}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="mt-2 flex gap-2">
+            {atHome.store && (
+              <button
+                type="button"
+                disabled={endMutation.isPending}
+                onClick={() => endHome(atHome.store!.home.how === "rented" ? "left" : "sold")}
+                className="rounded-md bg-white/10 px-2.5 py-1 text-xs transition-colors hover:bg-white/20 disabled:opacity-40"
+              >
+                {t(atHome.store.home.how === "rented" ? "game.town3d.home.giveUp" : "game.town3d.home.sell")}
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setAtHome(null)}
+              className="ml-auto rounded-md px-2 py-1 text-xs text-white/65 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              {t("game.town3d.home.close")}
+            </button>
+          </div>
+        </div>
+      )}
       {forSale && (
         <div
           className="pointer-events-auto absolute bottom-16 left-1/2 z-20 w-[min(22rem,calc(100%-2rem))] -translate-x-1/2 rounded-xl border border-amber-200/25 bg-black/80 p-3 text-white shadow-2xl backdrop-blur-md"
@@ -440,6 +614,34 @@ export function Hd2dTownView({
                 {t("game.town3d.home.asking", { price: forSale.quote.priceSaid, rent: forSale.quote.rentSaid })}
               </p>
               <p className="mt-0.5 text-xs text-white/55">{t("game.town3d.home.purse", { purse: forSale.quote.purseSaid })}</p>
+              {(forSale.quote.party?.length ?? 0) > 1 && (
+                <fieldset className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-xs" data-component="Hd2dTownView.Owners">
+                  <legend className="mb-0.5 text-white/60">{t("game.town3d.home.owners")}</legend>
+                  {forSale.quote.party!.map((name) => (
+                    <label key={name} className="flex items-center gap-1">
+                      <input
+                        type="checkbox"
+                        checked={forSale.owners.includes(name)}
+                        onChange={(event) =>
+                          setForSale((now) =>
+                            now
+                              ? {
+                                  ...now,
+                                  owners: event.target.checked
+                                    ? [...now.owners, name]
+                                    : now.owners.length > 1
+                                      ? now.owners.filter((each) => each !== name)
+                                      : now.owners,
+                                }
+                              : now,
+                          )
+                        }
+                      />
+                      {name}
+                    </label>
+                  ))}
+                </fieldset>
+              )}
             </>
           )}
           <div className="mt-2.5 flex gap-2">

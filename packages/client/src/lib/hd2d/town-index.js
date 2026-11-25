@@ -78,7 +78,7 @@ export function townIndex(spec) {
 /** What the town's chronicle did to a house lot: 'burnt', 'empty' or ''. The same rule as the scene's lotFate
  *  (town-scene.js), so a house the scene draws boarded up or burned is never given to the world's people. */
 export function lotFate(seed, chron, lot) {
-  if (!chron) return '';
+  if (!chron || (chron.owned || []).includes(lot.plot)) return '';
   const h01 = (k) => ((Math.imul(k + 1, 2654435761) ^ Math.imul(+seed + 977, 40503)) >>> 0) / 4294967296;
   const k = lot.plot * 3;
   if (lot.dist !== 'rich' && lot.dist !== 'ware' && h01(k + 1) < (chron.ruined || 0)) return 'burnt';
@@ -104,7 +104,7 @@ export function placeWorldTown(index, worldTown, chron = null) {
       if (want) pick = index.greats.find((g) => !used.has(g.key) && !g.ruin && want[1].test(g.type));
     }
     if (!pick) {
-      const lots = index.lots.filter((l) => !used.has(l.key) && !lotFate(index.spec.seed, chron, l));
+      const lots = index.lots.filter((l) => !used.has(l.key) && !lotFate(index.spec.seed, chron, l) && !(chron?.owned || []).includes(l.plot));
       pick = (wb.kind !== 'home' ? lots.find((l) => front.has(l.street)) : null) ?? (wb.kind === 'home' ? lots.find((l) => !front.has(l.street)) : null) ?? lots[0] ?? null;
     }
     if (!pick) continue;
@@ -139,4 +139,26 @@ export function spotWords(index, key, info = {}) {
   if (g) return `the ${lc(g.label)}${where}`;
   const kind = info.empty ? 'an empty house' : info.inn ? 'an alehouse' : info.shop ? (q ? `a ${q.trade.replace(/s$/, '')}'s shop` : 'a shop') : 'a house';
   return `${kind}${where}`.slice(0, 120);
+}
+
+/** Houses for the party's homes the town has no house for yet (a home from the start, told by the Game
+ *  Master): each the house of its kind (rich, common, poor) its words hash to, among the lived-in houses
+ *  off the market and main streets nobody else has. The same words always find the same house. */
+export function homeLots(index, homes, chron = null, taken = []) {
+  const kinds = { rich: ['rich', 'ware'], common: ['common', 'craft'], poor: ['poor', 'cottage', 'miner'] };
+  const front = new Set(['square', 'main', 'market']);
+  const used = new Set(taken);
+  const hash = (text) => { let h = 2166136261; for (const c of text.toLowerCase()) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return h >>> 0; };
+  const out = [];
+  for (const home of homes) {
+    const want = kinds[home.status] ?? kinds.common;
+    const free = (l) => !used.has(l.plot) && !lotFate(index.spec.seed, chron, l) && !front.has(l.street);
+    const fits = index.lots.filter((l) => free(l) && want.includes(l.dist));
+    const pool = fits.length ? fits : index.lots.filter(free);
+    if (!pool.length) continue;
+    const lot = pool[hash(home.words) % pool.length];
+    used.add(lot.plot);
+    out.push({ words: home.words, plot: lot.plot });
+  }
+  return out;
 }

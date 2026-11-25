@@ -13,7 +13,7 @@ export function placeWorldTown(
   index: Hd2dTownIndex,
   town: WorldTown | null | undefined,
   /** The town's chronicle: its empty and burned houses are given to no one. */
-  chron?: { empty: number; ruined: number } | null,
+  chron?: { empty?: number; ruined?: number; owned?: number[] } | null,
 ): { byKey: Map<string, string>; byWorld: Map<string, string> };
 export function townBrief(index: Hd2dTownIndex): string;
 export function spotWords(
@@ -21,3 +21,9 @@ export function spotWords(
   key: string,
   info?: { inn?: boolean; shop?: boolean; empty?: boolean; ward?: number; street?: string },
 ): string;
+export function homeLots(
+  index: Hd2dTownIndex,
+  homes: ReadonlyArray<{ words: string; status?: string }>,
+  chron?: { empty?: number; ruined?: number; owned?: number[] } | null,
+  taken?: number[],
+): Array<{ words: string; plot: number }>;

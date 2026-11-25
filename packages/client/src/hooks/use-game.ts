@@ -1115,6 +1115,16 @@ export type TownState = WorldTown & {
   homes?: WorldHome[];
 };
 
+/** Every home of the party's, with its settlement's name (fork, homes step 4). */
+export function useGameHomes(chatId: string, turnKey: string | null, enabled: boolean) {
+  return useQuery({
+    queryKey: [...gameKeys.town(chatId), "homes", turnKey],
+    queryFn: () => api.get<{ homes: Array<WorldHome & { place: string }> }>(`/game/${chatId}/homes`),
+    select: (data) => data.homes,
+    enabled: enabled && !!chatId,
+  });
+}
+
 /** A house for sale at its door (fork, homes step 2): what it costs, its rent, and the party's purses. */
 export interface TownHomeQuote {
   price: number;
@@ -1124,6 +1134,8 @@ export interface TownHomeQuote {
   purse: number;
   purseSaid: string;
   owned: boolean;
+  /** Who in the party can own it: the player's character first. */
+  party?: string[];
 }
 export type TownHomeAsk = { key: string; house: WorldHomeHouse; empty: boolean };
 
@@ -1131,10 +1143,48 @@ export function townHomeAsk(chatId: string, ask: TownHomeAsk) {
   return api.post<TownHomeQuote>(`/game/${chatId}/town/home/ask`, ask);
 }
 
+/** Storage at home (fork, homes step 3): what is kept at a home, and what the player carries. */
+export interface TownHomeStore {
+  home: WorldHome;
+  kept: Array<{ id: string; name: string; quantity: number }>;
+  carried: Array<{ id: string; name: string; quantity: number }>;
+}
+export function townHomeStore(chatId: string, home: string) {
+  return api.get<TownHomeStore>(`/game/${chatId}/town/home/store?home=${encodeURIComponent(home)}`);
+}
+export function useTownHomeEnd() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (data: { chatId: string; home: string; how: "sold" | "left"; house?: WorldHomeHouse }) => {
+      const { chatId, ...body } = data;
+      return api.post<{ ok: true; how: "sold" | "left"; said?: string }>(`/game/${chatId}/town/home/end`, body);
+    },
+    onSettled: (_res, _error, variables) => {
+      qc.invalidateQueries({ queryKey: gameKeys.town(variables.chatId) });
+      qc.invalidateQueries({ queryKey: chatKeys.detail(variables.chatId) });
+    },
+  });
+}
+
+export function useTownHomeStore() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (data: { chatId: string; home: string; id: string; take: boolean }) => {
+      const { chatId, ...body } = data;
+      return api.post<{ ok: true }>(`/game/${chatId}/town/home/store`, body);
+    },
+    onSettled: (_res, _error, variables) => {
+      qc.invalidateQueries({ queryKey: chatKeys.detail(variables.chatId) });
+    },
+  });
+}
+
 export function useTownHome() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (data: TownHomeAsk & { chatId: string; how: "bought" | "rented"; words: string }) => {
+    mutationFn: (
+      data: TownHomeAsk & { chatId: string; how: "bought" | "rented"; words: string; owners?: string[] },
+    ) => {
       const { chatId, ...body } = data;
       return api.post<{ ok: true; how: "bought" | "rented"; said: string; owner: string; key: string }>(
         `/game/${chatId}/town/home`,

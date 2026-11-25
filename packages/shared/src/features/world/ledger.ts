@@ -630,9 +630,12 @@ function foldPresent(
       const owners = worldHomeOwners(entry.owner);
       const status = WORLD_HOME_STATUSES.find((each) => each === entry.status);
       const price = worldHomePrice(entry.price);
-      const was = (present.homes ?? []).find(
-        (home) => home.placeId === at && home.words.toLowerCase() === entry.owned!.trim().toLowerCase(),
-      );
+      // The same house: by the 3D town's house where the tag names one, else by its words.
+      const houseKey = entry.house && WORLD_HOME_KEY.test(entry.house) ? entry.house : undefined;
+      const isIt = (home: WorldHome) =>
+        home.placeId === at &&
+        (houseKey && home.key ? home.key === houseKey : home.words.toLowerCase() === entry.owned!.trim().toLowerCase());
+      const was = (present.homes ?? []).find(isIt);
       present.homes = worldHomesWith(present.homes ?? [], {
         placeId: at,
         words: entry.owned.trim(),
@@ -642,17 +645,15 @@ function foldPresent(
         ...(price !== undefined ? { price } : {}),
         ...(price !== undefined && /[^\d\s.,]/.test(entry.price ?? "") ? { priceWords: entry.price!.trim() } : {}),
         ...(status ? { status } : {}),
-        ...(entry.house && WORLD_HOME_KEY.test(entry.house) ? { key: entry.house } : {}),
+        ...(houseKey ? { key: houseKey } : {}),
       });
       // A home bought, rented, sold or lost in play is something the party did here; one held from the start is not.
       if (how !== "start") {
-        const home = present.homes.find(
-          (each) => each.placeId === at && each.words.toLowerCase() === entry.owned!.trim().toLowerCase(),
-        );
+        const home = present.homes.find(isIt);
         const line = home
           ? `${worldHomeLine(home)}.`
           : was
-            ? `${was.owners.join(" and ")} ${how === "sold" ? "sold" : "lost"} ${was.words}.`
+            ? `${was.owners.join(" and ")} ${how === "sold" ? "sold" : how === "left" ? "gave up" : "lost"} ${was.words}${how === "sold" && entry.price ? ` for ${entry.price}` : ""}.`
             : undefined;
         if (line) present.done[at] = [...(present.done[at] ?? []), line];
       }

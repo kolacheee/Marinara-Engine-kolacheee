@@ -7,6 +7,8 @@ export interface Hd2dDoor {
   shop: boolean;
   /** A house left empty by the town's past (its chronicle). */
   empty?: boolean;
+  /** A house the party owns (homes): lived in, with a sign by its door. */
+  owned?: boolean;
   /** A house's footprint in town cells, its storeys and its district's kind (homes for sale). */
   house?: { w: number; d: number; st: number; dist: "rich" | "ware" | "common" | "craft" | "poor" | "cottage" } | null;
   ward: number;

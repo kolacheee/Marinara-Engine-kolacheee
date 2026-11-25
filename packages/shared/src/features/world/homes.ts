@@ -8,8 +8,8 @@
 
 /** How a home comes to its owners. */
 export const WORLD_HOME_GAINS = Object.freeze(["start", "bought", "rented", "given", "inherited"] as const);
-/** How a home stops being theirs. */
-export const WORLD_HOME_ENDS = Object.freeze(["sold", "lost"] as const);
+/** How a home stops being theirs: sold, given up (a rent), or lost. */
+export const WORLD_HOME_ENDS = Object.freeze(["sold", "left", "lost"] as const);
 export const WORLD_HOME_HOWS = Object.freeze([...WORLD_HOME_GAINS, ...WORLD_HOME_ENDS] as const);
 export type WorldHomeHow = (typeof WORLD_HOME_HOWS)[number];
 /** The kind of house it is, by its owners' wealth and standing: a merchant's or a gentleman's, a
@@ -135,7 +135,9 @@ export function worldHomesLines(
   const away = homes.filter((home) => home.placeId !== here);
   return [
     ...(local.length
-      ? [`- Homes the party has here: ${local.map((home) => worldHomeLine(home, money)).join("; ")}.`]
+      ? [
+          `- Homes the party has here: ${local.map((home) => worldHomeLine(home, money)).join("; ")}. A night's rest at home costs nothing.`,
+        ]
       : []),
     ...(away.length
       ? [
@@ -150,7 +152,7 @@ export function worldHomesLines(
 /** How the Game Master records a home, and when a character starts with one. */
 export function worldHomesInstructions(): string[] {
   return [
-    `- A home that belongs to the players' characters: [world: owned="the house in a few words, e.g. a house on Bell Street" place="Settlement" owner="Character name" how="${WORLD_HOME_GAINS.join('" | "')}" price="what it cost, or a month's rent" status="${WORLD_HOME_STATUSES.join('" | "')}"]. Several owners: owner="Name, Name". When it stops being theirs: how="sold" or how="lost". status is the kind of house it is, by its owners' wealth and standing.`,
+    `- A home that belongs to the players' characters: [world: owned="the house in a few words, e.g. a house on Bell Street" place="Settlement" owner="Character name" how="${WORLD_HOME_GAINS.join('" | "')}" price="what it cost, or a month's rent" status="${WORLD_HOME_STATUSES.join('" | "')}"]. Several owners: owner="Name, Name". When it stops being theirs: how="sold", how="left" (a rented home given up) or how="lost". status is the kind of house it is, by its owners' wealth and standing.`,
     `- At the start of a game (or when a character joins), when it makes sense that a character already has a home, or the player says where they live, record it with how="start": a house that fits their wealth and standing, in the settlement they live in.`,
   ];
 }
@@ -267,9 +269,9 @@ export function worldHomeTag(home: {
   words: string;
   place: string;
   owners: readonly string[];
-  how: "bought" | "rented";
+  how: WorldHomeHow;
   /** The price as said, coins and all ("61 gold"). */
-  price: string;
+  price?: string;
   status?: WorldHomeStatus;
   key?: string;
   /** The house for the Game Master, in a few words ("two storeys, 3 by 4 bays, a merchants' street"). */
@@ -277,7 +279,7 @@ export function worldHomeTag(home: {
 }): string {
   return `[world: owned="${quoted(home.words)}" place="${quoted(home.place)}" owner="${home.owners
     .map(quoted)
-    .join(", ")}" how="${home.how}" price="${home.price}"${home.status ? ` status="${home.status}"` : ""}${
+    .join(", ")}" how="${home.how}"${home.price ? ` price="${quoted(home.price)}"` : ""}${home.status ? ` status="${home.status}"` : ""}${
     home.key ? ` house="${home.key}"` : ""
   }${home.note ? ` note="${quoted(home.note)}"` : ""}]`;
 }
@@ -289,4 +291,64 @@ export function worldHomesPendingFromMetadata(metadata: Record<string, unknown>)
   return Array.isArray(raw)
     ? raw.filter((each): each is string => typeof each === "string" && each.startsWith("[world: owned=")).slice(0, WORLD_HOMES_PENDING_MAX)
     : [];
+}
+
+// ── Storage at home (homes step 3): what the party leaves in a home stays there ──
+
+/** The stacks left at each home, by `worldHomeStoreKey`, kept on the game (`gameHomeStores`). */
+export type WorldHomeStores = Record<string, Array<{ id: string; name: string; quantity: number } & Record<string, unknown>>>;
+export const WORLD_HOME_STORE_MAX = 60;
+export function worldHomeStoreKey(home: { placeId: string; words: string }): string {
+  return `${home.placeId}:${home.words.trim().toLowerCase()}`;
+}
+export function worldHomeStoresFromMetadata(metadata: Record<string, unknown>): WorldHomeStores {
+  const raw = metadata.gameHomeStores;
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+  const out: WorldHomeStores = {};
+  for (const [key, list] of Object.entries(raw as Record<string, unknown>)) {
+    if (!Array.isArray(list)) continue;
+    out[key] = list.filter(
+      (each): each is WorldHomeStores[string][number] =>
+        !!each &&
+        typeof each === "object" &&
+        typeof (each as { id?: unknown }).id === "string" &&
+        typeof (each as { name?: unknown }).name === "string" &&
+        Number.isInteger((each as { quantity?: unknown }).quantity) &&
+        (each as { quantity: number }).quantity > 0,
+    );
+  }
+  return out;
+}
+
+/** What is kept at the party's homes, for the Game Master: one line, or none. */
+export function worldHomeStoresLine(
+  homes: readonly WorldHome[] | undefined,
+  stores: WorldHomeStores,
+  nameOf: (placeId: string) => string | undefined,
+): string | undefined {
+  const parts = (homes ?? []).flatMap((home) => {
+    const kept = stores[worldHomeStoreKey(home)] ?? [];
+    if (!kept.length) return [];
+    const things = kept.map((each) => `${each.quantity > 1 ? `${each.quantity} ` : ""}${each.name}`).join(", ");
+    return [`${home.words} (${nameOf(home.placeId) ?? "another settlement"}): ${things}`];
+  });
+  return parts.length
+    ? `- Kept at the party's homes (only to be used or taken there): ${parts.join("; ")}.`
+    : undefined;
+}
+
+// ── Rent due (homes step 4): a rented home's rent comes due each month of game days ──
+
+/** Days in a month of rent. */
+export const WORLD_HOME_RENT_DAYS = 30;
+/** The rented homes whose next month's rent is due by `day`: the home and the months owed. */
+export function worldHomesRentDue(
+  homes: readonly WorldHome[] | undefined,
+  day: number,
+): Array<{ home: WorldHome; months: number }> {
+  return (homes ?? []).flatMap((home) => {
+    if (home.how !== "rented" || home.price === undefined) return [];
+    const months = Math.floor((day - home.day) / WORLD_HOME_RENT_DAYS);
+    return months >= 1 ? [{ home, months }] : [];
+  });
 }

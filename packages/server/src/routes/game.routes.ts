@@ -372,6 +372,15 @@ import {
   worldHomeHouseSchema,
   worldHomeStatusOf,
   worldHomeHouseWords,
+  worldHomeStoreKey,
+  worldHomeAsk,
+  worldHomeSaid,
+  applyGameInventoryOps,
+  worldHomeStoresFromMetadata,
+  WORLD_HOME_STORE_MAX,
+  newGameInventoryStackId,
+  type GameInventoryStack,
+  type WorldHomeStores,
   worldHomeTag,
   worldHomesPendingFromMetadata,
   worldTownHd2dKeptFromMetadata,
@@ -611,6 +620,7 @@ import {
   gameHomePlayerName,
   gameHomeQuote,
   gameHomeStacks,
+  gameHomeWorth,
 } from "../services/game/game-homes.service.js";
 import { gameRepliesBefore, isGameMasterReply } from "../services/game/game-market.service.js";
 import { rollGameFightItemGate } from "../services/game/game-item-use.service.js";
@@ -11880,6 +11890,24 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     return { town: { ...found.town, at: found.at, visit: found.visit, hd2d, homes } };
   });
 
+  // ── GET /game/:chatId/homes ──
+  // Every home of the party's (fork, homes step 4), for the character sheets: its settlement's name, and
+  // those paid for at a door and not yet told among them.
+  app.get<{ Params: { chatId: string } }>("/:chatId/homes", async (req, reply) => {
+    const chat = await createChatsStorage(app.db).getById(req.params.chatId);
+    if (!chat) return reply.status(404).send({ error: "Chat not found" });
+    const meta = parseMeta(chat.metadata);
+    const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
+    if (!world) return { homes: [] };
+    const { present } = await overworldPlace(req.params.chatId, meta, world);
+    return {
+      homes: (present.homes ?? []).map((home) => ({
+        ...home,
+        place: world.world.places.find((place) => place.id === home.placeId)?.name ?? "",
+      })),
+    };
+  });
+
   // ── GET /game/:chatId/town/interior?building= (worldgen W13) ──
   // The rooms of a building in the town the party is in, as the world keeps them.
   app.get<{ Params: { chatId: string } }>("/:chatId/town/interior", async (req, reply) => {
@@ -11923,10 +11951,21 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const quote = gameHomeQuote(money, asked.house, prosperity, asked.empty, gameHomeStacks(chat.metadata));
     return { asked, meta, world, found, money, settlement, pending, owned, quote };
   };
+  /** Who in the party can own a home: the player's character, then each companion's card. */
+  const homeParty = async (chatId: string, meta: Record<string, unknown>) => {
+    const player = (await gameHomePlayerName(app.db, chatId)) ?? "the party";
+    const cards = Array.isArray(meta.gameCharacterCards) ? (meta.gameCharacterCards as Array<{ name?: unknown }>) : [];
+    const names = [player];
+    for (const card of cards) {
+      const name = typeof card?.name === "string" ? card.name.trim() : "";
+      if (name && !names.some((each) => each.toLowerCase() === name.toLowerCase())) names.push(name);
+    }
+    return names.slice(0, 8);
+  };
   app.post<{ Params: { chatId: string } }>("/:chatId/town/home/ask", async (req, reply) => {
     try {
-      const { quote, owned } = await homeQuote(req.params.chatId, req.body);
-      return { ...quote, owned };
+      const { quote, owned, meta } = await homeQuote(req.params.chatId, req.body);
+      return { ...quote, owned, party: await homeParty(req.params.chatId, meta) };
     } catch (error) {
       const status = (error as { statusCode?: number }).statusCode;
       if (status) return reply.status(status).send({ error: (error as Error).message });
@@ -11942,12 +11981,14 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       .object({
         how: z.enum(["bought", "rented"]),
         words: z.string().trim().min(3).max(80),
+        /** The party members who own it together (homes step 4); the player's character alone without. */
+        owners: z.array(z.string().trim().min(1).max(80)).min(1).max(8).optional(),
       })
       .passthrough()
       .parse(req.body);
     let read: Awaited<ReturnType<typeof homeQuote>>;
     try {
-      const { how: _how, words: _words, ...ask } = req.body as Record<string, unknown>;
+      const { how: _how, words: _words, owners: _owners, ...ask } = req.body as Record<string, unknown>;
       read = await homeQuote(chatId, ask);
     } catch (error) {
       const status = (error as { statusCode?: number }).statusCode;
@@ -11957,13 +11998,18 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const { asked, money, settlement, owned, quote } = read;
     if (owned) return reply.status(409).send({ error: "The party already has this house." });
     if (!settlement) return reply.status(400).send({ error: "The party is not in a town." });
-    const owner = (await gameHomePlayerName(app.db, chatId)) ?? "the party";
+    const party = await homeParty(chatId, read.meta);
+    const owners = body.owners?.length
+      ? party.filter((name) => body.owners!.some((each) => each.toLowerCase() === name.toLowerCase()))
+      : [party[0]!];
+    if (!owners.length) return reply.status(400).send({ error: "No one in the party by those names." });
+    const owner = owners.join(" and ");
     const owed = body.how === "bought" ? quote.price : quote.rent;
     const said = body.how === "bought" ? quote.priceSaid : quote.rentSaid;
     const tag = worldHomeTag({
       words: body.words,
       place: settlement.name,
-      owners: [owner],
+      owners,
       how: body.how,
       price: said,
       status: worldHomeStatusOf(asked.house.dist),
@@ -12006,6 +12052,193 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         });
     }
     return { ok: true, how: body.how, said, owner, key: asked.key, tag };
+  });
+
+  // ── POST /game/:chatId/town/home/end ──
+  // Sell a home of the party's here (homes step 4), or give up a rented one. A sale is the Engine's: the
+  // house's asking price now, less a fifth, paid into the player's purse. What was kept there comes back
+  // to the player's bag. The tag waits for the next reply, as a buy's does.
+  app.post<{ Params: { chatId: string } }>("/:chatId/town/home/end", async (req, reply) => {
+    const { chatId } = req.params;
+    const body = z
+      .object({
+        home: z.string().trim().min(1).max(120),
+        how: z.enum(["sold", "left"]),
+        house: worldHomeHouseSchema.optional(),
+      })
+      .strict()
+      .parse(req.body);
+    const chat = await createChatsStorage(app.db).getById(chatId);
+    if (!chat) return reply.status(404).send({ error: "Chat not found" });
+    const meta = parseMeta(chat.metadata);
+    const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
+    const found = world ? await townOf(chatId, meta, world) : null;
+    if (!world || !found) return reply.status(400).send({ error: "The party is not in a town." });
+    const id = found.town.settlementId;
+    const home = (found.present.homes ?? []).find(
+      (each) => each.placeId === id && each.words.toLowerCase() === body.home.toLowerCase(),
+    );
+    const settlement = world.world.places.find((place) => place.id === id);
+    if (!home || !settlement) return reply.status(400).send({ error: "The party has no such home here." });
+    if (body.how === "left" && home.how !== "rented") return reply.status(400).send({ error: "Only a rented home is given up." });
+    if (body.how === "sold" && home.how === "rented") return reply.status(400).send({ error: "A rented home is not theirs to sell." });
+    // A change still waiting to be told (the buy itself) is told first: the tags wait in order.
+    let earned = 0;
+    let money: Awaited<ReturnType<typeof gameHomeMoney>> = null;
+    if (body.how === "sold") {
+      money = await gameHomeMoney(app.db, chatId);
+      if (!money) return reply.status(400).send({ error: "This game has no money to sell a house for." });
+      const prosperity = found.present.prosperity[id] ?? settlement.prosperity ?? "modest";
+      const worth = body.house
+        ? worldHomeAsk(body.house, prosperity, money.everyday).price
+        : home.priceWords
+          ? (gameHomeWorth(home.priceWords, money) ?? home.price)
+          : home.price;
+      if (worth === undefined) return reply.status(400).send({ error: "Ask the Game Master to sell this one." });
+      earned = Math.round(worth * 0.8);
+    }
+    const said = money && earned ? worldHomeSaid(earned, money.family) : undefined;
+    const tag = worldHomeTag({
+      words: home.words,
+      place: settlement.name,
+      owners: home.owners,
+      how: body.how,
+      ...(said ? { price: said } : {}),
+      ...(home.key ? { key: home.key } : {}),
+    });
+    const storeKey = worldHomeStoreKey(home);
+    // The game's coins, so the payment goes in as coins and not as plain items.
+    const book = earned > 0 ? await loadGameInventoryItemBook(app.db, { chatId }, "game-master") : undefined;
+    const committed = await commitGameInventoryChange<boolean>(app.db, chatId, (stacks, metadata) => {
+      const pending = worldHomesPendingFromMetadata(metadata);
+      if (pending.length >= WORLD_HOMES_PENDING_MAX) return { stacks, journal: [], value: false };
+      const stores = worldHomeStoresFromMetadata(metadata);
+      let next = [...stacks];
+      const journal: Array<{ item: string; action: "acquired"; quantity: number }> = [];
+      for (const kept of stores[storeKey] ?? []) {
+        const back = { ...(kept as unknown as GameInventoryStack), id: newGameInventoryStackId(next) };
+        delete back.holder;
+        next.push(back);
+        journal.push({ item: kept.name, action: "acquired", quantity: kept.quantity });
+      }
+      if (money && earned > 0) {
+        let rest = earned;
+        const ops = [];
+        for (const coin of [...money.family].sort((a, b) => b.value - a.value)) {
+          const count = Math.floor(rest / coin.value);
+          if (count > 0) ops.push({ op: "add" as const, name: coin.name, item: coin.item, count, log: true });
+          rest -= count * coin.value;
+        }
+        const added = applyGameInventoryOps(next, ops, undefined, book);
+        if (added.results.some((result) => !result.ok)) return { stacks, journal: [], value: false };
+        next = added.stacks;
+        journal.push(...added.journal.filter((each): each is (typeof journal)[number] => each.action === "acquired"));
+      }
+      const { [storeKey]: _gone, ...otherStores } = stores;
+      return {
+        stacks: next,
+        journal,
+        events: [
+          {
+            title: body.how === "sold" ? "Sold a house" : "Gave up a rented house",
+            content:
+              body.how === "sold"
+                ? `${home.owners.join(" and ")} sold ${home.words} in ${settlement.name} for ${said}.`
+                : `${home.owners.join(" and ")} gave up ${home.words} in ${settlement.name}.`,
+          },
+        ],
+        metadata: { gameHomesPending: [...pending, tag], gameHomeStores: otherStores },
+        value: true,
+      };
+    });
+    if (!committed) return reply.status(404).send({ error: "Chat not found" });
+    if (!committed.value) return reply.status(409).send({ error: "Too many home changes are waiting; play a turn first." });
+    return { ok: true, how: body.how, ...(said ? { said } : {}) };
+  });
+
+  // ── POST /game/:chatId/town/home/store ──
+  // Storage at home (fork, homes step 3): a stack of the player's left at one of the party's homes in this
+  // town, or a stack kept there taken back. What is left there stays there.
+  app.post<{ Params: { chatId: string } }>("/:chatId/town/home/store", async (req, reply) => {
+    const { chatId } = req.params;
+    const { home: words, id, take } = z
+      .object({ home: z.string().trim().min(1).max(120), id: z.string().min(1).max(200), take: z.boolean() })
+      .strict()
+      .parse(req.body);
+    const chat = await createChatsStorage(app.db).getById(chatId);
+    if (!chat) return reply.status(404).send({ error: "Chat not found" });
+    const meta = parseMeta(chat.metadata);
+    const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
+    const found = world ? await townOf(chatId, meta, world) : null;
+    if (!found) return reply.status(400).send({ error: "The party is not in a town." });
+    const home = (found.present.homes ?? []).find(
+      (each) => each.placeId === found.town.settlementId && each.words.toLowerCase() === words.toLowerCase(),
+    );
+    if (!home) return reply.status(400).send({ error: "The party has no such home here." });
+    const key = worldHomeStoreKey(home);
+    const committed = await commitGameInventoryChange<{ ok: boolean; reason: string }>(app.db, chatId, (stacks, metadata) => {
+      const stores = worldHomeStoresFromMetadata(metadata);
+      const kept = stores[key] ?? [];
+      if (take) {
+        const stack = kept.find((each) => each.id === id);
+        if (!stack) return { stacks, journal: [], value: { ok: false, reason: "missing" } };
+        const back = { ...(stack as unknown as GameInventoryStack), id: newGameInventoryStackId(stacks) };
+        delete back.holder;
+        return {
+          stacks: [...stacks, back],
+          journal: [{ item: stack.name, action: "acquired" as const, quantity: stack.quantity }],
+          metadata: { gameHomeStores: { ...stores, [key]: kept.filter((each) => each.id !== id) } },
+          value: { ok: true, reason: "" },
+        };
+      }
+      const stack = stacks.find((each) => each.id === id && !each.holder);
+      if (!stack) return { stacks, journal: [], value: { ok: false, reason: "missing" } };
+      if (stack.equipped || stack.bound) return { stacks, journal: [], value: { ok: false, reason: "worn" } };
+      if (kept.length >= WORLD_HOME_STORE_MAX) return { stacks, journal: [], value: { ok: false, reason: "full" } };
+      const left = { ...stack } as GameInventoryStack & Record<string, unknown>;
+      return {
+        stacks: stacks.filter((each) => each.id !== id),
+        journal: [{ item: stack.name, action: "removed" as const, quantity: stack.quantity }],
+        metadata: { gameHomeStores: { ...stores, [key]: [...kept, left as WorldHomeStores[string][number]] } },
+        value: { ok: true, reason: "" },
+      };
+    });
+    if (!committed) return reply.status(404).send({ error: "Chat not found" });
+    if (!committed.value.ok) {
+      return reply.status(409).send({
+        error:
+          committed.value.reason === "worn"
+            ? "Take it off first."
+            : committed.value.reason === "full"
+              ? "The house holds no more."
+              : "That is not here.",
+      });
+    }
+    return { ok: true };
+  });
+
+  // ── GET /game/:chatId/town/home/store?home= ──
+  app.get<{ Params: { chatId: string } }>("/:chatId/town/home/store", async (req, reply) => {
+    const { home: words } = z.object({ home: z.string().trim().min(1).max(120) }).parse(req.query);
+    const chat = await createChatsStorage(app.db).getById(req.params.chatId);
+    if (!chat) return reply.status(404).send({ error: "Chat not found" });
+    const meta = parseMeta(chat.metadata);
+    const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
+    const found = world ? await townOf(req.params.chatId, meta, world) : null;
+    const home = found?.present.homes?.find(
+      (each) => each.placeId === found.town.settlementId && each.words.toLowerCase() === words.toLowerCase(),
+    );
+    if (!home) return reply.status(400).send({ error: "The party has no such home here." });
+    // What the player carries that could be left here: not worn, not a companion's.
+    const carried = gameHomeStacks(chat.metadata)
+      .filter((each) => !each.holder && !each.equipped && !each.bound)
+      .map((each) => ({ id: each.id, name: each.nickname ?? each.name, quantity: each.quantity }));
+    const kept = (worldHomeStoresFromMetadata(meta)[worldHomeStoreKey(home)] ?? []).map((each) => ({
+      id: each.id,
+      name: (typeof each.nickname === "string" && each.nickname) || each.name,
+      quantity: each.quantity,
+    }));
+    return { home, kept, carried };
   });
 
   // ── POST /game/:chatId/town/visit ──

@@ -40,6 +40,9 @@ test(`HD-2D ${SIZE} opens from the overworld`, async ({ page, request }, testInf
   const chatId = ((await created.json()) as { id: string }).id;
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  page.on("response", (response) => {
+    if (/\/town\/(visit|home)/u.test(response.url())) console.log("api", response.status(), response.url());
+  });
   try {
     await request.patch(`/api/chats/${chatId}/metadata`, {
       data: {
@@ -218,6 +221,9 @@ test(`HD-2D ${SIZE} opens from the overworld`, async ({ page, request }, testInf
     await expect(card.getByRole("button", { name: "Buy" })).toBeEnabled({ timeout: 20_000 });
     console.log("for sale", await card.innerText());
     await page.screenshot({ path: testInfo.outputPath(`hd2d-${SIZE}-for-sale.png`) });
+    await page.evaluate(() => {
+      (window as unknown as { __hd2dPlacing?: unknown }).__hd2dPlacing = undefined;
+    });
     await card.getByRole("button", { name: "Buy" }).click();
     await expect(card).toBeHidden({ timeout: 20_000 });
     const homeMeta = (await (await request.get(`/api/chats/${chatId}`)).json()) as { metadata: unknown };
@@ -235,6 +241,78 @@ test(`HD-2D ${SIZE} opens from the overworld`, async ({ page, request }, testInf
       (await (await request.get(`/api/game/${chatId}/town`)).json()) as { town: { homes?: Array<{ key?: string }> } }
     ).town.homes;
     expect(homesNow?.some((home) => home.key === sale)).toBe(true);
+    const allHomes = ((await (await request.get(`/api/game/${chatId}/homes`)).json()) as {
+      homes: Array<{ key?: string; place: string }>;
+    }).homes;
+    expect(allHomes.find((home) => home.key === sale)?.place).toBe("Hollin");
+    // The house is the party's now: the town is drawn again with it lived in, and its door opens the Home
+    // card, where what is left stays.
+    await expect
+      .poll(
+        () =>
+          page.evaluate(
+            (key) =>
+              (
+                window as unknown as {
+                  __hd2d?: { world?: { P: { HOUSES: Array<{ plot?: number; owned?: boolean }> } } };
+                }
+              ).__hd2d?.world?.P.HOUSES.some((h) => "p" + h.plot === key && h.owned) ?? false,
+            sale,
+          ),
+        { timeout: 400_000 },
+      )
+      .toBe(true);
+    // The town drawn again is placed before its doors are walked through.
+    await page.waitForFunction(() => !!(window as unknown as { __hd2dPlacing?: unknown }).__hd2dPlacing, null, {
+      timeout: 400_000,
+    });
+    await page.waitForTimeout(1000);
+    await page.evaluate((key) => {
+      const w = window as unknown as {
+        __hd2d: { world: { P: { HOUSES: Array<{ plot?: number }> } }; __in: { enterHouse: (h: unknown) => unknown } };
+      };
+      w.__hd2d.__in.enterHouse(w.__hd2d.world.P.HOUSES.find((h) => "p" + h.plot === key));
+    }, sale);
+    const homeCard = page.locator('[data-component="Hd2dTownView.Home"]');
+    await expect(homeCard).toBeVisible({ timeout: 20_000 });
+    await homeCard.getByRole("button", { name: "Leave" }).first().click();
+    await expect(homeCard.getByRole("button", { name: "Take" })).toBeVisible({ timeout: 20_000 });
+    console.log("home", await homeCard.innerText());
+    await page.screenshot({ path: testInfo.outputPath(`hd2d-${SIZE}-home.png`) });
+    // Outside again: the house lived in, its sign by the door.
+    await page.evaluate(() => (window as unknown as { __hd2d: { __in: { leaveHouse: () => void } } }).__hd2d.__in.leaveHouse());
+    await page.waitForTimeout(2500);
+    await page.screenshot({ path: testInfo.outputPath(`hd2d-${SIZE}-home-outside.png`) });
+    await expect
+      .poll(
+        async () =>
+          ((await (await request.get(`/api/game/${chatId}/town`)).json()) as { town: { visit: { label?: string } | null } })
+            .town.visit?.label ?? "",
+        { timeout: 20_000 },
+      )
+      .toContain("home, the house on");
+    // Sold again from its Home card: the Engine pays (the asking price less a fifth), what was kept there
+    // comes back, and the sale waits for the next reply.
+    await page.evaluate((key) => {
+      const w = window as unknown as {
+        __hd2d: { world: { P: { HOUSES: Array<{ plot?: number }> } }; __in: { enterHouse: (h: unknown) => unknown } };
+      };
+      w.__hd2d.__in.enterHouse(w.__hd2d.world.P.HOUSES.find((h) => "p" + h.plot === key));
+    }, sale);
+    await expect(homeCard.getByRole("button", { name: "Sell" })).toBeVisible({ timeout: 20_000 });
+    await homeCard.getByRole("button", { name: "Sell" }).click();
+    await expect(homeCard).toBeHidden({ timeout: 20_000 });
+    const soldMeta = (await (await request.get(`/api/chats/${chatId}`)).json()) as { metadata: unknown };
+    const afterSale = (typeof soldMeta.metadata === "string" ? JSON.parse(soldMeta.metadata) : soldMeta.metadata) as {
+      gameHomesPending?: string[];
+      gameInventory?: Array<{ item?: string; quantity: number }>;
+    };
+    console.log("sold", JSON.stringify(afterSale.gameHomesPending), JSON.stringify(afterSale.gameInventory));
+    expect(afterSale.gameHomesPending?.at(-1)).toContain('how="sold"');
+    const goldAfterSale = (afterSale.gameInventory ?? [])
+      .filter((stack) => stack.item === "coin:gold")
+      .reduce((sum, stack) => sum + stack.quantity, 0);
+    expect(goldAfterSale).toBeGreaterThan(377);
     // The party's spot is kept, and a reload opens the town where it stood.
     const meta = async () => {
       const chat = (await (await request.get(`/api/chats/${chatId}`)).json()) as { metadata: unknown };

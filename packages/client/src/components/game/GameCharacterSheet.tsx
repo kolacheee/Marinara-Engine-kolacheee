@@ -120,6 +120,8 @@ interface GameCharacterSheetProps {
   rulesetPinned?: boolean;
   /** Classic Marinara classes (combat overhaul): the class kept on this party member's card. */
   marinara?: { chatId: string; stored: unknown };
+  /** Homes (fork): the homes this character owns or rents, alone or with others. */
+  homes?: ReadonlyArray<{ words: string; place: string; how: string; owners: string[]; priceWords?: string }>;
 }
 
 interface GameCardDraft {
@@ -356,6 +358,7 @@ export function GameCharacterSheet({
   ruleset,
   rulesetPinned = false,
   marinara,
+  homes,
 }: GameCharacterSheetProps) {
   const { t: localizeUi } = useUiTranslation();
   const backdropDismiss = useBackdropDismiss(onClose);
@@ -725,6 +728,19 @@ export function GameCharacterSheet({
             <p className="mt-2 text-[0.6875rem] italic text-[var(--muted-foreground)]">
               {previewGameCard.shortDescription}
             </p>
+          )}
+          {homes && homes.length > 0 && (
+            <div className="mt-2 text-[0.6875rem] text-[var(--muted-foreground)]" data-component="GameCharacterSheet.Homes">
+              <span className="font-semibold uppercase tracking-wider">{localizeUi("game.sheet.homes")}</span>{" "}
+              {homes
+                .map((home) =>
+                  localizeUi(home.how === "rented" ? "game.sheet.homeRented" : "game.sheet.home", {
+                    words: home.words,
+                    place: home.place,
+                  }),
+                )
+                .join("; ")}
+            </div>
           )}
         </div>
 

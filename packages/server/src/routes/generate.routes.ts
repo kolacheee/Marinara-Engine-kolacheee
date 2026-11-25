@@ -75,6 +75,7 @@ import {
   worldTravelFor,
 } from "../services/game/world-travel.service.js";
 import { loadGameWorld } from "../services/game/game-world.service.js";
+import { collectGameHomeRent } from "../services/game/game-homes.service.js";
 import { readMapPackPeople } from "../services/game/map-pack.service.js";
 import {
   gameNoncombatants,
@@ -283,6 +284,8 @@ import {
   readToldLedger,
   worldHomesPendingFromMetadata,
   worldHomeLine,
+  worldHomeStoresLine,
+  worldHomeStoresFromMetadata,
   refuseStoryTags,
   storyGivesById,
   storyIsRef,
@@ -439,6 +442,7 @@ import {
   gameRulesetLayerOptions,
   loadGameInventoryItemBook,
   passGameInventoryTime,
+  readMetadata,
 } from "../services/game/game-inventory.service.js";
 import { createCustomToolsStorage } from "../services/storage/custom-tools.storage.js";
 import { createLorebooksStorage } from "../services/storage/lorebooks.storage.js";
@@ -2241,6 +2245,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               return worldTownVisitFromMetadata(chatMeta);
             })()
           : Promise.resolve(null);
+      let turnRentOwed: string[] = [];
       // Homes bought or rented at a door (fork, homes step 2), as the visit is told: their tags go before the
       // reply. A regeneration tells again the ones the reply it replaces told.
       const turnHomesPromise: Promise<string[]> =
@@ -2251,7 +2256,31 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 const own = parseExtra(replaced?.extra).worldHomesTold;
                 if (Array.isArray(own)) return own.filter((each): each is string => typeof each === "string");
               }
-              return worldHomesPendingFromMetadata(chatMeta);
+              // Rent come due (homes step 4) is paid now and told with the rest; a rent the party cannot
+              // pay is told to the Game Master as owed.
+              const pending = worldHomesPendingFromMetadata(chatMeta);
+              try {
+                const game = await loadGameWorld(app.db, input.chatId, chatMeta);
+                if (game) {
+                  const replies = await gameRepliesBefore(app.db, input.chatId, null);
+                  const present = worldPresent(game, [...replies.ledger, ...readToldLedger(pending.join(""))]);
+                  if (present.homes?.some((home) => home.how === "rented")) {
+                    const { owed } = await collectGameHomeRent(
+                      app.db,
+                      input.chatId,
+                      present.homes,
+                      present.day,
+                      (id) => game.world.places.find((place) => place.id === id)?.name,
+                    );
+                    turnRentOwed = owed;
+                    const fresh = await chats.getById(input.chatId);
+                    return worldHomesPendingFromMetadata(readMetadata(fresh?.metadata));
+                  }
+                }
+              } catch (error) {
+                logger.warn(error, "[game/homes] Rent for chat %s could not be collected", input.chatId);
+              }
+              return pending;
             })()
           : Promise.resolve([]);
       // A walk on a dungeon map and a leaving this turn tells, as the town visit is told. A regeneration
@@ -5764,19 +5793,36 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 // Homes bought or rented at a door since the last turn (fork): the Game Master narrates them.
                 const homesTold = (await turnHomesPromise).length
                   ? readToldLedger((await turnHomesPromise).join("")).flatMap((entry) => {
-                      const home = present.homes?.find(
-                        (each) => each.words.toLowerCase() === entry.owned?.trim().toLowerCase(),
+                      const words = entry.owned?.trim() ?? "";
+                      if (entry.how === "sold" || entry.how === "left") {
+                        return [
+                          `${entry.owner ?? "The party"} ${entry.how === "sold" ? "sold" : "gave up"} ${words}${entry.how === "sold" && entry.price ? ` for ${entry.price}` : ""}.`,
+                        ];
+                      }
+                      const home = present.homes?.find((each) =>
+                        entry.house && each.key ? each.key === entry.house : each.words.toLowerCase() === words.toLowerCase(),
                       );
                       return home ? [`${worldHomeLine(home)}${entry.note ? ` (${entry.note})` : ""}.`] : [];
                     })
                   : [];
-                const homesLine = homesTold.length
-                  ? `Since the last turn, at the house's door (already paid, narrate it): ${homesTold.join(" ")}\n`
+                const rentLine = turnRentOwed.length
+                  ? `Rent owed (the Game Master decides what comes of it): ${turnRentOwed.join("; ")}.\n`
                   : "";
+                const homesLine = homesTold.length
+                  ? `Since the last turn (the Engine has already paid or been paid; narrate it): ${homesTold.join(" ")}\n`
+                  : "";
+                // What the party keeps at its homes (fork, homes step 3).
+                const storesLine = worldHomeStoresLine(
+                  present.homes,
+                  worldHomeStoresFromMetadata(chatMeta),
+                  (id) => promptWorld.world.places.find((place) => place.id === id)?.name,
+                );
                 const walked =
                   layoutLine +
                   (walk && visit && visit.settlementId !== walk.to ? visitLine + walkLine : walkLine + visitLine) +
-                  homesLine;
+                  homesLine +
+                  rentLine +
+                  (storesLine ? `${storesLine}\n` : "");
                 if (!before?.name) {
                   const start = promptWorld.world.places.find((place) => place.id === promptWorld.world.startId);
                   return walked + worldWhereYouAreText(promptWorld, { place: start, met: promptMet, present });

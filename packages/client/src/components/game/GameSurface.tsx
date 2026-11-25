@@ -135,6 +135,7 @@ import {
   isRequestCancelled,
   patchChatMetadata,
   useGameWorld,
+  useGameHomes,
 } from "../../hooks/use-game";
 import {
   gameStoryboardKeys,
@@ -11369,6 +11370,8 @@ function GameSurfaceComponent({
     [activeChatId, localizeUi, sendInventory],
   );
 
+  // Homes (fork): the party's homes, read when a character sheet opens.
+  const { data: gameHomes } = useGameHomes(activeChatId, null, characterSheetOpen);
   const characterSheetRuleset = useMemo<GameCharacterSheetRuleset | undefined>(() => {
     if (gameRuleset.status === "none" || gameRuleset.status === "loading") return undefined;
     if (gameRuleset.status === "unavailable") return { status: "unavailable" };
@@ -15133,6 +15136,11 @@ function GameSurfaceComponent({
             }
             ruleset={characterSheetRuleset}
             rulesetPinned={gameRuleset.status !== "none"}
+            homes={(gameHomes ?? []).filter((home) =>
+              home.owners.some(
+                (owner) => owner.toLowerCase() === partyCards[characterSheetCharId]!.title.trim().toLowerCase(),
+              ),
+            )}
             {...((chatMeta.gameSetupConfig as { marinaraClasses?: boolean } | undefined)?.marinaraClasses === true &&
             gameRuleset.status === "none" &&
             activeChatId

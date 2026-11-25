@@ -13,6 +13,12 @@ import {
   worldHomeAsk,
   worldHomeEverydayPrice,
   worldHomeSaid,
+  worldHomeLine,
+  worldHomeTag,
+  worldHomesPendingFromMetadata,
+  worldHomesRentDue,
+  WORLD_HOMES_PENDING_MAX,
+  type WorldHome,
   type GameInventoryCoin,
   type GameInventoryStack,
   type WorldHomeHouse,
@@ -22,7 +28,7 @@ import { createChatsStorage } from "../storage/chats.storage.js";
 import { createCharactersStorage } from "../storage/characters.storage.js";
 import { resolveChatUserIdentity } from "../chat-user-identity.js";
 import { roomHostIdentity } from "../multiplayer/generation-policy.js";
-import { loadGameInventoryItemBook, readMetadata } from "./game-inventory.service.js";
+import { commitGameInventoryChange, loadGameInventoryItemBook, readMetadata } from "./game-inventory.service.js";
 
 export interface GameHomeMoney {
   /** The family prices are paid in, largest coin first. */
@@ -116,4 +122,75 @@ export async function gameHomePlayerName(db: DB, chatId: string): Promise<string
 
 export function gameHomeStacks(metadata: unknown): GameInventoryStack[] {
   return normalizeGameInventoryStacks(readMetadata(metadata).gameInventory);
+}
+
+/**
+ * Rent due (homes step 4): each rented home whose month is up is paid out of the party's purses, as many
+ * months as are owed, and its tag written again for the reply to tell (the month starts anew). A rent the
+ * purses cannot meet is left owed, for the Game Master to deal with. Returns the tags now waiting to be
+ * told (those already waiting first) and the rents left owed, in words.
+ */
+export async function collectGameHomeRent(
+  db: DB,
+  chatId: string,
+  homes: readonly WorldHome[],
+  day: number,
+  placeName: (placeId: string) => string | undefined,
+): Promise<{ owed: string[] }> {
+  const due = worldHomesRentDue(homes, day);
+  if (!due.length) return { owed: [] };
+  const money = await gameHomeMoney(db, chatId);
+  if (!money) return { owed: [] };
+  const owed: string[] = [];
+  for (const { home, months } of due) {
+    const place = placeName(home.placeId);
+    if (!place || home.price === undefined) continue;
+    // The rent as the tag said it, in the family's smallest coin when it said only a number.
+    const monthly = home.priceWords ? gameHomeWorth(home.priceWords, money) ?? home.price : home.price;
+    const total = monthly * months;
+    const said = worldHomeSaid(total, money.family);
+    const tag = worldHomeTag({
+      words: home.words,
+      place,
+      owners: home.owners,
+      how: "rented",
+      price: home.priceWords ?? worldHomeSaid(monthly, money.family),
+      ...(home.status ? { status: home.status } : {}),
+      ...(home.key ? { key: home.key } : {}),
+      note: `rent paid for ${months === 1 ? "another month" : `${months} months`}: ${said}`,
+    });
+    const committed = await commitGameInventoryChange<boolean>(db, chatId, (stacks, metadata) => {
+      const pending = worldHomesPendingFromMetadata(metadata);
+      if (pending.length >= WORLD_HOMES_PENDING_MAX) return { stacks, journal: [], value: false };
+      const paid = gameHomePay(stacks, money, total);
+      if (!paid.ok) return { stacks, journal: [], value: false };
+      return {
+        stacks: paid.stacks,
+        journal: [
+          ...paid.paid.map((each) => ({ item: each.name, action: "used" as const, quantity: each.count })),
+          ...paid.change.map((each) => ({ item: each.name, action: "acquired" as const, quantity: each.count })),
+        ],
+        events: [{ title: "Rent paid", content: `Rent for ${home.words} in ${place}: ${said}.` }],
+        metadata: { gameHomesPending: [...pending, tag] },
+        value: true,
+      };
+    });
+    if (!committed?.value) owed.push(`${worldHomeLine(home)} in ${place}: ${said} is owed and the party's purses cannot pay it`);
+  }
+  return { owed };
+}
+
+/** A price said in a family's coins ("2 silver 3 copper") as its worth in the smallest coin. */
+export function gameHomeWorth(words: string, money: GameHomeMoney): number | undefined {
+  let worth = 0;
+  let found = false;
+  for (const [, count, name] of words.matchAll(/(\d+)\s+([^\d]+?)(?=\s+\d|$)/g)) {
+    const coin = money.family.find(
+      (each) => each.name.toLowerCase() === name!.trim().toLowerCase() || each.one?.toLowerCase() === name!.trim().toLowerCase(),
+    );
+    if (!coin) return undefined;
+    worth += Number(count) * coin.value;
+    found = true;
+  }
+  return found ? worth : undefined;
 }

@@ -27,6 +27,9 @@ import {
   worldHomeSaid,
   worldHomeStatusOf,
   worldHomeHouseWords,
+  worldHomesRentDue,
+  worldHomeStoresLine,
+  worldHomeStoreKey,
   worldHomeTag,
   worldHomesPendingFromMetadata,
   readToldLedger,
@@ -161,5 +164,26 @@ const described = worldHomeHouseWords({ w: 3, d: 4, st: 2, dist: "ware" }, true)
 assert.equal(described, "two storeys, 3 by 4 bays, a merchants' street, left empty for a while");
 const withNote = worldHomeTag({ words: "the house on Quay Row", place: town.name, owners: ["Mara"], how: "bought", price: "60 gold", key: "p14", note: described });
 assert.equal(readToldLedger(withNote)[0]!.note, described);
+
+// ── Several players: co-owners, a rent given up, a sale told with its price ──
+say(worldHomeTag({ words: "the tall house", place: town.name, owners: ["Mara", "Tobin"], how: "bought", price: "90 gold", key: "p20" }));
+assert.deepEqual(now().homes!.find((home) => home.key === "p20")!.owners, ["Mara", "Tobin"]);
+say(worldHomeTag({ words: "the tall house", place: town.name, owners: ["Mara", "Tobin"], how: "sold", price: "72 gold", key: "p20" }));
+assert.ok(!now().homes!.some((home) => home.key === "p20"));
+assert.ok((now().done[town.id] ?? []).some((line) => /Mara and Tobin sold the tall house for 72 gold/u.test(line)));
+say(worldHomeTag({ words: "the house on Bell Street", place: town.name, owners: ["Tobin"], how: "left", key: "p13" }));
+assert.ok(!now().homes!.some((home) => home.key === "p13"));
+assert.ok((now().done[town.id] ?? []).some((line) => /Tobin gave up the house on Bell Street/u.test(line)));
+
+// ── Rent due: a month of game days after the rent was paid ──
+const rented = { placeId: town.id, words: "rooms", owners: ["Tobin"], how: "rented" as const, price: 23, priceWords: "2 silver 3 copper", day: 10 };
+assert.deepEqual(worldHomesRentDue([rented], 39), []);
+assert.equal(worldHomesRentDue([rented], 40)[0]!.months, 1);
+assert.equal(worldHomesRentDue([rented], 75)[0]!.months, 2);
+assert.deepEqual(worldHomesRentDue([{ ...rented, how: "bought" }], 99), []);
+
+// ── What is kept at home, told to the Game Master ──
+const storesLine = worldHomeStoresLine([rented], { [worldHomeStoreKey(rented)]: [{ id: "s1", name: "Rope", quantity: 2 }] }, () => town.name);
+assert.match(storesLine!, /Kept at the party's homes .*rooms \(.*\): 2 Rope\./u);
 
 console.log("world-homes: ok");

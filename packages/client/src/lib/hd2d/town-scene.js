@@ -349,7 +349,7 @@ function buildWorld(spec, day, season, arriveAt) {
   // the town's chronicle (fork): what its past left: houses empty, plots burned, refugees camped, the dead buried; drawn over the plan,
   // never changing it, so the streets the party knows stay where they were (spec.chron: empty, ruined, camp, refugees, burialGround, memorial, lost, prosperity)
   const CH = spec.chron || window.CHRON || null, h01 = (k) => ((Math.imul(k + 1, 2654435761) ^ Math.imul(seed + 977, 40503)) >>> 0) / 4294967296;
-  const lotFate = (L) => { if (!CH) return ''; const k = (L.plot ?? L.id) * 3; if (L.dist !== 'rich' && L.dist !== 'ware' && h01(k + 1) < (CH.ruined || 0)) return 'burnt';
+  const lotFate = (L) => { if (!CH || (CH.owned || []).includes(L.plot ?? L.id)) return ''; const k = (L.plot ?? L.id) * 3; if (L.dist !== 'rich' && L.dist !== 'ware' && h01(k + 1) < (CH.ruined || 0)) return 'burnt';
     if (['common', 'poor', 'craft', 'cottage', 'miner'].includes(L.dist) && h01(k + 2) < (CH.empty || 0) / .85) return 'empty'; return ''; };
   const campTents = [];
   // a burned house: a low stone footing, the charred posts of its frame standing to uneven heights, its stone chimney stack still up,
@@ -383,7 +383,7 @@ function buildWorld(spec, day, season, arriveAt) {
     Bk.setLift(lotPlat[L.id]);
     // each house draws from its own stream (fork): a house burned or left empty leaves every other house as it was
     const r = rngOf(seed * 977 + ((L.plot ?? L.id) + 1) * 7919), ri = (a, b) => a + Math.floor(r() * (b - a + 1)), pick = (a) => a[Math.floor(r() * a.length)];
-    const isInn = L === innLot, hj = .9 + r() * .2, fate = isInn ? '' : lotFate(L);
+    const isInn = L === innLot, hj = .9 + r() * .2, fate = isInn ? '' : lotFate(L), owned = !!CH && (CH.owned || []).includes(L.plot ?? L.id);
     // a city quarter keeps its own walls, roofs and timber framing (its chief trade colours the shop signs); the poor and the rich keep theirs
     const sty0 = STY[L.dist], qk = P.nav && L.ward >= 0 ? P.nav.quarter(L.ward) : null;
     const sty = qk ? { ...sty0, walls: L.dist === 'poor' || L.dist === 'cottage' ? sty0.walls : qk.walls, roofs: L.dist === 'poor' || L.dist === 'cottage' ? sty0.roofs : qk.roofs, ground: L.dist === 'rich' ? sty0.ground : qk.ground, timber: qk.timber } : sty0;
@@ -417,8 +417,8 @@ function buildWorld(spec, day, season, arriveAt) {
     const bk = comp[I(L.x, L.y)] + ':' + L.dist; if (!blockRoof.has(bk)) { const rb0 = rngOf(seed * 31 + (comp[I(L.x, L.y)] + 1) * 1013 + Object.keys(STY).indexOf(L.dist) * 7); blockRoof.set(bk, sty.roofs[Math.floor(rb0() * sty.roofs.length)]); } let roofK = r() < .15 ? pick(sty.roofs) : blockRoof.get(bk); const roofVar = roofK + '#' + Math.floor(r() * 4);
     const jet = timber ? .55 : 0, shutter = pick(['shutter_g', 'shutter_b', 'shutter_r', 'door']), flowers = L.dist !== 'poor' && r() < .45 && fate !== 'empty', flowerK = pick(['fl_r', 'fl_y', 'fl_w', 'fl_p']);
     const byGate = P.gates.some((G) => Math.hypot(L.x + L.w / 2 - G.cx, L.y + L.d / 2 - G.cy) < 5.5);   // just inside the gate: plain fronts, no awnings or signs poking into the passage view
-    const isShop = !isInn && !byGate && L.dist !== 'cottage' && L.dist !== 'miner' && L.dist !== 'ware' && (L.street === 'main' || L.street === 'square' || L.street === 'quay' || (L.street === 'street' && r() < .35)) && W >= 2 && !aleLots.has(L.id) && fate !== 'empty';
-    const HS = { id: L.id, plot: L.plot, ward: L.ward, empty: fate === 'empty', x: L.x, y: L.y, w: L.w, d: L.d, f: L.f, street: L.street, dist: L.dist, W, D, st, timber, shop: isShop, inn: isInn, ale: aleLots.has(L.id), plat: lotPlat[L.id] }; HOUSES.push(HS);
+    const isShop = !isInn && !byGate && L.dist !== 'cottage' && L.dist !== 'miner' && L.dist !== 'ware' && (L.street === 'main' || L.street === 'square' || L.street === 'quay' || (L.street === 'street' && r() < .35)) && W >= 2 && !aleLots.has(L.id) && fate !== 'empty' && !owned;
+    const HS = { id: L.id, plot: L.plot, ward: L.ward, empty: fate === 'empty', owned, x: L.x, y: L.y, w: L.w, d: L.d, f: L.f, street: L.street, dist: L.dist, W, D, st, timber, shop: isShop, inn: isInn, ale: aleLots.has(L.id), plat: lotPlat[L.id] }; HOUSES.push(HS);
     if (isShop) { const [fx2, fz2] = { S: [0, 1], N: [0, -1], E: [1, 0], W: [-1, 0] }[L.f]; for (let i = 0; i < L.w; i++) for (let j = 0; j < L.d; j++) { const x = L.x + i, y = L.y + j; if (at(x + fx2, y + fz2) !== 'lot') awn.add(I(x + fx2, y + fz2)); } }
     const hs = []; let y = 0; // storey bands
     for (let i = 0; i < st; i++) { const h = (i === 0 ? GH : UH) * (i === 0 ? 1 : hj); hs.push([y, y + h, i ? jet * Math.min(i, 2) : 0]); y += h; }
@@ -501,7 +501,10 @@ function buildWorld(spec, day, season, arriveAt) {
       let doorA = W >= 2 ? (r() < .5 ? .55 : W - .55) : W / 2;
       if (W >= 2 && !frontOK(doorA)) { const alt = [W - doorA, ...Array.from({ length: W }, (_, k) => k + .5)].find((a) => frontOK(a)); if (alt != null) doorA = alt; }
       const door = (a, hw = .36) => { HS.doorA = a; HS.door = toW(a, -.45); HS.doorW = hw * 2; houseInfo.push({ door: toW(a, -.45), kind: isInn ? 'inn' : isShop ? 'shop' : 'home', hid: HS.id, empty: fate === 'empty' });
-        if (fate === 'empty') for (const py of [.5, 1.05]) lbox('wood', a - hw - .14, -.09, py, a + hw + .14, -.04, py + .13, 32, 32, '');   // boarded up lbox('door', a - hw, -.03, .16, a + hw, 0, 1.45, 32, 32, ''); lbox('stone', a - hw - .1, -.08, .16, a - hw, 0, 1.55, 32, 32, ''); lbox('stone', a + hw, -.08, .16, a + hw + .1, 0, 1.55, 32, 32, '');
+        // an empty house is boarded up; a home the party owns hangs a sign by its door
+        if (fate === 'empty') for (const py of [.5, 1.05]) lbox('wood', a - hw - .14, -.09, py, a + hw + .14, -.04, py + .13, 32, 32, '');
+        if (owned) group(() => { const sa = a + hw + .22; lbox('iron', sa - .02, -.75, 2.05, sa + .02, 0, 2.09, 16, 16, ''); lbox('cloth_green', sa - .03, -.68, 1.62, sa + .03, -.28, 2.0, 32, 32, ''); lbox('wood', sa - .035, -.7, 1.6, sa + .035, -.26, 1.64, 32, 32, ''); lbox('wood', sa - .035, -.7, 1.98, sa + .035, -.26, 2.02, 32, 32, ''); });
+        lbox('door', a - hw, -.03, .16, a + hw, 0, 1.45, 32, 32, ''); lbox('stone', a - hw - .1, -.08, .16, a - hw, 0, 1.55, 32, 32, ''); lbox('stone', a + hw, -.08, .16, a + hw + .1, 0, 1.55, 32, 32, '');
         lbox('stone', a - hw - .1, -.08, 1.45, a + hw + .1, 0, 1.58, 32, 32, ''); lbox('stone', a - hw - .14, -.32, 0, a + hw + .14, 0, .1, 32, 32, '');   // jambs, lintel, step
         lbox('iron', a + .18, -.06, .75, a + .24, -.03, .82, 16, 16, ''); };
       if (isShop) {
@@ -1424,7 +1427,7 @@ const SPEED = 4.2;
 let zEff = 1.35; const camGoal = () => { const L = world.lead; const z = zEff; return new THREE.Vector3(L.pos.x, (window.CAMH || 9.4) * z + (world.camY || 0), L.pos.y + (window.CAMD || 8.4) * z); };
 let clock = 0, lastCell = -1, shadowTick = 0, walkedAcc = 0, readyOnce = false;
 // what the Engine is told of a door the party walks through: the building's town-wide key and its words
-const doorInfo = (h) => ({ key: h.gen2 ? 'b' + h.bid : h.plot != null ? 'p' + h.plot : h.gate ? 'gate' : 'other', label: h.label || (h.empty ? 'Empty house' : h.inn ? 'Inn' : h.shop ? 'Shop' : h.gate ? 'Gatehouse' : 'House'), inn: !!h.inn, shop: !!h.shop, empty: !!h.empty, house: h.plot != null && h.W ? { w: h.W, d: h.D, st: h.st, dist: h.dist } : null, ward: h.ward ?? -1, street: world && h.door ? world.where(Math.floor(h.door[0]), Math.floor(h.door[1])) : '', tcell: S.tcell });
+const doorInfo = (h) => ({ key: h.gen2 ? 'b' + h.bid : h.plot != null ? 'p' + h.plot : h.gate ? 'gate' : 'other', label: h.label || (h.owned ? 'Home' : h.empty ? 'Empty house' : h.inn ? 'Inn' : h.shop ? 'Shop' : h.gate ? 'Gatehouse' : 'House'), inn: !!h.inn, shop: !!h.shop, empty: !!h.empty, owned: !!h.owned, house: h.plot != null && h.W ? { w: h.W, d: h.D, st: h.st, dist: h.dist } : null, ward: h.ward ?? -1, street: world && h.door ? world.where(Math.floor(h.door[0]), Math.floor(h.door[1])) : '', tcell: S.tcell });
 // ---------- the weather (fork): the world's weather where the party stands, drawn over the town: the sky, light and fog it
 // brings, rain, snow, hail or dust falling round the party, lightning in a storm, and fewer people out in it ----------
 // dim: light (tone exposure); sun: how much of the sun (and its shadows) gets through; fogN/fogF: how near the fog closes in; tint/tm: the sky and fog colour it turns to, and how far;
