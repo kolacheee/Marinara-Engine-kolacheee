@@ -1,0 +1,8145 @@
+{
+  "layers": {
+    "body/man": {
+      "allowed": [
+        "skin",
+        "eyes",
+        "clothA",
+        "leather",
+        "edge",
+        "sclera"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "body/man/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/down/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "body/man/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/down/arm-near-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "body/man/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/down/arm-near-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "body/man/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/down/arm-near-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "body/man/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/down/arm-near-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "body/man/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/down/arm-near-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/down.grid",
+            "anchor": "head"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "body/man/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/left/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "body/man/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/left/arm-near-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "body/man/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/left/arm-near-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "body/man/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/left/arm-near-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "body/man/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/left/arm-near-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "body/man/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/left/arm-near-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/left.grid",
+            "anchor": "head"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "body/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "body/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "body/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "body/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "body/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "body/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/right.grid",
+            "anchor": "head"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "body/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "body/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "body/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "body/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "body/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "body/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/up.grid",
+            "anchor": "head"
+          }
+        ]
+      }
+    },
+    "outfit/labourer@man": {
+      "allowed": [
+        "clothA",
+        "clothB",
+        "leather",
+        "iron",
+        "skin",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "labourer/man/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/down/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "labourer/man/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/down/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "labourer/man/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/down/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "labourer/man/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/down/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "labourer/man/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/down/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "labourer/man/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/down/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/down/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "labourer/man/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/left/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "labourer/man/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/left/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "labourer/man/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/left/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "labourer/man/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/left/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "labourer/man/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/left/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "labourer/man/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/left/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/left/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "labourer/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "labourer/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "labourer/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "labourer/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "labourer/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "labourer/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "labourer/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "labourer/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "labourer/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "labourer/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "labourer/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "labourer/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    },
+    "outfit/ranger@man": {
+      "allowed": [
+        "clothA",
+        "clothB",
+        "leather",
+        "iron",
+        "skin",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "ranger/man/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/down/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "ranger/man/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/down/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "ranger/man/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/down/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "ranger/man/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/down/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "ranger/man/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/down/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "ranger/man/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/down/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/down/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "ranger/man/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/left/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "ranger/man/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/left/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "ranger/man/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/left/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "ranger/man/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/left/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "ranger/man/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/left/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "ranger/man/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/left/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/left/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "ranger/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "ranger/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "ranger/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "ranger/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "ranger/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "ranger/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "ranger/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "ranger/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "ranger/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "ranger/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "ranger/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "ranger/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    },
+    "outfit/mage@man": {
+      "allowed": [
+        "clothA",
+        "clothB",
+        "leather",
+        "iron",
+        "skin",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "mage/man/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/down/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "mage/man/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/down/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "mage/man/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/down/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "mage/man/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/down/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "mage/man/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/down/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "mage/man/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/down/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/down/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "mage/man/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/left/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "mage/man/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/left/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "mage/man/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/left/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "mage/man/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/left/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "mage/man/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/left/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "mage/man/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/left/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/left/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "mage/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "mage/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "mage/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "mage/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "mage/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "mage/man/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "mage/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "mage/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "mage/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "mage/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "mage/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "mage/man/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/man/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/man/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    },
+    "hair/short@man": {
+      "allowed": [
+        "hair",
+        "leather",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "hair/long@man": {
+      "allowed": [
+        "hair",
+        "leather",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "hair/braid@man": {
+      "allowed": [
+        "hair",
+        "leather",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "beard/full@man": {
+      "allowed": [
+        "hair",
+        "skin",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "feature/elf-ears@man": {
+      "allowed": [
+        "skin",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "feature/horns@man": {
+      "allowed": [
+        "horn",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "head/hood@man": {
+      "allowed": [
+        "clothA",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ]
+      }
+    },
+    "held/staff@man": {
+      "allowed": [
+        "wood",
+        "iron",
+        "edge"
+      ],
+      "body": "man",
+      "frames": {
+        "down0": [
+          {
+            "grid": "held/man/down-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "held/man/down-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "held/man/down-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "held/man/down-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "held/man/down-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "held/man/down-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "held/man/left-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "held/man/left-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "held/man/left-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "held/man/left-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "held/man/left-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "held/man/left-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "held/man/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "held/man/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "held/man/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "held/man/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "held/man/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "held/man/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "held/man/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "held/man/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "held/man/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "held/man/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "held/man/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "held/man/up-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    },
+    "body/woman": {
+      "allowed": [
+        "skin",
+        "eyes",
+        "clothA",
+        "leather",
+        "edge",
+        "sclera"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "body/woman/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/down/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "body/woman/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/down/arm-near-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "body/woman/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/down/arm-near-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "body/woman/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/down/arm-near-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "body/woman/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/down/arm-near-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-down.grid",
+            "anchor": "head"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "body/woman/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/down/arm-near-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-down.grid",
+            "anchor": "head"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "body/woman/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/left/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "body/woman/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/left/arm-near-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "body/woman/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/left/arm-near-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "body/woman/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/left/arm-near-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "body/woman/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/left/arm-near-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-left.grid",
+            "anchor": "head"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "body/woman/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/left/arm-near-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-left.grid",
+            "anchor": "head"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "body/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "body/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "body/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "body/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "body/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-right.grid",
+            "anchor": "head"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "body/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-right.grid",
+            "anchor": "head"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "body/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "body/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "body/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "body/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "body/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-up.grid",
+            "anchor": "head"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "body/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "body/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "body/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "head/woman-up.grid",
+            "anchor": "head"
+          }
+        ]
+      }
+    },
+    "outfit/labourer@woman": {
+      "allowed": [
+        "clothA",
+        "clothB",
+        "leather",
+        "iron",
+        "skin",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "labourer/woman/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/down/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "labourer/woman/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/down/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "labourer/woman/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/down/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "labourer/woman/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/down/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "labourer/woman/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/down/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "labourer/woman/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/down/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/down/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "labourer/woman/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/left/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "labourer/woman/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/left/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "labourer/woman/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/left/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "labourer/woman/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/left/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "labourer/woman/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/left/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "labourer/woman/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/left/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/left/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "labourer/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "labourer/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "labourer/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "labourer/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "labourer/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "labourer/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "labourer/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "labourer/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "labourer/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "labourer/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "labourer/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "labourer/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "labourer/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "labourer/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    },
+    "outfit/ranger@woman": {
+      "allowed": [
+        "clothA",
+        "clothB",
+        "leather",
+        "iron",
+        "skin",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "ranger/woman/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/down/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "ranger/woman/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/down/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "ranger/woman/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/down/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "ranger/woman/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/down/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "ranger/woman/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/down/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "ranger/woman/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/down/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/down/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "ranger/woman/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/left/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "ranger/woman/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/left/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "ranger/woman/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/left/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "ranger/woman/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/left/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "ranger/woman/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/left/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "ranger/woman/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/left/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/left/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "ranger/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "ranger/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "ranger/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "ranger/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "ranger/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "ranger/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "ranger/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "ranger/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "ranger/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "ranger/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "ranger/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "ranger/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "ranger/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "ranger/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    },
+    "outfit/mage@woman": {
+      "allowed": [
+        "clothA",
+        "clothB",
+        "leather",
+        "iron",
+        "skin",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "mage/woman/down/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/down/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "mage/woman/down/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/down/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "mage/woman/down/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/down/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "mage/woman/down/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/down/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "mage/woman/down/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/down/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "mage/woman/down/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/down/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/down/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "mage/woman/left/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/left/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "mage/woman/left/legs-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-far-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/left/hem-1.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-near-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "mage/woman/left/legs-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-far-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/left/hem-2.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-near-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "mage/woman/left/legs-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-far-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/left/hem-3.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-near-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "mage/woman/left/legs-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-far-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/left/hem-4.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-near-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "mage/woman/left/legs-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-far-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/left/hem-5.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/left/arm-near-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "mage/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "mage/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "mage/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "mage/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "mage/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "mage/woman/right/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/right/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/right/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "mage/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "mage/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "mage/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "mage/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "mage/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "mage/woman/up/legs-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/torso.grid",
+            "anchor": "torso"
+          },
+          {
+            "grid": "mage/woman/up/hem-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-far-0.grid",
+            "anchor": "frame"
+          },
+          {
+            "grid": "mage/woman/up/arm-near-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    },
+    "hair/short@woman": {
+      "allowed": [
+        "hair",
+        "leather",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "hair/short-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "hair/short-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "hair/short-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "hair/short-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "hair/long@woman": {
+      "allowed": [
+        "hair",
+        "leather",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "hair/long-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "hair/long-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "hair/long-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "hair/long-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "hair/braid@woman": {
+      "allowed": [
+        "hair",
+        "leather",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "hair/braid-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "hair/braid-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "hair/braid-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "hair/braid-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "beard/full@woman": {
+      "allowed": [
+        "hair",
+        "skin",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "beard/full-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "beard/full-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "beard/full-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "beard/full-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "feature/elf-ears@woman": {
+      "allowed": [
+        "skin",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "feature/elf-ears-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "feature/elf-ears-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "feature/elf-ears-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "feature/elf-ears-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "feature/horns@woman": {
+      "allowed": [
+        "horn",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "feature/horns-down.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "feature/horns-left.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "feature/horns-right.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "feature/horns-up.grid",
+            "anchor": "head",
+            "offset": [
+              -2,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "head/hood@woman": {
+      "allowed": [
+        "clothA",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down1": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down2": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down3": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down4": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "down5": [
+          {
+            "grid": "headwear/hood-down.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left0": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left1": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left2": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left3": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left4": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "left5": [
+          {
+            "grid": "headwear/hood-left.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right0": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right1": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right2": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right3": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right4": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "right5": [
+          {
+            "grid": "headwear/hood-right.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up0": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up1": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up2": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up3": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up4": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "up5": [
+          {
+            "grid": "headwear/hood-up.grid",
+            "anchor": "head",
+            "offset": [
+              0,
+              -1
+            ]
+          }
+        ]
+      }
+    },
+    "held/staff@woman": {
+      "allowed": [
+        "wood",
+        "iron",
+        "edge"
+      ],
+      "body": "woman",
+      "frames": {
+        "down0": [
+          {
+            "grid": "held/woman/down-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down1": [
+          {
+            "grid": "held/woman/down-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down2": [
+          {
+            "grid": "held/woman/down-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down3": [
+          {
+            "grid": "held/woman/down-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down4": [
+          {
+            "grid": "held/woman/down-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "down5": [
+          {
+            "grid": "held/woman/down-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left0": [
+          {
+            "grid": "held/woman/left-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left1": [
+          {
+            "grid": "held/woman/left-1.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left2": [
+          {
+            "grid": "held/woman/left-2.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left3": [
+          {
+            "grid": "held/woman/left-3.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left4": [
+          {
+            "grid": "held/woman/left-4.grid",
+            "anchor": "frame"
+          }
+        ],
+        "left5": [
+          {
+            "grid": "held/woman/left-5.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right0": [
+          {
+            "grid": "held/woman/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right1": [
+          {
+            "grid": "held/woman/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right2": [
+          {
+            "grid": "held/woman/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right3": [
+          {
+            "grid": "held/woman/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right4": [
+          {
+            "grid": "held/woman/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "right5": [
+          {
+            "grid": "held/woman/right-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up0": [
+          {
+            "grid": "held/woman/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up1": [
+          {
+            "grid": "held/woman/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up2": [
+          {
+            "grid": "held/woman/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up3": [
+          {
+            "grid": "held/woman/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up4": [
+          {
+            "grid": "held/woman/up-0.grid",
+            "anchor": "frame"
+          }
+        ],
+        "up5": [
+          {
+            "grid": "held/woman/up-0.grid",
+            "anchor": "frame"
+          }
+        ]
+      }
+    }
+  },
+  "head_height": 8,
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "frame_size": [
+    48,
+    64
+  ]
+}

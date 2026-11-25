@@ -1,0 +1,179 @@
+{
+  ".": null,
+  "1": {
+    "ramp": "skin",
+    "shade": 0
+  },
+  "2": {
+    "ramp": "skin",
+    "shade": 1
+  },
+  "3": {
+    "ramp": "skin",
+    "shade": 2
+  },
+  "4": {
+    "ramp": "skin",
+    "shade": 3
+  },
+  "5": {
+    "ramp": "skin",
+    "shade": 4
+  },
+  "6": {
+    "ramp": "skin",
+    "shade": 5
+  },
+  "a": {
+    "ramp": "hair",
+    "shade": 0
+  },
+  "b": {
+    "ramp": "hair",
+    "shade": 1
+  },
+  "c": {
+    "ramp": "hair",
+    "shade": 2
+  },
+  "d": {
+    "ramp": "hair",
+    "shade": 3
+  },
+  "e": {
+    "ramp": "hair",
+    "shade": 4
+  },
+  "x": {
+    "ramp": "eyes",
+    "shade": 0
+  },
+  "y": {
+    "ramp": "eyes",
+    "shade": 1
+  },
+  "z": {
+    "ramp": "eyes",
+    "shade": 2
+  },
+  "A": {
+    "ramp": "clothA",
+    "shade": 0
+  },
+  "B": {
+    "ramp": "clothA",
+    "shade": 1
+  },
+  "C": {
+    "ramp": "clothA",
+    "shade": 2
+  },
+  "D": {
+    "ramp": "clothA",
+    "shade": 3
+  },
+  "E": {
+    "ramp": "clothA",
+    "shade": 4
+  },
+  "F": {
+    "ramp": "clothB",
+    "shade": 0
+  },
+  "G": {
+    "ramp": "clothB",
+    "shade": 1
+  },
+  "H": {
+    "ramp": "clothB",
+    "shade": 2
+  },
+  "I": {
+    "ramp": "clothB",
+    "shade": 3
+  },
+  "J": {
+    "ramp": "clothB",
+    "shade": 4
+  },
+  "L": {
+    "ramp": "leather",
+    "shade": 0
+  },
+  "M": {
+    "ramp": "leather",
+    "shade": 1
+  },
+  "N": {
+    "ramp": "leather",
+    "shade": 2
+  },
+  "O": {
+    "ramp": "leather",
+    "shade": 3
+  },
+  "P": {
+    "ramp": "leather",
+    "shade": 4
+  },
+  "Q": {
+    "ramp": "iron",
+    "shade": 0
+  },
+  "R": {
+    "ramp": "iron",
+    "shade": 1
+  },
+  "S": {
+    "ramp": "iron",
+    "shade": 2
+  },
+  "T": {
+    "ramp": "iron",
+    "shade": 3
+  },
+  "U": {
+    "ramp": "wood",
+    "shade": 0
+  },
+  "V": {
+    "ramp": "wood",
+    "shade": 1
+  },
+  "W": {
+    "ramp": "wood",
+    "shade": 2
+  },
+  "X": {
+    "ramp": "wood",
+    "shade": 3
+  },
+  "h": {
+    "ramp": "horn",
+    "shade": 0
+  },
+  "i": {
+    "ramp": "horn",
+    "shade": 1
+  },
+  "j": {
+    "ramp": "horn",
+    "shade": 2
+  },
+  "k": {
+    "ramp": "horn",
+    "shade": 3
+  },
+  "l": {
+    "ramp": "horn",
+    "shade": 4
+  },
+  "#": {
+    "ramp": "edge",
+    "shade": 0
+  },
+  "*": {
+    "ramp": "sclera",
+    "shade": 0
+  }
+}
