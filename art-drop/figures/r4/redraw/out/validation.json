@@ -1,0 +1,70 @@
+{
+  "wren": {
+    "sheet_size": [
+      288,
+      256
+    ],
+    "idle_size": [
+      192,
+      64
+    ],
+    "opaque_colors": 25,
+    "alpha": [
+      0,
+      255
+    ],
+    "walk_heights": [
+      55,
+      57
+    ],
+    "standing_height": 56,
+    "unique_walk_frames_per_row": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "unique_idle_frames": 4,
+    "disconnected_components": 0
+  },
+  "hadrik": {
+    "sheet_size": [
+      288,
+      256
+    ],
+    "idle_size": [
+      192,
+      64
+    ],
+    "opaque_colors": 27,
+    "alpha": [
+      0,
+      255
+    ],
+    "walk_heights": [
+      55,
+      57
+    ],
+    "standing_height": 56,
+    "unique_walk_frames_per_row": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "unique_idle_frames": 4,
+    "disconnected_components": 0
+  },
+  "walk_gif": {
+    "frames": 12,
+    "milliseconds_per_frame": 110
+  },
+  "idle_gif": {
+    "frames": 4,
+    "milliseconds_per_frame": 240
+  },
+  "world_integer_scales": {
+    "normal": 2,
+    "close": 4
+  }
+}
