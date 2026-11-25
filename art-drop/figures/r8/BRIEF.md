@@ -21,3 +21,19 @@ Two lanes, Wren and Hadrik, seeds 11/23/37/41, ControlNet strength 0.8, start 0.
   - back: "solo, from behind, back view, back of head" / negative add "face, looking at viewer"
   Plus negatives "multiple views, character sheet, multiple people". 24 images.
 - Output art-drop/figures/r8/run2/ in the same layout, with a per-image view check (does each figure face the skeleton's way?) and, for lane S, whether the three views of one seed look like the same person.
+
+## Round 8c: same character across views (IP-Adapter)
+
+Install (approved by the owner's typed "go IP-Adapter", 2026-11-25 20:38 Berlin):
+- Custom node: cubiq/ComfyUI_IPAdapter_plus into ComfyUI/custom_nodes (git clone; no extra pip deps expected, report any).
+- ComfyUI/models/ipadapter/ip-adapter-plus_sdxl_vit-h.safetensors (huggingface h94/IP-Adapter, sdxl_models/).
+- ComfyUI/models/clip_vision/CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors (h94/IP-Adapter, models/image_encoder/model.safetensors, renamed).
+Verify sizes/hashes against the Hugging Face listing.
+
+Run, Wren and Hadrik, seeds 11/23/37/41, everything else as lane S (single-view skeletons, ControlNet 0.8, end 1.0):
+1. Front view: text + front skeleton only, exactly as lane S (no IP-Adapter). Add to the positive "plain flat grey background, no gradient".
+2. Side and back views: same seed, same text and view tags, plus IP-Adapter with reference = THIS RUN's front view raw (step 1, same seed). Weights 0.6 and 0.85, weight type standard, start 0.0, end 0.8.
+   This is the only allowed image reference: the same run's fresh front view. Never any earlier round's output.
+Total: 8 fronts + 8 seeds x 2 views x 2 weights = 40 images.
+
+Output art-drop/figures/r8/run3/: sprites/, per character a 4x sheet with one row per seed and weight (front | side | back), raw/ for the best 2 seed sets, log.md with heights, facing check, and a same-person check per row (hair shape, hair colour, outfit colours, apron/cloak present, bow/hammer present).
