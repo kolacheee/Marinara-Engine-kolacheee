@@ -93,3 +93,9 @@ W = 1024
 for p in range(4):
     draw([walk_frame(512, p)], f"walk-side-{p}-1024x640.png")
 W = old
+
+# Round 9b: one sheet with side, walk 0-3 and back, so the model keeps one body across them.
+W = 1792
+xs = [150, 450, 750, 1050, 1350, 1650]
+draw([view(xs[0], "side")] + [walk_frame(xs[i + 1], i) for i in range(4)] + [view(xs[5], "back")], "sheet-side-walk-back-1792x640.png")
+W = old
