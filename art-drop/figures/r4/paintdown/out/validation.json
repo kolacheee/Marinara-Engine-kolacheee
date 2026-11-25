@@ -1,0 +1,114 @@
+{
+  "sheet-wren.png": {
+    "size": [
+      288,
+      256
+    ],
+    "opaque_colors": 27,
+    "height_range": [
+      56,
+      57
+    ],
+    "unique_frames_per_row": [
+      6,
+      6,
+      6,
+      1
+    ],
+    "binary_alpha": true,
+    "feet_on_row_63": true,
+    "connected_silhouette": true
+  },
+  "idle-wren.png": {
+    "size": [
+      192,
+      64
+    ],
+    "opaque_colors": 27,
+    "height_range": [
+      56,
+      56
+    ],
+    "unique_frames_per_row": [
+      4
+    ],
+    "binary_alpha": true,
+    "feet_on_row_63": true,
+    "connected_silhouette": true
+  },
+  "sheet-hadrik.png": {
+    "size": [
+      288,
+      256
+    ],
+    "opaque_colors": 28,
+    "height_range": [
+      56,
+      58
+    ],
+    "unique_frames_per_row": [
+      6,
+      6,
+      6,
+      1
+    ],
+    "binary_alpha": true,
+    "feet_on_row_63": true,
+    "connected_silhouette": true
+  },
+  "idle-hadrik.png": {
+    "size": [
+      192,
+      64
+    ],
+    "opaque_colors": 27,
+    "height_range": [
+      57,
+      57
+    ],
+    "unique_frames_per_row": [
+      4
+    ],
+    "binary_alpha": true,
+    "feet_on_row_63": true,
+    "connected_silhouette": true
+  },
+  "walk.gif": {
+    "frames": 12,
+    "duration_ms": [
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110
+    ]
+  },
+  "idle.gif": {
+    "frames": 4,
+    "duration_ms": [
+      240,
+      240,
+      240,
+      240
+    ]
+  },
+  "in-world.png": {
+    "size": [
+      1280,
+      760
+    ]
+  },
+  "in-world-close.png": {
+    "size": [
+      1280,
+      760
+    ]
+  }
+}
