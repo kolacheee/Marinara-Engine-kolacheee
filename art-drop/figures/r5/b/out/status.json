@@ -1,0 +1,124 @@
+{
+  "status": "incomplete_no_accepted_generation",
+  "generated_attempts": 13,
+  "accepted_attempts": 0,
+  "missing_walk_slots": {
+    "wren": 24,
+    "hadrik": 24
+  },
+  "missing_idle_slots": {
+    "wren": 4,
+    "hadrik": 4
+  },
+  "attempts": [
+    {
+      "attempt": "attempt-01-wren",
+      "raw": "scratch/raw/attempt-01-wren.png",
+      "sha256": "acb6fd2b8ef07ff91c6c6a76b39eaaee0d9af1fc3133155139cc6302183b1155",
+      "prompt": "scratch/prompts/attempt-01-wren.txt",
+      "measurement": "scratch/raw/attempt-01-wren.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-02-wren",
+      "raw": "scratch/raw/attempt-02-wren.png",
+      "sha256": "667e979ad24af7a0c8d159162bfbebebc6258df9b7fbdf3be71b164751d50ee6",
+      "prompt": "scratch/prompts/attempt-02-wren.txt",
+      "measurement": "scratch/raw/attempt-02-wren.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-03-hadrik",
+      "raw": "scratch/raw/attempt-03-hadrik.png",
+      "sha256": "b8b68b4ca30dde87de648bd5439e7af43f783c9d5504335fa4bf8c8ac71d27eb",
+      "prompt": "scratch/prompts/attempt-03-hadrik.txt",
+      "measurement": "scratch/raw/attempt-03-hadrik.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-04-wren",
+      "raw": "scratch/raw/attempt-04-wren.png",
+      "sha256": "f454358e1781d0fa747e94f8ff3e418f44100c47eb5f980bffe22a8de70dbb7a",
+      "prompt": "scratch/prompts/attempt-04-wren.txt",
+      "measurement": "scratch/raw/attempt-04-wren.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-05-hadrik",
+      "raw": "scratch/raw/attempt-05-hadrik.png",
+      "sha256": "8c40b5dcf00e05a21da8461f8c43c3beb74743cf9fcff23140a61bb28040a36f",
+      "prompt": "scratch/prompts/attempt-05-hadrik.txt",
+      "measurement": "scratch/raw/attempt-05-hadrik.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-06-wren",
+      "raw": "scratch/raw/attempt-06-wren.png",
+      "sha256": "e3b1f0d8e5900f9fd2615a1fd1560c6763a9c107b3deb69cddf59117926768c9",
+      "prompt": "scratch/prompts/attempt-06-wren.txt",
+      "measurement": "scratch/raw/attempt-06-wren.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-07-hadrik",
+      "raw": "scratch/raw/attempt-07-hadrik.png",
+      "sha256": "2baed6dd6b2929067566468de25ddb54cf84048c4f7d8bd39e5ab630c1f4767c",
+      "prompt": "scratch/prompts/attempt-07-hadrik.txt",
+      "measurement": "scratch/raw/attempt-07-hadrik.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-08-wren",
+      "raw": "scratch/raw/attempt-08-wren.png",
+      "sha256": "adb7f7dd844692fcde4b7933824fad4959a49e3ba5ef7c8e5edb90bc65ea84b9",
+      "prompt": "scratch/prompts/attempt-08-wren.txt",
+      "measurement": "scratch/raw/attempt-08-wren.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-09-hadrik",
+      "raw": "scratch/raw/attempt-09-hadrik.png",
+      "sha256": "56778cb3979498f9bf429632077c163346020c5ab006ed0e0e8efe4e07f6f06f",
+      "prompt": "scratch/prompts/attempt-09-hadrik.txt",
+      "measurement": "scratch/raw/attempt-09-hadrik.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-10-wren",
+      "raw": "scratch/raw/attempt-10-wren.png",
+      "sha256": "7906af8513b4ff813cbc5a9a46a461aa351a819e73d3823480859ec255ea39e8",
+      "prompt": "scratch/prompts/attempt-10-wren.txt",
+      "measurement": "scratch/raw/attempt-10-wren.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-11-hadrik",
+      "raw": "scratch/raw/attempt-11-hadrik.png",
+      "sha256": "af9243c53b87fca9d6eaf7da5a1a503e4b878be95a31db691d1c455141ca8991",
+      "prompt": "scratch/prompts/attempt-11-hadrik.txt",
+      "measurement": "scratch/raw/attempt-11-hadrik.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-12-wren",
+      "raw": "scratch/raw/attempt-12-wren.png",
+      "sha256": "06469f349736d2850a20ada863b3e67ae590e4340c7a7522c037e70d557e767f",
+      "prompt": "scratch/prompts/attempt-12-wren.txt",
+      "measurement": "scratch/raw/attempt-12-wren.grid.json",
+      "accepted": false
+    },
+    {
+      "attempt": "attempt-13-hadrik",
+      "raw": "scratch/raw/attempt-13-hadrik.png",
+      "sha256": "0f35acd3a4c753d3c32440660c89b8e347d11715ef3443e7aee3b4adb805f3b9",
+      "prompt": "scratch/prompts/attempt-13-hadrik.txt",
+      "measurement": "scratch/raw/attempt-13-hadrik.grid.json",
+      "accepted": false
+    }
+  ],
+  "checker_validation": "scratch/checker-validation/report.json",
+  "world_inputs": {
+    "world/market-close-zoom.png": "16734d11f52897e268c8e078c791ff37715dfaba78c7e79c1cd5d1dbef8cc33a",
+    "world/market-normal-zoom.png": "834f1cddd6fb96f8302bda9733ea8f3ee27cf1d715cb2c4d4cbcdd9a6864e814"
+  }
+}
