@@ -37,3 +37,14 @@ Run, Wren and Hadrik, seeds 11/23/37/41, everything else as lane S (single-view 
 Total: 8 fronts + 8 seeds x 2 views x 2 weights = 40 images.
 
 Output art-drop/figures/r8/run3/: sprites/, per character a 4x sheet with one row per seed and weight (front | side | back), raw/ for the best 2 seed sets, log.md with heights, facing check, and a same-person check per row (hair shape, hair colour, outfit colours, apron/cloak present, bow/hammer present).
+
+## Round 8d: IP-Adapter sweep, gentler (after 8c burnt every side/back view)
+
+No new downloads. Reuse 8c's front views as the references (same run family, made fresh in 8c; never anything older). Seeds 11 and 41, both characters, side and back skeletons, ControlNet 0.8 end 1.0. CFG 5 on all passes.
+Four IP-Adapter settings:
+- A: weight 0.25, standard, start 0.0, end 0.8
+- B: weight 0.40, standard, start 0.3, end 0.8 (ControlNet sets the pose first)
+- C: weight 0.40, style transfer (keeps colours, not composition), start 0.0, end 1.0
+- D: weight 0.60, style transfer, start 0.0, end 1.0
+2 characters x 2 seeds x 2 views x 4 settings = 32 images. Output art-drop/figures/r8/run4/ with the same sheets and checks (facing, burnt colour yes/no, same person as the front: hair shape, colours, cloak/apron, bow/hammer).
+If every setting still burns or ignores the skeleton, stop and say so; don't escalate weights.
