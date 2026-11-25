@@ -501,9 +501,12 @@ function buildWorld(spec, day, season, arriveAt) {
       let doorA = W >= 2 ? (r() < .5 ? .55 : W - .55) : W / 2;
       if (W >= 2 && !frontOK(doorA)) { const alt = [W - doorA, ...Array.from({ length: W }, (_, k) => k + .5)].find((a) => frontOK(a)); if (alt != null) doorA = alt; }
       const door = (a, hw = .36) => { HS.doorA = a; HS.door = toW(a, -.45); HS.doorW = hw * 2; houseInfo.push({ door: toW(a, -.45), kind: isInn ? 'inn' : isShop ? 'shop' : 'home', hid: HS.id, empty: fate === 'empty' });
-        // an empty house is boarded up; a home the party owns hangs a sign by its door
+        // an empty house is boarded up; a home the party owns wears a blue board with a gold house over its door (shop signs never use blue), flat to the street so the camera reads it
         if (fate === 'empty') for (const py of [.5, 1.05]) lbox('wood', a - hw - .14, -.09, py, a + hw + .14, -.04, py + .13, 32, 32, '');
-        if (owned) group(() => { const sa = a + hw + .22; lbox('iron', sa - .02, -.75, 2.05, sa + .02, 0, 2.09, 16, 16, ''); lbox('cloth_green', sa - .03, -.68, 1.62, sa + .03, -.28, 2.0, 32, 32, ''); lbox('wood', sa - .035, -.7, 1.6, sa + .035, -.26, 1.64, 32, 32, ''); lbox('wood', sa - .035, -.7, 1.98, sa + .035, -.26, 2.02, 32, 32, ''); });
+        if (owned) group(() => { lbox('wood', a - .3, -.1, 1.64, a + .3, -.02, 2.1, 32, 32, ''); lbox('cloth_blue', a - .25, -.12, 1.69, a + .25, -.02, 2.05, 32, 32, '');
+          // a small gold house on the board: walls, then a roof stepped up to its ridge
+          lbox('gold', a - .06, -.14, 1.75, a + .06, -.02, 1.85, 16, 16, ''); for (const [rw, r0, r1] of [[.1, 1.85, 1.89], [.065, 1.89, 1.93], [.03, 1.93, 1.97]]) lbox('gold', a - rw, -.14, r0, a + rw, -.02, r1, 16, 16, '');
+          for (const c of [-.22, .22]) lbox('iron', a + c - .02, -.13, 2.08, a + c + .02, 0, 2.14, 16, 16, ''); });
         lbox('door', a - hw, -.03, .16, a + hw, 0, 1.45, 32, 32, ''); lbox('stone', a - hw - .1, -.08, .16, a - hw, 0, 1.55, 32, 32, ''); lbox('stone', a + hw, -.08, .16, a + hw + .1, 0, 1.55, 32, 32, '');
         lbox('stone', a - hw - .1, -.08, 1.45, a + hw + .1, 0, 1.58, 32, 32, ''); lbox('stone', a - hw - .14, -.32, 0, a + hw + .14, 0, .1, 32, 32, '');   // jambs, lintel, step
         lbox('iron', a + .18, -.06, .75, a + .24, -.03, .82, 16, 16, ''); };
@@ -548,7 +551,7 @@ function buildWorld(spec, day, season, arriveAt) {
         // a one-bay front gets a narrower door to one side and a slit window beside it, so the ground floor has daylight
         if (W < 2) { door(.37, .27); win('f', .87, .7, .2, .62, 0, 1); } else door(doorA);
         // an alehouse hangs out its ale-stake: a pole over the street with a bush of greenery at its end
-        if (HS.ale) { const sa = W < 2 ? .37 : doorA; group(() => { lbox('wood', sa - .03, -1.0, 2.02, sa + .03, 0, 2.08, 16, 16, ''); lbox('iron', sa - .02, -.55, 1.7, sa + .02, -.02, 1.74, 16, 16, '');
+        if (HS.ale && !owned) { const sa = W < 2 ? .37 : doorA; group(() => { lbox('wood', sa - .03, -1.0, 2.02, sa + .03, 0, 2.08, 16, 16, ''); lbox('iron', sa - .02, -.55, 1.7, sa + .02, -.02, 1.74, 16, 16, '');
           lbox('grass', sa - .2, -1.18, 1.62, sa + .2, -.8, 2.0, 32, 32, ''); lbox('grass', sa - .14, -1.12, 1.52, sa + .14, -.86, 1.66, 32, 32, ''); }); }
         const wa = doorA < W / 2 ? doorA + 1 : doorA - 1; if (W >= 2 && wa > .3 && wa < W - .3) win('f', wa, .7, .5, .62, 0);
         if (W >= 3) win('f', doorA < W / 2 ? W - .5 : .5, .7, .5, .62, 0);
