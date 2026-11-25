@@ -168,6 +168,20 @@ export const worldHomeHouseSchema = z
   .strict();
 export type WorldHomeHouse = z.infer<typeof worldHomeHouseSchema>;
 
+const STOREYS = ["one storey", "two storeys", "three storeys", "four storeys", "five storeys"];
+const DIST_WORDS: Record<WorldHomeHouse["dist"], string> = {
+  rich: "a wealthy street",
+  ware: "a merchants' street",
+  common: "an ordinary street",
+  craft: "a craftsmen's street",
+  poor: "a poor street",
+  cottage: "a cottage on the edge of town",
+};
+/** The house in words for the Game Master, told only once it is bought or rented. */
+export function worldHomeHouseWords(house: WorldHomeHouse, empty: boolean): string {
+  return `${STOREYS[house.st - 1] ?? `${house.st} storeys`}, ${house.w} by ${house.d} bays, ${DIST_WORDS[house.dist]}${empty ? ", left empty for a while" : ""}`;
+}
+
 /** A 3D town house's key: "p<plot>" (a house), as the scene names it. */
 export const WORLD_HOME_KEY = /^p\d{1,6}$/;
 
@@ -258,12 +272,14 @@ export function worldHomeTag(home: {
   price: string;
   status?: WorldHomeStatus;
   key?: string;
+  /** The house for the Game Master, in a few words ("two storeys, 3 by 4 bays, a merchants' street"). */
+  note?: string;
 }): string {
   return `[world: owned="${quoted(home.words)}" place="${quoted(home.place)}" owner="${home.owners
     .map(quoted)
     .join(", ")}" how="${home.how}" price="${home.price}"${home.status ? ` status="${home.status}"` : ""}${
     home.key ? ` house="${home.key}"` : ""
-  }]`;
+  }${home.note ? ` note="${quoted(home.note)}"` : ""}]`;
 }
 
 /** The home tags the Engine has written and the next reply tells, kept on the game. */

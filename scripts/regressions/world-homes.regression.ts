@@ -26,6 +26,7 @@ import {
   worldHomeEverydayPrice,
   worldHomeSaid,
   worldHomeStatusOf,
+  worldHomeHouseWords,
   worldHomeTag,
   worldHomesPendingFromMetadata,
   readToldLedger,
@@ -154,5 +155,11 @@ assert.match(worldWhereYouAreText(game, { place: town, present: now() }), /Mara 
 // A second house with the same words is another house, by its key.
 say(worldHomeTag({ words: "the house on Bell Street", place: town.name, owners: ["Tobin"], how: "rented", price: "6 silver", key: "p13" }));
 assert.equal(now().homes!.filter((home) => home.words === "the house on Bell Street").length, 2);
+
+// What the house is like goes to the Game Master with the buy, in its tag's note.
+const described = worldHomeHouseWords({ w: 3, d: 4, st: 2, dist: "ware" }, true);
+assert.equal(described, "two storeys, 3 by 4 bays, a merchants' street, left empty for a while");
+const withNote = worldHomeTag({ words: "the house on Quay Row", place: town.name, owners: ["Mara"], how: "bought", price: "60 gold", key: "p14", note: described });
+assert.equal(readToldLedger(withNote)[0]!.note, described);
 
 console.log("world-homes: ok");

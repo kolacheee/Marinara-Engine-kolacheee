@@ -5767,7 +5767,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                       const home = present.homes?.find(
                         (each) => each.words.toLowerCase() === entry.owned?.trim().toLowerCase(),
                       );
-                      return home ? [`${worldHomeLine(home)}.`] : [];
+                      return home ? [`${worldHomeLine(home)}${entry.note ? ` (${entry.note})` : ""}.`] : [];
                     })
                   : [];
                 const homesLine = homesTold.length

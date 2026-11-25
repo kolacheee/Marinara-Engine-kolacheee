@@ -371,6 +371,7 @@ import {
   WORLD_HOMES_PENDING_MAX,
   worldHomeHouseSchema,
   worldHomeStatusOf,
+  worldHomeHouseWords,
   worldHomeTag,
   worldHomesPendingFromMetadata,
   worldTownHd2dKeptFromMetadata,
@@ -11967,6 +11968,8 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       price: said,
       status: worldHomeStatusOf(asked.house.dist),
       key: asked.key,
+      // What the house is like reaches the Game Master only with a buy or a rent, never with a visit.
+      note: worldHomeHouseWords(asked.house, asked.empty),
     });
     const committed = await commitGameInventoryChange<{ ok: boolean; reason: string }>(app.db, chatId, (stacks, metadata) => {
       const pending = worldHomesPendingFromMetadata(metadata);
