@@ -1,0 +1,108 @@
+{
+  "ramps": {
+    "Contour": [
+      "#292730",
+      "#3D3540"
+    ],
+    "Moss cloth": [
+      "#303D38",
+      "#485947",
+      "#71805A",
+      "#9DA67A",
+      "#BDCA99"
+    ],
+    "Leather / wood": [
+      "#443237",
+      "#66503F",
+      "#90714E",
+      "#B99A6A",
+      "#D0B88A"
+    ],
+    "Auburn hair": [
+      "#493035",
+      "#734332",
+      "#A36340",
+      "#C78D60"
+    ],
+    "Warm skin": [
+      "#785146",
+      "#AD7960",
+      "#D4A47B",
+      "#E8C69B"
+    ],
+    "Deep skin": [
+      "#29232A",
+      "#403038",
+      "#5B3F40",
+      "#795649",
+      "#9B765A"
+    ],
+    "Charcoal": [
+      "#252630",
+      "#34343B",
+      "#4B494B",
+      "#64605B"
+    ],
+    "Linen": [
+      "#605A54",
+      "#8D8571",
+      "#B8AF91",
+      "#D0C5A5",
+      "#E1D6B5"
+    ],
+    "Iron": [
+      "#333843",
+      "#505D68",
+      "#849296",
+      "#B9C1B6"
+    ],
+    "Blue cloth": [
+      "#292D46",
+      "#354661",
+      "#4F6480",
+      "#768B9D",
+      "#A3B4B6"
+    ],
+    "Gold": [
+      "#655139",
+      "#927344",
+      "#BC985A",
+      "#D9BD7C",
+      "#E8D49C"
+    ],
+    "Fair skin": [
+      "#80605A",
+      "#AD8370",
+      "#D4AC8C",
+      "#EBD0AA"
+    ]
+  },
+  "character_ramps": {
+    "wren": [
+      "Contour",
+      "Moss cloth",
+      "Leather / wood",
+      "Auburn hair",
+      "Warm skin",
+      "Charcoal",
+      "Iron"
+    ],
+    "hadrik": [
+      "Contour",
+      "Leather / wood",
+      "Deep skin",
+      "Charcoal",
+      "Linen",
+      "Iron"
+    ],
+    "noble": [
+      "Contour",
+      "Blue cloth",
+      "Gold",
+      "Fair skin",
+      "Charcoal"
+    ]
+  },
+  "max_colours_per_character": 32,
+  "alpha": "binary 0 or 255; transparency is not an RGB palette entry"
+}

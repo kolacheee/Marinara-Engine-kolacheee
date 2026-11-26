@@ -1,0 +1,273 @@
+{
+  "sheet_size": [
+    1920,
+    2720
+  ],
+  "master_colours": 30,
+  "characters": {
+    "wren": {
+      "union_opaque_colours": 18
+    },
+    "hadrik": {
+      "union_opaque_colours": 15
+    },
+    "noble": {
+      "union_opaque_colours": 12
+    }
+  },
+  "frames": [
+    {
+      "file": "out/sprites/wren-front.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 17,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        26,
+        33,
+        70,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "daad63be6b99b83b6a2282312ca5c991d39dcc845db69406314fb0d79249caff"
+    },
+    {
+      "file": "out/sprites/wren-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 17,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        29,
+        33,
+        68,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "02808023bae78390c38187f192c57faa8a75a8f2c958bcf784f23b300297f0cf"
+    },
+    {
+      "file": "out/sprites/wren-back.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 15,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        29,
+        33,
+        66,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "731e1023d3eaeebf3d055a42d07190e0334a016445438b2dc76f955bf70f014c"
+    },
+    {
+      "file": "out/sprites/wren-walk-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 18,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        24,
+        33,
+        69,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "fb3bc63a49c4ae8d651c84c88ef315867d39121074c1d0e1bb6cea27abbce6fe"
+    },
+    {
+      "file": "out/sprites/hadrik-front.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 15,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        21,
+        33,
+        75,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "3c3ba6c489003b1b3956a67ca99b780fa350f9e3d651c08fa24a15ca271037ce"
+    },
+    {
+      "file": "out/sprites/hadrik-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 15,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        28,
+        33,
+        66,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "4031b674819b284a22e98152f6f3bd97edd07f2e71c7549cb9c6a4bbdb3ee212"
+    },
+    {
+      "file": "out/sprites/hadrik-back.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 15,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        23,
+        33,
+        72,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "6ff558f7c485467297f6ba5e05c40ac0c55f8e8d33b1ac171ed45dd9d0f692fa"
+    },
+    {
+      "file": "out/sprites/hadrik-walk-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 15,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        23,
+        33,
+        66,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "11115df7de9665767f270df90a253cabaedff3408153e09be126ed5b8cd6289b"
+    },
+    {
+      "file": "out/sprites/noble-front.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 10,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        31,
+        33,
+        65,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "28cff3d8026a4faeafc2f2fa3aae8cfcf6d75665588b71c3984aabb8f0fd042e"
+    },
+    {
+      "file": "out/sprites/noble-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        30,
+        33,
+        67,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "9b8a20ac7bb330b04f9f4b3276aed41c33891fa9dcbda373cc2538bcc761c2cf"
+    },
+    {
+      "file": "out/sprites/noble-back.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 9,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        31,
+        33,
+        64,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "26c9c0badebe41e0fb22d2f5e0b704c28800f984f758e4571eec9f3205879d4b"
+    },
+    {
+      "file": "out/sprites/noble-walk-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "opaque_colours": 11,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_bbox": [
+        29,
+        33,
+        69,
+        125
+      ],
+      "height": 92,
+      "lowest_occupied_row": 124,
+      "sha256": "44871b31f9717893abe5d90dafc71a29b5d7ae936740421933404ce15dc57225"
+    }
+  ],
+  "scope": "Structural checks only; outline thickness, anatomy and material semantics require visual review."
+}
