@@ -1,0 +1,35 @@
+{
+  "file": "test-elder-front.png",
+  "dimensions": [
+    96,
+    128
+  ],
+  "alpha": [
+    0,
+    255
+  ],
+  "bounds": [
+    27,
+    33,
+    69,
+    125
+  ],
+  "visible_height": 92,
+  "baseline": 124,
+  "colours": 25,
+  "palette_ok": true,
+  "transparent_black": true,
+  "source": "out/test-big/elder-front-v2.png",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "source_bounds": [
+    380,
+    138,
+    835,
+    1144
+  ],
+  "resized_width": 42,
+  "moss_gate_pixels": 774
+}

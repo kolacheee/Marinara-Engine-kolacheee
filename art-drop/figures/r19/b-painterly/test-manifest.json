@@ -1,0 +1,24 @@
+{
+  "selected": {
+    "innkeeper-side": "innkeeper-side-v2.png",
+    "innkeeper-front": "innkeeper-front-v2.png",
+    "elder-side": "elder-side-v4.png",
+    "elder-front": "elder-front-v2.png"
+  },
+  "front_identity_references": {
+    "innkeeper-front-v2.png": "innkeeper-side-v2.png",
+    "elder-front-v2.png": "elder-side-v4.png"
+  },
+  "originals": [
+    "elder-front-v1.png",
+    "elder-front-v2.png",
+    "elder-side-v1.png",
+    "elder-side-v2.png",
+    "elder-side-v3.png",
+    "elder-side-v4.png",
+    "innkeeper-front-v1.png",
+    "innkeeper-front-v2.png",
+    "innkeeper-side-v1.png",
+    "innkeeper-side-v2.png"
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "innkeeper-front": {
+    "source": "out/test-big/innkeeper-front-v1.png",
+    "source_size": [
+      1145,
+      1373
+    ],
+    "source_bbox": [
+      274,
+      155,
+      870,
+      1290
+    ],
+    "reduced_size": [
+      48,
+      92
+    ],
+    "frame_offset": [
+      24,
+      33
+    ],
+    "bbox": [
+      24,
+      33,
+      72,
+      125
+    ],
+    "colors": 21,
+    "palette": [
+      "202f2b",
+      "293039",
+      "30282a",
+      "38262a",
+      "435b3e",
+      "514a41",
+      "55412c",
+      "593b36",
+      "626f76",
+      "644737",
+      "75835a",
+      "764333",
+      "97704c",
+      "a08346",
+      "a4b2b4",
+      "aaa08a",
+      "ac7049",
+      "b78168",
+      "d4b96d",
+      "ded2ae",
+      "e2b68e"
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "occupied_rows": [
+      33,
+      124
+    ]
+  },
+  "innkeeper-side": {
+    "source": "out/test-big/innkeeper-side-v2.png",
+    "source_size": [
+      1145,
+      1373
+    ],
+    "source_bbox": [
+      344,
+      156,
+      800,
+      1289
+    ],
+    "reduced_size": [
+      37,
+      92
+    ],
+    "frame_offset": [
+      30,
+      33
+    ],
+    "bbox": [
+      30,
+      33,
+      67,
+      125
+    ],
+    "colors": 20,
+    "palette": [
+      "202f2b",
+      "293039",
+      "30282a",
+      "38262a",
+      "435b3e",
+      "514a41",
+      "55412c",
+      "593b36",
+      "626f76",
+      "644737",
+      "75835a",
+      "764333",
+      "97704c",
+      "a4b2b4",
+      "aaa08a",
+      "ac7049",
+      "b78168",
+      "d4b96d",
+      "ded2ae",
+      "e2b68e"
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "occupied_rows": [
+      33,
+      124
+    ]
+  },
+  "elder-front": {
+    "source": "out/test-big/elder-front-v2.png",
+    "source_size": [
+      1054,
+      1492
+    ],
+    "source_bbox": [
+      309,
+      230,
+      761,
+      1341
+    ],
+    "reduced_size": [
+      37,
+      92
+    ],
+    "frame_offset": [
+      29,
+      33
+    ],
+    "bbox": [
+      29,
+      33,
+      66,
+      125
+    ],
+    "colors": 12,
+    "palette": [
+      "202f2b",
+      "30282a",
+      "435b3e",
+      "514a41",
+      "593b36",
+      "644737",
+      "75835a",
+      "97704c",
+      "aaa08a",
+      "b78168",
+      "ded2ae",
+      "e2b68e"
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "occupied_rows": [
+      33,
+      124
+    ]
+  },
+  "elder-side": {
+    "source": "out/test-big/elder-side-v3.png",
+    "source_size": [
+      1054,
+      1492
+    ],
+    "source_bbox": [
+      299,
+      230,
+      722,
+      1344
+    ],
+    "reduced_size": [
+      35,
+      92
+    ],
+    "frame_offset": [
+      32,
+      33
+    ],
+    "bbox": [
+      32,
+      33,
+      67,
+      125
+    ],
+    "colors": 12,
+    "palette": [
+      "202f2b",
+      "30282a",
+      "435b3e",
+      "514a41",
+      "593b36",
+      "644737",
+      "75835a",
+      "97704c",
+      "aaa08a",
+      "b78168",
+      "ded2ae",
+      "e2b68e"
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "occupied_rows": [
+      33,
+      124
+    ]
+  },
+  "innkeeper_total_colors": 21,
+  "elder_total_colors": 12,
+  "assembly": {
+    "background_rgb": [
+      229,
+      226,
+      218
+    ],
+    "strip_size": [
+      3120,
+      456
+    ],
+    "scale": 3,
+    "order": [
+      "WREN / front",
+      "WREN / side",
+      "HADRIK / front",
+      "HADRIK / side",
+      "NOBLE / front",
+      "NOBLE / side",
+      "INNKEEPER / FRONT",
+      "INNKEEPER / SIDE",
+      "ELDER / FRONT",
+      "ELDER / SIDE"
+    ]
+  }
+}

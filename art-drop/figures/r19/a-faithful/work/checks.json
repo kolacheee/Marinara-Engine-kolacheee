@@ -1,0 +1,76 @@
+{
+  "innkeeper-side": {
+    "size": [
+      96,
+      128
+    ],
+    "bbox": [
+      26,
+      33,
+      70,
+      125
+    ],
+    "occupied_height": 92,
+    "lowest_row": 124,
+    "binary_alpha": true,
+    "transparent_rgb_zero": true,
+    "colors": 16,
+    "allowed_palette": true
+  },
+  "elder-side": {
+    "size": [
+      96,
+      128
+    ],
+    "bbox": [
+      29,
+      33,
+      67,
+      125
+    ],
+    "occupied_height": 92,
+    "lowest_row": 124,
+    "binary_alpha": true,
+    "transparent_rgb_zero": true,
+    "colors": 16,
+    "allowed_palette": true
+  },
+  "innkeeper-front": {
+    "size": [
+      96,
+      128
+    ],
+    "bbox": [
+      17,
+      33,
+      79,
+      125
+    ],
+    "occupied_height": 92,
+    "lowest_row": 124,
+    "binary_alpha": true,
+    "transparent_rgb_zero": true,
+    "colors": 16,
+    "allowed_palette": true
+  },
+  "elder-front": {
+    "size": [
+      96,
+      128
+    ],
+    "bbox": [
+      26,
+      33,
+      69,
+      125
+    ],
+    "occupied_height": 92,
+    "lowest_row": 124,
+    "binary_alpha": true,
+    "transparent_rgb_zero": true,
+    "colors": 17,
+    "allowed_palette": true
+  },
+  "innkeeper-color-union": 16,
+  "elder-color-union": 17
+}

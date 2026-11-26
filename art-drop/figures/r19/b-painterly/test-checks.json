@@ -1,0 +1,19 @@
+{
+  "background_rgb": [
+    226,
+    222,
+    211
+  ],
+  "strip_dimensions": [
+    2880,
+    420
+  ],
+  "colour_union_by_character": {
+    "innkeeper": 19,
+    "elder": 25
+  },
+  "allowed_palette_sizes": {
+    "innkeeper": 21,
+    "elder": 25
+  }
+}

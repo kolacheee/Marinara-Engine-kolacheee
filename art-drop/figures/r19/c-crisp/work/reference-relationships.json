@@ -1,0 +1,20 @@
+{
+  "style_references": ["STYLE-SHEET.png", "STYLE.md"],
+  "comparison_inputs": ["ref-sprites/wren-front.png", "ref-sprites/wren-side.png", "ref-sprites/hadrik-front.png", "ref-sprites/hadrik-side.png", "ref-sprites/noble-front.png", "ref-sprites/noble-side.png"],
+  "image_calls": {
+    "innkeeper-side-v1": ["STYLE-SHEET.png"],
+    "elder-side-v1": ["STYLE-SHEET.png"],
+    "innkeeper-side-v2": ["out/test-big/innkeeper-side-v1.png", "STYLE-SHEET.png"],
+    "elder-side-v2": ["out/test-big/elder-side-v1.png", "STYLE-SHEET.png"],
+    "innkeeper-front-v1": ["out/test-big/innkeeper-side-v2.png", "STYLE-SHEET.png"],
+    "elder-side-v3": ["out/test-big/elder-side-v2.png", "STYLE-SHEET.png"],
+    "elder-front-v1": ["out/test-big/elder-side-v3.png", "STYLE-SHEET.png"],
+    "elder-front-v2": ["out/test-big/elder-side-v3.png", "out/test-big/elder-front-v1.png", "STYLE-SHEET.png"]
+  },
+  "accepted": {
+    "test-innkeeper-front.png": "test-big/innkeeper-front-v1.png",
+    "test-innkeeper-side.png": "test-big/innkeeper-side-v2.png",
+    "test-elder-front.png": "test-big/elder-front-v2.png",
+    "test-elder-side.png": "test-big/elder-side-v3.png"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "innkeeper-front": {
+    "opaque_pixels": 3014,
+    "four_connected_components": [
+      3014
+    ],
+    "head_axis_x": 47.5,
+    "sha256": "7357c04e49fc2728f578fbc8059778d655c244402dc498378679e8ebd6bd34d5",
+    "colors": 21
+  },
+  "innkeeper-side": {
+    "opaque_pixels": 2302,
+    "four_connected_components": [
+      2302
+    ],
+    "head_axis_x": 47.5,
+    "sha256": "75634a6adec3f19308799a5f9d0b328d227dfcf7d5cfbf211b75625ce9f2254e",
+    "colors": 20
+  },
+  "elder-front": {
+    "opaque_pixels": 2707,
+    "four_connected_components": [
+      2707
+    ],
+    "head_axis_x": 45.5,
+    "sha256": "e04c8d663cc8224a0f6338f1a2d6eb4f3425a316117643feaec84f3a314b3f68",
+    "colors": 12
+  },
+  "elder-side": {
+    "opaque_pixels": 2452,
+    "four_connected_components": [
+      2452
+    ],
+    "head_axis_x": 48.0,
+    "sha256": "dcdb7c71e523d1eb54e1b74ed0abeef15594c62ac77340a5de18c0a579b5b8b1",
+    "colors": 12
+  }
+}

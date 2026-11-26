@@ -1,0 +1,35 @@
+{
+  "file": "test-innkeeper-side.png",
+  "dimensions": [
+    96,
+    128
+  ],
+  "alpha": [
+    0,
+    255
+  ],
+  "bounds": [
+    26,
+    33,
+    69,
+    125
+  ],
+  "visible_height": 92,
+  "baseline": 124,
+  "colours": 18,
+  "palette_ok": true,
+  "transparent_black": true,
+  "source": "out/test-big/innkeeper-side-v2.png",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "source_bounds": [
+    373,
+    149,
+    837,
+    1145
+  ],
+  "resized_width": 43,
+  "moss_gate_pixels": 163
+}

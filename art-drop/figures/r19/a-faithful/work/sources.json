@@ -1,0 +1,6 @@
+{
+  "innkeeper-side": ["innkeeper-side-v2.png", 0, 1],
+  "elder-side": ["side-masters-v1.png", 1, 2],
+  "innkeeper-front": ["fronts-v2.png", 0, 2],
+  "elder-front": ["elder-front-v3.png", 0, 1]
+}

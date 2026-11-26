@@ -1,0 +1,54 @@
+{
+  "ramps": {
+    "outline": [
+      "302321",
+      "49332A"
+    ],
+    "leather_wood_brown_hair": [
+      "443027",
+      "68432D",
+      "93603A",
+      "B7804B"
+    ],
+    "moss": [
+      "383D28",
+      "515735",
+      "737847",
+      "969B61"
+    ],
+    "skin": [
+      "9A6343",
+      "C18B5C",
+      "E5B47C",
+      "F2CF9B"
+    ],
+    "linen_white_hair": [
+      "786349",
+      "A38B68",
+      "C7B28B",
+      "E8D5AF"
+    ]
+  },
+  "allowed": [
+    "302321",
+    "49332A",
+    "443027",
+    "68432D",
+    "93603A",
+    "B7804B",
+    "383D28",
+    "515735",
+    "737847",
+    "969B61",
+    "9A6343",
+    "C18B5C",
+    "E5B47C",
+    "F2CF9B",
+    "786349",
+    "A38B68",
+    "C7B28B",
+    "E8D5AF"
+  ],
+  "order": "ramp insertion order; ties resolve to first entry",
+  "olive_exception": "Not applied: Wren-only exception; no Wren sprites are reduced here."
+}

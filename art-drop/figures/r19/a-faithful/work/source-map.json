@@ -1,0 +1,50 @@
+{
+  "innkeeper-side": {
+    "source": "innkeeper-side-v2.png",
+    "column": 0,
+    "count": 1,
+    "crop_bbox": [
+      540,
+      169,
+      980,
+      1093
+    ],
+    "reduced_width": 44
+  },
+  "elder-side": {
+    "source": "side-masters-v1.png",
+    "column": 1,
+    "count": 2,
+    "crop_bbox": [
+      207,
+      126,
+      477,
+      774
+    ],
+    "reduced_width": 38
+  },
+  "innkeeper-front": {
+    "source": "fronts-v2.png",
+    "column": 0,
+    "count": 2,
+    "crop_bbox": [
+      123,
+      112,
+      668,
+      923
+    ],
+    "reduced_width": 62
+  },
+  "elder-front": {
+    "source": "elder-front-v3.png",
+    "column": 0,
+    "count": 1,
+    "crop_bbox": [
+      269,
+      139,
+      813,
+      1304
+    ],
+    "reduced_width": 43
+  }
+}

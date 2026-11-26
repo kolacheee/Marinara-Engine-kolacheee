@@ -1,0 +1,35 @@
+{
+  "file": "test-elder-side.png",
+  "dimensions": [
+    96,
+    128
+  ],
+  "alpha": [
+    0,
+    255
+  ],
+  "bounds": [
+    29,
+    33,
+    67,
+    125
+  ],
+  "visible_height": 92,
+  "baseline": 124,
+  "colours": 24,
+  "palette_ok": true,
+  "transparent_black": true,
+  "source": "out/test-big/elder-side-v4.png",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "source_bounds": [
+    387,
+    137,
+    799,
+    1144
+  ],
+  "resized_width": 38,
+  "moss_gate_pixels": 594
+}
