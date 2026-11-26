@@ -1,0 +1,110 @@
+{
+  "sprites": [
+    {
+      "file": "test-innkeeper-front.png",
+      "size": [
+        96,
+        128
+      ],
+      "bounds_inclusive": [
+        20,
+        33,
+        77,
+        124
+      ],
+      "occupied_rows": 92,
+      "alpha": [
+        0,
+        255
+      ],
+      "colors": 22,
+      "palette_ok": true,
+      "transparent_rgb_zero": true,
+      "pass": true
+    },
+    {
+      "file": "test-innkeeper-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "bounds_inclusive": [
+        28,
+        33,
+        81,
+        124
+      ],
+      "occupied_rows": 92,
+      "alpha": [
+        0,
+        255
+      ],
+      "colors": 22,
+      "palette_ok": true,
+      "transparent_rgb_zero": true,
+      "pass": true
+    },
+    {
+      "file": "test-elder-front.png",
+      "size": [
+        96,
+        128
+      ],
+      "bounds_inclusive": [
+        29,
+        33,
+        68,
+        124
+      ],
+      "occupied_rows": 92,
+      "alpha": [
+        0,
+        255
+      ],
+      "colors": 23,
+      "palette_ok": true,
+      "transparent_rgb_zero": true,
+      "pass": true
+    },
+    {
+      "file": "test-elder-side.png",
+      "size": [
+        96,
+        128
+      ],
+      "bounds_inclusive": [
+        28,
+        33,
+        70,
+        124
+      ],
+      "occupied_rows": 92,
+      "alpha": [
+        0,
+        255
+      ],
+      "colors": 22,
+      "palette_ok": true,
+      "transparent_rgb_zero": true,
+      "pass": true
+    }
+  ],
+  "test_color_union": 24,
+  "reference_and_test_color_union": 24,
+  "strip_size": [
+    2880,
+    448
+  ],
+  "strip_scale": 3,
+  "strip_background_rgb": [
+    232,
+    229,
+    220
+  ],
+  "accepted_originals": {
+    "innkeeper-front": "innkeeper-front-v1.png",
+    "innkeeper-side": "innkeeper-side-v3.png",
+    "elder-front": "elder-front-v2.png",
+    "elder-side": "elder-side-v1.png"
+  }
+}
