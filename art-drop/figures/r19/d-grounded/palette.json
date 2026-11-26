@@ -1,0 +1,95 @@
+{
+  "tone_order": [
+    "edge",
+    "shadow",
+    "body",
+    "light"
+  ],
+  "ramps": {
+    "charcoal": [
+      "#252321",
+      "#3C3530",
+      "#534A40",
+      "#706557"
+    ],
+    "leather": [
+      "#36291F",
+      "#513A2B",
+      "#735039",
+      "#96734D"
+    ],
+    "moss": [
+      "#303A2B",
+      "#4A5537",
+      "#697448",
+      "#929B64"
+    ],
+    "fair_skin": [
+      "#785343",
+      "#AC7F62",
+      "#D2A781",
+      "#EBC8A1"
+    ],
+    "deep_skin": [
+      "#211C1C",
+      "#382923",
+      "#50372D",
+      "#79553F"
+    ],
+    "auburn": [
+      "#3F2925",
+      "#643A2C",
+      "#8B5237",
+      "#B17A50"
+    ],
+    "gold": [
+      "#57432C",
+      "#8A693B",
+      "#B79351",
+      "#D5B677"
+    ],
+    "linen": [
+      "#655D49",
+      "#93856B",
+      "#C1B18F",
+      "#E4D3AD"
+    ],
+    "navy": [
+      "#202736",
+      "#303E55",
+      "#485A73",
+      "#6B7D90"
+    ],
+    "steel": [
+      "#343B40",
+      "#5D676B",
+      "#929B9B",
+      "#C7CBC2"
+    ]
+  },
+  "character_ramps": {
+    "wren": [
+      "charcoal",
+      "leather",
+      "moss",
+      "fair_skin",
+      "auburn",
+      "gold",
+      "linen"
+    ],
+    "hadrik": [
+      "charcoal",
+      "leather",
+      "deep_skin",
+      "gold",
+      "linen",
+      "steel"
+    ],
+    "noble": [
+      "charcoal",
+      "fair_skin",
+      "gold",
+      "navy"
+    ]
+  }
+}
