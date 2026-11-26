@@ -37,5 +37,17 @@ def draw(w, views, path):
         for i,p in k.items(): d.ellipse([p[0]-5,p[1]-5,p[0]+5,p[1]+5], fill=COLORS[i])
     img.save(path)
 xs = [150, 450, 750, 1050, 1350, 1650]
+def scaled(k):
+    """Version B (r11b): smaller head (~30% of height). Remap y: head 0-170 -> 0-135, torso/legs 170-440 -> 135-440."""
+    out = {}
+    for i, (x, y) in k.items():
+        v = y - (FEET - FIG)
+        nv = v * 135 / 170 if v <= 170 else 135 + (v - 170) * (440 - 135) / (440 - 170)
+        if i in (14, 15, 16, 17, 0):
+            cx = k[1][0]; x = cx + (x - cx) * 0.75
+        out[i] = (x, FEET - FIG + nv)
+    return out
 draw(1792, [side(xs[0])] + [side(xs[i+1], i) for i in range(4)] + [front_back(xs[5], False)], "chibi-sheet-side-walk-back-1792x640.png")
 draw(1024, [front_back(512, True)], "chibi-single-front-1024x640.png")
+
+draw(1792, [scaled(side(xs[0]))] + [scaled(side(xs[i+1], i)) for i in range(4)] + [scaled(front_back(xs[5], False))], "chibiB-sheet-side-walk-back-1792x640.png")

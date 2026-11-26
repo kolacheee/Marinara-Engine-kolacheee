@@ -13,3 +13,12 @@ Prompt (both bodies), round 9b settings otherwise (LoRA 1.0, CFG 5, ControlNet u
 Seeds 11, 23, 37, 41, 53, 67, 79, 97. 2 bodies x 8 seeds x 2 = 32 images.
 
 Output art-drop/figures/r11/run/: sprites/ 8x, per body a 4x sheet (one row per seed: front | side | back | walk 0-3), gif/, raw/ for the 3 best seeds, log.md with heights, head-to-height ratio, same-body check, feet line.
+
+## Round 11b (after run 1: heads came out as huge bald balloons, child-like, ~40% of height and twice shoulder width; fronts worse)
+
+- Skeleton: chibiB-sheet-side-walk-back-1792x640.png (head ~30% of height, narrower ear spread). Sheet only; NO front generation (I build the front from each seed's back view, as in r9).
+- Positive: "score_9, score_8_up, score_7_up, plain flat grey background, chibi, 3 heads tall, young adult {man|woman}, slim, full body, feet visible, character sheet, same character, side view, walking, back view, short cropped dark hair, plain grey tunic shirt, plain grey trousers, simple brown shoes, no accessories, medium brown skin, flat colors, simple shading"
+- Negative: round 11 negatives plus "baby, toddler, kid, oversized head, balloon head, bald, shorts, pink skin".
+- Seeds 11, 23, 37, 41, 53, 67, 79, 97; 2 bodies -> 16 images, no IP-Adapter.
+- Cut: keep the whole figure (merge the head and body blobs per cell, e.g. union of components inside each skeleton's column), not just the largest blob.
+Output art-drop/figures/r11/run2/ in the same layout (front column empty), with head-height ratio and head-width / shoulder-width ratio per cell in log.md.
