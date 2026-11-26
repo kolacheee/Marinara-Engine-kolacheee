@@ -51,3 +51,4 @@ draw(1792, [side(xs[0])] + [side(xs[i+1], i) for i in range(4)] + [front_back(xs
 draw(1024, [front_back(512, True)], "chibi-single-front-1024x640.png")
 
 draw(1792, [scaled(side(xs[0]))] + [scaled(side(xs[i+1], i)) for i in range(4)] + [scaled(front_back(xs[5], False))], "chibiB-sheet-side-walk-back-1792x640.png")
+draw(1024, [scaled(front_back(512, True))], "chibiB-single-front-1024x640.png")

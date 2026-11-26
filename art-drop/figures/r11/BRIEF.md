@@ -22,3 +22,9 @@ Output art-drop/figures/r11/run/: sprites/ 8x, per body a 4x sheet (one row per 
 - Seeds 11, 23, 37, 41, 53, 67, 79, 97; 2 bodies -> 16 images, no IP-Adapter.
 - Cut: keep the whole figure (merge the head and body blobs per cell, e.g. union of components inside each skeleton's column), not just the largest blob.
 Output art-drop/figures/r11/run2/ in the same layout (front column empty), with head-height ratio and head-width / shoulder-width ratio per cell in log.md.
+
+## Round 11c: fronts for the best 11b sets
+
+Seeds man 23, 67, 41 and woman 67, 23, 53. Skeleton chibiB-single-front-1024x640.png. Same 11b prompt but replace the sheet tags with "solo, front view, facing the viewer, face visible, looking at viewer"; negative add "from behind, back view, multiple views".
+Two variants per seed: (a) text + ControlNet only; (b) plus IP-Adapter setting C (0.40 style transfer) with reference = that seed's 11b sheet raw (this round family, fresh). 6 seeds x 2 = 12 images.
+Output art-drop/figures/r11/run3/: sprites at 8x, and per seed a 4x row front(a) | front(b) | the 11b back cell, plus head-height ratio vs the 11b side view.
