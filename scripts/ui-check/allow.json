@@ -7,11 +7,12 @@
     "offscreen": [],
     "picture": [],
     "stretched": [".ov-card__art", ".ov-rail__portrait-empty"],
-    "column-sideways": [".mari-suggestion-chips"]
+    "column-sideways": [".mari-suggestion-chips", ".ov-settings__tabs"]
   },
   "reasons": {
     ".ov-card__art": "stretched: a card picture keeps the card shape even when it is the empty New character tile",
     ".ov-rail__portrait-empty": "stretched: the empty portrait keeps the size of the picture it stands in for",
-    ".mari-suggestion-chips": "column-sideways: on phones Mari's suggestion chips are one row that scrolls sideways on purpose (with edge fades)"
+    ".mari-suggestion-chips": "column-sideways: on phones Mari's suggestion chips are one row that scrolls sideways on purpose (with edge fades)",
+    ".ov-settings__tabs": "column-sideways: the Settings tab row scrolls sideways on purpose when its tabs don't fit (WebKit reports it as scrolling both ways)"
   }
 }
