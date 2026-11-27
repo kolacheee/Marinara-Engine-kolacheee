@@ -1,0 +1,18 @@
+{
+ "pitch_x": 10.5,
+ "pitch_y": 10.5,
+ "art_pixel_size": 10.5,
+ "grid_size": [
+  169,
+  84
+ ],
+ "figures": 5,
+ "figure_heights_art_px": [
+  59,
+  59,
+  59,
+  59,
+  63
+ ],
+ "colours": 3670
+}
