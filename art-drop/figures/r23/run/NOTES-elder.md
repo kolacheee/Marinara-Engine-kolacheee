@@ -1,40 +1,37 @@
-# Enna Kes — elder, Round 23
+# Enna Kes — Round 23, review redraw 2
 
-Delivered all 15 source drawings and 15 reduced sprites, the four-row sheet, three walking GIFs, the front face crop, and the comparison against the three reference fronts. This is a complete file set, but it is **not an exact visual match to every rule**; the remaining limitations are listed below.
+Replaced all 15 big drawings and sprites, the four-row sheet, all three GIFs, front face crop and front-versus-sheet comparison. Added `elder-heads-vs-sheet.png`: every final head at 6× beside Wren, Hadrik and noble, using rows 33–63 inclusive.
 
-## Production and checks
+## What changed
 
-- The right-facing standing side was drawn first. Every subsequent request attached this run's side image; every request attached `style-ref/STYLE-SHEET.png` with the required style-only instruction. No reference character was used as Enna's design.
-- There were 26 image-tool requests: 15 final views and 11 replacement attempts. The final unmodified 1024 × 1536 tool outputs are in `big/`. Earlier versions, scripts, semantic-mask audits, prompt records and check results are in `../scratch/`.
-- `../scratch/prompts.json` records the complete prompt set. The built-in image tool drew every figure. Python performed background keying, box reduction, palette mapping, limited skin/hair cleanup, assembly and checks. No facial feature, body part or animation pose was drawn or transplanted with code.
-- All sprites are 96 × 128 RGBA with binary alpha, crown at row 33 and lowest occupied sole at row 124. Every figure occupies 92 rows and its complete silhouette is horizontally centered, within half a pixel.
-- The complete sprite set uses exactly 24 opaque colours, all from auburn, charcoal, steel, leather, linen and olive. No additional ramp was introduced. Skin and hair use separate semantic masks; dark facial features remain outside the skin-tone mapping. Masks combine inspected source regions and colour tests, so their accuracy is visual rather than formally guaranteed at every boundary pixel.
-- Auburn palette mapping uses the same four source-value bands across all views to avoid unstable shade changes. This is colour quantization, not cloth smoothing. Only isolated interior skin/hair pixels receive the specified neighbourhood cleanup; eye, brow, mouth and contour regions are protected.
-- `elder-sheet.png` is 1152 × 1536, with 3× nearest-neighbour sprites on #4a4642. Rows are standing front/side/back, walk-side 0–3, walk-front 0–3, walk-back 0–3.
-- All three GIFs contain four distinct 288 × 384 frames at 160 ms each, looping indefinitely. They use a solid #4a4642 preview background. Individual sprite PNGs retain transparency.
-- `elder-face.png` is a 6× crop of front rows 33–63. `elder-vs-sheet.png` places the front beside wren, hadrik and noble at 3×. The standing front/side/back head comparison at 6× is in `../scratch/head-comparison.png`.
-- Every tool drawing was visually inspected. The final sheet, face crop and reference comparison were opened at their full exported size. Every reduced pose and head was examined in enlarged inspection sheets; all decoded GIF frames were inspected and their timing checked programmatically. This was frame-by-frame review, not a claim of watching real-time playback.
+- Used the built-in image tool for 17 edit requests: the standing side first, the other 14 views, then additional face passes for walk-front 2 and 3 to separate the nose and mouth. Every request attached `style-ref/STYLE-SHEET.png` with the required STYLE-ONLY wording. Subsequent requests also attached the revised side. The only artwork references were the local style sheet and this character's images.
+- Warmed face, ears, neck and hands. Review 2 overrides the former olive swatches: skin now uses exactly three warm tones, shadow **#936044**, body **#BB8966**, light **#D7AD87**. This replaces the old olive ramp; it does not add a second skin family. Auburn, charcoal, steel, leather and linen remain the original ramps. The final set uses **23 shared opaque colours**.
+- Preserved the image tool's drawn dark brows, eyes, short mouths and light eye catches through area-coverage material masks. No facial features or pose geometry were drawn with code. Skin/hair masks were corrected after an audit caught warm grey hair highlights being mistaken for skin.
+- Applied the isolated-pixel 3×3 same-mask majority cleanup to skin and hair, protecting facial features and material boundaries. The final reduction changed 30 isolated pixels across the 15 drawings; no cloth smoothing was applied.
+- Composited the reduced head/hand edit regions onto the supplied sprites to retain the existing body, costume and poses. Pixels outside the saved edit regions are exactly identical to the supplied sprites. The edit regions include a small amount of adjoining collar/cuff at their boundaries. No head was reused across views.
+- `big/` contains the final unmodified 1024×1536 image-tool outputs on magenta. The tool introduced slight incidental cloth/value changes in these raw originals; restoring the supplied body outside the edit regions prevents those changes from propagating into the final sprites and previews.
 
-## Redraws
+## Review and validation
 
-1. The initial standing side and front fans were too spread. Both were redrawn as a closed parallel-rib bundle.
-2. The standing side received one face-pass redraw for a larger head, simpler skin planes and clearer eye/mouth.
-3. The standing front received two face-pass redraws. The first reduction had crowded cheek marks and weak eyes; the second increased head width and strengthened the mouth and eyes.
-4. Walk-front 1, 2 and 3 each received a face-pass redraw for stronger mouths and cleaner broad planes. Walk-front 1 also had noisy coat shading.
-5. Walk-back 2 received three redraw attempts. The initial shading broke into noisy clusters after quantization. Two replacements changed the coat values too much; the final attempt used the standing rear drawing as the edit target to restore its folds and palette relationships.
+Opened the final 6× comparison covering all 15 heads beside the three reference faces, the full-body 3× comparison, the sheet, and decoded four-frame strips for all three GIFs. The warmer skin no longer has the previous grey-green cast. All ten face-bearing views retain dark eyes with visible light catches, separate brows and readable mouth marks. Rear views contain no face. The front remains clearly distinct from the reference characters in hair, build, costume and silhouette. The face planes are cleaner and the eyes hold up better beside the sheet than the previous set.
 
-## Honest weaknesses and rules not fully met
+Mechanical checks pass:
 
-- The faces remain softer and less crisply constructed than the reference faces. Both front eyes survive, but their tiny catches are faint or lost in several reduced views. I cannot claim that every eye is an exact clean 2×2–3 px cluster with a clearly retained catch. Mouths survive unevenly, with walk-front 1 and 3 still weaker than the standing front. Repeated image-tool face passes improved this without fully solving it.
-- Simplifying the face for readability reduced some of the original age cues. Enna can read as younger than 76, particularly in the front walking views. The profile is more convincing than the front.
-- The upper-back stoop is visible but milder than the requested **deep** stoop. The coat does retain the rounded cocoon and contracted hem; its padded bulk also hides much of the spare limb anatomy.
-- The cropped grey hair has substantial blocks, but the exact three stepped ear locks are not equally clear in every view. Some crowns are rounder than the requested flat crop.
-- The source hand drawings contain more finger separations than requested, and some reduced mitten masses are approximately 6–7 pixels across rather than strictly 3–5.
-- The closed fan becomes a narrow brown mark at sprite size, especially in profile, and can read as a small stick bundle rather than unmistakably as a folding fan. It remains in the anatomical left hand; its occlusion in rear views is intentional.
-- The outfit adds layered overlap, bound edges, three toggles, a waist tab and patch pocket. Its final contrast is more subdued and its trim less finely resolved than the style sheet. Local contours are not uniformly one pixel after area reduction, and some isolated contour/crease pixels remain.
-- Independent source drawings produce small differences in head size, hair highlights, coat folds, pocket position and hand scale between frames. These can create visible shimmer. Side contact frames 0 and 2 have similar boot silhouettes, so their opposite-leg assignment is less obvious than ideal under the long skirt. Passing strides are restrained but not a rigorously constructed animation cycle.
-- Exact style parity with the reference sheet was not achieved despite redraws. The design is distinct from all three reference characters, but the reference faces and material separation remain more polished.
+- 15 sprites, 96×128 RGBA; binary alpha; crown row 33, lowest occupied sole row 124.
+- 23 shared colours, including only the three replacement skin tones; no old olive swatches.
+- Three GIFs, each four distinct 288×384 frames, 160 ms per frame, indefinite loop.
+- Sheet 1152×1536, 3× nearest-neighbour on #4a4642, with the original row/view ordering.
+- Front face crop 6×; front versus references 3×; all-head comparison 6×.
+- All pixels outside head/hand edit regions match the supplied sprites exactly.
 
-## Scope disclosure
+## Remaining weaknesses
 
-No other artwork, existing sprites outside `style-ref/`, other Downloads folders or repositories were inspected. All project artifacts and intermediates were written here. One required installed image-generation instruction file was read outside this folder because a higher-priority runtime instruction required it; this is an exception to the requested filesystem-reading restriction. The image tool also automatically retained originals in its own default storage. The files delivered here were saved from the returned image bytes, without opening that external storage.
+The original restrained stoop, hand size, small closed fan and walk poses were retained as requested. The fan still reads as a narrow wooden bundle at native size. Hands retain some source finger divisions. Hair highlights, head proportions and facial expressions vary slightly through the walk cycle. The two later front-walk faces have simpler nose/age planes than the standing front; the age reads primarily through the heavy brow, angular cheek/chin and grey crop. Individual eye and brow clusters are not identical across frames, and some brows merge visually with the upper eye edge. This is not a claim of exact pixel-for-pixel stylistic equivalence with the three reference faces.
+
+## Reproduction and provenance
+
+- Full final prompt set: `../scratch/review2/prompts.json` (17 requests, built-in tool; no API/CLI generation).
+- Reduction and compositing: `../scratch/process.py`; assembly: `../scratch/assemble.py`; all-head comparison: `../scratch/review2/face_audit.py`.
+- Checks: `../scratch/checks.json`, `../scratch/reduction-report.json`, `../scratch/review2/body-preservation.json`.
+- Original supplied big drawings/sprites and notes are backed up under `../scratch/review2/`. Second-pass alternatives are retained there too.
+- All authored files and processing stayed in this folder. The installed imagegen instruction file was read as required by the runtime; the image tool also saved its automatic originals in its own storage, from which the returned files were copied into `out/big/`. No external artwork or other character folder was opened.
