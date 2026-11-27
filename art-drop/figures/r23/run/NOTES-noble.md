@@ -1,50 +1,50 @@
-# Belis Dorn — Round 23 face and finish revision
+# Belis Dorn — Review redraw 2
 
-## Replaced deliverables
+Replaced all 15 full-size originals and sprites, the sheet, three GIFs, face crop, full-body style comparison and all-head comparison. This revision follows the final **Review redraw 2** in CHARACTER.md and the replacement face/finish rules in STYLE-RULES.md.
 
-All 15 views have newly drawn heads. `big/` contains the 15 selected full-figure image-tool originals on magenta; `sprites/` contains the 15 transparent 96 × 128 exports. The sheet, three walking GIFs, front face crop and full-body style comparison have all been replaced.
+## Design changes
 
-- `noble-sheet.png`: 1152 × 1536, 3× nearest-neighbour, background #4A4642. Rows: standing front/side/back, walkside0–3, walkfront0–3, walkback0–3.
-- `noble-walkside.gif`, `noble-walkfront.gif`, `noble-walkback.gif`: 288 × 384, four frames each, 160 ms per frame, looping.
-- `noble-face.png`: front face at 6×, rows 33–60 inclusive.
-- `noble-vs-sheet.png`: front beside Wren, Hadrik and the reference noble, all at 3×.
-- `noble-heads-6x.png`: **every one of the 15 heads beside all three reference faces**, at exact 6×. Each crop covers rows 33–63 inclusive. Order matches the sheet. This includes rear heads for hair and finish comparison; no faces were added to the rear views.
+Belis remains the stout, olive-skinned, clean-shaven 43-year-old man with auburn curls, broad forehead, long nose and rounded double chin. Kept the existing body construction, knee-length bell surcoat, full linen sleeves, narrow trousers, ankle boots, folded petition in the anatomical left hand, and each view's pose.
 
-## Design and references
+The review required full-view costume edits: deep wine fabric, gold shoulder/front/double-hem edging, cream fur standing collar, gold chain of office with steel brooch, and a gold signet ring on the empty right hand. The petition remains at the lower chest; it is hidden from the rear. No crown, cape or face jewellery was added. Back views have no facial features or front-facing chain/brooch.
 
-Read both current instruction files, including their final additions. CHARACTER.md contained no separate later head redesign. Belis remains the specified olive-skinned, clean-shaven, stout 43-year-old man with a broad forehead, level brows, long nose, double chin and auburn curls. The earlier ambiguous “make her clearly wealthy” sentence continues to mean wealthy presentation, preserving the stated person and this set's established costume.
+## Drawing and face review
 
-Preserved the charcoal bell-shaped surcoat, linen sleeves and piping, double hem, steel clasp and wrist bracelet, leather boots and folded petition in the anatomical left hand. No new costume or prop was introduced.
+Used the built-in image tool, with STYLE-SHEET.png attached as **STYLE ONLY to every request**, including corrections. Other references were exclusively this character's own images. Side was revised first to establish the costume. All 15 views received individual image-tool edits.
 
-The built-in image tool was used for all redraws. `style-ref/STYLE-SHEET.png` was attached to **every** request with the required style-only instruction. Other references were solely this character's existing images and the revised heads. Side was revised first, followed by front/back and the walk frames. The reference characters were not used as identity templates.
+There were 22 requests: 15 initial edits, a standing-front face correction, two corrections to restore walkside2's original short step, two rear-view corrections rejecting misplaced petitions, and two walkfront3 face corrections for brow and mouth visibility. Rejected/intermediate versions are retained under `../scratch/review2/`.
 
-The full prompt set is saved in `../scratch/face-redo/prompts.json`. All authored scripts, backups, comparisons and exports are inside this folder. The image tool automatically saved its returned originals in its external cache; those returned files were copied here. No unrelated reference artwork was used.
+Inspected every selected head at exact 6× beside Wren, Hadrik and the reference noble, using rows 33–63 inclusive. Checked the full-body front at 3× beside all three reference fronts. The final heads have distinct eyes with light catches, visible brows, nose planes and short mouths, with smooth skin and substantial hair clusters. The wealth cues survive at sprite scale and the person remains distinct from the three reference characters.
 
-## Face redraws and reduction
+## Reduction and cleanup
 
-Nineteen image-tool requests produced the fifteen selected originals: one initial redraw per view, then four targeted face corrections for walkside1, walkside3, walkfront2 and walkfront3. These corrections enlarged source catchlights and clarified short mouth lines after the first reduced-size review. Rejected versions remain in `../scratch/face-redo/`; the previous finished set is backed up under `../scratch/face-redo/originals/`.
+`../scratch/review2/reduce.py` keys magenta, crops the full figure, BOX/area-reduces to 92 occupied rows, uses the previous view's width, centres the result and places it at row 33. Alpha is binary. Skin is spatially masked and restricted to the olive ramp; source eye/brow ink and small eye catches are separately classified. Broad highlights are excluded from the catchlight mask. No facial features were drawn with code.
 
-The heads now use larger eyes with light catches, visible brows, light/shadow nose planes, mouth lines and broad skin planes. The rear hair was redrawn into substantial connected masses instead of many small highlighted rings.
+After palette snapping, the requested same-mask 3×3 modal cleanup replaced **306 isolated skin/hair pixels**. A pixel is eligible only when it differs from every direct neighbour. Facial feature areas, catches, material-edge colours and silhouette outlines are protected. The cleanup does not smooth clothing.
 
-Processing is reproducible with `../scratch/face-redo/reduce.py`. It keys magenta, crops the figure and uses BOX/area reduction aligned to each existing sprite's width. The new head occupies rows 33–54; the existing body export is retained below it. Skin and hair use separate material masks and their specified ramps. Source dark marks and small source catchlight regions are preserved as separate material masks before snapping; no eye, brow, nose or mouth was painted in code. Warm catchlights required a connected-region mask so they would survive without accidentally classifying the larger forehead, nose or collar highlights as eye lights.
+Eight ramps provide a 32-colour ceiling; **31 opaque colours are actually used across the entire set**: charcoal, leather, auburn, linen, steel, olive, gold, and one new wine ramp:
 
-After snapping, skin and hair receive the requested same-mask 3×3 modal cleanup only when a pixel differs from all four direct neighbours. Facial marks, catchlights, mouth/nose areas, darkest material contours and silhouette edges are protected. The final pass replaced **283 isolated shading pixels** across the set, including existing hand skin. Clothing, equipment and pose pixels below the head were preserved.
+| Role | Wine |
+| --- | --- |
+| Edge | #33232D |
+| Shadow | #562D40 |
+| Body | #7B4055 |
+| Light | #A26776 |
 
-## Review and verification
+## Deliverables and verification
 
-Inspected all 15 heads at 6× beside the three reference crops, including the four corrected heads after reduction. Also inspected the final full-body comparison, complete sheet and every decoded GIF frame. The selected heads are substantially smoother than the previous set, with visible eye catches in every face-bearing view and no facial features in back views.
+- `big/noble-<view>.png`: 15 selected full-body image-tool originals on magenta, byte-identical to the selected returned images.
+- `sprites/noble-<view>.png`: 15 RGBA images, 96×128, crown row 33, lowest sole row 124, centred silhouettes and binary alpha.
+- `noble-sheet.png`: 1152×1536, 3× on #4A4642; standing front/side/back, then side/front/back walk rows.
+- `noble-walkside.gif`, `noble-walkfront.gif`, `noble-walkback.gif`: 288×384, four frames, 160 ms/frame, looping. Every decoded frame was checked against its corresponding sprite and matches exactly.
+- `noble-face.png`: standing-front crop, rows 33–60 inclusive, at 6×.
+- `noble-vs-sheet.png`: front beside all three reference fronts at 3×.
+- `noble-heads-6x.png`: all 15 heads, each beside all three reference face crops, at 6×.
 
-`../scratch/face-redo/verification.json` records the final checks:
-
-- Fifteen 96 × 128 RGBA sprites; occupied rows 33–124; binary alpha.
-- Twenty-three opaque colours across all views, entirely within charcoal, linen, auburn, leather, steel and olive ramps. No additional ramp, pure black or pure white in the sprites.
-- All non-skin pixels below the head are unchanged from the previous sprite set. All body/pose alpha below the head is unchanged. Changes there are exclusively skin despeckling.
-- All fifteen `big/` files are byte-identical to the selected returned originals.
-- Every decoded GIF frame matches its corresponding enlarged sprite exactly, at 160 ms.
-- Sheet, face crop, full-body comparison and all-head comparison dimensions pass.
+Reproduction and evidence are in `../scratch/review2/`: `reduce.py`, `assemble.py`, `verify.py`, `verification.json`, `report.json`, `palette.json`, `prompts.json`, and `final-mouth-prompt.txt`. The previous complete out/ is preserved in `before/`. Authored working files stay in this character folder; the image tool's automatic cache originals were copied into it.
 
 ## Honest limitations
 
-The rendering is cleaner and closer to the reference's broad clusters, but it is not an exact reproduction of its hand-placed craft. Brow thickness, eye/catchlight footprint, nose length and mouth contrast vary slightly with reduction. Some catches cover two adjacent pixels. Hair resolves into broad curls, but not exactly four separately countable locks from every angle; the independent drawings still have small head-width and curl-shape differences.
+The reference's hand-placed craft is not reproduced exactly. Independently edited heads retain small differences in width, curl shape, cheek lighting, brow weight and mouth contrast; this produces some animation flicker. One profile catch occupies two vertically adjacent pixels. Curls form substantial masses but are not exactly four separately countable locks in every view.
 
-Existing sleeve/hem/body flicker and the original walk mechanics remain because this revision preserves those bodies and poses. Wealth still reads as restrained tailored court dress. The side build remains less stout than the front, and some hands remain larger than the initial 3–5 px target. The raw full-figure tool originals can have tiny incidental rendering differences outside the head; the final sprites deliberately retain the existing body pixels to avoid propagating those differences.
+The chain, rings and fur compress into small clusters at 92-pixel figure height; the fur can read as cream/gold collar trim. Some cloth-plane boundaries retain isolated reduction pixels. Hands remain larger than the initial 3–5-pixel target in some views. The original side build and walk mechanics remain, including the slightly extended raised foot in walkside3. Full-view edits preserve pose and costume construction, but are not pixel-identical outside the requested changes.
