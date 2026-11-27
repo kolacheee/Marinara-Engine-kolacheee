@@ -1,0 +1,11 @@
+# Five roadside townsfolk
+
+**Tavren Kettlewick — traveling merchant.** Tavren is a wiry adult with warm brown skin and a large, swept copper forelock. A short petrol-blue jacket, ochre trousers, and a long vermilion scarf frame an oversized moss-green pack with a rolled cream blanket on top. One hand hooks around the pack strap; his small boots and forward lean suggest someone who can walk all day. The pack and hanging scarf form his bold, slightly heroic silhouette.
+
+**Ilyra Vellune — scholar.** Ilyra has deep brown skin and a sculpted silver bob with one broad side-swept clump. Her saturated indigo long coat splits into two calf-length tails over pale trousers, with turquoise cuffs and a golden collar. She holds one closed rust-red book against her ribs. A poised three-quarter stance and the coat's clean vertical shape make her look quietly adventurous.
+
+**Saffi Rillstep — dancer.** Saffi is a tan-skinned adult with dark plum hair gathered into a high, oversized fan-shaped ponytail. A coral tunic over fitted teal trousers gives her a practical traveling costume, while two long golden waist sashes hang in separate curves. One arm lifts outward and one knee bends slightly, keeping both feet on the shared ground level. Her asymmetrical hair and sashes suggest motion without obscuring her small, readable body.
+
+**Orven Thist — hunter.** Orven has light olive skin and thick ash-blond hair in three prominent angular locks. A forest-green cloak falls from one shoulder to his calves, opening over a mustard tunic and charcoal leggings. A simple curved wooden bow rests in his outer hand, and a narrow burgundy scarf hangs down his chest. His alert, turned stance and tapered cloak give this village hunter a restrained heroic presence.
+
+**Mirel Dawnreed — young cleric.** Mirel is a young adult with deep umber skin and a round mass of sky-blue curls, rendered as a few large clumps. An ivory knee-length tabard lies over a cobalt tunic and slim trousers; a long orange stole hangs down either side. Mirel holds a tall dark-wood staff capped with a simple split golden diamond, clearly above head height. A slight three-quarter turn and lifted chin make the novice look hopeful and determined.
