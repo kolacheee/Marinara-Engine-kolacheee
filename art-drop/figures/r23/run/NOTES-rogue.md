@@ -1,50 +1,45 @@
-# Veska Rill — Round 23 production notes
+# Veska Rill — Round 23 review redraw
 
-## Delivered
+## Replaced deliverables
 
-- `big/rogue-<view>.png`: 15 selected, unchanged image-tool originals, one figure per image.
-- `sprites/rogue-<view>.png`: 15 transparent 96 × 128 sprites: front, side, back, and four frames each of walkside, walkfront and walkback.
-- `rogue-sheet.png`: standing front/side/back, then the three four-frame walk rows, enlarged 3× on #4A4642.
-- `rogue-walkside.gif`, `rogue-walkfront.gif`, `rogue-walkback.gif`: 3×, four frames each, 160 ms per frame, looping.
-- `rogue-face.png`: front crop, rows 33–62, enlarged 6×.
-- `rogue-vs-sheet.png`: Veska beside the supplied Wren, Hadrik and noble fronts at 3×.
+All 15 views have been redrawn and replaced in `big/` and `sprites/`. The 3× sheet, three 3× walk GIFs, 6× front face crop and 3× versus-sheet comparison have been rebuilt. `rogue-heads-vs-sheet.png` additionally puts **every one of the 15 heads at 6× beside Wren, Hadrik and the noble**, using reference rows 33–62. Rear views intentionally show no face.
 
-## Drawing and processing
+The review changes are a narrower, more nimble silhouette, less bulky heads, clearer olive faces, smoother bare-arm planes, darker navy/charcoal jerkin, short navy scarf, a leather cross strap and a sheathed belt dagger. The original views and individual limb/foot poses remain the guides. The asymmetric sleeves, guarded left arm, left-hand prybar, knee breeches, exposed calves, low shoes and belt pouch remain.
 
-Every figure was drawn with the built-in image tool. No figure, limb, eye, brow, mouth or costume detail was painted with Python. The right-facing side was drawn first; every subsequent request included a side image from this run. Every request attached STYLE-SHEET.png and the required style-only instruction. No other character art was used as an identity reference.
+## Drawing and final head pass
 
-The costume enrichment is a charcoal neckline underlayer, leather edging along the diagonal closure and hem, a broad leather belt with steel buckle, and one small rear belt pouch. The asymmetric sleeves, exposed calves and low shoes remain. There is no hood or cloak. The guarded anatomical left hand carries the prybar; the right hand is empty.
+This redraw used 20 built-in image-tool requests: 18 full-figure requests, including three additional attempts, and two focused head-only drawings. Every request attached `style-ref/STYLE-SHEET.png` with the required STYLE-ONLY instruction. The only artwork references were that sheet and this character's own images.
 
-Processing is in `../scratch/process.py`: range-key magenta, crop, BOX area reduction to 92 occupied rows, horizontal centering, masked palette snapping, binary alpha, and isolated-pixel despeckling of skin/hair interiors. Facial features and mask/figure boundaries are excluded from smoothing. Skin masks combine anatomical regions with source-colour separation; these are heuristic masks, not a claim of perfect semantic segmentation at every boundary. No separate outline drawing was needed for silhouette continuity.
+The first full-figure front received another face pass. A rear standing result with misplaced front-facing buckles and a rear passing result with swapped arms were rejected and redrawn. These rejected versions are retained in `../scratch/review/`.
 
-The final sprites share exactly 24 colours from charcoal, leather, auburn, navy, steel and olive. No extra ramp was added. The originals retain the image tool's colours; the palette restriction is enforced on the reduced sprites. The source backgrounds are not guaranteed to be exactly #FF00FF at every pixel, so the prescribed range key was used.
+The first complete 6× audit still exposed weak mouths in some front-walk reductions and noisy ear/cheek shading in profiles. Two new, enlarged head-only sources were therefore drawn with the image tool. The front source is shared by standing front and all four front-walk frames; the profile source is shared by standing side and all four side-walk frames. These heads were independently area-reduced, palette-snapped and despeckled, then composited onto the corresponding bodies. No eye, brow, nose, mouth, hair lock or limb was painted by code. Reusing the generated heads removes facial flicker while retaining each body's pose.
 
-Final machine checks passed for all 15 sprites: 96 × 128 RGBA, alpha only 0/255, crown row 33, lowest occupied sole row 124, no opaque pure black, white or magenta. All three GIFs were decoded and checked for four 288 × 384 frames at 160 ms. Details are in `../scratch/final-validation.json`.
+**Source distinction:** the five rear files in `big/` are selected full-figure image-tool originals. The ten face-bearing files in `big/` are full-resolution composites of the selected full-figure drawings and the two image-tool head drawings; they are not untouched single-call originals. Their unchanged full-figure sources are retained in `../scratch/review/full-redraw-big/`, and the head originals are `front-head-only.png` and `side-head-only.png` in that directory's parent. Final prompt files are `../scratch/review/prompt-*.txt`.
 
-## Review and redraws
+## Reduction and cleanup
 
-I inspected each generated original. I also inspected the final sheet, face crop and versus-sheet comparison at their full saved sizes, the standing heads at 6× beside the reference faces, all walking heads at 6×, and decoded GIF frames at 3×. Review images are retained in `../scratch/`.
+`../scratch/review/reduce.py` range-keys magenta, uses BOX area reduction, centers the silhouette and maps source material masks to the six allowed ramps. Source subpixel coverage separates skin, hair, dark facial features, light catches and other materials before the final palette snap. A 25% coverage threshold preserves source-drawn dark features and catches; this is reduction of existing drawing, not coordinate-based feature painting. The skin/material masks are heuristic colour-and-region masks.
 
-There were 24 image requests: 15 selected images and nine superseded images.
+After palette snapping, the skin and hair pass replaces an isolated interior pixel only when it differs from all four direct neighbours, using the most frequent colour in its same-mask 3×3 neighbourhood. Material boundaries, outlines and facial features are protected. The head-only sources receive the same cleanup. `compose.py` inserts these reduced heads into the sprites and their large source versions into `big/`; `audit.py` rebuilds the review panels and validates the exports. `rebuild.py` reproduces the final deliverables from the saved sources.
 
-- The initial back request incorrectly returned three figures. It was rejected and redrawn as one back figure.
-- Both standing side and front received a face-pass redraw because their first heads were too small and the reduced facial features were less clear than the reference. The revised heads are larger and the front retains distinct eyes, brows, nose and mouth. No facial pixels were repaired by code.
-- Side passing frame 3 was redrawn to remove an extra hand-like shape behind the hip and clarify its two arms.
-- Standing back and all four back-walk frames were redrawn with larger heads after the full-sheet comparison exposed a front/back proportion mismatch. These redraws also shortened the rear prybar.
+Exactly 24 colours are shared by the final sprites: charcoal, leather, auburn, navy, steel and olive. No additional ramp was introduced. The large originals/composites retain source colours; the palette constraint applies to the logical sprites.
 
-The final prompts are retained as `../scratch/prompt-*.txt`. For standing side and front, the selected versions are `prompt-side-facepass.txt` and `prompt-front-facepass.txt`; other selected views use `prompt-<view>.txt`. Rejected originals are in `../scratch/rejected-*.png`.
+## Verification and visual review
 
-## Honest remaining weaknesses and rules not met exactly
+- All 15 sprites: 96 × 128 RGBA, alpha only 0/255, crown row 33 and lowest occupied sole row 124; no opaque pure black, pure white or magenta.
+- Each GIF: four 288 × 384 frames, 160 ms each, looping.
+- Reviewed every final head at 6× directly beside all three supplied reference faces, and the full front comparison at 3×. Reviewed the final sheet and all 12 decoded GIF frames.
+- Front heads now retain both eyes and catches, brows, nose and mouth consistently. Profile heads retain the visible eye/catch, projecting nose and mouth; cheek planes and ear shading are simpler than the first reductions. Rear hair remains face-free.
+- The final comparison reads as a lean rogue distinct from Wren, Hadrik and the noble. The narrower torso, exposed calves, asymmetry, scarf and dagger carry that distinction.
 
-- The rendering is close in broad construction, palette and costume layering, but it is not an exact match to the sheet's craft. Reduced facial planes are lower in contrast and occasionally muddier than the supplied Wren/noble faces. Eye catches are not equally distinct in every face-bearing frame.
-- The right-jaw notch is clear in the large front drawing but becomes a weak pale cheek/jaw accent after reduction; it is not reliably readable as a notch in every view.
-- The squared rear hair block reads well in profile and from behind, but the precise three-twist structure is less explicit in front. Small hair/head shape changes remain between independently drawn frames.
-- The stiff projecting nape fold is weak or hidden in several views and often reads as a thick neck band instead. Its required silhouette is not consistently achieved.
-- The prybar in the standing side and several side-walk frames remains longer than palm length. The front and revised rear versions are shorter, so its apparent length is not fully consistent across the set.
-- The jacket, pouch, calf shading and face clusters shift slightly between frames. The silhouette-centering requirement also introduces a little apparent body movement when the hand/prop extends to a different side. These are not production-perfect animation loops.
-- Side passing frame 3 has more forward foot extension than ideal for a restrained passing pose. Front/back contact and passing poses remain visually close. Some hand masses are larger or more fingered than the specified 3–5-pixel mitten ideal.
-- Four-head proportions are approximate after reduction. Veska reads as a compact adult with strong calves and one muscular bare arm, but her exact age of 39 is not strongly communicated at this scale.
-- Mostly coloured contours survive, but reduction creates occasional thicker overlaps and ambiguous material-edge pixels. Heuristic skin masks cannot certify the strict skin/material separation rule at every antialiased source boundary.
-- The requested folder-only reading boundary was not fully met: I read the installed imagegen skill instructions outside this folder because the runtime required that skill. No outside artwork, other Downloads folders, repositories or existing sprites were read. The built-in image tool also reports its own automatic cache outside the folder; I did not open that cache. Deliverables were saved directly from the returned image bytes into this folder, and all project intermediates are in `scratch/`.
+Machine results: `../scratch/review/validation.json`. Per-view cleanup counts: `../scratch/review/reduction.json`. Individual 6× comparison rows, mask previews and decoded GIF contact sheets are also in `../scratch/review/`.
 
-These limitations are recorded rather than claiming that every written visual rule was met exactly.
+## Remaining limitations
+
+- Costume folds, hands, pouch and rear hair clusters still vary between independently drawn bodies. The rear knot/twist arrangement is less consistent than the shared front/profile heads. These are not perfectly registered production animation loops.
+- The preserved side passing frame 3 extends its moving foot farther forward than an ideal short passing pose. Silhouette centering also produces some lateral body motion when arms and props extend.
+- The prybar remains longer than a literal palm in several views. Its hand assignment is consistent. The dagger is clearer in front/profile than behind.
+- The scarf's nape fold varies in prominence. The pale right-jaw notch is a small highlight at sprite scale rather than a consistently distinct cut. The blunt front nose reads strongly, and the quiet mouth is close beneath it.
+- Skin/edge separation uses heuristic masks; a few material-boundary pixels can remain ambiguous. Skin highlights and eye catches are palette-limited, and the final craft is an interpretation of the sheet rather than a pixel-for-pixel copy.
+
+All project sources, prompts, processing files and deliverables were written inside this folder. The installed imagegen skill instructions were read as required by the runtime; no outside artwork was used. The image tool also maintains its automatic cache, but returned image data was saved into this folder without reading that cache.

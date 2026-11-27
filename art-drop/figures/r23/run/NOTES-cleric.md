@@ -1,42 +1,37 @@
-# Asen Tor — cleric, Round 23
+# Asen Tor — cleric review redraw
 
-## Delivered
+## Review changes
 
-- Fifteen individual image-tool originals on magenta in `big/` and fifteen transparent sprites in `sprites/`.
-- `cleric-sheet.png`: 1152 × 1536, exact 3× nearest-neighbour display, background #4a4642. Rows are standing front/side/back, walk-side 0–3, walk-front 0–3, walk-back 0–3. The fourth standing cell is empty.
-- Three 288 × 384 walk GIFs, four frames each, 160 ms per frame, looping, on #4a4642.
-- `cleric-face.png`: 6× front crop, source columns 28–67 and rows 33–62.
-- `cleric-vs-sheet.png`: Asen, Wren, Hadrik and Noble fronts at 3×.
+Replaced the fifteen-view set. The apron-like costume is now an ankle-length charcoal clerical robe with a long linen, gold-edged sun tabard, a sun-ring staff in the anatomical left hand, and a prayer book at the right hip. The narrow adult build, bald crown, charcoal temple/nape hair, square chin beard, navy binding, horizontal linen medicine case and pose sequence remain. The robe and staff necessarily change the old lower-body silhouette and left-arm position, as required by the review.
 
-## Process and checks
+## Delivered and checked
 
-Every figure and pose was drawn individually with the built-in image tool. No figure, face, limb or animation pose was drawn or transplanted with code. The side was generated first; every later view used this run's side reference. Every image-tool request attached STYLE-SHEET.png with the required style-only instruction. Only that sheet and this run's Asen originals were supplied as image references. The reference front sprites were used for the requested comparisons.
+- `big/`: fifteen full-body magenta image-tool originals, one retained figure per file.
+- `sprites/`: fifteen 96 × 128 RGBA sprites; crown row 33, lowest support sole row 124, binary alpha, equipped silhouette centered within one pixel.
+- `cleric-sheet.png`: four rows at exact 3× on #4a4642, standing front/side/back followed by the three four-frame cycles.
+- Three walk GIFs: 288 × 384, four frames, 160 ms each, looping. The decoded frames were inspected.
+- `cleric-face.png`: standing front head at 6×, source rows 33–63 inclusive.
+- `cleric-vs-sheet.png`: Asen beside the three reference fronts at 3×.
+- `cleric-heads-vs-sheet.png`: all fifteen heads, each beside Wren, Hadrik and Noble at 6×; reference source rows 33–63 inclusive. Standing, side-walk, front-walk and rear-walk comparisons were inspected separately as well.
 
-Python/Pillow performed magenta keying, BOX area reduction, anatomy-restricted skin masks, palette snapping, binary alpha, conservative isolated-pixel skin/hair cleanup, placement, crops, sheets, GIFs and checks. Facial-feature bands and contour pixels were protected during despeckling; this deliberately leaves some imperfect pixels near features. No face was painted in code. Hand masks were corrected after an early broad mask accidentally included some linen/case pixels. Final mask inspection shows separated head/neck and hand regions, without those case/cloth patches.
+The complete sprite set uses 27 shared opaque colours. The review's gold symbols and trim add the existing gold ramp (#57432C, #8A693B, #B79351, #D5B677) to charcoal, leather, linen, navy, steel and tan; no invented colour family. This supersedes the earlier six-ramp costume palette while remaining below 32 colours. Skin planes use the tan shadow/body/light tones; eye catches use warm linen and dark features use charcoal.
 
-All fifteen sprites are 96 × 128 RGBA, with crown at row 33 and lowest occupied sole at row 124. Rows 0–32 and 125–127 are transparent. Alpha is exclusively 0 or 255. The equipped silhouette is horizontally centered within pixel rounding. The set uses 21 distinct opaque RGB colours, all drawn from the six allowed charcoal, leather, linen, navy, steel and tan ramps; no added ramp. The stored originals retain the image tool's source colours rather than the export palette. All three GIFs decode to four frames at 160 ms each.
+## Redraw and cleanup process
 
-The originals were visually inspected when returned. The complete final sheet, front face crop, comparison, standing-head comparison, all face-bearing views, skin-mask sheet and all decoded GIF frames were inspected at their saved display sizes. Diagnostic comparisons, rejected originals, processing scripts, checks and prompts are in `../scratch/`. The exact retained prompt set is `../scratch/prompts.json`; final technical checks are `../scratch/final-checks.json`.
+Used the built-in image tool for 21 requests, with `style-ref/STYLE-SHEET.png` attached to every request under the required STYLE-ONLY instruction. Only that sheet and this character's own images were image references. The redesigned standing side was made first and used to establish the costume for the other views. Each pose received an individual full-body redraw.
 
-## Redraws
+Additional corrections: rejected an accidental two-figure back output; corrected walk-back 0's lifted shoe so the planted foot is lowest; redrew the standing front head and walk-side 1/2 heads after reduction checks; enlarged walk-side 2's eye in one further image-tool edit. Rejected stages and the previous originals remain in `../scratch/review/`.
 
-There were 23 image-tool drawings for 15 retained views:
+Pillow performed magenta keying, BOX area reduction, anatomy-restricted material masking, palette snapping, binary alpha, placement and export. The orange source skin was mapped by shadow/body/light roles into the specified tan ramp; the later head redraws use direct tan snapping. Dark facial features and pale eye catches have separate material masks so they do not become skin during quantization. No facial feature, pose or costume was drawn or transplanted with code.
 
-1. The initial side's brown medicine case and bulky hair were redrawn into a pale linen case and closer hair band.
-2. After reduction, the standing side was redrawn with a larger head and clearer profile eye. Front and back were regenerated to match. These three replaced the first standing set.
-3. Walk-side 2 was redrawn because it repeated the first contact frame's near-arm position; the replacement swings the near arm forward.
-4. Walk-back 2 was redrawn because the trailing shoe extended below the planted support sole.
-5. Walk-side 0 and 2 received additional full-figure face-pass redraws after the enlarged-head check showed noisier reduction.
+After palette snapping, skin and hair received the specified isolated-pixel cleanup: if a pixel differs from all four direct neighbours, replace it with the most common colour among its same-mask 3×3 neighbours. Facial features, mouth region, dark edges and silhouette contours are protected. The masks and per-view cleanup counts are retained for inspection.
 
-## Honest weaknesses and incomplete visual rules
+Reproduction script: `../scratch/review/process.py`. Exact prompts: `../scratch/review/prompts.json`. Technical checks: `../scratch/review/final-checks.json`. The script stages exports in `../scratch/review/processed/` before copying approved files into this directory.
 
-- Exact parity with the reference sheet's craft was not achieved. Asen is visibly distinct, with a narrower silhouette, bald crown, small chin beard, pale open-sided tabard and rigid waist case, but the references have more deliberate pixel clusters and stronger eye contrast.
-- Both front eyes and the profile eye survive, with readable brows and beard/mouth structure. However, small light catches are inconsistent after area reduction and palette snapping; several front views have subdued eye interiors. The strict Round 23 eye-catch/clarity target is therefore only partially met despite the face redraws. The side contact faces remain busier than the standing profile.
-- Head height is approximately 20–22 occupied pixels rather than an exact 23, so the four-head construction is approximate. The shaved crown is clear, but the rear hair band still looks thicker than truly close-cropped hair.
-- The front nose is a small warm mark rather than a fully articulated 2–3-pixel light/shadow plane in every frame. The side nose projects more than one pixel in some exports.
-- Some hands are approximately 5–7 pixels across or tall, exceeding the earlier 3–5-pixel target. They remain empty, compact mitten shapes.
-- The layered tabard, navy binding, heavy hems, belt and piped linen case supply the added costume detail. The result is still more austere and flatter through the front cloth than the richer reference figures. Charcoal tunic/trouser boundaries can merge in profile.
-- The side cycle alternates contact/passing silhouettes and arm direction, but anatomical near/far leg overlap is not perfectly explicit in both contact frames. Some strides are a little longer than the intended quiet shuffle. Front/back passing movement is subtle.
-- Independent drawings and reduction produce slight head-width, case, clasp, hem and outline shifts between frames. The four-frame loops are usable previews, not fully stabilized production animation. Centering the complete changing silhouette also permits small torso shifts.
-- Contours are mostly continuous but are not uniformly one pixel; some dark overlaps are thicker and some lit edges are softened by area reduction. Source highlights are mainly upper-left, with a few centered crown/case highlights.
-- The strict folder-only instruction was not fully achievable in this environment: one runtime image-generation skill instruction file was read outside the project, and the image tool automatically saves its own outputs in its managed external cache. No external character art, sprites, Downloads folders or repositories were read or listed. Returned image bytes were saved directly into this project's folders without reading those cache paths. All task-created processing files and retained deliverables are inside this folder, with intermediates in `scratch/`.
+## Visual assessment and remaining limitations
+
+The sun-marked robe, staff and belt book make the role legible beside the references. All visible faces have readable eye/brow structure and mouth or beard boundaries; the bald skin and hair use substantially quieter planes than the previous set. The reference faces remain the comparison standard rather than a claim of pixel-for-pixel stylistic identity.
+
+Independent drawings still introduce small head-width, cheek-highlight, staff-head, case and hem shifts between frames. Eye catches and brow spacing vary by viewing angle and reduction phase. Some profile noses extend more than one logical pixel; some hands exceed the earlier 3–5-pixel target. The side contact strides are somewhat longer than an ideal quiet town shuffle, and the robe obscures anatomical near/far leg overlap. These are usable four-frame previews, not fully stabilized production animation.
+
+Project work and retained artifacts are inside this folder. The required imagegen skill was read from its installed location; the built-in tool also writes its automatic managed cache outside the folder. Its returned originals were copied into this folder. No unrelated character art or external image references were used.
