@@ -1,42 +1,48 @@
-# Pell Arven — Round 23 production notes
+# Pell Arven — face and finish revision
 
-## Delivered
+## Replaced deliverables
 
-- 15 image-tool originals in `big/`, one full-body figure per image on magenta.
-- 15 transparent 96 × 128 sprites in `sprites/`, with the requested view names.
-- `farmhand-sheet.png`: 1152 × 1536, nearest-neighbour 3× on #4A4642. Rows are standing front/side/back, side walk, front walk, back walk. The fourth standing cell is empty.
-- Three 288 × 384 walk GIFs, four frames each, 160 ms per frame, looping on #4A4642.
-- `farmhand-face.png`: front crop of logical rows 33–60 inclusive, enlarged 6×.
-- `farmhand-vs-sheet.png`: Pell, Wren, Hadrik, Noble, left to right, all at 3×.
+All 15 sprites and all 15 full-size images have been replaced, along with the 3× sheet, three walk GIFs, front face crop and full-body reference comparison.
 
-## Drawing and reduction
+- `sprites/`: 96 × 128 RGBA; binary transparency; crown row 33 and lowest sole row 124.
+- `big/`: full-size magenta composites of the original image-tool bodies and newly image-tool-drawn heads. These are assembled production sources, **not 15 new untouched full-body tool responses**. The untouched new head responses are retained in `../scratch/redo/`.
+- `farmhand-sheet.png`: 1152 × 1536, 3× nearest-neighbour on #4A4642; standing front/side/back, then side/front/back walk rows.
+- Walk GIFs: 288 × 384, four frames, 160 ms each, looping.
+- `farmhand-face.png`: 6× front crop, rows 33–63 inclusive.
+- `farmhand-vs-sheet.png`: Pell beside Wren, Hadrik and Noble at 3×.
+- `farmhand-faces-vs-sheet-6x.png`: all 15 heads, each beside the three reference front-head crops at 6×, with view labels.
 
-The side was drawn first. Every later figure request included that run's side master and the style sheet. The sheet was explicitly designated style-only in every request. Only the supplied style references and images of Pell from this run were used as image references. Garment richness comes from layered collar and cuffs, wrap binding, the diagonal overlayer, pocket lip, breeches gathers and boot construction.
+## Redraw method and preservation
 
-All figure drawing and redraws used the built-in image tool. Python performed magenta keying, BOX/area reduction, source-space skin masking, palette snapping, compositing, GIF export and checks. It did not draw anatomy, eyes, mouths, poses or garments. The front views use a small global BOX sampling-phase adjustment to preserve the tool-drawn eye dots; this does not replace or paint facial pixels. No extra outline pass was applied.
+Read the complete current STYLE-RULES.md and CHARACTER.md, including their final overrides. The character file contains no additional head redesign. The new face rules supersede the old dot-eye instructions.
 
-The final sprites use exactly 24 RGB colours across the set: the four tones each of charcoal, leather, moss, auburn, linen and fair skin. No additional ramp was introduced. Skin masks restrict selected skin pixels to the fair ramp; other pixels exclude it. Mask boundaries are hand-specified anatomical regions with source-colour gating, so antialiased boundary classification remains approximate.
+Five built-in image-tool requests were used: profile, front and rear head masters, followed by one eye/brow correction each for front and profile. Every request attached `style-ref/STYLE-SHEET.png` with the prescribed STYLE-ONLY instruction. The only artwork inputs were that sheet and this character's own images. Exact prompts are recorded in `../scratch/redo/prompts.json`.
 
-Reproduction script, masks, prompts, rejected originals and inspection aids are in `../scratch/`. Initial prompts are in `prompts.json`; redraw prompts are in `redraw-prompts.json`; numeric results are in `checks.json`.
+The three head masters were applied to the corresponding five views each. Heads are positioned to their original head centres. This keeps the expression and hair stable through the walk cycles. No eyes, brows, noses, mouths, anatomy or costume were drawn with code.
 
-## Inspection and redraws
+The original body, costume, equipment and pose are retained. All sprite pixels from row 56 downward are byte-for-byte unchanged except for the recorded skin/hair despeckle changes. The head/neck join occupies rows 33–55. The full-size files retain the original bodies below the corresponding join.
 
-All image-tool outputs were visually inspected, including rejected attempts. The assembled sheet, face crop, reference comparison, face audit, skin-mask sheet and decoded GIF frames were inspected at their saved sizes.
+## Reduction and finish
 
-There were 24 figure requests for 15 final views: nine additional draws. Two early side attempts were rejected for weak profile construction, eye highlights and insufficient pocket/shin definition. The standing front and all four front-walk views were redrawn for smaller eyes and clearer mouth shadows. Side passing frame 3 was redrawn to bring its feet together; that attempt introduced a second pocket, so another image-tool edit removed the unwanted rear pocket.
+The new heads were BOX/area reduced, magenta keyed and snapped through separate skin/hair classification to the existing fair and charcoal ramps. A small global sampling-phase offset preserves the tool-drawn eye catches; no individual facial pixel is painted or substituted. The full set still uses exactly 24 colours: charcoal, leather, moss, auburn, linen and fair. No new ramp was added.
 
-Checks passed for all sprite dimensions, binary alpha, 92 occupied rows, crown row 33, lowest sole row 124 and allowed palette membership. All three GIFs have four frames at 160 ms. The two front eyes are individual charcoal pixels with fair skin immediately to their left and right in all five front-facing views. Mouth shadows are visible, but do not consistently meet the exact 1–2-pixel specification.
+The requested despeckle runs once from an immutable copy after palette snapping. Within the skin or hair mask, a pixel differing from all four direct neighbours is replaced by the unique most frequent colour in its same-mask 3×3 neighbourhood. Ties are left unchanged. Eye, brow and mouth regions, mask boundaries and darkest outline pixels are protected. Hair masks are restricted to the connected crown and braid regions. Skin masks include face, neck, arms/hands and exposed shins. The pass changed 159 pixels across the set. Per-view masks and exact changed coordinates are retained.
 
-## Honest weaknesses and rules not fully met
+## Inspection and checks
 
-- The figure is closer to roughly five heads tall than the requested four-head construction. The head and broad jaw are less emphatic than specified; the face remains softer and younger-looking than intended.
-- Bare shins are clear in the front views, but too short in the standing profile. The breeches extend too far down, and the boots take up too much of the lower-leg length.
-- The seed pocket is visibly sewn into the vest, but its location and projection drift across the side cycle. The corrected final passing frame projects it forward more convincingly than the other side frames. It is not a fully locked model turn.
-- The moss cord reads as a narrow flat belt. The braid is a little long in some views. The dibber sometimes looks pointed rather than blunt.
-- Contact steps are wider and passing-foot lifts less uniform than an ideal restrained town walk. Frame-to-frame arm, torso-width, pocket and facial-shading changes will cause visible motion shimmer. GIF frames and timing were checked; no claim of perfectly smooth animation is made.
-- Compared with the style sheet, Pell has recognizable layers and a distinct design, but the reduced shading is softer and noisier, with smaller scattered clusters. Some contours are heavier/darker than the local-colour rule requests. Upper-left lighting is broadly retained, not perfectly consistent across every surface.
-- Exact one-pixel profile noses, isolated eye/lid sizes in every profile, mitten simplification and 1–2-pixel mouths are not uniformly achieved. No code-painted face fixes were used to conceal these limitations.
+Every assembled head was inspected at 6× beside crops of rows 33–63 from Wren, Hadrik and Noble. The revised front has separate brows, both dark eye clusters with light catches, a nose plane and short mouth line. The profile retains its single eye catch, brow, nose projection and mouth. Rear heads use broad hair masses with no face. Skin reads as broad light/body/shadow planes rather than scattered texture.
 
-## Workspace-boundary disclosure
+The initial front/profile masters lost eye clarity during reduction, prompting the two image-tool corrections. Global BOX sampling alignment was then adjusted; the final export verifies a light catch and dark eye cluster in every visible eye. Protected feature regions are checked unchanged by despeckling.
 
-Project work, intermediates and deliverables were written inside this folder. A mandatory image-tool instruction file was read outside the folder. The image tool also automatically cached its own outputs outside the folder; those cache files were not opened or copied. The in-folder originals were saved from the returned image data. No outside artwork, other Downloads folders, existing sprites or repositories were inspected.
+The final sheet, full-body style comparison, all 15 full-size composites and decoded GIF frames were also inspected. Automated checks passed for dimensions, binary alpha, palette membership, 24-colour union, crown/sole rows, protected features, preservation below the head, four GIF frames and 160 ms timing.
+
+Rebuild with `python scratch/redo/build_redo.py`. The corresponding results are in `../scratch/redo/checks.json`. Original pre-revision sprites, full-size sources and notes are preserved under `../scratch/redo/originals/`. The older `scratch/build.py` is the previous production pipeline and does not rebuild this revision.
+
+## Remaining limitations
+
+- Heads are shared by direction, rather than independently redrawn in every animation frame. This deliberately holds facial detail steady; the existing body motion still has some width, pocket and arm shimmer.
+- The retained bodies preserve the previous broad contact strides, short profile shin exposure, somewhat long braid and occasionally pointed-looking dibber. This head/finish revision does not redesign those poses or garments.
+- The profile brow is softer than the front brows, and the nose/mouth use a few transitional pixels. Face readability is improved and comparable at 6×, but individual contour and feature shapes are not identical to the reference construction.
+- `big/` contains head composites as disclosed above. Use the supplied rebuild script and preserved originals to reproduce the exact sprite exports; a naive reduction of those composites will not duplicate the chosen head sampling phase and original body sampling.
+
+All project edits and saved working files are inside this folder. The required imagegen skill instruction was read from its installed location. The image tool maintains its own automatic cache outside the project; no cached file was opened or copied. Generated images were saved here from returned image data.

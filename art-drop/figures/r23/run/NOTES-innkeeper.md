@@ -1,51 +1,67 @@
-# Tamra Esh — innkeeper, Round 23
+# Tamra Esh — face and finish revision
 
-## Delivered
+## Replaced deliverables
 
-- Fifteen image-tool originals in `big/`, each containing one figure on magenta.
-- Fifteen 96 × 128 RGBA sprites in `sprites/`.
-- `innkeeper-sheet.png`: 3× nearest-neighbour display on #4a4642. Rows are standing front/side/back; walk-side 0–3; walk-front 0–3; walk-back 0–3. The fourth standing cell is intentionally empty.
-- Three 3× walking GIFs, four frames each, looping at 160 ms per frame.
-- `innkeeper-face.png`: standing front, source-frame rows 33–60, enlarged 6×.
-- `innkeeper-vs-sheet.png`: at 3×, left to right: Tamra, Wren, Hadrik, noble.
+All fifteen views have newly drawn heads. The standing front, side and back, plus four frames for each walking direction, are in `sprites/` as 96 × 128 RGBA PNGs. `big/` contains the fifteen final, unmodified full-body image-tool outputs on magenta.
 
-## Design and references
+Rebuilt `innkeeper-sheet.png`, all three walking GIFs, `innkeeper-face.png`, and `innkeeper-vs-sheet.png`. Added `innkeeper-heads-vs-sheet.png`: every head at exactly 6× beside Wren, Hadrik and the noble, using source rows 33–63 inclusive. The full-body comparison remains 3×, ordered Tamra / Wren / Hadrik / noble.
 
-Read CHARACTER.md, including Round 23, followed by STYLE-RULES.md. Round 23 overrides were applied: no upper-lip shadow; the sheet is a rendering reference; costume richness comes from layered linen shoulder and bodice panels, moss edging, split high-hip panels, charcoal belt, broad turned cuffs and the small leather folio. No apron, cloak, mug or tray was added. The folio remains assigned to the anatomical right hand: viewer-left in front, viewer-right in back.
+## References and design
 
-The right-facing standing side was drawn first. Every later image-tool request included that character reference and the style sheet, with the required style-only instruction. Other image references were only this run's own Tamra drawings. The three supplied fronts were used for the requested comparison. No other character or asset sources were opened.
+Read STYLE-RULES.md through its final Face and finish rules and CHARACTER.md through its Round 23 additions. The newer facial rules override the earlier dot-eye/no-glint instructions. There is no upper-lip shadow or moustache.
 
-Every figure, including each walking pose and every redraw, was drawn by the image tool. No figure was drawn, articulated, mirrored or synthesized in Python.
+Every image request attached `style-ref/STYLE-SHEET.png` with the required STYLE-ONLY instruction. The only other image inputs were the existing Tamra views and newly edited Tamra views in this folder. The sheet's characters were not used as identity references.
 
-## Reduction and checks
+Tamra retains her tan skin, rectangular jaw, charcoal temple locks, squared linen headwrap, thick-set body, layered linen bodice and culottes, moss edging, charcoal belt, broad cuffs, leather boots and anatomical-right-hand folio. No new costume or prop was introduced.
 
-Magenta was range-keyed. Each complete silhouette was cropped and BOX-reduced to 92 occupied rows, then centered in its transparent frame with crown at row 33 and lowest sole at row 124. Enlargements use nearest-neighbour sampling. Transparency is binary.
+The standing side was edited first. There were 18 built-in image-tool requests for this revision: fifteen initial head edits and three further face corrections. Exact prompts are saved in `../scratch/face-redo/prompts.json`.
 
-Palette snapping uses only charcoal, leather, moss, linen, steel and tan: 24 RGB colors across the complete set. No additional ramp was introduced. Face, neck, hand and calf material masks separate skin from other materials. The existing neutral-dark face pigment was also area-reduced as a coverage mask to keep source eye marks from averaging into skin; this preserves source marks rather than drawing new facial features. Local-material outer contours were repaired inside the existing silhouette, using lighter upper/left and darker lower/right edge tones.
+## Preservation and reduction
 
-Automated checks passed for all 15 originals and sprites, 96 × 128 dimensions, binary alpha, exact occupied row bounds, centering within one pixel, allowed palette membership, 24-color union, sheet dimensions, and four 160 ms frames in each GIF. Reproduction scripts and check reports are in `scratch/`.
+The large outputs preserve the original body, costume and pose visually, but image editing can slightly resample or alter details outside the head. To prevent those incidental changes from reaching the animation sprites, each final sprite uses its existing body from row 56 downward. Its newly generated head occupies rows 33–55. Head reduction uses the original silhouette width and placement, with magenta keying, BOX area reduction and binary alpha.
 
-All generated originals were visually reviewed. Reduced figures were inspected individually and enlarged in the sheet. The face crop, all-face inspection strip, full-size sheet and full-size comparison were reviewed, including after revisions. GIF previews and all constituent frames were checked; the static viewer does not establish that live playback is perfectly smooth.
+Below row 56, all clothing, equipment, pose and alpha pixels are unchanged. The only changes there are 69 isolated skin pixels corrected by the requested despeckle. This is checked in `../scratch/face-redo/audit.json`.
 
-## Redraws
+Skin is snapped only to the tan ramp. Facial planes use shadow/body/light; the existing body retains the four-tone skin ramp, including contour. Hair is charcoal and the wrap is linen. Source dark facial pigment and pale eye catches have separate area-coverage masks, preserving the features actually drawn by the image tool through reduction. No eyes, brows, noses or mouths were drawn or positioned with code.
 
-There were 23 figure generations in total: the 15 delivered views plus eight replacements.
+After snapping, skin and hair receive one simultaneous despeckle pass: a pixel differing from all four direct neighbours is replaced with the unique most frequent colour in its same-material 3 × 3 neighbourhood. Ties retain the original pixel. Eye pigment, catches, brows, mouth marks, silhouette contours and edge colours are protected. The final pass replaced 126 skin pixels and 40 hair pixels across the set. Masks and per-view counts are saved in `../scratch/face-redo/`.
 
-- Standing side: one redraw after the first reduced eye was too weak.
-- Standing front: three redraws, addressing weak eyes, insufficient contour/garment finish in the comparison, then clearer isolated eyes for the final face crop.
-- Walk-front 0, 1 and 3: one redraw each after reduced eye marks were weak.
-- Walk-side 2: one redraw for its weak reduced eye.
+## Comparison and redraws
 
-Superseded drawings and inspection images remain in `scratch/`. The final originals are in `big/`.
+All fifteen final heads were inspected at 6× with the three reference faces beside each head, including the five rear heads. The rear views have wrap, hair and nape only. All ten face-bearing views retain light eye catches. The front face crop, the full sheet and the 3× full-body reference comparison were also inspected.
 
-## Honest weaknesses and rules not met perfectly
+The first comparison exposed a material-snapping problem that put some wrap shadows into moss. The final reduction confines those shadows to linen. A catch mask was also refined so that tan nose highlights are not treated as eye catches.
 
-- The reference's finish is not matched exactly. Tamra's linen planes are broader and less precisely organized than the strongest reference sprites. The comparison prompted a redraw, but the result remains an approximation of its craft.
-- The final standing front has two distinct small dark eyes and a readable quiet mouth. Across the walk views, eye size, brow separation and mouth shape still vary. Some marks are larger than a strict isolated 1 × 1 pixel, and some profile eyes remain close to the brow. A literal two-eye requirement cannot apply to a strict side profile; only the visible eye is shown there.
-- Several image-tool originals retained pale eye surrounds despite explicit no-white-eye prompts. The final face material masks map these to the tan ramp. The originals themselves do not satisfy the limited-palette/no-pale-eye treatment perfectly.
-- The face reads as an adult woman, but age 56 and the precise long rectangular jaw are not equally strong in every view. The nose is somewhat simplified and more prominent in some frames. There is no moustache or deliberate upper-lip shadow.
-- Independently drawn frames have small changes in wrap folds, face placement, sleeve folds, trouser widths and folio angle. Bounding-box centering and equal heights do not remove internal motion jitter. These are usable short walk studies, not a perfectly registered animation rig.
-- Side contact frame 2 has the widest step. Near/far leg overlap in the side cycle is not perfectly consistent. The front passing/contact distinction is subtle, particularly between frames 2 and 3. Supported feet and low lifts are present, but the gait is not an exact biomechanical match between directions.
-- The flat folio's grip sometimes reads as holding its upper edge instead of unambiguously its spine. The steel corner can reduce to a very small mark. Hands occasionally exceed the requested 3–5-pixel mitten size.
-- Material masks are explicit, visually checked approximations, not a perfect semantic segmentation. Mixed boundary pixels and small dark overlaps can take a neighbouring material's dark tone. Not every contour and internal crease follows the one-pixel rule perfectly.
-- All intentional filesystem reads and writes were inside this folder. The image tool automatically reported its own external cache locations; those locations were not read, listed or opened. Delivered originals were saved directly from the returned image data into this folder.
+Three heads received another image-tool edit after the first 6× review:
+
+- `walkside2`: thinner brow with more skin between brow and eye; smaller catch and simpler cheek.
+- `walkside3`: thinner brow, clearer eye separation and simpler facial planes.
+- `walkfront1`: removed heavy frowning brows and patchy cheek/chin highlights; retained a quiet mouth and smooth tan planes.
+
+The final heads are clearer and less noisy than the previous set. Their simple facial planes are comparable in readability to the supplied examples. This is a visual judgment, not a claim of an exact rendering match.
+
+## Validation
+
+Passed checks for fifteen new originals and fifteen new heads; 96 × 128 RGBA sprites; binary alpha; occupied rows 33–124; centered silhouettes; permitted palette membership; 24 colours across the complete set; unchanged body clothing/pose pixels; expected comparison dimensions; and three four-frame GIFs at 288 × 384, 160 ms per frame. GIF constituent frames were inspected through the sheet; live playback was not separately evaluated.
+
+Reproduce the current sprite/export pipeline from this folder:
+
+```sh
+python scratch/face-redo/rebuild.py
+python scratch/assemble.py
+python scratch/face-redo/compare.py
+python scratch/check.py
+python scratch/face-redo/audit.py
+```
+
+`rebuild.py` uses the saved final redraws and archived body sprites. The older `scratch/process.py` is historical and should not be used to replace this revision's face processing.
+
+## Remaining limitations
+
+- Eye clusters, catch sizes, brow thickness and jaw width vary slightly between independent drawings. Some brows occupy more than one pixel at a step or corner; exact one-pixel thickness is not uniform. Catches occasionally span adjacent pixels rather than exactly one.
+- The intended age of 56 is conveyed primarily by the jaw, brows and build; the smooth face treatment removes fine age cues. The expression varies mildly through the front cycle.
+- The original body's broader linen planes, fold organisation and walk registration remain. This head-focused revision does not eliminate pre-existing clothing/folio jitter or perfect the gait.
+- The raw large images are drawing sources, not palette-limited sprites. Only the final sprites enforce the 24-colour palette and binary transparency. The large images may contain incidental changes below the neck that the final sprites deliberately do not use.
+- Material masks are practical colour-and-region segmentations rather than manually traced shapes. Their previews and the final comparisons are retained for review.
+
+All artwork inputs, working files and delivered files were read or written inside this folder. The image tool also reports its automatic cache locations; generated image data was saved directly into this folder without opening those cache files. Prior originals, sprites and notes are preserved under `../scratch/face-redo/`.
