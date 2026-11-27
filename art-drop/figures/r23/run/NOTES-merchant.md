@@ -1,35 +1,55 @@
-# Halet Sar — Round 23 delivery
+# Halet Sar — face and finish revision
 
-All 15 requested views are present in `big/` and `sprites/`, with the sheet, three walking GIFs, front face crop and front-versus-style comparison. This is a completed export set, but it is **not a perfect compliance pass** on every drawing rule.
+Replaced all 15 full-view drawings in `big/`, all 15 sprites, the sheet, three walking GIFs, front face crop and 3× front comparison. The new face construction supersedes the earlier tiny-dot-eye instructions.
 
-## Method and checks
+## Redraw and assembly
 
-- Every figure and redraw was drawn with the built-in image tool, one figure per request. The right-facing side was drawn first and was attached to every subsequent view request. STYLE-SHEET.png was attached to every request with the exact Round 23 style-only instruction. No reference character was used as Halet's design.
-- Python performed magenta keying, premultiplied BOX reduction, palette snapping with skin eligibility masks, local-colour outer-contour repair, compositing, enlargement, GIF encoding and checks. It did not draw figures or paint in eyes or facial features.
-- All 15 final sprites are 96 × 128 RGBA with binary alpha. Every occupied bounding box starts at row 33 and ends at row 124 inclusive. The complete equipped silhouettes are horizontally centred.
-- The union across the sprites is exactly 24 colours, all from charcoal, leather, moss, linen, steel and tan. No extra ramp was added. The image-tool originals retain their original colours and magenta backgrounds; palette limits apply to the reduced sprites.
-- The sheet uses 3× nearest-neighbour enlargement on #4a4642, in the requested row order. Each GIF contains four frames at 160 ms, at 3× scale, on that same background. GIF frames were decoded and inspected as strips; smooth real-time playback was not independently observed.
-- The front face crop uses rows 33–60 inclusive at 6×. The comparison shows Halet beside the three supplied fronts at 3×. The final sheet, comparison, face crop, all reduced views, source drawings and face-review montage were visually inspected. Skin-mask intermediates were inspected together in a montage.
-- Processing scripts, checks, final prompt set, review montages and rejected source versions are in `../scratch/`. The final prompts are in `../scratch/prompts.json`.
+- Used the built-in image tool for every drawing. All 29 requests attached `style-ref/STYLE-SHEET.png` with the required STYLE-ONLY instruction. Other image inputs were this character's existing drawings or the new head drawings. No outside character references were used.
+- Redrew the standing right profile first, then the front, rear and all twelve walking views. Simplified hair into four principal rounded groups. Rear views remain rear views, without faces.
+- The first reductions lost eye catches and produced patchy skin. Rejected those exports. Made two additional head-only passes for front/profile, enlarging eye blocks and catches and simplifying the nose, mouth and skin planes. Applied the refined heads to all ten face-bearing full-view originals with ten further image-tool requests.
+- Final sprites use the separately drawn, palette-locked front/profile heads as complete artwork, aligned to each original head position. Sharing those heads within each direction prevents facial shimmer. Rear heads come from their individual redrawn full views. Code composites complete heads; it does not paint eyes, brows, nose, mouth or beard features.
+- The original sprite body, costume, props and pose pixels from row 56 downward are retained, except the requested isolated skin-pixel cleanup. Automated comparison verifies every difference below that row is logged skin cleanup. The high-resolution image-tool originals preserve the same designs and poses visually, but are not pixel-identical below the neck.
 
-## Redraws
+## Reduction and finish
 
-1. Rejected the first side: body too elongated, beard too weak, pack too low. Redrew before making the other views.
-2. Redrew the standing front after reduction weakened the eyes and the comparison exposed soft contours. Requested square dark eyes, stronger material edges and clearer hair groups.
-3. Redrew walkside1 to replace an extended forward leg with a closer passing pose.
-4. Replaced the first walkback3 because the tool returned a side view instead of a rear view.
-5. Performed additional face-pass redraws on walkside1 and walkside3 because their reduced profile eyes were too faint. One walkside3 face redraw changed the leg pose; it was redrawn again to restore a closer passing foot.
+- Magenta range key; BOX-area coverage reduction of material/palette masks, rather than a single nearest-neighbour sample. Source skin ramp centres are calibrated before snapping, avoiding a generated tan colour that falls directly between two target tones. Final head skin uses exactly tan shadow, body and light; hair uses charcoal. No extra ramp.
+- Subpixel crop registration selects a reduction in which the drawn catches survive. This changes sampling alignment, not the drawn facial features.
+- Applied the prescribed same-mask 3×3 mode replacement to isolated skin/hair pixels that differ from all four direct neighbours. Protected eyes, catches, brows, mouth and contours are excluded. Saved before-cleanup images, material/protection masks and per-pixel changes in `../scratch/face-redo/`.
+- All 15 sprites are 96×128 RGBA, binary alpha, crown row 33 and planted sole row 124. The complete set uses 24 colours from charcoal, leather, moss, linen, steel and tan.
+- Sheet and GIFs use 3× nearest-neighbour enlargement on `#4a4642`. Each GIF has four frames, 160 ms per frame. Decoded frames were inspected as strips; real-time animation playback was not independently observed.
 
-## Honest weaknesses and unmet details
+## Face comparisons
 
-- The style match is approximate. Halet is distinctly narrower than the supplied figures, as his design requires, but his internal contours and face planes remain softer and less decisively clustered than the best reference sprites. The collar, cuffs, lapels and narrow trims supply richness; they can also become busy after reduction.
-- The prescribed **exactly four close curls** is not consistently met. The front reads as four principal top curls, while side and rear sources contain extra lower curl lobes. The rear standing hair is fuller and more segmented than intended.
-- Eyes survived as dark marks, with two in the fronts and one visible eye in profiles. They are not uniformly exact isolated 1×1 marks: some include adjacent shaded pixels, and their contrast varies. Brow/eye separation and the broad flat nose are less clear in some reduced frames. The front nose is somewhat long, and the beard varies slightly in thickness. No code-painted face corrections were used.
-- The skin masks combine spatial eligibility and colour classification, not perfect hand-labelled material segmentation. Mixed boundary pixels around hair, ears, cuffs and hands may be assigned to the wrong material ramp. Thus the absolute skin/non-skin separation rule is not fully certified.
-- The pack sits above the belt in the rear views, but its lower edge reaches belt level in several profiles. The strict above-belt clearance is not consistently met. Its profile is somewhat oval rather than a perfect circular projection.
-- The coat remains ankle-length and divided, but contact frames sweep the rear panel outward more than the strict vertical-blade design requests. Small chest straps also read thicker than the requested thin flat straps.
-- The side walk is the weakest cycle. Frame 1 is almost a standing pose after its face redraw. Frame 3 has a higher passing foot than the two-pixel target. The two contact frames have ambiguous opposite-leg ownership behind the coat and similar foot silhouettes. Small head, shoulder, pack and hem changes between separately drawn frames can produce shimmer; this is not a production-polished walk loop.
-- The long coat hides much of the front/back leg motion. Front and back steps alternate, but the passing/contact distinctions remain restrained and somewhat stiff. Some source hands show more finger divisions than requested, though reduction mostly merges them.
-- The supplied style sheet was used only for rendering, and all other artwork references were this run's Halet images. No other sprites or repositories were accessed. A mandatory image-tool instruction file outside this folder was read to satisfy the tool workflow; this is an exception to the requested no-outside-reading rule. The image tool also automatically saved default copies in its own runtime directory. Those outside image files were not opened or copied from disk: returned image data was written directly into this folder.
+Every final head was inspected at **6×**, using rows **33–63 inclusive**, alongside the same crops of Wren, Hadrik and Noble. Deliverables:
 
-The files are suitable for evaluating this character direction and the remaining work, rather than claiming every Round 23 rule has been met exactly.
+- `merchant-faces-front-vs-sheet.png`: standing front and all four front walking heads.
+- `merchant-faces-side-vs-sheet.png`: standing profile and all four profile walking heads.
+- `merchant-faces-back-vs-sheet.png`: standing rear and all four rear walking heads.
+- `merchant-all-faces-vs-sheet.png`: the three panels together.
+- `merchant-vs-sheet.png`: final full front beside the three reference fronts at 3×.
+- `merchant-face.png`: final front crop, rows 33–60, at 6×.
+
+The revised heads have substantial eye clusters with light catches, separate brows, a short nose plane and readable mouth/beard. Skin planes are smoother and hair has fewer, larger groups than the previous delivery. The merchant remains distinct in face, curls, narrow build and costume from all three reference characters.
+
+## Honest remaining limitations
+
+- This is still an interpretation of the sheet, not an exact rendering match. The merchant's front eye blocks are heavier and squarer than the reference faces; the final eye blocks occupy about three pixels across. The catches sit at an upper corner rather than floating centrally inside each eye. The arched brows become flatter at this resolution.
+- Front/profile heads are deliberately shared within each walking direction. Rear curls and neck joins still vary slightly between independently drawn frames. Four main curls read clearly, but small silhouette steps can suggest extra lobes.
+- The inherited body artwork remains softer and busier at lapels/cuffs than the reference figures. Its existing pack height, somewhat thick straps, coat sweep, stiff passing poses and ambiguous side contact-leg alternation were preserved with the requested costume and poses. This revision does not claim to repair those earlier limitations.
+- Material masks are based on source colour, head regions and the original sprite's palette labels. They are inspectable, but are not a fully hand-labelled segmentation; inherited mislabelled boundary pixels may remain.
+- The image tool saves automatic originals in its own runtime directory. Those returned images were copied into this folder; project scripts, intermediates, backups and deliverables were written only here.
+
+## Reproduction and evidence
+
+`../scratch/face-redo/prompts.json` contains all 29 exact prompts. The two final head-only tool originals are `front-head-final.png` and `side-head-final.png` there. `original-big/` and `original-sprites/` preserve the pre-revision inputs; `previous-notes.md` preserves the earlier notes.
+
+Rebuild from this folder:
+
+```sh
+python scratch/face-redo/reduce_masters.py
+python scratch/face-redo/process_heads.py
+python scratch/assemble.py
+python scratch/face-redo/finalize.py
+```
+
+`../scratch/face-redo/final-checks.json` records dimensions, occupied bounds, palette count, GIF timing, protected-feature checks and body preservation. `cleanup-report.json` records each despeckled pixel. The older `scratch/process.py` is the superseded reduction path and should not be used to rebuild this revision.
