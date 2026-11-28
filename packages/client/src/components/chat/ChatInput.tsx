@@ -57,6 +57,7 @@ import {
   matchSlashCommand,
   shouldExecuteQuickPostAsCommand,
   getSlashCompletions,
+  getSlashCommandDescription,
   getSlashCommandUsage,
   withComposerReplyAndAttachments,
   type SlashCommand,
@@ -1138,7 +1139,10 @@ export const ChatInput = memo(function ChatInput({
         setReplyDraft(submittingChatId, replyDraft);
       const activeChatIdAfterFailure = useChatStore.getState().activeChatId;
       const currentValue = textareaRef.current?.value ?? "";
-      const canRestoreVisibleDraft = activeChatIdAfterFailure === submittingChatId && currentValue.length === 0;
+      // A newer impersonate draft started while this was sending owns the box; it is not overwritten.
+      const replacedByNewerDraft = getImpersonateDraft(submittingChatId) !== null;
+      const canRestoreVisibleDraft =
+        activeChatIdAfterFailure === submittingChatId && currentValue.length === 0 && !replacedByNewerDraft;
       if (canRestoreVisibleDraft && textareaRef.current) {
         textareaRef.current.value = submittedDraft;
         textareaRef.current.style.height = submittedHeight;
@@ -1152,7 +1156,11 @@ export const ChatInput = memo(function ChatInput({
           pendingAttachmentDraftsRef.current.set(submittingChatId, submittedAttachments);
         }
       }
-      if (submittedDraft && (canRestoreVisibleDraft || activeChatIdAfterFailure !== submittingChatId)) {
+      if (
+        submittedDraft &&
+        !replacedByNewerDraft &&
+        (canRestoreVisibleDraft || activeChatIdAfterFailure !== submittingChatId)
+      ) {
         setInputDraft(submittingChatId, submittedDraft);
         // The box holds what was sent, edits included, so that is the draft's text now.
         if (sentImpersonateDraft?.status === "ready")
@@ -1340,7 +1348,7 @@ export const ChatInput = memo(function ChatInput({
         return;
       }
       if (!text) return;
-      await runQuickSlashCommand(`/impersonate_post ${text}`, "Impersonate failed");
+      await runQuickSlashCommand(`/impersonate_post ${text}`, localizeUi("ui.chat.impersonateDraft.failed"));
     },
     [activeChatId, isInputBusy, hasPendingAttachments, runQuickSlashCommand, localizeUi],
   );
@@ -1954,7 +1962,7 @@ export const ChatInput = memo(function ChatInput({
                 {getSlashCommandUsage(cmd, localizeUi)}
               </span>
               <span className="min-w-0 text-xs leading-snug opacity-60 [overflow-wrap:anywhere]">
-                {cmd.description}
+                {getSlashCommandDescription(cmd, localizeUi)}
               </span>
             </button>
           ))}
