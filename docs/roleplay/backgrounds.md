@@ -24,6 +24,16 @@ When the story arrives somewhere, Marinara decides in this order: a pin for that
 
 It changes only that chat. To go back to the default, click **Remove** next to **Chat Background**. You can also pick one from **Chat Settings → Background** in the chat. No pictures yet? See [Import a background](../appearance/chat-backgrounds.md#import-a-background).
 
+## Make a weather or time of day version yourself
+
+Your picture shows the bedroom by day, but the story starts there at night in the rain. You don't have to wait for Illustrator:
+
+1. Open the chat. Then open **Chat Settings → Background**.
+2. Under **Make a version of this background**, pick a **Weather** and a **Time of day**. **As painted** keeps that part as the picture shows it.
+3. Click **Make version**.
+
+Illustrator's image connection repaints the picture from the original (a gallery picture too), and the chat shows the new version. It is saved next to the original picture, so the story uses it later without making it again. If that version already exists, it is shown right away. The image connection has to be able to start from a picture.
+
 ## Let the Background agent pick
 
 The **Background** agent runs after each reply. It reads the scene and picks the picture that fits best from all your backgrounds. It only picks pictures you have; to paint new ones, use Illustrator.

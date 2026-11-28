@@ -34,6 +34,7 @@ import {
   chatBackgroundPlainPicture,
   isChatBackgroundWeatherVersion,
   chatBackgroundScenePrompt,
+  existingChatBackgroundVersion,
   generateChatBackgroundWeatherVersion,
   generateChatBackgroundWindowMask,
   turnOffChatBackgroundWindowMask,
@@ -49,6 +50,8 @@ import { resolveImagePromptReviewSize } from "../services/image/image-prompt-rev
 import { parseThumbnailWidth, resolveThumbPath } from "../services/image/image-thumbnail.js";
 import { resolveImageConnectionFallback } from "../services/generation/media-connection-fallback.js";
 import {
+  BACKGROUND_TIME_VERSIONS,
+  BACKGROUND_WEATHER_VERSIONS,
   parseBackgroundWeatherVersionName,
   resolveGameSetupArtStylePrompt,
   sceneShelter,
@@ -639,7 +642,16 @@ export async function backgroundsRoutes(app: FastifyInstance) {
   // (repainted from its plain picture), its window stencil, or no stencil at all.
   const remakeWeatherArtSchema = z.object({
     chatId: z.string().min(1).max(200),
-    part: z.enum(["picture", "stencil", "no-stencil"]),
+    part: z.enum(["picture", "stencil", "no-stencil", "version"]),
+    /** For "version": the weather to show ("" keeps the plain picture's own) and the time of day. */
+    weather: z
+      .enum(["", "clear", ...BACKGROUND_WEATHER_VERSIONS])
+      .optional()
+      .default(""),
+    time: z
+      .enum(["", ...BACKGROUND_TIME_VERSIONS])
+      .optional()
+      .default(""),
     debugMode: z.boolean().optional().default(false),
   });
   app.post("/weather-art/remake", async (req, reply) => {
@@ -659,7 +671,28 @@ export async function backgroundsRoutes(app: FastifyInstance) {
       }
       return { success: true, filename: background };
     }
-    const { version, time } = parseBackgroundWeatherVersionName(background);
+    /** Shows a picture only while the chat still shows the one this request started from. */
+    const showIfStillShown = async (filename: string) => {
+      let shown = false;
+      await chats.patchMetadata(input.chatId, (current) => {
+        if (readTrimmedString(current.background) !== background) return {};
+        shown = true;
+        return { background: filename };
+      });
+      return shown;
+    };
+    // A version the user asked for: shown at once when it was made before, otherwise made below.
+    if (input.part === "version") {
+      const existing = existingChatBackgroundVersion(plain, input.weather, input.time);
+      if (existing) {
+        const shown = existing === background ? true : await showIfStillShown(existing);
+        return { success: true, filename: existing, shown, existed: true };
+      }
+    }
+    const { version, time } =
+      input.part === "version"
+        ? { version: input.weather, time: input.time }
+        : parseBackgroundWeatherVersionName(background);
     if (input.part === "picture" && !version && !time) {
       return reply
         .status(400)
@@ -737,10 +770,8 @@ export async function backgroundsRoutes(app: FastifyInstance) {
       return reply.status(500).send({ error: "The picture couldn't be made. Check the Illustrator image connection." });
     }
     // Only when the chat still shows the picture that was remade: a background picked meanwhile stays.
-    const latest = await chats.getById(input.chatId);
-    const stillShown = readTrimmedString(parseJsonRecord(latest?.metadata).background) === background;
-    if (filename !== background && stillShown) await chats.patchMetadata(input.chatId, { background: filename });
-    return { success: true, filename, shown: stillShown };
+    const shown = filename === background ? true : await showIfStillShown(filename);
+    return { success: true, filename, shown };
   });
 
   // Set tags for a background
