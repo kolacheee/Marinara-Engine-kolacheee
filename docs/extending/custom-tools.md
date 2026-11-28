@@ -106,6 +106,8 @@ The one field is **Webhook URL**. The app sends a POST request, which is a way t
 
 If you turn on **Include hidden chat context**, the body also has a `context` value. The service replies with JSON or plain text, and that reply goes back to the AI.
 
+A webhook address often holds a secret token, so after you save, **Webhook URL** shows dots instead of the address. Leave the dots to keep the saved address, or replace them with a new one.
+
 Example: a tool named `check_weather` with one required string parameter `city`, and this **Webhook URL**:
 
 ```text
@@ -205,6 +207,8 @@ You still turn on **Enable Tool Use** in the chat's **Function Calling** section
 - To export one tool, open it and click **Export tool**. This saves a `.json` file.
 - To export every tool, click **Export tools to ZIP**.
 - To import, click **Import tools from ZIP or JSON** and pick a `.json` or `.zip` file. A message reports how many tools imported.
+
+An export leaves out each saved **Webhook URL**. After you import a webhook tool, enter its address again.
 
 Imported webhook and script tools are always saved turned off, with **Include hidden chat context** off, even if the file asks for either. Marinara then shows the type, the webhook address and the permissions the file asked for. Open each imported tool, inspect it, and turn it on only if you trust it. Static tools keep their imported on/off state.
 

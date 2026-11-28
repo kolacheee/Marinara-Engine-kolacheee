@@ -7,6 +7,7 @@ import {
   bulkSetCustomToolsEnabledSchema,
   createCustomToolSchema,
   reorderCustomToolsSchema,
+  STORED_SECRET_MASK,
   updateCustomToolSchema,
 } from "@marinara-engine/shared";
 import { createCustomToolsStorage } from "../services/storage/custom-tools.storage.js";
@@ -22,11 +23,19 @@ function isReservedBuiltInToolName(name: string): boolean {
   return BUILT_IN_TOOLS.some((tool) => tool.name === name);
 }
 
+/**
+ * A webhook URL often carries its token (a Discord webhook's is in the path), so responses show STORED_SECRET_MASK
+ * in its place, like a connection's API key. A save that sends the mask back keeps the saved URL.
+ */
+function withMaskedWebhookUrl<T extends { webhookUrl: string | null }>(tool: T): T {
+  return tool.webhookUrl ? { ...tool, webhookUrl: STORED_SECRET_MASK } : tool;
+}
+
 export async function customToolsRoutes(app: FastifyInstance) {
   const storage = createCustomToolsStorage(app.db);
 
   app.get("/", async () => {
-    return storage.list();
+    return (await storage.list()).map(withMaskedWebhookUrl);
   });
 
   app.get("/capabilities", async () => {
@@ -36,7 +45,7 @@ export async function customToolsRoutes(app: FastifyInstance) {
   app.put("/reorder", async (req, reply) => {
     if (!requirePrivilegedAccess(req, reply, { feature: "Custom tool reorder" })) return;
     const input = reorderCustomToolsSchema.parse(req.body);
-    return storage.reorder(input.toolIds);
+    return (await storage.reorder(input.toolIds)).map(withMaskedWebhookUrl);
   });
 
   app.put("/enabled", { config: { rateLimit: CUSTOM_TOOL_BULK_TOGGLE_RATE_LIMIT } }, async (req, reply) => {
@@ -51,7 +60,7 @@ export async function customToolsRoutes(app: FastifyInstance) {
   app.get<{ Params: { id: string } }>("/:id", async (req, reply) => {
     const tool = await storage.getById(req.params.id);
     if (!tool) return notFound(reply, "Tool not found");
-    return tool;
+    return withMaskedWebhookUrl(tool);
   });
 
   app.post("/", async (req, reply) => {
@@ -68,12 +77,17 @@ export async function customToolsRoutes(app: FastifyInstance) {
     if (existing) {
       return reply.status(409).send({ error: `A tool named "${input.name}" already exists.` });
     }
-    return storage.create(input);
+    const created = await storage.create(input);
+    return created && withMaskedWebhookUrl(created);
   });
 
   app.patch<{ Params: { id: string } }>("/:id", async (req, reply) => {
     if (!requirePrivilegedAccess(req, reply, { feature: "Custom tool update" })) return;
-    const data = updateCustomToolSchema.parse(req.body);
+    const body = req.body as Record<string, unknown> | null | undefined;
+    // The mask stands for the saved URL, which stays as it is.
+    const data = updateCustomToolSchema.parse(
+      body?.webhookUrl === STORED_SECRET_MASK ? { ...body, webhookUrl: undefined } : body,
+    );
     const current = await storage.getById(req.params.id);
     if (!current) return notFound(reply, "Tool not found");
 
@@ -91,7 +105,8 @@ export async function customToolsRoutes(app: FastifyInstance) {
       }
     }
 
-    return storage.update(req.params.id, data);
+    const updated = await storage.update(req.params.id, data);
+    return updated && withMaskedWebhookUrl(updated);
   });
 
   app.delete<{ Params: { id: string } }>("/:id", async (req, reply) => {
