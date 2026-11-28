@@ -1,0 +1,72 @@
+diff --git a/docs/roleplay/backgrounds.md b/docs/roleplay/backgrounds.md
+index 9e34866e72..8a41fe1166 100644
+--- a/docs/roleplay/backgrounds.md
++++ b/docs/roleplay/backgrounds.md
+@@ -12,10 +12,10 @@ Image generation is not required for any of this. Without an image model, you pi
+ | The picture to change with the scene | The **Background** agent | [Let the Background agent pick](#let-the-background-agent-pick) |
+ | A place to always look the same | A pinned place | [Pin a background to a place](#pin-a-background-to-a-place) |
+ | A character's room in every chat they are in | A gallery background | [Backgrounds that follow a character](#backgrounds-that-follow-a-character) |
+-| New pictures painted for new places and weather | The **Illustrator** agent | [Backgrounds Made by Illustrator](../media/scene-backgrounds.md) |
++| New pictures painted for new places, weather and time of day | The **Illustrator** agent | [Backgrounds Made by Illustrator](../media/scene-backgrounds.md) |
+ | To upload, tag and sort your pictures, or blur them | The Background Library | [Background Library](../appearance/chat-backgrounds.md) |
+ 
+-When the story arrives somewhere, Marinara decides in this order: a pin for that place in this chat, then a gallery background that names the place, then the Background agent's pick. Illustrator paints a new picture only when none of these fits. Whichever picture wins, its weather version is shown when the story's weather has one.
++When the story arrives somewhere, Marinara decides in this order: a pin for that place in this chat, then a gallery background that names the place, then the Background agent's pick. Pins and gallery places switch the picture on their own only when Marinara knows where the story is: from the **World State** agent's location, or from **World Maps**. Without either, the Background agent still sees gallery backgrounds by their places. Illustrator paints a new picture only when none of these fits. Whichever picture wins, its weather or time of day version is shown when the library has one for the story's weather and time.
+ 
+ ## Set a background for one chat
+ 
+@@ -24,6 +24,16 @@ When the story arrives somewhere, Marinara decides in this order: a pin for that
+ 
+ It changes only that chat. To go back to the default, click **Remove** next to **Chat Background**. You can also pick one from **Chat Settings → Background** in the chat. No pictures yet? See [Import a background](../appearance/chat-backgrounds.md#import-a-background).
+ 
++## Make a weather or time of day version yourself
++
++Your picture shows the bedroom by day, but the story starts there at night in the rain. You don't have to wait for Illustrator:
++
++1. Open the chat. Then open **Chat Settings → Background**.
++2. Under **Make a version of this background**, pick a **Weather** and a **Time of day**. **As painted** keeps that part as the picture shows it.
++3. Click **Make version**.
++
++Illustrator's image connection repaints the picture from the original (a gallery picture too), and the chat shows the new version. It is saved in your background library, so the story uses it later without making it again. If that version already exists, it is shown right away. The image connection has to be able to start from a picture.
++
+ ## Let the Background agent pick
+ 
+ The **Background** agent runs after each reply. It reads the scene and picks the picture that fits best from all your backgrounds. It only picks pictures you have; to paint new ones, use Illustrator.
+@@ -32,9 +42,17 @@ The **Background** agent runs after each reply. It reads the scene and picks the
+ 2. Open **Agents** and turn on **Enable Agents**.
+ 3. Add the **Background** agent.
+ 
+-The backdrop now changes on its own as the story moves between places. It sees every picture in your library, including ones in folders, and uses their names and tags to choose, so clear names and place tags help.
++The backdrop now changes on its own as the story moves between places. The agent reads text, not pictures, so it chooses by what each picture is called:
++
++- **Library pictures** by their file name and tags, including ones in folders.
++- **Gallery backgrounds** of the chat's characters and persona by the places they are labelled with (such as `dorm kitchen`) and their description.
++- **Pinned places** in this chat, as names of the picture they pin.
++
++A library picture whose file name is only random letters and numbers (such as `70c60b32-6b8c-….jpg`) and that has no tags is left out, because nothing says which place it shows. Give it a place tag or a clear name to make it pickable. When nothing listed shows the scene's place, the agent keeps the current picture instead of guessing.
++
++**Chat Settings → Background** shows why the current picture was picked, under its preview. The line goes away when you pick a picture yourself.
+ 
+-If it did not work: with only one or two backgrounds, the agent keeps picking those. Add more to your library.
++If it did not work: with only one or two backgrounds, the agent keeps picking those. Add more to your library. If it is slow, check the agent's connection: it waits for other agents (such as Lorebook Keeper) when that connection runs one request at a time.
+ 
+ ## Pin a background to a place
+ 
+@@ -61,7 +79,7 @@ Pins need to know where the story is, so they use the **World State** agent's lo
+ ### What a pin changes
+ 
+ - The picture shows once on arrival. If you pick a different background by hand while you are there, yours stays until the story moves on.
+-- In a pinned place, the Background agent can't switch the picture, and Illustrator doesn't paint a new background for it. With **Weather Versions of Backgrounds** on, the pinned picture still gets its rain, snow or fog version.
++- In a pinned place, the Background agent can't switch the picture, and Illustrator doesn't paint a new background for it. With **Weather Versions of Backgrounds** or **Time of Day Versions of Backgrounds** on, the pinned picture still gets its rain, snow, fog or night version.
+ 
+ If it did not work: check that **Story is at** under the list shows the place, and that one of the pin's names appears in it word for word.
+ 
+@@ -89,7 +107,7 @@ Gallery backgrounds get weather versions too. The rain or snow version is saved
+ 
+ ## Related guides
+ 
+-- [Backgrounds Made by Illustrator](../media/scene-backgrounds.md): painting new places, weather versions and window stencils.
++- [Backgrounds Made by Illustrator](../media/scene-backgrounds.md): painting new places, weather and time of day versions, and window stencils.
+ - [Background Library](../appearance/chat-backgrounds.md): uploading, tags, folders and blur.
+ - [Character and Persona Galleries](../characters/galleries.md)
+ - [Roleplay Mode: Getting Started](getting-started.md)

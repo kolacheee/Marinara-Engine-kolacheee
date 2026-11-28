@@ -1,0 +1,22 @@
+diff --git a/docs/agents/memory.md b/docs/agents/memory.md
+index dfdc4199db..c39746e4d7 100644
+--- a/docs/agents/memory.md
++++ b/docs/agents/memory.md
+@@ -117,6 +117,8 @@ The **Automatic Summaries** panel keeps summaries current as you chat.
+ 2. Set **Every** to how many user messages pass between summaries. The default is 5. The range is 1 to 200.
+ 3. Optional: click **Backfill Summary** to summarize an older chat that never had summaries. A progress bar shows. Click **Stop** to end it early.
+ 
++**Combine older summaries automatically** is off by default. Turn it on and set **When there are more than** (it starts at 10, from 2 to 100). Once a new automatic summary takes the chat past that many turned-on summaries outside chapters, all of them except the newest become one **chapter**, using your **Combine prompt**. The chapter keeps the messages the old entries covered, in order, and shows a **Chapter** tag in the list. Chapters are kept as written: later combines leave them alone, so early events are not summarised over and over and lose detail. Only when the chapters themselves pass the same number are all but the newest chapter combined, which takes a long chat. It runs right after the new summary is saved, the moment the summary block changes anyway, so it does not break prompt caching an extra time. If combining fails, the entries stay as they are.
++
+ ### Summary prompt, provider and output size
+ 
+ - **Summary Prompt**: click **Edit** to change the instructions the AI uses. Click **Templates** to manage saved prompts with **New template**, **Duplicate**, **Edit** and **Delete**. Templates are global: picking one in a Roleplay chat changes the prompt for every Roleplay chat.
+@@ -340,7 +342,7 @@ Details that most readers do not need. Settings above work without reading this.
+ - When the active summaries one character reads pass 70% of the budget, **Updating continuity** combines them into one summary about half their size after the reply, using the helper. The reply never waits. A summary that still covers live messages waits until they leave the live window. If the combined summary is still over the share, the next update halves it again.
+ - Each request holds only your **Combine prompt**, one line asking for about half the length, and the summary text. When the text has macros such as `{{user}}`, that line also asks to keep them as written. A text too long for one request is sent in parts, and each part is halved. The helper's reply may be as long as the text plus 1,024 tokens, up to 8,196 tokens or **Chat Summary → Maximum output size** if that is larger.
+ - Summaries that different characters read are combined into one, including ones you wrote. Private parts stay in their `{{#if char == "Name"}}…{{/if}}` sections for exactly the characters who knew them. The text each group of characters reads is shortened in a request of its own, without its condition, and goes back inside that same condition. The groups follow the order in which each first appears. A part under 64 tokens stays as it is, with no request. Summaries using other macros stay as they are. If those alone fill a character's share, shorten them by hand or raise the budget. Replaced entries become inactive, so you can turn them back on.
+-- If the helper's reply is cut off at its limit, empty, not shorter or adds a macro, or the result would change who can read a part, the summaries stay as they are and the update still finishes. The same summaries are not sent again until one of them changes, or you change the helper model or the **Combine prompt**. **Resume processing** retries an update that stopped with an error.
++- If the helper's reply for one part or group of readers is cut off at its limit, empty, not shorter or adds a macro, that part keeps its text, and the parts it did shorten are still saved. If no part got shorter, or the result would change who can read a part, the summaries stay as they are and the update still finishes. The same summaries are not sent again until one of them changes, or you change the helper model or the **Combine prompt**. **Resume processing** retries an update that stopped with an error.
+ - A character's prompt shows a summary's message range and dates only from messages that character can see. The Narrator, replying alone, reads every part once.
+ 
+ ### What recall returns

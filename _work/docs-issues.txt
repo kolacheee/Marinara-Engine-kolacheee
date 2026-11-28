@@ -1,0 +1,6 @@
+game/combat.md
+chats/guided-and-impersonate.md
+chats/slash-commands.md
+roleplay/backgrounds.md
+media/illustrator-agent.md
+media/scene-backgrounds.md

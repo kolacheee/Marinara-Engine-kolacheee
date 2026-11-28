@@ -1,0 +1,747 @@
+# Frontend Architecture (Developers)
+
+This is developer material, not an end-user guide. It explains how the Marinara Engine client is built. It covers the React app structure, the Zustand stores, the React Query hooks, the main components, and the server API map. If you just want to use the app, start with the user guides instead.
+
+## Overview
+
+Marinara Engine is an AI chat application with Conversation, Roleplay, and Game modes. The client is a React 19 single-page app served by Vite, styled with Tailwind CSS v4, and packaged as a Progressive Web App (PWA).
+
+The client lives in `packages/client`. It talks to a Fastify API server (`packages/server`) over REST and Server-Sent Events (SSE). Shared data contracts (types, Zod schemas, constants) live in `packages/shared` and are imported by both sides.
+
+## Application architecture
+
+### Shell layout
+
+`components/layout/AppShell.tsx` lays out the top bar, the center pane and one sidebar. The sidebar shows Chats or one panel, never both. It docks on the right by default, or on the left when `sidebarSide` is `"left"`:
+
+```
++-----------------------------------+----------------+
+|  Center                           |  Sidebar       |
+|                                   |                |
+|  Chat area or Editor              |  Chats         |
+|  (lazy-loaded)                    |  (chat list,   |
+|                                   |  folders,      |
+|  ChatConversationSurface          |  mode tabs)    |
+|  ChatRoleplaySurface              |                |
+|  GameSurface                      |  or a panel:   |
+|  CharacterEditor                  |  Characters    |
+|  LorebookEditor                   |  Personas      |
+|  PresetEditor                     |  Lorebooks     |
+|  ...other editors                 |  Presets, ...  |
++-----------------------------------+----------------+
+```
+
+- Sidebar (`[data-component="SidebarSlot"]` in `AppShell.tsx`): one slot on desktop. Inside its sliding wrapper (`SidebarSlotPanel`) are two stacked layers. `ChatSidebarPanel` renders `components/layout/ChatSidebar.tsx`, the chat list with folders and the mode tabs (Conversation, Roleplay, Game). It is always mounted on desktop, because unread counts and notification bubbles load from it. `RightPanelDesktop` renders `components/layout/RightPanel.tsx` and mounts the first time a panel opens. The hidden layer is `invisible`, `inert` and `aria-hidden`. Swapping between Chats and a panel is instant, and opening or closing the sidebar slides.
+- Width: one separator on the sidebar's inner edge (aria-label "Resize sidebar") sets the shared width, from `SHARED_SIDEBAR_WIDTH_MIN` (280) to `SHARED_SIDEBAR_WIDTH_MAX` (480). Read it with `selectSharedSidebarWidth`; the store keeps `sidebarWidth` and `rightPanelWidth` equal.
+- Side: with `sidebarSide: "left"` the slot gets CSS `order: -1`. It keeps its place in the React tree, so changing sides never remounts a panel. `--mari-chat-ui-inset-left` / `--mari-chat-ui-inset-right`, the docked Tracker Panel offset and modeless `Modal` insets follow the side.
+- Phones and tablets: when `isMobileShellViewport()` is true (`MOBILE_SHELL_MEDIA_QUERY`, or a window too narrow for the docked layout), the sidebar is a full-screen sheet from the right, rendered as `ChatSidebarPanel` or `RightPanelMobile`. `sidebarSide` does not apply there.
+- Center pane: either the active chat surface or a full editor (character, lorebook, preset, and so on). Only one shows at a time. Editors replace the chat area.
+- Panels (`components/layout/RightPanel.tsx`): routes `rightPanel` to a panel component and keeps visited panels mounted. See [Panel system](#panel-system-componentspanels).
+- Top bar (`components/layout/TopBar.tsx`): Home and the chat info on one side. On the sidebar's side, `[data-tour="panel-buttons"]` holds the Chats button (`[data-tour="sidebar-toggle"]`) first, then one button for each panel. With `sidebarSide: "left"` the bar mirrors (`flex-row-reverse`): the panel buttons sit on the left and Home at the far right. On phones and tablets Chats stays beside Home, and on phones Chats and the panel buttons move into the **More** menu.
+
+### Navigation
+
+Navigation is state-driven. There is no URL router. The `stores/ui.store.ts` Zustand store controls what renders:
+
+| Navigation target      | Store field          | Trigger function                                  |
+| ---------------------- | -------------------- | ------------------------------------------------- |
+| Open character editor  | `characterDetailId`  | `openCharacterDetail(id)`                          |
+| Open lorebook editor   | `lorebookDetailId`   | `openLorebookDetail(id)`                           |
+| Open preset editor     | `presetDetailId`     | `openPresetDetail(id)`                             |
+| Open connection editor | `connectionDetailId` | `openConnectionDetail(id)`                         |
+| Open agent editor      | `agentDetailId`      | `openAgentDetail(id)`                              |
+| Open persona editor    | `personaDetailId`    | `openPersonaDetail(id)`                            |
+| Show a panel           | `rightPanel`         | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| Show Chats             | `sidebarOpen`        | `toggleSidebar()` / `setSidebarOpen(open)`        |
+| Open modal             | `modal`              | `openModal(type, props?)`                          |
+
+Chats and the panels share the sidebar, so the two are exclusive on every screen size. `openRightPanel` and `toggleRightPanel` close Chats, and `toggleSidebar` and `setSidebarOpen(true)` close the panel. `setSidebarOpen(false)` leaves an open panel alone. `selectSidebarShown` is false while a panel is open, so a stale pair with both flags true draws the panel, and the persisted state turns a saved pair like that into the panel only.
+
+### Code splitting
+
+Major editors and heavy components are lazy-loaded in `AppShell.tsx` using `React.lazy()` plus `Suspense`. This keeps the initial bundle small (see the bundle budget below).
+
+## State management
+
+### Zustand stores (client state)
+
+The client uses a set of Zustand stores in `packages/client/src/stores/` for UI and runtime state. `ui.store.ts` is the only persisted store. The others hold runtime state for chats, agents, games, the local model runtime, translation, dialogs, and backfill.
+
+The current store files are: `agent.store.ts`, `backfill.store.ts`, `chat-tools-menu.store.ts`, `chat.store.ts`, `combat-screen.store.ts`, `conversation-games.store.ts`, `dialog.store.ts`, `encounter.store.ts`, `floating-window.store.ts`, `gallery.store.ts`, `game-asset.store.ts`, `game-mode.store.ts`, `game-state.store.ts`, `roleplay-sheet.store.ts`, `sidecar.store.ts`, `translation.store.ts`, and `ui.store.ts`. The table-game stores moved into their downloadable packages; `conversation-games.store.ts` only tracks the Conversation game picker and setup. `combat-screen.store.ts` tracks which fight screen is showing and its round, so the top bar shows combat controls only then. `roleplay-sheet.store.ts` tracks which member's ruleset sheet a Roleplay chat has open.
+
+#### `ui.store.ts`: settings and UI chrome
+
+The only persisted store (localStorage via the Zustand `persist` middleware). It holds:
+
+- Theme: `visualTheme` ("default" or "sillytavern"), the `data-theme` value (dark or light), and custom color overrides.
+- Appearance: `fontSize`, `chatFontSize`, `fontFamily`, custom fonts, and cursor style.
+- Chat display: `boldDialogue`, `showTimestamps`, `showModelName`, and `messagesPerPage`.
+- Text styling: chat text color, roleplay message background opacity, and text stroke.
+- Streaming: `enableStreaming` and `streamingSpeed`.
+- Conversation theme: gradient colors for message bubbles.
+- Sound: `convoNotificationSound` and `rpNotificationSound`.
+- Behavior: `confirmBeforeDelete`, `enterToSendRP`, `enterToSendConvo`, `weatherEffects`, and `guideGenerations`.
+- Navigation: `rightPanel`, `rightPanelOpen`, `sidebarOpen`, `settingsTab`, all `*DetailId` fields, and `modal`.
+- Sidebar layout: `sidebarSide` (`"right"` or `"left"`, default `"right"`, synced across devices and reset to `"right"` by `resetAppearanceSettings`), and `sidebarWidth` / `rightPanelWidth` (kept equal; read them with `selectSharedSidebarWidth`).
+
+Synced custom themes are not stored in `ui.store.ts`. They are fetched from the server through React Query and mirrored across devices connected to the same Marinara instance.
+
+#### `chat.store.ts`: chat runtime
+
+Not persisted. Tracks the active chat session:
+
+- `activeChatId`: which chat is displayed.
+- `messages`: the current message array.
+- `isStreaming`, `streamBuffer`: generation in progress.
+- `inputDrafts`: per-chat draft messages.
+- `currentInput`: the current value of the chat input.
+- `perChatTyping`: typing indicator state.
+- `unreadCounts`, `chatNotifications`: notification badges.
+- `abortControllers`: cancel in-flight generations.
+
+#### `agent.store.ts`: agent execution
+
+Tracks agent pipeline state during and after generation:
+
+- `activeAgents`: agents currently running.
+- `thoughtBubbles`: agent reasoning shown in real time.
+- `echoMessages`: the echo chamber (simulated viewer chat).
+- `cyoaChoices`: the branching choice UI.
+- `debugLog`: performance metrics and token usage.
+- `failedAgentTypes`: agents that errored (for retry UI).
+
+#### `game-state.store.ts`: RPG companion
+
+Holds scene and world context for Roleplay mode:
+
+- `current` (GameState): date, time, location, weather, present characters, events, player stats, quests, and inventory.
+- `isVisible`, `expandedSections`: HUD display state.
+
+#### `encounter.store.ts`: combat system
+
+Turn-based combat state:
+
+- `active`: whether an encounter is in progress.
+- `party`, `enemies`: combatants with HP, attacks, and statuses.
+- `environment`: arena details.
+- `playerActions`, `encounterLog`: the action queue and history.
+- `combatResult`: victory, defeat, fled, or interrupted.
+
+#### `gallery.store.ts`: image overlays
+
+- `pinnedImages`: images pinned to the chat area as overlays.
+
+### React Query (server data)
+
+All server data is fetched and cached through TanStack React Query, configured in `lib/query-client.ts`:
+
+- Stale time: 30 seconds (global default).
+- Retry: 1 attempt.
+- Refetch on focus: disabled.
+- Cache: in-memory only (no persistence).
+
+Each entity has a dedicated hook file that exports query and mutation hooks.
+
+## Hooks reference
+
+All hooks live in `src/hooks/` and follow the pattern `use-{entity}.ts`. The tables below cover the main hooks only; the full set lives in `packages/client/src/hooks/`.
+
+### Chat hooks (`use-chats.ts`)
+
+| Hook                               | Type           | Description                                  |
+| ---------------------------------- | -------------- | -------------------------------------------- |
+| `useChats()`                       | Query          | All chats                                    |
+| `useChat(id)`                      | Query          | Single chat by ID                            |
+| `useChatMessages(chatId, perPage)` | Infinite Query | Paginated messages for a chat                |
+| `useChatGroup(groupId)`            | Query          | Chat group                                   |
+| `useCreateChat()`                  | Mutation       | Create a new chat                            |
+| `useDeleteChat()`                  | Mutation       | Delete a chat                                |
+| `useUpdateChatMetadata()`          | Mutation       | Update chat metadata (agents, sprites, more) |
+| `useBranchChat()`                  | Mutation       | Branch a chat from a specific message        |
+| `useUpdateMessage()`               | Mutation       | Edit message content (optimistic update)     |
+| `useDeleteMessage()`               | Mutation       | Delete a single message                      |
+| `useDeleteMessages()`              | Mutation       | Delete multiple messages                     |
+| `useSetActiveSwipe()`              | Mutation       | Switch to a different generation swipe       |
+| `usePeekPrompt()`                  | Mutation       | Preview the assembled prompt                 |
+| `useClearAllData()`                | Mutation       | Delete everything (destructive)              |
+
+### Character hooks (`use-characters.ts`)
+
+| Hook                   | Type     | Description                            |
+| ---------------------- | -------- | -------------------------------------- |
+| `useCharacters()`      | Query    | All characters                         |
+| `useCharacter(id)`     | Query    | Single character with parsed card data |
+| `useCreateCharacter()` | Mutation | Create character                       |
+| `useUpdateCharacter()` | Mutation | Update character card data             |
+| `useDeleteCharacter()` | Mutation | Delete character                       |
+| `useUploadAvatar()`    | Mutation | Upload avatar image                    |
+| `usePersonas()`        | Query    | All personas                           |
+| `usePersona(id)`       | Query    | Single persona                         |
+| `useCreatePersona()`   | Mutation | Create persona                         |
+| `useUpdatePersona()`   | Mutation | Update persona                         |
+| `useDeletePersona()`   | Mutation | Delete persona                         |
+| `useCharacterGroups()` | Query    | Character groups                       |
+| `usePersonaGroups()`   | Query    | Persona groups                         |
+
+### Preset hooks (`use-presets.ts`)
+
+| Hook                           | Type     | Description                                                 |
+| ------------------------------ | -------- | ---------------------------------------------------------- |
+| `usePresets()`                 | Query    | All presets                                                |
+| `usePresetFull(id)`            | Query    | One preset with its sections, groups, and variables        |
+| `useDefaultPreset()`           | Query    | The default preset                                         |
+| `useUpdatePreset()`            | Mutation | Update preset                                              |
+| `useDeletePreset()`            | Mutation | Delete preset                                              |
+| `useDuplicatePreset()`         | Mutation | Duplicate preset                                           |
+| `useSetDefaultPreset()`        | Mutation | Make a preset the default                                  |
+| `useCreateSection()`           | Mutation | Create a prompt section (update, delete and reorder hooks sit beside it) |
+| `useCreateGroup()`             | Mutation | Create a section group (update and delete hooks sit beside it)           |
+| `useCreateVariable()`          | Mutation | Create a preset variable, formerly a choice block (update, delete and reorder hooks sit beside it) |
+
+### Agent hooks (`use-agents.ts`)
+
+| Hook                 | Type     | Description                     |
+| -------------------- | -------- | ------------------------------- |
+| `useAgentConfigs()`  | Query    | All agent configurations        |
+| `useCreateAgent()`   | Mutation | Create custom agent             |
+| `useUpdateAgent()`   | Mutation | Update agent config             |
+| `useDeleteAgent()`   | Mutation | Delete agent                    |
+| `useUpdateAgentByType()` | Mutation | Update an agent config by agent type |
+
+### Generation hook (`use-generate.ts`)
+
+The most complex hook. It returns `{ generate, retryAgents }`.
+
+`generate(params)` takes one options object with fields such as `chatId`, `connectionId`, `userMessage`, `regenerateMessageId`, `continueMessageId`, `impersonate`, and `attachments`. It returns `false` if a generation is already in flight for that chat. The flow is:
+
+1. Set streaming state in `chat.store.ts`.
+2. Send the generation request to `/api/generate`.
+3. Parse SSE events such as `token`, `agent_start`, `agent_result`, `agent_error`, `thinking`, `tool_call`, `game_state`, `game_state_patch`, `text_rewrite`, `scene_created`, `done`, and `error`.
+4. Update the React Query cache with new messages.
+5. Populate the agent store with thought bubbles and debug info.
+6. Handle errors with toast notifications.
+
+### Other hooks
+
+The `src/hooks/` folder also contains many feature-specific hooks. A representative sample:
+
+| File                           | Purpose                                   |
+| ------------------------------ | ----------------------------------------- |
+| `use-connections.ts`           | API connection CRUD plus test             |
+| `use-lorebooks.ts`             | Lorebook and entry CRUD                    |
+| `use-scene.ts`                 | Scene planning, creation, conclusion       |
+| `use-encounter.ts`             | Combat encounter init, action, summary     |
+| `use-autonomous-messaging.ts`  | Autonomous message polling and scheduling  |
+| `use-idle-detection.ts`        | 10-minute inactivity detector              |
+| `use-background-autonomous.ts` | Background polling for inactive chats      |
+| `use-translate.ts`             | Text translation                          |
+| `use-apply-regex.ts`           | Regex script execution on messages         |
+| `use-custom-tools.ts`          | Custom tool CRUD, reordering and bulk toggles |
+| `use-knowledge-sources.ts`     | Knowledge source management                |
+| `use-gallery.ts`               | Chat gallery images                        |
+| `use-chat-folders.ts`          | Chat folder CRUD plus reordering           |
+| `use-regex-scripts.ts`         | Regex script CRUD, reordering and bulk toggles |
+| `use-haptic.ts`                | Haptic device connection and commands      |
+
+## Component guide
+
+### Chat system (`components/chat/`)
+
+The chat system is the largest feature area. `ChatArea.tsx` lazy-loads three rendering surfaces: Conversation, Roleplay, and Game Mode.
+
+#### Conversation mode (`ChatConversationSurface.tsx`)
+
+Messenger-style chat bubbles. User messages on the right, assistant on the left. Features:
+
+- Infinite scroll pagination (load older messages when you scroll up).
+- Per-message actions: edit, copy, regenerate, delete, branch, peek prompt.
+- Attachment support (images and files).
+- Emoji and GIF pickers.
+- Slash commands.
+- Notification sounds on new messages.
+- Draft persistence per chat.
+
+#### Roleplay mode (`ChatRoleplaySurface.tsx`)
+
+A dark, immersive RPG-themed interface. It has all the Conversation features plus:
+
+- Character sprites with expression changes driven by the expression agent.
+- The Roleplay HUD showing game state (time, location, weather, present characters).
+- Weather effects (particle overlays that match the scene weather).
+- The echo chamber panel (simulated viewer reactions).
+- Combat encounters with a turn-based action system.
+- A world info panel showing active lorebook entries.
+- A scene system for branching mini-roleplays.
+- Background images with crossfade transitions.
+
+#### Game Mode (`GameSurface.tsx`)
+
+The AI Game Master surface. It lives outside the chat folder, in `components/game/GameSurface.tsx`. `ChatArea.tsx` renders it when the chat mode is `game`. It reads the dedicated game stores (`game-mode.store.ts`, `game-asset.store.ts`, `game-state.store.ts`). It drives sessions, dice rolls, skill checks, maps, and turn storyboards through the hooks in `use-game.ts` and `use-game-storyboards.ts`.
+
+#### Key components
+
+- `ChatArea.tsx`: the central orchestrator. It fetches all data (messages, characters, personas), builds the character map, determines the chat mode, and renders the right surface.
+- `ChatMessage.tsx`: renders a single message with markdown, swipe navigation, editing, and action menus. It uses an uncontrolled `EditTextarea` subcomponent to avoid re-renders during editing.
+- `ChatInput.tsx`: user input with auto-resize, draft persistence, slash command completion, attachment handling, and emoji or GIF insertion.
+
+### Editor components
+
+Each resource type has a full-page editor that replaces the chat area:
+
+| Editor            | File                                          | Manages                                                                         |
+| ----------------- | --------------------------------------------- | ------------------------------------------------------------------------------- |
+| Character Editor  | `components/characters/CharacterEditor.tsx`   | Character card fields, avatar, greeting, personality, system prompt, metadata   |
+| Lorebook Editor   | `components/lorebooks/LorebookEditor.tsx`     | Lorebook metadata and entries with keys, activation rules, injection settings   |
+| Preset Editor     | `components/presets/PresetEditor.tsx`         | Prompt sections, groups, markers, generation parameters, choice blocks          |
+| Connection Editor | `components/connections/ConnectionEditor.tsx` | API provider, base URL, model, context window, flags                            |
+| Agent Editor      | `components/agents/AgentEditor.tsx`           | Agent prompt template, phase, connection, tools, settings                       |
+| Persona Editor    | `components/personas/PersonaEditor.tsx`       | User persona with name, description, stats, avatar                              |
+
+### Modal system (`components/modals/`)
+
+Modals are rendered by `components/layout/ModalRenderer.tsx`. It reads `ui.store.modal` and renders the matching component inside `Suspense`. The modal components live under `components/modals/`.
+
+The current modal types include (this list is illustrative, not exhaustive):
+
+| Type                       | Component                     | Purpose                                    |
+| -------------------------- | ----------------------------- | ------------------------------------------ |
+| `create-character`         | `CreateCharacterModal`        | Quick character creation (name and avatar) |
+| `create-connection`        | `CreateConnectionModal`       | Quick connection creation                  |
+| `create-persona`           | `CreatePersonaModal`          | Quick persona creation                     |
+| `create-lorebook`          | `CreateLorebookModal`         | Quick lorebook creation                    |
+| `create-preset`            | `CreatePresetModal`           | Quick preset creation                      |
+| `import-character`         | `ImportCharacterModal`        | Import from file (JSON or PNG)             |
+| `import-connection`        | `ImportConnectionModal`       | Import a connection package                |
+| `import-lorebook`          | `ImportLorebookModal`         | Import from file                           |
+| `import-preset`            | `ImportPresetModal`           | Import from file                           |
+| `import-persona`           | `ImportPersonaModal`          | Import from file                           |
+| `character-card-update`    | `CharacterCardUpdateModal`    | Agent-proposed card evolution review       |
+| `agent-write-approval`     | `AgentWriteApprovalModal`     | Agent write consent and review             |
+| `docs-viewer`              | `DocsViewerModal`             | In-app documentation browser               |
+| `st-bulk-import`           | `STBulkImportModal`           | Bulk import from SillyTavern data          |
+| `about-me-viewer`          | `AboutMeViewerModal`          | View a Conversation-mode About Me          |
+| `scene-prompt-preferences` | `ScenePromptPreferencesModal` | Scene prompt preference settings           |
+
+Modal pattern: all modals accept `{ open, onClose }`, wrap content in the `Modal` base component, use mutations for API calls, and show loading state from `mutation.isPending`.
+
+### Panel system (`components/panels/`)
+
+Panels open in the sidebar in place of Chats and show resource lists with search, sort, and filtering. Clicking a resource opens its full editor in the center pane.
+
+Panels are registered in `RightPanel.tsx` in two places:
+
+1. `PANEL_CONFIG`: title, icon, and gradient color.
+2. `RIGHT_PANELS` (in `right-panel-panels.ts`): the component map.
+
+Panels keep their state through a `mountedPanels` Set held in a `useState` inside `RightPanel`. It tracks which panels have been visited. Once mounted, a panel stays in the DOM (hidden with `display: none` or `aria-hidden`) to keep its state. The Set belongs to one `RightPanel` mount, so a remount, such as the phone sheet opening again, starts with only the current panel.
+
+### UI primitives (`components/ui/`)
+
+| Component          | Description                                                            |
+| ------------------ | --------------------------------------------------------------------- |
+| `Modal`            | Base modal with backdrop click, escape key, enter and exit animations |
+| `ColorPicker`      | Solid color or gradient picker with preset swatches                   |
+| `ExpandedTextarea` | Full-screen portal overlay for editing large text blocks              |
+| `EmojiPicker`      | Searchable emoji popover (portal-rendered)                            |
+| `GifPicker`        | GIF search via the Giphy API                                          |
+| `HelpTooltip`      | Hover icon that shows a portal-positioned tooltip                     |
+| `LibraryToolbar`   | The toolbar every library panel shares (see below)                    |
+| `EditorHeader`     | The header every full-page editor shares (see below)                  |
+
+All UI components use controlled props (value plus onChange) and portal rendering for overlays.
+
+**Library panels use `LibraryToolbar`.** Characters, Personas, Lorebooks, Agents and the Presets panel's tabs render their top controls through it: an optional library row (one full-width button, or the Download / Open Library pair), create / import / export / select, search with the shared sort menu, New Folder, then panel filters as `children`. The rows are typed props, not slots, so a new library panel gets the same markup instead of a copy that drifts. Add a prop there rather than hand-building a toolbar in a panel.
+
+`LibraryToolbar.tsx` also exports `SegmentedButtons`, one long `.mari-chrome-segmented` button split by `|`. It draws the Download / Open Library pair and the Presets panel's **Prompts** / **Regexes** / **Tools** / **Profiles** tabs, so every panel's top row has the same height. Passing `groupLabel` makes the row a `role="group"` of tabs, and `pressed` sets each tab's `aria-pressed`. `.mari-chrome-segmented` has `flex-shrink: 0`, so a panel's own fixed-height flex scroller (as in Characters) cannot squeeze the row.
+
+**Full-page editors use `EditorHeader`.** It draws Back, the icon tile, the name, the optional section tabs, the actions and Close, in one of two layouts. With `nav` (section tabs), the `mari-editor-header--with-nav` density rules size everything against the tabs. Without it, the actions get a row of their own on phones, and Save shows only its icon there. The name, the tile's content and the buttons are slots, so each editor keeps its own name field and its own controls. Build header buttons with `EditorSaveButton` and `EditorHeaderAction`: their label is always both the tooltip and the accessible name. Add a slot or a part there rather than hand-building a header in an editor.
+
+## API client (`lib/api-client.ts`)
+
+All server communication uses the `api` object:
+
+```typescript
+import { api, ApiError } from "@/lib/api-client";
+```
+
+| Method                         | Signature           | Description                           |
+| ------------------------------ | ------------------- | ------------------------------------- |
+| `api.get<T>(path)`             | `GET /api{path}`    | Fetch JSON                            |
+| `api.post<T>(path, body)`      | `POST /api{path}`   | Send JSON, receive JSON               |
+| `api.put<T>(path, body)`       | `PUT /api{path}`    | Full update                           |
+| `api.patch<T>(path, body)`     | `PATCH /api{path}`  | Partial update                        |
+| `api.delete(path)`             | `DELETE /api{path}` | Delete resource                       |
+| `api.upload(path, FormData)`   | `POST /api{path}`   | Multipart file upload                 |
+| `api.download(path, filename)` | `GET /api{path}`    | Download plus save-as dialog          |
+| `api.streamEvents(path, body)` | `POST /api{path}`   | SSE async generator (all event types) |
+
+Errors throw `ApiError`, which carries `status` and `message` properties.
+
+## Pickers and dropdowns
+
+Every "pick a value" control opens one shared picker window. A design change to pickers (the surface, the row style, the width) belongs in the shared components below, never in a feature. Don't use a native `<select>`, and don't draw a list in a popover of your own: the app has neither left.
+
+| Layer | File | What it owns |
+| --- | --- | --- |
+| Window | `components/ui/PickerWindow.tsx` | The surface. On desktop it is a popover next to its field, as wide as its rows need (at least the field, at most 352 px or the field when that is wider). On a phone it is a bottom sheet (a `Modal`); inside a `Modal` it stays a popover so two sheets never stack. Escape, Back, an outside click and the field scrolling out of view close it. |
+| Rows | `components/ui/PickerParts.tsx` | `PickRow` (one row: art, title, a second line that wraps to two lines, badge, the check or checkbox), `PickerSearch`, folder headers and `usePickerKeyboard` (arrow keys, Enter). |
+| List | `components/ui/PickerFolderList.tsx` | The body: search box, rows grouped by library folders or `group`, single or multiple pick, "Add all" per folder. |
+| Fields | `components/ui/Select.tsx` | `Select`: one value from a fixed list, the replacement for a native `<select>`. A combobox trigger, search from `SELECT_SEARCH_MIN` options, arrow keys and type-ahead on the closed field. |
+| | `components/ui/PickerField.tsx` | `PickerField` (one item with a None row and folders), `PickerListField` / `PickerListWindow` (several items; the picks are listed under the field with remove buttons) and `useFieldWindow` (open state, and focus back to the field on close). |
+| | `components/ui/LibraryPickers.tsx`, `components/characters/CharacterSelect.tsx` | The preset, lorebook, character and persona fields built from the above. |
+
+How to add a picker:
+
+- **One value from a list:** `Select`. Give it a `label`: it names the field and titles the window.
+- **One library item** (with folders, art, a None row): `PickerField`, or the matching field in `LibraryPickers.tsx`.
+- **Several items:** `PickerListField`. Escape and outside clicks close the window; picking does not.
+- **Something that isn't a field** (a button that opens a short choice, like "Link to Conversation"): `useFieldWindow` for the open state and focus, `PickerWindow` anchored to the button, and `PickerFolderList` or `PickRow`s inside.
+
+Not on the shared picker yet: the connection and model picker (`ConnectionSelect` / `ModelPicker`, its own window). Other controls with their own surfaces aren't pickers: icon galleries (`StatIconPicker`), tag autocomplete, context and action menus.
+
+**Testing.** A `Select` trigger has `role="combobox"`, its picked value in `data-value`, and its window is a `dialog` named by the field's label. Rows carry `data-pick-row`; the picked row of a single pick has `aria-current="true"`, rows of a multiple pick have `aria-pressed`. `e2e/select-field.ts` has `chooseOption` and `pickerLabels`, which replace Playwright's `selectOption` on the old native selects.
+
+## Styling system
+
+### Tailwind CSS v4
+
+The project uses Tailwind CSS v4 with the `@tailwindcss/vite` plugin (no PostCSS config needed). Theme tokens map from CSS custom properties in `globals.css`:
+
+```css
+@theme {
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+  --color-border: var(--border);
+  /* ... */
+}
+```
+
+### Theme architecture
+
+`globals.css` is organized into labeled sections. These include the Tailwind `@theme` mapping, dark theme variables, light theme overrides, base reset, custom cursors, scrollbars, glass panels, glow utilities, UI components, and keyframe animations. Other sections cover chat animations, per-mode chat styling, sprites and game HUD, function-call cards, responsive rules, the imported SillyTavern theme, accessibility rules, and performance hints.
+
+### Custom themes
+
+Users can create custom themes. Theme definitions are stored on the Marinara server and sync across connected devices. The active custom theme is shared too. The CSS is injected as a `style` tag by `CustomThemeInjector.tsx`.
+
+Synced theme CSS can request the built-in Accent Pulse engine with `--marinara-theme-accent-pulse: enabled`. Add `--marinara-theme-accent-pulse-source: #a78bfa` (or a gradient) when the pulse should use a specific theme accent instead of the current Appearance accent.
+
+### Personal Extensions
+
+Personal Extensions are server-stored, exact-hash-approved sandboxed code. The Addons UI uses `use-personal-extensions.ts`; `PersonalExtensionInjector.tsx` hosts approved Browser code in a dedicated Worker inside an opaque-origin sandboxed iframe and brokers immutable active-chat context snapshots. The context fields are always present; outside an active chat, `chatId` and `characterId` are `null` and `characterIds` is empty. Bounded active Character-card and selected-Persona fields require separately declared, hash-bound permissions. Server extensions run in a separate Node process inside macOS Seatbelt or Linux Bubblewrap and fail closed when neither backend is available. External sources require the `.env` gate plus the Danger Zone opt-in at listing, approval, and runtime boundaries.
+
+See [Personal Extension Architecture](personal-extensions.md) before changing this feature.
+
+## Shared package (`packages/shared`)
+
+The frontend imports types, schemas, and constants from `@marinara-engine/shared`.
+
+### Constants
+
+Key files in `packages/shared/src/constants/`:
+
+- `defaults.ts`: exports such as `APP_VERSION`, `PROFESSOR_MARI_ID`, `DEFAULT_CONNECTION_ID`, `DEFAULT_GENERATION_PARAMS`, `MAX_FILE_SIZES`, and `LIMITS`. This is the version source and holds default generation settings.
+- `providers.ts`: exports `PROVIDERS`, the API provider configs (OpenAI, Anthropic, Google, and more) with URLs and auth.
+- `model-lists.ts`: static model catalogs per provider, plus `IMAGE_GENERATION_SOURCES` for image generation providers.
+- `agent-prompts.ts`: base-only summary and secret-plot prompts plus runtime lookup for prompts supplied by installed agent packages.
+
+### Schemas (Zod)
+
+All input validation uses Zod schemas from `packages/shared/src/schemas/`. Representative files:
+
+| Schema file             | Entities                                                           |
+| ----------------------- | ------------------------------------------------------------------ |
+| `agent.schema.ts`       | AgentConfig create and update, agent phases, result types          |
+| `character.schema.ts`   | Character cards, compatibility metadata, character books, groups   |
+| `chat.schema.ts`        | Chat create, message create, generation request                   |
+| `connection.schema.ts`  | API connection create and update                                   |
+| `custom-tool.schema.ts` | Custom tool definitions                                            |
+| `lorebook.schema.ts`    | Lorebook and entry create/update, activation conditions, schedules |
+| `prompt.schema.ts`      | Preset, section, group, choice block, generation parameters        |
+| `regex.schema.ts`       | Regex script create and update                                     |
+| `personal-extension.schema.ts` | Personal Extension drafts, exact-hash approval, rollback, and private storage |
+
+The folder also holds schemas for app settings, chat settings profiles, conversation calls, custom emojis and stickers, Noodle, and themes.
+
+### Types
+
+Entity type definitions live in `packages/shared/src/types/`. A sample of the key files:
+
+| Type file             | Key interfaces                                                                                              |
+| --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `agent.ts`            | `AgentConfig`, `AgentResult`, `AgentContext`, `ToolDefinition`, `ToolCall`, `ToolResult`, `BUILT_IN_AGENTS` |
+| `character.ts`        | `Character`, `CharacterCardV2`, `CharacterData`, `RPGStatsConfig`                                           |
+| `chat.ts`             | `Chat`, `ChatMetadata`, `Message`, `MessageExtra`, `GenerationInfo`, `StreamEvent`                          |
+| `connection.ts`       | `APIConnection`, `ModelInfo`, `ModelCapabilities`, `ConnectionTestResult`                                   |
+| `combat-encounter.ts` | `CombatPartyMember`, `CombatEnemy`, `CombatActionResult`, `EncounterSettings`                               |
+| `game-state.ts`       | `GameState`, `PresentCharacter`, `PlayerStats`, `QuestProgress`, `InventoryItem`                            |
+| `lorebook.ts`         | `Lorebook`, `LorebookEntry`, `ActivationCondition`, `LorebookSchedule`, `QuestData`                         |
+| `persona.ts`          | `Persona`, `PersonaStatsConfig`                                                                             |
+| `personal-extension.ts` | `PersonalExtension`, runtime metadata, revisions, source, and server runtime state                         |
+| `prompt.ts`           | `PromptPreset`, `PromptSection`, `PromptGroup`, `ChoiceBlock`, `GenerationParameters`                       |
+| `scene.ts`            | `SceneMeta`, `SceneFullPlan`                                                                                |
+| `haptic.ts`           | `HapticDevice`, `HapticStatus`, `HapticDeviceCommand`                                                       |
+
+### Utilities
+
+| File              | Purpose                                                                                                                                    |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `macro-engine.ts` | `resolveMacros(template, context)`: replaces macros such as `{{date}}`, `{{char}}`, `{{random}}`, `{{roll:2d6}}`, and `{{getvar::name}}`     |
+| `xml-wrapper.ts`  | `nameToXmlTag()`: converts a display name to an XML tag slug ("World Info (Before)" becomes "world_info_before")                           |
+
+## API endpoints
+
+The server (`packages/server`) exposes REST APIs under `/api`. This is a high-level map, not the exhaustive list. The file `packages/server/src/routes/index.ts` and the individual route files are the source of truth.
+
+### Core resources
+
+| Prefix               | Methods                  | Description                                                                                |
+| -------------------- | ------------------------ | ----------------------------------------------------------------------------------------- |
+| `/api/characters`    | GET, POST, PATCH, DELETE | Character CRUD, groups, export (JSON or PNG)                                               |
+| `/api/chats`         | GET, POST, PATCH, DELETE | Chat CRUD, messages, metadata, connect and disconnect                                     |
+| `/api/prompts`       | GET, POST, PATCH, DELETE | Preset CRUD, sections, groups, choice blocks, export                                      |
+| `/api/connections`   | GET, POST, PATCH, DELETE | API connection CRUD, duplicate, test                                                      |
+| `/api/agents`        | GET, POST, PATCH, DELETE | Agent CRUD, echo messages, runs; built-in toggles use `PUT /api/agents/toggle/:agentType` |
+| `/api/lorebooks`     | GET, POST, PATCH, DELETE | Lorebook CRUD, entries, export                                                            |
+| `/api/custom-tools`  | GET, POST, PUT, PATCH, DELETE | Custom tool CRUD, `PUT /reorder` and `PUT /enabled`                                       |
+| `/api/regex-scripts` | GET, POST, PUT, PATCH, DELETE | Regex script CRUD, `PUT /reorder` and `PUT /enabled`                                       |
+| `/api/library-folders/regex` | GET, POST, PATCH, DELETE | Regex folder CRUD, pause state and `POST /move`                                            |
+| `/api/library-folders/functions` | GET, POST, PATCH, DELETE | Custom tool folder CRUD, pause state and `POST /move`                                 |
+
+`PUT /api/regex-scripts/enabled` accepts `scriptIds` and `enabled`. It returns 404 without updating any script if an ID is missing. The regex list includes `pausedByFolder` separately from the saved `enabled` state. `PUT /api/custom-tools/enabled` works the same way with `toolIds`, and the custom tool list carries `pausedByFolder` too. A tool in a paused folder is never offered to the model.
+
+Agent memory tools use `/api/agents/memory/:agentType/:chatId`, where `agentType` is the agent type string and `chatId` is the target chat id.
+
+### Generation
+
+| Endpoint                     | Method | Description                                          |
+| ---------------------------- | ------ | ---------------------------------------------------- |
+| `/api/generate`              | POST   | Main SSE generation with the agent pipeline          |
+| `/api/generate/retry-agents` | POST   | SSE retry for the agent types supplied by the caller |
+
+### Chat features
+
+| Prefix                    | Endpoints                        | Description                  |
+| ------------------------- | -------------------------------- | ---------------------------- |
+| `/api/chat-folders`       | CRUD plus reorder                | Chat folder management       |
+| `/api/conversation`       | schedule, status, activity, autonomous | Autonomous messaging system  |
+| `/api/scene`              | create, plan, conclude           | Scene branching              |
+| `/api/encounter`          | init, action, summary            | Combat encounters            |
+| `/api/translate`          | POST                             | Text translation             |
+| `/api/game`               | CRUD and actions                 | Game Mode sessions and state |
+| `/api/game-assets`        | CRUD and upload                  | Game assets                  |
+| `/api/game-rulesets`      | import, schema, source, remove   | Imported Game Mode rulesets  |
+| `/api/game-worlds`        | library CRUD and world editing   | World library for new games and map packs |
+| `/api/game-tile-packs`    | tile packs, plus `/creatures` and `/boards` | Map, creature and fight-board art packs |
+| `/api/turn-games`         | catalog, state, start, move, resign | Conversation table games (the games come from packages) |
+| `/api/conversation-calls` | call and session routes (registered by the conversation calls package) | Conversation audio calls     |
+
+### Media and assets
+
+| Prefix                        | Description                  |
+| ----------------------------- | ---------------------------- |
+| `/api/avatars/file/:filename` | Avatar image serving         |
+| `/api/backgrounds`            | Background CRUD plus upload  |
+| `/api/sprites/:characterId`   | Sprite expression management |
+| `/api/fonts`                  | Custom font management       |
+| `/api/gallery/:chatId`        | Per-chat gallery images      |
+| `/api/global-gallery`         | Global gallery images        |
+| `/api/tts`                    | Text-to-speech routes        |
+| `/api/speech-to-text`         | Speech to Text server settings and test |
+| `/api/avatar-models`          | 2D and 3D avatar models for the avatar agents |
+| `/api/avatar-generation`      | Avatar drafts from sprites and the Tripo key |
+| `/api/avatar-classify`        | Avatar emotion classifier and its local model |
+| `/api/youtube`                | YouTube DJ routes            |
+| `/api/custom-emojis`          | Custom emoji assets          |
+| `/api/custom-stickers`        | Custom sticker assets        |
+| `/api/gifs/search`            | GIF search (Giphy proxy)     |
+
+### External integrations
+
+| Prefix                          | Description                  |
+| ------------------------------- | ---------------------------- |
+| `/api/bot-browser/chub/*`       | Chub character search        |
+| `/api/bot-browser/janny/*`      | JannyAI search               |
+| `/api/bot-browser/pygmalion/*`  | Pygmalion search             |
+| `/api/bot-browser/wyvern/*`     | Wyvern search                |
+| `/api/bot-browser/datacat/*`    | DataCat search               |
+| `/api/haptic/*`                 | Haptic device control        |
+| `/api/spotify/*`                | Spotify auth                 |
+| `/api/knowledge-sources`        | Knowledge base for retrieval |
+
+### System
+
+| Endpoint                        | Description                             |
+| ------------------------------- | --------------------------------------- |
+| `/api/updates/check`            | Version check against GitHub releases; for git installs, also how far the checkout is behind its update channel |
+| `/api/updates/channel`          | Update channel, current branch and channel list |
+| `/api/updates/apply`            | Apply an update                                 |
+| `/api/backup`                   | Full backup, export, import             |
+| `/api/import/*`                 | SillyTavern and Marinara profile import |
+| `/api/admin/clear-all`          | Full data clear                         |
+| `/api/themes`                   | Synced custom themes                    |
+| `/api/personal-extensions`      | Sandboxed extension policy, drafts, approval, runtime, and private storage |
+| `/api/app-settings`             | Server-side app settings                |
+| `/api/sidecar`                  | Local model runtime                     |
+| `/api/chat-presets`             | Chat settings profiles (legacy endpoint name) |
+| `/api/connection-folders`       | Connection folders                      |
+| `/api/prompt-overrides`         | Built-in prompt overrides               |
+| `/api/achievements`             | Achievement unlocks                     |
+| `/api/capability-packages`      | Agent catalog, installs, updates, release notes and package assets |
+| `/api/noodle`                   | Noodle social timeline (registered by the Noodle package) |
+| `/api/professor-mari/workspace` | Professor Mari workspace operations     |
+| `/api/professor-mari/quick`     | Professor Mari quick answers and applying their edit proposals |
+
+## PWA support
+
+The app is a Progressive Web App configured with VitePWA:
+
+- Manifest: `public/manifest.json` with the "Marinara Engine" app name, standalone display mode, and dark theme.
+- Icons: a 64px favicon, 192px and 512px maskable icons, and a splash logo.
+- Service worker: Workbox with `registerType: "prompt"`, so a new version waits for the user to accept it.
+- Caching: static assets are cached; `/api/*` routes use NetworkOnly.
+- Keep-alive: `lib/keep-alive.ts` uses the Web Locks API plus BroadcastChannel pings to keep the tab from sleeping.
+
+### Version skew detection
+
+`App.tsx` polls `/api/health` every 5 minutes. If the server version differs from the client's cached version, the client refreshes itself with `forceRefreshSpa` in `lib/browser-runtime.ts`, which unregisters the service worker and clears the caches.
+
+## Agent system
+
+The agent system processes AI responses through configurable pipelines. Agents run in three phases:
+
+1. Pre-generation: before the main LLM call (for example, context injection or knowledge retrieval).
+2. Parallel: alongside the main generation (for example, world-state tracking or combat).
+3. Post-processing: after the main response (for example, prose rewriting or lorebook updates).
+
+Retry requests go through `/api/generate/retry-agents` with an explicit `agentTypes` list. A broad UI action like **Re-run Trackers** passes all active tracker types. An individual widget control passes only its target tracker.
+
+Agent memory tools, such as the Narrative Director Secret Plot panel, use `/api/agents/memory/:agentType/:chatId`. The route applies to configured agents that store per-chat memory. Secret Plot memory is stored under `director` in current configs, while `secret-plot-driver` remains accepted for legacy chats.
+
+### First-party downloadable agents
+
+The lightweight Engine ships with an empty runtime agent registry. Packages installed from the public [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) catalog contribute validated agent manifests, client/server feature entrypoints, and UI slots at runtime. The active definitions are exposed through `BUILT_IN_AGENTS` for compatibility, but they come from installed packages rather than bundled implementations. The official catalog contains these packages:
+
+| Agent                    | Phase           | What it does                                                      |
+| ------------------------ | --------------- | ----------------------------------------------------------------- |
+| `prose-guardian`         | post_processing | Enforces writing quality (anti-repetition, show-don't-tell)       |
+| `continuity`             | post_processing | Detects continuity issues and can produce rewrite guidance        |
+| `director`               | pre_generation  | Injects narrative directions and optional Secret Plot state       |
+| `echo-chamber`           | parallel        | Simulates audience reactions                                      |
+| `world-state`            | post_processing | Extracts date, time, location, and weather from the narrative     |
+| `expression`             | post_processing | Selects character sprite expressions                              |
+| `quest`                  | post_processing | Tracks quest creation, updates, and completion                    |
+| `background`             | post_processing | Selects fitting background images                                 |
+| `character-tracker`      | post_processing | Tracks character state changes                                    |
+| `persona-stats`          | post_processing | Tracks player persona stat changes                                |
+| `custom-tracker`         | post_processing | Tracks user-defined structured state                              |
+| `inventory-tracker`      | post_processing | Tracks currencies, equipped gear, and carried inventory           |
+| `quartermaster`          | post_processing | Keeps a Roleplay character sheet, equipped gear, and outfits      |
+| `beholder`               | post_processing | Tracks what each character wears and holds, and their injuries    |
+| `relationship-tracker`   | post_processing | Tracks how the characters and the persona feel about each other   |
+| `memory-nag`             | post_processing | Remembers loose ends such as promises and reminds the model       |
+| `illustrator`            | post_processing | Generates scene image prompts and media requests                  |
+| `lorebook-keeper`        | post_processing | Auto-creates and updates lorebook entries                         |
+| `card-evolution-auditor` | post_processing | Audits character cards for suggested evolution                    |
+| `combat`                 | parallel        | Tracks combat rounds, HP, initiative, and outcomes                |
+| `html`                   | post_processing | Rewrites finished Roleplay responses to add diegetic HTML visuals |
+| `spotify`                | post_processing | Controls Music DJ playback (Spotify, YouTube, or local music)     |
+| `knowledge-retrieval`    | pre_generation  | Retrieves context from knowledge sources                          |
+| `knowledge-router`       | pre_generation  | Routes relevant lorebook and knowledge entries                    |
+| `long-term-memory`       | feature         | Stores durable memories and recalls relevant context              |
+| `haptic`                 | post_processing | Sends haptic device commands                                      |
+| `cyoa`                   | post_processing | Generates choice prompts                                          |
+| `storyboard`             | post_processing | Plans still or animated Game and Roleplay storyboards             |
+| `2d-avatars`             | feature         | Renders animated 2D sprite or mesh character avatars              |
+| `3d-avatars`             | feature         | Renders animated VRM, MMD PMX, GLB, and FBX 3D avatars            |
+| `conversation-calls`     | feature         | Adds Conversation audio/video calls and related settings          |
+| `hierarchical-maps`      | feature         | Adds Roleplay/Game maps, spatial context, and movement             |
+| `noodle`                 | feature         | Adds the local Noodle social feed to Home                         |
+| `otome-forge`            | feature         | Adds Otome Hearth, an otome game made from characters, to Home    |
+| `saucelings`             | feature         | Adds Saucelings, a virtual pet raised by characters, to Home      |
+| `slurp2`                 | feature         | Adds Slurp, a private creator app for characters, to Home         |
+| `story-writer`           | feature         | Adds Story Writer, a co-writing book workspace, to Home           |
+| `gacha-forge`            | feature         | Adds a gacha game mode to Home                                    |
+| `blackjack`              | feature         | Adds the Conversation Blackjack table                             |
+| `uno`                    | feature         | Adds the Conversation UNO table                                   |
+| `chess`                  | feature         | Adds the Conversation Chess board                                 |
+| `poker`                  | feature         | Adds the Conversation Texas Hold'em table                         |
+| `eightball`              | feature         | Adds the Conversation 8-Ball Pool table                           |
+| `tic-tac-toe`            | feature         | Adds the Conversation Tic-Tac-Toe board                           |
+| `rock-paper-scissors`    | feature         | Adds Conversation Rock-Paper-Scissors matches                     |
+| `wordle`                 | feature         | Adds the Conversation daily Wordle race                           |
+
+### Agent result types
+
+Agents produce typed results that the frontend handles. The `AgentResultType` union in `packages/shared/src/types/agent.ts` includes:
+
+`game_state_update`, `text_rewrite`, `sprite_change`, `echo_message`, `quest_update`, `image_prompt`, `context_injection`, `continuity_check`, `director_event`, `lorebook_update`, `character_card_update`, `character_card_create`, `background_change`, `character_tracker_update`, `persona_stats_update`, `custom_tracker_update`, `inventory_tracker_update`, `spotify_control`, `youtube_control`, `local_music_control`, `haptic_command`, `cyoa_choices`, `secret_plot`, `game_master_narration`, `party_action`, `game_map_update`, `game_state_transition`, `prompt_patch`, `character_activity_update`, `frontend_theme_update`, `about_me_update`, and `memory_nag`.
+
+## Chat modes
+
+### Conversation mode
+
+Plain dialogue with one or more AI characters. Characters can have different statuses (online, idle, do not disturb, offline) that influence response timing and style. Built-in agents are added per chat rather than enabled globally.
+
+### Roleplay mode
+
+An immersive narrative experience with game-state tracking: scene context (location, time, weather), character presence and mood, player stats, inventory and quests, combat encounters, world info from lorebooks, and sprite expressions.
+
+### Game Mode
+
+AI Game Master sessions with party members, dice, game state, assets, storyboards, a journal, and a structured session lifecycle. Game Mode uses dedicated stores and routes for game state, assets, table games, scene videos, and storyboards. See [Game Mode: Getting Started](../game/getting-started.md) for the user-facing workflow.
+
+## Development
+
+### Commands
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+Start the server and client with hot reload:
+
+```bash
+pnpm dev
+```
+
+Run the client dev server only:
+
+```bash
+pnpm dev:client
+```
+
+Run the API server only:
+
+```bash
+pnpm dev:server
+```
+
+Run the baseline validation (Prettier, ESLint, type checks and production builds; set `MARINARA_CHECK_JOBS=1` on a low-memory machine):
+
+```bash
+pnpm check
+```
+
+Build for production:
+
+```bash
+pnpm build
+```
+
+### Bundle budget
+
+- Main entry: max 1 MB.
+- Per chunk: `chunkSizeWarningLimit` is 512 KB. Going over prints a build warning; it does not fail the build.
+- Vendor splits: react, tanstack, motion, zustand, icons, and misc.
+
+### Path alias
+
+`@/*` resolves to `./src/*` in both the TypeScript and Vite configs.
+
+## Related guides
+
+- [Architecture Map (Developers)](architecture-map.md)
+- [File-Native Storage (Developers)](file-storage.md)
