@@ -120,4 +120,38 @@ assert.equal(stored.has(CHAT), false);
 drafts.storeEmpty(CHAT);
 assert.equal(stored.has(CHAT), false);
 
+// /impersonate_draft that the chat refuses to start (busy) hands the typed direction back; a started one does not.
+for (const startsDraft of [false, true]) {
+  stored.clear();
+  const commandLine = "/impersonate_draft she knocks";
+  const match = matchSlashCommand(commandLine, { mode: "roleplay" });
+  assert.ok(match);
+  let restored = 0;
+  await runHeldSlashCommand({
+    drafts,
+    chatId: CHAT,
+    text: commandLine,
+    ctx: {
+      chatId: CHAT,
+      mode: "roleplay",
+      characterNames: [],
+      invalidate: () => {},
+      createMessage: () => assert.fail("a draft posts nothing"),
+      prepareUserMessage: async (text) => text,
+      generate: async () => assert.fail("a draft does not run a normal generation"),
+      impersonateDraft: () => startsDraft,
+    },
+    execute: (trackedCtx) => match.command.execute(match.args, trackedCtx),
+    restore: () => {
+      restored += 1;
+    },
+  });
+  assert.equal(
+    restored,
+    startsDraft ? 0 : 1,
+    startsDraft ? "a started draft keeps nothing back" : "a refused draft hands the text back",
+  );
+  assert.equal(stored.has(CHAT), !startsDraft);
+}
+
 console.info("Slash-command drafts survive a failed run.");
