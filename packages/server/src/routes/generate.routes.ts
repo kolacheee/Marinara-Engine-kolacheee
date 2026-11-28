@@ -637,6 +637,10 @@ import {
   resolveIllustratorPromptStyle,
 } from "../services/generation/illustrator-background-generation.js";
 import {
+  saveDecisionPicksIfNewest,
+  showBackgroundIfUnchanged,
+} from "../services/generation/illustrator-background-reply-guard.js";
+import {
   askIllustratorDecisionChecks,
   illustratorDecisionChecks,
 } from "../services/generation/illustrator-decision-checks.js";
@@ -13275,6 +13279,10 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             typeof chatMeta.background === "string" && chatMeta.background.trim() ? chatMeta.background.trim() : null;
           const trackedLocationAtDecision = gameState?.location ?? null;
           const trackedTimeOfDayAtDecision = backgroundTimeOfDay(gameState?.time);
+          const backgroundReply = { chatId: input.chatId, messageId: tail.messageId, swipeIndex: tail.swipeIndex };
+          /** Shows a picture only while the chat still shows `before` and this reply is still the newest. */
+          const showIfUnchanged = (filename: string, before: string | null) =>
+            showBackgroundIfUnchanged(chats, backgroundReply, filename, before, () => agentSignal.aborted);
           return async () => {
             try {
               const freshChat = await chats.getById(input.chatId);
@@ -13324,15 +13332,11 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 trackedWeather.length === 0,
                 backgroundTimeOfDay(trackedTime) === "",
               );
-              if (decided.weather || decided.time) {
-                try {
-                  await chats.patchMetadata(input.chatId, {
-                    ...(decided.weather ? { illustratorDecisionWeather: decided.weather } : {}),
-                    ...(decided.time ? { illustratorDecisionTime: decided.time } : {}),
-                  });
-                } catch {
-                  /* only a fallback for later replies */
-                }
+              // Saved only from the newest reply, so an older reply finishing late can't overwrite a newer pick.
+              try {
+                await saveDecisionPicksIfNewest(chats, backgroundReply, decided);
+              } catch {
+                /* only a fallback for later replies */
               }
               const decidedNewPlace = decided.locationChanged === true;
               // The World State clock moved to another part of the day (night -> dawn) on this reply.
@@ -13416,7 +13420,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                     ? metaAfterWeather.background.trim()
                     : null;
                 if (backgroundAfterWeather !== backgroundBeforeGeneration || agentSignal.aborted) return;
-                await chats.patchMetadata(input.chatId, { background: weatherFilename });
+                if (!weatherFilename || !(await showIfUnchanged(weatherFilename, backgroundBeforeGeneration))) return;
                 sendSseEvent(reply, {
                   type: "agent_result",
                   data: {
@@ -13513,7 +13517,15 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                     illustratorAgent: tail.illustratorAgent,
                     assistantResponse: agentCompletedResponse,
                     decisionReason: backgroundDecisionReason,
-                    gameState: latestGameState,
+                    // Without a World State weather or time, the Decision model's picks are painted (and recorded).
+                    gameState:
+                      latestGameState && (weatherNow || timeNow)
+                        ? {
+                            ...latestGameState,
+                            weather: latestGameState.weather?.trim() ? latestGameState.weather : weatherNow || null,
+                            time: backgroundTimeOfDay(latestGameState.time) ? latestGameState.time : timeNow || null,
+                          }
+                        : latestGameState,
                     recentMessages: agentContext.recentMessages,
                     signal: agentSignal,
                     debugLog,
@@ -13581,8 +13593,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 return;
               }
               if (agentSignal.aborted) return;
-
-              await chats.patchMetadata(input.chatId, { background: generated.filename });
+              if (!(await showIfUnchanged(generated.filename, backgroundBeforeGeneration))) return;
               sendSseEvent(reply, {
                 type: "agent_result",
                 data: {
