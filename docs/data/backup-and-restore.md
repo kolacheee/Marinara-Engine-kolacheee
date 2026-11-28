@@ -58,7 +58,7 @@ Each run needs free space for one more full archive, because the old one stays u
 3. Pick a format.
 4. Your browser downloads the file.
 
-- **Marinara Native** keeps your characters, personas, chats, lorebooks, presets, agents, themes, Personal Extension code and media. It does not restore API keys, webhook links or some chat settings (see [Enter your keys again](#enter-your-keys-again)). You can restore it in Marinara.
+- **Marinara Native** keeps your characters, personas, chats, lorebooks, presets, agents, themes, Personal Extension code and media. It does not restore API keys, webhook links, some chat settings or settings that belong to one install (see [Enter your keys again](#enter-your-keys-again)). You can restore it in Marinara.
 - **Compatible JSON** makes a `.zip` of plain character, persona and lorebook files for other tools. You cannot restore it in Marinara.
 
 A native profile downloads as `marinara-profile.json`. If it is too large, Marinara offers a ZIP file instead. Click **Export ZIP** to download `marinara-profile.zip`.
@@ -127,6 +127,13 @@ The safety copy takes as much space as a full backup. To free that space without
 3. Enter the webhook link again on each custom tool that uses one.
 
 Some chat settings with addresses or keys (Discord, DeepL, Intiface) also come back blank. Enter them again in each chat's **Chat Settings**.
+
+Some settings belong to the install where you set them. A profile leaves them out, and an import keeps the ones this install already has. Set them again on a new computer:
+
+- push notifications: **Send push notifications**, the **ntfy server** and the **Topic** (see [Notifications](../settings/settings-overview.md#notifications));
+- Professor Mari's **Permissions mode**, **Runtime** and **Read the handbook before the first write**;
+- **Allow custom Agent imports** and **Allow third-party extension imports**;
+- the address and API key of your text to speech service and your speech-to-text server. Voices and the other speech settings still come with the profile.
 
 Importing never blanks keys you already set on the same install.
 

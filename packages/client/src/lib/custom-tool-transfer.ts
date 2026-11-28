@@ -1,4 +1,4 @@
-import { getFolderManifestConfig, isJsonRecord } from "@marinara-engine/shared";
+import { getFolderManifestConfig, isJsonRecord, isStoredSecretMask } from "@marinara-engine/shared";
 import type { CustomToolRow } from "../hooks/use-custom-tools";
 import type { ZipFileInput } from "./download-zip";
 import {
@@ -71,6 +71,11 @@ function parseToolParametersSchemaFile(
 ) {
   const text = resolvePackageTextPaths(resolveTextFile ?? (() => null), value);
   return text ? parseToolParametersSchema(text) : null;
+}
+
+/** The webhook URL an export carries: none in place of the mask the server sends for a saved one. */
+export function exportableWebhookUrl(executionType: string, webhookUrl: string | null): string | null {
+  return executionType === "webhook" && webhookUrl && !isStoredSecretMask(webhookUrl) ? webhookUrl : null;
 }
 
 export function serializeCustomToolForTransfer(tool: CustomToolRow): CustomToolTransferConfig {
@@ -216,7 +221,7 @@ export function createCustomToolFolderPackageEntries(
       description: tool.description,
       parametersSchemaPath,
       executionType: tool.executionType,
-      webhookUrl: tool.executionType === "webhook" ? tool.webhookUrl : null,
+      webhookUrl: exportableWebhookUrl(tool.executionType, tool.webhookUrl),
       staticResult: tool.executionType === "static" ? tool.staticResult : null,
       includeHiddenContext: tool.includeHiddenContext,
       enabled: tool.enabled,

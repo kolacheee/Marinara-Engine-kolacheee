@@ -211,6 +211,8 @@ try {
               withOutside({ ...ownChat, id: "profile-new-chat" }, "metadata"),
               // Metadata stored as an object instead of JSON text is read the same way.
               { ...ownChat, id: "profile-object-chat", metadata: { ...outside, ...settings } },
+              // An array holding that text would be read back as the text, so it brings nothing.
+              { ...ownChat, id: "profile-array-chat", metadata: [JSON.stringify({ ...outside, ...settings })] },
               withOutside(ownChat, "metadata"),
             ],
             chat_presets: [
@@ -234,6 +236,7 @@ try {
   assertNoDestinations(await chatMeta("profile-new-chat"), "a new chat from a full profile");
   assertSettingsKept(await chatMeta("profile-new-chat"), "a new chat from a full profile");
   assertNoDestinations(await chatMeta("profile-object-chat"), "a new chat with object metadata");
+  assertNoDestinations(await chatMeta("profile-array-chat"), "a new chat with array metadata");
   assertNoDestinations(await presetMeta("profile-new-preset"), "a new settings profile from a full profile");
   assertSettingsKept(await presetMeta("profile-new-preset"), "a new settings profile from a full profile");
   const restoredChat = await chatMeta(ownChatId);
