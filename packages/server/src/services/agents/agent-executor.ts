@@ -1720,6 +1720,7 @@ function buildBatchSystemPrompt(
     {
       trackerSections: trackerSectionsForAgents(configs),
       cyoaChoices: configs.some((config) => resolveAgentResultType(config) === "cyoa_choices"),
+      changesBackgrounds: configs.some(agentChangesBackgrounds),
     },
   );
   if (extras) {
@@ -2265,6 +2266,7 @@ function buildStandardAgentMessages(config: AgentExecConfig, template: string, c
     {
       trackerSections: resolveAgentTrackerSections(config),
       cyoaChoices: resolveAgentResultType(config) === "cyoa_choices",
+      changesBackgrounds: agentChangesBackgrounds(config),
     },
   );
   if (extras) {
@@ -3160,6 +3162,11 @@ function anyAgentProducesImagePrompt(configs: readonly AgentExecConfig[]): boole
  * Build agent-specific context blocks (sprites, backgrounds, source material, etc.)
  * that go into the system message after lore.
  */
+/** A custom agent allowed to change backgrounds sees the same list and rules as the Background agent. */
+function agentChangesBackgrounds(config: { type: string; settings?: Record<string, unknown> | null }): boolean {
+  return config.type === "background" || customAgentHasCapability(config.settings ?? {}, "change_backgrounds");
+}
+
 function buildAgentExtras(
   context: AgentContext,
   agentTypes: string[] = [],
@@ -3171,6 +3178,8 @@ function buildAgentExtras(
     trackerSections?: TrackerContextSections;
     /** Whether an agent in the request writes CYOA choices (built-in or custom result type). */
     cyoaChoices?: boolean;
+    /** Whether an agent in the request picks backgrounds (Background, or a custom agent allowed to). */
+    changesBackgrounds?: boolean;
   } = {},
 ): string {
   const parts: string[] = [];
@@ -3393,7 +3402,7 @@ function buildAgentExtras(
     if (availableSpritesBlock) parts.push(availableSpritesBlock);
   }
 
-  if (agentTypes.includes("background") && context.memory._availableBackgrounds) {
+  if ((agentTypes.includes("background") || options.changesBackgrounds) && context.memory._availableBackgrounds) {
     const bgs = context.memory._availableBackgrounds as Array<{
       filename: string;
       tags: string[];

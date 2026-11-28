@@ -71,10 +71,12 @@ export function isUntellingBackgroundName(filename: string): boolean {
   )
     return true;
   // Random ids (nanoid and the like): letters and digits mixed, maybe split by "_" or "-", where every
-  // part looks random (has a digit, or flips case mid-word) and none reads as a word ("castle_cliff").
+  // part looks random (a digit between letters, or a case flip mid-word). Parts that read as words
+  // with a number on the end ("castle_cliff", "district7_building12") keep the name.
   if (/^[A-Za-z0-9_-]{16,}$/u.test(stem) && /\d/u.test(stem) && /[A-Za-z]/u.test(stem)) {
     const parts = stem.split(/[-_]+/u).filter(Boolean);
-    if (parts.length > 0 && parts.every((part) => /\d/u.test(part) || /[a-z][A-Z]/u.test(part))) return true;
+    if (parts.length > 0 && parts.every((part) => /[A-Za-z]\d+[A-Za-z]/u.test(part) || /[a-z][A-Z]/u.test(part)))
+      return true;
   }
   return false;
 }
