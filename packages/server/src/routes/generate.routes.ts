@@ -7354,7 +7354,10 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
         }
 
         // If the background agent is enabled, load available backgrounds + tags into context
-        const backgroundAgent = resolvedAgents.find((a) => a.type === "background");
+        // The Background agent, or a custom agent allowed to change backgrounds: both get the same checked list.
+        const backgroundAgent = resolvedAgents.find(
+          (a) => a.type === "background" || customAgentHasCapability(a.settings, "change_backgrounds"),
+        );
         if (backgroundAgent) {
           agentContext.memory._availableBackgrounds = [];
           agentContext.memory._currentBackground = currentBackground;
