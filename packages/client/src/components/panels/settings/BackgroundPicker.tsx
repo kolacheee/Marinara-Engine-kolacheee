@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { useTranslation as useUiTranslation } from "react-i18next";
 import {
   ArrowUpDown,
   Check,
@@ -19,7 +20,12 @@ import {
   User,
   X,
 } from "lucide-react";
-import { BACKGROUND_THUMBNAIL_WIDTH, CHAT_IMAGE_PREVIEW_WIDTH } from "@marinara-engine/shared";
+import {
+  BACKGROUND_CHOICE_NOTE_KEY,
+  BACKGROUND_THUMBNAIL_WIDTH,
+  CHAT_IMAGE_PREVIEW_WIDTH,
+} from "@marinara-engine/shared";
+import { chatBackgroundMetadataToUrl } from "../../../lib/backgrounds";
 import { saveExportUrl } from "../../../lib/file-download";
 import { cn, getAvatarCropStyle } from "../../../lib/utils";
 import { librarySortOptions } from "../../../lib/library-sort-options";
@@ -27,7 +33,7 @@ import { avatarPreviewSrc } from "../../../lib/avatar-preview";
 import { getBackgroundLibraryTitle, type BackgroundLibrarySort } from "../../../lib/background-library";
 import { DEFAULT_ROLEPLAY_BACKGROUND_URL, useUIStore } from "../../../stores/ui.store";
 import { useChatOwnerBackgrounds, type OwnerBackground } from "../../../hooks/use-chat-gallery-owners";
-import { useChat } from "../../../hooks/use-chats";
+import { useChat, useUpdateChatMetadata } from "../../../hooks/use-chats";
 import { useChatStore } from "../../../stores/chat.store";
 import { useGameAssetStore } from "../../../stores/game-asset.store";
 import { Spinner } from "../../ui/Spinner";
@@ -61,6 +67,8 @@ type BackgroundPickerProps = {
   ownerBackgrounds?: OwnerBackground[];
   /** Replaces the preview, recent picks and Browse button with a custom opener (the library window stays). */
   trigger?: (openLibrary: () => void) => ReactNode;
+  /** Why the shown background was picked automatically (Background agent or a pinned place), under the preview. */
+  choiceNote?: string | null;
 };
 
 const CARD_TEXT_FIELD_CLASS =
@@ -179,19 +187,63 @@ function CardTagInput({
   );
 }
 
+function chatMetadataObject(raw: unknown): Record<string, unknown> {
+  if (raw && typeof raw === "object") return raw as Record<string, unknown>;
+  if (typeof raw !== "string") return {};
+  try {
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? (parsed as Record<string, unknown>) : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Why the shown background was picked automatically, while it is still the one shown (a pick by hand hides it). */
+function backgroundChoiceNoteText(
+  metadata: unknown,
+  selected: string | null,
+  localize: (key: string, values?: Record<string, string>) => string,
+): string | null {
+  const note = chatMetadataObject(metadata)[BACKGROUND_CHOICE_NOTE_KEY] as
+    { background?: unknown; by?: unknown; reason?: unknown } | undefined;
+  if (!note || !selected || chatBackgroundMetadataToUrl(note.background) !== selected) return null;
+  const reason = typeof note.reason === "string" ? note.reason.trim() : "";
+  if (note.by === "pinned-place") {
+    return reason ? localize("ui.panels.backgroundpicker.choiceNote.pinnedPlace", { value1: reason }) : null;
+  }
+  if (note.by === "background-agent") {
+    return reason
+      ? localize("ui.panels.backgroundpicker.choiceNote.agentWithReason", { value1: reason })
+      : localize("ui.panels.backgroundpicker.choiceNote.agent");
+  }
+  return null;
+}
+
 /** ChatArea already restores and persists this active-chat selection for every picker/agent. */
 export function ActiveChatBackgroundPicker({ game = false }: { game?: boolean }) {
   const selected = useUIStore((state) => state.chatBackground);
-  const onSelect = useUIStore((state) => state.setChatBackground);
+  const setChatBackground = useUIStore((state) => state.setChatBackground);
   const defaultBackground = useUIStore((state) => state.defaultRoleplayBackground);
   const onDefaultChange = useUIStore((state) => state.setDefaultRoleplayBackground);
   const sceneBackgroundTag = useGameAssetStore((state) => (game ? state.currentBackground : null));
   const activeChatId = useChatStore((state) => state.activeChatId);
   const { data: activeChat } = useChat(activeChatId);
   const ownerBackgrounds = useChatOwnerBackgrounds(activeChat);
+  const { t: localizeUi } = useUiTranslation();
+  const choiceNote = game
+    ? null
+    : backgroundChoiceNoteText(activeChat?.metadata, selected, (key, values) => localizeUi(key, values));
+  const updateMeta = useUpdateChatMetadata({ serialize: true });
+  const hasStoredNote = !!chatMetadataObject(activeChat?.metadata)[BACKGROUND_CHOICE_NOTE_KEY];
+  // A pick by hand: ChatArea saves the background; the agent's "why" line no longer applies.
+  const onSelect = (url: string | null) => {
+    setChatBackground(url);
+    if (activeChatId && hasStoredNote) updateMeta.mutate({ id: activeChatId, [BACKGROUND_CHOICE_NOTE_KEY]: null });
+  };
   return (
     <BackgroundPicker
       ownerBackgrounds={ownerBackgrounds}
+      choiceNote={choiceNote}
       chatFloatingPanel
       showRoleplayDefault={!game}
       selected={selected}
@@ -213,6 +265,7 @@ export function BackgroundPicker({
   onDefaultChange,
   ownerBackgrounds: chatOwnerBackgrounds,
   trigger,
+  choiceNote,
 }: BackgroundPickerProps) {
   const library = useBackgroundLibrary({
     selected,
@@ -783,6 +836,14 @@ export function BackgroundPicker({
               </button>
             )}
           </div>
+          {choiceNote && (
+            <p
+              data-background-choice-note
+              className="-mt-1 text-xs leading-snug text-[var(--muted-foreground)] [overflow-wrap:anywhere]"
+            >
+              {choiceNote}
+            </p>
+          )}
           {recentBackgrounds.length > 0 && (
             <div className="flex flex-col gap-1.5">
               <span className="text-xs font-semibold text-[var(--muted-foreground)]">
