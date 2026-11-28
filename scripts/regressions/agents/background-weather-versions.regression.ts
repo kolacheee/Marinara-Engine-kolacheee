@@ -23,6 +23,7 @@ const {
   windowMaskFromRepaint,
   chatBackgroundWindowMaskPath,
   chatBackgroundWindowMaskKnown,
+  existingChatBackgroundVersion,
   weatherNamedInPrompt,
 } = await import("../../../packages/server/src/services/game/game-asset-generation.js");
 
@@ -227,6 +228,11 @@ assert.deepEqual(planChatBackgroundVersion("hall--tod-night.png", { weather: "ra
   scenePrompt: "",
 });
 writeFileSync(join(bgDir, "hall--wx-rain--tod-night.png"), png);
+// Making a version by hand: one made before is found (and shown) instead of made again.
+assert.equal(existingChatBackgroundVersion("hall.png", "rain", "night"), "hall--wx-rain--tod-night.png");
+assert.equal(existingChatBackgroundVersion("hall.png", "", "night"), "hall--tod-night.png");
+assert.equal(existingChatBackgroundVersion("hall.png", "", ""), "hall.png", "nothing picked is the plain picture");
+assert.equal(existingChatBackgroundVersion("hall.png", "snow", "dawn"), null, "not made yet");
 assert.deepEqual(planChatBackgroundWeather("hall--tod-night.png", "rain"), {
   kind: "switch",
   filename: "hall--wx-rain--tod-night.png",

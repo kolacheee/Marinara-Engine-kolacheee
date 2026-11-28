@@ -37,6 +37,7 @@ import { changedId } from "../../components/characters/CharacterSelect";
 import { ChatSettingsSection as Section } from "./ChatSettingsSection";
 import { ActiveChatBackgroundPicker } from "../../components/panels/settings/BackgroundPicker";
 import { LocationBackgroundPins } from "./LocationBackgroundPins";
+import { MakeBackgroundVersion } from "./MakeBackgroundVersion";
 import { AdvancedParametersSection } from "./sections/AdvancedParametersSection";
 import { CardFieldAlternativesSection } from "./sections/CardFieldAlternativesSection";
 import { ChatNameSection } from "./sections/ChatNameSection";
@@ -2206,6 +2207,9 @@ export function ChatSettingsDrawer({
               help={localizeUi("chat.settings.backgroundHelp")}
             >
               <ActiveChatBackgroundPicker game={isGame} />
+              {isRoleplayMode && typeof metadata.background === "string" && metadata.background.trim() && (
+                <MakeBackgroundVersion chatId={chat.id} background={metadata.background.trim()} />
+              )}
               {isRoleplayMode && <LocationBackgroundPins chatId={chat.id} metadata={chat.metadata} />}
             </Section>
           )}

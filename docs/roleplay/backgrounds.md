@@ -127,6 +127,16 @@ Manual generation uses the Illustrator agent's image account, then your default 
 
 If it did not work: the message "Choose an image generation connection for the Illustrator agent, or mark one as the default image connection." means Marinara found no image account. Set one, then try again. If the **Background** button is missing, Illustrator is not installed.
 
+## Make a weather or time of day version yourself
+
+Your picture shows the bedroom by day, but the story starts there at night in the rain. You don't have to wait for Illustrator:
+
+1. Open **Chat Settings** with the sliders button in the chat, and expand **Background**. The chat needs a background picked.
+2. Under **Make a version of this background**, pick a **Weather** and a **Time of day**. **As painted** keeps that part as the picture shows it.
+3. Click **Make version**.
+
+Illustrator's image account repaints the picture from the original (a gallery picture too), and the chat shows the new version. It is saved next to the original picture, so the story uses it later without making it again. If that version already exists, it is shown right away. The image account has to be able to start from a picture.
+
 ## Pin a background to a place
 
 Use this when a place in your story should always look the same: John's bedroom always shows `john-bedroom`, and your own bedroom always shows `my-bedroom`. When the story arrives at a pinned place, its picture shows, whatever the Background agent would have picked.
