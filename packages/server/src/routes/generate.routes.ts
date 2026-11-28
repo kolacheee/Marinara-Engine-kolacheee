@@ -7392,7 +7392,14 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           const galleryCandidates =
             chatMode === "roleplay"
               ? await loadGalleryBackgroundAgentCandidates({
-                  characters: charInfo.map((character) => ({ id: character.id, name: character.name })),
+                  // The whole chat roster: an inactive character's room is still a place the story can go.
+                  characters: [...(await getGroupHistoryCharacterNamesById().catch(() => new Map<string, string>()))]
+                    .map(([id, name]) => ({ id, name }))
+                    .concat(
+                      charInfo
+                        .filter((character) => !allCharacterIds.includes(character.id))
+                        .map((character) => ({ id: character.id, name: character.name })),
+                    ),
                   persona: personaId ? { id: personaId, name: personaName } : null,
                   characterGallery,
                   personaGallery,

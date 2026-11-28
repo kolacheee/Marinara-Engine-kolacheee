@@ -2455,6 +2455,8 @@ export function useGenerate() {
                 const bg = result.data as { chosen?: string | null; generated?: boolean };
                 if (bg.chosen) {
                   applyAgentBackgroundChoice(bg.chosen);
+                  // A pinned place saves its "why" note without a metadata_patch event.
+                  void qc.invalidateQueries({ queryKey: chatKeys.detail(params.chatId) });
                 }
                 if (bg.generated) {
                   qc.invalidateQueries({ queryKey: ["backgrounds"] });

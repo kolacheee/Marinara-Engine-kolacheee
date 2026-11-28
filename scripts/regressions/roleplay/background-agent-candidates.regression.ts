@@ -25,6 +25,8 @@ for (const name of [
   "background (3).png",
   "12345.webp",
   "HCAKrxU75lStT0KQ15sK.png",
+  "aB3dE5gH7jK9_mN2pQ4rS.png",
+  "x7Kp2Qm9-Lr4Tz8Wn3Vb.webp",
 ]) {
   assert.equal(isUntellingBackgroundName(name), true, `${name} says nothing`);
 }
@@ -33,6 +35,9 @@ for (const name of [
   "generated-cramped-apartment-kitchen.png",
   "Black.jpg",
   "dorm kitchen.png",
+  "castle_cliff_night_2.jpg",
+  "MyRoom_Night-2025.png",
+  "forest-path-at-dusk-1080p.jpg",
 ]) {
   assert.equal(isUntellingBackgroundName(name), false, `${name} names a place`);
 }

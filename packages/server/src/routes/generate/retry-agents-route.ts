@@ -1695,8 +1695,14 @@ async function buildRetryAgentContext(args: {
     }
   }
 
-  // If the background agent is being retried, load available backgrounds into context
-  if (resolvedAgentTypes.has("background")) {
+  // If the background agent (or a custom agent allowed to change backgrounds) is being retried, load the
+  // available backgrounds into context: a background answer is only applied when it is on this list.
+  if (
+    resolvedAgentTypes.has("background") ||
+    resolvedAgents.some(
+      (agent) => !isBuiltInAgentType(agent.type) && customAgentHasCapability(agent.settings, "change_backgrounds"),
+    )
+  ) {
     try {
       const { readdirSync, readFileSync, existsSync } = await import("fs");
       const { join, extname } = await import("path");
@@ -5910,6 +5916,10 @@ export async function registerRetryAgentsRoute(
         if (typeof bgData.chosen !== "string") continue;
         if (!candidates) {
           // No list to check the answer against: keep the current background.
+          logger.warn(
+            '[retry-agents] Background choice "%s" dropped: the background list could not be loaded',
+            bgData.chosen,
+          );
           bgData.chosen = null;
           continue;
         }
@@ -5921,6 +5931,8 @@ export async function registerRetryAgentsRoute(
           logger.warn('[retry-agents] Background agent chose "%s", which is not listed; ignored', handle);
           continue;
         }
+        // Stop or disconnect: no more background writes for this retry.
+        if (abortController.signal.aborted) return;
         const reason =
           typeof bgData.reason === "string" ? bgData.reason.replace(/\s+/gu, " ").trim().slice(0, 200) : "";
         try {

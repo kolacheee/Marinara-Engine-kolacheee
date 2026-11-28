@@ -70,14 +70,12 @@ export function isUntellingBackgroundName(filename: string): boolean {
     )
   )
     return true;
-  // Random ids (nanoid and the like): one long run of letters and digits mixed, no separators.
-  if (
-    /^[A-Za-z0-9_-]{16,}$/u.test(stem) &&
-    /\d/u.test(stem) &&
-    /[A-Za-z]/u.test(stem) &&
-    !/[-_ ]/u.test(stem.slice(1, -1))
-  )
-    return true;
+  // Random ids (nanoid and the like): letters and digits mixed, maybe split by "_" or "-", where every
+  // part looks random (has a digit, or flips case mid-word) and none reads as a word ("castle_cliff").
+  if (/^[A-Za-z0-9_-]{16,}$/u.test(stem) && /\d/u.test(stem) && /[A-Za-z]/u.test(stem)) {
+    const parts = stem.split(/[-_]+/u).filter(Boolean);
+    if (parts.length > 0 && parts.every((part) => /\d/u.test(part) || /[a-z][A-Z]/u.test(part))) return true;
+  }
   return false;
 }
 
