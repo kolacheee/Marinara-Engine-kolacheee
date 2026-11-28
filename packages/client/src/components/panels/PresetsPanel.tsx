@@ -93,6 +93,7 @@ import {
 import { BuiltInPresetBadge } from "./BuiltInPresetBadge";
 import {
   createCustomToolFolderPackageFiles,
+  exportableWebhookUrl,
   importCustomToolEntries,
   serializeCustomToolForTransfer,
   type CustomToolImportReview,
@@ -743,8 +744,8 @@ export function PresetsPanel() {
         return;
       }
 
-      const includesWebhookCredentials = tools.some(
-        (tool) => tool.executionType === "webhook" && Boolean(tool.webhookUrl),
+      const includesWebhookCredentials = tools.some((tool) =>
+        exportableWebhookUrl(tool.executionType, tool.webhookUrl),
       );
       if (
         includesWebhookCredentials &&

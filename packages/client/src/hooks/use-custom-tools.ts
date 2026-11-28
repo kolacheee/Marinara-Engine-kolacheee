@@ -12,6 +12,7 @@ export interface CustomToolRow {
   description: string;
   parametersSchema: string;
   executionType: string;
+  /** STORED_SECRET_MASK when a URL is saved: the server never sends it back, and sending the mask keeps it. */
   webhookUrl: string | null;
   staticResult: string | null;
   scriptBody: string | null;

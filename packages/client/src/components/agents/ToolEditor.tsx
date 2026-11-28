@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { formatFirstApiValidationIssue } from "../../lib/api-client";
-import { buildCustomToolPatch } from "../../lib/custom-tool-transfer";
+import { buildCustomToolPatch, exportableWebhookUrl } from "../../lib/custom-tool-transfer";
 import { downloadJsonFile, sanitizeExportFilenamePart } from "../../lib/download-json";
 import { HelpTooltip } from "../ui/HelpTooltip";
 import { Select } from "../ui/Select";
@@ -245,9 +245,9 @@ export function ToolEditor() {
   ]);
 
   const handleExport = useCallback(async () => {
+    const webhookUrl = exportableWebhookUrl(localExecType, localWebhookUrl);
     if (
-      localExecType === "webhook" &&
-      Boolean(localWebhookUrl) &&
+      webhookUrl &&
       !(await showConfirmDialog({
         title: localizeUi("ui.panels.presetspanel.exportWebhookCredentials"),
         message: localizeUi("ui.panels.presetspanel.exportWebhookCredentialsWarning"),
@@ -263,7 +263,7 @@ export function ToolEditor() {
       description: localDesc,
       parametersSchema: buildParamsSchema(),
       executionType: localExecType,
-      webhookUrl: localExecType === "webhook" ? localWebhookUrl || null : null,
+      webhookUrl,
       staticResult: localExecType === "static" ? localStaticResult || null : null,
       scriptBody: localExecType === "script" ? localScriptBody || null : null,
       includeHiddenContext: localIncludeHiddenContext,
