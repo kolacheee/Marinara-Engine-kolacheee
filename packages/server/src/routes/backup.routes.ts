@@ -54,13 +54,22 @@ import { createAppSettingsStorage } from "../services/storage/app-settings.stora
 import { linkConnectionAccounts, withoutUsageKeyTokens } from "../services/storage/connection-accounts.storage.js";
 import { loadFeatureSettings } from "../services/features/feature-settings.js";
 import { TRIPO_API_KEY_SETTING } from "../services/avatars/generation/tripo-key.js";
+import { CUSTOM_AGENT_IMPORTS_SETTINGS_KEY } from "../services/agents/custom-agent-import-policy.service.js";
+import { EXTERNAL_EXTENSIONS_SETTINGS_KEY } from "../services/extensions/personal-extension-policy.service.js";
 import {
   canReparentFolder,
   CHAT_METADATA_LOCAL_DESTINATION_KEYS,
   isStockMarinaraUniversalPreset,
+  MARI_PERMISSIONS_MODE_SETTINGS_KEY,
+  MARI_RUNTIME_SETTINGS_KEY,
+  MARI_SKILL_GATE_SETTINGS_KEY,
   MARINARA_UNIVERSAL_PRESET_SYSTEM_KEY,
   normalizePersonalExtensionCapabilities,
+  PUSH_NOTIFICATION_SETTINGS_KEY,
+  SPEECH_TO_TEXT_SETTINGS_KEY,
   TRANSLATOR_DEFAULTS_SETTINGS_KEY,
+  TTS_SETTINGS_KEY,
+  TTS_SOURCES,
   type ExportEnvelope,
   parseLorebookDecisionActivation,
   restoreBakedGreetingImages,
@@ -721,21 +730,79 @@ const PROFILE_LOCAL_DESTINATION_ROWS: Record<string, { key: string; column: stri
   app_settings: { key: "key", column: "value" },
 };
 
-function readProfileLocalDestinations(tableName: string, row: Record<string, unknown> | undefined) {
-  const field = PROFILE_LOCAL_DESTINATION_ROWS[tableName];
-  if (!field || !row || (tableName === "app_settings" && row.key !== TRANSLATOR_DEFAULTS_SETTINGS_KEY)) return null;
-  const isRecord = (value: unknown): value is Record<string, unknown> =>
-    !!value && typeof value === "object" && !Array.isArray(value);
-  let parsed: unknown;
+/**
+ * App settings that belong to this install, like the connection keys: the Tripo key, the Undo record, where push
+ * notifications go, Professor Mari's permissions mode, runtime and skill gate, and the switches that allow custom
+ * Agent imports and External Extensions. A profile is exported without them, and an import keeps this install's own.
+ */
+const PROFILE_INSTALL_ONLY_SETTINGS = new Set<unknown>([
+  TRIPO_API_KEY_SETTING,
+  PROFILE_IMPORT_UNDO_SETTING,
+  PUSH_NOTIFICATION_SETTINGS_KEY,
+  MARI_PERMISSIONS_MODE_SETTINGS_KEY,
+  MARI_RUNTIME_SETTINGS_KEY,
+  MARI_SKILL_GATE_SETTINGS_KEY,
+  CUSTOM_AGENT_IMPORTS_SETTINGS_KEY,
+  EXTERNAL_EXTENSIONS_SETTINGS_KEY,
+]);
+
+const isProfileRecord = (value: unknown): value is Record<string, unknown> =>
+  !!value && typeof value === "object" && !Array.isArray(value);
+
+/** A JSON column (text or an object) as a copy, so the row it came from is never changed; null when it is not one. */
+function readProfileJsonRecord(value: unknown): Record<string, unknown> | null {
   try {
-    const value = row[field.column];
-    // Copied, so the row it came from is never changed.
-    parsed = JSON.parse(typeof value === "string" ? value : (JSON.stringify(value) ?? ""));
+    const parsed: unknown = JSON.parse(typeof value === "string" ? value : (JSON.stringify(value) ?? ""));
+    return isProfileRecord(parsed) ? parsed : null;
   } catch {
     return null;
   }
-  const holder = tableName === "chat_presets" && isRecord(parsed) ? parsed.metadata : parsed;
-  return isRecord(parsed) && isRecord(holder) ? { column: field.column, parsed, holder } : null;
+}
+
+function readProfileLocalDestinations(tableName: string, row: Record<string, unknown> | undefined) {
+  const field = PROFILE_LOCAL_DESTINATION_ROWS[tableName];
+  if (!field || !row || (tableName === "app_settings" && row.key !== TRANSLATOR_DEFAULTS_SETTINGS_KEY)) return null;
+  const parsed = readProfileJsonRecord(row[field.column]);
+  const holder = tableName === "chat_presets" && parsed ? parsed.metadata : parsed;
+  return parsed && isProfileRecord(holder) ? { column: field.column, parsed, holder } : null;
+}
+
+/**
+ * The Text to Speech and speech-to-text settings with this install's server addresses and API keys, or blank ones
+ * when there is no `local`. Voices and the other speech settings travel. Text to Speech keeps an address and key for
+ * each source, the chosen source's at the top level; a source the row doesn't carry keeps this install's settings.
+ */
+function withLocalSpeechServers(row: Record<string, unknown>, local?: Record<string, unknown>) {
+  const config = readProfileJsonRecord(row.value);
+  if (!config) return row;
+  const localConfig = readProfileJsonRecord(local?.value);
+  const keep = (target: Record<string, unknown>, kept: unknown) => {
+    for (const field of ["baseUrl", "apiKey"]) {
+      // Blank rather than missing: an empty address means the source's own default.
+      target[field] = isProfileRecord(kept) && typeof kept[field] === "string" ? kept[field] : "";
+    }
+  };
+  if (row.key === SPEECH_TO_TEXT_SETTINGS_KEY) {
+    keep(config, localConfig);
+    return { ...row, value: JSON.stringify(config) };
+  }
+  const sourceOf = (settings: Record<string, unknown>) =>
+    typeof settings.source === "string" ? settings.source : "openai";
+  const localProfiles = isProfileRecord(localConfig?.sourceProfiles) ? localConfig.sourceProfiles : {};
+  const localServer = (source: string) =>
+    localConfig && sourceOf(localConfig) === source ? localConfig : localProfiles[source];
+  keep(config, localServer(sourceOf(config)));
+  const profiles = isProfileRecord(config.sourceProfiles) ? config.sourceProfiles : {};
+  for (const source of TTS_SOURCES) {
+    const kept = localServer(source);
+    if (!isProfileRecord(profiles[source])) {
+      if (!isProfileRecord(kept)) continue;
+      profiles[source] = isProfileRecord(localProfiles[source]) ? { ...localProfiles[source] } : {};
+    }
+    keep(profiles[source] as Record<string, unknown>, kept);
+  }
+  config.sourceProfiles = profiles;
+  return { ...row, value: JSON.stringify(config) };
 }
 
 /** `row` with `local`'s values for the settings that stay on one install, or none when there is no `local`. */
@@ -744,6 +811,9 @@ export function withProfileLocalDestinations(
   row: Record<string, unknown>,
   local?: Record<string, unknown>,
 ): Record<string, unknown> {
+  if (tableName === "app_settings" && (row.key === TTS_SETTINGS_KEY || row.key === SPEECH_TO_TEXT_SETTINGS_KEY)) {
+    return withLocalSpeechServers(row, local);
+  }
   const target = readProfileLocalDestinations(tableName, row);
   if (!target) return row;
   const kept = readProfileLocalDestinations(tableName, local)?.holder;
@@ -806,8 +876,7 @@ export function sanitizeProfileTableRows(tableName: string, rows: Array<Record<s
     }));
   }
   if (tableName === "app_settings") {
-    // The Tripo API key and the Undo record stay on this install too, like the connection keys blanked above.
-    return rows.filter((row) => row.key !== TRIPO_API_KEY_SETTING && row.key !== PROFILE_IMPORT_UNDO_SETTING);
+    return rows.filter((row) => !PROFILE_INSTALL_ONLY_SETTINGS.has(row.key));
   }
   if (tableName === "agent_configs") {
     return rows.map((row) => redactAgentSecrets(row));
@@ -4396,11 +4465,11 @@ export async function backupRoutes(app: FastifyInstance) {
 
       const data = envelope.data as Record<string, any>;
       const warnings = importInput.warnings ?? [];
-      // The Undo record belongs to this install; a profile can't bring or replace one.
+      // Settings that belong to this install, the Undo record among them: a profile can't bring or replace them.
       const importedSettings = isProfileStorageSnapshot(data.fileStorage) ? data.fileStorage.tables.app_settings : null;
       if (Array.isArray(importedSettings)) {
         data.fileStorage.tables.app_settings = importedSettings.filter(
-          (row) => row.key !== PROFILE_IMPORT_UNDO_SETTING,
+          (row) => !PROFILE_INSTALL_ONLY_SETTINGS.has(row.key),
         );
       }
       if (keepExisting && isProfileStorageSnapshot(data.fileStorage)) {

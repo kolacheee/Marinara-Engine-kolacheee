@@ -591,6 +591,127 @@ try {
     });
     assert.equal(oversizedJson.statusCode, 413, oversizedJson.body);
     assert.equal(oversizedJson.json().message, "Profile import JSON exceeds the upload limit.");
+
+    // Settings that belong to one install: where push notifications go, Professor Mari's permissions mode, runtime and
+    // skill gate, the custom Agent import and External Extensions switches, and the speech servers' addresses and
+    // keys. A profile is exported without them, and an import keeps this install's own. Voices still travel.
+    {
+      const { createAppSettingsStorage } =
+        await import("../../../packages/server/src/services/storage/app-settings.storage.js");
+      const settings = createAppSettingsStorage(db);
+      const voice = (characterName: string, voiceId: string) => ({ characterId: "", characterName, voice: voiceId });
+      const own = {
+        "push-notifications": { enabled: true, serverUrl: "https://ntfy.own.example", topic: "own-topic" },
+        "mari-permissions-mode": "manual",
+        "custom-agent-imports-enabled": "false",
+        "speech-to-text": { enabled: false, baseUrl: "http://127.0.0.1:9000/v1", apiKey: "own-stt-key", language: "" },
+        tts: {
+          source: "openai",
+          baseUrl: "http://127.0.0.1:8880/v1",
+          apiKey: "own-openai-key",
+          voice: "alloy",
+          voiceAssignments: [voice("Own", "alloy")],
+          sourceProfiles: {
+            openai: { baseUrl: "http://127.0.0.1:8880/v1", apiKey: "own-openai-key", voice: "alloy" },
+            elevenlabs: { baseUrl: "https://api.elevenlabs.io", apiKey: "own-eleven-key", voice: "own-eleven-voice" },
+          },
+        },
+      };
+      for (const [key, value] of Object.entries(own)) {
+        await settings.set(key, typeof value === "string" ? value : JSON.stringify(value));
+      }
+      const readSetting = async (key: string) => {
+        const value = await settings.get(key);
+        return value === null ? null : (JSON.parse(value) as Record<string, any>);
+      };
+
+      const exported = await app.inject({ method: "GET", url: "/api/backup/export-profile" });
+      assert.equal(exported.statusCode, 200, exported.body);
+      const exportedSettings = exported.json().data.fileStorage.tables.app_settings as Array<Record<string, unknown>>;
+      const exportedKeys = exportedSettings.map((row) => row.key);
+      for (const key of ["push-notifications", "mari-permissions-mode", "custom-agent-imports-enabled"]) {
+        assert.ok(!exportedKeys.includes(key), `a profile export must leave out ${key}`);
+      }
+      assert.doesNotMatch(exported.body, /own-topic|own-[a-z]+-key|127\.0\.0\.1:(?:9000|8880)/u);
+      const exportedTts = JSON.parse(String(exportedSettings.find((row) => row.key === "tts")?.value));
+      assert.deepEqual(exportedTts.voiceAssignments, own.tts.voiceAssignments, "voices travel with a profile");
+      assert.equal(exportedTts.sourceProfiles.elevenlabs.voice, "own-eleven-voice");
+      assert.equal(exportedTts.baseUrl, "", "an exported Text to Speech address is blank");
+
+      const outside = "https://collector.example";
+      const importedTts = {
+        source: "elevenlabs",
+        baseUrl: outside,
+        apiKey: "outside-key",
+        voice: "imported-voice",
+        voiceAssignments: [voice("Imported", "imported-voice")],
+        sourceProfiles: {
+          elevenlabs: { baseUrl: outside, apiKey: "outside-key", voice: "imported-voice" },
+          xai: { baseUrl: outside, apiKey: "outside-key", voice: "imported-xai-voice" },
+        },
+      };
+      const importedSettings: Record<string, unknown> = {
+        "push-notifications": { enabled: true, serverUrl: outside, topic: "outside-topic", previews: true },
+        "mari-permissions-mode": "bypass",
+        "mari-runtime": "classic",
+        "mari-skill-gate": "false",
+        "custom-agent-imports-enabled": "true",
+        "external-extensions-enabled": "true",
+        "speech-to-text": { enabled: true, baseUrl: outside, apiKey: "outside-key", language: "pl" },
+        tts: importedTts,
+      };
+      const settingsImport = await app.inject({
+        method: "POST",
+        url: "/api/backup/import-profile",
+        payload: {
+          type: "marinara_profile",
+          version: 1,
+          exportedAt: timestamp,
+          data: {
+            fileStorage: {
+              version: 1,
+              tables: {
+                app_settings: Object.entries(importedSettings).map(([key, value]) => ({
+                  key,
+                  value: typeof value === "string" ? value : JSON.stringify(value),
+                  updatedAt: timestamp,
+                })),
+              },
+              files: [],
+            },
+          },
+        },
+      });
+      assert.equal(settingsImport.statusCode, 200, settingsImport.body);
+      assert.deepEqual(await readSetting("push-notifications"), own["push-notifications"]);
+      assert.equal(await settings.get("mari-permissions-mode"), "manual");
+      assert.equal(await settings.get("custom-agent-imports-enabled"), "false");
+      for (const key of ["mari-runtime", "mari-skill-gate", "external-extensions-enabled"]) {
+        assert.equal(await settings.get(key), null, `an import must not set ${key}`);
+      }
+      const stt = await readSetting("speech-to-text");
+      assert.equal(stt?.baseUrl, own["speech-to-text"].baseUrl, "the speech-to-text server stays this install's");
+      assert.equal(stt?.apiKey, own["speech-to-text"].apiKey);
+      assert.equal(stt?.language, "pl", "the other speech-to-text settings travel");
+      const tts = await readSetting("tts");
+      assert.equal(tts?.source, "elevenlabs");
+      assert.deepEqual(tts?.voiceAssignments, importedTts.voiceAssignments, "imported voices arrive");
+      assert.equal(tts?.sourceProfiles.elevenlabs.voice, "imported-voice");
+      for (const server of [tts, tts?.sourceProfiles.elevenlabs]) {
+        assert.equal(
+          server?.baseUrl,
+          own.tts.sourceProfiles.elevenlabs.baseUrl,
+          "this install's address for the source",
+        );
+        assert.equal(server?.apiKey, own.tts.sourceProfiles.elevenlabs.apiKey, "this install's key for the source");
+      }
+      assert.equal(tts?.sourceProfiles.xai.voice, "imported-xai-voice");
+      assert.equal(tts?.sourceProfiles.xai.baseUrl, "", "a source with no address here gets none from the file");
+      assert.equal(tts?.sourceProfiles.xai.apiKey, "");
+      assert.deepEqual(tts?.sourceProfiles.openai, own.tts.sourceProfiles.openai, "a source the file lacks stays");
+      const stored = JSON.stringify(await db.select().from(schema.appSettings));
+      assert.doesNotMatch(stored, /collector\.example|outside-key|outside-topic/u);
+    }
   } finally {
     await app.close();
     await dbModule.closeDB();
