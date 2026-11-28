@@ -26,6 +26,8 @@ import { hasActiveTextSelection } from "../../lib/text-selection";
 import { useAgentStore } from "../../stores/agent.store";
 import {
   forgetImpersonateDraft,
+  getImpersonateDraft,
+  restoreImpersonateDraft,
   redoImpersonateDraft,
   startImpersonateDraft,
   stopImpersonateDraft,
@@ -1141,7 +1143,8 @@ export const ChatInput = memo(function ChatInput({
       toast.error(localizeUi("ui.chat.chatinput.itLooksLikeYouHavenTConnectedAnyModel"));
       return;
     }
-    // A sent impersonate draft is the user's own message now; a Send stopped before here keeps Redo and Undo.
+    // A sent impersonate draft is the user's own message now; a Send that fails gives Redo and Undo back.
+    const sentImpersonateDraft = getImpersonateDraft(activeChatId);
     forgetImpersonateDraft(activeChatId);
 
     const message = await prepareUserMessage(normalized, () =>
@@ -1174,6 +1177,9 @@ export const ChatInput = memo(function ChatInput({
       }
       if (submittedDraft && (canRestoreVisibleDraft || activeChatIdAfterFailure !== submittingChatId)) {
         setInputDraft(submittingChatId, submittedDraft);
+        // The box holds what was sent, edits included, so that is the draft's text now.
+        if (sentImpersonateDraft?.status === "ready")
+          restoreImpersonateDraft(submittingChatId, { ...sentImpersonateDraft, text: submittedDraft });
       }
     };
 
@@ -1574,19 +1580,20 @@ export const ChatInput = memo(function ChatInput({
         const disabledReason = needsText
           ? getImpersonateDisabledReason()
           : !activeChatId
-            ? "Select or create a chat first."
-            : (inputBusyReason ?? (hasPendingAttachments ? "Clear or post attachments first." : undefined));
+            ? localizeUi("ui.chat.impersonateDraft.noChat")
+            : (inputBusyReason ??
+              (hasPendingAttachments ? localizeUi("ui.chat.impersonateDraft.clearAttachments") : undefined));
         return {
           id: primary ? "impersonate" : `impersonate-${result}`,
           label: primary
-            ? "Impersonate"
+            ? localizeUi("ui.chat.impersonateDraft.quickImpersonate")
             : result === "draft"
               ? localizeUi("ui.chat.impersonateDraft.quickDraft")
               : localizeUi("ui.chat.impersonateDraft.quickPost"),
           description: primary
             ? result === "draft"
               ? localizeUi("ui.chat.impersonateDraft.quickDraftDescription")
-              : "Generate as your persona"
+              : localizeUi("ui.chat.impersonateDraft.quickImpersonateDescription")
             : result === "draft"
               ? localizeUi("ui.chat.impersonateDraft.quickDraftDescription")
               : localizeUi("ui.chat.impersonateDraft.quickPostDescription"),
