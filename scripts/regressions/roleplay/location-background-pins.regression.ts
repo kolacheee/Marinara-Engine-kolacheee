@@ -127,10 +127,18 @@ const shown = pinnedSceneBackground({
 });
 assert.equal(shown?.filename, "john.png");
 const shownPatch = pinnedBackgroundMetadataPatch(shown!);
-const { [shared.BACKGROUND_CHOICE_NOTE_KEY]: shownNote, ...shownRest } = shownPatch;
-assert.deepEqual(shownRest, {
+const shownNote = shownPatch[shared.BACKGROUND_CHOICE_NOTE_KEY] as { at?: unknown } | undefined;
+assert.equal(typeof shownNote?.at, "string");
+// The whole patch, exactly: the background, the pin it came from, and the note (its time is "now").
+assert.deepEqual(shownPatch, {
   background: "john.png",
   [shared.LOCATION_BACKGROUND_PIN_SHOWN_KEY]: "john",
+  [shared.BACKGROUND_CHOICE_NOTE_KEY]: {
+    background: "john.png",
+    by: "pinned-place",
+    reason: "John's bedroom",
+    at: shownNote!.at,
+  },
 });
 // Chat settings shows why: "Shown for the pinned place "John's bedroom"."
 const note = shownNote as { background?: unknown; by?: unknown; reason?: unknown; at?: unknown };
