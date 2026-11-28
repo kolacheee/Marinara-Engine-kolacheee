@@ -811,6 +811,12 @@ export function withProfileLocalDestinations(
   row: Record<string, unknown>,
   local?: Record<string, unknown>,
 ): Record<string, unknown> {
+  const column = PROFILE_LOCAL_DESTINATION_ROWS[tableName]?.column;
+  // Exports write this column as JSON text. Another value, such as an array holding that text, would pass the checks
+  // below as it is, and a reader's JSON.parse turns it back into the text, so this install's value takes its place.
+  if (column && typeof row[column] !== "string" && !readProfileJsonRecord(row[column])) {
+    row = { ...row, [column]: typeof local?.[column] === "string" ? local[column] : "{}" };
+  }
   if (tableName === "app_settings" && (row.key === TTS_SETTINGS_KEY || row.key === SPEECH_TO_TEXT_SETTINGS_KEY)) {
     return withLocalSpeechServers(row, local);
   }

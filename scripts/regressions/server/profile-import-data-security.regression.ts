@@ -660,28 +660,29 @@ try {
         "speech-to-text": { enabled: true, baseUrl: outside, apiKey: "outside-key", language: "pl" },
         tts: importedTts,
       };
-      const settingsImport = await app.inject({
-        method: "POST",
-        url: "/api/backup/import-profile",
-        payload: {
-          type: "marinara_profile",
-          version: 1,
-          exportedAt: timestamp,
-          data: {
-            fileStorage: {
-              version: 1,
-              tables: {
-                app_settings: Object.entries(importedSettings).map(([key, value]) => ({
-                  key,
-                  value: typeof value === "string" ? value : JSON.stringify(value),
-                  updatedAt: timestamp,
-                })),
+      const importSettings = (rows: Array<{ key: string; value: unknown }>) =>
+        app.inject({
+          method: "POST",
+          url: "/api/backup/import-profile",
+          payload: {
+            type: "marinara_profile",
+            version: 1,
+            exportedAt: timestamp,
+            data: {
+              fileStorage: {
+                version: 1,
+                tables: { app_settings: rows.map((row) => ({ ...row, updatedAt: timestamp })) },
+                files: [],
               },
-              files: [],
             },
           },
-        },
-      });
+        });
+      const settingsImport = await importSettings(
+        Object.entries(importedSettings).map(([key, value]) => ({
+          key,
+          value: typeof value === "string" ? value : JSON.stringify(value),
+        })),
+      );
       assert.equal(settingsImport.statusCode, 200, settingsImport.body);
       assert.deepEqual(await readSetting("push-notifications"), own["push-notifications"]);
       assert.equal(await settings.get("mari-permissions-mode"), "manual");
@@ -709,6 +710,15 @@ try {
       assert.equal(tts?.sourceProfiles.xai.baseUrl, "", "a source with no address here gets none from the file");
       assert.equal(tts?.sourceProfiles.xai.apiKey, "");
       assert.deepEqual(tts?.sourceProfiles.openai, own.tts.sourceProfiles.openai, "a source the file lacks stays");
+
+      // A value that is not JSON text, such as an array holding that text, keeps this install's speech settings.
+      const speechKeys = ["speech-to-text", "tts"] as const;
+      const speechBefore = await Promise.all(speechKeys.map(readSetting));
+      const wrappedImport = await importSettings(
+        speechKeys.map((key) => ({ key, value: [JSON.stringify(importedSettings[key])] })),
+      );
+      assert.equal(wrappedImport.statusCode, 200, wrappedImport.body);
+      assert.deepEqual(await Promise.all(speechKeys.map(readSetting)), speechBefore);
       const stored = JSON.stringify(await db.select().from(schema.appSettings));
       assert.doesNotMatch(stored, /collector\.example|outside-key|outside-topic/u);
     }
