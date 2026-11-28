@@ -35,6 +35,7 @@ import {
   isChatBackgroundWeatherVersion,
   chatBackgroundScenePrompt,
   existingChatBackgroundVersion,
+  chatBackgroundVersionParts,
   generateChatBackgroundWeatherVersion,
   generateChatBackgroundWindowMask,
   turnOffChatBackgroundWindowMask,
@@ -650,17 +651,18 @@ export async function backgroundsRoutes(app: FastifyInstance) {
       return shown;
     };
     // A version the user asked for: shown at once when it was made before, otherwise made below.
-    if (input.part === "version") {
-      const existing = existingChatBackgroundVersion(plain, input.weather, input.time);
+    // A part the plain picture already shows is left out, as in the story's own versions.
+    const wanted = input.part === "version" ? chatBackgroundVersionParts(plain, input.weather, input.time) : null;
+    if (wanted) {
+      const existing = existingChatBackgroundVersion(plain, wanted.weather, wanted.time);
       if (existing) {
-        const shown = existing === background ? true : await showIfStillShown(existing);
+        const shown = await showIfStillShown(existing);
         return { success: true, filename: existing, shown, existed: true };
       }
     }
-    const { version, time } =
-      input.part === "version"
-        ? { version: input.weather, time: input.time }
-        : parseBackgroundWeatherVersionName(background);
+    const { version, time } = wanted
+      ? { version: wanted.weather, time: wanted.time }
+      : parseBackgroundWeatherVersionName(background);
     if (input.part === "picture" && !version && !time) {
       return reply
         .status(400)
@@ -738,7 +740,7 @@ export async function backgroundsRoutes(app: FastifyInstance) {
       return reply.status(500).send({ error: "The picture couldn't be made. Check the Illustrator image connection." });
     }
     // Only when the chat still shows the picture that was remade: a background picked meanwhile stays.
-    const shown = filename === background ? true : await showIfStillShown(filename);
+    const shown = await showIfStillShown(filename);
     return { success: true, filename, shown };
   });
 

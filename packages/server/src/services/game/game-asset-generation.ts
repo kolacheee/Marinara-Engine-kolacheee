@@ -1652,12 +1652,6 @@ export function planChatBackgroundWeather(
 }
 
 /**
- * What the chat background should be for the story's weather and time of day now. A part that is
- * left out (or blank) keeps what the current picture shows, so a weather change at night stays a
- * night picture and the other way round. Each part is compared with what the plain picture already
- * shows: a picture painted at night needs no night version, a dry one no clear version.
- */
-/**
  * The saved version of a plain picture (library file or gallery address) in this weather and/or
  * at this time of day, or null when it hasn't been made yet. Both left blank is the plain picture.
  */
@@ -1675,6 +1669,30 @@ export function existingChatBackgroundVersion(
   );
 }
 
+/**
+ * The weather and time of day parts a hand-made version of a plain picture needs: a part the plain
+ * picture already shows is left out, the same way the story's versions are named, so "Rain, Day" on
+ * a daytime picture is the rain version and a dry picture needs no clear version.
+ */
+export function chatBackgroundVersionParts(
+  plainPicture: string,
+  weather: BackgroundWeatherVersionKey | "",
+  time: BackgroundTimeOfDay | "",
+): { weather: BackgroundWeatherVersionKey | ""; time: BackgroundTimeOfDay | "" } {
+  const scenes = readChatBackgroundScenes();
+  const paintedWeather = scenes[plainPicture]?.weather || "clear";
+  return {
+    weather: weather && weather !== paintedWeather ? weather : "",
+    time: time && time !== chatBackgroundPaintedTime(plainPicture, scenes) ? time : "",
+  };
+}
+
+/**
+ * What the chat background should be for the story's weather and time of day now. A part that is
+ * left out (or blank) keeps what the current picture shows, so a weather change at night stays a
+ * night picture and the other way round. Each part is compared with what the plain picture already
+ * shows: a picture painted at night needs no night version, a dry one no clear version.
+ */
 export function planChatBackgroundVersion(
   currentBackground: string | null | undefined,
   wanted: { weather?: string | null; time?: string | null },
