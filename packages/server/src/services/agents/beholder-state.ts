@@ -292,7 +292,8 @@ export function isBeholderLaneResponse(value: unknown): boolean {
 
 // JSON.parse keeps a "__proto__" key as plain data, but reading or writing that key
 // on a plain object reaches the object's prototype. Lane replies are model text, so
-// the merges below never use it as a key (and keep only known body slots).
+// the merges below never use it as a key. Other inherited names (constructor,
+// toString) read as functions, fail isRecord, and get a fresh own object instead.
 const PROTO_KEY = "__proto__";
 
 function mergeLaneSlot(target: Record<string, unknown>, incoming: Record<string, unknown>): void {
@@ -335,7 +336,9 @@ export function mergeBeholderLaneDeltas(responses: readonly unknown[]): {
       if (isRecord(rawCharacter.body)) {
         const body = (isRecord(character.body) ? character.body : {}) as Record<string, unknown>;
         for (const [slotName, rawSlot] of Object.entries(rawCharacter.body)) {
-          if (!BODY_SLOT_SET.has(slotName) || !isRecord(rawSlot)) continue;
+          // Unknown slot names still merge: the resolver drops them and reports a delta
+          // that named nothing real as unusable, as the single-prompt path does.
+          if (slotName === PROTO_KEY || !isRecord(rawSlot)) continue;
           const slot = (isRecord(body[slotName]) ? body[slotName] : {}) as Record<string, unknown>;
           mergeLaneSlot(slot, rawSlot);
           body[slotName] = slot;

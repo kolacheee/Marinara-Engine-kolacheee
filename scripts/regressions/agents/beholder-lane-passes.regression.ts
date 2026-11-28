@@ -179,7 +179,11 @@ const protoLanes = mergeBeholderLaneDeltas([
 assert.deepEqual(inheritedKeys(), [], "A lane's __proto__ key must not reach Object.prototype");
 assert.deepEqual(Object.keys(protoLanes.delta), ["x"]);
 const protoChest = (protoLanes.delta.x as { body: Record<string, Record<string, unknown>> }).body.chest;
-assert.deepEqual(Object.keys((protoLanes.delta.x as { body: object }).body), ["chest"], "Only known body slots merge");
+assert.deepEqual(
+  Object.keys((protoLanes.delta.x as { body: object }).body),
+  ["chest"],
+  "A __proto__ slot must not merge",
+);
 assert.equal(
   Object.getPrototypeOf(protoChest),
   Object.prototype,
@@ -195,3 +199,27 @@ const protoRepair = mergeBeholderWornRemovals(
 );
 assert.deepEqual(inheritedKeys(), [], "The take-off repair's __proto__ key must not reach Object.prototype");
 assert.deepEqual(Object.keys(protoRepair), []);
+
+// Other inherited names read as functions on a plain object, so they merge as fresh
+// own entries and leave the shared prototypes alone.
+const inheritedNames = mergeBeholderLaneDeltas([
+  '{"changed":true,"delta":{"constructor":{"body":{"toString":{"plantedField":"yes"},"hasOwnProperty":{"worn":[]}}}}}',
+]);
+assert.deepEqual(inheritedKeys(), [], "Inherited names must not reach Object.prototype");
+assert.equal("plantedField" in Function.prototype, false, "Inherited names must not reach Function.prototype");
+assert.equal(typeof {}.toString, "function");
+assert.deepEqual(Object.keys((inheritedNames.delta.constructor as { body: object }).body), [
+  "toString",
+  "hasOwnProperty",
+]);
+
+// A five-pass reply naming only body parts that do not exist stays an unusable delta,
+// exactly as the single-prompt path reports it, rather than a clean no-op.
+const inventedOnly = mergeBeholderLaneDeltas([
+  '{"changed":true,"delta":{"Hesperia":{"body":{"torso":{"worn":[{"item":"coat"}]}}}}}',
+  '{"changed":false}',
+]);
+assert.equal(inventedOnly.changed, true, "A lane naming an unknown slot still reports its change");
+const inventedResolved = resolveBeholderStateResponse(inventedOnly, prior, "Rissha");
+assert.equal(inventedResolved.valid, false, "A delta naming only invented slots must stay invalid");
+assert.deepEqual(inventedResolved.state, resolveBeholderStateResponse({ changed: false }, prior, "Rissha").state);
