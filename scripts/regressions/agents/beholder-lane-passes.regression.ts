@@ -3,6 +3,7 @@ import {
   BEHOLDER_PASS_LANES,
   isBeholderLaneResponse,
   mergeBeholderLaneDeltas,
+  mergeBeholderWornRemovals,
   parseBeholderLanePrompts,
   resolveBeholderStateResponse,
 } from "../../../packages/server/src/services/agents/beholder-state.js";
@@ -155,3 +156,70 @@ const alreadyOff = resolveBeholderStateResponse(
 );
 assert.equal(alreadyOff.valid, true, "A no-op removal must not invalidate the turn");
 assert.equal(alreadyOff.error, undefined);
+
+// The take-off repair adds only removals, deduplicated, onto the merged delta.
+assert.deepEqual(
+  mergeBeholderWornRemovals(
+    { self: { body: { chest: { worn_remove: ["coat"] } } } },
+    { self: { body: { chest: { worn_remove: ["coat", "shirt"] } } } },
+  ),
+  { self: { body: { chest: { worn_remove: ["coat", "shirt"] } } } },
+);
+
+// Lane replies are model text read with JSON.parse, so a "__proto__" key arrives as
+// plain data. Merging must keep it data: nothing the model wrote may land on every
+// object in the server.
+const planted = ["plantedField", "species", "body", "worn", "worn_remove"];
+const inheritedKeys = () => planted.filter((key) => key in {});
+const protoLanes = mergeBeholderLaneDeltas([
+  '{"changed":true,"delta":{"x":{"body":{"__proto__":{"plantedField":"yes"}}}}}',
+  '{"changed":true,"delta":{"__proto__":{"species":"planted","body":{"chest":{"bare":true}}}}}',
+  '{"changed":true,"delta":{"x":{"body":{"chest":{"__proto__":{"worn":[{"item":"cloak"}]}}}}}}',
+]);
+assert.deepEqual(inheritedKeys(), [], "A lane's __proto__ key must not reach Object.prototype");
+assert.deepEqual(Object.keys(protoLanes.delta), ["x"]);
+const protoChest = (protoLanes.delta.x as { body: Record<string, Record<string, unknown>> }).body.chest;
+assert.deepEqual(
+  Object.keys((protoLanes.delta.x as { body: object }).body),
+  ["chest"],
+  "A __proto__ slot must not merge",
+);
+assert.equal(
+  Object.getPrototypeOf(protoChest),
+  Object.prototype,
+  "A slot's __proto__ field must not become its prototype",
+);
+assert.equal(protoChest.worn, undefined);
+
+const protoRepair = mergeBeholderWornRemovals(
+  {},
+  JSON.parse(
+    '{"__proto__":{"body":{"chest":{"worn_remove":["coat"]}}},"x":{"body":{"__proto__":{"worn_remove":["coat"]}}}}',
+  ),
+);
+assert.deepEqual(inheritedKeys(), [], "The take-off repair's __proto__ key must not reach Object.prototype");
+assert.deepEqual(Object.keys(protoRepair), []);
+
+// Other inherited names read as functions on a plain object, so they merge as fresh
+// own entries and leave the shared prototypes alone.
+const inheritedNames = mergeBeholderLaneDeltas([
+  '{"changed":true,"delta":{"constructor":{"body":{"toString":{"plantedField":"yes"},"hasOwnProperty":{"worn":[]}}}}}',
+]);
+assert.deepEqual(inheritedKeys(), [], "Inherited names must not reach Object.prototype");
+assert.equal("plantedField" in Function.prototype, false, "Inherited names must not reach Function.prototype");
+assert.equal(typeof {}.toString, "function");
+assert.deepEqual(Object.keys((inheritedNames.delta.constructor as { body: object }).body), [
+  "toString",
+  "hasOwnProperty",
+]);
+
+// A five-pass reply naming only body parts that do not exist stays an unusable delta,
+// exactly as the single-prompt path reports it, rather than a clean no-op.
+const inventedOnly = mergeBeholderLaneDeltas([
+  '{"changed":true,"delta":{"Hesperia":{"body":{"torso":{"worn":[{"item":"coat"}]}}}}}',
+  '{"changed":false}',
+]);
+assert.equal(inventedOnly.changed, true, "A lane naming an unknown slot still reports its change");
+const inventedResolved = resolveBeholderStateResponse(inventedOnly, prior, "Rissha");
+assert.equal(inventedResolved.valid, false, "A delta naming only invented slots must stay invalid");
+assert.deepEqual(inventedResolved.state, resolveBeholderStateResponse({ changed: false }, prior, "Rissha").state);
