@@ -86,6 +86,44 @@ test("Message HTML holds images from other websites until the user asks", async 
   expect(result.allowed.style).toContain(`url(${REMOTE}/bg.png)`);
 });
 
+test("Game text keeps its wave and drops styles that would load other websites", async ({ page }, info) => {
+  test.skip(info.project.name !== "desktop-chromium", "Sanitizer output is the same on every browser.");
+  const requested: string[] = [];
+  await page.route(`${REMOTE}/**`, async (route) => {
+    requested.push(route.request().url());
+    await route.fulfill({ contentType: "image/png", body: PNG });
+  });
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const result = await page.evaluate(async (remote) => {
+    const { animateTextHtml } = (await import("/src/components/game/AnimatedText.tsx" as string)) as {
+      animateTextHtml: (html: string, enabled?: boolean) => string;
+    };
+    // A Game Master choice with its own style, beside a {wave:} tag the effects turn into per-letter delays.
+    const host = document.createElement("div");
+    host.innerHTML = animateTextHtml(
+      `<span title="Go on" style="background-image: url(${remote}/choice.png); position: fixed">Continue</span> {wave:Sing}`,
+    );
+    document.body.append(host);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    host.remove();
+    return {
+      styles: [...host.querySelectorAll("[style]")].map((element) => element.getAttribute("style")),
+      title: host.querySelector("[title]")?.getAttribute("title") ?? null,
+      waveLetters: host.querySelectorAll(".anim-text-wave > .anim-text-wave-char").length,
+    };
+  }, REMOTE);
+
+  expect(result.styles).toEqual([
+    "animation-delay:0ms",
+    "animation-delay:60ms",
+    "animation-delay:120ms",
+    "animation-delay:180ms",
+  ]);
+  expect(result.waveLetters).toBe(4);
+  expect(result.title).toBe("Go on");
+  expect(requested, "game text reaches no other site").toEqual([]);
+});
+
 test("A loaded message image stays loaded across reloads and devices", async ({ page, browser, request }, info) => {
   test.skip(info.project.name !== "desktop-chromium", "One browser covers the click-to-load flow.");
   const requested: string[] = [];
