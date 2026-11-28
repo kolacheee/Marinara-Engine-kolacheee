@@ -9,6 +9,7 @@ import {
   type BackgroundTimeOfDay,
 } from "@marinara-engine/shared";
 import { api } from "../../lib/api-client";
+import { chatBackgroundMetadataToUrl } from "../../lib/backgrounds";
 import { cn } from "../../lib/utils";
 import { useChatStore } from "../../stores/chat.store";
 import { useUIStore } from "../../stores/ui.store";
@@ -17,6 +18,8 @@ import { Select } from "../../components/ui/Select";
 
 const FIELD_CLASS =
   "w-full min-w-0 rounded-md border border-[var(--border)] bg-[var(--background)] px-2 py-1 text-[0.6875rem] text-[var(--foreground)] outline-none transition-colors focus:border-[var(--primary)]/50 max-sm:!text-base";
+
+const CAPTION_CLASS = "text-[0.625rem] text-[var(--muted-foreground)]";
 
 const WEATHER_CHOICES = ["clear", ...BACKGROUND_WEATHER_VERSIONS] as const;
 type WeatherChoice = "" | (typeof WEATHER_CHOICES)[number];
@@ -64,10 +67,9 @@ export function MakeBackgroundVersion({ chatId, background }: { chatId: string; 
         { chatId, part: "version", weather, time, debugMode },
       );
       if (result.shown !== false && useChatStore.getState().activeChatId === chatId) {
-        const url = result.filename.startsWith("/")
-          ? result.filename
-          : `/api/backgrounds/file/${encodeURIComponent(result.filename)}?v=${Date.now()}`;
-        useUIStore.getState().setChatBackground(url);
+        // The same address the picker uses, so its preview names the version that is shown.
+        const url = chatBackgroundMetadataToUrl(result.filename);
+        if (url) useUIStore.getState().setChatBackground(url);
       }
       qc.invalidateQueries({ queryKey: ["chats"] });
       qc.invalidateQueries({ queryKey: ["backgrounds"] });
@@ -93,34 +95,40 @@ export function MakeBackgroundVersion({ chatId, background }: { chatId: string; 
         {t("chat.settings.makeVersion.title")}
       </span>
       <div className="grid grid-cols-2 gap-1.5">
-        <Select<WeatherChoice>
-          value={weather}
-          options={[
-            { value: "", label: t("chat.settings.makeVersion.asPainted") },
-            ...WEATHER_CHOICES.map((choice) => ({
-              value: choice as WeatherChoice,
-              label: t(`chat.settings.makeVersion.weather.${choice}`),
-            })),
-          ]}
-          onChange={setWeather}
-          label={t("chat.settings.makeVersion.weatherLabel")}
-          className={FIELD_CLASS}
-          disabled={making}
-        />
-        <Select<TimeChoice>
-          value={time}
-          options={[
-            { value: "", label: t("chat.settings.makeVersion.asPainted") },
-            ...BACKGROUND_TIME_VERSIONS.map((choice) => ({
-              value: choice as TimeChoice,
-              label: t(`chat.settings.makeVersion.time.${choice}`),
-            })),
-          ]}
-          onChange={setTime}
-          label={t("chat.settings.makeVersion.timeLabel")}
-          className={FIELD_CLASS}
-          disabled={making}
-        />
+        <div className="flex min-w-0 flex-col gap-0.5">
+          <span className={CAPTION_CLASS}>{t("chat.settings.makeVersion.weatherLabel")}</span>
+          <Select<WeatherChoice>
+            value={weather}
+            options={[
+              { value: "", label: t("chat.settings.makeVersion.asPainted") },
+              ...WEATHER_CHOICES.map((choice) => ({
+                value: choice as WeatherChoice,
+                label: t(`chat.settings.makeVersion.weather.${choice}`),
+              })),
+            ]}
+            onChange={setWeather}
+            label={t("chat.settings.makeVersion.weatherLabel")}
+            className={FIELD_CLASS}
+            disabled={making}
+          />
+        </div>
+        <div className="flex min-w-0 flex-col gap-0.5">
+          <span className={CAPTION_CLASS}>{t("chat.settings.makeVersion.timeLabel")}</span>
+          <Select<TimeChoice>
+            value={time}
+            options={[
+              { value: "", label: t("chat.settings.makeVersion.asPainted") },
+              ...BACKGROUND_TIME_VERSIONS.map((choice) => ({
+                value: choice as TimeChoice,
+                label: t(`chat.settings.makeVersion.time.${choice}`),
+              })),
+            ]}
+            onChange={setTime}
+            label={t("chat.settings.makeVersion.timeLabel")}
+            className={FIELD_CLASS}
+            disabled={making}
+          />
+        </div>
       </div>
       <button
         type="button"
