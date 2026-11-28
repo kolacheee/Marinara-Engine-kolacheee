@@ -1388,7 +1388,8 @@ export const ChatInput = memo(function ChatInput({
     const message = await prepareUserMessage(normalized, () =>
       toast.error(localizeUi("ui.chat.chatinput.failedToTranslateMessagePostingOriginal")),
     );
-    const composerTakenByNewerDraft = getImpersonateDraft(submittingChatId) !== postedImpersonateDraft;
+    const draftAfterPrepare = getImpersonateDraft(submittingChatId);
+    const composerTakenByNewerDraft = draftAfterPrepare !== null && draftAfterPrepare !== postedImpersonateDraft;
     const submittedDraft = raw;
     const submittedHeight = textareaRef.current?.style.height ?? "auto";
     const submittedAttachments = attachments;
@@ -1444,7 +1445,8 @@ export const ChatInput = memo(function ChatInput({
       const activeChatIdAfterFailure = useChatStore.getState().activeChatId;
       const currentValue = textareaRef.current?.value ?? "";
       // A newer draft written while this was posting owns the box and its saved text; it is not overwritten.
-      const replacedByNewerDraft = getImpersonateDraft(submittingChatId) !== postedImpersonateDraft;
+      const draftAfterFailure = getImpersonateDraft(submittingChatId);
+      const replacedByNewerDraft = draftAfterFailure !== null && draftAfterFailure !== postedImpersonateDraft;
       const canRestoreVisibleDraft =
         activeChatIdAfterFailure === submittingChatId && currentValue.length === 0 && !replacedByNewerDraft;
       if (canRestoreVisibleDraft && textareaRef.current) {
