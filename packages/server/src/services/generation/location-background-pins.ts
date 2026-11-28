@@ -21,7 +21,7 @@ import {
 } from "@marinara-engine/shared";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { extname, join } from "node:path";
-import { isChatBackgroundWeatherVersion, planChatBackgroundVersion } from "../game/game-asset-generation.js";
+import { isChatBackgroundVersionOnly, planChatBackgroundVersion } from "../game/game-asset-generation.js";
 import { DATA_DIR } from "../../utils/data-dir.js";
 import { logger } from "../../lib/logger.js";
 
@@ -151,7 +151,7 @@ export function matchLibraryBackgroundForLocation(
   if (!text) return null;
   let best: { filename: string; words: number; length: number } | null = null;
   for (const item of library) {
-    if (isChatBackgroundWeatherVersion(item.filename)) continue;
+    if (isChatBackgroundVersionOnly(item.filename)) continue;
     for (const name of libraryPlaceNames(item.filename, item.tags ?? [])) {
       if (!` ${text} `.includes(` ${name} `)) continue;
       const words = name.split(" ").length;
@@ -198,7 +198,7 @@ export function libraryBackgroundCandidatesForLocation(
   if (wanted.size === 0) return [];
   const scored: Array<{ filename: string; shared: number }> = [];
   for (const item of library) {
-    if (isChatBackgroundWeatherVersion(item.filename)) continue;
+    if (isChatBackgroundVersionOnly(item.filename)) continue;
     const stem = item.filename.slice(0, item.filename.length - extname(item.filename).length).replace(/[-_]+/gu, " ");
     const words = placeWords([stem, ...(item.tags ?? [])].join(" "));
     let shared = 0;

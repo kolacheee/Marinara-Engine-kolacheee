@@ -216,6 +216,14 @@ const fromLibrary = findExistingSceneBackground({
 });
 assert.deepEqual(fromLibrary, { filename: "generated-guest-bedroom--wx-rain.png", source: "library" });
 assert.equal(findExistingSceneBackground({ chatMode: "roleplay", chatMetadata: {}, location: "the moon" }), null);
+// An upload merely named like a version (no plain picture, no version tag) still serves its place.
+writeFileSync(join(bgDir, "lighthouse-cabin--tod-night.png"), png);
+assert.equal(
+  matchLibraryBackgroundForLocation("the lighthouse cabin", [
+    { filename: "lighthouse-cabin--tod-night.png", tags: ["lighthouse cabin"] },
+  ]),
+  "lighthouse-cabin--tod-night.png",
+);
 
 // ── Gallery backgrounds follow their character into every chat ──
 const johnGallery = shared.galleryBackgroundPins({ type: "character", id: "j1", name: "John" }, [
