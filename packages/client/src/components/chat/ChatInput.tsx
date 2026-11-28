@@ -894,8 +894,11 @@ export const ChatInput = memo(function ChatInput({
       ...(mode === "roleplay"
         ? {
             impersonateDraft: (direction: string) => {
+              // A refused start (busy chat) writes no draft, so the typed command comes back like a failed run.
+              const previous = getImpersonateDraft(activeChatId);
               void startImpersonateDraft({ chatId: activeChatId, direction, before: slashSubmittedTextRef.current });
-              return true;
+              const started = getImpersonateDraft(activeChatId);
+              return started !== null && started !== previous;
             },
           }
         : {}),
@@ -1125,15 +1128,17 @@ export const ChatInput = memo(function ChatInput({
     const sentImpersonateDraft = getImpersonateDraft(activeChatId);
     forgetImpersonateDraft(activeChatId);
 
-    const message = await prepareUserMessage(normalized, () =>
-      toast.error(localizeUi("ui.chat.chatinput.failedToTranslateMessageSendingOriginal")),
-    );
-
     const submittingChatId = activeChatId;
     const submittedDraft = textareaRef.current?.value ?? "";
     const submittedHeight = textareaRef.current?.style.height ?? "auto";
     const submittedAttachments = attachments;
     const submittedCompletions = completions;
+
+    const message = await prepareUserMessage(normalized, () =>
+      toast.error(localizeUi("ui.chat.chatinput.failedToTranslateMessageSendingOriginal")),
+    );
+    // A draft started while the message was being prepared owns the box now; it is left in place.
+    const composerTakenByNewerDraft = getImpersonateDraft(submittingChatId) !== null;
     const restoreSubmittedDraft = () => {
       if (replyDraft && !useChatStore.getState().replyDrafts.has(submittingChatId))
         setReplyDraft(submittingChatId, replyDraft);
@@ -1168,15 +1173,17 @@ export const ChatInput = memo(function ChatInput({
       }
     };
 
-    if (textareaRef.current) {
-      textareaRef.current.value = "";
-      textareaRef.current.style.height = "auto";
+    if (!composerTakenByNewerDraft) {
+      if (textareaRef.current) {
+        textareaRef.current.value = "";
+        textareaRef.current.style.height = "auto";
+      }
+      syncInputState("");
+      setCompletions([]);
     }
-    syncInputState("");
-    setCompletions([]);
     const pendingAttachments = attachments.map((a) => ({ type: a.type, data: a.data, filename: a.name, name: a.name }));
     replaceAttachments([]);
-    clearInputDraft(activeChatId);
+    if (!composerTakenByNewerDraft) clearInputDraft(activeChatId);
     clearResponseQueue(activeChatId);
     setReplyDraft(activeChatId, null);
 
@@ -1376,9 +1383,12 @@ export const ChatInput = memo(function ChatInput({
       draftTimerRef.current = null;
     }
 
+    // Only the draft being posted is forgotten when the post succeeds; a newer one keeps its Redo and Undo.
+    const postedImpersonateDraft = getImpersonateDraft(submittingChatId);
     const message = await prepareUserMessage(normalized, () =>
       toast.error(localizeUi("ui.chat.chatinput.failedToTranslateMessagePostingOriginal")),
     );
+    const composerTakenByNewerDraft = getImpersonateDraft(submittingChatId) !== postedImpersonateDraft;
     const submittedDraft = raw;
     const submittedHeight = textareaRef.current?.style.height ?? "auto";
     const submittedAttachments = attachments;
@@ -1390,14 +1400,16 @@ export const ChatInput = memo(function ChatInput({
       name: a.name,
     }));
 
-    if (textareaRef.current) {
-      textareaRef.current.value = "";
-      textareaRef.current.style.height = "auto";
+    if (!composerTakenByNewerDraft) {
+      if (textareaRef.current) {
+        textareaRef.current.value = "";
+        textareaRef.current.style.height = "auto";
+      }
+      syncInputState("");
+      setCompletions([]);
     }
-    syncInputState("");
-    setCompletions([]);
     replaceAttachments([]);
-    clearInputDraft(submittingChatId);
+    if (!composerTakenByNewerDraft) clearInputDraft(submittingChatId);
     clearResponseQueue(submittingChatId);
     setReplyDraft(submittingChatId, null);
 
@@ -1417,7 +1429,7 @@ export const ChatInput = memo(function ChatInput({
         });
       }
       // A posted impersonate draft is done; a failed post keeps its Redo and Undo.
-      forgetImpersonateDraft(submittingChatId);
+      if (getImpersonateDraft(submittingChatId) === postedImpersonateDraft) forgetImpersonateDraft(submittingChatId);
     } catch (error) {
       if (replyDraft && !useChatStore.getState().replyDrafts.has(submittingChatId))
         setReplyDraft(submittingChatId, replyDraft);
