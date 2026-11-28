@@ -117,6 +117,7 @@ import type {
 } from "../../services/image/illustrator-references.js";
 import { createCharacterGalleryStorage } from "../../services/storage/character-gallery.storage.js";
 import {
+  backgroundAgentGalleryOwners,
   backgroundAgentHandleFor,
   backgroundAgentStoredValues,
   buildBackgroundAgentCandidates,
@@ -1744,21 +1745,23 @@ async function buildRetryAgentContext(args: {
       const galleryCandidates =
         (chat as { mode?: unknown }).mode === "roleplay"
           ? await loadGalleryBackgroundAgentCandidates({
-              // The whole chat roster: an inactive character's room is still a place the story can go.
-              characters: [
-                ...(await resolveCharacterNameMap(allCharacterIds, (id) => chars.getById(id, chatId)).catch(
-                  () => new Map<string, string>(),
-                )),
-              ]
-                .map(([id, name]) => ({ id, name }))
-                .concat(
-                  agentContext.characters
-                    .filter((character) => !allCharacterIds.includes(character.id))
-                    .map((character) => ({ id: character.id, name: character.name })),
-                ),
-              persona: personaContext.personaId
-                ? { id: personaContext.personaId, name: personaContext.personaName }
-                : null,
+              // The whole chat roster (an inactive character's room is still a place the story can go),
+              // plus the user's identity: a character-backed one by its character gallery.
+              ...backgroundAgentGalleryOwners({
+                roster: [
+                  ...(await resolveCharacterNameMap(allCharacterIds, (id) => chars.getById(id, chatId)).catch(
+                    () => new Map<string, string>(),
+                  )),
+                ].map(([id, name]) => ({ id, name })),
+                active: agentContext.characters.map((character) => ({ id: character.id, name: character.name })),
+                identity: personaContext.identitySource
+                  ? {
+                      source: personaContext.identitySource,
+                      id: personaContext.identityId,
+                      name: personaContext.personaName,
+                    }
+                  : null,
+              }),
               characterGallery: createCharacterGalleryStorage(db),
               personaGallery: createPersonaGalleryStorage(db),
             }).catch(() => [])
@@ -1782,7 +1785,8 @@ async function buildRetryAgentContext(args: {
       illustratorBackgroundGenerationEnabled((chat as { mode?: unknown }).mode, chatMeta))
   ) {
     agentContext.memory._illustratorBackgroundGenerationEnabled = true;
-    agentContext.memory._currentBackground = currentBackground;
+    // Raw value for the Illustrator; _currentBackground stays the Background agent's handle.
+    agentContext.memory._illustratorCurrentBackground = currentBackground;
   }
 
   if (resolvedAgentTypes.has("illustrator") && forceIllustratorImageGeneration) {
@@ -4637,7 +4641,9 @@ async function applyRetryResultEffects(args: {
         chatMetadata: freshMeta,
         currentBackground:
           backgroundBeforeGeneration ??
-          (typeof agentContext.memory._currentBackground === "string" ? agentContext.memory._currentBackground : null),
+          (typeof agentContext.memory._illustratorCurrentBackground === "string"
+            ? agentContext.memory._illustratorCurrentBackground
+            : null),
         illustratorAgent: illustratorEntry.resolved,
         assistantResponse: agentContext.mainResponse ?? "",
         decisionReason: backgroundDecisionReason,

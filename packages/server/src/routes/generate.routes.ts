@@ -629,6 +629,7 @@ import {
 } from "../services/generation/location-background-pins.js";
 import {
   backgroundAgentStoredValues,
+  backgroundAgentGalleryOwners,
   backgroundAgentHandleFor,
   buildBackgroundAgentCandidates,
   loadGalleryBackgroundAgentCandidates,
@@ -7245,15 +7246,15 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           const galleryCandidates =
             chatMode === "roleplay"
               ? await loadGalleryBackgroundAgentCandidates({
-                  // The whole chat roster: an inactive character's room is still a place the story can go.
-                  characters: [...(await getGroupHistoryCharacterNamesById().catch(() => new Map<string, string>()))]
-                    .map(([id, name]) => ({ id, name }))
-                    .concat(
-                      charInfo
-                        .filter((character) => !allCharacterIds.includes(character.id))
-                        .map((character) => ({ id: character.id, name: character.name })),
+                  // The whole chat roster (an inactive character's room is still a place the story can go),
+                  // plus the user's identity: a character-backed one by its character gallery.
+                  ...backgroundAgentGalleryOwners({
+                    roster: [...(await getGroupHistoryCharacterNamesById().catch(() => new Map<string, string>()))].map(
+                      ([id, name]) => ({ id, name }),
                     ),
-                  persona: personaId ? { id: personaId, name: personaName } : null,
+                    active: charInfo.map((character) => ({ id: character.id, name: character.name })),
+                    identity: persona ? { source: persona.source, id: persona.id, name: personaName } : null,
+                  }),
                   characterGallery,
                   personaGallery,
                 }).catch(() => [])
@@ -7283,7 +7284,8 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           illustratorBackgroundGenerationEnabled(chatMode, chatMeta)
         ) {
           agentContext.memory._illustratorBackgroundGenerationEnabled = true;
-          agentContext.memory._currentBackground = currentBackground;
+          // Raw value for the Illustrator; _currentBackground stays the Background agent's handle.
+          agentContext.memory._illustratorCurrentBackground = currentBackground;
         }
 
         const spotifyMusicAgents = resolvedAgents.filter(
