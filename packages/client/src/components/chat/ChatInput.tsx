@@ -1466,7 +1466,10 @@ export const ChatInput = memo(function ChatInput({
       }
       const activeChatIdAfterFailure = useChatStore.getState().activeChatId;
       const currentValue = textareaRef.current?.value ?? "";
-      const canRestoreVisibleDraft = activeChatIdAfterFailure === submittingChatId && currentValue.length === 0;
+      // A newer draft written while this was posting owns the box and its saved text; it is not overwritten.
+      const replacedByNewerDraft = getImpersonateDraft(submittingChatId) !== postedImpersonateDraft;
+      const canRestoreVisibleDraft =
+        activeChatIdAfterFailure === submittingChatId && currentValue.length === 0 && !replacedByNewerDraft;
       if (canRestoreVisibleDraft && textareaRef.current) {
         textareaRef.current.value = submittedDraft;
         textareaRef.current.style.height = submittedHeight;
@@ -1480,7 +1483,11 @@ export const ChatInput = memo(function ChatInput({
           pendingAttachmentDraftsRef.current.set(submittingChatId, submittedAttachments);
         }
       }
-      if (submittedDraft && (canRestoreVisibleDraft || activeChatIdAfterFailure !== submittingChatId)) {
+      if (
+        submittedDraft &&
+        !replacedByNewerDraft &&
+        (canRestoreVisibleDraft || activeChatIdAfterFailure !== submittingChatId)
+      ) {
         setInputDraft(submittingChatId, submittedDraft);
       }
       const msg = error instanceof Error ? error.message : "Failed to post message";
