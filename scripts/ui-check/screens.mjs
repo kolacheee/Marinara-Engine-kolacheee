@@ -617,6 +617,67 @@ export function screenList(ids) {
         }, ids.roleplayChat),
       ),
     },
+    {
+      // Chat settings › Background with a picture shown: "Make a version" (weather and time of day by hand).
+      // Uploads a small painted picture and its rainy night version, shows the plain one in the chat, then
+      // opens the Background section (a page of its own on phones and tablets).
+      id: "chat-settings-make-version",
+      ready: '[data-testid="make-background-version"]',
+      run: needsData(
+        hook(async (id) => {
+          const upload = async (name, colors) => {
+            const canvas = Object.assign(document.createElement("canvas"), { width: 640, height: 360 });
+            const ctx = canvas.getContext("2d");
+            const fill = ctx.createLinearGradient(0, 0, 0, 360);
+            fill.addColorStop(0, colors[0]);
+            fill.addColorStop(1, colors[1]);
+            ctx.fillStyle = fill;
+            ctx.fillRect(0, 0, 640, 360);
+            const blob = await new Promise((done) => canvas.toBlob(done, "image/png"));
+            const form = new FormData();
+            form.append("file", blob, name);
+            await fetch("/api/backgrounds/upload?dedupe=1", { method: "POST", body: form });
+          };
+          await upload("ui-check-bedroom.png", ["#f6d7a7", "#b98b5e"]);
+          await upload("ui-check-bedroom--wx-rain--tod-night.png", ["#1d2340", "#0b0e1c"]);
+          await fetch(`/api/chats/${id}/metadata`, {
+            method: "PATCH",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ background: "ui-check-bedroom.png" }),
+          });
+          const h = window.__marinaraUiCheck;
+          h.chat.getState().setActiveChatId(id);
+          h.overhaul.getState().setMobileSidePageOpen(false);
+          setTimeout(() => h.ui.setState({ chatSettingsRequest: { chatId: id, section: null } }), 600);
+        }, ids.roleplayChat),
+      ),
+      then: async (page) => {
+        const panel = page.locator('[data-testid="make-background-version"]').filter({ visible: true });
+        await page
+          .locator('.ov-cs [data-drawer="roleplay-background"]')
+          .first()
+          .waitFor({ timeout: 15_000 })
+          .catch(() => {});
+        if (!(await panel.count())) {
+          // Phones and tablets: the section is a page; computers: a section that may start folded.
+          await page.evaluate(() =>
+            window.__marinaraUiCheck.chatSettingsNav?.getState().showPage("roleplay-background"),
+          );
+          await page.waitForTimeout(400);
+        }
+        if (!(await panel.count())) {
+          // Computers: section bodies fill in as they scroll near, and the section may be folded.
+          const section = page.locator('.ov-cs [data-drawer="roleplay-background"]').first();
+          await section.scrollIntoViewIfNeeded().catch(() => {});
+          const toggle = section.locator("[data-drawer-toggle]").first();
+          if ((await toggle.count()) && (await toggle.getAttribute("aria-expanded")) === "false") await toggle.click();
+          await page.waitForTimeout(400);
+          await section.scrollIntoViewIfNeeded().catch(() => {});
+        }
+        await panel.first().waitFor({ state: "visible", timeout: 10_000 });
+        await panel.first().scrollIntoViewIfNeeded();
+      },
+    },
     // New layout: Chat Variables, Agent Suite, Memories and Summaries as pages inside Chat settings.
     ...["variables", "agent-suite", "memories", "summaries"].map((subpage) => ({
       id: `chat-settings-${subpage}`,
