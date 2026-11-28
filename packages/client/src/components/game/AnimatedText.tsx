@@ -225,24 +225,26 @@ interface AnimatedTextProps {
 
 export function AnimatedText({ html, className, style }: AnimatedTextProps) {
   const textEffectsEnabled = useUIStore((state) => state.gameTextEffectsEnabled);
-  const processedHtml = useMemo(() => {
-    let result = applyTextEffects(html, textEffectsEnabled);
-    result = wrapCharactersForWave(result);
-    // Re-sanitize after our additions
-    return DOMPurify.sanitize(result, {
-      ALLOWED_TAGS: ["strong", "em", "u", "small", "br", "span"],
-      ALLOWED_ATTR: ["class", "style", "title"],
-    });
-  }, [html, textEffectsEnabled]);
+  const processedHtml = useMemo(() => animateTextHtml(html, textEffectsEnabled), [html, textEffectsEnabled]);
 
   return <span className={className} style={style} dangerouslySetInnerHTML={{ __html: processedHtml }} />;
 }
+
+// Game text is model output (choices, summaries, map and combat lines), so it may not
+// bring its own CSS: a url() in a style would load another website as soon as the
+// text shows, past the hold on images from other websites. The only style kept is
+// the wave delay wrapCharactersForWave writes.
+const WAVE_DELAY_STYLE = /^animation-delay:\d+ms$/;
+const gameTextPurifier = DOMPurify();
+gameTextPurifier.addHook("uponSanitizeAttribute", (_node, data) => {
+  if (data.attrName === "style" && !WAVE_DELAY_STYLE.test(data.attrValue)) data.keepAttr = false;
+});
 
 /** Convenience: apply effects to plain text (not pre-formatted HTML). */
 export function animateTextHtml(html: string, enabled = true): string {
   let result = applyTextEffects(html, enabled);
   result = wrapCharactersForWave(result);
-  return DOMPurify.sanitize(result, {
+  return gameTextPurifier.sanitize(result, {
     ALLOWED_TAGS: ["strong", "em", "u", "small", "br", "span"],
     ALLOWED_ATTR: ["class", "style", "title"],
   });
