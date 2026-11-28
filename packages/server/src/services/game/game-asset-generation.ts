@@ -1657,6 +1657,24 @@ export function planChatBackgroundWeather(
  * night picture and the other way round. Each part is compared with what the plain picture already
  * shows: a picture painted at night needs no night version, a dry one no clear version.
  */
+/**
+ * The saved version of a plain picture (library file or gallery address) in this weather and/or
+ * at this time of day, or null when it hasn't been made yet. Both left blank is the plain picture.
+ */
+export function existingChatBackgroundVersion(
+  plainPicture: string,
+  weather: BackgroundWeatherVersionKey | "",
+  time: BackgroundTimeOfDay | "",
+): string | null {
+  if (!weather && !time) return plainPicture;
+  const gallery = galleryBackground(plainPicture);
+  const stem = gallery?.stem ?? basename(plainPicture, extname(plainPicture));
+  return chatBackgroundFileForStem(
+    backgroundVersionStem(stem, weather, time),
+    gallery?.ext ?? extname(plainPicture).slice(1),
+  );
+}
+
 export function planChatBackgroundVersion(
   currentBackground: string | null | undefined,
   wanted: { weather?: string | null; time?: string | null },

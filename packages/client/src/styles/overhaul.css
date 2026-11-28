@@ -5277,7 +5277,8 @@ input.ov-edhead__title:focus {
     background: var(--ov-hover) !important;
   }
 }
-.ov-cs .mari-drawer__body .grid:has(> button) {
+/* Rows of small buttons wrap as chips; picture grids (the background picker's Recent) stay grids. */
+.ov-cs .mari-drawer__body .grid:has(> button):not(:has(> button img)) {
   display: flex !important;
   flex-wrap: wrap;
   gap: 0.375rem !important;
