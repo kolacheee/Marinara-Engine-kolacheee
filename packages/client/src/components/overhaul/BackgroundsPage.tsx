@@ -27,12 +27,9 @@ import {
   X,
 } from "lucide-react";
 import { useTranslation as useUiTranslation } from "react-i18next";
+import { backgroundVersionLabel as versionLabelWords } from "../../lib/background-version-label";
 import { useBackSteps } from "../../hooks/use-back-steps";
-import {
-  BACKGROUND_THUMBNAIL_WIDTH,
-  CHAT_IMAGE_PREVIEW_WIDTH,
-  parseBackgroundWeatherVersionName,
-} from "@marinara-engine/shared";
+import { BACKGROUND_THUMBNAIL_WIDTH, CHAT_IMAGE_PREVIEW_WIDTH } from "@marinara-engine/shared";
 import { DEFAULT_ROLEPLAY_BACKGROUND_URL, useUIStore } from "../../stores/ui.store";
 import { useOverhaulMobile } from "../../stores/overhaul.store";
 import { useLocalizedUiText } from "../../localization/use-localized-ui-text";
@@ -307,7 +304,7 @@ export function BackgroundsPage() {
             <span className="ov-bglib__badge">{t("ui.panels.backgroundpicker.roleplayDefaultShort")}</span>
           ) : null}
           {versionGroups.baseOf.has(background.id) ? (
-            <span className="ov-bglib__versions-badge">{backgroundVersionLabel(background.filename)}</span>
+            <span className="ov-bglib__versions-badge">{backgroundVersionLabel(background.filename, t)}</span>
           ) : (
             renderVersionCount(versionGroups.versions.get(background.id))
           )}
@@ -821,10 +818,11 @@ function BackgroundTable({
 
 /** The open picture, in place above the grid: preview, name, tags and what it is used for. */
 /** What a version shows, in words: "Rain", "Night", "Rain at sunset". */
-function backgroundVersionLabel(filename: string): string {
-  const { version, time } = parseBackgroundWeatherVersionName(filename);
-  const weather = version.replace(/-/gu, " ");
-  const label = weather && time ? `${weather} ${time === "day" ? "by day" : `at ${time}`}` : weather || time;
+function backgroundVersionLabel(
+  filename: string,
+  t: (key: string, options?: Record<string, unknown>) => string,
+): string {
+  const label = versionLabelWords(filename, t);
   return label ? label.charAt(0).toUpperCase() + label.slice(1) : filename;
 }
 
@@ -860,7 +858,7 @@ function backgroundVersionGroups(backgrounds: readonly BackgroundLibraryItem[]) 
     versions.set(key, [...(versions.get(key) ?? []), background]);
   }
   for (const list of versions.values()) {
-    list.sort((a, b) => backgroundVersionLabel(a.filename).localeCompare(backgroundVersionLabel(b.filename)));
+    list.sort((a, b) => a.filename.localeCompare(b.filename));
   }
   return { versions, baseOf };
 }
@@ -885,7 +883,7 @@ function VersionsRow({
             type="button"
             className="ov-bglib__version"
             onClick={() => onOpen(version.id)}
-            title={backgroundVersionLabel(version.filename)}
+            title={backgroundVersionLabel(version.filename, t)}
           >
             <img
               src={`${version.url}?w=${BACKGROUND_THUMBNAIL_WIDTH}`}
@@ -894,7 +892,7 @@ function VersionsRow({
               decoding="async"
               draggable={false}
             />
-            <span>{backgroundVersionLabel(version.filename)}</span>
+            <span>{backgroundVersionLabel(version.filename, t)}</span>
           </button>
         ))}
       </div>
@@ -1022,7 +1020,7 @@ function BackgroundDetail({
         ) : null}
         {versionOf ? (
           <p className="ov-bglib__meta">
-            {t("library.backgrounds.versionOf", { version: backgroundVersionLabel(background.filename) })}{" "}
+            {t("library.backgrounds.versionOf", { version: backgroundVersionLabel(background.filename, t) })}{" "}
             <button type="button" className="ov-bglib__link" onClick={versionOf.open}>
               {versionOf.title}
             </button>
