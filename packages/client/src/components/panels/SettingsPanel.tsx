@@ -115,6 +115,7 @@ import {
   type SidecarHealthSection,
   type Theme,
   type VideoGenerationUserSettings,
+  BACKGROUND_CHOICE_NOTE_KEY,
 } from "@marinara-engine/shared";
 import {
   findDuplicateTheme,
@@ -3495,7 +3496,12 @@ function AppearanceSettings({ group = "app" }: { group?: AppearanceGroup }) {
     (url: string | null) => {
       setChatBackgroundRaw(url);
       if (!activeChatId) return;
-      updateMeta.mutate({ id: activeChatId, background: chatBackgroundUrlToMetadata(url) });
+      // A pick by hand: the agent's "why" line no longer applies.
+      updateMeta.mutate({
+        id: activeChatId,
+        background: chatBackgroundUrlToMetadata(url),
+        [BACKGROUND_CHOICE_NOTE_KEY]: null,
+      });
     },
     [setChatBackgroundRaw, activeChatId, updateMeta],
   );
@@ -3574,7 +3580,11 @@ function AppearanceSettings({ group = "app" }: { group?: AppearanceGroup }) {
     setActiveGradientScheme("dark");
     document.getElementById("marinara-css-editor-preview")?.remove();
     if (activeChatId) {
-      updateMeta.mutate({ id: activeChatId, background: chatBackgroundUrlToMetadata(null) });
+      updateMeta.mutate({
+        id: activeChatId,
+        background: chatBackgroundUrlToMetadata(null),
+        [BACKGROUND_CHOICE_NOTE_KEY]: null,
+      });
     }
     void setActiveSyncedTheme
       .mutateAsync(null)

@@ -55,7 +55,7 @@ import {
   useChatOwnerBackgrounds,
   type OwnerBackground,
 } from "../../../hooks/use-chat-gallery-owners";
-import { useChat } from "../../../hooks/use-chats";
+import { useChat, useUpdateChatMetadata } from "../../../hooks/use-chats";
 import { useChatStore } from "../../../stores/chat.store";
 import { useGameAssetStore } from "../../../stores/game-asset.store";
 import { gameAssetFileUrl } from "../../../lib/game-asset-urls";
@@ -289,7 +289,7 @@ function backgroundChoiceNoteText(
 /** ChatArea already restores and persists this active-chat selection for every picker/agent. */
 export function ActiveChatBackgroundPicker({ game = false }: { game?: boolean }) {
   const selected = useUIStore((state) => state.chatBackground);
-  const onSelect = useUIStore((state) => state.setChatBackground);
+  const setChatBackground = useUIStore((state) => state.setChatBackground);
   const defaultBackground = useUIStore((state) => state.defaultRoleplayBackground);
   const onDefaultChange = useUIStore((state) => state.setDefaultRoleplayBackground);
   const sceneBackgroundTag = useGameAssetStore((state) => (game ? state.currentBackground : null));
@@ -300,6 +300,13 @@ export function ActiveChatBackgroundPicker({ game = false }: { game?: boolean })
   const choiceNote = game
     ? null
     : backgroundChoiceNoteText(activeChat?.metadata, selected, (key, values) => localizeUi(key, values));
+  const updateMeta = useUpdateChatMetadata({ serialize: true });
+  const hasStoredNote = !!chatMetadataObject(activeChat?.metadata)[BACKGROUND_CHOICE_NOTE_KEY];
+  // A pick by hand: ChatArea saves the background; the agent's "why" line no longer applies.
+  const onSelect = (url: string | null) => {
+    setChatBackground(url);
+    if (activeChatId && hasStoredNote) updateMeta.mutate({ id: activeChatId, [BACKGROUND_CHOICE_NOTE_KEY]: null });
+  };
   return (
     <BackgroundPicker
       ownerBackgrounds={ownerBackgrounds}
