@@ -36,6 +36,8 @@ for (const name of [
   "Black.jpg",
   "dorm kitchen.png",
   "castle_cliff_night_2.jpg",
+  "district7_building12.jpg",
+  "room101-basement2.png",
   "MyRoom_Night-2025.png",
   "forest-path-at-dusk-1080p.jpg",
 ]) {
@@ -157,5 +159,24 @@ assert.match(
 assert.match(prompt, /1 library picture\(s\) with no tags and an unreadable file name are not listed/u);
 assert.doesNotMatch(prompt, /70c60b32/u, "the unlabelled chateau is never offered");
 assert.equal((result.data as { chosen?: string }).chosen, "gallery:kitchen", "the route resolves the handle");
+
+// A custom agent allowed to change backgrounds sees the same list and rules.
+const customCapture = makeCapturingProvider('{"chosen":null}');
+await executeAgent(
+  makeRegressionAgentConfig({
+    type: "scene-dresser",
+    name: "Scene Dresser",
+    settings: { capabilities: { change_backgrounds: true }, resultType: "background_change" },
+  }) as any,
+  makeRegressionAgentContext({
+    recentMessages: [{ role: "assistant", content: "Alyssa walks to the kettle in the kitchen." }],
+    memory: { _availableBackgrounds: candidates, _unlabelledBackgroundsLeftOut: 0 },
+  }),
+  customCapture.provider as any,
+  "regression-model",
+);
+const customPrompt = customCapture.calls[0]!.map((message: { content: string }) => message.content).join("\n");
+assert.match(customPrompt, /- gallery:kitchen \[source: Zion's gallery\]/u, "custom background agents get the list");
+assert.match(customPrompt, /<background_selection_rules>/u);
 
 console.log("background agent candidates: ok");

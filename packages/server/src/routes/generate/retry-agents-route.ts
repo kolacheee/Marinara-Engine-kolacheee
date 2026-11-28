@@ -1745,7 +1745,18 @@ async function buildRetryAgentContext(args: {
       const galleryCandidates =
         (chat as { mode?: unknown }).mode === "roleplay"
           ? await loadGalleryBackgroundAgentCandidates({
-              characters: agentContext.characters.map((character) => ({ id: character.id, name: character.name })),
+              // The whole chat roster: an inactive character's room is still a place the story can go.
+              characters: [
+                ...(await resolveCharacterNameMap(allCharacterIds, (id) => chars.getById(id, chatId)).catch(
+                  () => new Map<string, string>(),
+                )),
+              ]
+                .map(([id, name]) => ({ id, name }))
+                .concat(
+                  agentContext.characters
+                    .filter((character) => !allCharacterIds.includes(character.id))
+                    .map((character) => ({ id: character.id, name: character.name })),
+                ),
               persona: personaContext.personaId
                 ? { id: personaContext.personaId, name: personaContext.personaName }
                 : null,
