@@ -61,12 +61,18 @@ export function MakeBackgroundVersion({ chatId, background }: { chatId: string; 
 
   const make = async () => {
     setMaking(true);
+    // A background picked while the version is made stays.
+    const shownAtStart = useUIStore.getState().chatBackground;
     try {
       const result = await api.post<{ filename: string; shown?: boolean; existed?: boolean }>(
         "/backgrounds/weather-art/remake",
         { chatId, part: "version", weather, time, debugMode },
       );
-      if (result.shown !== false && useChatStore.getState().activeChatId === chatId) {
+      if (
+        result.shown !== false &&
+        useChatStore.getState().activeChatId === chatId &&
+        useUIStore.getState().chatBackground === shownAtStart
+      ) {
         // The same address the picker uses, so its preview names the version that is shown.
         const url = chatBackgroundMetadataToUrl(result.filename);
         if (url) useUIStore.getState().setChatBackground(url);

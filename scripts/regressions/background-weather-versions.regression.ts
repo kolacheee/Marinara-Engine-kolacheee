@@ -24,6 +24,7 @@ const {
   chatBackgroundWindowMaskPath,
   chatBackgroundWindowMaskKnown,
   existingChatBackgroundVersion,
+  chatBackgroundVersionParts,
   weatherNamedInPrompt,
 } = await import("../../packages/server/src/services/game/game-asset-generation.js");
 
@@ -233,6 +234,11 @@ assert.equal(existingChatBackgroundVersion("hall.png", "rain", "night"), "hall--
 assert.equal(existingChatBackgroundVersion("hall.png", "", "night"), "hall--tod-night.png");
 assert.equal(existingChatBackgroundVersion("hall.png", "", ""), "hall.png", "nothing picked is the plain picture");
 assert.equal(existingChatBackgroundVersion("hall.png", "snow", "dawn"), null, "not made yet");
+// A part the plain (daytime, dry) picture already shows is left out, like the story's own versions:
+// "Rain, Day" is the rain version, "Clear" needs no version at all.
+assert.deepEqual(chatBackgroundVersionParts("hall.png", "rain", "day"), { weather: "rain", time: "" });
+assert.deepEqual(chatBackgroundVersionParts("hall.png", "clear", "night"), { weather: "", time: "night" });
+assert.deepEqual(chatBackgroundVersionParts("hall.png", "", ""), { weather: "", time: "" });
 assert.deepEqual(planChatBackgroundWeather("hall--tod-night.png", "rain"), {
   kind: "switch",
   filename: "hall--wx-rain--tod-night.png",
