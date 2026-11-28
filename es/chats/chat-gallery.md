@@ -42,7 +42,26 @@ Puedes volver a generar una imagen sin regenerar la respuesta a la que pertenece
 3. Cambia lo que quieras en los cuadros debajo de la imagen: **Prompt**, **Negative prompt** (Prompt negativo), un cuadro para cada personaje en **Character prompts** (Prompts de personajes) cuando la imagen los tenga, y el modelo de imagen.
 4. Haz clic en **Generate image** (Generar imagen), o en **Cancel** (Cancelar) para dejar la imagen como está.
 
-La imagen nueva reemplaza a la anterior en el mensaje. La anterior permanece en la Gallery, así que puedes volver a fijarla. Las imágenes de referencia se vuelven a enviar a partir de los avatares actuales de los personajes. Algunas imágenes antiguas no guardaron su prompt negativo ni sus prompts de personajes; el editor lo indica cuando es el caso.
+La imagen nueva pasa a ser la versión seleccionada del mensaje. Los resultados anteriores quedan en una sola ficha de Gallery con contador de versiones. Cada versión conserva su prompt, prompt negativo y demás datos guardados. Se reenvían los avatares actuales, seguidos de las imágenes de entradas de lorebook usadas originalmente. Stability AI, Arli AI, SD Web UI y Draw Things no reciben imágenes de entradas. Algunas imágenes antiguas no guardaron prompts negativos o de personajes; el editor lo indica.
+
+<a id="image-versions"></a>
+### Versiones de imagen
+
+Abre una imagen apilada para elegir versión. En una Gallery, flechas izquierda/derecha, teclas y deslizamientos horizontales cambian de ficha. Abrir desde un mensaje mantiene la navegación dentro de esa pila. Controles arriba/abajo, teclas y deslizamientos verticales sobre la imagen cambian de versión. Aleja el zoom antes de navegar. Desplazar el prompt no cambia versiones.
+
+Haz clic en imagen, cabecera del prompt o botón de contraer para usar Arriba/Abajo con versiones. Haz clic en texto o botón de copiar para desplazar el prompt. Los controles siguen visibles al regenerar o editar. Aplica o borra la máscara antes de cambiar; los controles se pausan durante la generación.
+
+La elección se guarda y aparece en el chat tras recargar. Regenerar o editar una versión antigua añade al mismo grupo y conserva las posteriores. Un chat ramificado tiene su propia selección.
+
+Con **Guardar automáticamente las imágenes generadas en las galerías de personajes**, regeneraciones y ediciones conservan los destinos de galerías de personaje y persona originales. También agrupan versiones. Cada galería guarda su selección sin cambiar la del chat. Las entradas comparten archivos sin copias extra. Abrir una galería restaura versiones faltantes de pilas antiguas si la entrada original aún enlaza al chat fuente. Las versiones borradas de una galería ya agrupada siguen borradas.
+
+En la Gallery del chat, usa **Eliminar imagen de la galería** en la ficha o el botón de borrar del visor:
+
+- **Delete this version** quita la mostrada. Si estaba seleccionada, muestra la más nueva restante.
+- **Delete other versions** conserva la mostrada y quita el resto.
+- **Delete entire stack** quita todas las versiones y sus adjuntos del chat.
+
+Son eliminaciones permanentes. **Cancelar** las conserva todas.
 
 ## Guías relacionadas
 

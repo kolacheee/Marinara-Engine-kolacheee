@@ -37,6 +37,8 @@ Opcje **Resolution**: 512x512, 512x768, 768x768, 768x1024, 896x1152 i 1024x1024.
 
 Jeśli karta lub persona używa opcji **Tagi obrazów** (zakładka **Tagi obrazów** w sekcji **Wygląd** w edytorze, z zaznaczonym **Używaj do promptów obrazów**), Marinara wysyła je zamiast prozy z pola **Wygląd**. Wariant wyglądu aktywny w czacie używa własnych tagów lub prozy. Skorzystaj z tego, gdy pole **Wygląd** jest napisane na potrzeby fabuły, a nie obrazów.
 
+Selfie wysłane przez postać w odpowiedzi zawiera też **Obrazy referencyjne** z wpisów lorebooka aktywnych dla tej odpowiedzi, jeśli usługa obrazów obsługuje takie obrazy. Nie trzeba włączać żadnej opcji. Stability AI, Arli AI, SD Web UI i Draw Things ich nie dostają, ponieważ zaczęłyby tworzyć selfie od obrazu wpisu. Przycisk **Selfie** w Gallery także ich nie wysyła.
+
 ## Poproś o selfie ręcznie
 
 1. Otwórz **Chat Settings** i rozwiń sekcję **Gallery**.

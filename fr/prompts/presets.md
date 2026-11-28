@@ -122,6 +122,7 @@ Un **Prompt Block** est un texte que tu écris : instructions système, règles 
 | **Character Info** | Les détails de la fiche de personnage active. |
 | **Persona** | Les détails de ton persona actif. |
 | **Chat History** | Les messages du chat. |
+| **Historique récent** | Messages récents pris dans **Historique du chat**. Voir [Diviser l’historique avec Recent History](#split-the-history-with-recent-history). |
 | **Chat Summary** | Le résumé compilé du chat. |
 | **Dialogue Examples** | Les exemples de dialogue du personnage. |
 | **Lorebook Marker (All)** | Toutes les entrées de lorebook actives. |
@@ -164,7 +165,7 @@ Un groupe réunit plusieurs sections dans un même conteneur.
 2. Clique sur le nom du groupe pour le renommer.
 3. Déplie une section et choisis le groupe dans son menu déroulant **Group**.
 
-Avec **XML**, un groupe devient une seule balise parente. Avec **MARKDOWN**, il devient un seul titre. Supprimer un groupe ne supprime pas ses sections. Elles perdent seulement leur groupe.
+Avec **XML**, un groupe devient une seule balise parente. Avec **Markdown**, il devient un seul titre. Supprimer un groupe ne supprime pas ses sections. Elles perdent seulement leur groupe. Les sections d’un même groupe non contiguës reçoivent chacune leur balise ou titre.
 
 ### Position et profondeur
 
@@ -209,6 +210,25 @@ Les chats Game ajoutent davantage de contrôles. **Style de l'histoire**, **Viol
 La mise en cache du prompt permet à un service de réutiliser le début d'un prompt qu'il a déjà lu : les longs chats coûtent ainsi moins cher et les réponses arrivent plus vite. Le service réutilise le prompt seulement jusqu'au premier texte qui a changé depuis le dernier message. Les souvenirs rappelés changent à presque chaque message : placés avant l'historique du chat, ils empêchent donc la mise en cache de tout l'historique.
 
 Pour les placer toi-même, ajoute un marqueur **Memory Recall** au preset. Fais-le glisser sous **Historique du chat**, ou règle sa **Position** sur **Profondeur (depuis la fin du chat)** pour le placer dans l'historique. Les souvenirs lus avant l'histoire orientent davantage les réponses : le placement par défaut reste donc avant l'historique.
+
+<a id="split-the-history-with-recent-history"></a>
+## Diviser l’historique avec Recent History
+
+**Historique récent** envoie les messages récents à sa place et **Historique du chat** les anciens. Les sections entre eux vont entre anciens et nouveaux messages. Utilise-le pour les détails changeants, comme le lieu ou les présents ; les détails fixes restent au-dessus de **Historique du chat**.
+
+1. Dans **Sections**, clique **Ajouter une section**, puis **Historique récent**. Il se place après **Historique du chat**.
+2. Développe-le et règle **Messages récents** (défaut 4).
+3. Glisse les sections changeantes, comme **Lorebook Marker** ou un agent, entre les deux.
+4. Clique **Enregistrer**.
+
+Le modèle lit les changements près des derniers messages et les garde mieux en tête. Les anciens messages restent fixes et réutilisables en cache. Avec Claude et le cache, la marque se place à leur fin.
+
+- **Messages maximum** de **Historique du chat** compte les deux parties. Vide envoie tout.
+- Sous **Messages récents**, tous vont dans **Historique récent**.
+- **Profondeur (depuis la fin du chat)** compte seulement les messages. Une profondeur supérieure à **Messages récents** touche les anciens et empêche leur réutilisation.
+- Sans **Historique du chat**, **Historique récent** envoie tout. Placé avant lui ou en second exemplaire, il n’envoie rien. La ligne avertit dans chaque cas.
+- Avec **XML**, anciens : `<chat_history>`, récents : `<recent_history>`, dernier : `<last_message>`.
+- Les anciennes versions ignorent **Historique récent** et peuvent refuser ces presets à l’import.
 
 ## Blocs de décision et cache de prompts
 

@@ -130,7 +130,9 @@ Les agents mettent à jour les valeurs de tes champs personnalisés. Ils ne supp
 
 ### Créer un nouveau portrait
 
-La grande carte d'un personnage peut créer un nouveau portrait dès que Character Tracker dispose d'une connexion d'images. Sur une carte compacte, clique sur **Feature character card** (mettre en avant la carte du personnage) pour ouvrir la grande carte. La fenêtre Trackers affiche toujours de grandes cartes. Survole le portrait et clique sur le bouton en forme d'œil pour en créer un à partir de **Look**, ou sur le bouton en forme de chemise pour **Look** et **Outfit**. Le bouton en forme de chemise n'apparaît que si le personnage a une tenue. L'ancien portrait reste en place jusqu'à ce que le nouveau soit prêt. Si la création échoue, tu gardes l'ancien. Les personnages affichés avec l'avatar de leur fiche ou un sprite d'expression n'ont pas ces boutons.
+La grande fiche crée un portrait une fois Character Tracker relié à une connexion d’images. Sur une fiche compacte, **Mettre en avant la fiche du personnage** ouvre la grande ; la fenêtre Trackers montre toujours les grandes. Survole le portrait : l’œil utilise **Apparence**, la chemise **Apparence** et **Tenue**, et n’apparaît qu’avec une tenue. Tu peux aussi importer une image en bas à droite. Pour les fiches de personnages, cela garde un portrait par scène sans remplacer l’avatar. **Rétablir le portrait de la carte**, en haut à droite, revient au portrait de la fiche. L’ancien reste jusqu’à la fin et en cas d’échec. Les sprites d’expression masquent les boutons jusqu’à désactivation de **Utiliser les sprites d'expression pour les portraits des trackers** ou absence de sprite correspondant.
+
+Active **Réécrire les prompts de portraits avec l'IA** dans Character Tracker pour que le modèle d’Illustrator combine **Apparence**, **Humeur** et le haut de **Tenue** en un prompt de portrait, avec un champ modifiable pour ajuster les instructions.
 
 ### Réglages du Tracker Panel
 

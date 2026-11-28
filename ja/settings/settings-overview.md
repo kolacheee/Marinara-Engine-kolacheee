@@ -67,7 +67,7 @@ Personal ExtensionsとExternal ExtensionsはSettingsにはありません。専�
 | **Confirmations & Help** | **Confirm before deleting**、**Hide chat Help button**、**Walkthroughs**。 |
 | **Extras** | **Achievements**、**Disable seasonal Marinara themes**、**Music Player**。 |
 | **Professor Mari** | **Search and Professor Mari settings**という1つの行があります。Search、クイック回答、Professor Mariの設定を開くには、**Open**をクリックします。[Professor Mari](../home/professor-mari.md)を参照してください。 |
-| **Notifications** | 通知の表示位置、通知音、ブラウザーとAndroidの通知。[Notifications](#notifications)を参照してください。 |
+| **通知** | 通知位置、音、ブラウザー・Android通知、ntfy経由のプッシュ。[通知](#notifications)を参照。 |
 
 ### Language
 
@@ -103,6 +103,28 @@ Marinaraは、通知に標準の音を鳴らします。自分の音を使うに
 この音は、このサーバーに接続しているすべてのデバイスで鳴ります。試聴、差し替え、削除ができます。ファイルを読み込めない場合、Marinaraは標準の音を鳴らします。このファイルは、バックアップとプロファイルのエクスポートに含まれます。
 
 **Background Notifications**は、キャラクターが自分から送るConversationのメッセージが対象です。**Generation Completion Notifications**は、Conversation、Roleplay、Game Modeで自分から始めた返信が対象です。どちらも、Marinaraを開いていてもフォーカスが外れているときに動作します。メッセージの中身は表示しません。**Notification position**では、エラーメッセージなどの通知を上と下のどちらに表示するかを選びます。
+
+<a id="get-notifications-on-your-phone-while-marinara-is-closed"></a>
+#### Marinaraを閉じてもスマートフォンへ通知する
+
+**プッシュ通知 (ntfy)**は全タブとAndroidアプリを閉じても届きます。サーバーがAndroid・iPhoneアプリのある無料サービスntfy経由で送信します。
+
+先にntfyアプリを入れます。サーバーのコンピューターでMarinaraを開くか、この端末に管理者シークレットが必要です。[リモートアクセス](../REMOTE_ACCESS.md)を参照。
+
+1. **設定 → General → 通知**で**プッシュ通知を送信**をオンにします。専用チャンネルのランダムな**トピック**を作ります。
+2. スマートフォンで**ntfy で開く**、または**コピー**してntfyで購読します。
+3. **テスト通知を送信**で「Marinara test notification」が届きます。
+
+2つのスイッチで対象を選びます。
+
+- **キャラクターが自発的に送るメッセージ**：Conversationの自発メッセージ。どの端末でも開いていなくてもサーバーは書きます。
+- **開始した返信のうち、完了前に Marinara を閉じたもの**：保存前に閉じるかページを離れた返信だけ。開いていれば通常通知が使われます。
+
+通知は送信者と「Open Marinara to read it.」を示します。**メッセージのプレビューを表示**で代わりに冒頭200文字まで送ります。タップすると**開くアドレス**でチャットを開きます。初期値は有効化時のアドレスなので、スマートフォンで異なる場合は変更してください。
+
+> **注意：** `ntfy.sh`ではタイトルとプレビューが公開サーバーを通り、トピックを知る人は読めます。漏れたら**新しいトピック**を選びます。自前に限定するにはntfyサーバーを立て**ntfy サーバー**にアドレスを指定します。LANでも使えます。
+
+テスト失敗時は理由を表示します。よくある原因はMarinaraサーバーから**ntfy サーバー**へ接続できないことです。
 
 ## Chattingタブ
 

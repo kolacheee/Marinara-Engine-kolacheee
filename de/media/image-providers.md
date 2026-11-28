@@ -66,7 +66,7 @@ Hinweise zu den einfachen Diensten:
 - **Together AI**: FLUX und weitere offene Bildmodelle.
 - **OpenRouter Images**: erreicht Bildmodelle über die Chat-Schnittstelle von OpenRouter, deshalb unterscheiden sich die Modelle von Konto zu Konto.
 - **xAI / Grok Imagine**: nutzt Grok Imagine.
-- **NanoGPT**: bündelt mehrere Anbieter, nutze also seine Modellliste.
+- **NanoGPT**: bündelt mehrere Anbieter, nutze also seine Modellliste. Marinara sendet die von NanoGPT für jedes Modell gelisteten Größen, etwa `1.5k` mit Seitenverhältnis statt `1344x768`, und nur so viele Referenzbilder, wie das Modell annimmt. Lehnt es einen negativen Prompt ab, wird ohne ihn gezeichnet und eine Serverwarnung protokolliert.
 - **Pollinations**: der schnellste Weg, die Bildgenerierung auszuprobieren. Ein Konto ist nicht nötig.
 - **Stable Horde**: ein Netzwerk aus freiwillig geteilter Rechenleistung. Ein kostenloser Key bringt dich in der Warteschlange weiter nach vorn.
 - **SD Web UI** und **Draw Things**: Starte die Software mit eingeschalteter Programmierschnittstelle. Marinara behandelt Draw Things wie einen AUTOMATIC1111-Server (die App läuft unter macOS oder iOS).
@@ -113,7 +113,7 @@ Der Dienst führt gehostete Stable-Diffusion-Modelle aus. Ein Modell ist Pflicht
 
 ### NovelAI
 
-NovelAI konzentriert sich auf Bilder im Anime-Stil. Bei V4-, V4.5- und V5-Modellen sendet Marinara native Prompts mit Positionen pro Charakter für Storyboards mit mehreren Charakteren, Illustrator-Szenen und Professor Maris Bilder. Präzise Referenzbilder funktionieren nur mit einem V4.5-Modell.
+NovelAI konzentriert sich auf Anime-Bilder. Für V4, V4.5 und V5 sendet Marinara native Charakter-Prompts mit Positionen für Mehrcharakter-Storyboards, Illustrator-Szenen und Professor Maris Bilder. Präzise Referenzbilder funktionieren mit V4.5 und V5.
 
 ### Venice.ai
 
@@ -155,6 +155,21 @@ Das Feld **ComfyUI workflow (optional)** kann leer bleiben. Lass es leer, um die
 
 Liefert ein Dienst statt der Bilddaten eine URL, lädt Marinara öffentliche CDN-URLs über die üblichen Prüfungen für ausgehende Anfragen herunter. Eine private oder Loopback-URL als Ergebnis akzeptiert Marinara nur, wenn Schema, Hostname und Port exakt zum eingerichteten Bilddienst passen. Weiterleitungen von dieser Adresse dürfen nicht zu einem anderen lokalen Dienst springen. Legt ein lokaler Proxy die Ergebnisse unter einer anderen privaten Adresse ab, richte ihn so ein, dass er diese Dateien über dieselbe Adresse wie seine Bild-API ausliefert.
 
+<a id="edit-an-existing-picture"></a>
+## Vorhandenes Bild bearbeiten
+
+Öffne ein Galeriebild und wähle **Bild neu generieren**, für Avatare **Avatar bearbeiten** im Charakter- oder Persona-Editor. Wähle ein Bildmodell, dann **Bild bearbeiten**. Die Funktionen hängen vom Dienst ab:
+
+| Dienst | Ganzes Bild | Gemalte Maske |
+| --- | --- | --- |
+| Native NovelAI | Ja | Ja |
+| SD Web UI (AUTOMATIC1111 / Forge) | Ja | Ja |
+| Draw Things | Ja | Nein |
+
+Ändere Prompt und **Stärke**, dann **Bearbeitung übernehmen**. Mit Maskenwerkzeugen malst du den Bereich an und wählst **Bild mit Inpainting bearbeiten**. **Rauschen** und **Ursprünglichen Seed wiederverwenden** gibt es nur für natives NovelAI. Andere Dienste erlauben weiterhin normales Regenerieren mit geändertem Prompt.
+
+Grundlage ist das angezeigte Bild. Ein Wechsel zu einem Dienst ohne Maskenunterstützung löscht die Maske. Avataränderungen bleiben Vorschau bis **Als Avatar verwenden**.
+
 ## ComfyUI-Workflow-JSON und RunPod
 
 Bei **ComfyUI**, **SwarmUI** und **RunPod Serverless (ComfyUI)** erscheint ein Feld **ComfyUI workflow (optional)** oder **(required)**. Füge dort ein Workflow-JSON ein, das du in ComfyUI über **Save (API Format)**, **Export (API)** oder **Export to API** exportiert hast, je nach ComfyUI-Version. Bei ComfyUI und SwarmUI ist es optional, bei RunPod Pflicht. RunPod braucht dein RunPod-API-Token als API-Key, eine **RunPod endpoint ID** und den Workflow.
@@ -190,12 +205,14 @@ Jeder Dienst hat ein Feld **Seed**. Mit -1 bleibt jedes Bild zufällig. Jede and
 | ComfyUI | Sampler | euler_ancestral |
 | ComfyUI | Scheduler | normal |
 | ComfyUI | Denoise | 1 |
-| NovelAI | Steps | 28 |
-| NovelAI | Prompt guidance | 6 |
+| NovelAI | Steps | Automatisch |
+| NovelAI | Prompt guidance | Automatisch |
 | NovelAI | Sampler | k_euler_ancestral |
 | NovelAI | Noise schedule | karras |
 
 Jeder Dienst hat außerdem die Felder **Prompt prefix** und **Negative prefix**. Text darin wird jedem Prompt dieses Modells vorangestellt. AUTOMATIC1111 / Forge und ComfyUI haben ein Feld **Clip skip**. AUTOMATIC1111 / Forge ergänzt den Schalter **Restore faces**. ComfyUI ergänzt einen Schalter, der einen 1x1-Platzhalter hochlädt, wenn kein Referenzbild mitkommt. Er spielt nur bei eigenen Workflows mit Referenz-Platzhaltern eine Rolle. NovelAI ergänzt **Guidance rescale** und **UC preset**.
+
+NovelAIs **Schritte** und **Prompt-Guidance** sind anfangs leer: **Automatisch** sendet den im leeren Feld gezeigten Modellstandard. V5 nutzt 23 Schritte und Guidance 7, V4.5 Guidance 5, V4 Guidance 5.5. Gib eigene Zahlen ein oder leere das Feld für Automatik. Ältere Verbindungen mit den früheren eingebauten Werten 28 Schritte oder Guidance 6 verwenden jetzt Automatik.
 
 NovelAI hat außerdem die Einstellung **Background dataset for backgrounds**, die standardmäßig aus ist. Wenn du sie einschaltest, wird bei V4.5- und V5-Modellen für Hintergrundbilder (Hintergründe in Charakter- und Persona-Galerien, Szenenhintergründe für Chats und Illustrator, Ortsbilder in der Chat-Galerie und Game-Hintergründe) der NovelAI-Tag `background dataset` vorangestellt. NovelAIs Hintergrunddatensatz liefert eher fotografische Bilder. Lass die Einstellung deshalb aus, wenn deine Hintergründe zu einem Chat im Anime-Stil passen sollen.
 
@@ -221,9 +238,9 @@ Ein Referenzbild ist ein vorhandenes Bild, das du zusammen mit dem Prompt schick
 | --- | --- |
 | OpenAI (DALL-E) | Bis zu 16, nur GPT-Image-Modelle. Keine für ein GIF |
 | ChatGPT (Codex login) | Bis zu 16 |
-| NovelAI | Bis zu 16, nur V4.5-Modell |
+| NovelAI | Bis zu 16, nur V4.5 und V5 |
 | xAI / Grok Imagine | Bis zu 3 |
-| NanoGPT | Bis zu 3 |
+| NanoGPT | Bis zu 3, innerhalb des Modelllimits; keine bei Text-zu-Bild-Modellen |
 | ComfyUI, RunPod Serverless (ComfyUI), SwarmUI | Bis zu 4, über Workflow-Platzhalter |
 | Stability AI, Arli AI, SD Web UI, Draw Things | Nur das erste Bild, als Image-to-Image |
 | Atlas Cloud | Erstes Bild, bei passenden Modell-IDs für Image-to-Image, Edit oder Kontext |
@@ -232,7 +249,7 @@ Ein Referenzbild ist ein vorhandenes Bild, das du zusammen mit dem Prompt schick
 | Venice.ai, Z.AI | Bei Text-to-Image nicht unterstützt |
 | Together AI, Pollinations, Stable Horde, fal.ai | Nicht unterstützt |
 
-Präzise Referenzbilder funktionieren bei NovelAI nur auf einem V4.5-Modell wie `nai-diffusion-4-5-full`. NovelAI hat Precise Reference für V5 noch nicht veröffentlicht. Forderst du Referenzen auf einem anderen Modell an, erzeugt Marinara das Bild ohne sie und schreibt eine Warnung ins Server-Log.
+NovelAI Precise Reference unterstützt V4.5 und V5, etwa `nai-diffusion-4-5-full` oder `nai-diffusion-5-full`. Ältere Modelle zeichnen ohne Referenzen mit Serverwarnung. V5 hat keine Stiltreue und ignoriert **Stiltreue (nur V4.5)**. Jede Referenz kostet NovelAIs eigenen Preis: 5 Anlas pro Bild.
 
 ## Anfragen zur Mediengenerierung in die Warteschlange stellen
 

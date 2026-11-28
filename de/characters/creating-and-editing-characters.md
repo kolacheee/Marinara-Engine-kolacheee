@@ -96,7 +96,7 @@ Der Tab **Card** ist der zentrale Schreibbereich. Über die Sprunglinks oben err
 
 **Public Face** enthält das, was die anderen Charaktere über den Charakter sehen oder wissen könnten: Aussehen, Auftreten, Rolle, Ruf und Beziehungen, die kein Geheimnis sind. Lass Geheimnisse, innere Gedanken, private Vorgeschichte und Anweisungen zum Spielen des Charakters weg. Das Feld wird nie als Teil der Karte dieses Charakters gesendet. Ein Prompt liest es nur dort, wo du das Makro `{{publicFace}}` platzierst, oder `{{personaPublicFace}}` für deine Persona. Siehe [Prompt-Makros](../prompts/macros.md#identity-character-and-persona-macros). In einem Roleplay-Gruppenchat im Modus Individual sendet **Others' Public Faces** es bei den Zügen der anderen Charaktere mit. Siehe [Weitere Einstellungen für Individual](../chats/group-chats.md#more-individual-settings). Ein Agent, dessen Quelle **Charaktere** oder **Persona** auf **Public Face** steht, liest es anstelle der Karte. Siehe [Weitere Einstellungen](../agents/custom-agents.md#other-settings). Ist **Send Public Faces** eingeschaltet, liest Impersonate in Roleplay es anstelle der Karte. Siehe [Die Impersonate-Einstellungen](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-**Aussehen** hat zwei Tabs: **Prosa** und **Bild-Tags**. **Prosa** ist der eigentliche Aussehenstext. **Bild-Tags** enthält kurze Tags für Bild-Prompts, etwa ein LoRA-Triggerwort (ein Schlüsselwort, das einen eigenen Bildstil aktiviert). Wenn du Tags eingibst, wird **Für Bild-Prompts verwenden** angehakt. Ein Punkt auf dem Tab zeigt, dass sie verwendet werden. Solange die Option angehakt ist und die Tags ausgefüllt sind, verwenden Bild-Prompts diese Tags genau wie geschrieben; die Prosa bleibt als Hintergrund erhalten. Entferne das Häkchen, um die Tags zu behalten, ohne sie zu verwenden: Bild-Prompts greifen dann auf **Prosa** zurück. Auch ein KI-Avatar-Prompt wird aus den Tags vorbelegt. Der Erzähler sieht immer den Text aus **Prosa**. Der Tab **Bilder** verlinkt mit **Zu „Aussehen“** hierher.
+**Aussehen** hat zwei Tabs: **Prosa** und **Bild-Tags**. **Prosa** ist der eigentliche Aussehenstext. **Bild-Tags** enthält kurze Tags für Bild-Prompts, etwa ein LoRA-Triggerwort (ein Schlüsselwort, das einen eigenen Bildstil aktiviert). Wenn du Tags eingibst, wird **Für Bild-Prompts verwenden** angehakt. Ein Punkt auf dem Tab zeigt, dass sie verwendet werden. Solange die Option angehakt ist und die Tags ausgefüllt sind, verwenden Bild-Prompts diese Tags genau wie geschrieben; die Prosa bleibt als Hintergrund erhalten. Entferne das Häkchen, um die Tags zu behalten, ohne sie zu verwenden: Bild-Prompts greifen dann auf **Prosa** zurück. Auch ein KI-Avatar-Prompt wird aus den Tags vorbelegt. Der Erzähler sieht immer den Text aus **Prosa**. Der Tab **Bilder** verlinkt mit **Zu „Aussehen“** hierher. Der Tab hat einen eigenen Zauberstab. Siehe [Bild-Tags mit dem Zauberstab](#image-tags-from-the-wand).
 
 Der Abschnitt **Dialogue & Greetings** legt fest, wie ein Chat beginnt und wie der Charakter klingt:
 
@@ -114,18 +114,30 @@ Begrüßungen und Beispielnachrichten können Bilder aus der Galerie des Charakt
 
 ### Ein Kartenfeld mit dem Zauberstab schreiben
 
-Über **Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** und jedem **Alternate Greeting** sitzt eine Zauberstab-Schaltfläche, die nur ein Symbol zeigt. Ihr Tooltip nennt das Feld, das sie schreibt.
+Über **Zusammenfassung**, **Beschreibung**, **Persönlichkeit**, **Hintergrundgeschichte**, **Aussehen** (beide Tabs), **Szenario**, **Public Face**, **Beispieldialog**, **Erste Nachricht** und jedem **Alternate Greeting** sitzt eine Zauberstab-Schaltfläche, die nur ein Symbol zeigt. Ihr Tooltip nennt das Feld, das sie schreibt.
 
 Bevor du anfängst: Richte eine funktionierende Textverbindung ein. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
 
 1. Schreib Ideen, die erhalten bleiben sollen, in das Feld, etwa `smart, scientist, handsome`, oder lass es leer.
 2. Füll andere Kartenfelder aus, die die KI als Referenz nutzen soll. Du musst vorher nicht speichern.
-3. Klick auf den Zauberstab des Felds. Marinara fordert 100–300 Wörter für dieses Feld an und nimmt deinen Text als Ausgangsdetails. Example Dialogue fordert Beispielwechsel an. **First Message** und jedes **Alternate Greeting** fordern eine Eröffnungsnachricht an, die deine Antwort offenlässt. Für **Public Face** gibt es keine Wortvorgabe: Der Zauberstab formuliert den Rest der Karte ohne die privaten Teile neu. Die Länge richtet sich deshalb nach deiner Karte.
+3. Klick auf den Zauberstab des Felds. Marinara fordert 100–300 Wörter für dieses Feld an und nimmt deinen Text als Ausgangsdetails. Example Dialogue fordert Beispielwechsel an. **Erste Nachricht** und jedes **Alternate Greeting** fordern eine Eröffnungsnachricht an, die deine Antwort offenlässt. Für **Public Face** gibt es keine Wortvorgabe: Der Zauberstab formuliert den Rest der Karte ohne die privaten Teile neu. Die Länge richtet sich deshalb nach deiner Karte. Im Tab **Bild-Tags** unter **Aussehen** verwandelt der Zauberstab das Aussehen der Karte stattdessen in eine Zeile Bild-Tags. Siehe [Bild-Tags mit dem Zauberstab](#image-tags-from-the-wand).
 4. Bearbeite das Ergebnis und klick dann auf **Save**.
 
 Der Zauberstab verwendet deine Standard-Textverbindung für Agenten oder, falls es keine gibt, deine Standard-Textverbindung. Eine eingerichtete Ausweichverbindung für Agenten gilt weiterhin.
 
 Der Zauberstab ersetzt nur das gewählte Feld in deinem ungespeicherten Entwurf. Schlägt die Generierung fehl, bleibt dein Text erhalten. Bearbeitest du das Feld während des Wartens oder wechselst zu einer anderen Karte, überschreibt ein verspätetes Ergebnis deine Arbeit nicht. Für den Zauberstab brauchst du Professor Mari nicht.
+
+<a id="image-tags-from-the-wand"></a>
+#### Bild-Tags mit dem Zauberstab
+
+Der Zauberstab im Tab **Bild-Tags** unter **Aussehen** schreibt Tags aus der Aussehensbeschreibung der Karte, vor allem **Aussehen** selbst. Er aktiviert **Für Bild-Prompts verwenden**.
+
+- Vorhandene Tags, die der Aussehenstext nicht erklärt, etwa LoRA-Triggerwörter, bleiben unverändert am Zeilenanfang.
+- Danach folgen neue Tags: `1girl`, `1boy` oder `1other`, dann dauerhafte Merkmale von Körper, Haaren, Augen, Haut, Gesicht und Zeichnung. Ohne beibehaltene Tags beginnt die Zeile mit `1girl`, `1boy` oder `1other`.
+- Neue Tags sind englisch, kleingeschrieben und kommagetrennt im Stil von Danbooru (einer Anime-Bildseite, deren Tags viele Modelle gelernt haben).
+- Sie nutzen nur Merkmale der Karte. Kleidung, Mimik, Posen und Orte bleiben weg, da sie je nach Szene wechseln.
+
+Die Tags stammen vom Modell, nicht aus einer Liste echter Danbooru-Tags. Daher kennt dein Bildmodell möglicherweise die Formulierung eines Tags nicht. Prüfe und bearbeite die Zeile vor dem Speichern.
 
 ## Einen Avatar hinzufügen
 
@@ -188,7 +200,7 @@ Regeln:
 - Ein Chat kann pro Feld nur eine Alternative verwenden. Kreuzt du einen Chat in einer anderen Alternative an oder wählst du in Chat Settings eine andere, wandert er dorthin.
 - Ohne angekreuzte Chats bleibt die Alternative für später inaktiv.
 - Eine leere Alternative leert das Feld in ihren Chats.
-- Eine Alternative für **Aussehen** hat eigene Tabs für **Prosa** und **Bild-Tags**. In ihren Chats ersetzen ihre Tags die der Karte. Sind ihre Tags leer oder nicht angehakt, verwenden Bild-Prompts die Prosa der Alternative, nie die Tags der Karte. Eine neue Alternative kopiert auch die Tags der Karte.
+- Eine Alternative für **Aussehen** hat eigene Tabs für **Prosa** und **Bild-Tags**. In ihren Chats ersetzen ihre Tags die der Karte. Sind ihre Tags leer oder nicht angehakt, verwenden Bild-Prompts die Prosa der Alternative, nie die Tags der Karte. Eine neue Alternative kopiert auch die Tags der Karte. Ihr Tab **Bild-Tags** hat einen eigenen Zauberstab, der Prosa und Tags der Alternative liest.
 - Chatspezifische Überschreibungen für Szenario und Bildaussehen haben weiterhin Vorrang.
 - Alternativen für **Summary** bleiben Metadaten und gehen nicht an die KI.
 - Verlässt der Charakter einen Chat, pausiert die Zuordnung und wird wieder aktiv, wenn du den Charakter erneut hinzufügst.

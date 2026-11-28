@@ -102,6 +102,8 @@ openssl rand -hex 32
 
 Marinaraはデータをそのままの形のJSONファイルとして保存するため、バックアップをコピーしたり、中身を読んだりできます。各フォルダーの中身については[Marinaraがデータを保存する場所](data/where-data-is-stored.md)を参照してください。
 
+ネットワーク共有にデータを置くには、`DATA_DIR`を共有内のフォルダーに設定し、Marinaraの起動前に共有を接続してください。[ネットワークまたは外部フォルダーにアクセスできない](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder)を参照してください。
+
 ## ログレベル
 
 `LOG_LEVEL`は、サーバーがどこまで詳しく出力するかを決めます。選んだレベルより下の内容は表示しません。

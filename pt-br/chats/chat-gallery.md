@@ -42,7 +42,26 @@ Você pode gerar uma imagem de novo sem regenerar a resposta à qual ela pertenc
 3. Mude o que quiser nos campos abaixo da imagem: **Prompt**, **Prompt negativo**, um campo para cada personagem em **Prompts de personagem** quando a imagem os tiver, e o modelo de imagem.
 4. Clique em **Gerar imagem**, ou em **Cancelar** para deixar a imagem como está.
 
-A nova imagem substitui a antiga na mensagem. A antiga continua na Galeria, então você pode fixá-la de novo. As imagens de referência são enviadas novamente a partir dos avatares atuais dos personagens. Algumas imagens mais antigas não tiveram o prompt negativo e os prompts de personagem salvos; o editor avisa quando esse é o caso.
+A nova imagem vira a versão selecionada da mensagem. Resultados anteriores ficam num único bloco da Gallery com contador. Cada versão mantém prompt, prompt negativo e detalhes salvos. Os avatares atuais são reenviados, seguidos das imagens de entradas de lorebook usadas originalmente. Stability AI, Arli AI, SD Web UI e Draw Things não recebem imagens de entradas. O editor avisa quando imagens antigas não salvaram prompts negativos ou de personagens.
+
+<a id="image-versions"></a>
+### Versões de imagem
+
+Abra uma imagem empilhada para escolher. Na Gallery, setas esquerda/direita, teclas e gestos horizontais mudam de bloco. Abrir pela mensagem mantém na mesma pilha. Controles acima/abaixo, teclas e gestos verticais na imagem mudam de versão. Reduza o zoom primeiro. Rolar o prompt não muda versões.
+
+Clique na imagem, cabeçalho do prompt ou recolher para usar Cima/Baixo com versões. Clique no texto ou copiar para rolar. Os controles ficam visíveis ao regenerar ou editar. Aplique ou limpe a máscara antes de trocar; controles pausam durante a geração.
+
+A escolha salva e aparece após recarregar. Regenerar ou editar uma versão antiga adiciona à mesma pilha e mantém as posteriores. Um chat ramificado tem sua própria seleção.
+
+Com **Salvar automaticamente imagens geradas nas galerias dos personagens**, regenerações e edições mantêm os destinos originais das galerias de personagem e persona. Elas também agrupam versões. Cada galeria salva sua seleção sem mudar a do chat. Entradas compartilham arquivos sem cópias extras. Abrir uma galeria restaura versões ausentes de pilhas antigas se a entrada original ainda aponta ao chat fonte. Versões excluídas de uma galeria já agrupada continuam excluídas.
+
+Na Gallery do chat, use **Excluir a imagem da galeria** no bloco ou excluir no visualizador:
+
+- **Delete this version** remove a exibida. Se selecionada, mostra a mais nova restante.
+- **Delete other versions** mantém a exibida e remove as demais.
+- **Delete entire stack** remove todas as versões e seus anexos do chat.
+
+A exclusão é permanente. **Cancelar** mantém todas.
 
 ## Guias relacionados
 

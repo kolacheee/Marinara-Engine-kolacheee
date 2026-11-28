@@ -346,12 +346,15 @@ Les panneaux conservent leur état grâce à un Set `mountedPanels` stocké dans
 | `GifPicker`        | Recherche de GIF via l'API Giphy |
 | `HelpTooltip`      | Icône qui affiche au survol une infobulle positionnée en portail |
 | `LibraryToolbar` | La barre d'outils partagée par tous les panneaux de bibliothèque (voir ci-dessous) |
+| `EditorHeader` | L’en-tête commun à tous les éditeurs pleine page (voir ci-dessous) |
 
 Tous les composants d'interface fonctionnent avec des props contrôlées (value et onChange) et un rendu en portail pour les surimpressions.
 
 **Les panneaux de bibliothèque utilisent `LibraryToolbar`.** Les panneaux Characters, Personas, Lorebooks, Agents et les onglets du panneau Presets affichent leurs contrôles supérieurs par son intermédiaire : une ligne de bibliothèque facultative (un bouton pleine largeur, ou la paire Download / Open Library), les actions créer / importer / exporter / sélectionner, la recherche avec le menu de tri partagé, New Folder, puis les filtres du panneau sous forme de `children`. Les lignes sont des props typées, pas des emplacements : un nouveau panneau de bibliothèque reçoit donc le même balisage plutôt qu'une copie qui diverge. Ajoute une prop à ce composant au lieu de construire manuellement une barre d'outils dans un panneau.
 
 `LibraryToolbar.tsx` exporte aussi `SegmentedButtons`, un long bouton `.mari-chrome-segmented` séparé par `|`. Il affiche la paire Télécharger / Ouvrir la bibliothèque et les onglets **Prompts** / **Regex** / **Outils** / **Profils** du panneau Presets, pour que la ligne supérieure de chaque panneau ait la même hauteur. Passer `groupLabel` fait de cette ligne un ensemble d'onglets avec `role="group"`, et `pressed` définit le `aria-pressed` de chaque onglet. `.mari-chrome-segmented` utilise `flex-shrink: 0`, pour que le conteneur de défilement flex à hauteur fixe d'un panneau (comme dans Personnages) ne puisse pas comprimer la ligne.
+
+**Les éditeurs pleine page utilisent `EditorHeader`.** Il affiche Retour, la tuile d’icône, le nom, les onglets optionnels, les actions et Fermer selon deux dispositions. Avec `nav` (onglets), les règles de densité `mari-editor-header--with-nav` dimensionnent tout d’après les onglets. Sans lui, les actions ont leur propre ligne sur téléphone et Save n’y montre que son icône. Le nom, le contenu de la tuile et les boutons sont des slots, conservant les champs et commandes de chaque éditeur. Utilise `EditorSaveButton` et `EditorHeaderAction` : leur libellé sert toujours d’infobulle et de nom accessible. Ajoute un slot ou une partie ici plutôt qu’un en-tête fait à la main.
 
 ## Client d'API (`lib/api-client.ts`)
 
@@ -649,17 +652,24 @@ Le moteur, volontairement léger, est livré avec un registre d'agents vide à l
 | `haptic`                 | post_processing | Envoie des commandes aux appareils haptiques |
 | `cyoa`                   | post_processing | Génère les prompts de choix |
 | `storyboard` | post_processing | Planifie des storyboards fixes ou animés de Game et Roleplay |
+| `2d-avatars` | feature | Affiche des avatars 2D animés en sprites ou maillages |
+| `3d-avatars` | feature | Affiche des avatars 3D animés VRM, MMD PMX, GLB et FBX |
 | `conversation-calls`     | feature         | Ajoute les appels audio/vidéo en Conversation et leurs réglages |
 | `hierarchical-maps`      | feature         | Ajoute les cartes Roleplay/Game, le contexte spatial et le déplacement |
 | `noodle` | feature | Ajoute le fil social local Noodle à Home |
+| `otome-forge` | feature | Ajoute à Home Otome Hearth, un jeu otome créé à partir de personnages |
+| `saucelings` | feature | Ajoute à Home Saucelings, un animal virtuel élevé par des personnages |
 | `slurp2` | feature | Ajoute Slurp, une application de création privée pour les personnages, à Home |
+| `story-writer` | feature | Ajoute à Home Story Writer, un espace de coécriture de livres |
 | `gacha-forge` | feature | Ajoute un mode de jeu gacha à Home |
+| `blackjack` | feature | Ajoute la table de Blackjack à Conversation |
 | `uno`                    | feature         | Ajoute la table d'UNO en Conversation |
 | `chess`                  | feature         | Ajoute l'échiquier en Conversation |
 | `poker`                  | feature         | Ajoute la table de Texas Hold'em en Conversation |
 | `eightball`              | feature         | Ajoute la table de billard 8-Ball en Conversation |
 | `tic-tac-toe`            | feature         | Ajoute le morpion en Conversation |
 | `rock-paper-scissors`    | feature         | Ajoute les parties de pierre-feuille-ciseaux en Conversation |
+| `wordle` | feature | Ajoute la course Wordle quotidienne à Conversation |
 
 ### Types de résultat des agents
 

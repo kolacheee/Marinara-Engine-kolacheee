@@ -60,7 +60,7 @@ Marinara 支持 OpenAI、Anthropic、Google Gemini、OpenRouter 等众多文本�
 
 ## 用 Marinara 要花钱吗？
 
-Marinara 本身免费。你付的是 AI 服务收的费用。有些选项试起来完全不花钱：**Pollinations** 的图像不需要密钥，**Stable Horde** 免费，**Built-in model** 在你的电脑上运行。订阅类选项用的是你可能已经买好的付费套餐。
+Marinara 免费，费用由所用 AI 服务收取。有些选项可以免费试用：**Pollinations** 图片无需密钥，**Stable Horde** 图片免费，**AI Horde** 和 **BeaverNet** 免费运行聊天模型（见 [AI Horde](connections/providers-reference.md#ai-horde)），**设备端** 在自己的电脑上运行。订阅选项可以使用你已有的付费套餐。
 
 ## API 密钥安全吗？
 

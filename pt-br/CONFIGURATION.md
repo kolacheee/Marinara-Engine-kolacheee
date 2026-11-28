@@ -108,6 +108,8 @@ openssl rand -hex 32
 
 Marinara guarda os seus dados como arquivos JSON simples, então você pode copiar e ler os backups. Para saber o que cada pasta guarda, veja [Onde o Marinara guarda os seus dados](data/where-data-is-stored.md).
 
+Para guardar dados em um compartilhamento de rede, aponte `DATA_DIR` para uma pasta nele e conecte antes de iniciar Marinara. Veja [Não é possível acessar uma pasta de rede ou externa](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder).
+
 <a id="logging-levels"></a>
 
 ## Níveis de log

@@ -88,6 +88,8 @@ Im klassischen Layout liegen diese Abschnitte im Tab **Appearance** hinter vier 
 
 - **Dynamic weather effects (rain, snow, fog, etc.)** (dynamische Wettereffekte wie Regen, Schnee, Nebel usw.) ist standardmäßig an. Die Option zeigt Wetter passend zu Wetter und Tageszeit der Geschichte und benötigt für den Chat den aktivierten Agenten **World State**. Siehe [Agenten: KI-Helfer für deine Chats](../agents/agents-overview.md).
 - **Reduce Ambient Animations & Effects** (Umgebungsanimationen & -effekte reduzieren) stoppt dekorative Animationen, Partikel, rotierende Vorschauen und das schrittweise Einblenden von Text.
+
+- **Würfelwürfe als Text anzeigen** (standardmäßig aus) zeigt jeden Wurf als kurze Textzeile mit Würfeln, Ergebnissen und Summe statt als animierte Würfel. Gewürfelt wird weiterhin, und Modell und Spiel erhalten die Ergebnisse. Das gilt in allen Chat-Modi, auch für Würfel in Fertigkeitsproben.
 - **Reduced paint effects** (reduzierte Paint-Effekte) vereinfacht aufwendige durchsichtige Panels und Schatten, damit langsamere Geräte flüssig bleiben.
 
 ## Hintergründe

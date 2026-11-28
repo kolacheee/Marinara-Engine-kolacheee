@@ -362,6 +362,38 @@ Nicht gesetzte Variablen folgen den Widget-Einstellungen und dem Preset. Damit d
 
 Am Telefon klappt das Drei-Punkte-Menü zu runden Schaltflächen auf. Sein Auslöser ist `[data-chat-tools-menu-button]`, die geöffnete Spalte ist `[data-chat-tools-menu]`, und bei jedem Listeneintrag enthält `data-chat-tools-menu-item` die Fenster-ID. Tool-Schaltflächen nutzen `.mari-window-bubble.mari-chat-tools-button` und `data-chat-tools-menu-tool` mit derselben ID. Die Spalte hat keinen Fensterrahmen. Ihre Schaltflächen folgen den Widget-Farben und der Schaltflächengröße unabhängig von den drei Schaltern für den restlichen Chat und behalten dabei ihre runde Form.
 
+<a id="styling-character-sheets"></a>
+## Charakter-Sheets gestalten
+
+Das Charakter-Sheet eines Regelwerks sieht in Roleplay und Game gleich aus. Mit diesen Klassen und Datenattributen kann ein Theme es gestalten.
+
+| Teil | Klasse | Datenattribute |
+| --- | --- | --- |
+| Ganzes Sheet | `.mari-ruleset-sheet` | `data-ruleset` (Regelwerk-ID, etwa `local/my-rules`), `data-rank-display` (`value`, `label`, `dots`, `roman` oder `number`), `data-editing="true"` beim Bearbeiten |
+| Titel und **Bogen bearbeiten** | `.mari-ruleset-sheet__header` | |
+| Tabs | `.mari-ruleset-sheet__tabs` | Jeder Tab hat `data-tab-id` und `aria-selected` |
+| Gruppenüberschrift | `.mari-ruleset-sheet__heading` | |
+| Feld oben im Sheet | `.mari-ruleset-sheet__field` (in `.mari-ruleset-sheet__fields`) | `data-field`, bei berechneten Werten `data-derived` |
+| Attribut | `.mari-ruleset-sheet__ability` (in `.mari-ruleset-sheet__abilities`); Punktzahl und Probenwert sind `__ability-score` und `__ability-value` | `data-ability`; Attributgruppen haben `data-section` |
+| Pool, etwa Gesundheit | `.mari-ruleset-sheet__pool` (in `.mari-ruleset-sheet__pools`) | `data-pool`; Poolgruppen haben `data-pool-group` |
+| Leiste | `.mari-ruleset-sheet__track` (in `.mari-ruleset-sheet__tracks`) | `data-track`; Wundleisten zusätzlich `data-wound="true"` |
+| Zustände | `.mari-ruleset-sheet__conditions` | |
+| Erlernte Fertigkeit oder Rettungswurf | `.mari-ruleset-sheet__rank` (in `.mari-ruleset-sheet__trained`, gruppiert in `.mari-ruleset-sheet__rank-group`); Rang beziehungsweise Probenwert bei `data-rank-display="value"`: `__rank-value`; Probenwert daneben auf Handys: `__rank-check`; Übung: `__practice` | `data-skill` oder `data-save`, `data-tier` (Stufen-ID), `data-rank` (`0` ungelernt, `1` nächste Stufe usw.) |
+| Fertigkeit oder Rettungswurf beim Bearbeiten | `.mari-ruleset-sheet-editor__rank` | `data-skill` oder `data-save`, `data-tier`, `data-rank` |
+| Liste, etwa Ausrüstung | `.mari-ruleset-sheet__list`; jede Zeile: `.mari-ruleset-sheet__list-row` | `data-list`; angehakte Zeilen haben `data-marked="true"` |
+
+Dieses Beispiel zeigt Rang 2 eines Regelwerks als zwei Sterne. Ergänze für jeden zu ändernden Rang ein solches Regelpaar. Nutze es nur bei Punkt-, Namens-, Ziffern- oder Zahlenanzeige: Bei Probenwerten enthält `__rank-value` den Probenwert, den du damit verstecken würdest.
+
+```css
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value {
+  font-size: 0;
+}
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value::after {
+  content: "★★";
+  font-size: 0.6875rem;
+}
+```
+
 ## Verwandte Anleitungen
 
 - [Anleitung für Theme-Autoren](theme-author-guide.md)

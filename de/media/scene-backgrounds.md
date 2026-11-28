@@ -1,6 +1,6 @@
 # Hintergründe von Illustrator
 
-Der Agent **Illustrator** kann Hintergründe für deine Geschichte malen: auf Wunsch, bei jedem neuen Ort und als Regen-, Schnee- oder Nebelversion, wenn sich das Wetter ändert. Diese Anleitung erklärt alle drei Möglichkeiten und wie Illustrator vorhandene Bilder wiederverwendet, statt neue zu malen.
+Der Agent **Illustrator** kann Hintergründe für deine Geschichte malen: auf Wunsch, bei jedem neuen Ort, als Regen-, Schnee- oder Nebelvariante bei Wetterwechsel und als Variante für Morgengrauen, Tag, Sonnenuntergang oder Nacht bei wechselnder Tageszeit. Diese Anleitung erklärt alle Möglichkeiten und wie Illustrator vorhandene Bilder wiederverwendet.
 
 Für Bilder, die du selbst hochlädst und auswählst, siehe [Hintergrund-Bibliothek](../appearance/chat-backgrounds.md). Wie ein Chat das angezeigte Bild auswählt – über den Background-Agenten, angeheftete Orte und Galeriebilder –, erklärt [Hintergründe, die der Geschichte folgen](../roleplay/backgrounds.md).
 
@@ -81,19 +81,43 @@ Solange der Chat eine Wetterversion zeigt, steht unter **Chat-Einstellungen → 
 
 Wenn es nicht funktioniert hat: Prüf, ob World State im Chat ein **Wetter** zeigt (oder die Wetterprüfung unten eingeschaltet ist) und ob **Illustrator** mit einem Bildmodell zum Chat hinzugefügt wurde.
 
+## Tageszeitvarianten von Hintergründen
+
+Mit dieser Option folgt der Hintergrund der Uhr der Geschichte. Wird es im Gasthaus Nacht, malt Illustrator dessen Hintergrund bei Nacht neu: draußen ein dunkler Himmel, drinnen brennende Lampen und Kerzen. Ort, Raumaufteilung und Kamera bleiben gleich; nur das Licht ändert sich.
+
+1. Öffne **Chat-Einstellungen → Agenten → Illustrator**.
+2. Schalte **Tageszeitversionen von Hintergründen** ein.
+
+Wie bei Wettervarianten brauchst du ein Bildmodell, das von einem Bild ausgehen kann.
+
+So funktioniert es:
+
+- Es gibt vier Tageszeiten: **Morgengrauen**, **Tagsüber**, **Sonnenuntergang** und **Nacht**. Die Zeit von World State entscheidet: Eine Uhrzeit (`7:40 PM`, `21:15`) hat Vorrang, sonst gelten Wörter wie „Abenddämmerung“, „Mitternacht“ oder „früher Morgen“. Vor 5 Uhr und ab 20 Uhr ist Nacht, von 5 bis 7 Uhr Morgengrauen, von 7 bis 17 Uhr Tag und von 17 bis 20 Uhr Sonnenuntergang.
+- Ein Bild gilt als Darstellung der Tageszeit, zu der es gemalt wurde. Illustrator merkt sich das für seine eigenen Bilder. Bei anderen Bildern zählt ein Zeitwort im Dateinamen oder in einem Tag (`tavern-night.png`, `#sunset`); sonst gelten sie als Tagbilder. So bekommt ein Tagbild eine Nachtvariante und ein nachts gemaltes Bild eine Tagvariante, nie eine zweite Nachtvariante.
+- Jede Kombination aus Bild und Tageszeit wird **einmal** gemalt und danach kostenlos wieder angezeigt. Die Varianten werden neben dem Original als `name--tod-night.png` gespeichert (auch `--tod-dawn`, `--tod-day` und `--tod-sunset`).
+- Sind Wettervarianten ebenfalls an, deckt ein Bild beides ab: Regen bei Nacht heißt `name--wx-rain--tod-night.png` und wird einmal ausgehend vom normalen Bild gemalt. Ändert sich nur das Wetter, bleibt die Tageszeit erhalten und umgekehrt.
+- Die Zeit wird nach jeder Antwort geprüft, nicht nur im Illustrator-Intervall. Das Nachtbild erscheint also, sobald die Uhr von World State die Nacht erreicht. Das gilt nur für die Zeit: Ein neuer Ort wartet weiter auf Illustrators Durchlauf oder die Ortsprüfung unten.
+- Die darüber gezeichnete Himmelsfärbung, Sonne, Mond und Sterne treten bei Tageszeitvarianten zurück, weil das Bild seinen eigenen Himmel hat.
+- Ohne Zeitangabe von World State kann eine Prüfung mit einem Decision-Modell die Tageszeit bestimmen (siehe unten).
+
+Zeigt der Chat eine Tageszeitvariante, erscheint dieselbe Zeile wie bei Wetterbildern, etwa **Dieses Bild für Nacht**, mit **Bild neu erstellen**.
+
+In der Hintergrundbibliothek liegen Varianten unter ihrem normalen Bild. Die Karte zeigt ihre Anzahl; beim Öffnen stehen sie unter **Wetter- und Tageszeitversionen**.
+
 ## Jede Antwort mit einem Decision-Modell prüfen
 
 Illustrator prüft die Szene normalerweise nur in seinem Ausführungsintervall. Ein neuer Ort muss deshalb unter Umständen einige Antworten auf seinen Hintergrund warten. Ein [Decision-Modell](../connections/decision-models.md), ein kleines Ja-Nein-Modell, kann stattdessen jede Antwort prüfen.
 
-Bevor du anfängst: Wähle auf der Seite Verbindungen im Kasten **Aufgaben** ein Decision-Modell und schalte **Szenenhintergründe generieren**, **Weather Versions of Backgrounds** oder beides ein.
+Bevor du anfängst: Wähle auf der Seite Verbindungen im Kasten **Standardwerte** ein Decision-Modell und schalte **Szenenhintergründe generieren**, **Wettervarianten für Hintergründe**, **Tageszeitversionen von Hintergründen** oder eine beliebige Kombination ein.
 
 1. Öffne **Chat-Einstellungen → Agenten → Illustrator**.
-2. Wähle unter **Decision Model Checks** die Option **The scene moved to a new place**, **The weather changed** oder **New place and weather changes**. Standardmäßig steht sie auf **Aus**.
+2. Wähle unter **Prüfungen durch das Decision-Modell** eine Prüfung wie **Die Szene ist an einen neuen Ort gewechselt**, **Das Wetter hat sich geändert** oder **Tageszeit geändert**, oder alle eingeschalteten Prüfungen, etwa **Neuer Ort, Wetter- und Tageszeitänderungen**. Nur Prüfungen für eingeschaltete Einstellungen werden aufgeführt. Standardmäßig steht die Option auf **Aus**.
 
 Nach jeder Antwort:
 
 - Die Ortsprüfung fragt, ob die neueste Nachricht die Szene an einen neuen Ort verlegt. Bei einem Ja bekommt der Ort einen Hintergrund; wenn möglich, wird ein vorhandener wiederverwendet. Das Prompt-Modell schreibt erst nach einem Ja einen neuen Hintergrund-Prompt.
 - Die Wetterprüfung fragt, ob sich das Wetter in der neuesten Nachricht ändert. Bei einem Ja wird die Wetterversion des aktuellen Hintergrunds angezeigt oder gemalt. Gibt World State kein Wetter vor, wählt das Decision-Modell auch die Wetterart.
+- Die Tageszeitprüfung fragt, ob sich die Tageszeit in der neuesten Nachricht ändert. Bei einem Ja zeigt oder malt sie die Tageszeitvariante des aktuellen Hintergrunds. Ohne Zeitangabe von World State wählt das Decision-Modell auch Morgengrauen, Tag, Sonnenuntergang oder Nacht.
 - Die Prüfungen schaffen nur zusätzliche Gelegenheiten zum Handeln. Illustrators eigener Durchlauf und Ortswechsel in World State zählen weiterhin.
 - Ohne Antwort (kein Modell, Zeitüberschreitung oder Fehler) wird die Prüfung übersprungen.
 

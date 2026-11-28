@@ -96,7 +96,7 @@ La pestaña **Card** es el espacio principal de escritura. Los enlaces de la par
 
 **Public Face** es lo que el resto del elenco podría ver o saber del personaje: apariencia, maneras, papel, reputación y relaciones que no sean secretas. Deja fuera los secretos, los pensamientos íntimos, la historia privada y las instrucciones sobre cómo interpretar al personaje. Nunca se envía como parte de la tarjeta de este personaje. Un prompt lo lee solo donde colocas la macro `{{publicFace}}`, o `{{personaPublicFace}}` para tu persona. Consulta [Macros de prompt](../prompts/macros.md#identity-character-and-persona-macros). En un chat grupal de Roleplay en modo Individual, **Others' Public Faces** (Facetas públicas de los demás) lo envía a los turnos de los otros personajes. Consulta [Más ajustes de Individual](../chats/group-chats.md#more-individual-settings). Un agente cuya fuente **Characters** (Personajes) o **Persona** esté en **Public Face** lo lee en lugar de la tarjeta. Consulta [Otros ajustes](../agents/custom-agents.md#other-settings). Con **Send Public Faces** (Enviar facetas públicas) activado, Impersonate en Roleplay lo lee en lugar de la tarjeta. Consulta [Los ajustes de Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-**Appearance** tiene dos pestañas, **Prose** (Prosa) e **Image tags** (Etiquetas de imagen). **Prose** es el texto de apariencia en sí. **Image tags** contiene etiquetas breves para los prompts de imagen, como una palabra de activación de LoRA (una palabra clave que activa un estilo de imagen personalizado). Al escribir etiquetas se marca **Use for image prompts** (Usar para los prompts de imagen), y un punto en la pestaña indica que están en uso. Mientras esté marcado y haya etiquetas, los prompts de imagen usan esas etiquetas tal como están escritas, con la prosa como contexto. Desmárcalo para conservar las etiquetas sin usarlas: los prompts de imagen vuelven a usar **Prose**. El prompt de avatar con IA también parte de las etiquetas. El narrador siempre ve el texto de **Prose**. La pestaña **Images** enlaza aquí con **Go to Appearance** (Ir a Apariencia).
+**Apariencia** tiene dos pestañas, **Prosa** (Prosa) e **Etiquetas de imagen** (Etiquetas de imagen). **Prosa** es el texto de apariencia en sí. **Etiquetas de imagen** contiene etiquetas breves para los prompts de imagen, como una palabra de activación de LoRA (una palabra clave que activa un estilo de imagen personalizado). Al escribir etiquetas se marca **Usar para los prompts de imagen** (Usar para los prompts de imagen), y un punto en la pestaña indica que están en uso. Mientras esté marcado y haya etiquetas, los prompts de imagen usan esas etiquetas tal como están escritas, con la prosa como contexto. Desmárcalo para conservar las etiquetas sin usarlas: los prompts de imagen vuelven a usar **Prosa**. El prompt de avatar con IA también parte de las etiquetas. El narrador siempre ve el texto de **Prosa**. La pestaña **Imágenes** enlaza aquí con **Ir a Apariencia** (Ir a Apariencia). La pestaña tiene su propia varita. Consulta [Etiquetas de imagen con la varita](#image-tags-from-the-wand).
 
 La sección **Dialogue & Greetings** define cómo se abre un chat y cómo suena el personaje:
 
@@ -114,18 +114,30 @@ Los saludos y los mensajes de ejemplo pueden mostrar imágenes de la Gallery del
 
 ### Escribir un campo de la tarjeta con la varita
 
-**Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** y cada **Alternate Greeting** tienen encima del campo un botón de varita que solo muestra el icono. Su descripción emergente indica el campo que escribe.
+**Resumen**, **Descripción**, **Personalidad**, **Trasfondo**, **Apariencia** (ambas pestañas), **Escenario**, **Faceta pública**, **Diálogo de ejemplo**, **Primer mensaje** y cada **Alternate Greeting** tienen encima del campo un botón de varita que solo muestra el icono. Su descripción emergente indica el campo que escribe.
 
 Antes de empezar: configura una conexión de texto que funcione. Consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md).
 
 1. Escribe en el campo las ideas que quieras conservar, como `smart, scientist, handsome`, o déjalo vacío.
 2. Completa los demás campos de la tarjeta que quieras que la IA use como referencia. No necesitas guardar primero.
-3. Haz clic en la varita del campo. Marinara pide entre 100 y 300 palabras para ese campo, usando tu texto como detalles de partida. Example Dialogue pide intercambios de ejemplo. **First Message** y cada **Alternate Greeting** piden un mensaje de apertura que deja tu respuesta en tus manos. **Public Face** no tiene un rango de palabras: su varita reescribe el resto de la tarjeta sin las partes privadas, así que la longitud depende de tu tarjeta.
+3. Haz clic en la varita del campo. Marinara pide entre 100 y 300 palabras para ese campo, usando tu texto como detalles de partida. Example Dialogue pide intercambios de ejemplo. **Primer mensaje** y cada **Alternate Greeting** piden un mensaje de apertura que deja tu respuesta en tus manos. **Faceta pública** no tiene un rango de palabras: su varita reescribe el resto de la tarjeta sin las partes privadas, así que la longitud depende de tu tarjeta. En **Etiquetas de imagen** de **Apariencia**, la varita convierte la apariencia en una línea de etiquetas. Consulta [Etiquetas de imagen con la varita](#image-tags-from-the-wand).
 4. Edita el resultado y luego haz clic en **Save**.
 
 La varita usa tu conexión de texto predeterminada para agentes o, si no hay ninguna, tu conexión de texto predeterminada. Una conexión de respaldo de agentes configurada sigue aplicándose.
 
 La varita solo reemplaza el campo elegido en tu borrador sin guardar. Si la generación falla, tu texto se queda. Si editas ese campo mientras esperas, o cambias a otra tarjeta, un resultado tardío no sobrescribe tu trabajo. No necesitas Professor Mari para usar la varita.
+
+<a id="image-tags-from-the-wand"></a>
+#### Etiquetas de imagen con la varita
+
+La varita de **Etiquetas de imagen** en **Apariencia** escribe etiquetas a partir de la apariencia de la tarjeta, sobre todo **Apariencia**. Activa **Usar para los prompts de imagen**.
+
+- Las etiquetas existentes que la apariencia no explica, como activadores LoRA, quedan intactas al principio.
+- Siguen las nuevas: `1girl`, `1boy` o `1other`, luego rasgos permanentes de cuerpo, pelo, ojos, piel, cara y marcas. Sin etiquetas conservadas, empieza por `1girl`, `1boy` o `1other`.
+- Las nuevas están en inglés, minúsculas y separadas por comas, al estilo de Danbooru (sitio de imágenes anime cuyas etiquetas aprendieron muchos modelos).
+- Usan solo rasgos de la tarjeta. Omiten ropa, expresiones, poses y lugares porque cambian entre escenas.
+
+Las genera el modelo, no una lista real de etiquetas de Danbooru; alguna puede usar una forma desconocida para tu modelo de imágenes. Revísalas y edítalas antes de guardar.
 
 ## Añadir un avatar
 
@@ -188,7 +200,7 @@ Reglas:
 - Un chat solo puede usar una alternativa por campo. Marcar un chat en otra alternativa, o elegir otra en Chat Settings, lo traslada allí.
 - Sin chats marcados, la alternativa queda inactiva para más adelante.
 - Una alternativa vacía borra ese campo en sus chats.
-- Una alternativa de **Appearance** tiene sus propias pestañas **Prose** e **Image tags**. En sus chats, sus etiquetas reemplazan las de la tarjeta. Con las etiquetas vacías o desmarcadas, los prompts de imagen usan la prosa de la alternativa, nunca las etiquetas de la tarjeta. Una alternativa nueva también copia las etiquetas de la tarjeta.
+- Una alternativa de **Apariencia** tiene sus propias pestañas **Prosa** e **Etiquetas de imagen**. En sus chats, sus etiquetas reemplazan las de la tarjeta. Con las etiquetas vacías o desmarcadas, los prompts de imagen usan la prosa de la alternativa, nunca las etiquetas de la tarjeta. Una alternativa nueva también copia las etiquetas de la tarjeta. Su pestaña **Etiquetas de imagen** tiene una varita que lee la prosa y las etiquetas de la alternativa.
 - Las sustituciones de escenario y de apariencia para imágenes específicas del chat siguen teniendo prioridad.
 - Las alternativas de **Summary** siguen siendo metadatos y no se envían a la IA.
 - Si el personaje sale de un chat, su asignación se pausa y se reanuda cuando vuelves a añadir al personaje.

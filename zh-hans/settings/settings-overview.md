@@ -67,7 +67,7 @@
 | **Confirmations & Help** | **Confirm before deleting**(删除前确认)、**Hide chat Help button**(隐藏聊天帮助按钮) 和 **Walkthroughs**(操作指引)。 |
 | **Extras** | **Achievements**(成就)、**Disable seasonal Marinara themes**(禁用 Marinara 季节主题) 和 **Music Player**(音乐播放器)。 |
 | **Professor Mari** | 只有一行 **Search and Professor Mari settings**(Search 与 Professor Mari 设置)。点击 **Open**(打开)，即可进入 Search、快速回答和 Professor Mari 的设置页面。参见[Professor Mari](../home/professor-mari.md)。 |
-| **Notifications** | 通知显示位置、通知提示音，以及浏览器和 Android 通知。参见[通知](#notifications)。 |
+| **通知** | 提示位置、通知声音、浏览器和 Android 通知，以及 ntfy 推送。参见[通知](#notifications)。 |
 
 ### 语言
 
@@ -103,6 +103,28 @@ Marinara 为通知播放内置提示音。想使用你自己的声音：
 这个声音会在连接到此服务器的每台设备上播放。你可以预览、替换或删除它。如果无法读取该文件，Marinara 会播放内置提示音。该文件属于备份和档案导出的一部分。
 
 **Background Notifications**(后台通知) 负责角色自行发送的对话消息。**Generation Completion Notifications**(生成完成通知) 负责你在 Conversation、Roleplay 和 Game Mode 中自行发起的回复。两者都在 Marinara 已打开但不在焦点时生效。它们从不显示消息内容。 **Notification position**(通知位置) 决定错误消息和其他通知显示在顶部还是底部。
+
+<a id="get-notifications-on-your-phone-while-marinara-is-closed"></a>
+#### Marinara 关闭时也接收手机通知
+
+**推送通知（ntfy）** 在全部标签和 Android 应用关闭时仍能送达。服务器通过免费 ntfy 服务发送，它有 Android 和 iPhone 应用。
+
+先安装 ntfy。需要在服务器所在电脑打开 Marinara，或在此设备保存管理员密钥。见[远程访问](../REMOTE_ACCESS.md)。
+
+1. 在 **设置 → General → 通知** 开启 **发送推送通知**。Marinara 会生成随机 **主题**，作为通知私人频道。
+2. 手机点 **在 ntfy 中打开**，或 **复制** 后在 ntfy 订阅该主题。
+3. 点 **发送测试通知**，手机会显示“Marinara test notification”。
+
+两个开关选择通知内容：
+
+- **角色主动发送的消息**：Conversation 角色主动消息，没有设备打开时服务器也会编写。
+- **你发起的回复，且在完成前关闭了 Marinara**：仅在保存前关闭或离开页面时通知。应用打开时由原有通知负责。
+
+通知显示作者和“Open Marinara to read it.”。开启 **显示消息预览** 则发送回复开头最多 200 字符。点通知在 **要打开的地址** 打开聊天，初始是开启通知时的地址；手机使用其他地址时应修改。
+
+> **注意：** `ntfy.sh` 的标题和预览经过公共服务器，知道主题的人都可读取。泄漏时点 **新主题**。若需完全留在自有设备，可运行 ntfy 服务器，在 **ntfy 服务器** 填地址，局域网服务器也可用。
+
+测试失败时 Marinara 会说明原因，通常是服务器无法访问 **ntfy 服务器** 地址。
 
 ## Chatting 选项卡
 

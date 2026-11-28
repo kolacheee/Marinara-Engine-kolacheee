@@ -12,10 +12,10 @@ Bildgenerierung brauchst du für nichts davon. Ohne Bildmodell wählst du aus se
 | Ein Bild, das sich mit der Szene ändert | Den Agenten **Background** | [Den Agenten Background wählen lassen](#let-the-background-agent-pick) |
 | Einen Ort, der immer gleich aussieht | Einen Ort mit festgelegtem Hintergrund | [Einen Hintergrund an einen Ort binden](#pin-a-background-to-a-place) |
 | Das Zimmer eines Charakters in jedem Chat, an dem er teilnimmt | Einen Galerie-Hintergrund | [Hintergründe, die einen Charakter begleiten](#backgrounds-that-follow-a-character) |
-| Neue Bilder für neue Orte und neues Wetter | Den Agenten **Illustrator** | [Von Illustrator erstellte Hintergründe](../media/scene-backgrounds.md) |
+| Neue Bilder für neue Orte, neues Wetter und neue Tageszeiten | Den Agenten **Illustrator** | [Von Illustrator erstellte Hintergründe](../media/scene-backgrounds.md) |
 | Deine Bilder hochladen, mit Tags versehen, sortieren oder weichzeichnen | Die Hintergrundbibliothek | [Hintergrundbibliothek](../appearance/chat-backgrounds.md) |
 
-Wenn die Geschichte einen Ort erreicht, entscheidet Marinara in dieser Reihenfolge: zuerst der in diesem Chat für den Ort festgelegte Hintergrund, dann ein Galerie-Hintergrund, der den Ort nennt, dann die Auswahl des Agenten Background. Illustrator malt nur dann ein neues Bild, wenn nichts davon passt. Welches Bild auch gewählt wird: Gibt es eine Variante für das aktuelle Wetter der Geschichte, wird diese angezeigt.
+Wenn die Geschichte einen Ort erreicht, entscheidet Marinara in dieser Reihenfolge: zuerst der in diesem Chat für den Ort festgelegte Hintergrund, dann ein Galerie-Hintergrund, der den Ort nennt, dann die Auswahl des Agenten Background. Feste Zuordnungen und Galerie-Orte wechseln das Bild nur dann selbstständig, wenn Marinara den Ort der Geschichte kennt: über **World State** oder **World Maps**. Ohne beides sieht der Agent Background Galerie-Hintergründe trotzdem anhand ihrer Orte. Illustrator malt nur ein neues Bild, wenn nichts davon passt. Gibt es in der Bibliothek eine Variante für Wetter und Tageszeit der Geschichte, wird diese angezeigt.
 
 ## Einen Hintergrund für einen einzelnen Chat festlegen
 
@@ -23,6 +23,16 @@ Wenn die Geschichte einen Ort erreicht, entscheidet Marinara in dieser Reihenfol
 2. Klick unter **Chat-Hintergrund** auf **Bibliothek durchstöbern** und wähle ein Bild.
 
 Das ändert nur diesen Chat. Um zum Standard zurückzukehren, klick auf **Entfernen** neben **Chat-Hintergrund**. Du kannst auch im Chat unter **Chat-Einstellungen → Hintergrund** ein Bild auswählen. Noch keine Bilder? Siehe [Einen Hintergrund importieren](../appearance/chat-backgrounds.md#import-a-background).
+
+## Eine Wetter- oder Tageszeitvariante selbst erstellen
+
+Dein Bild zeigt das Schlafzimmer bei Tag, doch die Geschichte beginnt dort nachts im Regen. Du musst nicht auf Illustrator warten:
+
+1. Öffne den Chat und dann **Chat-Einstellungen → Hintergrund**.
+2. Wähle unter **Version dieses Hintergrunds erstellen** ein **Wetter** und eine **Tageszeit**. **Wie gemalt** behält den jeweiligen Teil so bei, wie das Bild ihn zeigt.
+3. Klick auf **Version erstellen**.
+
+Illustrators Bildverbindung malt das Bild ausgehend vom Original neu, auch bei einem Galeriebild, und der Chat zeigt die neue Variante. Sie wird in deiner Hintergrundbibliothek gespeichert, damit die Geschichte sie später ohne erneute Generierung verwenden kann. Gibt es die Variante schon, erscheint sie sofort. Die Bildverbindung muss von einem Bild ausgehen können.
 
 ## Den Agenten Background wählen lassen
 
@@ -32,9 +42,17 @@ Der Agent **Background** läuft nach jeder Antwort. Er liest die Szene und wähl
 2. Öffne **Agents** (Agenten) und schalte **Enable Agents** (Agenten aktivieren) ein.
 3. Füge den Agenten **Background** hinzu.
 
-Der Hintergrund ändert sich jetzt von allein, wenn die Geschichte von Ort zu Ort zieht. Der Agent sieht jedes Bild in deiner Bibliothek, auch in Ordnern, und wählt anhand der Namen und Tags aus. Eindeutige Namen und Orts-Tags helfen ihm dabei.
+Der Hintergrund ändert sich jetzt von allein, wenn die Geschichte von Ort zu Ort zieht. Der Agent liest Text statt Bilder und wählt deshalb anhand der Bezeichnungen:
 
-Wenn es nicht funktioniert hat: Hast du nur ein oder zwei Hintergründe, wählt der Agent immer wieder diese. Füge deiner Bibliothek weitere hinzu.
+- **Bibliotheksbilder** anhand von Dateinamen und Tags, auch in Ordnern.
+- **Galerie-Hintergründe** der Charaktere und der Persona im Chat anhand ihrer Ortsmarkierungen (etwa `dorm kitchen`) und Beschreibung.
+- **Angeheftete Orte** dieses Chats anhand der Namen der zugeordneten Bilder.
+
+Ein Bibliotheksbild, dessen Dateiname nur aus zufälligen Buchstaben und Zahlen besteht (etwa `70c60b32-6b8c-….jpg`) und das keine Tags hat, wird ausgelassen: Nichts sagt, welchen Ort es zeigt. Gib ihm einen Orts-Tag oder einen eindeutigen Namen, damit es auswählbar wird. Zeigt kein Eintrag den Schauplatz, behält der Agent das aktuelle Bild, statt zu raten.
+
+**Chat-Einstellungen → Hintergrund** zeigt unter der Vorschau, warum das aktuelle Bild gewählt wurde. Die Zeile verschwindet, wenn du selbst ein Bild auswählst.
+
+Wenn es nicht funktioniert hat: Hast du nur ein oder zwei Hintergründe, wählt der Agent immer wieder diese. Füge deiner Bibliothek weitere hinzu. Ist er langsam, prüfe seine Verbindung: Verarbeitet sie nur eine Anfrage gleichzeitig, wartet er auf andere Agenten wie Lorebook Keeper.
 
 ## Einen Hintergrund an einen Ort binden
 
@@ -61,7 +79,7 @@ Damit diese Zuordnungen greifen, muss der aktuelle Ort der Geschichte bekannt se
 ### Was eine feste Zuordnung bewirkt
 
 - Das Bild wird bei der Ankunft einmal angezeigt. Wählst du vor Ort von Hand einen anderen Hintergrund, bleibt deine Auswahl bestehen, bis die Geschichte weiterzieht.
-- An einem Ort mit festgelegtem Hintergrund kann der Agent Background das Bild nicht wechseln, und Illustrator malt dafür keinen neuen Hintergrund. Mit eingeschaltetem **Weather Versions of Backgrounds** bekommt das festgelegte Bild trotzdem seine Regen-, Schnee- oder Nebelvariante.
+- An einem Ort mit festgelegtem Hintergrund kann der Agent Background das Bild nicht wechseln, und Illustrator malt keinen neuen Hintergrund. Mit **Wettervarianten für Hintergründe** oder **Tageszeitversionen von Hintergründen** bekommt das festgelegte Bild trotzdem seine Regen-, Schnee-, Nebel- oder Nachtvariante.
 
 Wenn es nicht funktioniert hat: Prüfe, ob **Story is at** unter der Liste den Ort anzeigt und ob einer der zugeordneten Namen darin Wort für Wort vorkommt.
 
@@ -89,7 +107,7 @@ Auch Galerie-Hintergründe bekommen Wettervarianten. Die Regen- oder Schneevaria
 
 ## Verwandte Anleitungen
 
-- [Von Illustrator erstellte Hintergründe](../media/scene-backgrounds.md): neue Orte malen, Wettervarianten und Fensterschablonen.
+- [Von Illustrator erstellte Hintergründe](../media/scene-backgrounds.md): neue Orte malen, Wetter- und Tageszeitvarianten sowie Fensterschablonen.
 - [Hintergrundbibliothek](../appearance/chat-backgrounds.md): Hochladen, Tags, Ordner und Unschärfe.
 - [Charakter- und Persona-Galerien](../characters/galleries.md)
 - [Roleplay Mode: Erste Schritte](getting-started.md)

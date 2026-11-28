@@ -380,6 +380,16 @@ Depois de uma falha ou de um volume do Docker movido, a inicialização pode inf
 
 Marinara limpa sozinho uma concessão de gravação (lease) deixada por um processo que caiu por falha, no Linux, no Android, em contêineres e no Windows, quando a pasta de dados fica em um disco local. A etapa manual é a opção de reserva para armazenamento em rede ou compartilhado, unidades removíveis e (no Windows) um computador renomeado depois da falha.
 
+<a id="cannot-access-a-network-or-external-folder"></a>
+### Não é possível acessar uma pasta de rede ou externa
+
+Marinara guarda dados apenas na sua pasta de dados, e a importação de pasta do SillyTavern lê só pastas permitidas pelo servidor. Configure um compartilhamento ou outra unidade assim:
+
+- **Os dados estão em um compartilhamento de rede.** Aponte `DATA_DIR` em `.env` para uma pasta nele e reinicie Marinara. Veja [Armazenamento](CONFIGURATION.md#storage). Mova a pasta de dados inteira: se vincular só uma subpasta, como `avatars` ou `backgrounds`, a outra unidade, as imagens não carregam e Marinara responde **não encontrado**.
+- **Você importa uma pasta do SillyTavern de um compartilhamento.** O caminho digitado deve estar na pasta pessoal do usuário do servidor, senão aparece **Marinara can only read folders inside your home folder**. No computador do servidor, clique em **Browse** para escolher a pasta. Ou adicione-a a `IMPORT_ALLOWED_ROOTS` em `.env`, separada por vírgulas, e reinicie. Depois disso, só as pastas listadas são permitidas, mesmo pelo seletor; inclua sua pasta pessoal se ainda importa dela.
+- **O navegador de pastas da app abre sua pasta pessoal.** Ele só lista pastas dentro dela, independentemente de `IMPORT_ALLOWED_ROOTS`. Adicione a pasta do compartilhamento externo a `IMPORT_ALLOWED_ROOTS`, reinicie e digite o caminho em **Caminho da pasta do SillyTavern**.
+- **O compartilhamento está desconectado.** Reconecte antes de iniciar Marinara e tente de novo.
+
 ### O backup ou a exportação retorna 403
 
 Sessões no mesmo computador fazem backup sem segredo de administrador. As requisições de outro dispositivo, de um endereço de rede, do Docker ou de um proxy ou túnel no mesmo computador precisam de um. Crie-o em **Configurações → Avançado → Segurança** no próprio computador do servidor, ou defina `ADMIN_SECRET` no servidor, e depois salve o mesmo valor em **Admin Access** no outro dispositivo. Para que o loopback também o exija, defina `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`. Com `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`, os visitantes encaminhados recebem a dispensa local. Mantenha essa proteção ligada para um proxy ou túnel público.

@@ -37,6 +37,8 @@
 
 如果角色卡或用户角色正在使用 **Image tags**(图片标签)（编辑器里 **Appearance** 的 **Image tags** 标签页，勾选 **Use for image prompts**(用于图片提示词)），Marinara 会发送这些标签，而不是 **Appearance** 的文字描述。聊天里生效的 Appearance 替代版本会使用自己的标签或文字描述。如果 **Appearance** 是为故事写的，不适合生成图片，就可以用它。
 
+角色在回复中发送的自拍还会携带该次回复中已激活世界书条目的**参考图**，前提是图像服务接受参考图。不需要开启任何设置。Stability AI、Arli AI、SD Web UI 和 Draw Things 不会收到这些图，因为它们会以条目图片为起点生成自拍。Gallery 的 **自拍** 按钮也不会发送这些图。
+
 ## 手动请求自拍
 
 1. 打开 **Chat Settings**，并展开 **Gallery**(图库) 部分。

@@ -85,6 +85,8 @@ Game Mode 没有 **Prompt Mode**(提示词模式) 和 **Prompt Model**(提示词
 
 遇到 NovelAI V5 这类会丢弃参考图的图像模型，可以通过写提示词的模型来利用参考图。这需要写提示词的模型能读取图片。如果它拒绝图片，请求会去掉图片后重发，并且在服务器重启前都不再向它发送图片。连接标记为不支持读图的撰写模型也不会收到图片。每次运行时，向撰写模型发送图片都会消耗 Token。最多发送四张图：优先采用 `[illustrate: characters="…"]` 点名的角色卡，否则采用聊天中的活跃角色和用户角色。**What to carry over from the pictures**(从图片中保留哪些内容) 指定撰写模型要复制什么，例如只复制外貌、不复制画风。Roleplay 聊天可以在 **Send Avatar References** 下单独设置 **Reference pictures go to**。
 
+在 Roleplay 聊天中，世界书条目对当前回复生效时，其 **参考图** 中的图片也会发送给图像模型。可以用来指定需要匹配的服装、道具或房间，不必开启任何设置。只有接受参考图的图像服务会收到它们。Stability AI、Arli AI、SD Web UI 和 Draw Things 不会收到，因为它们会把条目图片当作生成起点。开启 **发送头像参考图** 时，选择 **提示词编写模型** 也不会发送这些图片。它们排在 [World Maps](../agents/hierarchical-maps.md) 的 **地点参考图** 和头像之后，总共最多六张。**位置** 设为 **出口** 的条目只有在其 Outlet 被使用时才发送图片，图库的 **绘制插图** 按钮始终不会发送这类条目的图片。
+
 ## 控制出图频率
 
 Illustrator 卡片上有一个 **Open Setup** 按钮，点开就是完整的设置界面。你可以在那里设置默认的运行间隔，并给它单独指定图像模型。
@@ -130,7 +132,8 @@ Illustrator 也会绘制背景。在 **Chat Settings → Agents**(聊天设置 �
 
 - **Generate Scene Backgrounds**(生成场景背景) 会在故事进入新地点时绘制背景，除非你已经有了该地点的图片。
 - **Weather Versions of Backgrounds**(背景的天气版本) 会按故事里的天气重绘当前背景，动态雨雪只出现在房间的窗户上。
-- **Decision Model Checks**(决策模型检查) 会让 Decision 模型在每条回复时检查地点或天气是否变化，这样背景就不用等到运行间隔到了才更新。
+- **背景时段版本** 会在故事时段变化时，把当前背景重绘为黎明、白天、日落或夜晚。
+- **决策模型检查** 让 Decision 模型在每条回复后检查新地点、新天气或新时段，使背景不必等到运行间隔到了才更新。
 
 这三个选项默认都关闭。见 [Illustrator 生成的背景](scene-backgrounds.md)。
 

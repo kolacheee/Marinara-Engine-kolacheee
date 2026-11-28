@@ -130,7 +130,9 @@ Agenci aktualizują wartości twoich własnych pól. Nigdy nie usuwają utworzon
 
 ### Utwórz nowy portret
 
-Na dużej karcie postaci da się utworzyć nowy portret, gdy agent Character Tracker ma połączenie do obrazów. Na kompaktowej karcie kliknij **Feature character card** (wyróżnienie karty postaci), żeby otworzyć dużą kartę. Okno Trackers zawsze pokazuje duże karty. Najedź na portret i kliknij przycisk z ikoną oka, żeby utworzyć portret na podstawie pola **Look**, albo przycisk z ikoną koszuli, żeby utworzyć go na podstawie pól **Look** i **Outfit**. Przycisk z ikoną koszuli pojawia się tylko wtedy, gdy postać ma strój. Stary portret zostaje, dopóki nowy nie będzie gotowy. Jeśli tworzenie się nie powiedzie, zostaje stary portret. Postacie pokazywane z awatarem karty albo ze sprite'em wyrazu twarzy nie mają tych przycisków.
+Duża karta tworzy portret, gdy Character Tracker ma połączenie obrazów. Na małej użyj **Wyróżnij kartę postaci**; okno Trackers zawsze pokazuje duże. Po najechaniu oko używa **Wygląd**, koszula **Wygląd** i **Strój**; koszula pojawia się tylko przy stroju. Możesz też wgrać obraz w prawym dolnym rogu. Zapisuje portret sceny bez zmiany awatara karty. **Przywróć portret z karty** w prawym górnym rogu przywraca portret karty. Stary pozostaje do ukończenia nowego, także przy błędzie. Sprite’y mimiki ukrywają przyciski do wyłączenia **Używaj sprite’ów ekspresji w portretach trackera** lub braku pasującego sprite’a.
+
+Włącz **Przepisuj prompty portretów przez AI** w Character Tracker, aby model Illustratora połączył **Wygląd**, **Nastrój** i górną część **Strój** w jeden prompt portretu. Instrukcje można poprawić w polu promptu.
 
 ### Ustawienia Tracker Panel
 

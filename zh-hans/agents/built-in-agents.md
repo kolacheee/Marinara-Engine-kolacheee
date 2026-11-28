@@ -77,6 +77,28 @@
 - **主要设置**：安装后在提示时重启，然后打开 **Home → Story Writer**，在侧栏里选择一个文本连接。故事都保存在你的 Marinara 服务器上。可以开始新故事、回到旧故事，也可以把它们下载为 Markdown 或纯文本。
 - **完整指南**：[Story Writer 包指南](https://github.com/Pasta-Devs/Marinara-Agents/blob/staging/packages/story-writer/README.md)。
 
+<a id="otome-hearth"></a>
+### Otome Hearth
+
+以你的角色组成的单人乙女游戏。恋爱对象会记住选择、发消息、约会；游玩赚取 Starlight，解锁支线和服装，没有真实付费或体力计时。
+
+- **集成**: **主页** 内独立 **Otome Hearth** 标签应用。
+- **适用位置**: Home.
+- **可用条件**: 需要 Engine **2.5.1+**（低于 4.0.0），请求网络连接、服务器路由、本地存储和 **主页** 标签界面。
+- **主要设置**: 安装后按提示重启，打开 **Home → Otome Hearth**。在应用内配置角色设定集、**Lines & Veils** 内容界限，以及可选 **Remind Me** 追踪。
+- **完整指南**: [Otome Hearth](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/otome-forge/README.md).
+
+<a id="saucelings"></a>
+### Saucelings
+
+位于 **Home → Saucelings** 和主页组件的虚拟宠物。选一个角色照顾，它按自己的日程喂食、玩耍、抱抱，由你补上遗漏。
+
+- **集成**: 独立 **Saucelings** 标签及 **主页** 组件应用。
+- **适用位置**: Home.
+- **可用条件**: 需要 Engine **2.5.0+**（低于 4.0.0），请求聊天提示词上下文、服务器路由、本地存储及 **主页** 标签和组件界面。
+- **主要设置**: 安装后按提示重启，打开 **Home → Saucelings**，在 **Nook**、**Journal**、**Album**、**Menagerie**、**设置** 管理宠物。
+- **完整指南**: [Saucelings](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/saucelings/README.md).
+
 ## 写作类智能体
 
 写作类智能体负责塑造故事或文笔。它们在回复之前补充写作指引，或在回复之后做润色。
@@ -104,6 +126,8 @@
 - **阶段**：Post-Processing。
 - **适用范围**：Roleplay。
 - **主要设置**：默认每 8 条用户消息和 AI 回复运行一次。见[智能体审批与 Agent Suite](approvals-and-agent-suite.md)。
+
+- **与摘要一起运行**（Roleplay 聊天的 Card Evolution Auditor 卡片）：开启自动摘要时随每次摘要同一回复运行，不用独立计数。下次发消息前批准，卡片在摘要回合更改；更晚批准则等下次摘要，卡片显示待处理数量。卡片和提示词一起变化，缓存只失效一次而非两次。关闭自动摘要则按自身计数运行，批准立即生效。
 
 ### Narrative Director
 
@@ -276,6 +300,8 @@ Knowledge Retrieval 的省钱替代方案。它读取世界书条目的简短描
 - **数据**：用 Memory Settings 里的备份功能导出或替换记忆库、草稿和设置。**Delete all data**(删除全部数据) 会永久清除记忆、草稿、活动记录和索引，但保留设置。卸载时记忆库会保留下来，供以后重装。安装、更新或移除之后需要重启。
 - **兼容性**：Engine `2.3.5` 起，`4.0.0` 之前。权限：`agent-runtime`、`chat-read`、`chat-write`、`routes`、`storage`、`ui`。
 
+- **从聊天历史中排除已存储消息**（Roleplay 的 Long-Term Memory 卡片）：存储后的消息移出历史，只留最新若干条（默认 10）。聊天和保管库仍保留。需要能报告存储进度的包版本；旧版开关无效。
+
 ### Illustrator
 
 生成图像和视频。它为重要时刻撰写画面提示词，再发送给你的图像或视频服务。
@@ -291,6 +317,9 @@ Knowledge Retrieval 的省钱替代方案。它读取世界书条目的简短描
 - **阶段**：Post-Processing。
 - **适用范围**：Roleplay。在 Game Mode 里，名为 **Game Session Keeper** 的会话结束版本会做同样的事。
 - **主要设置**：默认每 8 条用户消息和 AI 回复运行一次。**Target Lorebook**(目标世界书) 决定条目写到哪里，并提供自动选择选项。高级提示词可以返回一个可写世界书的名称，或者 `world`、`npc`、`scene` 或 `player` 这类别名。别名对应的目标不存在时，会自动创建并关联到这个聊天。不指定目标时，仍保持单世界书的行为。
+
+- **从聊天历史中排除已存储消息**（Lorebook Keeper 卡片）：截至最后成功运行的消息移出历史，留最新若干条（默认 10）。消息留在聊天，事实通过世界书进入提示词。开启 **分批移除旧消息** 则整批移除。
+- **与摘要一起运行**：开启自动摘要后随摘要同一回复运行，不用独立计数。新条目与排除消息在摘要回合一起改变提示词，缓存只失效一次。关闭自动摘要则用自身计数。
 
 ### Combat
 
@@ -419,6 +448,24 @@ Knowledge Retrieval 的省钱替代方案。它读取世界书条目的简短描
 - **集成方式**：Conversation 游戏包。
 - **适用范围**：Conversation。
 - **主要设置**：从游戏选择器启动，或者用 `/rps`，然后选择对手，以及三局两胜、五局三胜还是七局四胜。安装或移除之后需要重启。
+
+<a id="blackjack"></a>
+### Blackjack
+
+供 Conversation 角色与庄家对战的 Blackjack 牌桌。
+
+- **集成**：Conversation 游戏包。
+- **适用位置**：Conversation。
+- **主要设置**：用 `/blackjack` 或角色提示开始。在 **聊天设置 → 智能体 → 命令** 开启 **Blackjack**，允许角色自主开局。安装需重启，移除不需要。
+
+<a id="wordle"></a>
+### Wordle
+
+与 Conversation 角色进行每日 Wordle 单词竞赛。
+
+- **集成**：Conversation 游戏包。
+- **适用位置**：Conversation。
+- **主要设置**：用 `/wordle` 开始今日游戏。在 **聊天设置 → 智能体 → 命令** 开启 **Wordle**，允许角色自主开始今日游戏。安装需重启，移除不需要。
 
 ## 相关指南
 

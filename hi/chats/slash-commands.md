@@ -71,7 +71,9 @@ Roleplay में रेंज के बाद कैरेक्टर का
 | `/illustrate` | सिर्फ़ Roleplay। गैलरी इमेज जेनरेट करता है। Illustrator एजेंट चाहिए। `/ill` भी चलता है। फ़ॉर्मैट: `/illustrate [range=N-M] [template=name] [prompt]`। |
 | `/html` | सिर्फ़ Roleplay। सबसे नए जवाब के आखिर में कहानी की दुनिया का एक आर्टिफ़ैक्ट बनाता है, जैसे `a spellbook page`। फ़ॉर्मैट: `/html [what you want]`। |
 | `/video` | सिर्फ़ Roleplay। सबसे नए जवाब की, या आपके विवरण की, एक छोटी क्लिप उसी जवाब के नीचे बनाता है। Illustrator की **First frame** (पहला फ़्रेम) सेटिंग के मुताबिक चलता है। Illustrator चाहिए। फ़ॉर्मैट: `/video [description]`। |
-| `/impersonate` | आपके पर्सोना की तरफ़ से जवाब लिखता है। `/imp` भी चलता है। फ़ॉर्मैट: `/impersonate [direction (optional)]`। |
+| `/impersonate` | आपके पर्सोना की ओर से जवाब लिखता है। उसे पोस्ट करता है, या चैट सेटिंग में **नतीजा कहाँ जाए** का **मैसेज ड्राफ़्ट** होने पर मैसेज बॉक्स में ड्राफ़्ट लिखता है। `/imp` भी। फ़ॉर्मैट: `/impersonate [direction (optional)]`। |
+| `/impersonate_draft` | पर्सोना का जवाब मैसेज बॉक्स में लिखता है ताकि भेजने से पहले बदल सकें। कुछ पोस्ट नहीं होता। `/impd`, `/imp_draft` भी। फ़ॉर्मैट: `/impersonate_draft [direction (optional)]`। |
+| `/impersonate_post` | **नतीजा कहाँ जाए** की परवाह किए बिना पर्सोना का जवाब तुरंत लिखकर पोस्ट करता है। `/impp`, `/imp_post` भी। फ़ॉर्मैट: `/impersonate_post [direction (optional)]`। |
 | `/impersonate_prompt` | तय करता है कि इस चैट में `/impersonate` कौन सा निर्देश इस्तेमाल करे। `/imp_prompt` भी चलता है। फ़ॉर्मैट: `/impersonate_prompt [prompt or reset]`। |
 
 इनमें से ज़्यादातर Roleplay में सबसे अच्छे चलते हैं। `/scene` किसी Conversation से चलाया जाता है। `/impersonate` और `/impersonate_prompt` Conversation में उपलब्ध नहीं हैं।

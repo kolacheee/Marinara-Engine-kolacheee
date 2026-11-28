@@ -67,7 +67,7 @@ Si desactivaste **New layout** (Nueva distribución: vista previa de la renovaci
 | **Confirmations & Help** | **Confirm before deleting** (Confirmar antes de eliminar), **Hide chat Help button** (Ocultar el botón de ayuda del chat) y **Walkthroughs**. |
 | **Extras** | **Achievements** (Logros), **Disable seasonal Marinara themes** (Desactivar temas de temporada de Marinara) y **Music Player**. |
 | **Professor Mari** | Una fila, **Search and Professor Mari settings** (Ajustes de Search y Professor Mari). Haz clic en **Open** (Abrir) para acceder a Search, las respuestas rápidas y Professor Mari. Mira [Professor Mari](../home/professor-mari.md). |
-| **Notifications** | Dónde aparecen los avisos, los sonidos de notificación y las notificaciones del navegador y de Android. Mira [Notificaciones](#notifications). |
+| **Notificaciones** | Ubicación de avisos, sonidos, notificaciones de navegador y Android, y push mediante ntfy. Consulta [Notificaciones](#notifications). |
 
 ### Idioma
 
@@ -103,6 +103,28 @@ Marinara reproduce un tono integrado para las notificaciones. Para usar tu propi
 El sonido se reproduce en todos los dispositivos conectados a este servidor. Puedes escucharlo, reemplazarlo o quitarlo. Si no se puede leer el archivo, Marinara reproduce el tono integrado. El archivo forma parte de las copias de seguridad y de las exportaciones de perfil.
 
 Las **Background Notifications** (Notificaciones en segundo plano) cubren los mensajes de Conversation que los personajes envían por su cuenta. Las **Generation Completion Notifications** (Notificaciones de generación completada) cubren las respuestas que inicias tú mismo en Conversation, Roleplay y Game Mode. Ambas funcionan mientras Marinara está abierto pero sin el foco. Nunca muestran el contenido de los mensajes. **Notification position** (Posición de las notificaciones) elige si los mensajes de error y otros avisos aparecen arriba o abajo.
+
+<a id="get-notifications-on-your-phone-while-marinara-is-closed"></a>
+#### Recibir notificaciones con Marinara cerrado
+
+**Notificaciones push (ntfy)** llega al teléfono aunque todas las pestañas y la app Android estén cerradas. El servidor usa ntfy, servicio gratis con app Android e iPhone.
+
+Instala primero ntfy. Debes abrir Marinara en su computadora o tener el secreto de administrador en este dispositivo. Consulta [Acceso remoto](../REMOTE_ACCESS.md).
+
+1. Activa **Enviar notificaciones push** en **Settings → General → Notificaciones**. Marinara crea un **Tema** aleatorio, canal privado de tus avisos.
+2. Pulsa **Abrir en ntfy** en el teléfono, o **Copiar** y suscríbete al tema en ntfy.
+3. Pulsa **Enviar notificación de prueba**. Aparece «Marinara test notification».
+
+Dos interruptores eligen qué avisa:
+
+- **Mensajes que los personajes envían por iniciativa propia**: mensajes autónomos de Conversation que el servidor escribe incluso sin dispositivos conectados.
+- **Respuestas que iniciaste, si cerraste Marinara antes de que terminaran**: solo si cerraste o saliste antes de guardarse. Con Marinara abierto se usan sus propias notificaciones.
+
+El aviso indica autor y «Open Marinara to read it.». **Mostrar vista previa del mensaje** envía hasta 200 caracteres iniciales. Tocar abre el chat en **Dirección para abrir**, inicialmente la dirección usada al activar. Cámbiala si tu teléfono usa otra.
+
+> **Nota:** Con `ntfy.sh`, títulos y vistas previas pasan por un servidor público; cualquiera que sepa el tema puede leerlos. Usa **Nuevo tema** si se filtró. Para mantenerlo todo en tus equipos, aloja ntfy y pon su dirección en **Servidor ntfy**. Sirve un servidor local.
+
+Si falla el test, Marinara explica por qué. Suele ser una dirección **Servidor ntfy** inaccesible desde el servidor Marinara.
 
 ## La pestaña Chatting
 

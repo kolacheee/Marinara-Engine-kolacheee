@@ -71,7 +71,9 @@ Roleplay에서는 범위 뒤에 캐릭터 이름을 붙이면 그 캐릭터에�
 | `/illustrate` | Roleplay 전용입니다. 갤러리 이미지를 생성합니다. Illustrator 에이전트가 필요합니다. 별칭은 `/ill`입니다. 형식은 `/illustrate [range=N-M] [template=name] [prompt]`입니다. |
 | `/html` | Roleplay 전용입니다. 최근 답변 끝에 `a spellbook page` 같은 이야기 속 아티팩트를 하나 만듭니다. 형식은 `/html [what you want]`입니다. |
 | `/video` | Roleplay 전용입니다. 최근 답변이나 직접 설명한 내용으로 짧은 클립을 만들어 그 답변 아래에 둡니다. Illustrator의 **First frame**(첫 프레임) 설정을 따릅니다. Illustrator가 필요합니다. 형식은 `/video [description]`입니다. |
-| `/impersonate` | 페르소나를 대신해 답변을 씁니다. 별칭은 `/imp`입니다. 형식은 `/impersonate [direction (optional)]`입니다. |
+| `/impersonate` | 페르소나로 답변을 작성합니다. 게시하거나, 채팅 설정의 **결과를 보낼 곳**가 **메시지 초안**이면 입력창에 초안을 작성합니다. `/imp`도 가능합니다. 형식: `/impersonate [direction (optional)]`. |
+| `/impersonate_draft` | 보내기 전에 수정할 수 있도록 페르소나의 답변을 입력창에 작성합니다. 아무것도 게시하지 않습니다. `/impd`, `/imp_draft`도 가능합니다. 형식: `/impersonate_draft [direction (optional)]`. |
+| `/impersonate_post` | **결과를 보낼 곳**와 관계없이 페르소나의 답변을 즉시 작성하고 게시합니다. `/impp`, `/imp_post`도 가능합니다. 형식: `/impersonate_post [direction (optional)]`. |
 | `/impersonate_prompt` | 이 채팅에서 `/impersonate`가 쓰는 지시문을 설정합니다. 별칭은 `/imp_prompt`입니다. 형식은 `/impersonate_prompt [prompt or reset]`입니다. |
 
 대부분 Roleplay에서 가장 잘 동작합니다. `/scene`은 Conversation에서 실행합니다. `/impersonate`와 `/impersonate_prompt`는 Conversation에서 쓸 수 없습니다.

@@ -231,10 +231,12 @@ En la página **2D Avatars**, elige un personaje o una persona y luego usa **Mak
 
 **Make faces from the avatar** (Crear caras a partir del avatar) crea caras sin fondo, también para un personaje o una persona que todavía no tiene sprites. Necesita un avatar y una cuenta de generación de imágenes. Abre la misma generación de sprites que los editores de personajes y de personas, con el avatar como referencia.
 
-1. Elige **All faces** (Todas las caras: las 29 emociones), **Main faces** (Caras principales: las seis) o elige tú las caras. Cada emoción extra está en la fila de su cara principal hasta que tiene su propia cara.
-2. Las caras se dibujan por lotes, primero las principales. Los modelos GPT Image más antiguos dibujan una cara por imagen. Una imagen que falla se vuelve a intentar una vez. Si vuelve a fallar, el proceso se detiene con **Retry picture** (Reintentar imagen). **Cancel** (Cancelar) conserva las caras ya creadas.
+1. Elige **Todas las caras** (Todas las caras: las 29 emociones), **Caras principales** (Caras principales: las seis) o elige tú las caras. Cada emoción extra está en la fila de su cara principal hasta que tiene su propia cara. **Caras faltantes** elige los rostros aún no guardados.
+2. Las caras se dibujan por lotes, primero las principales. Los modelos GPT Image más antiguos dibujan una cara por imagen. Una imagen que falla se vuelve a intentar una vez. Si vuelve a fallar, el proceso se detiene con **Reintentar imagen** (Reintentar imagen). **Cancelar** (Cancelar) conserva las caras ya creadas. **Revisar prompt** muestra el prompt de esa imagen y el motivo del fallo. Edítalo y pulsa **Reintentar imagen**; el cambio solo afecta a esa imagen.
 3. Con **Expose media prompts before sending** (Mostrar los prompts de medios antes de enviar) activado, revisas todos los prompts a la vez antes de que se envíe el primero. Cada cara se dibuja con los ojos abiertos y la boca cerrada, para que las imágenes de parpadeo y de habla tengan algo que cerrar y abrir.
 4. Marinara dibuja las caras sobre un color liso, quita ese color y las guarda como sprites del personaje o de la persona. Un sprite nuevo reemplaza al que tiene el mismo nombre, así que cámbiale el nombre en el último paso para conservar el anterior.
+
+Bajo **Crear caras a partir del avatar**, una línea como `Faces saved: 24 of 29. Missing: Love, Relief, Confusion, Fear, Realization.` cuenta los sprites guardados, incluso al volver después. Cuenta un sprite con el nombre del rostro en cualquier carpeta, como `happy`, `Happy` o `happy_2`; otro nombre, como `joy`, deja happy faltante. Tras una interrupción, **Crear caras faltantes** abre el creador solo con los faltantes. **Caras faltantes** nunca selecciona uno guardado.
 
 Cuando el avatar ya está guardado, cada cara nueva pasa a ser la cara de la emoción para la que se dibujó, aunque le hayas cambiado el nombre. Los otros sprites se quedan. Una cara que se vuelve a crear empieza sin imágenes de parpadeo ni de habla, porque las anteriores no coincidirían. Crea otras nuevas en [Imágenes de parpadeo y de habla](#blink-and-talk-pictures). Una importación de PNGTuber Plus conserva sus propias caras.
 
@@ -243,6 +245,8 @@ Cuando el avatar ya está guardado, cada cara nueva pasa a ser la cara de la emo
 ### Imágenes de parpadeo y de habla
 
 Cada cara que muestra el avatar para una emoción es una fila, con sus imágenes **Eyes closed** (Ojos cerrados) y **Mouth open** (Boca abierta) junto a la **Face** (Cara). Son imágenes que guardaste, sprites `_blink` y `_talk` que añadiste, o unas nuevas. Con sprites de retrato, solo se usan esos, porque un avatar nunca mezcla caras de retrato y de cuerpo completo. Una cara que no es uno de tus sprites, como una de una importación de PNGTuber Plus, muestra sus imágenes, pero no puede recibir imágenes nuevas.
+
+La línea bajo el título cuenta todas las imágenes, como `Pictures saved: 40 of 58. Still to make: 8. Waiting for a missing face: 10.` Un rostro sin crear no tiene fila porque sus imágenes parten de él; borrar su sprite también las deja esperando. Un rostro propio con otro nombre, como `scared` para fear, usa sus imágenes y no cuenta como pendiente. La última tarjeta nombra los rostros por crear con **Crear caras faltantes**. Guardarlos añade filas y conserva imágenes existentes.
 
 1. Revisa **Image model** (Modelo de imagen). Tu cuenta de imagen predeterminada ya viene elegida.
 2. Haz clic en **Make** (Crear) para una imagen que falta, o en el botón **Make N pictures** (Crear N imágenes) para todas. Cada imagen es una solicitud de imagen. Con **Expose media prompts before sending** activado (en la configuración), ves y editas cada prompt primero.

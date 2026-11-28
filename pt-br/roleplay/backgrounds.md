@@ -12,10 +12,10 @@ Nada disso exige geração de imagens. Sem um modelo de imagens, você escolhe e
 | Que a imagem mude com a cena | O agente **Background** | [Deixar o agente Background escolher](#let-the-background-agent-pick) |
 | Que um local tenha sempre a mesma aparência | Um local fixado | [Fixar um plano de fundo para um local](#pin-a-background-to-a-place) |
 | O quarto de um personagem em todos os chats em que ele está | Um plano de fundo da galeria | [Planos de fundo que acompanham um personagem](#backgrounds-that-follow-a-character) |
-| Imagens novas criadas para novos locais e condições do clima | O agente **Illustrator** | [Planos de fundo criados pelo Illustrator](../media/scene-backgrounds.md) |
+| Imagens novas para novos lugares, climas e horas do dia | O agente **Illustrator** | [Fundos criados pelo Illustrator](../media/scene-backgrounds.md) |
 | Enviar, marcar com tags e organizar as imagens, ou desfocá-las | A Biblioteca de planos de fundo | [Biblioteca de planos de fundo](../appearance/chat-backgrounds.md) |
 
-Quando a história chega a algum lugar, Marinara decide nesta ordem: uma fixação para esse local neste chat, depois um plano de fundo da galeria que nomeie o local e, por fim, a escolha do agente Background. O Illustrator só cria uma imagem nova quando nenhuma dessas opções serve. Seja qual for a imagem escolhida, a versão dela para o clima da história é exibida quando existe.
+Quando a história chega a um lugar, Marinara decide nesta ordem: um fundo fixado para aquele lugar neste chat, um fundo de galeria que nomeie o lugar e a escolha do agente Background. Lugares fixados e da galeria só trocam a imagem sozinhos quando Marinara sabe onde a história está, pela localização de **World State** ou por **World Maps**. Sem os dois, o agente Background ainda vê os fundos de galeria pelos lugares. Illustrator só pinta uma imagem nova quando nenhuma serve. Seja qual for a escolhida, sua versão de clima ou hora do dia aparece se a biblioteca tiver uma para o clima e a hora da história.
 
 ## Definir um plano de fundo para um chat só
 
@@ -23,6 +23,16 @@ Quando a história chega a algum lugar, Marinara decide nesta ordem: uma fixaç�
 2. Em **Plano de fundo do chat**, clique em **Navegar pela biblioteca** e escolha uma imagem.
 
 A mudança vale só para esse chat. Para voltar ao padrão, clique em **Remover** ao lado de **Plano de fundo do chat**. Você também pode escolher uma em **Configurações do chat → Plano de fundo** no chat. Ainda não tem imagens? Veja [Importar um plano de fundo](../appearance/chat-backgrounds.md#import-a-background).
+
+## Criar você mesmo uma versão de clima ou hora do dia
+
+Sua imagem mostra o quarto de dia, mas a história começa ali à noite e na chuva. Não precisa esperar pelo Illustrator:
+
+1. Abra o chat e depois **Configurações do chat → Plano de fundo**.
+2. Em **Criar uma versão deste fundo**, escolha **Clima** e **Hora do dia**. **Como foi pintado** mantém essa parte como está na imagem.
+3. Clique em **Criar versão**.
+
+A conexão de imagens do Illustrator repinta a imagem a partir da original, inclusive imagens de galeria, e o chat mostra a nova versão. Ela é salva na biblioteca de fundos para ser reutilizada sem gerar de novo. Se já existir, aparece imediatamente. A conexão precisa ser capaz de partir de uma imagem.
 
 ## Deixar o agente Background escolher
 
@@ -32,9 +42,17 @@ O agente **Background** roda depois de cada resposta. Ele lê a cena e escolhe, 
 2. Abra **Agents** e ative a opção **Enable Agents**.
 3. Adicione o agente **Background**.
 
-A partir daí, o plano de fundo muda sozinho conforme a história passa de um lugar para outro. O agente vê todas as imagens da biblioteca, inclusive as que estão em pastas, e usa os nomes e as tags delas para escolher, então nomes claros e tags de locais ajudam.
+O fundo agora muda sozinho conforme a história passa de um lugar para outro. O agente lê texto, não imagens, então escolhe pela identificação de cada uma:
 
-Se não funcionou: com só um ou dois planos de fundo, o agente continua escolhendo esses. Acrescente mais à sua biblioteca.
+- **Imagens da biblioteca**, pelo nome de arquivo e tags, inclusive em pastas.
+- **Fundos de galeria** dos personagens e da persona do chat, pelos lugares marcados (como `dorm kitchen`) e pela descrição.
+- **Lugares fixados** neste chat, pelos nomes das imagens que fixam.
+
+Uma imagem da biblioteca cujo nome só contém letras e números aleatórios (como `70c60b32-6b8c-….jpg`) e que não tem tags fica de fora, pois nada diz qual lugar mostra. Dê a ela uma tag de lugar ou um nome claro para permitir a escolha. Se nada na lista mostrar o lugar da cena, o agente mantém a imagem atual em vez de adivinhar.
+
+**Configurações do chat → Plano de fundo** mostra o motivo da escolha abaixo da prévia da imagem atual. A linha desaparece quando você escolhe uma imagem.
+
+Se não funcionou: com apenas um ou dois fundos, o agente continua escolhendo esses. Adicione mais à biblioteca. Se estiver lento, confira a conexão: quando ela processa uma solicitação por vez, ele espera outros agentes, como Lorebook Keeper.
 
 ## Fixar um plano de fundo para um local
 
@@ -61,7 +79,7 @@ As fixações precisam saber onde a história está, então usam o local do agen
 ### O que uma fixação muda
 
 - A imagem aparece uma vez na chegada. Se você escolher outro plano de fundo na mão enquanto estiver lá, a sua escolha permanece até a história seguir para outro lugar.
-- Em um local fixado, o agente Background não pode trocar a imagem, e o Illustrator não cria um plano de fundo novo para ele. Com **Weather Versions of Backgrounds** (versões dos planos de fundo por clima) ativado, a imagem fixada ainda recebe a versão de chuva, neve ou neblina.
+- Em um lugar fixado, o agente Background não pode trocar a imagem e Illustrator não pinta um fundo novo. Com **Versões climáticas dos planos de fundo** ou **Versões de fundos por hora do dia** ativado, a imagem fixada ainda recebe sua versão de chuva, neve, neblina ou noite.
 
 Se não funcionou: confira se **Story is at** abaixo da lista mostra o local e se um dos nomes da fixação aparece nele palavra por palavra.
 
@@ -89,7 +107,7 @@ Os planos de fundo de galerias também recebem versões por clima. A versão de 
 
 ## Guias relacionados
 
-- [Planos de fundo criados pelo Illustrator](../media/scene-backgrounds.md): criação de novos locais, versões por clima e máscaras de janelas.
+- [Fundos criados pelo Illustrator](../media/scene-backgrounds.md): novos lugares, versões de clima e hora do dia e máscaras de janelas.
 - [Biblioteca de planos de fundo](../appearance/chat-backgrounds.md): envio de imagens, tags, pastas e desfoque.
 - [Galerias de personagens e personas](../characters/galleries.md)
 - [Roleplay Mode: primeiros passos](getting-started.md)

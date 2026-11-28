@@ -358,6 +358,38 @@ Game controls, Session, Volume, Game Assets, 연결된 채팅과 패키지 컨�
 
 휴대폰에서 점 세 개 메뉴를 열면 둥근 버튼들이 펼쳐집니다. 여닫는 버튼은 `[data-chat-tools-menu-button]`, 펼쳐진 버튼 열은 `[data-chat-tools-menu]`이며, 각 목록 항목의 `data-chat-tools-menu-item`에는 해당 창 ID가 설정됩니다. 도구 버튼은 `.mari-window-bubble.mari-chat-tools-button`을 사용하며 `data-chat-tools-menu-tool`에도 같은 ID가 설정됩니다. 버튼 열에는 창 프레임이 없습니다. 버튼은 둥근 모양을 유지하면서 위젯 색상과 버튼 크기를 따르며, 채팅의 나머지 영역에 적용하는 세 스위치와는 독립적으로 동작합니다.
 
+<a id="styling-character-sheets"></a>
+## 캐릭터 시트 꾸미기
+
+규칙 세트의 캐릭터 시트는 Roleplay와 Game에서 같습니다. 다음 클래스와 데이터 속성으로 테마를 적용합니다.
+
+| 부분 | 클래스 | 데이터 속성 |
+| --- | --- | --- |
+| 전체 시트 | `.mari-ruleset-sheet` | `data-ruleset`(규칙 세트 ID, 예: `local/my-rules`), `data-rank-display`(`value`, `label`, `dots`, `roman`, `number`), 편집 중 `data-editing="true"` |
+| 제목과 **시트 편집** 버튼 | `.mari-ruleset-sheet__header` | |
+| 탭 | `.mari-ruleset-sheet__tabs` | 각 탭에 `data-tab-id`과 `aria-selected` |
+| 그룹 제목 | `.mari-ruleset-sheet__heading` | |
+| 시트 상단 필드 | `.mari-ruleset-sheet__field`(`.mari-ruleset-sheet__fields` 안) | `data-field`, 계산된 값은 `data-derived` |
+| 능력치 | `.mari-ruleset-sheet__ability`(`.mari-ruleset-sheet__abilities` 안); 점수와 판정값은 `__ability-score`, `__ability-value` | `data-ability`; 그룹에는 `data-section` |
+| 체력 같은 풀 | `.mari-ruleset-sheet__pool`(`.mari-ruleset-sheet__pools` 안) | `data-pool`; 풀 그룹에는 `data-pool-group` |
+| 트랙 | `.mari-ruleset-sheet__track`(`.mari-ruleset-sheet__tracks` 안) | `data-track`; 부상 트랙에는 `data-wound="true"`도 있음 |
+| 상태 | `.mari-ruleset-sheet__conditions` | |
+| 훈련한 기술이나 내성 | `.mari-ruleset-sheet__rank`(`.mari-ruleset-sheet__trained` 안, 그룹별 `.mari-ruleset-sheet__rank-group`); 등급 또는 `data-rank-display="value"`일 때 판정값은 `__rank-value`, 휴대폰의 옆 판정값은 `__rank-check`, 연습은 `__practice` | `data-skill` 또는 `data-save`, `data-tier`(단계 ID), `data-rank`(`0` 미훈련, `1` 다음 단계 등) |
+| 편집 중 기술이나 내성 | `.mari-ruleset-sheet-editor__rank` | `data-skill` 또는 `data-save`, `data-tier`, `data-rank` |
+| 장비 같은 목록 | `.mari-ruleset-sheet__list`; 각 행은 `.mari-ruleset-sheet__list-row` | `data-list`; 체크한 행에 `data-marked="true"` |
+
+이 예시는 한 규칙 세트의 등급 2를 별 두 개로 표시합니다. 바꿀 등급마다 이런 규칙 쌍을 추가하세요. 점, 이름, 로마 숫자나 숫자로 등급을 표시할 때만 사용하세요. 판정값 표시에서는 `__rank-value`에 판정값이 들어 있으므로 이를 숨기게 됩니다.
+
+```css
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value {
+  font-size: 0;
+}
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value::after {
+  content: "★★";
+  font-size: 0.6875rem;
+}
+```
+
 ## 관련 가이드
 
 - [테마 제작 가이드](theme-author-guide.md)

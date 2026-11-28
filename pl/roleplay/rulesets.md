@@ -103,6 +103,7 @@ Opcja **Edytuj zestaw zasad** pojawia się dla zestawu utworzonego przez ciebie 
 | Kolejność wierszy | Statystyki, umiejętności, pule, tory, pola i zakładki list pojawiają się w kolejności z formularza. Przeciągnij wiersz za uchwyt, żeby go przesunąć, albo ustaw fokus na uchwycie i naciśnij klawisze strzałek w górę i w dół. |
 | **Grupa** statystyki lub umiejętności | Statystyki lub umiejętności z tej samej grupy pojawiają się pod wspólnym nagłówkiem. |
 | **Rangi umiejętności** | Rangi wybierane dla każdej umiejętności w arkuszu wraz z tym, co dodają: do sumy rzutu d20 lub 2d6, do liczby kości w puli albo do punktów w teście procentowym. |
+| **Pokazuj rangi na karcie jako** | To, co arkusz pokazuje przy każdej wyszkolonej umiejętności i rzucie obronnym: **Wartość testu (+2)**, **Nazwa rangi**, **Kropki (●●○)**, **Cyfry rzymskie (II)** lub **Numer rangi (2)**. Testy i kopia arkusza narratora nie zmieniają się. |
 | **Wskaźnik ćwiczeń** | Każda wyuczona umiejętność pokazuje postęp do następnej rangi, od 0 do 99%. Ćwiczenia w historii zwiększają go, a awans rangi zeruje. Możesz go poprawić w arkuszu. Pod **Bez wskaźnika dla:** zaznacz grupę, żeby pominąć jej umiejętności. |
 | **Liczba**, **Pasek** albo **Kropki** przy puli lub torze | Sama liczba, pasek wypełnienia obok niej albo rząd kropek wypełnionych do jej wartości, jedna kropka na punkt. Więcej niż 20 kropek wyświetla się jako pasek. |
 | **Listy** | Każda lista dostaje własną zakładkę o nazwie listy, chyba że wpiszesz inną nazwę zakładki. Listy z tą samą nazwą zakładki dzielą zakładkę. |

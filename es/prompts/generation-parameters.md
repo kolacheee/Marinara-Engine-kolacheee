@@ -114,9 +114,27 @@ Un valor sigue mostrándose en la casilla cuando su interruptor de envío está 
 
 ## Límite de mensajes de contexto
 
-**Limit Context Messages** (Limitar mensajes de contexto; también aparece como **Context message limit**) envía solo los últimos N mensajes en lugar de todo el chat. Está desactivado de forma predeterminada. Cuando lo activas, el conteo empieza en 50, y puedes fijar de 1 a 9999. Un número menor baja el costo y acelera las cosas, y la IA recuerda menos.
+**Limitar los mensajes de contexto** (Limitar mensajes de contexto; también aparece como **Límite de mensajes de contexto**) envía solo los últimos N mensajes en lugar de todo el chat. Está desactivado de forma predeterminada. Cuando lo activas, el conteo empieza en 50, y puedes fijar de 1 a 9999. Un número menor baja el costo y acelera las cosas, y la IA recuerda menos. Activarlo también activa **Descartar mensajes antiguos por bloques** en 10, salvo que ya fijaras un paso: quitar un mensaje por respuesta impide reutilizar el historial en caché.
 
 En un chat de Roleplay con **Advanced Memory Recall** (Recuperación avanzada de memoria) activado, este límite no se usa. Advanced Memory Recall fija cuánto historial se envía con **Maximum allowed context before compression (tokens)** (Contexto máximo permitido antes de la compresión: tokens). Para enviar menos, baja ese ajuste en **Chat Settings → Memory Recall**. Consulta [Advanced Memory Recall](../agents/memory.md#advanced-memory-recall-roleplay-and-game-mode).
+
+<a id="drop-old-messages-in-steps"></a>
+## Quitar mensajes antiguos por pasos
+
+**Descartar mensajes antiguos por bloques** está desactivado por defecto. Al activarlo, los mensajes antiguos salen en grupos de ese tamaño en vez de uno por respuesta. Empieza en 10, rango 2–100.
+
+Sin ello, un chat largo quita el mensaje más antiguo con cada respuesta al llegar al límite. El inicio cambia cada turno y la caché no puede reutilizarlo. Con paso 10, el inicio permanece unas diez nuevas entradas y luego salen diez juntas. La mayoría reutiliza caché; aproximadamente una de diez la reescribe.
+
+Se aplica donde se recortan mensajes:
+
+- **Limitar los mensajes de contexto**.
+- El tamaño de contexto de la conexión si el prompt no cabe.
+- **Máximo de mensajes** de Chat History del preset.
+- Mensajes resumidos con **Hide summarised messages**. Aquí el paso es el resumen: salen de Chat History solo al guardar uno nuevo, cuando Past Events ya cambia, y el inicio queda fijo entre resúmenes.
+
+El costo: justo tras un paso la IA ve hasta esa cantidad menos de mensajes antiguos de los que cabrían. Advanced Memory Recall dimensiona por escenas y oculta este ajuste.
+
+Si los resúmenes automáticos ocultan mensajes resumidos, mantén **Limitar los mensajes de contexto** al menos en los mensajes conservados tras resumir, más dos veces **Cada** (cuenta tus mensajes, aproximadamente el doble en total), más el paso. Con 10, 5 y 10 resulta 30. Un límite menor quita mensajes entre resúmenes y reescribe la caché cada vez. Advanced Parameters muestra el número si el límite es inferior.
 
 ## Exclude Past Reasoning
 

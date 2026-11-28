@@ -114,9 +114,27 @@ Ustawienie **Service Tier** (poziom usługi) pojawia się tylko wtedy, gdy konto
 
 ## Limit wiadomości w kontekście
 
-Ustawienie **Limit Context Messages** (limit wiadomości w kontekście; podpisane też jako **Context message limit**) wysyła tylko ostatnie N wiadomości zamiast całego czatu. Domyślnie jest wyłączone. Po włączeniu licznik startuje od 50, a ustawić można wartość od 1 do 9999. Mniejsza liczba obniża koszt i przyspiesza działanie, a AI pamięta mniej.
+Ustawienie **Ogranicz wiadomości w kontekście** (limit wiadomości w kontekście; podpisane też jako **Limit wiadomości w kontekście**) wysyła tylko ostatnie N wiadomości zamiast całego czatu. Domyślnie jest wyłączone. Po włączeniu licznik startuje od 50, a ustawić można wartość od 1 do 9999. Mniejsza liczba obniża koszt i przyspiesza działanie, a AI pamięta mniej. Włączenie uruchamia też **Usuwaj stare wiadomości partiami** z wartością 10, chyba że krok już ustawiono: usuwanie jednej wiadomości na odpowiedź uniemożliwia ponowne użycie historii w pamięci podręcznej.
 
 W czacie w trybie Roleplay z włączoną funkcją **Advanced Memory Recall** (zaawansowane przywoływanie pamięci) ten limit nie jest używany. Advanced Memory Recall ustala, ile historii jest wysyłane, za pomocą ustawienia **Maximum allowed context before compression (tokens)** (maksymalny kontekst przed kompresją). Aby wysyłać mniej, zmniejsz to ustawienie w **Chat Settings → Memory Recall**. Zobacz [Advanced Memory Recall](../agents/memory.md#advanced-memory-recall-roleplay-and-game-mode).
+
+<a id="drop-old-messages-in-steps"></a>
+## Usuwanie starych wiadomości krokami
+
+**Usuwaj stare wiadomości partiami** jest domyślnie wyłączone. Po włączeniu stare wiadomości opuszczają prompt po tyle naraz zamiast pojedynczo. Początkowo 10, zakres 2–100.
+
+Bez tego po osiągnięciu limitu długi czat usuwa najstarszą wiadomość przy każdej odpowiedzi. Początek zmienia się co turę i nie da się go ponownie użyć z pamięci podręcznej. Krok 10 utrzymuje początek przez około dziesięć nowych wiadomości, potem usuwa dziesięć naraz. Większość odpowiedzi używa pamięci ponownie, około co dziesiąta ją zapisuje.
+
+Dotyczy wszystkich miejsc przycinania:
+
+- **Ogranicz wiadomości w kontekście**.
+- Rozmiaru kontekstu połączenia przy zbyt długim prompcie.
+- **Maks. wiadomości** w Chat History presetu.
+- Podsumowanych wiadomości przy **Hide summarised messages**. Krokiem jest wtedy podsumowanie: opuszczają historię tylko po zapisie nowego, gdy i tak zmienia się Past Events; pomiędzy początek jest stały.
+
+Koszt: tuż po kroku AI widzi do tylu mniej starych wiadomości, niż zmieściłoby się. Advanced Memory Recall dobiera historię scenami i ukrywa to ustawienie.
+
+Przy automatycznych podsumowaniach ukrywających wiadomości ustaw **Ogranicz wiadomości w kontekście** co najmniej na zachowane wiadomości + dwa razy **CO** (liczy twoje, więc łącznie około dwa razy więcej) + krok. Dla 10, 5, 10 to 30. Niższy limit usuwa wiadomości między podsumowaniami i za każdym razem przepisuje pamięć. Advanced Parameters pokazuje liczbę przy zbyt małym limicie.
 
 ## Exclude Past Reasoning
 

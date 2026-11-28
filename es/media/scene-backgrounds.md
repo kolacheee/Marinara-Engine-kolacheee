@@ -1,6 +1,6 @@
 # Fondos creados por Illustrator
 
-El agente **Illustrator** puede dibujar fondos para tu historia: uno cuando se lo pidas, uno cada vez que la historia llegue a un lugar nuevo y versiones con lluvia, nieve o niebla de un fondo cuando cambie el clima. Esta guía explica las tres opciones y cómo Illustrator reutiliza las imágenes que ya tienes en lugar de dibujar otras nuevas.
+El agente **Illustrator** puede pintar fondos para tu historia: cuando se lo pides, al llegar a un lugar nuevo, versiones de lluvia, nieve o niebla cuando cambia el clima, y de amanecer, día, atardecer o noche cuando cambia la hora. Esta guía cubre todo eso y cómo reutiliza imágenes que ya tienes en lugar de pintar otras.
 
 Para las imágenes que subes y eliges a mano, consulta [Biblioteca de fondos](../appearance/chat-backgrounds.md). Para saber cómo elige un chat qué imagen mostrar (el agente Background, los lugares fijados y las imágenes de la galería), consulta [Fondos que siguen la historia](../roleplay/backgrounds.md).
 
@@ -81,19 +81,43 @@ Mientras el chat muestra una versión según el clima, **Chat Settings → Agent
 
 Si no funcionó: comprueba que World State del chat muestre un **Weather** (Clima), o que la comprobación del clima de abajo esté activada, y que **Illustrator** esté agregado al chat con un modelo de imagen.
 
+## Versiones de fondos según la hora del día
+
+Con esta opción, el fondo sigue el reloj de la historia. Cuando cae la noche en la posada, Illustrator repinta su fondo de noche: cielo oscuro fuera y lámparas y velas encendidas. El lugar, la distribución y la cámara siguen iguales; solo cambia la luz.
+
+1. Abre **Ajustes del chat → Agentes → Illustrator**.
+2. Activa **Versiones de fondos por hora del día**.
+
+Como las versiones de clima, necesita un modelo que pueda partir de una imagen.
+
+Qué sucede:
+
+- Hay cuatro horas: **Amanecer**, **De día**, **Atardecer** y **Noche**. La hora de World State decide: tiene prioridad un reloj (`7:40 PM`, `21:15`); si no, palabras como «anochecer», «medianoche» o «temprano por la mañana». Antes de las 5 y desde las 20 es noche; de 5 a 7, amanecer; de 7 a 17, día; y de 17 a 20, atardecer.
+- Se considera que la imagen muestra la hora a la que se pintó. Illustrator recuerda ese dato para sus imágenes. Para otras, cuenta una palabra de hora en el nombre o una etiqueta (`tavern-night.png`, `#sunset`); el resto se considera de día. Así, una imagen diurna recibe una versión nocturna y una pintada de noche recibe una diurna, nunca otra nocturna.
+- Cada combinación de imagen y hora se pinta **una vez** y se vuelve a mostrar gratis. Las versiones se guardan junto al original como `name--tod-night.png` (también `--tod-dawn`, `--tod-day` y `--tod-sunset`).
+- Si también activas las versiones de clima, una imagen cubre ambas cosas: lluvia de noche es `name--wx-rain--tod-night.png`, pintada una vez desde la imagen simple. Si solo cambia el clima, se mantiene la hora, y viceversa.
+- La hora se comprueba después de cada respuesta, no solo en el intervalo de Illustrator, por lo que la imagen nocturna aparece en cuanto el reloj de World State llega a la noche. Esto solo ocurre con la hora: un lugar nuevo sigue esperando al turno de Illustrator o a la comprobación de lugar nuevo de abajo.
+- El tinte del cielo, el sol, la luna y las estrellas superpuestos pierden protagonismo sobre estas versiones, porque la imagen ya tiene su cielo.
+- Sin hora de World State, una comprobación del modelo de decisión puede detectarla (abajo).
+
+Mientras se muestra una versión de hora del día, aparece la misma fila que para el clima, como **Esta imagen de Noche**, con **Volver a crear imagen**.
+
+En la biblioteca de fondos, las versiones están bajo su imagen simple: la tarjeta indica cuántas hay y, al abrirla, aparecen en **Versiones de clima y hora del día**.
+
 ## Comprobar cada respuesta con un modelo de decisión
 
 Illustrator normalmente solo revisa la escena según su intervalo de ejecución, así que un lugar nuevo puede esperar varias respuestas hasta recibir su fondo. Un [modelo de decisión](../connections/decision-models.md), un modelo pequeño que responde sí o no, puede comprobar cada respuesta en su lugar.
 
-Antes de empezar: elige un modelo de decisión en el cuadro **Defaults** de la página Connections y activa **Generate Scene Backgrounds**, **Weather Versions of Backgrounds** o ambas opciones.
+Antes de empezar: elige un modelo de decisión en **Valores predeterminados** de la página Connections y activa **Generar fondos de escena**, **Versiones de fondos según el clima**, **Versiones de fondos por hora del día** o cualquier combinación.
 
 1. Abre **Chat Settings → Agents → Illustrator**.
-2. En **Decision Model Checks** (Comprobaciones con un modelo de decisión), elige **The scene moved to a new place** (La escena se trasladó a un lugar nuevo), **The weather changed** (El clima cambió) o **New place and weather changes** (Lugar nuevo y cambios de clima). De forma predeterminada está en **Off** (Desactivado).
+2. En **Comprobaciones del modelo de decisión**, elige una comprobación, como **La escena pasó a un lugar nuevo**, **Cambió el clima** o **Cambió la hora del día**, o todas las activadas, como **Nuevo lugar, cambios de clima y hora**. Solo aparecen comprobaciones de ajustes activados. De forma predeterminada está en **Desactivado**.
 
 Después de cada respuesta:
 
 - La comprobación de lugar nuevo pregunta si el mensaje más reciente traslada la escena a un lugar nuevo. Un sí hace que el lugar reciba un fondo, reutilizando uno que ya tengas cuando sea posible. El modelo de prompts solo escribe un fondo nuevo después de un sí.
 - La comprobación del clima pregunta si el clima cambia en el mensaje más reciente. Un sí muestra o dibuja la versión del fondo actual según el clima. Si World State no indica un clima, el modelo de decisión también elige el tipo de clima.
+- La comprobación de hora pregunta si cambia la hora del día en el último mensaje. Un sí muestra o pinta la versión correspondiente del fondo actual. Sin hora de World State, el modelo de decisión también elige amanecer, día, atardecer o noche.
 - Las comprobaciones solo agregan oportunidades para actuar. La ejecución propia de Illustrator y los cambios de ubicación de World State siguen contando.
 - Si no hay respuesta (por falta de modelo, tiempo de espera agotado o un error), se omite la comprobación.
 

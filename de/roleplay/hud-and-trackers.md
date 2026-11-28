@@ -130,7 +130,9 @@ Agenten aktualisieren die Werte deiner eigenen Felder. Ein Feld, das du angelegt
 
 ### Ein neues Porträt erstellen
 
-Sobald der Character Tracker eine Bildverbindung hat, kann die große Karte eines Charakters ein neues Porträt erstellen. Bei einer kompakten Karte klickst du auf **Feature character card** (Charakterkarte hervorheben), um die große zu öffnen. Das Trackers-Fenster zeigt immer große Karten. Fahr mit der Maus über das Porträt und klick auf die Schaltfläche mit dem Auge, um eines aus **Look** zu erstellen, oder auf die Schaltfläche mit dem Hemd für **Look** und **Outfit**. Die Schaltfläche mit dem Hemd erscheint nur, wenn der Charakter ein Outfit hat. Das alte Porträt bleibt, bis das neue fertig ist. Schlägt das Erstellen fehl, behältst du das alte. Charaktere, die mit dem Avatar ihrer Karte oder einem Ausdrucks-Sprite angezeigt werden, haben diese Schaltflächen nicht.
+Die große Charakterkarte kann ein neues Porträt erstellen, sobald Character Tracker eine Bildverbindung hat. Auf kompakten Karten öffnet **Charakterkarte hervorheben** die große Karte; das Trackers-Fenster zeigt immer große Karten. Fahre über das Porträt: Der Augenbutton nutzt **Aussehen**, der Hemdbutton **Aussehen** und **Outfit**. Das Hemd erscheint nur bei vorhandenem Outfit. Unten rechts kannst du auch ein Bild hochladen. Bei Charakterkarten speichert das ein szenenspezifisches Porträt, ohne den Kartenavatar zu ersetzen. **Kartenporträt wiederherstellen** oben rechts wechselt zurück. Bis das neue Bild fertig ist, bleibt das alte; bei Fehlern ebenfalls. Bei angezeigten Ausdrucks-Sprites sind die Buttons verborgen, bis **Expression Sprites für Tracker-Porträts verwenden** aus ist oder kein passender Sprite existiert.
+
+Aktiviere **Porträt-Prompts mit KI umschreiben** in den Einstellungen des Character-Tracker-Agenten, damit das Illustrator-Modell **Aussehen**, **Stimmung** und das Oberkörper-**Outfit** zu einem Porträt-Prompt verbindet. Im bearbeitbaren Prompt-Feld kannst du die Anweisungen anpassen.
 
 ### Einstellungen des Tracker Panels
 

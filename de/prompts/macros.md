@@ -118,6 +118,10 @@ Der Wert von `{{lastGenerationType}}` ist eine schlichte Bezeichnung. In der App
 
 Das Makro `{{agent::TYPE}}` fügt die gespeicherte Ausgabe eines Agenten ein, also eines Helfers im Hintergrund, der etwa einen Szenen-Tracker füllt. Am einfachsten fügst du es im **Preset Editor** hinzu: Klick auf **Add Section** (Abschnitt hinzufügen), öffne die Gruppe **Agent Sections** und wähl einen Agenten aus. Marinara legt einen Abschnitt an, der bereits das passende `{{agent::TYPE}}`-Tag enthält. Dieses Makro wird zuletzt aufgelöst, deshalb kann Agent-Text keine weiteren Makros in deinen Prompt einschleusen.
 
+In der **Prompt-Vorlage** eines Agenten fügt `{{agent::TYPE}}` den gespeicherten Zustand eines im Chat aktiven Trackers ein: `world-state`, `character-tracker`, `persona-stats`, `quest`, `custom-tracker`, `inventory-tracker` oder `beholder`. Es ist derselbe Text wie im Preset-Abschnitt des Trackers, nur ohne den Hinweis, den Zustand nicht erneut zu beschreiben, wenn das Preset Markdown nutzt. Bei einer normalen Antwort sieht der Agent den Zustand davor. Führst du einen Post-Processing-Agenten erneut für eine Nachricht aus, sieht er deren gespeicherten Zustand.
+
+Der eigene Typ eines Agenten fügt seine letzte Ausgabe nur ein, wenn **Vorherige Ausgabe** unter **Kontextquellen** an ist. Andere Agententypen fügen in Agenten-Prompts nichts ein, und Agenten mit dem Ergebnistyp **Charakteraktivität** lesen keinen Tracker-Zustand. Der eigene Typ in einer Entscheidungsanweisung wird nicht unterstützt: Entscheidungen werden einmal für alle Agenten geplant, sodass diese Anweisung unbeantwortet bleiben und als Nein gelten kann.
+
 ## Lorebook-Outlet-Makros
 
 `{{outlet::name}}` fügt Inhalte aus den Lorebook-Einträgen ein, deren **Position** auf **Outlet** steht und deren **Outlet name** exakt `name` entspricht. Bei Outlet-Namen zählt die Groß- und Kleinschreibung: `{{outlet::character_rules}}` passt zum Beispiel nicht auf ein Outlet namens `Character_Rules`.

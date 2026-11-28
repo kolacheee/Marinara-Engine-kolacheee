@@ -122,6 +122,7 @@ Um **Prompt Block** é um texto que você escreve: instruções de sistema, regr
 | **Character Info** | Os detalhes do card de personagem ativo. |
 | **Persona** | Os detalhes da sua persona ativa. |
 | **Chat History** | As mensagens do chat. |
+| **Histórico recente** | Mensagens recentes de **Histórico do chat**. Veja [Dividir o histórico com Recent History](#split-the-history-with-recent-history). |
 | **Chat Summary** | O resumo compilado do chat. |
 | **Dialogue Examples** | Os diálogos de exemplo do personagem. |
 | **Lorebook Marker (All)** | Todas as entradas de lorebook ativas. |
@@ -164,7 +165,7 @@ Um grupo envolve várias seções em um só contêiner.
 2. Clique no nome do grupo para renomeá-lo.
 3. Expanda uma seção e escolha o grupo no menu suspenso **Group** dela.
 
-Com **XML**, um grupo vira uma marcação pai. Com **MARKDOWN**, ele vira um título. Excluir um grupo não exclui as seções dele. Elas só deixam de ter grupo.
+Com **XML**, um grupo vira uma marcação pai. Com **Markdown**, ele vira um título. Excluir um grupo não exclui as seções dele. Elas só deixam de ter grupo. Seções não contíguas do mesmo grupo recebem cada uma sua tag ou título.
 
 ### Posição e profundidade
 
@@ -209,6 +210,25 @@ Os chats de Game acrescentam mais controles. **Estilo da história**, **Violênc
 O cache de prompts permite que um serviço reutilize o início de um prompt que já leu, para que chats longos custem menos e respondam mais rápido. O serviço reutiliza o prompt só até o primeiro texto que mudou desde a última mensagem. As lembranças recuperadas mudam a quase toda mensagem, então, antes do histórico do chat, elas deixam o histórico inteiro fora do cache.
 
 Para posicioná-las você mesmo, adicione um marcador **Recuperação de memórias** ao preset. Arraste-o para baixo de **Histórico do chat** ou defina a **Posição** dele como **Profundidade (a partir do fim do chat)** para colocá-lo dentro do histórico. As lembranças lidas antes da história mantêm as respostas mais próximas delas, por isso a posição padrão continua sendo antes do histórico.
+
+<a id="split-the-history-with-recent-history"></a>
+## Dividir o histórico com Recent History
+
+**Histórico recente** envia as mensagens novas na sua posição e **Histórico do chat** as antigas. Seções entre eles ficam entre as duas partes. Use para detalhes que mudam, como lugar ou presentes. Detalhes fixos ficam acima de **Histórico do chat**.
+
+1. Em **Seções**, clique **Adicionar seção**, depois **Histórico recente**. Fica logo após **Histórico do chat**.
+2. Expanda e ajuste **Mensagens recentes** (padrão 4).
+3. Arraste seções variáveis, como **Lorebook Marker** ou agentes, para o meio.
+4. Clique **Salvar**.
+
+O modelo lê detalhes perto das mensagens novas e os lembra melhor. As antigas ficam iguais e o cache reutiliza. Com Claude e cache, o ponto fica no fim das antigas.
+
+- **Máximo de mensagens** de **Histórico do chat** conta as duas partes. Vazio envia tudo.
+- Com menos que **Mensagens recentes**, todas vão a **Histórico recente**.
+- **Profundidade (a partir do fim do chat)** conta só mensagens. Acima de **Mensagens recentes**, cai na parte antiga e impede sua reutilização.
+- Sem **Histórico do chat**, envia tudo. **Histórico recente** acima dele ou uma segunda cópia não envia nada. A linha avisa em cada caso.
+- Com **XML**, antigas em `<chat_history>`, novas em `<recent_history>`, última em `<last_message>`.
+- Versões antigas não conhecem **Histórico recente** e podem recusar o preset na importação.
 
 ## Blocos de decisão e cache de prompts
 

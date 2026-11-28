@@ -341,7 +341,7 @@ Marinara 通常会在同一回合、同一 Decision 模型下复用成功的答�
 
 经常变化的判定块放在提示词靠后的位置，例如历史之后的指令或较浅深度的作者注。只有答案很少变化时，才把判定留在靠前的位置。预设变量选项也一样，因为它们的文字会出现在 `{{name}}` 所在的位置。
 
-直连 Anthropic 的账号开启 **Enable prompt caching**(启用提示词缓存) 时，Marinara 会标记系统提示词的末尾，以及从最新消息往前数第 **Cache depth**(缓存深度) 条的那条聊天消息（默认 5）。历史之前的改动可能让系统边界和之后的历史失效。标记的历史边界之后的改动，可以保留已缓存的部分。最小缓存长度因模型而异。见服务商最新的 [Anthropic 提示词缓存指南](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)或 [OpenAI 提示词缓存指南](https://developers.openai.com/api/docs/guides/prompt-caching)。
+直连 Anthropic 的账号开启 **启用提示词缓存**(启用提示词缓存) 时，Marinara 会标记系统提示词的末尾，以及从最新消息往前数第 **缓存深度**(缓存深度) 条的那条聊天消息（默认 5）。历史之前的改动可能让系统边界和之后的历史失效。标记的历史边界之后的改动，可以保留已缓存的部分。聊天有摘要时，还会在 **Past Events** 前加上第三个标记：保存新摘要的那一回合会重新发送 Past Events 和历史，而前面的系统提示词仍从缓存读取。OpenRouter 的 Claude 模型也使用相同标记。最小缓存长度因模型而异。见服务商最新的 [Anthropic 提示词缓存指南](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)或 [OpenAI 提示词缓存指南](https://developers.openai.com/api/docs/guides/prompt-caching)。
 
 <a id="when-a-decision-branch-never-appears"></a>
 

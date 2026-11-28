@@ -346,12 +346,15 @@ AIゲームマスター(GM)の画面です。chatフォルダーの外、`compon
 | `GifPicker`        | Giphy APIを使ったGIF検索                                          |
 | `HelpTooltip`      | ホバーするとポータルで位置決めしたツールチップを表示するアイコン                     |
 | `LibraryToolbar` | すべてのライブラリーパネルで共通のツールバー(下記参照) |
+| `EditorHeader` | すべての全画面エディター共通のヘッダー（後述） |
 
 UIコンポーネントはすべて制御コンポーネント(valueとonChange)として作り、オーバーレイはポータルで描画します。
 
 **ライブラリーパネルは`LibraryToolbar`を使います。** Characters、Personas、Lorebooks、Agents、Presetsパネルの各タブは、上部の操作をこのコンポーネントで描画します。任意のライブラリー行(全幅ボタン1つ、またはDownload / Open Libraryの組み合わせ)、作成 / インポート / エクスポート / 選択、共通の並べ替えメニュー付き検索、New Folder、そして`children`としてパネルのフィルターを渡します。行はスロットではなく型付きのpropsなので、新しいライブラリーパネルも、別々に変更されていくコピーではなく同じマークアップを使えます。パネル内でツールバーを手作りする代わりに、ここにpropを追加してください。
 
 `LibraryToolbar.tsx`は、`|`で区切った1本の長い`.mari-chrome-segmented`ボタンである`SegmentedButtons`もエクスポートします。ダウンロード / ライブラリーを開くの組み合わせと、Presetsパネルの**Prompts**(プロンプト) / **Regexes**(正規表現) / **Tools**(ツール) / **Profiles**(プロファイル)タブを描画するため、すべてのパネルの最上段が同じ高さになります。`groupLabel`を渡すと、その行はタブの`role="group"`となり、`pressed`が各タブの`aria-pressed`を設定します。`.mari-chrome-segmented`には`flex-shrink: 0`が指定されているため、Charactersのようにパネル独自の高さ固定のflexスクロール領域があっても、この行は押し縮められません。
+
+**全画面エディターは`EditorHeader`を使います。** 戻る、アイコンタイル、名前、任意のセクションタブ、操作、閉じるを2種類のレイアウトで描画します。`nav`（セクションタブ）があると`mari-editor-header--with-nav`の密度規則がタブ基準で寸法を決めます。ない場合、スマートフォンでは操作が別行になりSaveはアイコンだけになります。名前、タイル内容、ボタンはスロットなので各エディター固有の名前欄と操作を保てます。ボタンは`EditorSaveButton`と`EditorHeaderAction`で作り、ラベルをツールチップ兼アクセシブル名にします。独自ヘッダーを組む代わりに、ここへスロットやパーツを追加してください。
 
 ## APIクライアント(`lib/api-client.ts`)
 
@@ -649,17 +652,24 @@ Personal Extensionsは、サーバーに保存され、ハッシュの完全一�
 | `haptic`                 | post_processing | ハプティックデバイスへコマンドを送る                                |
 | `cyoa`                   | post_processing | 選択肢のプロンプトを生成する                                    |
 | `storyboard` | post_processing | 静止画またはアニメーションのGame・Roleplayストーリーボードを計画します |
+| `2d-avatars` | feature | スプライトまたはメッシュの2Dアバターをアニメーション表示 |
+| `3d-avatars` | feature | VRM、MMD PMX、GLB、FBXの3Dアバターをアニメーション表示 |
 | `conversation-calls`     | feature         | Conversationに音声/動画通話と関連設定を追加する          |
 | `hierarchical-maps`      | feature         | RoleplayとGame Modeにマップ、空間的なコンテキスト、移動を追加する             |
 | `noodle` | feature | ローカルのNoodleのソーシャルフィードをHomeに追加します |
+| `otome-forge` | feature | キャラクターから作る乙女ゲームOtome HearthをHomeに追加 |
+| `saucelings` | feature | キャラクターが育てるバーチャルペットSaucelingsをHomeに追加 |
 | `slurp2` | feature | キャラクター向けの非公開のクリエイターアプリSlurpをHomeに追加します |
+| `story-writer` | feature | 本を共同執筆する作業場Story WriterをHomeに追加 |
 | `gacha-forge` | feature | ガチャのゲームモードをHomeに追加します |
+| `blackjack` | feature | ConversationのBlackjackテーブルを追加 |
 | `uno`                    | feature         | ConversationにUNOのテーブルを追加する                               |
 | `chess`                  | feature         | ConversationにChessの盤面を追加する                              |
 | `poker`                  | feature         | ConversationにTexas Hold'emのテーブルを追加する                         |
 | `eightball`              | feature         | Conversationに8-Ball Poolのテーブルを追加する                       |
 | `tic-tac-toe`            | feature         | ConversationにTic-Tac-Toeの盤面を追加する                        |
 | `rock-paper-scissors`    | feature         | ConversationにRock-Paper-Scissorsの対戦を追加する                     |
+| `wordle` | feature | Conversationの毎日のWordleレースを追加 |
 
 ### エージェントの結果の種別
 

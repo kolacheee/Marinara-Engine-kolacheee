@@ -12,10 +12,10 @@ Nada de esto requiere generación de imágenes. Sin un modelo de imágenes, elig
 | Que la imagen cambie con la escena | El agente **Background** | [Dejar que el agente Background elija](#let-the-background-agent-pick) |
 | Que un lugar siempre se vea igual | Un lugar fijado | [Fijar un fondo a un lugar](#pin-a-background-to-a-place) |
 | La habitación de un personaje en todos sus chats | Un fondo de galería | [Fondos que acompañan a un personaje](#backgrounds-that-follow-a-character) |
-| Imágenes nuevas para lugares y climas nuevos | El agente **Illustrator** (Ilustrador) | [Fondos creados por Illustrator](../media/scene-backgrounds.md) |
+| Imágenes nuevas para lugares, climas y horas del día nuevos | El agente **Illustrator** | [Fondos creados por Illustrator](../media/scene-backgrounds.md) |
 | Subir, etiquetar y ordenar tus imágenes, o desenfocarlas | La biblioteca de fondos | [Biblioteca de fondos](../appearance/chat-backgrounds.md) |
 
-Cuando la historia llega a un lugar, Marinara decide en este orden: un fondo fijado para ese lugar en este chat, luego un fondo de galería que mencione el lugar y después la elección del agente Background. Illustrator crea una imagen nueva solo cuando ninguna de estas opciones encaja. Sea cual sea la imagen elegida, se muestra su versión para el clima de la historia si existe.
+Cuando la historia llega a un lugar, Marinara decide en este orden: un fondo fijado a ese lugar en este chat, un fondo de galería que nombre el lugar y la elección del agente Background. Los lugares fijados y de galería solo cambian la imagen por sí solos cuando Marinara sabe dónde está la historia, por la ubicación de **World State** o por **World Maps**. Sin ninguno, el agente Background sigue viendo los fondos de galería por sus lugares. Illustrator solo pinta una imagen nueva si ninguna encaja. Sea cual sea la elegida, se muestra su versión de clima u hora del día cuando la biblioteca tiene una para el clima y la hora de la historia.
 
 ## Fijar un fondo para un solo chat
 
@@ -23,6 +23,16 @@ Cuando la historia llega a un lugar, Marinara decide en este orden: un fondo fij
 2. En **Chat Background**, haz clic en **Browse library** (Explorar la biblioteca) y elige una imagen.
 
 Solo cambia ese chat. Para volver al fondo predeterminado, haz clic en **Remove** (Quitar) junto a **Chat Background**. También puedes elegir uno desde **Chat Settings → Background** (Ajustes del chat → Fondo) en el chat. ¿Todavía no tienes imágenes? Consulta [Importar un fondo](../appearance/chat-backgrounds.md#import-a-background).
+
+## Crear tú mismo una versión de clima u hora del día
+
+Tu imagen muestra el dormitorio de día, pero la historia empieza allí de noche y con lluvia. No tienes que esperar a Illustrator:
+
+1. Abre el chat y luego **Ajustes del chat → Fondo**.
+2. En **Crear una versión de este fondo**, elige **Clima** y **Hora del día**. **Tal como se pintó** conserva esa parte tal como aparece en la imagen.
+3. Haz clic en **Crear versión**.
+
+La conexión de imágenes de Illustrator repinta la imagen desde la original, también si es de galería, y el chat muestra la nueva versión. Se guarda en tu biblioteca de fondos para reutilizarla después sin volver a generarla. Si ya existe, se muestra de inmediato. La conexión de imágenes debe poder partir de una imagen.
 
 ## Dejar que el agente Background elija
 
@@ -32,9 +42,17 @@ El agente **Background** se ejecuta después de cada respuesta. Lee la escena y 
 2. Abre **Agents** (Agentes) y activa **Enable Agents**.
 3. Añade el agente **Background**.
 
-Ahora el fondo cambia por sí solo a medida que la historia se mueve entre lugares. El agente ve todas las imágenes de tu biblioteca, incluidas las que están en carpetas, y usa sus nombres y etiquetas para elegir, así que los nombres claros y las etiquetas de lugares ayudan.
+Ahora el fondo cambia solo a medida que la historia se mueve entre lugares. El agente lee texto, no imágenes, así que elige según cómo se llama cada una:
 
-Si no funcionó: con solo uno o dos fondos, el agente sigue eligiendo esos. Añade más a tu biblioteca.
+- **Imágenes de biblioteca**, por su nombre de archivo y etiquetas, incluidas las de carpetas.
+- **Fondos de galería** de los personajes y la persona del chat, por los lugares con los que están etiquetados (como `dorm kitchen`) y su descripción.
+- **Lugares fijados** en este chat, por los nombres de las imágenes que fijan.
+
+Se omiten las imágenes cuyo nombre solo tiene letras y números aleatorios (como `70c60b32-6b8c-….jpg`) y no tienen etiquetas, porque nada indica qué lugar muestran. Añade una etiqueta de lugar o un nombre claro para que puedan elegirse. Si nada de lo listado muestra el lugar de la escena, el agente conserva la imagen actual en lugar de adivinar.
+
+**Ajustes del chat → Fondo** explica debajo de la vista previa por qué se eligió la imagen actual. La línea desaparece si eliges una tú.
+
+Si no funcionó: con solo uno o dos fondos, el agente sigue eligiendo esos. Añade más a tu biblioteca. Si tarda, revisa su conexión: espera a otros agentes, como Lorebook Keeper, cuando esa conexión solo procesa una solicitud a la vez.
 
 ## Fijar un fondo a un lugar
 
@@ -61,7 +79,7 @@ Los fondos fijados necesitan saber dónde está la historia, así que usan la ub
 ### Qué cambia al fijar un fondo
 
 - La imagen se muestra una vez al llegar. Si eliges otro fondo a mano mientras estás allí, el tuyo permanece hasta que la historia se traslada a otro lugar.
-- En un lugar fijado, el agente Background no puede cambiar la imagen e Illustrator no crea un fondo nuevo para él. Con **Weather Versions of Backgrounds** (Versiones de fondos según el clima) activado, la imagen fijada sigue recibiendo su versión de lluvia, nieve o niebla.
+- En un lugar fijado, el agente Background no puede cambiar la imagen e Illustrator no pinta un fondo nuevo. Con **Versiones de fondos según el clima** o **Versiones de fondos por hora del día** activado, la imagen fijada sigue recibiendo su versión de lluvia, nieve, niebla o noche.
 
 Si no funcionó: comprueba que **Story is at**, debajo de la lista, muestre el lugar y que uno de los nombres del fondo fijado aparezca allí palabra por palabra.
 
@@ -89,7 +107,7 @@ Los fondos de galería también reciben versiones según el clima. La versión d
 
 ## Guías relacionadas
 
-- [Fondos creados por Illustrator](../media/scene-backgrounds.md): creación de lugares nuevos, versiones según el clima y plantillas de ventanas.
+- [Fondos creados por Illustrator](../media/scene-backgrounds.md): pintar lugares nuevos, versiones de clima y hora del día, y máscaras de ventanas.
 - [Biblioteca de fondos](../appearance/chat-backgrounds.md): subidas, etiquetas, carpetas y desenfoque.
 - [Galerías de personajes y personas](../characters/galleries.md)
 - [Roleplay Mode: primeros pasos](getting-started.md)

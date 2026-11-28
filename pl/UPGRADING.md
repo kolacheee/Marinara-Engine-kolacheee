@@ -37,7 +37,7 @@ Program uruchamiający aktualizuje aplikację Marinara, gdy ją uruchamiasz.
 1. Zamknij aplikację Marinara Engine.
 2. Otwórz ją ponownie skrótem na pulpicie lub w menu Start albo uruchom `start.bat`.
 
-Program uruchamiający pobiera najnowszy kod, doinstalowuje to, co się zmieniło, przebudowuje aplikację i uruchamia nową wersję. Jeśli w kodzie są twoje własne zmiany, odkłada je na bok i po aktualizacji przywraca na miejsce. Jeśli to się nie uda, zostawia obecną wersję i wypisuje informację. Przed aktualizacją kopiuje dane, a aktualizację, która prowadziłaby do wersji starszej niż twoje dane, pomija (zobacz [Powrót do starszej wersji](#downgrading-to-an-older-version)).
+Program uruchamiający pobiera najnowszy kod, doinstalowuje to, co się zmieniło, przebudowuje aplikację i uruchamia nową wersję. Jeśli w kodzie są twoje własne zmiany, odkłada je na bok i po aktualizacji przywraca na miejsce. Jeśli to się nie uda, zostawia obecną wersję i wypisuje informację. Przed aktualizacją kopiuje dane, a aktualizację, która prowadziłaby do wersji starszej niż twoje dane, pomija (zobacz [Powrót do starszej wersji](#downgrading-to-an-older-version)). Kopia pomija automatyczne kopie zapasowe (pliki zip `marinara-automatic-backup` w folderze `backups/` wewnątrz folderu danych). Pozostałe kopie z tego folderu nadal są kopiowane.
 
 Żeby jednorazowo pominąć aktualizację, uruchom `start.bat --skip-update`. Żeby zostać na zainstalowanej wersji przy kolejnych uruchomieniach, ustaw `AUTO_UPDATE_ENABLED=false` w pliku `.env` projektu. Wyłącza to tylko automatyczne aktualizacje. Polecenia ręczne i **Ustawienia → Zaawansowane → Aktualizacje → Sprawdź aktualizacje** działają dalej.
 

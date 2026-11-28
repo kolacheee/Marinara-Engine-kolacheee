@@ -67,7 +67,7 @@ Po wyłączeniu opcji **Nowy układ** w **Ustawienia → Wygląd → Motyw** ust
 | **Potwierdzenia i pomoc** | **Potwierdzaj przed usunięciem**, **Ukryj przycisk Pomoc czatu** i **Przewodniki**. |
 | **Dodatki** | **Osiągnięcia**, **Wyłącz sezonowe motywy Marinara** i **Odtwarzacz muzyki**. |
 | **Professor Mari** | Jeden wiersz: **Ustawienia wyszukiwania i Professor Mari**. Kliknij **Otwórz**, aby przejść do wyszukiwania, szybkich odpowiedzi i asystentki Professor Mari. Zobacz [Professor Mari, twoja asystentka w aplikacji](../home/professor-mari.md). |
-| **Powiadomienia** | Miejsce wyświetlania powiadomień, ich dźwięki oraz powiadomienia w przeglądarce i na Androidzie. Zobacz [Notifications](#notifications). |
+| **Powiadomienia** | Miejsce powiadomień, dźwięki, powiadomienia przeglądarki i Androida oraz push przez ntfy. Zobacz [Powiadomienia](#notifications). |
 
 ### Język
 
@@ -103,6 +103,28 @@ Aplikacja odtwarza wbudowany sygnał powiadomień. Aby użyć własnego dźwięk
 Dźwięk odtwarza się na każdym urządzeniu połączonym z tym serwerem. Da się go odsłuchać, podmienić albo usunąć. Jeśli nie da się odczytać pliku, aplikacja odtwarza wbudowany sygnał. Plik wchodzi w skład kopii zapasowych i eksportów profilu.
 
 **Background Notifications** (powiadomienia w tle) obejmują wiadomości w trybie Conversation, które postacie wysyłają same. **Generation Completion Notifications** (powiadomienia o zakończeniu generowania) obejmują odpowiedzi, które uruchamiasz samodzielnie w trybach Conversation, Roleplay i Game Mode. Oba działają, gdy aplikacja jest otwarta, ale nieaktywna. Nigdy nie pokazują treści wiadomości. Ustawienie **Położenie powiadomień** określa, czy komunikaty błędów i inne powiadomienia pojawiają się u góry, czy u dołu.
+
+<a id="get-notifications-on-your-phone-while-marinara-is-closed"></a>
+#### Powiadomienia po zamknięciu Marinara
+
+**Powiadomienia push (ntfy)** docierają mimo zamkniętych kart i aplikacji Android. Serwer wysyła je przez darmowe ntfy z aplikacją na Androida i iPhone’a.
+
+Najpierw zainstaluj ntfy. Otwórz Marinara na serwerze lub miej sekret administratora na urządzeniu. Zobacz [Dostęp zdalny](../REMOTE_ACCESS.md).
+
+1. W **Ustawienia → General → Powiadomienia** włącz **Wysyłaj powiadomienia push**. Powstaje losowy **Temat**, prywatny kanał powiadomień.
+2. Na telefonie użyj **Otwórz w ntfy** albo **Kopiuj** i subskrybuj temat w ntfy.
+3. **Wyślij powiadomienie testowe** pokazuje „Marinara test notification”.
+
+Dwa przełączniki wybierają zdarzenia:
+
+- **Wiadomości wysyłane samodzielnie przez postacie**: spontaniczne wiadomości Conversation, pisane przez serwer także bez otwartych urządzeń.
+- **Rozpoczęte odpowiedzi niedokończone przed zamknięciem Marinara**: tylko po zamknięciu lub opuszczeniu strony przed zapisem. Przy otwartej aplikacji działają własne powiadomienia.
+
+Powiadomienie podaje autora i „Open Marinara to read it.”. **Pokaż podgląd wiadomości** wysyła zamiast tego początek, do 200 znaków. Dotknięcie otwiera czat pod **Adres do otwarcia**, początkowo adresem użytym przy włączeniu. Zmień, jeśli telefon używa innego.
+
+> **Uwaga:** Przy `ntfy.sh` tytuły i podglądy przechodzą przez publiczny serwer; znający temat mogą je czytać. Użyj **Nowy temat**, jeśli wyciekł. Aby zachować dane u siebie, uruchom ntfy i wpisz adres w **Serwer ntfy**. Działa serwer lokalny.
+
+Błąd testu ma wyjaśnienie. Najczęściej serwer Marinara nie może połączyć się z **Serwer ntfy**.
 
 ## Zakładka Czatowanie
 

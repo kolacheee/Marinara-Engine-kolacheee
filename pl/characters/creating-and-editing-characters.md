@@ -96,7 +96,7 @@ Zakładka **Card** to główne miejsce pisania. Odnośniki u góry przeskakują 
 
 **Public Face** to to, co reszta obsady mogłaby zobaczyć lub wiedzieć o postaci: wygląd, sposób bycia, rola, reputacja i relacje, które nie są tajemnicą. Pomiń sekrety, wewnętrzne myśli, prywatną historię i instrukcje odgrywania postaci. To pole nigdy nie jest wysyłane jako część karty tej postaci. Prompt czyta je tylko tam, gdzie umieścisz makro `{{publicFace}}` albo `{{personaPublicFace}}` dla swojej persony. Zobacz [Makra promptów](../prompts/macros.md#identity-character-and-persona-macros). W czacie grupowym w trybie Roleplay z opcją Individual ustawienie **Others' Public Faces** (publiczne wizerunki innych postaci) wysyła je w turach pozostałych postaci. Zobacz [Więcej ustawień trybu Individual](../chats/group-chats.md#more-individual-settings). Agent, którego źródło **Postacie** lub **Persona** jest ustawione na **Public Face**, czyta je zamiast karty. Zobacz [Inne ustawienia](../agents/custom-agents.md#other-settings). Przy włączonym **Send Public Faces** (wysyłanie publicznych wizerunków) funkcja Impersonate w trybie Roleplay czyta je zamiast karty. Zobacz [Ustawienia Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-Sekcja **Wygląd** ma dwie zakładki: **Proza** i **Tagi obrazów**. **Proza** to sam tekst opisu wyglądu. **Tagi obrazów** zawierają krótkie tagi do promptów obrazów, na przykład słowo wyzwalające LoRA (słowo kluczowe, które włącza własny styl obrazu). Wpisanie tagów zaznacza **Używaj do promptów obrazów**, a kropka na zakładce pokazuje, że są używane. Gdy to pole jest zaznaczone, a tagi wpisane, prompty obrazów używają ich dokładnie w zapisanej formie, a proza zostaje jako kontekst w tle. Odznacz je, żeby zachować tagi bez używania ich: prompty obrazów wracają wtedy do zakładki **Proza**. Z tagów wypełnia się też wstępnie prompt awatara AI. Narrator zawsze widzi tekst z zakładki **Proza**. Zakładka **Obrazy** odsyła tutaj przyciskiem **Przejdź do wyglądu**.
+Sekcja **Wygląd** ma dwie zakładki: **Proza** i **Tagi obrazów**. **Proza** to sam tekst opisu wyglądu. **Tagi obrazów** zawierają krótkie tagi do promptów obrazów, na przykład słowo wyzwalające LoRA (słowo kluczowe, które włącza własny styl obrazu). Wpisanie tagów zaznacza **Używaj do promptów obrazów**, a kropka na zakładce pokazuje, że są używane. Gdy to pole jest zaznaczone, a tagi wpisane, prompty obrazów używają ich dokładnie w zapisanej formie, a proza zostaje jako kontekst w tle. Odznacz je, żeby zachować tagi bez używania ich: prompty obrazów wracają wtedy do zakładki **Proza**. Z tagów wypełnia się też wstępnie prompt awatara AI. Narrator zawsze widzi tekst z zakładki **Proza**. Zakładka **Obrazy** odsyła tutaj przyciskiem **Przejdź do wyglądu**. Zakładka ma własną różdżkę. Zobacz [Tagi obrazów z różdżki](#image-tags-from-the-wand).
 
 Sekcja **Dialogue & Greetings** ustala, jak zaczyna się czat i jak brzmi postać:
 
@@ -114,18 +114,30 @@ Powitania i przykładowe wiadomości mogą pokazywać obrazy z galerii postaci. 
 
 ### Generowanie pola karty różdżką
 
-Nad polami **Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** i każdym **Alternate Greeting** znajduje się przycisk z samą ikoną różdżki. Jego podpowiedź podaje nazwę pola, które wypełnia.
+Nad polami **Podsumowanie**, **Opis**, **Osobowość**, **Historia postaci**, **Wygląd** (obie zakładki), **Scenariusz**, **Wizerunek publiczny**, **Przykładowy dialog**, **Pierwsza wiadomość** i każdym **Alternate Greeting** znajduje się przycisk z samą ikoną różdżki. Jego podpowiedź podaje nazwę pola, które wypełnia.
 
 Zanim zaczniesz: skonfiguruj działające połączenie tekstowe. Zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md).
 
 1. Wpisz w polu pomysły, które chcesz zachować, na przykład `smart, scientist, handsome`, albo zostaw je puste.
 2. Uzupełnij inne pola karty, które AI ma wykorzystać jako punkt odniesienia. Nie musisz najpierw zapisywać.
-3. Kliknij różdżkę danego pola. Marinara prosi o 100–300 słów dla tego pola, traktując twój tekst jako punkt wyjścia. Dla pola Example Dialogue prosi o przykładowe wymiany zdań. **First Message** i każde **Alternate Greeting** proszą o jedną wiadomość otwierającą, która zostawia ci miejsce na odpowiedź. Pole **Public Face** nie ma zakresu liczby słów: jego różdżka przepisuje resztę karty bez prywatnych informacji, więc długość zależy od twojej karty.
+3. Kliknij różdżkę danego pola. Marinara prosi o 100–300 słów dla tego pola, traktując twój tekst jako punkt wyjścia. Dla pola Example Dialogue prosi o przykładowe wymiany zdań. **Pierwsza wiadomość** i każde **Alternate Greeting** proszą o jedną wiadomość otwierającą, która zostawia ci miejsce na odpowiedź. Pole **Wizerunek publiczny** nie ma zakresu liczby słów: jego różdżka przepisuje resztę karty bez prywatnych informacji, więc długość zależy od twojej karty. W **Tagi obrazów** pola **Wygląd** różdżka zamiast tego zamienia wygląd w jeden wiersz tagów obrazów. Zobacz [Tagi obrazów z różdżki](#image-tags-from-the-wand).
 4. Popraw wynik, a potem kliknij **Save**.
 
 Różdżka używa domyślnego połączenia tekstowego agentów, a jeśli go nie ma, domyślnego połączenia tekstowego. Skonfigurowane zapasowe połączenie agentów nadal obowiązuje.
 
 Różdżka zastępuje tylko wybrane pole w niezapisanej wersji roboczej. Jeśli generowanie się nie powiedzie, twój tekst zostaje. Jeśli podczas oczekiwania edytujesz to pole albo przełączysz się na inną kartę, spóźniony wynik nie nadpisze twojej pracy. Do używania różdżki nie potrzebujesz asystentki Professor Mari.
+
+<a id="image-tags-from-the-wand"></a>
+#### Tagi obrazów z różdżki
+
+Różdżka w **Tagi obrazów** pola **Wygląd** tworzy tagi z opisu wyglądu karty, głównie **Wygląd**, i zaznacza **Używaj do promptów obrazów**.
+
+- Istniejące tagi niewyjaśnione w opisie, np. wyzwalacz LoRA, pozostają bez zmian na początku.
+- Dalej są nowe: `1girl`, `1boy` lub `1other`, potem stałe cechy ciała, włosów, oczu, skóry, twarzy i znaków szczególnych. Bez zachowanych tagów wiersz zaczyna `1girl`, `1boy` lub `1other`.
+- Nowe tagi są angielskie, małymi literami i po przecinkach, w stylu Danbooru (serwisu obrazów anime, którego tagów uczyło się wiele modeli).
+- Obejmują tylko cechy z karty, bez ubrań, mimiki, póz i miejsc, bo zmieniają się między scenami.
+
+Tagi tworzy model, nie lista prawdziwych tagów Danbooru, więc model obrazów może nie znać sformułowania. Sprawdź i popraw przed zapisem.
 
 ## Dodawanie awatara
 
@@ -188,7 +200,7 @@ Zasady:
 - Czat może używać tylko jednego wariantu danego pola. Zaznaczenie czatu w innym wariancie albo wybranie innego wariantu w Chat Settings przenosi go tam.
 - Bez zaznaczonych czatów wariant pozostaje nieaktywny na później.
 - Pusty wariant czyści to pole w swoich czatach.
-- Wariant pola **Wygląd** ma własne zakładki **Proza** i **Tagi obrazów**. W jego czatach jego tagi zastępują tagi karty. Gdy tagi wariantu są puste lub odznaczone, prompty obrazów używają prozy wariantu, nigdy tagów karty. Nowy wariant kopiuje też tagi karty.
+- Wariant pola **Wygląd** ma własne zakładki **Proza** i **Tagi obrazów**. W jego czatach jego tagi zastępują tagi karty. Gdy tagi wariantu są puste lub odznaczone, prompty obrazów używają prozy wariantu, nigdy tagów karty. Nowy wariant kopiuje też tagi karty. Zakładka **Tagi obrazów** ma własną różdżkę, czytającą prozę i tagi wariantu.
 - Nadpisania scenariusza i wyglądu do obrazów ustawione dla konkretnego czatu nadal mają pierwszeństwo.
 - Warianty pola **Summary** pozostają metadanymi i nie trafiają do AI.
 - Jeśli postać opuści czat, jej przypisanie zostaje wstrzymane i wznawia się po ponownym dodaniu postaci.

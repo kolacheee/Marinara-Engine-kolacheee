@@ -31,6 +31,28 @@ Une fois ton choix fait, le round se déroule. Les résultats apparaissent sous 
 
 Dans une partie avec un ensemble de règles, **Items** applique ce que dit l'ensemble de règles pour ses propres objets : combien ils soignent ou blessent, et quels états ils ajoutent. Un objet à charges est proposé tant qu'il lui reste une utilisation. Un objet qui demande d'abord un test fait lancer ce test, et en cas d'échec l'objet est dépensé pour rien. Un objet auquel l'ensemble de règles ne donne aucune utilisation n'est pas proposé. Les autres objets font ce que le GM a jugé au début du combat, sauf si l'ensemble de règles désactive les objets propres à Game Mode.
 
+## Narration des combats
+
+Dans un combat Turn-Based, **Journal de combat** raconte chaque coup en une courte phrase, par exemple : « Les bois de Xerneas brillent d’un éclat argenté avant qu’une décharge d’énergie frappe le flanc de Houndoom. » Les dégâts, les soins et la réussite ou l’échec viennent toujours du jeu et apparaissent en gras après la phrase. Le modèle décrit seulement l’aspect du coup.
+
+La ligne simple apparaît d’abord, puis la narration la remplace un instant plus tard. Marinara demande le round entier en une seule requête, pas une par coup. Les lignes proviennent de la première source disponible :
+
+1. Le modèle intégré, qui tourne gratuitement sur ton ordinateur. Voir [Configurer le modèle intégré](../connections/local-model.md).
+2. Le **Connexion des effets de scène** du jeu.
+3. Des lignes écrites gratuitement par Marinara.
+
+Le modèle qui fait tourner le GM ne sert jamais à la narration des combats.
+
+Pour régler la quantité de narration, ouvre **Réglages du chat**, déplie **Style de combat** et choisis une option de **Narration des combats** :
+
+| Option | Effet |
+| --- | --- |
+| **Chaque coup** | Raconte chaque coup. C’est le réglage par défaut. |
+| **Moments clés : critiques, K.-O., réactions** | Sollicite le modèle seulement pour les coups critiques, les K.-O., les réactions élémentaires et les coups super efficaces. Les autres coups utilisent les lignes de Marinara. |
+| **Désactivée : journal de combat simple** | Affiche le journal de combat simple. |
+
+Les combats Tactical n’utilisent pas la narration des combats.
+
 ## Jouer une bataille Tactical
 
 Le combat Tactical place ton équipe et les ennemis sur un champ de bataille en grille. Chaque case est une tuile, comme **Plains** (plaine) ou **Forest** (forêt).

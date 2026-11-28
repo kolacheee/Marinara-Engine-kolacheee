@@ -75,6 +75,28 @@ Ein Buch, das du gemeinsam mit dem Modell schreibst. Richte Geschichte, Besetzun
 - **Wichtige Einstellungen**: Installiere sie, starte neu, wenn du dazu aufgefordert wirst, öffne dann **Home → Story Writer** und wähle in ihrer Seitenleiste eine Textverbindung. Geschichten werden auf deinem Marinara-Server gespeichert. Du kannst neue beginnen, zu alten zurückkehren und sie als Markdown oder Klartext herunterladen.
 - **Vollständige Anleitung**: [Anleitung zum Paket Story Writer](https://github.com/Pasta-Devs/Marinara-Agents/blob/staging/packages/story-writer/README.md).
 
+<a id="otome-hearth"></a>
+### Otome Hearth
+
+Ein Otome-Einzelspielerspiel mit deinen Charakteren. Die Liebesinteressen merken sich Entscheidungen, schreiben dir, gehen auf Dates und schalten Nebenhandlungen und Outfits mit erspieltem Starlight frei, ohne Echtgeld oder Ausdauer-Timer.
+
+- **Integration**: App im eigenen Tab **Otome Hearth** unter **Startseite**.
+- **Einsatz**: Home.
+- **Verfügbarkeit**: Benötigt Engine **2.5.1+** (unter 4.0.0). Fordert Netzwerkverbindungen, Serverrouten, lokalen Speicher und eine **Startseite**-Tab-Oberfläche an.
+- **Wichtige Einstellungen**: Installieren, bei Aufforderung neu starten und **Startseite → Otome Hearth** öffnen. Charakter-Bibeln, Inhaltsgrenzen unter **Lines & Veils** und optional **Remind Me** in der App einrichten.
+- **Vollständige Anleitung**: [Otome Hearth](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/otome-forge/README.md).
+
+<a id="saucelings"></a>
+### Saucelings
+
+Ein virtuelles Haustier unter **Startseite → Saucelings** und in Home-Widgets. Wähle einen Charakter als Betreuung: Er füttert, spielt und kuschelt nach eigenem Zeitplan; du übernimmst, was er verpasst.
+
+- **Integration**: App im eigenen Tab **Saucelings** und Widgets unter **Startseite**.
+- **Einsatz**: Home.
+- **Verfügbarkeit**: Benötigt Engine **2.5.0+** (unter 4.0.0). Fordert Chat-Prompt-Kontext, Serverrouten, lokalen Speicher sowie **Startseite**-Tab- und Widget-Oberflächen an.
+- **Wichtige Einstellungen**: Installieren, bei Aufforderung neu starten, dann **Startseite → Saucelings** für **Nook**, **Tagebuch**, **Album**, **Menagerie** und **Einstellungen** öffnen.
+- **Vollständige Anleitung**: [Saucelings](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/saucelings/README.md).
+
 ## Writer-Agenten
 
 Writer-Agenten formen die Geschichte oder den Schreibstil. Sie geben vor der Antwort eine Richtung vor oder räumen die Antwort danach auf.
@@ -102,6 +124,8 @@ Beobachtet, wie sich ein Charakter im Spiel verändert, und schlägt Änderungen
 - **Phase**: Post-Processing.
 - **Einsatzbereich**: Roleplay.
 - **Wichtige Einstellungen**: Standardmäßig läuft er einmal alle 8 Nutzer- und Assistenten-Nachrichten. Siehe [Agent-Freigaben und die Agent Suite](approvals-and-agent-suite.md).
+
+- **Mit Zusammenfassungen ausführen** (Roleplay, auf der Chat-Karte von Card Evolution Auditor): Mit automatischen Zusammenfassungen läuft er bei derselben Antwort statt nach eigener Zählung. Vor deiner nächsten Nachricht genehmigte Änderungen gelten auf dem Zusammenfassungszug; später genehmigte warten im Chat bis zur nächsten Zusammenfassung, die Karte zeigt ihre Anzahl. So ändern sich Karte und Prompt gleichzeitig und das Caching bricht einmal statt zweimal. Ohne automatische Zusammenfassungen nutzt er seine Zählung und genehmigte Änderungen gelten sofort.
 
 ### Narrative Director
 
@@ -274,6 +298,8 @@ Extrahiert dauerhafte Erinnerungen aus Chat-Zusammenfassungen, Charakteraufzeich
 - **Daten**: Mit den Backup-Steuerelementen in Memory Settings exportierst oder ersetzt du Tresor, Entwürfe und Einstellungen. **Delete all data** entfernt Erinnerungen, Entwürfe, Aktivität und Indizes dauerhaft, behält aber die Einstellungen. Beim Deinstallieren bleibt der Tresor für eine spätere Neuinstallation erhalten. Installieren, Aktualisieren und Entfernen erfordern einen Neustart.
 - **Kompatibilität**: Engine `2.3.5` bis ausschließlich `4.0.0`. Berechtigungen: `agent-runtime`, `chat-read`, `chat-write`, `routes`, `storage`, `ui`.
 
+- **Gespeicherte Nachrichten aus dem Chatverlauf weglassen** (Roleplay, auf der Long-Term-Memory-Karte): Gespeicherte Nachrichten verlassen Chat History, bis auf die neuesten (Standard 10). Sie bleiben im Chat und Tresor. Das Paket muss melden, bis wohin es gespeichert hat; bei älteren Versionen bleibt der Schalter wirkungslos.
+
 ### Illustrator
 
 Erzeugt Bilder und Videos. Er schreibt visuelle Prompts für wichtige Momente und schickt sie an deinen Bild- oder Videodienst.
@@ -289,6 +315,9 @@ Legt aus wichtigen Fakten deines Chats Lorebook-Einträge an und aktualisiert si
 - **Phase**: Post-Processing.
 - **Einsatzbereich**: Roleplay. Im Game Mode erledigt eine Variante für das Sitzungsende namens **Game Session Keeper** dieselbe Aufgabe.
 - **Wichtige Einstellungen**: Läuft standardmäßig einmal alle 8 Nutzer- und Assistenten-Nachrichten. **Target Lorebook** bestimmt, wohin die Einträge gehen, auch mit einer Option zur automatischen Auswahl. Erweiterte Prompts können den Namen eines beschreibbaren Lorebooks oder einen Alias wie `world`, `npc`, `scene` oder `player` zurückgeben. Fehlende Alias-Ziele werden angelegt und mit dem Chat verknüpft. Ohne Ziel bleibt das Verhalten mit einem einzigen Lorebook bestehen.
+
+- **Gespeicherte Nachrichten aus dem Chatverlauf weglassen** (Lorebook-Keeper-Karte): Nachrichten bis zum letzten erfolgreichen Lauf verlassen Chat History, bis auf die neuesten (Standard 10). Sie bleiben im Chat; ihre Fakten kommen über das Lorebook in den Prompt. Mit **Alte Nachrichten schrittweise entfernen** werden ganze Schritte entfernt.
+- **Mit Zusammenfassungen ausführen**: Bei automatischen Zusammenfassungen läuft Keeper mit derselben Antwort statt nach eigener Zählung. Neue Einträge und ausgelassene Nachrichten ändern den Prompt im Zusammenfassungszug, sodass Caching einmal statt zweimal bricht. Ohne automatische Zusammenfassungen nutzt er seine Zählung.
 
 ### Combat
 
@@ -417,6 +446,24 @@ Bringt eine Partie Schere-Stein-Papier für zwei, bei der beide Entscheidungen b
 - **Integration**: Conversation-Spielepaket.
 - **Einsatzbereich**: Conversation.
 - **Wichtige Einstellungen**: Starte es über die Spieleauswahl oder mit `/rps` und wähle dann den Gegner sowie ein Match über drei, fünf oder sieben Partien. Installation und Entfernung erfordern einen Neustart.
+
+<a id="blackjack"></a>
+### Blackjack
+
+Ein Blackjack-Tisch gegen die Bank für Conversation-Charaktere.
+
+- **Integration**: Conversation-Spielpaket.
+- **Einsatz**: Conversation.
+- **Wichtige Einstellungen**: Starte mit `/blackjack` oder einem Charakter-Prompt. Aktiviere **Blackjack** unter **Chat-Einstellungen → Agenten → Befehle**, damit Charaktere selbst starten können. Installation braucht einen Neustart, Entfernen nicht.
+
+<a id="wordle"></a>
+### Wordle
+
+Ein tägliches Wordle-Wortrennen mit Conversation-Charakteren.
+
+- **Integration**: Conversation-Spielpaket.
+- **Einsatz**: Conversation.
+- **Wichtige Einstellungen**: Starte das heutige Spiel mit `/wordle`. Aktiviere **Wordle** unter **Chat-Einstellungen → Agenten → Befehle**, damit Charaktere selbst das Tagesspiel starten. Installation braucht einen Neustart, Entfernen nicht.
 
 ## Verwandte Anleitungen
 

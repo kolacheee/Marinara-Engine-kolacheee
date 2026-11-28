@@ -71,7 +71,9 @@
 | `/illustrate` | Только Roleplay. Генерирует изображение в галерее. Нужен агент Illustrator. Также `/ill`. Формат: `/illustrate [range=N-M] [template=name] [prompt]`. |
 | `/html` | Только Roleplay. Создает один артефакт из мира истории, например `a spellbook page`, в конце последнего ответа. Формат: `/html [what you want]`. |
 | `/video` | Только Roleplay. Создает короткий ролик по последнему ответу или по вашему описанию и показывает его под этим ответом. Следует настройке **First frame** (первый кадр) агента Illustrator. Нужен Illustrator. Формат: `/video [description]`. |
-| `/impersonate` | Пишет ответ за вашу персону. Также `/imp`. Формат: `/impersonate [direction (optional)]`. |
+| `/impersonate` | Пишет ответ от лица вашей персоны. Публикует его или пишет черновик в поле сообщения, если в настройках чата **Куда отправить результат** задано как **Черновик сообщения**. Также `/imp`. Формат: `/impersonate [direction (optional)]`. |
+| `/impersonate_draft` | Пишет ответ персоны в поле сообщения для редактирования перед отправкой. Ничего не публикует. Также `/impd`, `/imp_draft`. Формат: `/impersonate_draft [direction (optional)]`. |
+| `/impersonate_post` | Сразу пишет и публикует ответ персоны независимо от **Куда отправить результат**. Также `/impp`, `/imp_post`. Формат: `/impersonate_post [direction (optional)]`. |
 | `/impersonate_prompt` | Задает инструкцию, которую `/impersonate` использует в этом чате. Также `/imp_prompt`. Формат: `/impersonate_prompt [prompt or reset]`. |
 
 Большинство этих команд лучше всего работают в Roleplay. `/scene` запускают из чата Conversation. Команды `/impersonate` и `/impersonate_prompt` недоступны в Conversation.

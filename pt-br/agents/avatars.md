@@ -231,10 +231,12 @@ Na página **2D Avatars**, escolha um personagem ou uma persona e depois use **M
 
 **Make faces from the avatar** (criar rostos a partir do avatar) cria rostos sem fundo, inclusive para um personagem ou uma persona que ainda não tem sprites. É preciso ter um avatar e uma conta de geração de imagens. Ele abre a mesma geração de sprites dos editores de personagem e de persona, com o avatar como referência.
 
-1. Escolha **All faces** (todos os 29 sentimentos), **Main faces** (os seis) ou escolha os rostos você mesmo. Cada sentimento extra fica na linha do rosto principal dele até ter um rosto próprio.
-2. Os rostos são desenhados em lotes, primeiro os principais. Os modelos GPT Image mais antigos desenham um rosto por imagem. Uma imagem que falha é tentada mais uma vez. Se falhar de novo, a execução para com **Retry picture** (tentar a imagem novamente). **Cancel** (cancelar) mantém os rostos já criados.
+1. Escolha **Todos os rostos** (todos os 29 sentimentos), **Rostos principais** (os seis) ou escolha os rostos você mesmo. Cada sentimento extra fica na linha do rosto principal dele até ter um rosto próprio. **Rostos ausentes** escolhe os rostos ainda não salvos.
+2. Os rostos são desenhados em lotes, primeiro os principais. Os modelos GPT Image mais antigos desenham um rosto por imagem. Uma imagem que falha é tentada mais uma vez. Se falhar de novo, a execução para com **Tentar a imagem novamente** (tentar a imagem novamente). **Cancelar** (cancelar) mantém os rostos já criados. **Revisar prompt** mostra o prompt e o motivo da falha. Edite e use **Tentar a imagem novamente**; só essa imagem muda.
 3. Com **Expose media prompts before sending** (mostrar os prompts de mídia antes de enviar) ligado, você revisa todos os prompts de uma vez antes de o primeiro ser enviado. Todo rosto é desenhado com os olhos abertos e a boca fechada, para que as imagens de piscada e de fala tenham o que fechar e abrir.
 4. Marinara desenha os rostos sobre uma cor lisa, remove essa cor e os salva como sprites do personagem ou da persona. Um sprite novo substitui o que tem o mesmo nome, então renomeie-o no último passo para manter o antigo.
+
+Sob **Criar rostos a partir do avatar**, uma linha como `Faces saved: 24 of 29. Missing: Love, Relief, Confusion, Fear, Realization.` conta sprites salvos e continua certa ao voltar. Conta o nome do rosto em qualquer pasta, como `happy`, `Happy`, `happy_2`; outro nome, como `joy`, deixa happy faltando. Após interrupção, **Criar rostos ausentes** abre o criador só com faltantes. **Rostos ausentes** nunca escolhe um já salvo.
 
 Quando o avatar já está salvo, cada rosto novo vira o rosto do sentimento para o qual foi desenhado, mesmo que tenha sido renomeado. Os outros sprites continuam. Um rosto refeito começa sem imagens de piscada e de fala, porque as antigas não combinariam com ele. Crie novas em [Imagens de piscada e de fala](#blink-and-talk-pictures). Uma importação do PNGTuber Plus mantém os próprios rostos.
 
@@ -243,6 +245,8 @@ Quando o avatar já está salvo, cada rosto novo vira o rosto do sentimento para
 ### Imagens de piscada e de fala
 
 Cada rosto que o avatar mostra para um sentimento é uma linha, com as imagens **Eyes closed** (olhos fechados) e **Mouth open** (boca aberta) dele ao lado do **Face** (rosto). Elas são imagens que você salvou, sprites `_blink` e `_talk` que você adicionou ou imagens novas. Com sprites de retrato, só eles são usados, porque um avatar nunca mistura rostos de retrato e de corpo inteiro. Um rosto que não é um dos seus sprites, como um que veio de uma importação do PNGTuber Plus, mostra as imagens dele, mas não pode receber imagens novas.
+
+A linha sob o título conta todas as imagens, como `Pictures saved: 40 of 58. Still to make: 8. Waiting for a missing face: 10.` Rosto não feito não tem linha porque as imagens derivam dele; sprite apagado também as deixa esperando. Rosto próprio sob outro nome, como `scared` para fear, usa suas imagens e não fica pendente. O último card lista os rostos com **Criar rostos ausentes**. Salvá-los adiciona linhas e mantém imagens existentes.
 
 1. Confira **Image model** (modelo de imagem); a sua conta de imagem padrão já vem escolhida.
 2. Clique em **Make** (criar) para uma imagem que falta, ou no botão **Make N pictures** (criar N imagens) para todas. Cada imagem é uma solicitação de imagem. Com **Expose media prompts before sending** ligado (nas configurações), você vê e edita cada prompt antes.

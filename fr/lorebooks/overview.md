@@ -116,6 +116,26 @@ Sous les boutons :
 
 Chaque ligne comporte les boutons **Copy** (copier, duplique le lorebook) et **Delete** (supprimer). Ils apparaissent quand tu passes le pointeur sur la ligne, et restent toujours visibles sur mobile. Un lorebook désactivé affiche un badge **OFF**. Clique sur l'image pour la téléverser ou la remplacer.
 
+<a id="save-a-lorebook-set"></a>
+### Enregistrer un ensemble de lorebooks
+
+Un ensemble de lorebooks est un groupe nommé utilisé en commun, par exemple pour un univers. Tu choisis tout le groupe plutôt que chaque lorebook. L’ensemble pointe vers tes lorebooks sans les copier.
+
+1. Dans **Lorebooks**, clique sur **Nouvel ensemble**. Il s’ouvre sous **Ensembles de lorebooks**.
+2. Saisis un nom dans **Nom de l'ensemble**.
+3. Clique sur **Choisir des lorebooks** et coche les lorebooks. Chaque changement s’enregistre seul.
+
+Pour le modifier, clique dessus sous **Ensembles de lorebooks**. **Supprimer l'ensemble** supprime l’ensemble, mais garde ses lorebooks dans la bibliothèque. Un lorebook supprimé quitte tous les ensembles.
+
+Choisis un ensemble dans **Utiliser un ensemble enregistré**, au-dessus de **Choisir des lorebooks**. Ce champ apparaît dès qu’un ensemble existe :
+
+- À l’étape **Attach Lorebooks** d’un nouveau roleplay.
+- Dans les lorebooks sources fixes d’un agent, comme Knowledge Router. Voir [Sources de connaissances : agents de récupération et de routage](../agents/knowledge-sources.md#choose-the-sources).
+
+Choisir un ensemble remplace les lorebooks sélectionnés. Tu peux ensuite en ajouter ou en retirer pour ce chat ou cet agent sans modifier l’ensemble enregistré.
+
+Pour activer ou désactiver des entrées dans un seul chat, ouvre **Réglages du chat → Lorebooks** et clique sur le crayon (**Modifier les entrées du lorebook**) près du lorebook. Les interrupteurs ne changent que ce chat ; les autres modifications changent le lorebook lui-même.
+
 ### Les catégories
 
 Une catégorie est une étiquette pour ta bibliothèque. Elle ne change pas le moment où le lorebook s'active. Les onglets sont **All**, **Active** (les lorebooks pertinents pour le chat ouvert), **World**, **Character**, **NPC**, **Spellbook** et **Other**. Tu peux changer la catégorie d'un lorebook dans son onglet **Overview**, où **Other** s'appelle **Uncategorized**.

@@ -6,14 +6,30 @@ En el nuevo diseño, cada chat, personaje, persona (el perfil que te representa)
 
 - **Computadora y tableta en horizontal:** las pestañas están en la barra superior. Haz clic en una para volver a ella.
 - **Teléfono y tableta en vertical:** toca el botón con un número en la esquina superior derecha. **All Tabs** (Todas las pestañas) muestra cada pestaña como una tarjeta. Toca una tarjeta para abrirla o toca **Done** (Listo) para volver.
+
+- Las **secciones de Library**, como Characters, Presets o Settings, no abren una pestaña propia porque están a un clic. Para fijar una en la barra, arrástrala desde la lista de Library hasta las pestañas en la computadora. Se queda hasta cerrarla.
 - **Desliza el dedo por la barra superior** hacia la izquierda o la derecha en un teléfono para ir a la pestaña siguiente o anterior.
+
+- Las **pestañas de chat** empiezan con símbolo y color del modo y el código **CO** para Conversation, **RP** para Roleplay o **GM** para Game, seguido del nombre. Chats del mismo nombre y modo llevan números, como «Luna · 2».
+- Las **demás pestañas** muestran su símbolo (personaje, lorebook, persona, etc.) y nombre. Un chat y personaje con igual nombre lo conservan porque sus símbolos los distinguen. Pestañas del mismo tipo y nombre se numeran.
+
+<a id="tabs-keep-your-place"></a>
+## Las pestañas recuerdan tu lugar
+
+Al volver encuentras lo que dejaste:
+
+- Los **editores** vuelven a la misma página, sección o entrada: página del preset y Prompt order, entrada de lorebook con búsqueda y orden, galería o sprites de personaje o persona y secciones añadidas a una tarjeta.
+- El **desplazamiento** se recupera en editores, listas y chats. Un chat desplazado hacia arriba abre allí, no en el mensaje nuevo.
+- Abrir intencionalmente en un lugar, como cuando Professor Mari muestra un campo, sigue llevando allí.
+
+Se conserva hasta cerrar la pestaña o recargar.
 
 ## Mueve, agrupa y cierra pestañas
 
 Haz clic derecho en una pestaña en una computadora, o mantenla presionada en una pantalla táctil, para abrir su menú:
 
 - **Move left** (Mover a la izquierda) y **Move right** (Mover a la derecha) mueven la pestaña una posición. En una computadora también puedes arrastrarla.
-- **Add to new group** (Añadir a un grupo nuevo) coloca la pestaña en un grupo. En un ordenador también puedes arrastrar una pestaña sobre otra y dejarla ahí un momento: cuando la otra pestaña se ilumine, suéltala y las dos formarán un grupo (suéltala sobre un grupo para añadirla). Si la sueltas enseguida, solo se mueve. Si mantienes pulsado Mayús al soltarla, se agrupan al instante. Mientras estás en una pestaña agrupada, las pestañas del grupo aparecen en una segunda fila debajo de la barra superior. Haz clic en el nombre del grupo para cambiarle el nombre o cerrarlo.
+- **Añadir a un grupo nuevo** (Añadir a un grupo nuevo) coloca la pestaña en un grupo. En un ordenador también puedes arrastrar una pestaña sobre otra y dejarla ahí un momento: cuando la otra pestaña se ilumine, suéltala y las dos formarán un grupo (suéltala sobre un grupo para añadirla). Si la sueltas enseguida, solo se mueve. Si mantienes pulsado Mayús al soltarla, se agrupan al instante. Mientras estás en una pestaña agrupada, las pestañas del grupo aparecen en una segunda fila debajo de la barra superior. Haz clic en el nombre del grupo para cambiarle el nombre o cerrarlo. Esa fila ocupa una línea completa, como las pilas de Vivaldi. Empieza con nombre y número de pestañas; haz clic para renombrar, desagrupar o cerrar. En teléfonos y tabletas verticales, **Todas las pestañas** reúne cada grupo bajo su nombre.
 - **Close tab** (Cerrar pestaña) la cierra y **Close other tabs** (Cerrar las demás pestañas) cierra el resto.
 - **Reopen closed tab** (Volver a abrir la pestaña cerrada) recupera la última pestaña que cerraste.
 

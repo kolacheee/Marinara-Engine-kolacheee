@@ -231,10 +231,12 @@ Na stronie **2D Avatars** wybierz postać lub personę, a potem użyj sekcji **M
 
 **Make faces from the avatar** (tworzenie min z awatara) tworzy miny bez tła, także dla postaci lub persony, która nie ma jeszcze sprite'ów. Wymaga awatara i konta do generowania obrazów. Otwiera to samo generowanie sprite'ów co edytory postaci i persony, z awatarem jako referencją.
 
-1. Wybierz **All faces** (wszystkie miny), czyli wszystkie 29 emocji, **Main faces** (główne miny), czyli sześć głównych, albo wybierz miny samodzielnie. Każda dodatkowa emocja jest w wierszu swojej głównej miny, dopóki nie ma własnej miny.
-2. Miny są rysowane partiami, najpierw główne. Starsze modele GPT Image rysują jedną minę na obrazek. Obrazek, którego nie udało się utworzyć, jest ponawiany raz. Jeśli znów się nie uda, tworzenie zatrzymuje się z przyciskiem **Retry picture** (ponowienie obrazka). **Cancel** (anuluj) zachowuje już utworzone miny.
+1. Wybierz **Wszystkie miny** (wszystkie miny), czyli wszystkie 29 emocji, **Główne miny** (główne miny), czyli sześć głównych, albo wybierz miny samodzielnie. Każda dodatkowa emocja jest w wierszu swojej głównej miny, dopóki nie ma własnej miny. **Brakujące twarze** wybiera twarze jeszcze niezapisane.
+2. Miny są rysowane partiami, najpierw główne. Starsze modele GPT Image rysują jedną minę na obrazek. Obrazek, którego nie udało się utworzyć, jest ponawiany raz. Jeśli znów się nie uda, tworzenie zatrzymuje się z przyciskiem **Ponów obraz** (ponowienie obrazka). **Anuluj** (anuluj) zachowuje już utworzone miny. **Sprawdź prompt** pokazuje prompt i powód błędu obrazu. Popraw i kliknij **Ponów obraz**; zmiana dotyczy tylko tego obrazu.
 3. Przy włączonej opcji **Expose media prompts before sending** (pokazywanie promptów mediów przed wysłaniem) przeglądasz wszystkie prompty naraz, zanim zostanie wysłany pierwszy. Każda mina jest rysowana z otwartymi oczami i zamkniętymi ustami, żeby obrazki mrugania i mówienia miały co zamykać i otwierać.
 4. Marinara rysuje miny na jednolitym kolorze, usuwa go i zapisuje je jako sprite'y postaci lub persony. Nowy sprite zastępuje sprite o tej samej nazwie, więc jeśli chcesz zachować stary, zmień nazwę w ostatnim kroku.
+
+Pod **Utwórz miny z awatara** wiersz, np. `Faces saved: 24 of 29. Missing: Love, Relief, Confusion, Fear, Realization.`, liczy zapisane sprite’y, więc działa po powrocie. Liczy się nazwa twarzy w dowolnym folderze, np. `happy`, `Happy`, `happy_2`. Inna, np. `joy`, pozostawia happy jako brakującą. Po przerwaniu **Utwórz brakujące twarze** otwiera kreator z samymi brakującymi. **Brakujące twarze** nigdy nie wybiera zapisanych.
 
 Gdy awatar jest już zapisany, każda nowa mina staje się miną emocji, dla której ją narysowano, nawet po zmianie nazwy. Pozostałe sprite'y zostają. Mina utworzona ponownie zaczyna bez obrazków mrugania i mówienia, bo stare by do niej nie pasowały. Nowe utworzysz w sekcji [Obrazki mrugania i mówienia](#blink-and-talk-pictures). Import PNGTuber Plus zachowuje własne miny.
 
@@ -243,6 +245,8 @@ Gdy awatar jest już zapisany, każda nowa mina staje się miną emocji, dla kt�
 ### Obrazki mrugania i mówienia
 
 Każda mina, którą awatar pokazuje dla jakiejś emocji, to jeden wiersz z jej obrazkami **Eyes closed** (zamknięte oczy) i **Mouth open** (otwarte usta) obok **Face** (mina). Są to obrazki zapisane wcześniej, dodane przez ciebie sprite'y `_blink` i `_talk` albo nowe obrazki. Przy sprite'ach portretowych używane są tylko one, bo awatar nigdy nie miesza min portretowych i min całej sylwetki. Mina, która nie jest jednym z twoich sprite'ów, na przykład pochodząca z importu PNGTuber Plus, pokazuje swoje obrazki, ale nie może dostać nowych.
+
+Wiersz pod tytułem liczy wszystkie obrazy, np. `Pictures saved: 40 of 58. Still to make: 8. Waiting for a missing face: 10.` Niezrobiona twarz nie ma wiersza, bo jej obrazy wymagają źródła. Usunięty sprite też pozostawia je w oczekiwaniu. Własna twarz pod inną nazwą, np. `scared` dla fear, używa swoich obrazów i nie czeka. Ostatnia karta wymienia twarze do stworzenia z **Utwórz brakujące twarze**. Zapis dodaje wiersze i zachowuje wcześniejsze obrazy.
 
 1. Sprawdź **Image model** (model obrazów; twoje domyślne konto do generowania obrazów jest wybrane automatycznie).
 2. Kliknij **Make** (utworzenie) przy jednym brakującym obrazku albo przycisk **Make N pictures** (tworzenie N obrazków), żeby utworzyć wszystkie. Każdy obrazek to jedno zapytanie o obraz. Przy włączonej opcji **Expose media prompts before sending** (w ustawieniach) najpierw widzisz każdy prompt i możesz go edytować.

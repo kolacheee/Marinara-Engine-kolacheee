@@ -157,6 +157,7 @@ mari-protected, mari-theme-important, theme, base, components, utilities, mari-a
 | `--mari-page-floor` | 在背景图上方，每个完整页面下面垫着的近乎不透明的底层。默认是 `color-mix(in srgb, var(--background) 94%, transparent)`；设为 `transparent` 即去掉 |
 | `--mari-top-bar-bg` | 顶栏的完整 `background` 值：图片、渐变或多个图层。`--mari-top-bar-rendering: pixelated` 让像素画保持清晰。标签页和图标始终显示在最上层。 |
 | `--mari-top-bar-plate`, `--mari-top-bar-plate-radius` | 顶栏有图片时，每个标签页、打开的聊天标签、图标按钮和标志下方都有衬底，确保清晰可读。这些值设置衬底颜色和圆角半径（默认 `0.5rem`）；将半径设为 `0` 可得到方形像素按钮。 |
+| `--mari-tab-row-strip-bg`, `--mari-tab-row-strip-height`, `--mari-tab-row-strip-room` | 顶栏在标签页下绘制的条带（如滚动字幕或栅栏），会在分组行显示时移到该行（`:root[data-ov-tabrow]`；该行是 `[data-tab-row]`）。在 `[data-tab-row]` 上设置 `background`、高度和标签下占用的空间（默认为高度；`0px` 表示放在背后）。`[data-mari-part="tab-row-strip"]` 支持动画。须自行在 `:root[data-ov-tabrow]` 下移除顶栏原有条带。 |
 | `--mari-msg-head-rule` | Roleplay 消息名字下方的线（`border-bottom` 值，例如 `none` 或 `2px dashed currentColor`） |
 | `--mari-home-widget-border`, `--mari-home-widget-border-width`, `--mari-home-widget-radius`, `--mari-home-widget-bg` | 每个首页组件的边框和表面，包括 Professor Mari |
 | `--mari-home-widget-font`, `--mari-home-widget-title-font`, `--mari-home-widget-title-size`, `--mari-home-widget-title-color`, `--mari-home-widget-eyebrow-size`, `--mari-home-widget-text-size`, `--mari-home-widget-muted` | 首页组件的字体样式。文字需要更多空间时，组件会增高，不会裁掉文字。 |

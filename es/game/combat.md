@@ -31,6 +31,28 @@ Después de elegir, la ronda se resuelve. Los resultados aparecen como números 
 
 En una partida con un conjunto de reglas, **Items** hace lo que dice el conjunto para sus propios objetos: cuánto curan o dañan y qué estados añaden. Un objeto con cargas se ofrece mientras le quede un uso. Si un objeto pide antes una prueba, esta se tira, y si falla, el objeto se gasta para nada. Un objeto al que el conjunto no da ningún uso no se ofrece. El resto de los objetos hacen lo que el GM decidió al empezar la pelea, salvo que el conjunto de reglas desactive los objetos propios de Game Mode.
 
+## Narración de batalla
+
+En una batalla Turn-Based, **Registro de combate** cuenta cada golpe con una breve frase, por ejemplo: «Las astas de Xerneas brillan con un intenso resplandor plateado antes de que una ráfaga de energía golpee el costado de Houndoom». El daño, la curación y el acierto o fallo siempre los determina el juego y aparecen en negrita después de la frase. El modelo solo describe el aspecto del golpe.
+
+Primero aparece la línea simple y poco después la sustituye la narración. Marinara pide toda la ronda en una sola solicitud, no una por golpe. Las líneas vienen de la primera fuente disponible:
+
+1. El modelo integrado, que funciona gratis en tu propia computadora. Consulta [Configurar el modelo integrado](../connections/local-model.md).
+2. El **Conexión de efectos de escena** de la partida.
+3. Líneas que escribe Marinara sin costo.
+
+El modelo que dirige al GM nunca se usa para narrar las batallas.
+
+Para cambiar cuánto se cuenta, abre **Ajustes del chat**, expande **Estilo de combate** y elige una opción de **Narración de combate**:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Cada golpe** | Narra cada golpe. Es la opción predeterminada. |
+| **Momentos clave: críticos, derrotas y reacciones** | Solo pide al modelo los golpes críticos, las derrotas, las reacciones elementales y los golpes supereficaces. Los demás usan las líneas de Marinara. |
+| **Desactivada: registro de combate simple** | Muestra el registro de batalla simple. |
+
+Las batallas Tactical no usan narración de batalla.
+
 ## Jugar una batalla Tactical
 
 El combate Tactical sitúa a tu grupo y a los enemigos en un campo de batalla en cuadrícula. Cada cuadro es una casilla, como **Plains** (Llanura) o **Forest** (Bosque).

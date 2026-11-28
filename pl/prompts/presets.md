@@ -122,6 +122,7 @@ W zakładce **Sections** budujesz prompt. Sekcje składają się w całość od 
 | **Character Info** | Szczegóły karty aktywnej postaci. |
 | **Persona** | Szczegóły twojej aktywnej persony. |
 | **Chat History** | Wiadomości czatu. |
+| **Ostatnia historia** | Najnowsze wiadomości z **Historia czatu**. Zobacz [Dzielenie historii przez Recent History](#split-the-history-with-recent-history). |
 | **Chat Summary** | Zebrane podsumowanie czatu. |
 | **Dialogue Examples** | Przykładowe dialogi postaci. |
 | **Lorebook Marker (All)** | Wszystkie aktywne wpisy z lorebooków. |
@@ -164,7 +165,7 @@ Grupa zamyka kilka sekcji w jednym pojemniku.
 2. Kliknij nazwę grupy, żeby ją zmienić.
 3. Rozwiń sekcję i wybierz grupę z jej listy rozwijanej **Group**.
 
-Przy formacie **XML** grupa staje się jednym tagiem nadrzędnym. Przy **MARKDOWN** staje się jednym nagłówkiem. Usunięcie grupy nie usuwa jej sekcji. Przestają one tylko należeć do grupy.
+Przy formacie **XML** grupa staje się jednym tagiem nadrzędnym. Przy **Markdown** staje się jednym nagłówkiem. Usunięcie grupy nie usuwa jej sekcji. Przestają one tylko należeć do grupy. Nieprzylegające sekcje tej samej grupy dostają osobne tagi lub nagłówki.
 
 ### Pozycja i głębokość
 
@@ -209,6 +210,25 @@ Czaty Game mają więcej kontrolek. **Styl historii**, **Przemoc**, **Granice tr
 Pamięć podręczna promptów pozwala usłudze ponownie wykorzystać początek promptu, który już przeczytała, dzięki czemu długie czaty kosztują mniej i szybciej otrzymują odpowiedzi. Usługa wykorzystuje prompt ponownie tylko do pierwszego tekstu, który zmienił się od ostatniej wiadomości. Przywołane wspomnienia zmieniają się przy prawie każdej wiadomości, więc umieszczone przed historią czatu wykluczają całą historię z pamięci podręcznej.
 
 Żeby samodzielnie wybrać ich miejsce, dodaj do presetu znacznik **Przywoływanie pamięci**. Przeciągnij go pod **Historia czatu** albo ustaw jego pole **Pozycja** na **Głębokość (od końca czatu)**, żeby umieścić go wewnątrz historii. Wspomnienia czytane przed opowieścią sprawiają, że odpowiedzi trzymają się ich bliżej, więc domyślnie pozostają przed historią.
+
+<a id="split-the-history-with-recent-history"></a>
+## Dzielenie historii przez Recent History
+
+**Ostatnia historia** wysyła najnowsze wiadomości w swoim miejscu, **Historia czatu** starsze. Sekcje pomiędzy trafiają między starsze a nowsze. Używaj do zmiennych informacji, np. miejsca i obecnych postaci. Stałe trzymaj nad **Historia czatu**.
+
+1. W **Sekcje** kliknij **Dodaj sekcję**, potem **Ostatnia historia**. Trafia za **Historia czatu**.
+2. Rozwiń i ustaw **Ostatnie wiadomości** (domyślnie 4).
+3. Przeciągnij zmienne sekcje, np. **Lorebook Marker** lub agenta, pomiędzy.
+4. Kliknij **Zapisz**.
+
+Model czyta zmiany blisko nowych wiadomości i lepiej je pamięta. Starsze pozostają stałe i można je ponownie wykorzystać z pamięci podręcznej. Claude umieszcza punkt pamięci na końcu starszych wiadomości.
+
+- **Maks. wiadomości** w **Historia czatu** liczy obie części. Puste wysyła wszystko.
+- Przy mniej niż **Ostatnie wiadomości** wszystkie trafiają do **Ostatnia historia**.
+- **Głębokość (od końca czatu)** liczy tylko wiadomości. Głębokość ponad **Ostatnie wiadomości** trafia do starszych i blokuje ich ponowne użycie.
+- Bez **Historia czatu** wysyła całość. **Ostatnia historia** przed nim lub drugi egzemplarz nic nie wysyła. Wiersz ostrzega w każdym przypadku.
+- **XML**: starsze w `<chat_history>`, nowsze w `<recent_history>`, najnowsza w `<last_message>`.
+- Starsze wersje nie znają **Ostatnia historia** i mogą odrzucić import presetu.
 
 ## Bloki decyzyjne i pamięć podręczna promptu
 

@@ -71,7 +71,9 @@
 | `/illustrate` | 仅限 Roleplay。生成一张图库图像，需要 Illustrator 智能体。也可以用 `/ill`。格式：`/illustrate [range=N-M] [template=name] [prompt]`。 |
 | `/html` | 仅限 Roleplay。在最新回复的末尾生成一件世界观内的物件，例如 `a spellbook page`。格式：`/html [what you want]`。 |
 | `/video` | 仅限 Roleplay。为最新回复或你的描述生成一段短片，显示在这条回复下方。遵循 Illustrator 的 **First frame**(首帧) 设置，需要 Illustrator。格式：`/video [description]`。 |
-| `/impersonate` | 以你的用户角色身份写一条回复。也可以用 `/imp`。格式：`/impersonate [direction (optional)]`。 |
+| `/impersonate` | 以用户角色的身份撰写回复。通常会发布；若聊天设置中 **结果去向** 为 **消息草稿**，则写入消息框成为草稿。也可用 `/imp`。格式：`/impersonate [direction (optional)]`。 |
+| `/impersonate_draft` | 将用户角色的回复写入消息框，供发送前修改。不会发布任何内容。也可用 `/impd`、`/imp_draft`。格式：`/impersonate_draft [direction (optional)]`。 |
+| `/impersonate_post` | 立即撰写并发布用户角色的回复，不受 **结果去向** 影响。也可用 `/impp`、`/imp_post`。格式：`/impersonate_post [direction (optional)]`。 |
 | `/impersonate_prompt` | 设定本聊天里 `/impersonate` 使用的指令。也可以用 `/imp_prompt`。格式：`/impersonate_prompt [prompt or reset]`。 |
 
 这些命令大多在 Roleplay 中效果最好。`/scene` 要在 Conversation 中运行。`/impersonate` 和 `/impersonate_prompt` 在 Conversation 中不可用。

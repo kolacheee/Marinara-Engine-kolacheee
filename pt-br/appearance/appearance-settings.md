@@ -88,6 +88,8 @@ A **Cor de destaque** aceita uma cor sólida ou um gradiente, uma transição su
 
 - **Efeitos de clima dinâmicos (chuva, neve, neblina etc.)** vem ativado por padrão. Mostra o clima de acordo com o clima e a hora do dia na história, e precisa do agente **World State** ativado no chat. Veja [Agentes: ajudantes de IA para os seus chats](../agents/agents-overview.md).
 - **Reduzir animações e efeitos de ambiente** interrompe animações decorativas, partículas, prévias giratórias e a revelação gradual do texto.
+
+- **Mostrar rolagens como texto** (desativado por padrão) mostra cada rolagem como uma linha curta com os dados, os resultados e o total, em vez de dados animados. As rolagens continuam acontecendo, e o modelo e o jogo recebem os resultados. Vale em todos os modos de chat, inclusive nos dados de testes de perícia.
 - **Efeitos de pintura reduzidos** simplifica painéis transparentes e sombras pesados para manter a fluidez em dispositivos mais lentos.
 
 ## Planos de fundo

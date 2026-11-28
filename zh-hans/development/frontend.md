@@ -346,12 +346,15 @@ AI 游戏主持人（GM）界面。它不在 chat 文件夹里，而是位于 `c
 | `GifPicker` | 通过 Giphy API 搜索 GIF |
 | `HelpTooltip` | 悬停图标，显示由 portal 定位的提示气泡 |
 | `LibraryToolbar` | 各个库面板共用的工具栏（见下文） |
+| `EditorHeader` | 所有整页编辑器共用的标题栏（见下文） |
 
 所有 UI 组件都使用受控属性（value 加 onChange），浮层一律用 portal 渲染。
 
 **库面板使用 `LibraryToolbar`。** Characters、Personas、Lorebooks、Agents 和 Presets 面板的选项卡都通过它渲染顶部控件：可选的资料库行（一个占满整行的按钮，或 Download / Open Library 两个按钮）、创建 / 导入 / 导出 / 选择、带共用排序菜单的搜索框、New Folder，最后是作为 `children` 传入的面板筛选控件。各行通过有类型的 props 定义，而不是插槽，这样新库面板会使用同样的标记结构，不会因复制后各自修改而产生偏差。需要扩展时，在这里添加 prop，不要在面板里手写工具栏。
 
 `LibraryToolbar.tsx` 还导出 `SegmentedButtons`，这是一个用 `|` 分隔的长条 `.mari-chrome-segmented` 按钮。它渲染下载 / 打开资料库两个按钮，以及 Presets 面板的**提示词** / **正则脚本** / **工具** / **方案**选项卡，让每个面板的顶行高度一致。传入 `groupLabel` 会让该行成为一个带 `role="group"` 的选项卡组，`pressed` 则设置各个选项卡的 `aria-pressed`。`.mari-chrome-segmented` 设有 `flex-shrink: 0`，因此面板自身固定高度的 flex 滚动容器（如 Characters 中的容器）不会压缩这一行。
+
+**整页编辑器使用 `EditorHeader`。** 它以两种布局绘制返回、图标块、名称、可选区段标签、操作和关闭。有 `nav`（区段标签）时，`mari-editor-header--with-nav` 的密度规则按标签调整尺寸。没有时，手机上的操作单独占一行，Save 只显示图标。名称、图标块内容和按钮都是插槽，各编辑器可保留自己的名称字段和控件。按钮使用 `EditorSaveButton`、`EditorHeaderAction`，标签始终同时作为提示和无障碍名称。应在这里添加插槽或部件，避免在各编辑器中手工构建标题栏。
 
 ## API 客户端（`lib/api-client.ts`）
 
@@ -650,17 +653,24 @@ Personal Extensions(个人扩展) 是存在服务器上、按精确哈希审批�
 | `haptic` | post_processing | 发送触觉设备指令 |
 | `cyoa` | post_processing | 生成选项提示 |
 | `storyboard` | post_processing | 规划 Game 和 Roleplay 的静态或动画分镜 |
+| `2d-avatars` | feature | 显示动画 2D 立绘或网格角色头像 |
+| `3d-avatars` | feature | 显示动画 VRM、MMD PMX、GLB、FBX 3D 头像 |
 | `conversation-calls` | feature | 添加 Conversation 语音/视频通话及相关设置 |
 | `hierarchical-maps` | feature | 添加 Roleplay/Game 地图、空间上下文和移动 |
 | `noodle` | feature | 在 Home 中添加本地 Noodle 社交动态 |
+| `otome-forge` | feature | 在 Home 添加由角色组成的乙女游戏 Otome Hearth |
+| `saucelings` | feature | 在 Home 添加由角色养育的虚拟宠物 Saucelings |
 | `slurp2` | feature | 在 Home 中添加 Slurp，一个面向角色的私人创作者应用 |
+| `story-writer` | feature | 在 Home 添加共同创作书籍的工作区 Story Writer |
 | `gacha-forge` | feature | 在 Home 中添加扭蛋游戏模式 |
+| `blackjack` | feature | 添加 Conversation 的 Blackjack 牌桌 |
 | `uno` | feature | 添加 Conversation 的 UNO 牌桌 |
 | `chess` | feature | 添加 Conversation 的国际象棋棋盘 |
 | `poker` | feature | 添加 Conversation 的德州扑克牌桌 |
 | `eightball` | feature | 添加 Conversation 的八球台球桌 |
 | `tic-tac-toe` | feature | 添加 Conversation 的井字棋棋盘 |
 | `rock-paper-scissors` | feature | 添加 Conversation 的石头剪刀布对局 |
+| `wordle` | feature | 添加 Conversation 每日 Wordle 竞赛 |
 
 ### 智能体结果类型
 

@@ -31,6 +31,28 @@ Nach deiner Wahl läuft die Runde ab. Die Ergebnisse erscheinen als aufsteigende
 
 In einem Spiel mit Regelsatz tut **Items** bei den eigenen Gegenständen des Regelsatzes, was der Regelsatz sagt: wie viel sie heilen oder schaden und welche Zustände sie verursachen. Ein Gegenstand mit Ladungen wird angeboten, solange eine Nutzung übrig ist. Bei einem Gegenstand, der zuerst eine Probe verlangt, wird sie gewürfelt, und misslingt sie, ist der Gegenstand umsonst verbraucht. Ein Gegenstand, dem der Regelsatz keine Nutzung gibt, wird nicht angeboten. Andere Gegenstände tun, was der GM zu Kampfbeginn festgelegt hat, außer der Regelsatz schaltet die eigenen Gegenstände von Game Mode ab.
 
+## Kampferzählung
+
+In einem Turn-Based-Kampf beschreibt **Kampfprotokoll** jeden Schlag mit einem kurzen Satz, etwa „Xerneas’ Geweih leuchtet silbern auf, bevor ein Energiestoß Houndoom in die Seite trifft.“ Schaden, Heilung und Treffer oder Fehlschlag stammen immer aus dem Spiel und stehen hinter dem Satz in Fettdruck. Das Modell beschreibt nur, wie der Schlag aussieht.
+
+Zuerst erscheint die einfache Zeile, kurz darauf ersetzt sie der erzählende Text. Marinara fragt die gesamte Runde in einer Anfrage ab, nicht jeden Schlag einzeln. Die Zeilen stammen aus der ersten verfügbaren Quelle:
+
+1. Dem eingebauten Modell, das kostenlos auf deinem eigenen Computer läuft. Siehe [Das eingebaute Modell einrichten](../connections/local-model.md).
+2. Dem **Verbindung für Szeneneffekte** des Spiels.
+3. Zeilen, die Marinara selbst kostenlos schreibt.
+
+Das Modell, das den GM steuert, wird nie für die Kampferzählung verwendet.
+
+Um den Umfang zu ändern, öffne **Chat-Einstellungen**, klapp **Kampfstil** auf und wähle eine Option unter **Kampferzählung**:
+
+| Option | Funktion |
+| --- | --- |
+| **Jeder Schlag** | Erzählt jeden Schlag in Prosa. Das ist der Standard. |
+| **Schlüsselmomente: kritische Treffer, K. o., Reaktionen** | Fragt das Modell nur bei kritischen Treffern, K. o., Elementreaktionen und sehr effektiven Treffern. Andere Schläge bekommen Marinaras eigene Zeilen. |
+| **Aus: einfaches Kampfprotokoll** | Zeigt das einfache Kampfprotokoll. |
+
+Tactical-Kämpfe verwenden keine Kampferzählung.
+
 ## Einen Tactical-Kampf spielen
 
 Im Tactical-Kampf stehen deine Party und die Gegner auf einem Schlachtfeld mit Raster. Jedes Quadrat ist ein Feld, etwa **Plains** (Ebene) oder **Forest** (Wald).

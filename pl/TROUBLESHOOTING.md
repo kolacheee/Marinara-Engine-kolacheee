@@ -364,6 +364,16 @@ Po awarii albo przeniesieniu wolumenu Docker uruchamianie może zgłosić **The 
 
 Marinara samodzielnie usuwa dzierżawę pozostawioną przez proces, który uległ awarii, w systemach Linux i Android, w kontenerach oraz w systemie Windows, gdy folder z danymi leży na lokalnym dysku. Ręczny krok to rozwiązanie awaryjne dla sieciowej lub współdzielonej pamięci masowej, dysków wymiennych oraz (w systemie Windows) komputera, którego nazwę zmieniono po awarii.
 
+<a id="cannot-access-a-network-or-external-folder"></a>
+### Brak dostępu do folderu sieciowego lub zewnętrznego
+
+Marinara przechowuje dane tylko w swoim folderze danych, a import folderu SillyTavern czyta tylko foldery dozwolone przez serwer. Udział sieciowy lub inny dysk skonfiguruj tak:
+
+- **Dane są w udziale sieciowym.** Wskaż jego folder w `DATA_DIR` w `.env` i uruchom Marinara ponownie. Zobacz [Przechowywanie danych](CONFIGURATION.md#storage). Przenieś cały folder danych: jeśli połączysz tylko podfolder, np. `avatars` lub `backgrounds`, z innym dyskiem, jego obrazy się nie wczytają i Marinara zwróci **nie znaleziono**.
+- **Importujesz folder SillyTavern z udziału.** Wpisana ścieżka musi być w folderze domowym użytkownika serwera, inaczej pojawi się **Marinara can only read folders inside your home folder**. Na komputerze serwera użyj **Przeglądaj**, aby wybrać folder. Możesz też dodać go do `IMPORT_ALLOWED_ROOTS` w `.env`, oddzielając przecinkami, i zrestartować serwer. Po ustawieniu dozwolone są tylko wymienione foldery, także przy wyborze w oknie; dodaj folder domowy, jeśli nadal z niego importujesz.
+- **Przeglądarka folderów w aplikacji otwiera folder domowy.** Pokazuje tylko foldery w nim, niezależnie od `IMPORT_ALLOWED_ROOTS`. Dodaj zewnętrzny udział do `IMPORT_ALLOWED_ROOTS`, uruchom ponownie i wpisz ścieżkę w **Ścieżka folderu SillyTavern**.
+- **Udział jest odłączony.** Połącz go przed uruchomieniem Marinara i spróbuj ponownie.
+
 ### Kopia zapasowa lub eksport zwraca błąd 403
 
 Sesje na tym samym komputerze mogą tworzyć kopie zapasowe bez sekretu administratora. Żądania z innego urządzenia, spod adresu sieciowego, z kontenera Docker albo przez proxy lub tunel na tym samym komputerze go wymagają. Utwórz go w **Ustawienia → Zaawansowane → Bezpieczeństwo** na komputerze, na którym działa serwer, albo ustaw `ADMIN_SECRET` na serwerze, a potem zapisz tę samą wartość w **Admin Access** na drugim urządzeniu. Jeśli sekret ma być wymagany także na pętli zwrotnej, ustaw `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`. Przy `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false` przekazywani goście korzystają z lokalnego pominięcia. Przy publicznym proxy lub tunelu zostaw to zabezpieczenie włączone.

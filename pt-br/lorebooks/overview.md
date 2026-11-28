@@ -116,6 +116,26 @@ Abaixo dos botões:
 
 Cada linha tem os botões **Copy** (duplica o lorebook) e **Delete** (excluir). Eles aparecem quando você passa o mouse sobre a linha e ficam sempre visíveis no celular. Um lorebook desativado mostra o selo **OFF**. Clique na imagem para enviar uma ou substituí-la.
 
+<a id="save-a-lorebook-set"></a>
+### Salvar um conjunto de lorebooks
+
+Um conjunto de lorebooks é um grupo com nome que você usa junto, como os de um cenário. Você escolhe o grupo todo em vez de cada lorebook. O conjunto aponta para eles sem copiá-los.
+
+1. Em **Lorebooks**, clique em **Novo conjunto**. Ele abre em **Conjuntos de lorebooks**.
+2. Digite um nome em **Nome do conjunto**.
+3. Clique em **Escolher lorebooks** e marque os lorebooks. Cada mudança salva sozinha.
+
+Para editar depois, clique no conjunto em **Conjuntos de lorebooks**. **Excluir conjunto** remove o conjunto e mantém os lorebooks na biblioteca. Um lorebook excluído sai de todos os conjuntos.
+
+Escolha em **Usar conjunto salvo**, acima de **Escolher lorebooks**. O campo aparece após criar um conjunto, nestes locais:
+
+- A etapa **Attach Lorebooks** de um novo roleplay.
+- Os lorebooks de fontes fixas de um agente, como Knowledge Router. Veja [Fontes de conhecimento: agentes de recuperação e roteamento](../agents/knowledge-sources.md#choose-the-sources).
+
+Escolher substitui os lorebooks selecionados. Depois você pode adicionar ou remover lorebooks para o chat ou agente sem mudar o conjunto salvo.
+
+Para ativar ou desativar entradas só em um chat, abra **Configurações do chat → Lorebooks** e clique no lápis (**Editar entradas do lorebook**) ao lado do lorebook. Os interruptores das entradas afetam só aquele chat; outras edições mudam o lorebook em si.
+
 ### Categorias
 
 A categoria é um rótulo para a sua biblioteca. Ela não muda quando o lorebook é acionado. As abas são **All**, **Active** (lorebooks relevantes para o chat aberto), **World**, **Character**, **NPC**, **Spellbook** e **Other**. Você pode trocar a categoria de um lorebook na aba **Overview** dele, onde **Other** se chama **Uncategorized**.

@@ -42,7 +42,26 @@ Możesz ponownie wygenerować obraz bez ponownego generowania odpowiedzi, do kt�
 3. Wprowadź wybrane zmiany pod obrazem: w polach **Prompt** i **Prompt negatywny**, w polach poszczególnych postaci w sekcji **Prompty postaci**, jeśli obraz je miał, oraz w wyborze modelu obrazów.
 4. Kliknij **Wygeneruj obraz** lub **Anuluj**, aby pozostawić obraz bez zmian.
 
-Nowy obraz zastępuje stary w wiadomości. Stary pozostaje w galerii, więc możesz go ponownie przypiąć. Obrazy referencyjne są ponownie wysyłane z bieżących awatarów postaci. W przypadku niektórych starszych obrazów prompt negatywny i prompty postaci nie zostały zapisane; edytor informuje o tym, gdy tak jest.
+Nowy obraz staje się wybraną wersją wiadomości. Starsze wyniki pozostają w jednym kafelku Gallery z licznikiem wersji. Każda wersja zachowuje prompt, negatywny prompt i zapisane dane generowania. Wysyłane są obecne awatary, potem obrazy wpisów lorebooka użyte pierwotnie. Stability AI, Arli AI, SD Web UI i Draw Things nie dostają obrazów wpisów. Brak dawnych promptów negatywnych lub postaci sygnalizuje edytor.
+
+<a id="image-versions"></a>
+### Wersje obrazu
+
+Otwórz stos, aby wybrać wersję. W Gallery strzałki lewo/prawo, klawisze i poziome gesty zmieniają kafelki. Otwarcie z wiadomości pozostaje w tym stosie. Kontrolki góra/dół, klawisze i pionowe gesty na obrazie zmieniają wersje. Najpierw oddal obraz. Przewijanie promptu nie zmienia wersji.
+
+Kliknij obraz, nagłówek promptu lub zwijanie, by używać Góra/Dół do wersji. Kliknij tekst lub kopiowanie, by przewijać. Kontrolki pozostają widoczne przy regeneracji i edycji. Przed zmianą zastosuj lub usuń maskę; podczas generowania kontrolki są wstrzymane.
+
+Wybór zapisuje się i jest widoczny po odświeżeniu. Regeneracja lub edycja starszej wersji dodaje wynik do tego samego stosu i zachowuje późniejsze wersje. Rozgałęziony czat ma własny wybór.
+
+Z **Automatycznie zapisuj wygenerowane obrazy w galeriach postaci** regeneracje i edycje zachowują galerie docelowe postaci i persony z oryginału. Tam też grupują wersje. Każda galeria zapisuje własny wybór niezależnie od czatu. Wpisy współdzielą pliki bez dodatkowych kopii. Otwarcie galerii przywraca brakujące wersje dawnych stosów, jeśli oryginalny wpis nadal wskazuje czat źródłowy. Wersje usunięte z już zgrupowanej galerii pozostają usunięte.
+
+W Gallery czatu użyj **Usuń obraz z galerii** na kafelku lub usuwania w przeglądarce:
+
+- **Delete this version** usuwa pokazaną wersję. Jeśli była wybrana, pokazuje najnowszą pozostałą.
+- **Delete other versions** zachowuje pokazaną, usuwając resztę.
+- **Delete entire stack** usuwa wszystkie wersje i załączniki obrazów z czatu.
+
+To trwałe usunięcie. **Anuluj** zachowuje wszystko.
 
 ## Powiązane poradniki
 

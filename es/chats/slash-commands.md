@@ -71,7 +71,9 @@ Escribe entre comillas los nombres que contienen espacios. Las formas anteriores
 | `/illustrate` | Solo en Roleplay. Genera una imagen de galería. Necesita el agente Illustrator. También `/ill`. Formato: `/illustrate [range=N-M] [template=name] [prompt]`. |
 | `/html` | Solo en Roleplay. Crea un artefacto dentro del mundo, como `a spellbook page`, al final de la respuesta más reciente. Formato: `/html [what you want]`. |
 | `/video` | Solo en Roleplay. Crea un clip corto de la respuesta más reciente, o de tu descripción, debajo de esa respuesta. Sigue el ajuste **First frame** (Primer fotograma) de Illustrator. Necesita Illustrator. Formato: `/video [description]`. |
-| `/impersonate` | Escribe una respuesta como tu persona. También `/imp`. Formato: `/impersonate [direction (optional)]`. |
+| `/impersonate` | Escribe una respuesta como tu persona. La publica o la escribe como borrador en el cuadro si **Destino del resultado** está en **Borrador de mensaje** en los ajustes del chat. También `/imp`. Formato: `/impersonate [direction (optional)]`. |
+| `/impersonate_draft` | Escribe la respuesta de tu persona en el cuadro para editarla antes de enviarla. No publica nada. También `/impd`, `/imp_draft`. Formato: `/impersonate_draft [direction (optional)]`. |
+| `/impersonate_post` | Escribe y publica la respuesta de tu persona de inmediato, sin importar **Destino del resultado**. También `/impp`, `/imp_post`. Formato: `/impersonate_post [direction (optional)]`. |
 | `/impersonate_prompt` | Establece la instrucción que usa `/impersonate` en este chat. También `/imp_prompt`. Formato: `/impersonate_prompt [prompt or reset]`. |
 
 La mayoría funcionan mejor en Roleplay. `/scene` se ejecuta desde una Conversation. `/impersonate` e `/impersonate_prompt` no están disponibles en Conversation.

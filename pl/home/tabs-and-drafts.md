@@ -6,14 +6,30 @@ W nowym układzie każdy otwarty czat, postać, persona, lorebook, preset i apli
 
 - **Komputer i tablet w poziomie:** zakładki znajdują się na górnym pasku. Kliknij zakładkę, żeby do niej wrócić.
 - **Telefon i tablet w pionie:** dotknij przycisku z liczbą w prawym górnym rogu. Widok **Wszystkie karty** pokazuje każdą zakładkę jako kartę. Dotknij karty, żeby ją otworzyć, albo przycisku **Gotowe**, żeby wrócić.
+
+- **Sekcje Library**, np. Characters, Presets lub Settings, nie tworzą kart, bo są dostępne jednym kliknięciem. Aby zachować je na górnym pasku, przeciągnij sekcję z Library na wybrane miejsce w kartach na komputerze. Zostanie do zamknięcia.
 - **Przesuń palcem po górnym pasku** w lewo lub w prawo na telefonie, żeby przejść do następnej lub poprzedniej zakładki.
+
+- **Karty czatu** zaczynają się symbolem w kolorze trybu i skrótem **CO** dla Conversation, **RP** dla Roleplay, **GM** dla Game, potem nazwą. Czat o tym samym trybie i nazwie dostaje numer, np. „Luna · 2”.
+- **Inne karty** pokazują symbol (postaci, lorebooka, persony itd.) i nazwę. Czat i postać o wspólnej nazwie ją zachowują, bo rozróżnia je symbol. Ten sam typ i nazwa dostają numery.
+
+<a id="tabs-keep-your-place"></a>
+## Karty pamiętają twoje miejsce
+
+Powrót przywraca miejsce pracy:
+
+- **Edytory** otwierają tę samą stronę, sekcję lub wpis: stronę presetu i Prompt order, wpis z wyszukiwaniem i sortowaniem, galerię lub sprite’y postaci czy persony oraz dodane sekcje karty.
+- **Przewijanie** wraca w edytorach, listach i czatach. Przewinięty w górę czat otwiera się tam zamiast na nowej wiadomości.
+- Celowe otwarcie miejsca, np. pola pokazanego przez Professor Mari, nadal tam prowadzi.
+
+Miejsca pozostają do zamknięcia karty lub odświeżenia.
 
 ## Przenoszenie, grupowanie i zamykanie zakładek
 
 Kliknij zakładkę prawym przyciskiem myszy na komputerze albo naciśnij ją i przytrzymaj na ekranie dotykowym, żeby otworzyć jej menu:
 
 - **Przesuń w lewo** i **Przesuń w prawo** przesuwają zakładkę o jedno miejsce. Na komputerze możesz ją też przeciągnąć.
-- **Dodaj do nowej grupy** umieszcza zakładkę w grupie. Na komputerze możesz też przeciągnąć zakładkę na inną i chwilę ją tam przytrzymać: gdy tamta zakładka się podświetli, puść ją, a obie utworzą grupę (puść ją na grupie, żeby do niej dołączyła). Szybkie puszczenie tylko przenosi zakładkę. Przytrzymanie Shift przy puszczaniu od razu tworzy grupę. Gdy jesteś na zakładce należącej do grupy, zakładki tej grupy pojawiają się w drugim rzędzie pod górnym paskiem. Kliknij nazwę grupy, żeby zmienić jej nazwę lub ją zamknąć.
+- **Dodaj do nowej grupy** umieszcza zakładkę w grupie. Na komputerze możesz też przeciągnąć zakładkę na inną i chwilę ją tam przytrzymać: gdy tamta zakładka się podświetli, puść ją, a obie utworzą grupę (puść ją na grupie, żeby do niej dołączyła). Szybkie puszczenie tylko przenosi zakładkę. Przytrzymanie Shift przy puszczaniu od razu tworzy grupę. Gdy jesteś na zakładce należącej do grupy, zakładki tej grupy pojawiają się w drugim rzędzie pod górnym paskiem. Kliknij nazwę grupy, żeby zmienić jej nazwę lub ją zamknąć. Wiersz zajmuje całą osobną linię, jak stosy Vivaldi. Zaczyna się nazwą i liczbą kart; kliknij, by zmienić nazwę, rozgrupować lub zamknąć. Na telefonie i pionowym tablecie **Wszystkie karty** zbiera karty pod nazwą grupy.
 - **Zamknij kartę** zamyka tę zakładkę, a **Zamknij inne karty** zamyka pozostałe.
 - **Otwórz ponownie zamkniętą kartę** przywraca ostatnio zamkniętą zakładkę.
 

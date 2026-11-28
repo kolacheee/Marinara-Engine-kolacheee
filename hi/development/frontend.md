@@ -346,12 +346,15 @@ AI Game Master वाला सरफ़ेस। यह चैट फ़ोल�
 | `GifPicker`        | Giphy API से GIF सर्च                                                  |
 | `HelpTooltip` | हॉवर पर आइकन, जो पोर्टल से रखा गया टूलटिप दिखाता है |
 | `LibraryToolbar` | हर लाइब्रेरी पैनल का साझा टूलबार (नीचे देखें) |
+| `EditorHeader` | हर पूरे-पेज एडिटर की साझा हेडर (नीचे देखें) |
 
 सारे UI कंपोनेंट कंट्रोल्ड प्रॉप (value और onChange) इस्तेमाल करते हैं और ओवरले के लिए पोर्टल रेंडरिंग।
 
 **लाइब्रेरी पैनल `LibraryToolbar` इस्तेमाल करते हैं।** Characters, Personas, Lorebooks, Agents और Presets पैनल के टैब अपने ऊपरी कंट्रोल इसी से रेंडर करते हैं: वैकल्पिक लाइब्रेरी पंक्ति (पूरी चौड़ाई का एक बटन, या Download / Open Library की जोड़ी), बनाना / इंपोर्ट / एक्सपोर्ट / चुनना, साझा सॉर्ट मेन्यू के साथ सर्च, New Folder, फिर `children` के रूप में पैनल फ़िल्टर। पंक्तियाँ टाइप वाले props हैं, स्लॉट नहीं, इसलिए नए लाइब्रेरी पैनल को वही मार्कअप मिलता है, ऐसी कॉपी नहीं जो बाद में अलग हो जाए। पैनल में हाथ से टूलबार बनाने की जगह वहाँ prop जोड़ें।
 
 `LibraryToolbar.tsx`, `SegmentedButtons` भी एक्सपोर्ट करता है, जो `|` से बँटा एक लंबा `.mari-chrome-segmented` बटन है। यह डाउनलोड करें / लाइब्रेरी खोलें की जोड़ी और प्रीसेट पैनल के **प्रॉम्प्ट** / **रेजेक्स** / **टूल** / **प्रोफ़ाइल** टैब बनाता है, ताकि हर पैनल की ऊपरी पंक्ति की ऊँचाई एक जैसी रहे। `groupLabel` देने पर पंक्ति टैब का `role="group"` बन जाती है, और `pressed` हर टैब का `aria-pressed` सेट करता है। `.mari-chrome-segmented` में `flex-shrink: 0` है, इसलिए पैनल का अपना तय ऊँचाई वाला फ़्लेक्स स्क्रॉलर (जैसे कैरेक्टर में) पंक्ति को सिकोड़ नहीं सकता।
+
+**पूरे-पेज एडिटर `EditorHeader` इस्तेमाल करते हैं।** यह Back, आइकन टाइल, नाम, वैकल्पिक सेक्शन टैब, ऐक्शन और Close को दो लेआउट में बनाता है। `nav` (सेक्शन टैब) के साथ `mari-editor-header--with-nav` के घनत्व नियम सबका आकार टैब के अनुसार रखते हैं। इसके बिना फ़ोन पर ऐक्शन की अलग पंक्ति होती है और Save में केवल आइकन दिखता है। नाम, टाइल की सामग्री और बटन slots हैं, इसलिए हर एडिटर अपना नाम फ़ील्ड और नियंत्रण रखता है। बटन के लिए `EditorSaveButton` और `EditorHeaderAction` लें: उनका label ही tooltip और सुलभ नाम है। खुद हेडर बनाने के बजाय वहीं slot या part जोड़ें।
 
 ## API क्लाइंट (`lib/api-client.ts`)
 
@@ -649,17 +652,24 @@ Personal Extensions सर्वर पर सेव, हैश से हूब
 | `haptic`                 | post_processing | Haptic डिवाइस को कमांड भेजता है                                     |
 | `cyoa`                   | post_processing | विकल्पों वाले प्रॉम्प्ट बनाता है                                    |
 | `storyboard` | post_processing | Game और Roleplay के स्थिर या एनिमेटेड स्टोरीबोर्ड की योजना बनाता है |
+| `2d-avatars` | feature | एनिमेटेड 2D स्प्राइट या मेश अवतार दिखाता है |
+| `3d-avatars` | feature | एनिमेटेड VRM, MMD PMX, GLB और FBX 3D अवतार दिखाता है |
 | `conversation-calls`     | feature         | Conversation में ऑडियो/वीडियो कॉल और उनकी सेटिंग्स जोड़ता है         |
 | `hierarchical-maps`      | feature         | Roleplay/Game के मैप, जगह का कॉन्टेक्स्ट और आवाजाही जोड़ता है         |
 | `noodle` | feature | Home में स्थानीय Noodle सोशल फ़ीड जोड़ता है |
+| `otome-forge` | feature | कैरेक्टर से बना otome गेम Otome Hearth, Home में जोड़ता है |
+| `saucelings` | feature | कैरेक्टर द्वारा पाला जाने वाला आभासी पालतू Saucelings, Home में जोड़ता है |
 | `slurp2` | feature | Home में Slurp जोड़ता है, जो कैरेक्टर के लिए एक निजी क्रिएटर ऐप है |
+| `story-writer` | feature | साथ किताब लिखने का कार्यक्षेत्र Story Writer, Home में जोड़ता है |
 | `gacha-forge` | feature | Home में एक गाचा गेम मोड जोड़ता है |
+| `blackjack` | feature | Conversation की Blackjack टेबल जोड़ता है |
 | `uno`                    | feature         | Conversation में UNO की टेबल जोड़ता है                              |
 | `chess`                  | feature         | Conversation में शतरंज का बोर्ड जोड़ता है                            |
 | `poker`                  | feature         | Conversation में Texas Hold'em की टेबल जोड़ता है                     |
 | `eightball`              | feature         | Conversation में 8-Ball Pool की टेबल जोड़ता है                       |
 | `tic-tac-toe`            | feature         | Conversation में Tic-Tac-Toe का बोर्ड जोड़ता है                      |
 | `rock-paper-scissors`    | feature         | Conversation में Rock-Paper-Scissors के मैच जोड़ता है                |
+| `wordle` | feature | Conversation की दैनिक Wordle दौड़ जोड़ता है |
 
 ### एजेंट रिज़ल्ट टाइप
 

@@ -67,7 +67,7 @@ Se você desativou **Novo layout** em **Configurações → Aparência → Tema*
 | **Confirmações e ajuda** | **Confirmar antes de excluir**, **Ocultar botão de ajuda do chat** e **Tutoriais**. |
 | **Extras** | **Conquistas**, **Desativar temas sazonais do Marinara** e **Player de música**. |
 | **Professor Mari** | Uma linha, **Configurações da busca e da Professor Mari**. Clique em **Abrir** para acessar a busca, as respostas rápidas e a Professor Mari. Veja [Professor Mari](../home/professor-mari.md). |
-| **Notificações** | Onde os avisos aparecem, sons de notificação e notificações do navegador e do Android. Veja [Notifications](#notifications). |
+| **Notificações** | Posição de avisos, sons, notificações do navegador e Android e push por ntfy. Veja [Notificações](#notifications). |
 
 ### Idioma
 
@@ -103,6 +103,28 @@ O Marinara toca um som embutido nas notificações. Para usar o seu próprio som
 O som toca em todos os dispositivos conectados a este servidor. Você pode ouvir, trocar ou remover o som. Se o arquivo não puder ser lido, o Marinara toca o som embutido. O arquivo faz parte dos backups e das exportações de perfil.
 
 **Background Notifications** cobrem as mensagens de Conversation que os personagens enviam por conta própria. **Generation Completion Notifications** cobrem as respostas que você mesmo inicia em Conversation, Roleplay e Game Mode. As duas funcionam enquanto o Marinara está aberto, mas sem o foco da tela. Elas nunca mostram o conteúdo das mensagens. **Posição das notificações** define se as mensagens de erro e os outros avisos aparecem no topo ou na parte inferior.
+
+<a id="get-notifications-on-your-phone-while-marinara-is-closed"></a>
+#### Receber notificações com Marinara fechado
+
+**Notificações push (ntfy)** chegam mesmo com todas as abas e a app Android fechadas. O servidor envia pelo ntfy, serviço grátis com app Android e iPhone.
+
+Instale ntfy primeiro. Abra Marinara no computador servidor ou tenha o segredo de administrador neste dispositivo. Veja [Acesso remoto](../REMOTE_ACCESS.md).
+
+1. Em **Configurações → Geral → Notificações**, ative **Enviar notificações push**. Cria um **Tópico** aleatório, canal privado dos avisos.
+2. No celular, use **Abrir no ntfy**, ou **Copiar** e assine o tópico no ntfy.
+3. **Enviar notificação de teste** mostra “Marinara test notification”.
+
+Dois interruptores escolhem:
+
+- **Mensagens que personagens enviam por conta própria**: mensagens autônomas de Conversation, escritas mesmo sem dispositivos abertos.
+- **Respostas iniciadas por você, se fechar Marinara antes de terminarem**: só se fechou ou saiu antes de salvar. Com a app aberta, os avisos próprios cuidam disso.
+
+O aviso traz autor e “Open Marinara to read it.”. **Mostrar prévia da mensagem** envia o começo, até 200 caracteres. Tocar abre em **Endereço a abrir**, inicialmente o endereço usado ao ativar. Mude se o celular usa outro.
+
+> **Nota:** Com `ntfy.sh`, títulos e prévias passam num servidor público e quem sabe o tópico pode ler. Use **Novo tópico** se vazar. Para manter em seus equipamentos, rode ntfy e ponha o endereço em **Servidor ntfy**. Servidor local funciona.
+
+Se o teste falhar, Marinara explica. O mais comum é o servidor não alcançar **Servidor ntfy**.
 
 ## A aba Conversando
 

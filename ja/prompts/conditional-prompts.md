@@ -341,7 +341,7 @@ Marinaraは通常、同じターンと同じDecisionモデルに対する正常�
 
 よく変わる判定ブロックは、履歴の後の指示や浅い深度の作者メモなど、プロンプトの後ろのほうに置いてください。判定を先頭近くに置くのは、その答えがめったに変わらない場合だけにします。プリセット変数の選択肢も同じです。そのテキストは`{{name}}`がある位置に入るためです。
 
-Anthropicに直接接続するアカウントで**Enable prompt caching**(プロンプトキャッシュを有効にする)をオンにすると、Marinaraはシステムプロンプトの末尾と、最新のメッセージから**Cache depth**(キャッシュ深度)件さかのぼったチャットメッセージ(デフォルトは5件)に印を付けます。履歴より前を変更すると、システムの境界とそれより後の履歴が無効になることがあります。印を付けた履歴の境界より後の変更であれば、キャッシュされた部分を保てます。最小キャッシュ長はモデルによって異なります。プロバイダーの最新の[Anthropicプロンプトキャッシュガイド](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)または[OpenAIプロンプトキャッシュガイド](https://developers.openai.com/api/docs/guides/prompt-caching)を確認してください。
+Anthropicに直接接続するアカウントで**プロンプトキャッシュを有効にする**(プロンプトキャッシュを有効にする)をオンにすると、Marinaraはシステムプロンプトの末尾と、最新のメッセージから**キャッシュの深さ**(キャッシュ深度)件さかのぼったチャットメッセージ(デフォルトは5件)に印を付けます。履歴より前を変更すると、システムの境界とそれより後の履歴が無効になることがあります。印を付けた履歴の境界より後の変更であれば、キャッシュされた部分を保てます。チャットに要約がある場合、**Past Events**の直前にも3つ目の印を付けます。新しい要約を保存するターンではPast Eventsと履歴を再送し、その前のシステムプロンプトは引き続きキャッシュから読み取ります。OpenRouterのClaudeモデルにも同じ印を付けます。最小キャッシュ長はモデルによって異なります。プロバイダーの最新の[Anthropicプロンプトキャッシュガイド](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)または[OpenAIプロンプトキャッシュガイド](https://developers.openai.com/api/docs/guides/prompt-caching)を確認してください。
 
 <a id="when-a-decision-branch-never-appears"></a>
 

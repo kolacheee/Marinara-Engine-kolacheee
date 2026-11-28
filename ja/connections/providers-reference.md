@@ -25,6 +25,8 @@
 | Arli AI | `www.arliai.com/account` |
 | Z.AI | `z.ai/manage-apikey/apikey-list` |
 | DeepSeek | `platform.deepseek.com/api_keys` |
+| AI Horde | `aihorde.net/register` (任意、参照： [AI Horde](#ai-horde)) |
+| BeaverNet | `net.beaverai.org/account` |
 | OpenAI-compatible、Claude (Subscription)、OpenAI (ChatGPT)、Grok CLI (Subscription) | キーのページはありません。下の注記を参照してください。 |
 
 デフォルトのアドレスは次のとおりです。Marinaraが自動で入力します。
@@ -43,6 +45,9 @@
 - Arli AI: `https://api.arliai.com/v1`
 - Z.AI: `https://api.z.ai/api/paas/v4`
 - DeepSeek: `https://api.deepseek.com/v1`
+
+- AI Horde: `https://oai.aihorde.net/v1`
+- BeaverNet: `https://net.beaverai.org/v1`
 - OpenAI-compatibleとサブスクリプションサービス: なし。アドレスを自分で入力するか、アドレスが不要です。
 
 キーのページのアドレスは、すべて`https://`で始まります。
@@ -86,7 +91,7 @@ Googleのドキュメントに沿ったMarinaraのコード内の注記による
 
 | モデル | キャッシュする内容 | 保持時間 |
 | --- | --- | --- |
-| Claude | システムプロンプト、**Cache depth**(キャッシュの深さ)までのチャット履歴、最新のメッセージ | 5分、または**Extended token caching (1 hour)**(トークンキャッシュの延長(1時間))で1時間 |
+| Claude | システムプロンプト（要約があると2分割し、新しい要約でも**Past Events**より前をキャッシュに保持）、**キャッシュの深さ**までの履歴、最新メッセージ | 5分、**トークンキャッシュの延長(1時間)**では1時間 |
 | Qwen | システムプロンプトと**Cache depth**までのチャット履歴 | 5分 |
 | Gemini | システムプロンプト | 5分 |
 | GPT、DeepSeek、Grok、Kimiなど | スイッチのオンとオフにかかわらず、サービスが独自にキャッシュします | サービスが決定 |
@@ -135,7 +140,9 @@ NanoGPTのサブスクリプションがある場合、アカウントに現在�
 
 ### Z.AI
 
-**Z.AI**は、GLMモデル(GLM 5.3、GLM 5.3 Flash、およびそれ以前のモデル)を独自のAPIで提供しています。GLM 5.2と5.3のモデルは、**Maximum**(最大)の推論レベルを受け付けます。デフォルトのアドレスは従量課金用のエンドポイントです。Z.AIのCoding Planは別のエンドポイントを使うため、Coding Planのキーはここでは動作しない場合があります。
+**Z.AI**はGLM（GLM 5.4、GLM 5.3、GLM 5.3 Flash以前）を独自APIで提供します。GLM 5.2、5.3、5.4は推論の**最大**に対応します。初期アドレスは従量課金用です。Coding Planは別の接続先を使うため、そのキーはここでは使えない場合があります。
+
+GLM 5.4はGLM Coding Plan専用です。**アドレス**を`https://api.z.ai/api/coding/paas/v4`に設定します。常に思考するため、**推論の度合い**は**低**、**高**、**最大**で、**オフ**はありません。
 
 ### DeepSeek
 
@@ -144,6 +151,20 @@ NanoGPTのサブスクリプションがある場合、アカウントに現在�
 適用されないパラメーターもあるため、パネルではそれらを表示しません。**Verbosity**、**Top K**、各種ペナルティーは廃止されており、無視されます。DeepSeekは一度にどちらか一方しか使わないため、**Temperature**(温度)と**Top P**は対になっています。思考がオフのときは**Temperature**が、オンのときは**Top P**が表示されます。
 
 DeepSeekには、**OpenAI**にDeepSeekのアドレスを指定するのではなく、DeepSeek専用のタイルで接続してください。OpenAIのサービスはOpenAIのモデルを前提としているため、DeepSeekのモデルでは生成の設定項目が非表示になり、設定のほとんどが送信されません。
+
+<a id="ai-horde"></a>
+### AI Horde
+
+**AI Horde**はボランティアのコンピューターでモデルを動かす無料ネットワークです。タイルは専用アドレスで**OpenAI-compatible**アカウントを設定します。
+
+**APIキー**の初期値はアカウント不要の匿名キー`0000000000`です。匿名リクエストは待ち時間が最長です。`aihorde.net/register`の無料キーで短縮できます。自分のコンピューターを共有するとkudos（優先順位を上げるHordeポイント）を獲得します。
+
+一覧は現在稼働するモデルで、頻繁に変わります。待ち行列次第で数秒から数分かかります。タイムアウトしたら別モデルかサーバーの制限延長を試してください（[タイムアウト](#timeouts)参照）。
+
+<a id="beavernet"></a>
+### BeaverNet
+
+**BeaverNet**は余ったGPUでモデルを動かし、皆で使う無料コミュニティーネットワークです。タイルは専用アドレスで**OpenAI-compatible**アカウントを設定します。`net.beaverai.org/account`で無料キーを作成してください。
 
 ### OpenAI-compatible
 

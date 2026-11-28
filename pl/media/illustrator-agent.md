@@ -85,6 +85,8 @@ Gdy opcja **Wysyłaj referencje awatarów** jest włączona dla obrazów, ustawi
 
 Model piszący prompt pozwala obejść ograniczenia modeli obrazów, które pomijają obrazy referencyjne, takich jak NovelAI V5. Musi to być model odczytujący obrazy. Jeśli odmówi ich przyjęcia, jego żądanie jest wysyłane ponownie bez obrazów i do restartu serwera ten model nie dostaje żadnych. Model piszący prompt, którego połączenie jest oznaczone jako nieodczytujące obrazów, nie dostaje żadnych. Wysyłanie mu obrazów kosztuje tokeny przy każdym uruchomieniu. Wysyłane są najwyżej cztery obrazy: z kart wskazanych w `[illustrate: characters="…"]` albo, jeśli ich nie wskazano, z aktywnych postaci i persony czatu. **What to carry over from the pictures** (co przenosić z obrazów) określa, co model piszący prompt ma kopiować, na przykład tylko wygląd, bez stylu graficznego. Czat Roleplay może ustawić własną wartość **Reference pictures go to** pod opcją **Wysyłaj referencje awatarów**.
 
+W czacie Roleplay obrazy z **Obrazy referencyjne** wpisu lorebooka też trafiają do modelu obrazów, gdy wpis jest aktywny dla odpowiedzi. Użyj ich do stroju, rekwizytu lub pokoju, do którego obraz ma pasować. Nie wymagają włączenia żadnego ustawienia. Dostają je tylko usługi przyjmujące obrazy referencyjne. Stability AI, Arli AI, SD Web UI i Draw Things ich nie dostają, bo zaczynałyby obraz od grafiki wpisu. Przy włączonym **Wysyłaj referencje awatarów** wybór **Model promptów** też je zatrzymuje. Są dodawane po **Obraz referencyjny miejsca** z [World Maps](../agents/hierarchical-maps.md) i awatarach, maksymalnie sześć obrazów łącznie. Wpis z **Pozycja** ustawionym na **Wyjście** wysyła obrazy tylko przy użyciu swojego Outlet, nigdy z przycisku **Ilustruj** w galerii.
+
 ## Częstotliwość rysowania
 
 Karta agenta Illustrator ma przycisk **Open Setup**, który otwiera pełny ekran konfiguracji. Ustawia się tam domyślny odstęp uruchamiania i przypisuje agentowi własny model obrazów.
@@ -130,7 +132,8 @@ Illustrator maluje też tła. Na karcie agenta Illustrator w **Ustawienia czatu 
 
 - **Generuj tła scen** maluje tło, gdy historia przenosi się w nowe miejsce, chyba że masz już jego obraz.
 - **Weather Versions of Backgrounds** (warianty teł z pogodą) przemalowuje bieżące tło zgodnie z pogodą w historii, z ruchomym deszczem lub śniegiem widocznym tylko w oknach pomieszczenia.
-- **Decision Model Checks** (sprawdzanie modelem decyzyjnym) zleca modelowi decyzyjnemu sprawdzanie każdej odpowiedzi pod kątem nowego miejsca lub pogody, żeby tła nie musiały czekać na interwał uruchamiania.
+- **Wersje tła według pory dnia** przemalowuje tło na świt, dzień, zachód słońca lub noc, gdy pora dnia w opowieści się zmienia.
+- **Kontrole modelu decyzyjnego** sprawdza modelem decyzyjnym każdą odpowiedź pod kątem nowego miejsca, pogody lub pory dnia, aby tła nie czekały na interwał uruchomień.
 
 Wszystkie trzy opcje są domyślnie wyłączone. Zobacz [Tła tworzone przez agenta Illustrator](scene-backgrounds.md).
 

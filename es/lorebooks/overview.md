@@ -116,6 +116,26 @@ Debajo de los botones:
 
 Cada fila tiene los botones **Copy** (Copiar: duplica el lorebook) y **Delete** (Eliminar). Aparecen cuando pasas el cursor sobre la fila y en los teléfonos siempre están visibles. Un lorebook desactivado muestra una insignia **OFF**. Haz clic en la imagen para subirla o reemplazarla.
 
+<a id="save-a-lorebook-set"></a>
+### Guardar un conjunto de lorebooks
+
+Un conjunto de lorebooks es un grupo con nombre que usas junto, por ejemplo para un mismo mundo. Eliges todo el grupo en lugar de cada lorebook. El conjunto apunta a tus lorebooks sin copiarlos.
+
+1. En **Lorebooks**, haz clic en **Nuevo conjunto**. Se abre en **Conjuntos de lorebooks**.
+2. Escribe un nombre en **Nombre del conjunto**.
+3. Haz clic en **Elegir lorebooks** y marca los lorebooks del conjunto. Cada cambio se guarda solo.
+
+Para editarlo, haz clic en él en **Conjuntos de lorebooks**. **Eliminar conjunto** borra el conjunto y deja sus lorebooks en tu biblioteca. Al borrar un lorebook, sale de todos los conjuntos.
+
+Elige un conjunto en **Usar un conjunto guardado**, encima de **Elegir lorebooks**. El campo aparece cuando tienes un conjunto, en estos lugares:
+
+- El paso **Attach Lorebooks** de un nuevo roleplay.
+- Los lorebooks de fuentes fijas de un agente, como Knowledge Router. Consulta [Fuentes de conocimiento: agentes de recuperación y enrutamiento](../agents/knowledge-sources.md#choose-the-sources).
+
+Elegir un conjunto sustituye los lorebooks seleccionados. Después puedes añadir o quitar lorebooks para ese chat o agente sin cambiar el conjunto guardado.
+
+Para activar o desactivar entradas solo en un chat, abre **Ajustes del chat → Lorebooks** y haz clic en el lápiz (**Editar las entradas del lorebook**) junto al lorebook. Los interruptores de entradas solo afectan a ese chat; otras ediciones cambian el lorebook mismo.
+
 ### Categorías
 
 Una categoría es una etiqueta para tu biblioteca. No cambia cuándo se activa el lorebook. Las pestañas son **All** (Todos), **Active** (Activos: los lorebooks relevantes para el chat abierto), **World**, **Character**, **NPC**, **Spellbook** y **Other**. Puedes cambiar la categoría de un lorebook en su pestaña **Overview**, donde **Other** se llama **Uncategorized**.

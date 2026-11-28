@@ -37,6 +37,8 @@
 
 카드나 페르소나가 **Image tags**(이미지 태그)를 사용 중이면(편집기 **Appearance**의 **Image tags** 탭에서 **Use for image prompts**(이미지 프롬프트에 사용)를 체크한 경우), Marinara는 **Appearance** 서술문 대신 그 태그를 보냅니다. 채팅에서 활성화된 Appearance 대체 필드는 자체 태그나 서술문을 사용합니다. **Appearance**가 그림용이 아니라 이야기용으로 작성되어 있을 때 쓰세요.
 
+캐릭터가 답장에서 보내는 셀피에는 이미지 서비스가 참조 이미지를 지원할 경우 해당 답장에서 활성화된 로어북 항목의 **참조 이미지**도 포함됩니다. 별도로 켜는 설정은 없습니다. Stability AI, Arli AI, SD Web UI, Draw Things에는 보내지 않습니다. 항목의 사진을 바탕으로 셀피를 시작하게 되기 때문입니다. Gallery의 **셀카** 버튼도 이 사진들을 보내지 않습니다.
+
 ## 직접 셀카 요청하기
 
 1. **Chat Settings**를 열고 **Gallery**(갤러리) 섹션을 펼치세요.

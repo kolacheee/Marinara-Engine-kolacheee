@@ -124,7 +124,9 @@ Los agentes actualizan los valores de tus campos personalizados. Nunca borran un
 
 ### Crear un retrato nuevo
 
-La tarjeta grande de un personaje puede crear un retrato nuevo cuando el Character Tracker tiene una conexión de imágenes. En una tarjeta compacta, haz clic en **Feature character card** (Destacar tarjeta de personaje) para abrir la grande. La ventana Trackers siempre muestra tarjetas grandes. Pasa el cursor sobre el retrato y haz clic en el botón del ojo para crear uno a partir del **Look**, o en el botón de la camisa para el **Look** y el **Outfit**. El botón de la camisa solo aparece cuando el personaje tiene un atuendo. El retrato anterior se queda hasta que el nuevo está listo. Si la creación falla, conservas el anterior. Los personajes que se muestran con el avatar de su tarjeta o con un sprite de expresión no tienen estos botones.
+La tarjeta grande puede crear un retrato cuando Character Tracker tiene conexión de imágenes. En una compacta, **Destacar tarjeta de personaje** abre la grande; la ventana Trackers siempre las muestra grandes. Pasa el cursor: el ojo usa **Aspecto**, la camisa **Aspecto** y **Atuendo**, y aparece solo si hay atuendo. También puedes subir una imagen abajo a la derecha. Para tarjetas de personaje guarda un retrato por escena sin sustituir el avatar. **Restaurar retrato de la tarjeta**, arriba a la derecha, vuelve al original. El retrato anterior queda hasta que el nuevo esté listo y se conserva si falla. Los sprites de expresión ocultan estos botones hasta desactivar **Usar sprites de expresión en los retratos de los trackers** o no haber un sprite adecuado.
+
+Activa **Reescribir prompts de retratos con IA** en Character Tracker para que el modelo de Illustrator combine **Aspecto**, **Estado de ánimo** y **Atuendo** de la parte superior del cuerpo en un prompt de retrato. Puedes ajustar sus instrucciones en el campo editable.
 
 ### Ajustes del Tracker Panel
 

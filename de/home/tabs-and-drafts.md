@@ -6,14 +6,30 @@ Im neuen Layout bekommt jeder Chat, Charakter, jede Persona, jedes Lorebook, Pre
 
 - **Computer und Tablet im Querformat:** Die Tabs stehen in der oberen Leiste. Klick auf einen Tab, um zu ihm zurückzukehren.
 - **Handy und Tablet im Hochformat:** Tipp oben rechts auf die Schaltfläche mit der Zahl. **Alle Tabs** zeigt jeden Tab als Karte. Tipp auf eine Karte, um sie zu öffnen, oder auf **Fertig**, um zurückzukehren.
+
+- **Library-Bereiche** wie Characters, Presets oder Settings erhalten keinen eigenen Tab, da sie in der Library nur einen Klick entfernt sind. Um einen trotzdem in der Topbar zu halten, ziehe ihn am Computer aus der Library-Liste an die gewünschte Stelle zwischen den Tabs. Er bleibt, bis du ihn schließt.
 - **Wisch auf dem Handy über die obere Leiste** nach links oder rechts, um zum nächsten oder vorherigen Tab zu wechseln.
+
+- **Chat-Tabs** beginnen mit Modussymbol in der Modusfarbe und dem Kürzel **CO** für Conversation, **RP** für Roleplay oder **GM** für Game, gefolgt vom Chatnamen. Gleichnamige Chats desselben Modus erhalten Nummern wie „Luna · 2“.
+- **Andere Tabs** zeigen ihr Symbol (Charakter, Lorebook, Persona usw.) und den Namen. Gleichnamige Chats und Charaktere behalten ihren Namen, da das Symbol sie unterscheidet. Gleichnamige Tabs derselben Art werden nummeriert.
+
+<a id="tabs-keep-your-place"></a>
+## Tabs merken sich deine Position
+
+Beim Zurückkehren findest du den zuletzt geöffneten Stand:
+
+- **Editoren** öffnen dieselbe Seite, denselben Abschnitt oder Eintrag: Preset-Seite und Prompt order, Lorebook-Eintrag mit Suche und Sortierung, Galerie- oder Sprite-Tab eines Charakters oder einer Persona und selbst ergänzte Kartenabschnitte.
+- **Scrollpositionen** bleiben in Editoren, Listen und Chats erhalten. Ein nach oben gescrollter Chat öffnet dort statt bei der neuesten Nachricht.
+- Absichtlich an einer bestimmten Stelle geöffnete Inhalte, etwa wenn Professor Mari dir ein Feld zeigt, öffnen weiterhin dort.
+
+Die Positionen bleiben bis zum Schließen des Tabs oder Neuladen erhalten.
 
 ## Tabs verschieben, gruppieren und schließen
 
 Klick am Computer mit der rechten Maustaste auf einen Tab oder halte ihn auf einem Touchscreen gedrückt, um sein Menü zu öffnen:
 
 - **Move left** und **Move right** verschieben den Tab um eine Position. Am Computer kannst du ihn auch ziehen.
-- **Zu neuer Gruppe hinzufügen** ordnet den Tab einer Gruppe zu. Am Computer kannst du einen Tab auch auf einen anderen Tab ziehen und ihn dort kurz ruhen lassen: Sobald der andere Tab aufleuchtet, lass los, und die beiden werden zu einer Gruppe (lass ihn auf einer Gruppe los, um ihn hinzuzufügen). Ein schnelles Loslassen verschiebt den Tab nur. Mit gedrückter Umschalttaste beim Loslassen wird sofort gruppiert. Solange du einen Tab aus einer Gruppe geöffnet hast, erscheinen die Tabs dieser Gruppe in einer zweiten Zeile unter der oberen Leiste. Klick auf den Namen der Gruppe, um sie umzubenennen oder zu schließen.
+- **Zu neuer Gruppe hinzufügen** ordnet den Tab einer Gruppe zu. Am Computer kannst du einen Tab auch auf einen anderen Tab ziehen und ihn dort kurz ruhen lassen: Sobald der andere Tab aufleuchtet, lass los, und die beiden werden zu einer Gruppe (lass ihn auf einer Gruppe los, um ihn hinzuzufügen). Ein schnelles Loslassen verschiebt den Tab nur. Mit gedrückter Umschalttaste beim Loslassen wird sofort gruppiert. Solange du einen Tab aus einer Gruppe geöffnet hast, erscheinen die Tabs dieser Gruppe in einer zweiten Zeile unter der oberen Leiste. Klick auf den Namen der Gruppe, um sie umzubenennen oder zu schließen. Die Gruppenzeile nimmt wie Vivaldis Tab-Stapel eine ganze eigene Zeile ein. Am Anfang stehen Gruppenname und Tab-Anzahl; klick darauf, um umzubenennen, die Gruppierung aufzuheben oder die Gruppe zu schließen. Auf Handys und hochkant gehaltenen Tablets zeigt **Alle Tabs** die Tabs jeder Gruppe unter deren Namen zusammen.
 - **Tab schließen** schließt den Tab, **Andere Tabs schließen** schließt die übrigen.
 - **Geschlossenen Tab erneut öffnen** bringt den zuletzt geschlossenen Tab zurück.
 

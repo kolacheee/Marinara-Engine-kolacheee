@@ -91,6 +91,15 @@ Ein mit **Rules** gekennzeichnetes Paket ist kein Agent. Es liefert einen Game-M
 
 Deinstallierst du ein Paket, verschwinden sein Code und seine Einstellungen, deine Chatnachrichten und dein Verlauf bleiben aber erhalten. Löschst du einen eigenen Agenten, ist er endgültig weg.
 
+<a id="read-an-agents-guides"></a>
+### Anleitungen eines Agenten lesen
+
+Öffne die Seite des Agenten im **Agent Organizer** und klick auf **Lies, wie dieser Agent funktioniert**. Seine Übersicht öffnet sich im Dokumentationsfenster. Wähle ein Thema aus der Liste, um mehr zu lesen. Auf dem Handy kommst du mit dem Zurück-Pfeil zur Themenliste zurück. Schließe das Fenster, um zur Agentenseite zurückzukehren.
+
+**Quelle ansehen** öffnet die Originalanleitung. Einige Agenten haben vorerst nur eine kurze Beschreibung oder einen externen Link, während ihre Autoren Themenanleitungen ergänzen. Kann eine Anleitung nicht geladen werden, versuch es erneut, sobald du online bist. Bereits geöffnete Anleitungen können bis zu sieben Tage verfügbar bleiben; eine gespeicherte Anleitung kann veraltet sein.
+
+**Versionsverlauf** zeigt die drei neuesten Einträge. Klick auf **Ältere Versionen anzeigen**, um mehr zu sehen, oder auf **Weniger Versionen anzeigen**, um die Liste wieder zu kürzen. Die neueste Veröffentlichung steht auch unter **Neuigkeiten**.
+
 ### Agenten aktualisieren
 
 Gibt es für ein installiertes Paket eine neuere kompatible Version, öffnet sich das Fenster **Agent updates available**. Es listet jedes Update mit seiner Version auf und zeigt, ob es einen Neustart braucht.

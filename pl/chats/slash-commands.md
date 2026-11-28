@@ -71,7 +71,9 @@ Komenda `/remind` przyjmuje czas z jednostką `h` (godziny), `m` (minuty) lub `s
 | `/illustrate` | Tylko Roleplay. Generuje obraz do galerii. Wymaga agenta Illustrator. Także `/ill`. Format: `/illustrate [range=N-M] [template=name] [prompt]`. |
 | `/html` | Tylko Roleplay. Tworzy jeden artefakt ze świata opowieści, na przykład `a spellbook page`, na końcu najnowszej odpowiedzi. Format: `/html [what you want]`. |
 | `/video` | Tylko Roleplay. Tworzy krótki klip z najnowszej odpowiedzi lub na podstawie twojego opisu i umieszcza go pod tą odpowiedzią. Korzysta z ustawienia **First frame** (pierwsza klatka) agenta Illustrator. Wymaga agenta Illustrator. Format: `/video [description]`. |
-| `/impersonate` | Pisze odpowiedź w imieniu twojej persony. Także `/imp`. Format: `/impersonate [direction (optional)]`. |
+| `/impersonate` | Pisze odpowiedź jako twoja persona. Publikuje ją albo wpisuje szkic do pola wiadomości, jeśli **Cel wyniku** w ustawieniach czatu ma wartość **Szkic wiadomości**. Także `/imp`. Format: `/impersonate [direction (optional)]`. |
+| `/impersonate_draft` | Wpisuje odpowiedź persony do pola wiadomości, aby poprawić ją przed wysłaniem. Niczego nie publikuje. Także `/impd`, `/imp_draft`. Format: `/impersonate_draft [direction (optional)]`. |
+| `/impersonate_post` | Od razu pisze i publikuje odpowiedź persony, niezależnie od **Cel wyniku**. Także `/impp`, `/imp_post`. Format: `/impersonate_post [direction (optional)]`. |
 | `/impersonate_prompt` | Ustawia instrukcję, z której `/impersonate` korzysta w tym czacie. Także `/imp_prompt`. Format: `/impersonate_prompt [prompt or reset]`. |
 
 Większość z nich sprawdza się najlepiej w trybie Roleplay. `/scene` uruchamia się z czatu Conversation. `/impersonate` i `/impersonate_prompt` nie są dostępne w trybie Conversation.

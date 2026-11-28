@@ -91,6 +91,15 @@ Um pacote marcado **Rules** não é um agente. Ele acrescenta um conjunto de reg
 
 Desinstalar um pacote remove o código e as configurações dele, mas preserva as mensagens e o histórico do chat. Excluir um agente personalizado é definitivo.
 
+<a id="read-an-agents-guides"></a>
+### Ler os guias de um agente
+
+Abra a página do agente no **Agent Organizer** e clique em **Ler como este agente funciona**. A visão geral abre na janela de documentação. Escolha um tópico da lista para ler mais. No celular, use a seta de voltar para retornar à lista. Feche a janela para voltar à página do agente.
+
+**Ver fonte** abre o guia original. Alguns agentes ainda têm só um resumo curto ou link externo enquanto os autores adicionam guias de tópicos. Se um guia não carregar, tente quando estiver online. Guias já abertos podem ficar disponíveis por até sete dias; uma cópia salva pode estar desatualizada.
+
+**Histórico de versões** mostra as três entradas mais recentes. Clique em **Mostrar versões anteriores** para expandir ou **Mostrar menos versões** para encurtar a lista. A versão mais recente também aparece em **Novidades**.
+
 ### Atualizar agentes
 
 Quando existe uma versão compatível mais nova de um pacote instalado, a janela **Agent updates available** (atualizações de agentes disponíveis) se abre. Ela lista cada atualização com a versão e informa se é preciso reiniciar.

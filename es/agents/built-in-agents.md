@@ -75,6 +75,28 @@ Un libro que escribes junto con el modelo. Configura la historia, el reparto y l
 - **Ajustes clave**: instálala, reinicia cuando se te pida, abre **Home → Story Writer** y elige una conexión de texto en su barra lateral. Las historias se guardan en tu servidor de Marinara. Puedes empezar otras nuevas, volver a las anteriores y descargarlas como Markdown o texto sin formato.
 - **Guía completa**: [guía del paquete Story Writer](https://github.com/Pasta-Devs/Marinara-Agents/blob/staging/packages/story-writer/README.md).
 
+<a id="otome-hearth"></a>
+### Otome Hearth
+
+Juego otome individual con tus personajes. Los intereses románticos recuerdan decisiones, escriben, tienen citas y desbloquean historias y atuendos con Starlight ganado jugando, sin dinero real ni temporizadores de energía.
+
+- **Integración**: App en su pestaña **Otome Hearth** de **Inicio**.
+- **Dónde funciona**: Home.
+- **Disponibilidad**: Requiere Engine **2.5.1+** (anterior a 4.0.0). Pide conexiones de red, rutas del servidor, almacenamiento local e interfaz de pestaña **Inicio**.
+- **Ajustes clave**: Instala, reinicia cuando se pida y abre **Inicio → Otome Hearth**. Configura biblias de personajes, límites de contenido **Lines & Veils** y seguimiento opcional **Remind Me** en la app.
+- **Guía completa**: [Otome Hearth](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/otome-forge/README.md).
+
+<a id="saucelings"></a>
+### Saucelings
+
+Mascota virtual en **Inicio → Saucelings** y widgets. Elige un personaje cuidador para alimentar, jugar y abrazar según su horario mientras cubres lo que falta.
+
+- **Integración**: App en su pestaña **Saucelings** y widgets de **Inicio**.
+- **Dónde funciona**: Home.
+- **Disponibilidad**: Requiere Engine **2.5.0+** (anterior a 4.0.0). Pide contexto del prompt de chat, rutas, almacenamiento local e interfaces de pestaña y widgets **Inicio**.
+- **Ajustes clave**: Instala, reinicia si se pide y abre **Inicio → Saucelings** para gestionar **Nook**, **Diario**, **Album**, **Menagerie** y **Settings**.
+- **Guía completa**: [Saucelings](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/saucelings/README.md).
+
 ## Writer agents
 
 Los Writer agents dan forma a la historia o a la prosa. Añaden orientación antes de la respuesta o limpian la respuesta después.
@@ -102,6 +124,8 @@ Observa cómo cambia un personaje durante el juego y sugiere ediciones a la tarj
 - **Fase**: Post-Processing.
 - **Dónde funciona**: Roleplay.
 - **Ajustes clave**: se ejecuta una vez cada 8 mensajes del usuario y del asistente de forma predeterminada. Consulta [Aprobaciones de agentes y el Agent Suite](approvals-and-agent-suite.md).
+
+- **Ejecutar con resúmenes** (Roleplay, tarjeta Card Evolution Auditor del chat): con resúmenes automáticos se ejecuta en la misma respuesta que cada resumen, no por su cuenta. Si apruebas antes de tu siguiente mensaje, los cambios se aplican en ese turno; si después, esperan al próximo resumen y la tarjeta cuenta los pendientes. Así tarjeta y prompt cambian juntos, rompiendo caché una vez. Sin resúmenes automáticos usa su contador y aplica aprobaciones enseguida.
 
 ### Narrative Director
 
@@ -274,6 +298,8 @@ Extrae recuerdos duraderos de los resúmenes del chat, los registros de personaj
 - **Datos**: usa los controles de copia de seguridad de Memory Settings para exportar o sustituir el almacén, los borradores y los ajustes. **Delete all data** (Borrar todos los datos) elimina de forma permanente los recuerdos, los borradores, la actividad y los índices, pero conserva los ajustes. Al desinstalarlo se conserva el almacén para una reinstalación posterior. Instalarlo, actualizarlo o quitarlo requiere reiniciar.
 - **Compatibilidad**: Engine `2.3.5` hasta antes de `4.0.0`. Permisos: `agent-runtime`, `chat-read`, `chat-write`, `routes`, `storage`, `ui`.
 
+- **Excluir mensajes almacenados del historial del chat** (Roleplay, tarjeta Long-Term Memory): los mensajes almacenados salen del historial salvo los más nuevos (10 por defecto). Siguen en chat y bóveda. Requiere una versión que informe hasta dónde guardó; con versiones anteriores no tiene efecto.
+
 ### Illustrator
 
 Crea imágenes y videos. Escribe prompts visuales para los momentos importantes y los envía a tu servicio de imágenes o de video.
@@ -289,6 +315,9 @@ Crea y actualiza entradas de lorebook a partir de datos importantes de tu chat, 
 - **Fase**: Post-Processing.
 - **Dónde funciona**: Roleplay. En Game Mode, una variante de fin de sesión llamada **Game Session Keeper** hace el mismo trabajo.
 - **Ajustes clave**: se ejecuta una vez cada 8 mensajes del usuario y del asistente de forma predeterminada. **Target Lorebook** (lorebook de destino) elige a dónde van las entradas, con una opción de selección automática. Los prompts avanzados pueden devolver el nombre de un lorebook editable o un alias como `world`, `npc`, `scene` o `player`. Los destinos de alias que faltan se crean y se vinculan al chat. Sin destino, se mantiene el comportamiento de un solo lorebook.
+
+- **Excluir mensajes almacenados del historial del chat** (tarjeta Lorebook Keeper): mensajes hasta el último éxito salen del historial salvo los más nuevos (10). Siguen en chat; sus hechos llegan al prompt por el lorebook. **Descartar mensajes antiguos por bloques** los quita por pasos.
+- **Ejecutar con resúmenes**: con resúmenes automáticos, Keeper corre en la misma respuesta, no por su contador. Entradas nuevas y mensajes excluidos cambian el prompt en ese turno y rompen caché una vez. Sin resúmenes usa su contador.
 
 ### Combat
 
@@ -417,6 +446,24 @@ Añade una partida uno contra uno donde ambas elecciones permanecen ocultas hast
 - **Integración**: paquete de juego de Conversation.
 - **Dónde funciona**: Conversation.
 - **Ajustes clave**: inícialo desde el selector de juegos o con `/rps` y luego elige el oponente y una partida al mejor de tres, cinco o siete. Instalarlo o quitarlo requiere reiniciar.
+
+<a id="blackjack"></a>
+### Blackjack
+
+Mesa contra la banca para personajes de Conversation.
+
+- **Integración**: paquete de juego Conversation.
+- **Dónde funciona**: Conversation.
+- **Ajustes clave**: inicia con `/blackjack` o un prompt de personaje. Activa **Blackjack** en **Ajustes del chat → Agentes → Comandos** para que inicien solos. Instalar requiere reinicio; quitar, no.
+
+<a id="wordle"></a>
+### Wordle
+
+Carrera diaria de palabras Wordle con personajes de Conversation.
+
+- **Integración**: paquete de juego Conversation.
+- **Dónde funciona**: Conversation.
+- **Ajustes clave**: inicia el juego de hoy con `/wordle`. Activa **Wordle** en **Ajustes del chat → Agentes → Comandos** para que lo inicien solos. Instalar requiere reinicio; quitar, no.
 
 ## Guías relacionadas
 

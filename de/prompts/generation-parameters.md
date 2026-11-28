@@ -114,9 +114,27 @@ Ein Wert bleibt im Feld sichtbar, auch wenn sein Send-Schalter aus ist. Gesendet
 
 ## Grenze für Kontextnachrichten
 
-**Limit Context Messages** (Kontextnachrichten begrenzen), auch als **Context message limit** beschriftet, schickt statt des ganzen Chats nur die letzten N Nachrichten. Standardmäßig ist die Option aus. Schaltest du sie ein, steht die Anzahl auf 50; möglich sind 1 bis 9.999. Eine kleinere Zahl senkt die Kosten und beschleunigt alles, dafür erinnert sich die KI an weniger.
+**Kontextnachrichten begrenzen** (Kontextnachrichten begrenzen), auch als **Limit für Kontextnachrichten** beschriftet, schickt statt des ganzen Chats nur die letzten N Nachrichten. Standardmäßig ist die Option aus. Schaltest du sie ein, steht die Anzahl auf 50; möglich sind 1 bis 9.999. Eine kleinere Zahl senkt die Kosten und beschleunigt alles, dafür erinnert sich die KI an weniger. Beim Einschalten wird außerdem **Alte Nachrichten schrittweise entfernen** mit 10 aktiviert, sofern du noch keine Schrittgröße gesetzt hast: Ein Limit, das pro Antwort eine Nachricht entfernt, verhindert die Wiederverwendung des Verlaufs im Prompt-Cache.
 
 In einem Roleplay-Chat mit eingeschaltetem **Advanced Memory Recall** (erweiterter Erinnerungsabruf) gilt diese Grenze nicht. Wie viel Verlauf mitgeht, legt Advanced Memory Recall über **Maximum allowed context before compression (tokens)** fest. Willst du weniger senden, senk diesen Wert unter **Chat Settings → Memory Recall**. Siehe [Advanced Memory Recall](../agents/memory.md#advanced-memory-recall-roleplay-and-game-mode).
+
+<a id="drop-old-messages-in-steps"></a>
+## Alte Nachrichten schrittweise entfernen
+
+**Alte Nachrichten schrittweise entfernen** ist standardmäßig aus. Eingeschaltet entfernt es alte Nachrichten um diese Anzahl auf einmal statt einzeln pro Antwort. Anfangswert 10, Bereich 2–100.
+
+Ohne die Option entfernt ein langer Chat nach Erreichen des Limits bei jeder Antwort die älteste Nachricht. Dadurch ändert sich stets der Verlaufsanfang und der Prompt-Cache kann ihn nicht wiederverwenden. Mit Schritt 10 bleibt der Anfang etwa zehn neue Nachrichten lang gleich, dann fallen zehn auf einmal weg. Die meisten Antworten nutzen den Cache; etwa jede zehnte schreibt ihn neu.
+
+Das gilt überall, wo alte Nachrichten gekürzt werden:
+
+- **Kontextnachrichten begrenzen**.
+- Kontextgröße der Verbindung, wenn der Prompt nicht hineinpasst.
+- **Max. Nachrichten** beim Chat History des Presets.
+- Zusammengefasste Nachrichten mit **Hide summarised messages**. Hier ist die Zusammenfassung der Schritt: Sie verlassen Chat History nur beim Speichern einer neuen Zusammenfassung, wenn sich Past Events ohnehin ändert. Dazwischen bleibt der Anfang gleich.
+
+Nachteil: Direkt nach einem Schritt sieht die KI um bis zu diese Anzahl weniger alte Nachrichten, als hineinpassen würden. Advanced Memory Recall bemisst den Verlauf nach Szenen; dabei ist diese Einstellung verborgen.
+
+Wenn automatische Zusammenfassungen zusammengefasste Nachrichten ausblenden, setze **Kontextnachrichten begrenzen** mindestens auf: nach der Zusammenfassung behaltene Nachrichten plus zweimal **Alle** (zählt deine Nachrichten, insgesamt etwa doppelt so viele) plus Schrittgröße. Bei 10, 5 und 10 sind das 30. Ein kleineres Limit entfernt zwischen Zusammenfassungen Nachrichten und schreibt jedes Mal den Cache neu. Advanced Parameters zeigt die Zahl, wenn das Limit zu klein ist.
 
 ## Exclude Past Reasoning
 

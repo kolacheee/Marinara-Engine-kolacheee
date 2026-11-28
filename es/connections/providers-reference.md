@@ -25,6 +25,8 @@ Estos servicios usan una API key, salvo los tres servicios de suscripción, que 
 | Arli AI | `www.arliai.com/account` |
 | Z.AI | `z.ai/manage-apikey/apikey-list` |
 | DeepSeek | `platform.deepseek.com/api_keys` |
+| AI Horde | `aihorde.net/register` (opcional, consulta [AI Horde](#ai-horde)) |
+| BeaverNet | `net.beaverai.org/account` |
 | OpenAI-compatible, Claude (Subscription), OpenAI (ChatGPT), Grok CLI (Subscription) | No hay página de claves. Consulta las notas de abajo. |
 
 Direcciones predeterminadas, que Marinara rellena por ti:
@@ -42,6 +44,9 @@ Direcciones predeterminadas, que Marinara rellena por ti:
 - Arli AI: `https://api.arliai.com/v1`
 - Z.AI: `https://api.z.ai/api/paas/v4`
 - DeepSeek: `https://api.deepseek.com/v1`
+
+- AI Horde: `https://oai.aihorde.net/v1`
+- BeaverNet: `https://net.beaverai.org/v1`
 - OpenAI-compatible y los servicios de suscripción: ninguna. Introduces una dirección, o no hace falta ninguna.
 
 Todas las páginas de claves empiezan por `https://`.
@@ -85,7 +90,7 @@ Un agregador es un servicio en el que una sola clave da acceso a modelos de much
 
 | Modelo | Qué se guarda en caché | Durante cuánto tiempo |
 | --- | --- | --- |
-| Claude | El prompt del sistema, el historial del chat hasta **Cache depth** (Profundidad de caché) y el mensaje más reciente | 5 minutos, o 1 hora con **Extended token caching (1 hour)** (Caché de tokens extendida: 1 hora) |
+| Claude | Prompt de sistema (en dos partes si hay resumen, para que uno nuevo mantenga en caché lo anterior a **Past Events**), historial hasta **Profundidad de caché** y último mensaje | 5 minutos, o 1 hora con **Caché de tokens extendida (1 hora)** |
 | Qwen | El prompt del sistema y el historial del chat hasta **Cache depth** | 5 minutos |
 | Gemini | El prompt del sistema | 5 minutos |
 | GPT, DeepSeek, Grok, Kimi y otros | El servicio guarda en caché por su cuenta, con el interruptor activado o desactivado | Lo establece el servicio |
@@ -134,7 +139,9 @@ El mismo medidor aparece debajo de la barra de contexto en el selector de conexi
 
 ### Z.AI
 
-**Z.AI** ofrece los modelos GLM (GLM 5.3, GLM 5.3 Flash y anteriores) a través de su propia API. Los modelos GLM 5.2 y 5.3 aceptan el nivel de razonamiento **Maximum** (Máximo). La dirección predeterminada corresponde al endpoint de pago por uso. El Coding Plan de Z.AI usa otro endpoint, así que es posible que una clave del Coding Plan no funcione aquí.
+**Z.AI** ofrece modelos GLM (GLM 5.4, GLM 5.3, GLM 5.3 Flash y anteriores) en su API. GLM 5.2, 5.3 y 5.4 aceptan razonamiento **Máximo**. La dirección predeterminada cobra por uso. Coding Plan usa otro endpoint; su clave puede no funcionar aquí.
+
+GLM 5.4 solo está en GLM Coding Plan. Pon **Dirección** en `https://api.z.ai/api/coding/paas/v4`. Siempre razona, así que **Esfuerzo de razonamiento** ofrece **Low**, **High** y **Máx.**, sin **Desactivado**.
 
 ### DeepSeek
 
@@ -143,6 +150,20 @@ El mismo medidor aparece debajo de la barra de contexto en el selector de conexi
 Algunos parámetros no se aplican, así que el panel los omite: **Verbosity**, **Top K** y las penalizaciones están retirados y se ignoran. **Temperature** (Temperatura) y **Top P** forman un par, porque DeepSeek usa uno a la vez. Ves **Temperature** cuando el razonamiento está desactivado y **Top P** cuando está activado.
 
 Conecta DeepSeek con su propia ficha, no apuntando **OpenAI** a la dirección de DeepSeek. El servicio OpenAI espera los modelos de OpenAI, así que oculta los controles de generación para un modelo de DeepSeek y no envía casi ninguno de tus ajustes.
+
+<a id="ai-horde"></a>
+### AI Horde
+
+**AI Horde** es una red gratuita de voluntarios que ejecutan modelos en sus computadoras. Su ficha configura una cuenta **OpenAI-compatible** con su dirección.
+
+**API key** empieza con `0000000000`, clave anónima que funciona sin cuenta. Las solicitudes anónimas esperan más. Una clave gratis de `aihorde.net/register` espera menos. Compartir tu computadora da kudos (puntos Horde que adelantan solicitudes).
+
+La lista muestra modelos activos y cambia con frecuencia. La cola puede tardar segundos o minutos. Si expira, prueba otro modelo o aumenta los límites del servidor (consulta [Tiempos de espera](#timeouts)).
+
+<a id="beavernet"></a>
+### BeaverNet
+
+**BeaverNet** es una red comunitaria gratis: personas con tarjetas gráficas libres ejecutan modelos para todos. Su ficha crea una cuenta **OpenAI-compatible** con su dirección. Crea una clave gratis en `net.beaverai.org/account`.
 
 ### OpenAI-compatible
 

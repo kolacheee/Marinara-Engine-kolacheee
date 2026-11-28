@@ -116,6 +116,26 @@ Pod przyciskami:
 
 Każdy wiersz ma przyciski **Copy** (kopiowanie, tworzy kopię lorebooka) i **Delete** (usunięcie). Pojawiają się po najechaniu kursorem na wiersz, a na urządzeniach mobilnych widać je zawsze. Wyłączony lorebook ma plakietkę **OFF**. Kliknij obrazek, żeby go wgrać albo podmienić.
 
+<a id="save-a-lorebook-set"></a>
+### Zapisywanie zestawu lorebooków
+
+Zestaw lorebooków to nazwana grupa używana razem, np. dla jednego świata. Wybierasz całą grupę zamiast pojedynczych lorebooków. Zestaw wskazuje je, nie kopiuje.
+
+1. W **Lorebooks** kliknij **Nowy zestaw**. Otworzy się pod **Zestawy lorebooków**.
+2. Wpisz nazwę w **Nazwa zestawu**.
+3. Kliknij **Wybierz lorebooki** i zaznacz lorebooki. Każda zmiana zapisuje się sama.
+
+Aby edytować zestaw, kliknij go pod **Zestawy lorebooków**. **Usuń zestaw** usuwa zestaw, pozostawiając lorebooki w bibliotece. Usunięty lorebook znika ze wszystkich zestawów.
+
+Wybierz zestaw w **Użyj zapisanego zestawu** nad **Wybierz lorebooki**. Po utworzeniu zestawu pole pojawia się tutaj:
+
+- Krok **Attach Lorebooks** nowego roleplay.
+- Stałe lorebooki źródłowe agenta, np. Knowledge Router. Zobacz [Źródła wiedzy: agenci wyszukiwania i routingu](../agents/knowledge-sources.md#choose-the-sources).
+
+Zestaw zastępuje wybrane lorebooki. Potem możesz je dodawać i usuwać dla czatu lub agenta bez zmiany zapisanego zestawu.
+
+Aby włączać lub wyłączać wpisy tylko w jednym czacie, otwórz **Ustawienia czatu → Lorebooks** i kliknij ołówek (**Edytuj wpisy lorebooka**) przy lorebooku. Przełączniki wpisów zmieniają tylko ten czat; inne zmiany modyfikują sam lorebook.
+
 ### Kategorie
 
 Kategoria to etykieta porządkująca bibliotekę. Nie zmienia tego, kiedy lorebook się aktywuje. Zakładki to **All**, **Active** (lorebooki związane z otwartym czatem), **World**, **Character**, **NPC**, **Spellbook** i **Other**. Kategorię lorebooka zmienisz na jego zakładce **Overview**, gdzie **Other** nazywa się **Uncategorized**.

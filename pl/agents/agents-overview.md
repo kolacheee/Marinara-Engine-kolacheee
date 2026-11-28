@@ -91,6 +91,15 @@ Pakiet oznaczony **Rules** (zasady) nie jest agentem. Dodaje zestaw zasad trybu 
 
 Odinstalowanie pakietu usuwa jego kod i ustawienia, ale zachowuje wiadomości i historię czatów. Usunięcie własnego agenta jest nieodwracalne.
 
+<a id="read-an-agents-guides"></a>
+### Czytanie poradników agenta
+
+Otwórz stronę agenta w **Agent Organizer** i kliknij **Przeczytaj, jak działa ten agent**. Przegląd otworzy się w oknie dokumentacji. Wybierz temat z listy, aby przeczytać więcej. Na telefonie wrócisz do listy strzałką wstecz. Zamknij okno, aby wrócić do strony agenta.
+
+**Zobacz źródło** otwiera oryginalny poradnik. Część agentów ma na razie tylko krótkie podsumowanie lub zewnętrzny odnośnik, dopóki autorzy nie dodadzą poradników tematycznych. Jeśli poradnik się nie wczytuje, spróbuj ponownie po połączeniu z siecią. Otwierane wcześniej poradniki mogą być dostępne przez siedem dni; zapisana kopia może być nieaktualna.
+
+**Historia wersji** pokazuje trzy najnowsze wpisy. Kliknij **Pokaż starsze wersje**, aby rozwinąć listę, lub **Pokaż mniej wersji**, aby ją skrócić. Najnowsze wydanie widać też w **Co nowego**.
+
 ### Aktualizowanie agentów
 
 Gdy jest dostępna nowsza zgodna wersja zainstalowanego pakietu, otwiera się okno **Agent updates available** (dostępne aktualizacje agentów). Wymienia ono każdą aktualizację z jej wersją i informacją, czy wymaga restartu.

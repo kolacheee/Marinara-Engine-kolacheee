@@ -25,6 +25,8 @@
 | Arli AI | `www.arliai.com/account` |
 | Z.AI | `z.ai/manage-apikey/apikey-list` |
 | DeepSeek | `platform.deepseek.com/api_keys` |
+| AI Horde | `aihorde.net/register` (선택, 참고: [AI Horde](#ai-horde)) |
+| BeaverNet | `net.beaverai.org/account` |
 | OpenAI-compatible, Claude (Subscription), OpenAI (ChatGPT), Grok CLI (Subscription) | 키 페이지가 없습니다. 아래 참고 사항을 확인하세요. |
 
 기본 주소는 다음과 같으며, Marinara가 대신 채워 줍니다.
@@ -43,6 +45,9 @@
 - Arli AI: `https://api.arliai.com/v1`
 - Z.AI: `https://api.z.ai/api/paas/v4`
 - DeepSeek: `https://api.deepseek.com/v1`
+
+- AI Horde: `https://oai.aihorde.net/v1`
+- BeaverNet: `https://net.beaverai.org/v1`
 - OpenAI-compatible과 구독형 서비스: 없음. 주소를 직접 입력하거나, 주소가 필요하지 않습니다.
 
 모든 키 페이지 주소는 `https://`로 시작합니다.
@@ -86,7 +91,7 @@ Google 문서를 따른 Marinara 코드의 주석에 따르면, **Gemini 4 Argon
 
 | 모델 | 캐시되는 내용 | 유지 시간 |
 | --- | --- | --- |
-| Claude | 시스템 프롬프트, **Cache depth**(캐시 깊이)까지의 채팅 기록, 최신 메시지 | 5분, **Extended token caching (1 hour)**(확장 토큰 캐싱, 1시간)를 켜면 1시간 |
+| Claude | 시스템 프롬프트(요약이 있으면 둘로 나눠 새 요약에도 **Past Events** 앞을 캐시에 유지), **캐시 깊이**까지 기록, 최신 메시지 | 5분, **확장 토큰 캐싱(1시간)** 사용 시 1시간 |
 | Qwen | 시스템 프롬프트와 **Cache depth**까지의 채팅 기록 | 5분 |
 | Gemini | 시스템 프롬프트 | 5분 |
 | GPT, DeepSeek, Grok, Kimi 등 | 스위치와 관계없이 서비스가 자체적으로 캐시합니다. | 서비스가 정함 |
@@ -135,7 +140,9 @@ NanoGPT 구독이 있다면 계정에서 현재 할당량을 확인할 수 있�
 
 ### Z.AI
 
-**Z.AI**는 자체 API로 GLM 모델(GLM 5.3, GLM 5.3 Flash와 이전 모델)을 제공합니다. GLM 5.2와 5.3 모델은 **Maximum**(최대) 추론 단계를 지원합니다. 기본 주소는 사용량에 따라 과금되는 엔드포인트입니다. Z.AI의 Coding Plan은 다른 엔드포인트를 사용하므로 Coding Plan 키는 여기서 작동하지 않을 수 있습니다.
+**Z.AI**는 GLM(GLM 5.4, GLM 5.3, GLM 5.3 Flash 및 이전 모델)을 자체 API로 제공합니다. GLM 5.2, 5.3, 5.4는 **최대** 추론을 지원합니다. 기본 주소는 사용량 과금용입니다. Coding Plan은 다른 주소를 써서 해당 키가 여기서 작동하지 않을 수 있습니다.
+
+GLM 5.4는 GLM Coding Plan 전용입니다. **주소**를 `https://api.z.ai/api/coding/paas/v4`로 설정하세요. 항상 추론하므로 **추론 강도**는 **낮음**, **높음**, **최대**를 제공하며 **꺼짐**는 없습니다.
 
 ### DeepSeek
 
@@ -144,6 +151,20 @@ NanoGPT 구독이 있다면 계정에서 현재 할당량을 확인할 수 있�
 일부 파라미터는 적용되지 않으므로 패널에 표시되지 않습니다. **Verbosity**(상세도), **Top K**, 페널티 설정은 지원이 종료되어 무시됩니다. **Temperature**(온도)와 **Top P**는 한 쌍입니다. DeepSeek는 한 번에 둘 중 하나만 사용하기 때문입니다. 사고 기능이 꺼져 있으면 **Temperature**가, 켜져 있으면 **Top P**가 표시됩니다.
 
 DeepSeek에 연결할 때는 **OpenAI**에 DeepSeek의 주소를 지정하지 말고 전용 타일을 사용하세요. OpenAI 서비스는 OpenAI 모델을 전제로 하므로, DeepSeek 모델에서는 생성 설정 항목을 숨기고 지정한 설정을 거의 보내지 않습니다.
+
+<a id="ai-horde"></a>
+### AI Horde
+
+**AI Horde**는 자원자가 자신의 컴퓨터에서 모델을 돌리는 무료 네트워크입니다. 타일은 해당 주소의 **OpenAI-compatible** 계정을 설정합니다.
+
+**API 키**는 계정 없이 쓰는 익명 키 `0000000000`으로 시작합니다. 익명 요청은 가장 오래 기다립니다. `aihorde.net/register`의 무료 키는 대기가 짧고, 컴퓨터를 공유하면 kudos(요청 순위를 올리는 Horde 점수)를 얻습니다.
+
+목록은 현재 실행 중인 모델이라 자주 바뀝니다. 대기에 따라 수초~수분 걸립니다. 시간 초과면 다른 모델이나 서버 제한 연장을 시도하세요([시간 제한](#timeouts) 참고).
+
+<a id="beavernet"></a>
+### BeaverNet
+
+**BeaverNet**은 여유 그래픽 카드로 모델을 돌려 모두 쓰는 무료 커뮤니티 네트워크입니다. 타일이 해당 주소의 **OpenAI-compatible** 계정을 만듭니다. `net.beaverai.org/account`에서 무료 키를 만드세요.
 
 ### OpenAI-compatible
 

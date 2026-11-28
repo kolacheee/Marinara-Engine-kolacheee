@@ -71,7 +71,9 @@ Setz Namen mit Leerzeichen in Anführungszeichen. Die älteren Formen mit dem Na
 | `/illustrate` | Nur Roleplay. Generiert ein Galeriebild. Braucht den Illustrator-Agenten. Auch `/ill`. Format: `/illustrate [range=N-M] [template=name] [prompt]`. |
 | `/html` | Nur Roleplay. Erstellt am Ende der neuesten Antwort ein Artefakt aus der Spielwelt, zum Beispiel `a spellbook page`. Format: `/html [what you want]`. |
 | `/video` | Nur Roleplay. Erstellt unter der neuesten Antwort einen kurzen Clip dieser Antwort oder deiner Beschreibung. Folgt Illustrators Einstellung **First frame** (Startbild). Braucht Illustrator. Format: `/video [description]`. |
-| `/impersonate` | Schreibt eine Antwort im Namen deiner Persona. Auch `/imp`. Format: `/impersonate [direction (optional)]`. |
+| `/impersonate` | Schreibt eine Antwort als deine Persona. Postet sie oder schreibt sie als Entwurf ins Nachrichtenfeld, wenn **Ergebnis senden an** in den Chat-Einstellungen auf **Nachrichtenentwurf** steht. Auch `/imp`. Format: `/impersonate [direction (optional)]`. |
+| `/impersonate_draft` | Schreibt die Antwort deiner Persona zum Bearbeiten vor dem Senden ins Nachrichtenfeld. Nichts wird gepostet. Auch `/impd`, `/imp_draft`. Format: `/impersonate_draft [direction (optional)]`. |
+| `/impersonate_post` | Schreibt und postet die Antwort deiner Persona sofort, unabhängig von **Ergebnis senden an**. Auch `/impp`, `/imp_post`. Format: `/impersonate_post [direction (optional)]`. |
 | `/impersonate_prompt` | Legt die Anweisung fest, die `/impersonate` in diesem Chat verwendet. Auch `/imp_prompt`. Format: `/impersonate_prompt [prompt or reset]`. |
 
 Die meisten davon funktionieren in Roleplay am besten. `/scene` wird aus einer Conversation heraus ausgeführt. `/impersonate` und `/impersonate_prompt` stehen in Conversation nicht zur Verfügung.

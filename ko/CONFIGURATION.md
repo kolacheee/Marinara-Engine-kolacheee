@@ -108,6 +108,8 @@ openssl rand -hex 32
 
 Marinara는 데이터를 일반 JSON 파일로 보관하므로 백업을 복사하고 읽을 수 있습니다. 각 폴더에 무엇이 들어 있는지는 [Marinara가 데이터를 저장하는 위치](data/where-data-is-stored.md)를 참고하세요.
 
+네트워크 공유에 데이터를 두려면 `DATA_DIR`을 공유 폴더로 설정하고 Marinara 시작 전에 연결하세요. [네트워크 또는 외부 폴더에 접근할 수 없음](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder)을 참고하세요.
+
 <a id="logging-levels"></a>
 
 ## 로그 레벨

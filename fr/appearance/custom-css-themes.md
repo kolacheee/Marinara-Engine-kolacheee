@@ -350,6 +350,38 @@ Les variables non définies suivent les réglages et le preset des widgets. L'in
 
 Sur téléphone, le menu à trois points se déploie en boutons ronds. Son déclencheur est `[data-chat-tools-menu-button]`, la pile ouverte est `[data-chat-tools-menu]`, et chaque élément de liste porte `data-chat-tools-menu-item` avec l'ID de sa fenêtre. Les boutons d'outils utilisent `.mari-window-bubble.mari-chat-tools-button` et `data-chat-tools-menu-tool` avec ce même ID. La pile n'a pas de cadre de fenêtre ; ses boutons suivent les couleurs des widgets et la taille des boutons, indépendamment des trois interrupteurs pour le reste du chat, tout en gardant leur forme ronde.
 
+<a id="styling-character-sheets"></a>
+## Styliser les fiches de personnage
+
+La fiche d’un système de règles a le même aspect dans Roleplay et Game. Ces classes et attributs permettent à un thème de la styliser.
+
+| Partie | Classe | Attributs de données |
+| --- | --- | --- |
+| Fiche entière | `.mari-ruleset-sheet` | `data-ruleset` (ID du système, comme `local/my-rules`), `data-rank-display` (`value`, `label`, `dots`, `roman` ou `number`), `data-editing="true"` pendant l’édition |
+| Titre et bouton **Modifier la fiche** | `.mari-ruleset-sheet__header` | |
+| Onglets | `.mari-ruleset-sheet__tabs` | Chacun possède `data-tab-id` et `aria-selected` |
+| Titre de groupe | `.mari-ruleset-sheet__heading` | |
+| Champ en haut | `.mari-ruleset-sheet__field` (dans `.mari-ruleset-sheet__fields`) | `data-field`, ou `data-derived` pour une valeur calculée |
+| Caractéristique | `.mari-ruleset-sheet__ability` (dans `.mari-ruleset-sheet__abilities`) ; score et valeur du test : `__ability-score` et `__ability-value` | `data-ability` ; le groupe possède `data-section` |
+| Réserve, comme Santé | `.mari-ruleset-sheet__pool` (dans `.mari-ruleset-sheet__pools`) | `data-pool` ; le groupe possède `data-pool-group` |
+| Jauge | `.mari-ruleset-sheet__track` (dans `.mari-ruleset-sheet__tracks`) | `data-track` ; une jauge de blessures a aussi `data-wound="true"` |
+| États | `.mari-ruleset-sheet__conditions` | |
+| Compétence entraînée ou sauvegarde | `.mari-ruleset-sheet__rank` (dans `.mari-ruleset-sheet__trained`, par groupe dans `.mari-ruleset-sheet__rank-group`) ; rang, ou valeur du test avec `data-rank-display="value"` : `__rank-value` ; valeur à côté sur téléphone : `__rank-check` ; pratique : `__practice` | `data-skill` ou `data-save`, `data-tier` (ID du palier), `data-rank` (`0` non entraîné, `1` palier suivant, etc.) |
+| Compétence ou sauvegarde en édition | `.mari-ruleset-sheet-editor__rank` | `data-skill` ou `data-save`, `data-tier`, `data-rank` |
+| Liste, comme Équipement | `.mari-ruleset-sheet__list` ; chaque ligne : `.mari-ruleset-sheet__list-row` | `data-list` ; une ligne cochée possède `data-marked="true"` |
+
+Cet exemple affiche le rang 2 d’un système par deux étoiles. Ajoute une paire de règles pour chaque rang à changer. Réserve-le aux rangs affichés en points, noms, chiffres romains ou nombres : avec des valeurs de test, `__rank-value` contient cette valeur et la masquerait.
+
+```css
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value {
+  font-size: 0;
+}
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value::after {
+  content: "★★";
+  font-size: 0.6875rem;
+}
+```
+
 ## Guides associés
 
 - [Guide de création de thèmes](theme-author-guide.md)

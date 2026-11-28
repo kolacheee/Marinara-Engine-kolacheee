@@ -66,7 +66,7 @@ Uwagi o prostych usługach:
 - **Together AI**: FLUX i inne otwarte modele graficzne.
 - **OpenRouter Images**: sięga po modele graficzne przez interfejs czatu OpenRouter, więc dostępne modele zależą od konta.
 - **xAI / Grok Imagine**: korzysta z Grok Imagine.
-- **NanoGPT**: agregator, więc korzystaj z jego listy modeli.
+- **NanoGPT**: agregator, więc korzystaj z jego listy modeli. Marinara wysyła rozmiary podane dla modelu przez NanoGPT, np. `1.5k` z proporcjami zamiast `1344x768`, i tylko obsługiwaną liczbę referencji. Odrzucony negatywny prompt jest pomijany, z ostrzeżeniem w logu serwera.
 - **Pollinations**: najszybszy sposób, żeby wypróbować generowanie obrazów. Konto nie jest potrzebne.
 - **Stable Horde**: sieć zasilana przez społeczność. Darmowy klucz daje wyższy priorytet w kolejce.
 - **SD Web UI** i **Draw Things**: uruchom program z włączonym interfejsem programistycznym. Marinara traktuje Draw Things jak serwer AUTOMATIC1111 (ta aplikacja działa w systemie macOS lub iOS).
@@ -113,7 +113,7 @@ Udostępnia hostowane modele Stable Diffusion. Model jest wymagany, więc wpisz 
 
 ### NovelAI
 
-Usługa NovelAI skupia się na grafice w stylu anime. Przy modelach V4, V4.5 i V5 Marinara wysyła natywne prompty poszczególnych postaci wraz z ich pozycjami dla storyboardów, scen agenta Illustrator i obrazów asystentki Professor Mari z wieloma postaciami. Precyzyjne obrazy referencyjne działają wyłącznie na modelu V4.5.
+NovelAI skupia się na stylu anime. V4, V4.5 i V5 dostają natywne prompty postaci z pozycjami dla wielopostaciowych storyboardów, scen Illustratora i obrazów Professor Mari. Precyzyjne referencje działają w V4.5 i V5.
 
 ### Venice.ai
 
@@ -155,6 +155,21 @@ Pole **ComfyUI workflow (optional)** (workflow ComfyUI, opcjonalny) może zosta�
 
 Gdy usługa zwraca adres URL zamiast danych obrazu, Marinara pobiera publiczne adresy sieci CDN przez zwykłe kontrole ruchu wychodzącego. Adres wyniku z sieci prywatnej lub z pętli zwrotnej jest przyjmowany tylko wtedy, gdy protokół, nazwa hosta i port zgadzają się dokładnie z ustawioną usługą obrazów. Przekierowania z takiego pochodzenia nie mogą prowadzić do innej usługi lokalnej. Jeśli lokalne proxy trzyma wyniki pod innym prywatnym pochodzeniem, ustaw je tak, żeby udostępniało te pliki spod tego samego pochodzenia co jego API do obrazów.
 
+<a id="edit-an-existing-picture"></a>
+## Edycja istniejącego obrazu
+
+W galerii wybierz **Wygeneruj obraz ponownie**, dla awatara **Edytuj awatar** w edytorze postaci lub persony. Wybierz model i **Edytuj obraz**. Opcje zależą od usługi:
+
+| Usługa | Cały obraz | Malowana maska |
+| --- | --- | --- |
+| Native NovelAI | Tak | Tak |
+| SD Web UI (AUTOMATIC1111 / Forge) | Tak | Tak |
+| Draw Things | Tak | Nie |
+
+Zmień prompt i **Siła**, potem **Zastosuj edycję**. Przy masce zamaluj obszar i wybierz **Wykonaj inpainting obrazu**. **Szum** i **Użyj ponownie oryginalnego ziarna** są tylko w natywnym NovelAI. Inne usługi nadal regenerują ze zmienionym promptem.
+
+Źródłem jest pokazany obraz. Zmiana na usługę bez masek usuwa maskę. Awatar pozostaje podglądem do **Użyj jako awatara**.
+
 ## Plik JSON z workflow ComfyUI a RunPod
 
 Przy usługach **ComfyUI**, **SwarmUI** i **RunPod Serverless (ComfyUI)** pojawia się pole **ComfyUI workflow (optional)** albo **(required)**. Wklej do niego plik JSON z workflow wyeksportowany z ComfyUI opcją **Save (API Format)**, **Export (API)** albo **Export to API**, zależnie od wersji ComfyUI. Pole jest opcjonalne przy ComfyUI i SwarmUI, a wymagane przy RunPod. RunPod potrzebuje tokena API do usługi RunPod jako klucza API, wartości **RunPod endpoint ID** (identyfikator punktu końcowego RunPod) oraz workflow.
@@ -190,12 +205,14 @@ Każda usługa ma pole **Seed** (ziarno). Wartość -1 sprawia, że każdy obraz
 | ComfyUI | Sampler | euler_ancestral |
 | ComfyUI | Scheduler | normal |
 | ComfyUI | Denoise | 1 |
-| NovelAI | Steps | 28 |
-| NovelAI | Prompt guidance | 6 |
+| NovelAI | Steps | Automatycznie |
+| NovelAI | Prompt guidance | Automatycznie |
 | NovelAI | Sampler | k_euler_ancestral |
 | NovelAI | Noise schedule | karras |
 
 Każda usługa ma też pola **Prompt prefix** i **Negative prefix**. Wpisany tam tekst trafia na początek każdego promptu w tym modelu. AUTOMATIC1111 / Forge i ComfyUI mają pole **Clip skip**. AUTOMATIC1111 / Forge dokłada przełącznik **Restore faces**. ComfyUI dokłada przełącznik, który wgrywa obrazek zastępczy 1x1, gdy nie podano obrazu referencyjnego. Ma on znaczenie tylko przy własnych workflow ze znacznikami obrazów referencyjnych. NovelAI dokłada pola **Guidance rescale** i **UC preset**.
+
+**Kroki** i **Prowadzenie promptu** NovelAI są puste: **Automatic** wysyła domyślną wartość modelu pokazaną w polu. V5: 23 kroki, guidance 7; V4.5: 5; V4: 5.5. Wpisz liczbę lub wyczyść dla automatyki. Dawne połączenia z wbudowanymi 28 krokami lub guidance 6 używają teraz automatyki.
 
 NovelAI ma też ustawienie **Background dataset for backgrounds** (zbiór danych tła do generowania teł), domyślnie wyłączone. Gdy jest włączone, w modelach V4.5 i V5 prompty obrazów tła (teł w galeriach postaci i person, teł scen w czacie i tworzonych przez agenta Illustrator, obrazów lokacji w galerii czatu oraz teł gry) zaczynają się od tagu NovelAI `background dataset`. Zbiór danych tła NovelAI sprzyja stylowi fotograficznemu, więc zostaw to ustawienie wyłączone, jeśli tła mają pasować do czatu w stylu anime.
 
@@ -221,9 +238,9 @@ Obraz referencyjny to gotowy obrazek wysyłany razem z promptem, dzięki którem
 | --- | --- |
 | OpenAI (DALL-E) | Do 16, tylko modele GPT Image. Brak przy GIF-ie |
 | ChatGPT (Codex login) | Do 16 |
-| NovelAI | Do 16, tylko model V4.5 |
+| NovelAI | Do 16, tylko V4.5 i V5 |
 | xAI / Grok Imagine | Do 3 |
-| NanoGPT | Do 3 |
+| NanoGPT | Do 3 w limicie modelu; brak dla tekst-na-obraz |
 | ComfyUI, RunPod Serverless (ComfyUI), SwarmUI | Do 4, przez znaczniki w workflow |
 | Stability AI, Arli AI, SD Web UI, Draw Things | Tylko pierwszy obraz, do zamiany obrazu na obraz |
 | Atlas Cloud | Pierwszy obraz, przy zgodnych identyfikatorach modeli image-to-image, edycji lub Kontext |
@@ -232,7 +249,7 @@ Obraz referencyjny to gotowy obrazek wysyłany razem z promptem, dzięki którem
 | Venice.ai, Z.AI | Nieobsługiwane przy zamianie tekstu na obraz |
 | Together AI, Pollinations, Stable Horde, fal.ai | Nieobsługiwane |
 
-Precyzyjne obrazy referencyjne w usłudze NovelAI działają wyłącznie na modelu V4.5, na przykład `nai-diffusion-4-5-full`. Usługa NovelAI nie udostępniła jeszcze funkcji Precise Reference dla V5. Jeśli zażądasz obrazów referencyjnych na innym modelu, Marinara wygeneruje obraz bez nich i zapisze ostrzeżenie w logu serwera.
+Precise Reference działa w V4.5 i V5, np. `nai-diffusion-4-5-full` lub `nai-diffusion-5-full`. Starsze modele pomijają referencje i logują ostrzeżenie. V5 nie ma wierności stylu, więc ignoruje **Wierność stylu (tylko V4.5)**. Referencja kosztuje według NovelAI 5 Anlas za obraz.
 
 ## Kolejkowanie żądań generowania mediów
 

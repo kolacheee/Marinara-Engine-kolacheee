@@ -88,6 +88,8 @@ W klasycznym układzie te sekcje znajdują się w zakładce **Wygląd** pod czte
 
 - **Dynamiczne efekty pogody (deszcz, śnieg, mgła itd.)** są domyślnie włączone. Pokazują pogodę zgodnie z pogodą i porą dnia w historii oraz wymagają włączonego agenta **World State** dla czatu. Zobacz [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md).
 - **Ogranicz animacje i efekty otoczenia** zatrzymuje ozdobne animacje, cząsteczki, obracające się podglądy i stopniowe odsłanianie tekstu.
+
+- **Pokazuj rzuty kośćmi jako tekst** (domyślnie wyłączone) pokazuje każdy rzut jako krótki wiersz z kośćmi, wynikami i sumą zamiast animowanych kości. Rzuty nadal się odbywają, a model i gra otrzymują wyniki. Dotyczy to wszystkich trybów czatu, także kości w testach umiejętności.
 - **Ograniczone efekty renderowania** spłaszcza kosztowne półprzezroczyste panele i cienie, żeby słabsze urządzenia działały płynnie.
 
 ## Tła

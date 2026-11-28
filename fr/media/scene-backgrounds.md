@@ -1,6 +1,6 @@
 # Arrière-plans créés par Illustrator
 
-L'agent **Illustrator** peut peindre des arrière-plans pour ton histoire : un à ta demande, un chaque fois que l'histoire arrive dans un nouveau lieu, et des versions avec pluie, neige ou brouillard quand la météo change. Ce guide couvre ces trois possibilités et explique comment Illustrator réutilise les images que tu as déjà au lieu d'en peindre de nouvelles.
+L’agent **Illustrator** peut peindre des arrière-plans pour ton histoire : à la demande, à chaque nouveau lieu, des versions pluie, neige ou brouillard quand la météo change, et des versions aube, jour, coucher du soleil ou nuit quand l’heure change. Ce guide couvre ces possibilités et la réutilisation des images existantes.
 
 Pour les images que tu téléverses et choisis à la main, voir [Bibliothèque d'arrière-plans](../appearance/chat-backgrounds.md). Pour savoir comment un chat choisit l'image à afficher (l'agent Background, les lieux épinglés et les images de galerie), voir [Des arrière-plans qui suivent l'histoire](../roleplay/backgrounds.md).
 
@@ -81,19 +81,43 @@ Quand le chat affiche une version météo, **Réglages du chat → Agents → Il
 
 Si ça n'a pas marché : vérifie que World State affiche une **Météo** pour le chat (ou que la vérification météo ci-dessous est activée), et que **Illustrator** est ajouté au chat avec un modèle d'image.
 
+## Versions des arrière-plans selon l’heure
+
+Avec cette option, l’arrière-plan suit l’horloge de l’histoire. Quand la nuit tombe à l’auberge, Illustrator la repeint de nuit : ciel sombre dehors, lampes et bougies allumées. Le lieu, l’agencement et la caméra restent les mêmes ; seule la lumière change.
+
+1. Ouvre **Réglages du chat → Agents → Illustrator**.
+2. Active **Versions horaires des fonds**.
+
+Comme les versions météo, cela nécessite un modèle capable de partir d’une image.
+
+Voici ce qui se passe :
+
+- Il existe quatre moments : **Aube**, **Journée**, **Coucher du soleil** et **Nuit**. L’heure de World State décide : une heure chiffrée (`7:40 PM`, `21:15`) prime, sinon des mots comme « crépuscule », « minuit » ou « tôt le matin ». Avant 5 h et dès 20 h, c’est la nuit ; de 5 à 7 h, l’aube ; de 7 à 17 h, le jour ; de 17 à 20 h, le coucher du soleil.
+- Une image est censée montrer l’heure à laquelle elle a été peinte. Illustrator la mémorise pour ses propres images. Pour les autres, un mot d’heure dans le nom ou un tag compte (`tavern-night.png`, `#sunset`) ; sinon, elles sont considérées comme diurnes. Une image diurne reçoit une version nocturne, et une image peinte de nuit une version diurne, jamais une seconde version nocturne.
+- Chaque combinaison d’image et d’heure est peinte **une seule fois**, puis réaffichée gratuitement. Les versions sont enregistrées près de l’original sous `name--tod-night.png` (aussi `--tod-dawn`, `--tod-day` et `--tod-sunset`).
+- Si les versions météo sont aussi activées, une image couvre les deux : la pluie de nuit donne `name--wx-rain--tod-night.png`, peinte une fois depuis l’image simple. Quand seule la météo change, l’heure reste la même, et inversement.
+- L’heure est vérifiée après chaque réponse, pas seulement à l’intervalle d’Illustrator : l’image nocturne apparaît dès que l’horloge de World State atteint la nuit. Cela concerne seulement l’heure ; un nouveau lieu attend toujours le passage d’Illustrator ou la vérification de lieu ci-dessous.
+- La teinte du ciel, le soleil, la lune et les étoiles superposés s’effacent sur une version horaire, puisque l’image a déjà son propre ciel.
+- Sans heure de World State, une vérification par un modèle de décision peut la déterminer (ci-dessous).
+
+Lorsqu’une version horaire est affichée, la même ligne que pour les images météo apparaît, par exemple **Cette image par temps Nuit**, avec **Recréer l'image**.
+
+Dans la bibliothèque, les versions sont sous leur image simple : sa carte indique leur nombre et, à l’ouverture, les liste sous **Versions météo et horaires**.
+
 ## Vérifier chaque réponse avec un modèle de décision
 
 Illustrator n'examine normalement la scène qu'à son intervalle d'exécution : un nouveau lieu peut donc attendre quelques réponses avant de recevoir son arrière-plan. Un [modèle de décision](../connections/decision-models.md), un petit modèle qui répond par oui ou non, peut plutôt vérifier chaque réponse.
 
-Avant de commencer : choisis un modèle de décision dans l'encadré **Tâches** de la page Connexions, et active **Générer les arrière-plans de scène**, **Weather Versions of Backgrounds**, ou les deux.
+Avant de commencer : choisis un modèle de décision dans **Valeurs par défaut** sur la page Connections, puis active **Générer les arrière-plans de scène**, **Variantes météo des arrière-plans**, **Versions horaires des fonds** ou toute combinaison.
 
 1. Ouvre **Réglages du chat → Agents → Illustrator**.
-2. Sous **Decision Model Checks** (vérifications par un modèle de décision), choisis **The scene moved to a new place** (la scène a changé de lieu), **The weather changed** (la météo a changé) ou **New place and weather changes** (changements de lieu et de météo). La valeur par défaut est **Désactivé**.
+2. Sous **Vérifications du modèle de décision**, choisis une vérification comme **La scène s'est déplacée vers un nouveau lieu**, **La météo a changé** ou **Le moment de la journée a changé**, ou toutes celles activées, comme **Nouveau lieu, changements de météo et de moment de la journée**. Seules les vérifications correspondant à des options actives sont listées. Par défaut : **Désactivé**.
 
 Après chaque réponse :
 
 - La vérification du lieu demande si le dernier message déplace la scène vers un nouveau lieu. Un oui donne un arrière-plan au lieu, en réutilisant si possible une image que tu as déjà. Le modèle de prompt ne rédige un nouvel arrière-plan qu'après un oui.
 - La vérification météo demande si la météo change dans le dernier message. Un oui affiche ou peint la version météo de l'arrière-plan actuel. Sans météo dans World State, le modèle de décision choisit aussi le type de météo.
+- La vérification horaire demande si l’heure change dans le dernier message. Un oui affiche ou peint la version horaire de l’arrière-plan actuel. Sans heure de World State, le modèle de décision choisit aussi l’aube, le jour, le coucher du soleil ou la nuit.
 - Les vérifications ajoutent seulement des occasions d'agir. Les exécutions propres à Illustrator et les changements de lieu de World State comptent toujours.
 - Sans réponse (pas de modèle, délai dépassé ou erreur), la vérification est ignorée.
 

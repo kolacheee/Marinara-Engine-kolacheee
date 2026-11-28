@@ -61,16 +61,47 @@ O modelo publica uma mensagem de usuário como a sua persona. Por exemplo, isto 
 
 O apelido curto é `/imp`. **Regenerate** funciona em uma mensagem que o Impersonate escreveu, então você pode conseguir outra versão.
 
+Uma mensagem publicada conta como seu turno, então agentes e trackers são executados como em uma mensagem que você digita, a menos que **Pular os agentes** esteja ativado. Escolher uma opção CYOA com **Usar o CYOA como direção** ativado também pede a resposta do personagem logo depois. Para ler e editar a mensagem antes disso, peça ao Impersonate para escrever um rascunho.
+
+### Escrever um rascunho primeiro
+
+O rascunho vai para a caixa de mensagem em vez do chat. Não é salvo e nada é executado até você enviar: nem resposta do personagem, nem agentes, nem trackers, nem mudanças no estado do mundo.
+
+1. Abra **Configurações do chat** em um chat de Roleplay e encontre **Personificar**.
+2. Defina **Destino do resultado** como **Rascunho de mensagem**. O padrão é **Publicar**.
+3. Digite `/impersonate` e uma orientação, se quiser, e pressione <kbd>Enter</kbd>.
+
+O rascunho aparece aos poucos na caixa de mensagem. Uma linha acima mostra **Escrevendo sua próxima mensagem…** durante a escrita; clique em **Parar** ali ou no botão de parar da caixa para manter o texto já escrito. Quando terminar, edite e clique em **Enviar**. Até enviar, a linha oferece:
+
+| Botão | O que faz |
+| --- | --- |
+| **Refazer** | Escreve o rascunho de novo com a mesma orientação e substitui o da caixa. |
+| **Desfazer** | Descarta o rascunho e restaura o conteúdo anterior da caixa. |
+
+A escrita continua se você mudar de chat ou aba. Ao voltar, o rascunho estará na caixa daquele chat. Cada chat tem seu próprio rascunho.
+
+Para escolher uma vez sem mudar a configuração:
+
+| Comando | O que faz |
+| --- | --- |
+| `/impersonate_draft` | Escreve um rascunho. Também `/impd` e `/imp_draft`. |
+| `/impersonate_post` | Publica a mensagem. Também `/impp` e `/imp_post`. |
+
+Com **Respostas rápidas** ativado, o menu ao lado de **Enviar** também oferece os dois: **Personificar** segue a configuração e a segunda ação faz o contrário. Um rascunho pode começar com a caixa vazia; nesse caso, o modelo escolhe o que você diz.
+
+Com **Usar o CYOA como direção** ativado e **Destino do resultado** em **Rascunho de mensagem**, clicar em uma opção CYOA escreve um rascunho usando essa opção como orientação. As opções continuam na tela até o envio.
+
 ### As configurações do Impersonate
 
-Estas configurações valem para todo `/impersonate`, em todos os seus chats. Abra **Chat Settings** (configurações do chat) em um chat de Roleplay e encontre a seção **Impersonate**. Veja [Chat Settings](chat-settings.md) para saber como abrir o painel.
+Estas configurações se aplicam a todo `/impersonate` em todos os seus chats, janelas e dispositivos. Abra **Configurações do chat** em um chat de Roleplay e encontre **Personificar**. Veja [Configurações do chat](chat-settings.md) para abrir o painel.
 
 | Controle | O que faz |
 | --- | --- |
+| **Destino do resultado** | **Publicar** adiciona a mensagem imediatamente ao chat. **Rascunho de mensagem** a escreve na caixa para você editar e enviar. Veja [Escrever um rascunho primeiro](#write-a-draft-first). Padrão: **Publicar**. |
 | **Prompt Template** (modelo de prompt) | Uma instrução opcional enviada toda vez que você usa o Impersonate. Se ficar vazio, usa o prompt do próprio chat ou o padrão embutido. Ele aceita `{{user}}`, `{{persona_description}}` e `{{impersonate_direction}}`, marcadores que Marinara substitui por texto real. Escolha **Built-in default** (padrão embutido) para ler o padrão. **Copy built-in default to edit** (copiar o padrão embutido para editar) começa uma cópia. **Save as** (salvar como) salva um modelo com nome, e **Delete template** (excluir o modelo) remove um. |
 | **Preset** | Um preset de prompt só para as respostas do Impersonate. Padrão: **Use chat default** (usar o padrão do chat). Veja [Presets](../prompts/presets.md). |
 | **Connection** (conexão) | O modelo das respostas do Impersonate, por exemplo um mais barato ou mais rápido. Padrão: **Use chat default**. Você também pode escolher **Random** (aleatório). Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md). |
-| **Skip agents** (pular os agentes) | Pula os agentes (trackers, roteadores de lorebook e ajudantes parecidos) durante o Impersonate. Isso o deixa rápido e impede que ele mude o estado do mundo. Desativado por padrão. Veja [Agentes](../agents/agents-overview.md). |
+| **Pular os agentes** | Pula os agentes (trackers, roteadores de lorebook e ajudantes semelhantes) durante impersonate. Isso mantém a rapidez e evita mudar o estado do mundo. Desativado por padrão. Um rascunho sempre os pula. Veja [Agentes](../agents/agents-overview.md). |
 | **Send Public Faces** (enviar faces públicas) | Nos chats de Roleplay, um personagem com **Public Face** (face pública) aparece no prompt do Impersonate só com o nome e o Public Face, para que a sua resposta saiba apenas o que você poderia saber. Isso substitui tudo o mais que o card envia: Descrição, Personalidade, História do personagem, Aparência, Cenário, Prompt de sistema, diálogo de exemplo, atributos de RPG, Instruções pós-histórico e Prompt de profundidade. Um personagem com Public Face vazio mantém o card completo. As macros que você coloca em um preset ou modelo de prompt do Impersonate, como `{{description}}`, continuam enviando os campos que nomeiam. **Regenerar** mantém a configuração usada para escrever a mensagem. Desativado por padrão. Veja [A aba Card](../characters/creating-and-editing-characters.md#card-tab). |
 | **Usar o CYOA como direção** | Clicar em uma opção CYOA (choose your own adventure, escolha a sua própria aventura) usa essa opção como direção do Impersonate em vez de publicá-la. Desativado por padrão. Se **Adicionar as escolhas CYOA à caixa de mensagem em vez de enviá-las** estiver ativado em **Configurações → Conversando → Caixa de mensagem**, um clique só acrescenta o texto à sua caixa de mensagem, e esta configuração não tem efeito. |
 
@@ -97,6 +128,6 @@ Os Quick replies acrescentam alternativas de um clique ao **Send**, para você n
 | --- | --- |
 | **Post only** (só publicar) | Adiciona a mensagem digitada ao chat sem uma resposta. O comando `/send <message>` faz o mesmo. |
 | **Guide reply** (guiar a resposta) | Envia o texto digitado como uma direção do `/guided`. |
-| **Impersonate** | Gera uma resposta do lado da persona, usando o texto digitado como direção. Fica oculto nos chats de Conversation. |
+| **Personificar** | Gera uma resposta da sua persona usando o texto digitado como orientação. Segue **Destino do resultado** e, em Roleplay, uma segunda ação ao lado faz o contrário (**Personificar como rascunho** ou **Personificar e publicar**). Fica oculto nos chats de Conversation. |
 
 Com uma ação ativada, o botão dela fica ao lado de **Send**. Com mais de uma, elas se agrupam em um botão de três pontos (**Quick replies**) que abre um menu.

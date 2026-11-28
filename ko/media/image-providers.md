@@ -66,7 +66,7 @@ Roleplay 채팅에서는 `/illustrate` 명령어를 써도 됩니다. [슬래시
 - **Together AI**: FLUX를 비롯한 공개 이미지 모델을 제공합니다.
 - **OpenRouter Images**: OpenRouter의 채팅 인터페이스를 통해 이미지 모델에 접근하므로, 쓸 수 있는 모델은 계정마다 다릅니다.
 - **xAI / Grok Imagine**: Grok Imagine을 사용합니다.
-- **NanoGPT**: 여러 제공자를 모아 주는 중개 서비스이므로 NanoGPT의 모델 목록을 사용하세요.
+- **NanoGPT**: 여러 제공자를 모아 주는 중개 서비스이므로 NanoGPT의 모델 목록을 사용하세요. NanoGPT가 모델별로 안내하는 크기(`1344x768` 대신 비율을 지정한 `1.5k` 등)와 허용 수만큼의 참조를 보냅니다. 네거티브 프롬프트를 거부하면 제외하고 생성하며 서버에 경고를 기록합니다.
 - **Pollinations**: 이미지 생성을 가장 빠르게 시험해 볼 수 있는 방법입니다. 계정이 필요 없습니다.
 - **Stable Horde**: 여러 사람이 컴퓨터 자원을 나눠 쓰는 네트워크입니다. 무료 키를 발급받으면 대기열 우선순위가 높아집니다.
 - **SD Web UI**와 **Draw Things**: 소프트웨어를 프로그램 인터페이스가 켜진 상태로 실행하세요. Marinara는 Draw Things를 AUTOMATIC1111 서버처럼 다룹니다(이 앱은 macOS나 iOS에서 실행됩니다).
@@ -113,7 +113,7 @@ OpenAI는 더 많은 프레임을 허용하지만 GIF 하나에 허용되는 픽
 
 ### NovelAI
 
-NovelAI는 애니메이션풍 그림에 특화되어 있습니다. V4, V4.5, V5 모델에서는 Marinara가 여러 캐릭터가 등장하는 스토리보드, Illustrator 장면과 Professor Mari의 이미지를 위해 위치 정보가 포함된 캐릭터별 프롬프트를 NovelAI가 자체 지원하는 형식으로 보냅니다. 정밀 참조 이미지는 V4.5 모델에서만 작동합니다.
+NovelAI는 애니메이션풍에 집중합니다. V4, V4.5, V5에서 다중 캐릭터 스토리보드, Illustrator 장면, Professor Mari 이미지에 위치를 포함한 네이티브 캐릭터별 프롬프트를 보냅니다. 정밀 참조는 V4.5와 V5를 지원합니다.
 
 ### Venice.ai
 
@@ -155,6 +155,21 @@ SwarmUI는 ComfyUI 작업을 자체 대기열로 나눠 처리할 수 있습니�
 
 서비스가 이미지 데이터 대신 URL을 돌려주면, 공개 CDN URL은 Marinara가 평소의 외부 요청 검사를 거쳐 다운로드합니다. 사설 주소나 루프백 주소로 된 결과 URL은 설정된 이미지 서비스와 프로토콜, 호스트 이름, 포트가 정확히 일치할 때만 허용합니다. 그 출처에서 시작된 리디렉션은 다른 로컬 서비스로 넘어갈 수 없습니다. 로컬 프록시가 결과를 다른 사설 출처에 저장한다면, 그 파일을 이미지 API와 같은 출처로 제공하도록 하세요.
 
+<a id="edit-an-existing-picture"></a>
+## 기존 이미지 편집하기
+
+갤러리에서 **이미지 재생성**, 아바타는 캐릭터·페르소나 편집기의 **아바타 편집**를 선택합니다. 모델을 고른 뒤 **이미지 편집**를 누릅니다.
+
+| 서비스 | 전체 편집 | 칠한 마스크 |
+| --- | --- | --- |
+| Native NovelAI | 예 | 예 |
+| SD Web UI (AUTOMATIC1111 / Forge) | 예 | 예 |
+| Draw Things | 예 | 아니요 |
+
+프롬프트와 **강도**를 바꾸고 **편집 적용**를 누릅니다. 마스크 도구로 영역을 칠하고 **이미지 인페인팅**를 고르세요. **노이즈**, **원본 시드 재사용**는 네이티브 NovelAI 전용입니다. 다른 서비스도 프롬프트 변경 재생성은 됩니다.
+
+표시 이미지를 원본으로 씁니다. 마스크 미지원 서비스로 바꾸면 마스크를 지웁니다. 아바타는 **아바타로 사용**까지 미리보기입니다.
+
 ## ComfyUI 워크플로 JSON과 RunPod
 
 **ComfyUI**, **SwarmUI**, **RunPod Serverless (ComfyUI)**에서는 **ComfyUI workflow (optional)** 또는 **(required)**(필수) 입력란이 나타납니다. ComfyUI 버전에 따라 **Save (API Format)**(API 형식으로 저장), **Export (API)**, **Export to API** 중 하나로 ComfyUI에서 내보낸 워크플로 JSON을 붙여넣으세요. 이 입력란은 ComfyUI와 SwarmUI에서는 선택 사항이고 RunPod에서는 필수입니다. RunPod에는 API 키로 쓸 RunPod API 토큰, **RunPod endpoint ID**(RunPod 엔드포인트 ID), 워크플로가 필요합니다.
@@ -190,12 +205,14 @@ Marinara가 값을 채워 넣을 자리마다 워크플로에 다음 문자열�
 | ComfyUI | Sampler | euler_ancestral |
 | ComfyUI | Scheduler | normal |
 | ComfyUI | Denoise | 1 |
-| NovelAI | Steps | 28 |
-| NovelAI | Prompt guidance | 6 |
+| NovelAI | Steps | 자동 |
+| NovelAI | Prompt guidance | 자동 |
 | NovelAI | Sampler | k_euler_ancestral |
 | NovelAI | Noise schedule | karras |
 
 서비스마다 **Prompt prefix**(프롬프트 접두사)와 **Negative prefix**(네거티브 접두사) 입력란도 있습니다. 여기에 넣은 글은 이 모델에서 보내는 모든 프롬프트 앞에 붙습니다. AUTOMATIC1111 / Forge와 ComfyUI에는 **Clip skip**(클립 건너뛰기) 입력란이 있습니다. AUTOMATIC1111 / Forge에는 **Restore faces**(얼굴 복원) 토글이 추가로 있습니다. ComfyUI에는 참조 이미지가 없을 때 1x1 플레이스홀더를 업로드하는 토글이 추가로 있으며, 이 토글은 참조 플레이스홀더를 쓰는 사용자 지정 워크플로에서만 의미가 있습니다. NovelAI에는 **Guidance rescale**(가이던스 리스케일)과 **UC preset**(UC 프리셋)이 추가로 있습니다.
+
+NovelAI의 **단계**, **프롬프트 가이던스**는 기본 공란이며 **자동**으로 빈 필드에 보이는 모델 기본값을 보냅니다. V5는 23단계·guidance 7, V4.5는 5, V4는 5.5입니다. 숫자로 덮어쓰고 비우면 자동으로 돌아갑니다. 이전 내장값 28단계나 guidance 6으로 저장한 연결도 이제 자동값을 씁니다.
 
 NovelAI에는 **Background dataset for backgrounds** 설정도 있으며, 기본값은 꺼짐입니다. 켜면 V4.5와 V5 모델에서 배경 그림(캐릭터와 페르소나 Gallery 배경, 채팅과 Illustrator 장면 배경, 채팅 갤러리의 장소 그림, 게임 배경)의 프롬프트 앞에 NovelAI의 `background dataset` 태그가 붙습니다. NovelAI의 배경 데이터셋은 사진에 가까운 그림을 만드는 경향이 있으므로, 배경을 애니메이션풍 채팅에 맞추려면 꺼 두세요.
 
@@ -221,9 +238,9 @@ NovelAI에는 전용 태그인 `transparent background, alpha transparency`로 �
 | --- | --- |
 | OpenAI (DALL-E) | 최대 16장, GPT Image 모델에서만. GIF에는 보내지 않음 |
 | ChatGPT (Codex login) | 최대 16장 |
-| NovelAI | 최대 16장, V4.5 모델에서만 |
+| NovelAI | 최대 16개, V4.5와 V5만 |
 | xAI / Grok Imagine | 최대 3장 |
-| NanoGPT | 최대 3장 |
+| NanoGPT | 모델 한도 내 최대 3개, 텍스트→이미지는 없음 |
 | ComfyUI, RunPod Serverless (ComfyUI), SwarmUI | 최대 4장, 워크플로 플레이스홀더를 통해 |
 | Stability AI, Arli AI, SD Web UI, Draw Things | 첫 번째 이미지만, image to image 방식으로 사용 |
 | Atlas Cloud | 첫 번째 이미지, 호환되는 image-to-image, 편집 또는 Kontext 모델 ID에서 |
@@ -232,7 +249,7 @@ NovelAI에는 전용 태그인 `transparent background, alpha transparency`로 �
 | Venice.ai, Z.AI | 텍스트-이미지 생성에서는 지원하지 않음 |
 | Together AI, Pollinations, Stable Horde, fal.ai | 지원하지 않음 |
 
-NovelAI 정밀 참조는 `nai-diffusion-4-5-full` 같은 V4.5 모델에서만 작동합니다. NovelAI는 V5용 Precise Reference를 출시하지 않았습니다. 다른 모델에 참조를 요청하면 Marinara는 참조 없이 이미지를 생성하고 서버에 경고 로그를 남깁니다.
+정밀 참조는 `nai-diffusion-4-5-full`, `nai-diffusion-5-full` 같은 V4.5와 V5에서 됩니다. 이전 모델은 참조 없이 생성하고 경고를 남깁니다. V5는 스타일 충실도가 없어 **스타일 충실도(V4.5 전용)**를 무시합니다. 참조당 NovelAI 요금은 사진 한 장에 5 Anlas입니다.
 
 ## 미디어 생성 요청을 순서대로 처리하기
 

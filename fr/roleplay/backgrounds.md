@@ -12,10 +12,10 @@ La génération d'images n'est nécessaire pour aucune de ces fonctions. Sans mo
 | Que l'image change avec la scène | L'agent **Background** | [Laisser l'agent Background choisir](#let-the-background-agent-pick) |
 | Qu'un lieu ait toujours la même apparence | Un lieu épinglé | [Épingler un arrière-plan à un lieu](#pin-a-background-to-a-place) |
 | La chambre d'un personnage dans chaque chat où il figure | Un arrière-plan de galerie | [Des arrière-plans qui suivent un personnage](#backgrounds-that-follow-a-character) |
-| De nouvelles images pour de nouveaux lieux et de nouvelles conditions météo | L'agent **Illustrator** | [Arrière-plans créés par Illustrator](../media/scene-backgrounds.md) |
+| De nouvelles images pour les nouveaux lieux, la météo et l’heure | L’agent **Illustrator** | [Arrière-plans créés par Illustrator](../media/scene-backgrounds.md) |
 | Téléverser, taguer et trier tes images, ou les flouter | La bibliothèque d'arrière-plans | [Bibliothèque d'arrière-plans](../appearance/chat-backgrounds.md) |
 
-Quand l'histoire arrive quelque part, Marinara choisit dans cet ordre : une image épinglée à ce lieu dans ce chat, puis un arrière-plan de galerie qui porte le nom du lieu, puis le choix de l'agent Background. Illustrator ne crée une nouvelle image que si aucune ne convient. Quelle que soit l'image retenue, sa version météo s'affiche si elle en possède une pour les conditions météo de l'histoire.
+Quand l’histoire arrive quelque part, Marinara choisit dans cet ordre : un arrière-plan épinglé à ce lieu dans ce chat, puis une image de galerie qui nomme le lieu, puis le choix de l’agent Background. Les lieux épinglés et de galerie ne changent l’image seuls que si Marinara connaît le lieu de l’histoire, grâce à **World State** ou à **World Maps**. Sans l’un ni l’autre, l’agent Background voit quand même les arrière-plans de galerie par leurs lieux. Illustrator ne peint une nouvelle image que si rien ne convient. L’image choisie apparaît dans sa version météo ou horaire si la bibliothèque en possède une pour la météo et l’heure de l’histoire.
 
 ## Fixer un arrière-plan pour un seul chat
 
@@ -23,6 +23,16 @@ Quand l'histoire arrive quelque part, Marinara choisit dans cet ordre : une imag
 2. Sous **Fond du chat**, clique sur **Parcourir la bibliothèque** et choisis une image.
 
 Cela ne modifie que ce chat. Pour revenir à l'arrière-plan par défaut, clique sur **Retirer** à côté de **Fond du chat**. Tu peux aussi en choisir un dans **Réglages du chat → Arrière-plan** dans le chat. Pas encore d'image ? Voir [Importer un arrière-plan](../appearance/chat-backgrounds.md#import-a-background).
+
+## Créer soi-même une version météo ou horaire
+
+Ton image montre la chambre de jour, mais l’histoire y commence la nuit sous la pluie. Inutile d’attendre Illustrator :
+
+1. Ouvre le chat, puis **Réglages du chat → Arrière-plan**.
+2. Sous **Créer une version de ce fond**, choisis **Météo** et **Moment de la journée**. **Tel que peint** conserve cet aspect tel qu’il apparaît sur l’image.
+3. Clique sur **Créer une version**.
+
+La connexion d’images d’Illustrator repeint l’image à partir de l’original, y compris pour une image de galerie, et le chat affiche la nouvelle version. Elle est enregistrée dans la bibliothèque d’arrière-plans pour être réutilisée sans nouvelle génération. Si elle existe déjà, elle s’affiche immédiatement. La connexion d’images doit pouvoir partir d’une image.
 
 ## Laisser l'agent Background choisir
 
@@ -32,9 +42,17 @@ L'agent **Background** s'exécute après chaque réponse. Il lit la scène et ch
 2. Ouvre **Agents** et active **Enable Agents** (activer les agents).
 3. Ajoute l'agent **Background**.
 
-L'arrière-plan change désormais tout seul quand l'histoire passe d'un lieu à l'autre. L'agent voit toutes les images de ta bibliothèque, y compris celles des dossiers, et utilise leurs noms et leurs tags pour choisir : des noms clairs et des tags de lieu l'aident donc.
+L’arrière-plan change désormais seul au fil des lieux de l’histoire. L’agent lit du texte, pas des images : il choisit donc selon leur désignation :
 
-Si ça n'a pas marché : avec seulement un ou deux arrière-plans, l'agent continue de choisir ceux-là. Ajoutes-en d'autres à ta bibliothèque.
+- Les **images de la bibliothèque**, d’après leur nom de fichier et leurs tags, même dans les dossiers.
+- Les **arrière-plans de galerie** des personnages et du persona du chat, d’après les lieux indiqués (comme `dorm kitchen`) et leur description.
+- Les **Lieux épinglés** du chat, d’après le nom de l’image qu’ils épinglent.
+
+Une image de bibliothèque dont le nom n’est qu’une suite aléatoire de lettres et de chiffres (comme `70c60b32-6b8c-….jpg`) et qui n’a aucun tag est exclue : rien n’indique le lieu qu’elle montre. Ajoute un tag de lieu ou un nom clair pour la rendre sélectionnable. Si rien dans la liste ne montre le lieu de la scène, l’agent garde l’image actuelle plutôt que de deviner.
+
+**Réglages du chat → Arrière-plan** explique le choix de l’image actuelle sous son aperçu. La ligne disparaît si tu choisis toi-même une image.
+
+Si cela ne fonctionne pas : avec seulement un ou deux arrière-plans, l’agent choisit toujours ceux-là. Ajoutes-en à ta bibliothèque. S’il est lent, vérifie sa connexion : lorsqu’elle ne traite qu’une requête à la fois, il attend les autres agents, comme Lorebook Keeper.
 
 ## Épingler un arrière-plan à un lieu
 
@@ -61,7 +79,7 @@ Les images épinglées ont besoin de savoir où se déroule l'histoire : elles u
 ### Ce que change une image épinglée
 
 - L'image s'affiche une fois, à l'arrivée. Si tu choisis un autre arrière-plan à la main pendant que tu es sur place, ton choix reste jusqu'à ce que l'histoire passe à un autre lieu.
-- Dans un lieu épinglé, l'agent Background ne peut pas changer l'image, et Illustrator ne crée pas de nouvel arrière-plan pour ce lieu. Si **Weather Versions of Backgrounds** (versions météo des arrière-plans) est activé, l'image épinglée reçoit tout de même sa version de pluie, de neige ou de brouillard.
+- Dans un lieu épinglé, l’agent Background ne peut pas changer l’image et Illustrator n’en peint pas de nouvelle. Avec **Variantes météo des arrière-plans** ou **Versions horaires des fonds** activé, l’image épinglée reçoit quand même sa version pluie, neige, brouillard ou nuit.
 
 Si ça n'a pas marché : vérifie que **Story is at**, sous la liste, affiche le lieu et que l'un des noms associés à l'image épinglée y figure mot pour mot.
 
@@ -89,7 +107,7 @@ Les arrière-plans de galerie reçoivent aussi des versions météo. La version 
 
 ## Guides associés
 
-- [Arrière-plans créés par Illustrator](../media/scene-backgrounds.md) : nouveaux lieux, versions météo et pochoirs de fenêtre.
+- [Arrière-plans créés par Illustrator](../media/scene-backgrounds.md) : nouveaux lieux, versions météo et horaires, et masques de fenêtres.
 - [Bibliothèque d'arrière-plans](../appearance/chat-backgrounds.md) : téléversement, tags, dossiers et flou.
 - [Galeries des personnages et des personas](../characters/galleries.md)
 - [Mode Roleplay : premiers pas](getting-started.md)

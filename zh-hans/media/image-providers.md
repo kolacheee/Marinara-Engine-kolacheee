@@ -66,7 +66,7 @@ API 密钥是服务给你的一串秘密代码，Marinara 靠它使用你的账�
 - **Together AI**：FLUX 以及其他开源图像模型。
 - **OpenRouter Images**：通过 OpenRouter 的聊天接口调用图像模型，所以具体能用哪些模型因账号而异。
 - **xAI / Grok Imagine**：使用 Grok Imagine。
-- **NanoGPT**：一个聚合平台，所以要用它的模型列表。
+- **NanoGPT**：一个聚合平台，所以要用它的模型列表。 Marinara 按 NanoGPT 列出的模型尺寸发送，例如以 `1.5k` 配宽高比替代 `1344x768`，参考图也不超过模型上限。模型拒绝负面提示词时，移除后生成并记录服务器警告。
 - **Pollinations**：想试试图像生成，这是最快的办法。不需要账号。
 - **Stable Horde**：一个众包算力网络。申请一个免费密钥能获得更高的排队优先级。
 - **SD Web UI** 和 **Draw Things**：启动软件时要开启它的应用接口。Marinara 把 Draw Things 当作 AUTOMATIC1111 服务器来对待（这个应用运行在 macOS 或 iOS 上）。
@@ -113,7 +113,7 @@ OpenAI 允许更多帧，但没有公布一个 GIF 最多可以有多少像素�
 
 ### NovelAI
 
-NovelAI 专注于动漫风格的图像。使用 V4、V4.5 和 V5 模型时，Marinara 会为多角色分镜、Illustrator 场景和 Professor Mari 的图片发送带位置的原生角色提示词。精确参考图只能在 V4.5 模型上使用。
+NovelAI 主打动漫风格。V4、V4.5、V5 会收到带位置的原生逐角色提示词，用于多角色分镜、Illustrator 场景和 Professor Mari 图片。精确参考支持 V4.5 和 V5。
 
 ### Venice.ai
 
@@ -155,6 +155,21 @@ SwarmUI 可以把 ComfyUI 任务分配到自己的队列中处理。没有账号
 
 如果服务返回的不是图像数据而是一个 URL，Marinara 会按照常规的出站请求检查来下载公开 CDN 地址。指向私有地址或环回地址的结果 URL，只有在协议、主机名和端口与已配置的图像服务完全一致时才会被接受。从该源发出的跳转也不能转到另一个本地服务。如果某个本地代理把结果存放在另一个私有源上，请让它用与其图像 API 相同的源来提供这些文件。
 
+<a id="edit-an-existing-picture"></a>
+## 编辑现有图片
+
+在图库打开图片选 **重新生成图片**；头像则在角色或用户角色编辑器选 **编辑头像**。选图像模型后点 **编辑图片**。功能取决于服务：
+
+| 服务 | 整图编辑 | 绘制蒙版编辑 |
+| --- | --- | --- |
+| Native NovelAI | 支持 | 支持 |
+| SD Web UI (AUTOMATIC1111 / Forge) | 支持 | 支持 |
+| Draw Things | 支持 | 不支持 |
+
+修改提示词和 **强度** 后选 **应用编辑**。支持蒙版时涂抹重绘区域，选 **局部重绘图片**。**噪声** 和 **复用原始种子** 仅限原生 NovelAI。其他服务仍可用新提示词普通重新生成。
+
+以当前图片为源图。切换到不支持蒙版的服务会清除蒙版。头像编辑在 **用作头像** 前只是预览。
+
 ## ComfyUI 工作流 JSON 与 RunPod
 
 选择 **ComfyUI**、**SwarmUI** 或 **RunPod Serverless (ComfyUI)** 时，会出现 **ComfyUI workflow (optional)** 或 **(required)**(必填) 输入框。把从 ComfyUI 导出的工作流 JSON 粘贴进去；导出用的菜单项因 ComfyUI 版本而异，可能叫 **Save (API Format)**、**Export (API)** 或 **Export to API**。它对 ComfyUI 和 SwarmUI 是可选的，对 RunPod 是必填的。RunPod 需要把 RunPod API Token 填作 API 密钥，还需要一个 **RunPod endpoint ID**(RunPod 端点 ID) 和这份工作流。
@@ -190,12 +205,14 @@ SwarmUI 可以把 ComfyUI 任务分配到自己的队列中处理。没有账号
 | ComfyUI | Sampler | euler_ancestral |
 | ComfyUI | Scheduler | normal |
 | ComfyUI | Denoise | 1 |
-| NovelAI | Steps | 28 |
-| NovelAI | Prompt guidance | 6 |
+| NovelAI | Steps | 自动 |
+| NovelAI | Prompt guidance | 自动 |
 | NovelAI | Sampler | k_euler_ancestral |
 | NovelAI | Noise schedule | karras |
 
 每个服务还有 **Prompt prefix**(提示词前缀) 和 **Negative prefix**(负面前缀) 两个字段。写在这里的文字会加在这个模型每一条提示词的最前面。AUTOMATIC1111 / Forge 和 ComfyUI 都有 **Clip skip** 字段。AUTOMATIC1111 / Forge 另有一个 **Restore faces** 开关。ComfyUI 另有一个开关，用于在没有提供参考图时上传一张 1x1 占位图，它只对带参考图占位符的自定义工作流有意义。NovelAI 另有 **Guidance rescale** 和 **UC preset**。
+
+NovelAI 的 **步数** 和 **提示词引导** 默认留空，即 **自动**，发送空字段中显示的模型默认值。V5 为 23 步、guidance 7；V4.5 为 5，V4 为 5.5。输入数字可自定，清空回到自动。旧连接保存的原内置 28 步或 guidance 6 现也改用自动值。
 
 NovelAI 还有 **Background dataset for backgrounds**(为背景使用背景数据集) 开关，默认关闭。开启后，使用 V4.5 和 V5 模型生成背景图片（角色和用户角色图库的背景、聊天和 Illustrator 的场景背景、聊天图库的地点图片以及游戏背景）时，提示词会以 NovelAI 的 `background dataset` 标签开头。NovelAI 的背景数据集偏向摄影风格，所以如果想让背景与动漫风格的聊天保持一致，就让它保持关闭。
 
@@ -221,9 +238,9 @@ NovelAI 还有 **Background dataset for backgrounds**(为背景使用背景数�
 | --- | --- |
 | OpenAI (DALL-E) | 最多 16 张，仅限 GPT Image 模型。GIF 不能带参考图 |
 | ChatGPT (Codex login) | 最多 16 张 |
-| NovelAI | 最多 16 张，仅限 V4.5 模型 |
+| NovelAI | 最多 16 张，仅 V4.5 和 V5 |
 | xAI / Grok Imagine | 最多 3 张 |
-| NanoGPT | 最多 3 张 |
+| NanoGPT | 最多 3 张，不超过模型上限；文生图模型无参考 |
 | ComfyUI、RunPod Serverless (ComfyUI)、SwarmUI | 最多 4 张，通过工作流占位符传入 |
 | Stability AI、Arli AI、SD Web UI、Draw Things | 只取第一张，按图生图使用 |
 | Atlas Cloud | 取第一张，用于兼容的图生图、编辑或 Kontext 模型 ID |
@@ -232,7 +249,7 @@ NovelAI 还有 **Background dataset for backgrounds**(为背景使用背景数�
 | Venice.ai、Z.AI | 文生图不支持 |
 | Together AI、Pollinations、Stable Horde、fal.ai | 不支持 |
 
-NovelAI 的精确参考图只能在 V4.5 模型上使用，比如 `nai-diffusion-4-5-full`。NovelAI 尚未为 V5 发布 Precise Reference。在其他模型上请求参考图时，Marinara 会在不使用参考图的情况下生成图像，并在服务器上记录一条警告。
+NovelAI 精确参考支持 V4.5 和 V5，例如 `nai-diffusion-4-5-full`、`nai-diffusion-5-full`。旧模型会省略参考并记录警告。V5 没有风格保真度，忽略 **风格保真度（仅 V4.5）**。每张参考图按 NovelAI 定价收取 5 Anlas。
 
 ## 媒体生成请求排队
 

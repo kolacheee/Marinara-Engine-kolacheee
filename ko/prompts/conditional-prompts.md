@@ -341,7 +341,7 @@ Marinara는 보통 같은 턴과 같은 Decision 모델에 대해 성공한 답�
 
 자주 바뀌는 판정 블록은 기록 뒤 지침이나 얕은 깊이의 작가 노트처럼 프롬프트 뒤쪽에 두세요. 답이 거의 바뀌지 않는 판정만 앞쪽에 두세요. 프리셋 변수 옵션도 같습니다. 그 텍스트는 `{{name}}`이 있는 곳에 들어가기 때문입니다.
 
-직접 연결한 Anthropic 계정에서 **Enable prompt caching**(프롬프트 캐싱 활성화)을 켜면 Marinara는 시스템 프롬프트의 끝과, 최신 메시지에서 **Cache depth**(캐시 깊이)만큼 거슬러 올라간 채팅 메시지(기본 5개)에 표시를 합니다. 기록보다 앞에서 바뀐 내용은 시스템 경계와 그 뒤의 기록을 무효화할 수 있습니다. 표시된 기록 경계 뒤의 변경은 캐시된 부분을 유지할 수 있습니다. 최소 캐시 길이는 모델마다 다릅니다. 제공자의 최신 [Anthropic 프롬프트 캐시 가이드](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)나 [OpenAI 프롬프트 캐시 가이드](https://developers.openai.com/api/docs/guides/prompt-caching)를 참고하세요.
+직접 연결한 Anthropic 계정에서 **프롬프트 캐싱 활성화**(프롬프트 캐싱 활성화)을 켜면 Marinara는 시스템 프롬프트의 끝과, 최신 메시지에서 **캐시 깊이**(캐시 깊이)만큼 거슬러 올라간 채팅 메시지(기본 5개)에 표시를 합니다. 기록보다 앞에서 바뀐 내용은 시스템 경계와 그 뒤의 기록을 무효화할 수 있습니다. 표시된 기록 경계 뒤의 변경은 캐시된 부분을 유지할 수 있습니다. 채팅에 요약이 있으면 **Past Events** 바로 앞에 세 번째 표시를 합니다. 새 요약을 저장하는 턴에는 Past Events와 기록을 다시 보내지만, 그 앞의 시스템 프롬프트는 계속 캐시에서 읽습니다. OpenRouter의 Claude 모델에도 같은 표시를 합니다. 최소 캐시 길이는 모델마다 다릅니다. 제공자의 최신 [Anthropic 프롬프트 캐시 가이드](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)나 [OpenAI 프롬프트 캐시 가이드](https://developers.openai.com/api/docs/guides/prompt-caching)를 참고하세요.
 
 <a id="when-a-decision-branch-never-appears"></a>
 

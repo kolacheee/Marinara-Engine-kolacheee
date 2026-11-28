@@ -85,6 +85,8 @@ Ist **Avatar-Referenzen senden** für Bilder eingeschaltet, bestimmt **Reference
 
 Der Prompt-Schreiber hilft bei Bildmodellen, die Referenzbilder verwerfen, etwa NovelAI V5. Dafür braucht der Schreiber ein Modell, das Bilder lesen kann. Lehnt der Schreiber sie ab, wird seine Anfrage ohne die Bilder erneut gesendet. Bis zum Neustart des Servers erhält dieser Schreiber dann keine Bilder mehr. Ein Schreiber, dessen Verbindung als nicht bildfähig markiert ist, erhält keine. Bilder an den Schreiber zu senden kostet bei jedem Durchlauf Tokens. Es werden bis zu vier Bilder gesendet: die in `[illustrate: characters="…"]` genannten Karten, andernfalls die aktiven Charaktere und die Persona des Chats. **What to carry over from the pictures** legt fest, was der Schreiber übernimmt, etwa nur das Aussehen und nicht den Zeichenstil. Ein Roleplay-Chat kann unter **Avatar-Referenzen senden** eine eigene Einstellung für **Reference pictures go to** festlegen.
 
+In einem Roleplay-Chat gehen auch die Bilder unter **Referenzbilder** eines Lorebook-Eintrags an das Bildmodell, wenn der Eintrag für die Antwort aktiv ist. Nutze sie für Kleidung, Gegenstände oder Räume, denen das Bild entsprechen soll. Dafür ist kein Schalter nötig. Nur Bilddienste, die Referenzbilder akzeptieren, bekommen sie. Stability AI, Arli AI, SD Web UI und Draw Things bekommen keine, weil sie das Bild sonst ausgehend vom Eintragsbild erzeugen würden. Bei eingeschaltetem **Avatar-Referenzen senden** hält auch **Prompt-Schreiber** sie zurück. Sie folgen auf das **Referenzbild des Orts** aus [World Maps](../agents/hierarchical-maps.md) und die Avatare; insgesamt gehen höchstens sechs Bilder mit. Ein Eintrag mit **Position** auf **Outlet** sendet seine Bilder nur, wenn sein Outlet verwendet wird, und nie über die Schaltfläche **Illustrieren** der Galerie.
+
 ## Festlegen, wie oft er zeichnet
 
 Auf der Illustrator-Karte sitzt die Schaltfläche **Open Setup** für das vollständige Einrichtungsfenster. Dort legst du das Standard-Laufintervall fest und gibst ihm ein eigenes Bildmodell.
@@ -130,7 +132,8 @@ Illustrator zeichnet auch Hintergründe. Auf der Illustrator-Karte unter **Chat-
 
 - **Szenenhintergründe generieren** zeichnet einen Hintergrund, wenn die Geschichte einen neuen Ort erreicht, sofern du noch kein Bild dafür hast.
 - **Weather Versions of Backgrounds** zeichnet den aktuellen Hintergrund mit dem Wetter der Geschichte neu. Bewegter Regen oder Schnee erscheint dabei nur an den Fenstern des Raums.
-- **Decision Model Checks** lässt ein Decision-Modell jede Antwort auf einen neuen Ort oder neues Wetter prüfen, damit Hintergründe nicht auf das Ausführungsintervall warten müssen.
+- **Tageszeitversionen von Hintergründen** malt den aktuellen Hintergrund bei Morgengrauen, Tag, Sonnenuntergang oder Nacht neu, wenn sich die Tageszeit der Geschichte ändert.
+- **Prüfungen durch das Decision-Modell** lässt ein Decision-Modell jede Antwort auf neue Orte, neues Wetter oder eine neue Tageszeit prüfen, damit Hintergründe nicht auf das Ausführungsintervall warten müssen.
 
 Alle drei sind standardmäßig aus. Siehe [Von Illustrator erstellte Hintergründe](scene-backgrounds.md).
 

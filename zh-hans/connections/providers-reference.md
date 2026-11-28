@@ -25,6 +25,8 @@
 | Arli AI | `www.arliai.com/account` |
 | Z.AI | `z.ai/manage-apikey/apikey-list` |
 | DeepSeek | `platform.deepseek.com/api_keys` |
+| AI Horde | `aihorde.net/register` (可选，见 [AI Horde](#ai-horde)) |
+| BeaverNet | `net.beaverai.org/account` |
 | OpenAI-compatible、Claude (Subscription)、OpenAI (ChatGPT)、Grok CLI (Subscription) | 没有密钥页面。见下面的说明。 |
 
 默认地址如下，Marinara 会自动替你填好：
@@ -42,6 +44,9 @@
 - Arli AI：`https://api.arliai.com/v1`
 - Z.AI：`https://api.z.ai/api/paas/v4`
 - DeepSeek：`https://api.deepseek.com/v1`
+
+- AI Horde: `https://oai.aihorde.net/v1`
+- BeaverNet: `https://net.beaverai.org/v1`
 - OpenAI-compatible 和订阅服务：没有。由你填写地址，或者不需要地址。
 
 所有密钥页面的网址都以 `https://` 开头。
@@ -85,7 +90,7 @@
 
 | 模型 | 缓存内容 | 保留时间 |
 | --- | --- | --- |
-| Claude | 系统提示词、到 **Cache depth**(缓存深度) 为止的聊天历史，以及最新一条消息 | 5 分钟；开启 **Extended token caching (1 hour)**(延长 token 缓存（1 小时）) 后为 1 小时 |
+| Claude | 系统提示词（聊天有摘要时分两部分，新摘要仍保留 **Past Events** 前部分的缓存）、截至 **缓存深度** 的历史和最新消息 | 5 分钟，开启 **延长 token 缓存（1 小时）** 为 1 小时 |
 | Qwen | 系统提示词和到 **Cache depth** 为止的聊天历史 | 5 分钟 |
 | Gemini | 系统提示词 | 5 分钟 |
 | GPT、DeepSeek、Grok、Kimi 等 | 无论开关是否开启，服务商都会自行缓存 | 由服务商决定 |
@@ -134,7 +139,9 @@ Marinara 还会要求 OpenRouter 让每个聊天始终使用同一个后端，�
 
 ### Z.AI
 
-**Z.AI** 通过自有 API 提供 GLM 模型（GLM 5.3、GLM 5.3 Flash 及更早的模型）。GLM 5.2 和 5.3 模型接受 **Maximum**(最高) 推理级别。默认地址是按用量付费的端点。Z.AI 的 Coding Plan 使用另一个端点，所以 Coding Plan 的密钥在这里可能用不了。
+**Z.AI** 通过自身 API 提供 GLM（GLM 5.4、GLM 5.3、GLM 5.3 Flash 及更早模型）。GLM 5.2、5.3、5.4 接受 **最高** 推理等级。默认地址按量计费。Coding Plan 使用另一端点，其密钥在这里可能无效。
+
+GLM 5.4 仅在 GLM Coding Plan 提供。将 **地址** 设为 `https://api.z.ai/api/coding/paas/v4`。它始终思考，因此 **推理强度** 提供 **低**、**高**、**最大**，没有 **关闭**。
 
 ### DeepSeek
 
@@ -143,6 +150,20 @@ Marinara 还会要求 OpenRouter 让每个聊天始终使用同一个后端，�
 有些参数不适用，所以面板不显示它们：**Verbosity**(详细度)、**Top K** 和各项惩罚都已弃用，发送了也会被忽略。**Temperature**(温度) 和 **Top P** 是一对，因为 DeepSeek 一次只用其中一个。关闭思考时看到的是 **Temperature**，开启思考时看到的是 **Top P**。
 
 请用 DeepSeek 自己的按钮连接 DeepSeek，不要把 **OpenAI** 指向 DeepSeek 的地址。OpenAI 服务只认 OpenAI 自家的模型，所以配上 DeepSeek 模型时会隐藏生成参数控件，你的设置也几乎都不会发送出去。
+
+<a id="ai-horde"></a>
+### AI Horde
+
+**AI Horde** 是志愿者在自己电脑运行模型的免费网络。其入口会用 AI Horde 地址创建 **OpenAI-compatible** 账号。
+
+**API 密钥** 初始为匿名密钥 `0000000000`，无需账号。匿名请求排队最久。`aihorde.net/register` 的免费密钥等待更短；分享电脑资源可赚 kudos（提高请求排队优先级的 Horde 积分）。
+
+模型列表显示当前志愿者运行的模型，变化频繁。排队可能几秒或几分钟。超时可换模型，或提高服务器时限（见[超时](#timeouts)）。
+
+<a id="beavernet"></a>
+### BeaverNet
+
+**BeaverNet** 是免费社区网络：有闲置显卡的人运行模型，其他人使用。其入口用 BeaverNet 地址创建 **OpenAI-compatible** 账号。在 `net.beaverai.org/account` 创建免费密钥。
 
 ### OpenAI-compatible
 

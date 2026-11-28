@@ -100,6 +100,7 @@ globalThis.__MARINARA_HOST__ = {
 | `components.SearchInput` | Capability API 1.832부터 제공되는 Engine의 검색 입력란입니다. `value`, `onChange`와 화면 읽기 프로그램용 `label`을 전달하세요. 지우기 버튼이 있으며, Escape는 먼저 텍스트를 지웁니다. `resultCount`는 "4 found"를 표시하고, `busy`는 로딩 표시를 보여 주며, `size="compact"`는 공간이 좁은 도구 모음에 맞고, `slashShortcut`은 "/"로 입력란에 포커스를 맞출 수 있게 합니다. |
 | `components.showConfirmDialog` | Capability API 1.830부터 제공되는 Engine의 확인 대화 상자이며, `services.dialogs.showConfirmDialog`와 같은 함수입니다. |
 | `components.Select` | Capability API 1.831부터 제공되는 Engine의 드롭다운입니다. `value`(문자열 또는 `null`), `options`(`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)`와 `label`을 전달하세요. 선택 사항은 `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable`, `buttonRef`입니다. 데스크톱에서는 팝오버, 휴대폰에서는 시트로 열리며, 옵션이 8개 이상이면 검색을 제공합니다. 네이티브 `<select>` 대신 사용하세요. |
+| `components.Popover` | Capability API 1.836부터 제공하는 Engine의 앵커 레이어. `open`, `onClose`, `anchorRef`, 내용을 전달합니다. 선택 옵션은 `side`(`top` / `bottom`), `align`(`start` / `center` / `end`), `gap`, `matchAnchorWidth`, `role`, `className`, `dismiss`(예: `{ outsideClick: false }`)입니다. 공간이 없으면 반전하고 창 안에 머물며 Escape, 바깥 누르기, 뒤로에서 최상위부터 닫혀 대화상자 안의 팝오버가 먼저 닫힙니다. |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` 모듈입니다. |
 | `api` | `lib/api-client.ts` 모듈(`api`, `ApiError`, `getApiErrorMessage`, ...)입니다. |
 
@@ -415,6 +416,12 @@ Engine 전투는 일반 적의 행동을 자체 결정합니다. GM 쪽의 보�
 업데이트에는 사용자의 동의가 필요합니다. 업그레이드한 설치의 예전 내장 기능을 유지하는 일회성 마이그레이션([호환성 마이그레이션](#compatibility-migration) 참고)을 제외하면, 시작할 때 패키지를 다운로드하거나 설치하는 일은 없습니다. `GET /api/capability-packages/updates/pending`은 카탈로그 버전이 더 새롭고 실행 중인 엔진 및 Capability API와 호환되는 설치된 공식 패키지를 나열하되, 사용자가 이미 거절한 버전은 뺍니다. 클라이언트는 이를 **Agent updates available**(에이전트 업데이트 있음) 안내 하나로 보여 줍니다. 이 안내 창은 선택한 각 업데이트를 제시된 버전과 아티팩트 SHA-256에 고정해 일반 설치 파이프라인으로 설치합니다. 선택하지 않은 업데이트는 **Not now**와 같은 방식으로 거절됩니다. **Not now**(나중에)는 거절한 버전을 `DATA_DIR/capability-packages/update-decisions-v1.json`에 기록하므로(`POST /api/capability-packages/updates/decline`) 그 버전은 다시 제시되지 않지만, 더 새 버전은 제시됩니다. 어느 쪽이든 **Agent Organizer (에이전트 관리)**의 **Update**는 계속 쓸 수 있습니다. 실패는 패키지 단위로 격리합니다. 카탈로그에 연결하지 못하거나 검증에 실패해도 이미 있는 파일과 레지스트리 상태는 그대로 쓸 수 있고, 서버 런타임 준비에 실패하면 이전 버전으로 되돌리는 경로를 탑니다.
 
 릴리스 노트는 설명 대상인 `catalog.json` 옆에 `notes.json`으로 게시하며, 카탈로그 항목이나 매니페스트 안에는 절대 넣지 않습니다. 오래된 엔진은 모르는 키가 있는 카탈로그 항목을 버리기 때문입니다. 대기 중인 각 업데이트에는 설치된 버전 다음부터 제시된 버전까지 모든 버전의 노트가 최신순으로 `releaseNotes`에 담기며, 그중 하나라도 사용자가 알아챌 변경으로 표시되어 있으면 `releaseHighlight`가 true입니다. 노트는 일반 텍스트이며 Markdown이나 HTML로 렌더링하지 않습니다.
+
+사용자 가이드는 각 카탈로그 레인 옆의 별도 선택 파일 `docs.json`을 씁니다. 작성자는 Markdown을 쓰고 Marinara-Agents의 `packages/<id>/documentation.json`에 개요와 주제를 등록한 뒤 그곳에서 `node scripts/build-documentation.mjs`를 실행합니다. Markdown, 작성자 색인, 생성된 사이드카를 함께 커밋하세요. 실행 패키지를 다시 빌드하지 않고 문서를 바꿀 수 있습니다. 형식은 [Marinara-Agents 기여 안내](https://github.com/Pasta-Devs/Marinara-Agents/blob/staging/CONTRIBUTING.md#package-user-documentation)를 보세요.
+
+Engine은 `GET /api/capability-packages/:id/documentation?guide=overview`로 색인을 읽습니다. 응답은 주제 목록과 가이드 하나, 출처와 가용 상태를 제공합니다. 기존 문서 모달과 Professor Mari가 같은 서비스를 씁니다. Workspace Mari의 `agent.catalog.get`에는 길이를 제한한 개요가 있고, `agent.documentation.get`은 선택적 `heading`, `maxChars`(1,000~16,000, 기본 8,000)로 등록 주제를 읽습니다. 받은 글은 참고 자료이며 모델 지시나 사용자 상태 변경 저장의 증거가 아닙니다.
+
+패키지 Markdown은 256 KiB 이하이고 공개 바이트 수와 SHA-256이 맞아야 합니다. 원격 색인은 2 MiB 이하이며 원격 읽기는 5초 제한에 리디렉션을 따르지 않습니다. 로컬 참조는 표준 영어 사용자 문서 경계를 씁니다. 검증된 읽기는 5분간 최신이며 오프라인 7일, `DATA_DIR/capability-packages/documentation-cache-v1`에 최대 128개를 캐시합니다. 키는 출처, 채널, 패키지, 주제를 분리하며 현재 패키지 버전이 맞아야 합니다. 알려진 공식 README와 Engine 가이드 링크가 구형 대체 경로입니다. 사용자 지정 외부 링크는 출처를 유지하며 도움말 누락은 설치에 영향이 없습니다.
 
 설치 프로그램은 다음을 지켜야 합니다:
 

@@ -71,7 +71,9 @@ Roleplayでは、範囲のあとにキャラクター名を付けると、その
 | `/illustrate` | Roleplay専用です。ギャラリーの画像を生成します。Illustratorエージェントが必要です。別名は`/ill`です。書式は`/illustrate [range=N-M] [template=name] [prompt]`です。 |
 | `/html` | Roleplay専用です。最新の返信の末尾に、`a spellbook page`のような作中世界のアーティファクトを1つ作ります。書式は`/html [what you want]`です。 |
 | `/video` | Roleplay専用です。最新の返信、または指定した内容の短いクリップを、その返信の下に作ります。Illustratorの**First frame**(開始フレーム)設定に従います。Illustratorが必要です。書式は`/video [description]`です。 |
-| `/impersonate` | 自分のペルソナとして返信を書きます。別名は`/imp`です。書式は`/impersonate [direction (optional)]`です。 |
+| `/impersonate` | ペルソナとして返答を書きます。通常は投稿し、チャット設定の**結果の出力先**が**メッセージの下書き**ならメッセージ欄に下書きを作成します。別名`/imp`。書式：`/impersonate [direction (optional)]`。 |
+| `/impersonate_draft` | 送信前に編集できるよう、ペルソナの返答をメッセージ欄に書きます。投稿はしません。別名`/impd`、`/imp_draft`。書式：`/impersonate_draft [direction (optional)]`。 |
+| `/impersonate_post` | **結果の出力先**に関係なく、ペルソナの返答をすぐに書いて投稿します。別名`/impp`、`/imp_post`。書式：`/impersonate_post [direction (optional)]`。 |
 | `/impersonate_prompt` | このチャットで`/impersonate`が使う指示を設定します。別名は`/imp_prompt`です。書式は`/impersonate_prompt [prompt or reset]`です。 |
 
 ほとんどのコマンドは、Roleplayで使うのに向いています。`/scene`はConversationから実行します。`/impersonate`と`/impersonate_prompt`は、Conversationでは使えません。

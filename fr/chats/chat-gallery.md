@@ -42,7 +42,26 @@ Tu peux générer à nouveau une image sans régénérer la réponse à laquelle
 3. Modifie ce que tu veux dans les champs sous l'image : **Prompt**, **Prompt négatif**, un champ pour chaque personnage sous **Prompts de personnage** si l'image en avait, ainsi que le modèle d'image.
 4. Clique sur **Générer l'image**, ou sur **Annuler** pour laisser l'image telle quelle.
 
-La nouvelle image remplace l'ancienne dans le message. L'ancienne reste dans la galerie, tu peux donc l'épingler à nouveau. Les images de référence sont renvoyées à partir des avatars actuels des personnages. Pour certaines images plus anciennes, le prompt négatif et les prompts de personnage n'ont pas été enregistrés ; l'éditeur le signale dans ce cas.
+La nouvelle image devient la version sélectionnée du message. Les résultats précédents restent dans une seule vignette Gallery avec un compteur. Chaque version garde prompt, prompt négatif et autres détails enregistrés. Les références sont renvoyées depuis les avatars actuels, puis les images d’entrées de lorebook utilisées à l’origine. Stability AI, Arli AI, SD Web UI et Draw Things ne reçoivent pas ces dernières. Certaines anciennes images n’ont pas enregistré les prompts négatifs ou de personnages ; l’éditeur le signale.
+
+<a id="image-versions"></a>
+### Versions d’image
+
+Ouvre une image empilée pour choisir une version. Dans une Gallery, les flèches gauche/droite, touches et balayages horizontaux changent de vignette. Depuis un message, tu restes dans sa pile. Les commandes haut/bas, touches et balayages verticaux sur l’image changent de version. Dézoome avant de naviguer. Faire défiler le prompt ne change pas de version.
+
+Clique sur l’image, l’en-tête du prompt ou le bouton de repli pour utiliser Haut/Bas pour les versions. Clique sur le texte ou Copier pour faire défiler le prompt. Les commandes restent visibles pendant régénération et édition. Applique ou efface le masque avant de changer ; les commandes sont suspendues pendant la génération.
+
+Le choix est enregistré et affiché dans le chat après rechargement. Régénérer ou modifier une ancienne version ajoute un résultat à la même pile sans perdre les suivantes. Un chat dérivé garde son propre choix.
+
+Avec **Enregistrer automatiquement les images générées dans les galeries des personnages**, les régénérations et éditions gardent les galeries de personnage et persona d’origine. Elles regroupent aussi les versions. Chaque galerie mémorise son choix sans changer celui du chat. Les entrées partagent les fichiers sans copies supplémentaires. Ouvrir une galerie restaure les versions manquantes d’anciennes piles si l’entrée d’origine pointe encore vers le chat source. Les versions supprimées d’une galerie déjà regroupée restent supprimées.
+
+Dans la Gallery du chat, utilise **Supprimer l'image de la galerie** sur la vignette ou Supprimer dans le visualiseur :
+
+- **Delete this version** retire la version affichée. Si elle était sélectionnée, la plus récente restante apparaît.
+- **Delete other versions** garde celle affichée et retire les autres.
+- **Delete entire stack** retire toutes les versions et leurs pièces jointes du chat.
+
+La suppression est définitive. **Annuler** garde tout.
 
 ## Guides associés
 

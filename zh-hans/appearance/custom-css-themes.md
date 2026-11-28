@@ -350,6 +350,38 @@ Marinara 用到的任何 CSS 变量，主题都可以设置，不限于这些。
 
 手机上，三点菜单会展开成圆形按钮。开关按钮为 `[data-chat-tools-menu-button]`，展开的按钮列为 `[data-chat-tools-menu]`，每个列表项的 `data-chat-tools-menu-item` 都设为对应窗口的 ID。工具按钮使用 `.mari-window-bubble.mari-chat-tools-button`，`data-chat-tools-menu-tool` 也设为同一个 ID。按钮列没有窗口边框；按钮保持圆形，并沿用组件颜色和按钮大小，不受聊天其他区域的三个开关影响。
 
+<a id="styling-character-sheets"></a>
+## 设置人物卡样式
+
+规则集人物卡在 Roleplay 和 Game 中外观相同。主题可用这些类和数据属性设置样式。
+
+| 部分 | 类 | 数据属性 |
+| --- | --- | --- |
+| 整张人物卡 | `.mari-ruleset-sheet` | `data-ruleset`（规则集 ID，如 `local/my-rules`）、`data-rank-display`（`value`、`label`、`dots`、`roman` 或 `number`），编辑时有 `data-editing="true"` |
+| 标题和 **编辑人物卡** 按钮 | `.mari-ruleset-sheet__header` | |
+| 标签页 | `.mari-ruleset-sheet__tabs` | 每个标签有 `data-tab-id` 和 `aria-selected` |
+| 分组标题 | `.mari-ruleset-sheet__heading` | |
+| 人物卡顶部字段 | `.mari-ruleset-sheet__field`（在 `.mari-ruleset-sheet__fields` 中） | `data-field`，计算值用 `data-derived` |
+| 属性 | `.mari-ruleset-sheet__ability`（在 `.mari-ruleset-sheet__abilities` 中）；分数和检定值为 `__ability-score` 和 `__ability-value` | `data-ability`；属性分组有 `data-section` |
+| 资源池，如生命值 | `.mari-ruleset-sheet__pool`（在 `.mari-ruleset-sheet__pools` 中） | `data-pool`；资源池分组有 `data-pool-group` |
+| 计量轨 | `.mari-ruleset-sheet__track`（在 `.mari-ruleset-sheet__tracks` 中） | `data-track`；伤势轨另有 `data-wound="true"` |
+| 状态 | `.mari-ruleset-sheet__conditions` | |
+| 已训练技能或豁免 | `.mari-ruleset-sheet__rank`（在 `.mari-ruleset-sheet__trained` 中，按组位于 `.mari-ruleset-sheet__rank-group`）；等级或 `data-rank-display="value"` 时的检定值为 `__rank-value`，手机上旁边的检定值为 `__rank-check`，练习为 `__practice` | `data-skill` 或 `data-save`、`data-tier`（等级 ID）、`data-rank`（`0` 未训练，`1` 下一等级，以此类推） |
+| 编辑中的技能或豁免 | `.mari-ruleset-sheet-editor__rank` | `data-skill` 或 `data-save`、`data-tier`、`data-rank` |
+| 列表，如装备 | `.mari-ruleset-sheet__list`；每行为 `.mari-ruleset-sheet__list-row` | `data-list`；勾选行有 `data-marked="true"` |
+
+例如，下面把某规则集的等级 2 显示为两颗星。每个要改变的等级都加一对类似规则。仅用于以圆点、名称、罗马数字或数字显示等级的规则集；检定值显示模式下，`__rank-value` 存的是检定值，这样会将它隐藏。
+
+```css
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value {
+  font-size: 0;
+}
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value::after {
+  content: "★★";
+  font-size: 0.6875rem;
+}
+```
+
 ## 相关指南
 
 - [主题创作指南](theme-author-guide.md)

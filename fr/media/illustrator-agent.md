@@ -85,6 +85,8 @@ Avec **Envoyer l'avatar en référence** activé pour les images, **Reference pi
 
 Le rédacteur du prompt permet de contourner les modèles d'image qui ignorent les images de référence, comme NovelAI V5. Il faut un modèle de rédaction capable de lire les images. Si le rédacteur les refuse, sa requête est renvoyée sans les images, et il n'en reçoit plus jusqu'au redémarrage du serveur. Un rédacteur dont la connexion est marquée comme incapable de lire les images n'en reçoit aucune. Envoyer des images au rédacteur consomme des tokens à chaque exécution. Au plus quatre images sont envoyées : celles des fiches nommées dans `[illustrate: characters="…"]`, ou sinon celles des personnages actifs et du persona du chat. **What to carry over from the pictures** (éléments à reprendre des images) indique ce que le rédacteur copie, par exemple seulement l'apparence et pas le style graphique. Un chat Roleplay peut définir son propre réglage **Reference pictures go to** sous **Envoyer l'avatar en référence**.
 
+Dans un chat Roleplay, les images de **Images de référence** d’une entrée de lorebook sont aussi envoyées au modèle d’images quand l’entrée est active pour la réponse. Utilise-les pour une tenue, un objet ou une pièce à reproduire. Aucun réglage n’est à activer. Seuls les services acceptant les images de référence les reçoivent. Stability AI, Arli AI, SD Web UI et Draw Things n’en reçoivent pas, car ils prendraient l’image de l’entrée comme point de départ. Avec **Envoyer l'avatar en référence** activé, **Rédacteur de prompts** les retient aussi. Elles suivent **Image de référence du lieu** de [World Maps](../agents/hierarchical-maps.md) et les avatars, dans la limite de six images au total. Une entrée dont **Position** vaut **Sortie** n’envoie ses images que lorsque son Outlet est utilisé, et jamais depuis le bouton **Illustrer** de la galerie.
+
 ## Contrôler la fréquence des images
 
 La carte Illustrator a un bouton **Open Setup** qui ouvre l'écran de configuration complet. Tu y règles l'intervalle d'exécution par défaut et tu donnes à l'agent son propre modèle d'image.
@@ -130,7 +132,8 @@ Illustrator peint aussi des arrière-plans. Sur la carte Illustrator dans **Rég
 
 - **Générer les arrière-plans de scène** peint un arrière-plan quand l'histoire arrive dans un nouveau lieu, sauf si tu as déjà une image pour celui-ci.
 - **Versions météo des arrière-plans** repeint l'arrière-plan actuel selon la météo de l'histoire, en ne dessinant la pluie ou la neige animée que sur les fenêtres de la pièce.
-- **Vérifications par le modèle de décision** fait vérifier chaque réponse par un modèle de décision pour repérer un nouveau lieu ou une nouvelle météo : les arrière-plans n'attendent donc pas l'intervalle d'exécution.
+- **Versions horaires des fonds** repeint l’arrière-plan à l’aube, de jour, au coucher du soleil ou de nuit lorsque l’heure de l’histoire change.
+- **Vérifications du modèle de décision** fait vérifier chaque réponse par un modèle de décision pour détecter un nouveau lieu, une nouvelle météo ou une nouvelle heure, sans attendre l’intervalle d’exécution.
 
 Les trois sont désactivés par défaut. Voir [Arrière-plans créés par Illustrator](scene-backgrounds.md).
 

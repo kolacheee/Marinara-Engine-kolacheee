@@ -118,6 +118,10 @@ La valeur de `{{lastGenerationType}}` est une simple étiquette. Parmi les valeu
 
 La macro `{{agent::TYPE}}` insère le résultat enregistré d'un agent, c'est-à-dire d'une aide qui travaille en arrière-plan et remplit par exemple un tracker de scène. Le plus simple est de passer par l'éditeur **Preset Editor** : clique sur **Add Section** (ajouter une section), ouvre le groupe **Agent Sections** (sections d'agent) et choisis un agent. Marinara crée une section qui contient déjà la bonne balise `{{agent::TYPE}}`. Cette macro est résolue en dernier, si bien que le texte d'un agent ne peut pas insérer d'autres macros dans ton prompt.
 
+Dans le **Modèle de prompt** d’un agent, `{{agent::TYPE}}` insère l’état enregistré d’un tracker actif dans le chat : `world-state`, `character-tracker`, `persona-stats`, `quest`, `custom-tracker`, `inventory-tracker` ou `beholder`. C’est le texte ajouté au preset par sa section, sans la ligne demandant au narrateur de ne pas redécrire l’état si le preset est en Markdown. Pour une réponse normale, l’agent voit l’état d’avant la réponse. Lorsqu’un agent de post-traitement est relancé sur un message, il voit l’état enregistré sur ce message.
+
+Le propre type d’un agent insère sa dernière sortie seulement si **Sortie précédente** est activé sous **Sources de contexte**. Les autres types n’insèrent rien dans le prompt d’un agent, et ceux dont le résultat est **Activité des personnages** ne lisent pas l’état des trackers. Nommer son propre type dans une condition de décision n’est pas pris en charge : les décisions sont planifiées une fois pour tous les agents ; la condition peut rester sans réponse et être lue comme non.
+
 ## Macros d'outlet de lorebook
 
 `{{outlet::name}}` insère le contenu des entrées de lorebook dont le champ **Position** vaut **Outlet** et dont le champ **Outlet name** correspond exactement à `name`. Les noms d'outlet (points d'insertion nommés) sont sensibles à la casse. Ainsi, `{{outlet::character_rules}}` ne correspond pas à un outlet nommé `Character_Rules`.

@@ -6,14 +6,30 @@ No novo layout, cada chat, personagem, persona, lorebook, preset e aplicativo qu
 
 - **Computador e tablet na horizontal:** as abas ficam na barra superior. Clique em uma para voltar a ela.
 - **Celular e tablet na vertical:** toque no botão com um número no canto superior direito. **Todas as abas** mostra cada aba como um cartão. Toque em um cartão para abri-lo ou em **Concluir** para voltar.
+
+- **Seções da Library**, como Characters, Presets ou Settings, não ganham aba própria porque estão a um clique. Para manter uma na barra, arraste da lista da Library para o local desejado nas abas no computador. Fica até fechar.
 - **Deslize o dedo pela barra superior** para a esquerda ou para a direita no celular para ir à próxima aba ou à anterior.
+
+- **Abas de chat** começam com símbolo e cor do modo e o código **CO** para Conversation, **RP** para Roleplay, **GM** para Game, depois o nome. Chats do mesmo nome e modo recebem números, como “Luna · 2”.
+- **Outras abas** mostram símbolo (personagem, lorebook, persona etc.) e nome. Chat e personagem de mesmo nome o mantêm, pois o símbolo distingue. Mesmo tipo e nome recebem números.
+
+<a id="tabs-keep-your-place"></a>
+## As abas guardam seu lugar
+
+Voltar recupera onde você parou:
+
+- **Editores** abrem na mesma página, seção ou entrada: página do preset e Prompt order, entrada com busca e ordem, galeria ou sprites de personagem ou persona e seções acrescentadas ao card.
+- A **rolagem** volta em editores, listas e chats. Um chat rolado para cima abre ali em vez da mensagem mais recente.
+- Abrir de propósito num ponto, como um campo mostrado por Professor Mari, ainda vai ao ponto.
+
+Os lugares ficam até fechar a aba ou recarregar.
 
 ## Mova, agrupe e feche abas
 
 Clique com o botão direito em uma aba no computador ou toque nela e mantenha o dedo pressionado em uma tela sensível ao toque para abrir o menu:
 
 - **Mover para a esquerda** e **Mover para a direita** movem a aba uma posição. No computador, você também pode arrastá-la.
-- **Adicionar a novo grupo** coloca a aba em um grupo. No computador, você também pode arrastar uma aba para cima de outra e deixá-la ali por um instante: quando a outra aba acender, solte e as duas viram um grupo (solte sobre um grupo para adicioná-la a ele). Soltar rápido só move a aba. Segurar Shift ao soltar agrupa na hora. Enquanto você estiver em uma aba agrupada, as abas do grupo aparecem em uma segunda linha abaixo da barra superior. Clique no nome do grupo para renomeá-lo ou fechá-lo.
+- **Adicionar a novo grupo** coloca a aba em um grupo. No computador, você também pode arrastar uma aba para cima de outra e deixá-la ali por um instante: quando a outra aba acender, solte e as duas viram um grupo (solte sobre um grupo para adicioná-la a ele). Soltar rápido só move a aba. Segurar Shift ao soltar agrupa na hora. Enquanto você estiver em uma aba agrupada, as abas do grupo aparecem em uma segunda linha abaixo da barra superior. Clique no nome do grupo para renomeá-lo ou fechá-lo. A linha ocupa uma faixa inteira, como pilhas do Vivaldi. Começa com nome e número de abas; clique para renomear, desagrupar ou fechar. No celular e tablet vertical, **Todas as abas** reúne as abas sob o nome do grupo.
 - **Fechar aba** fecha a aba, e **Fechar outras abas** fecha as demais.
 - **Reabrir aba fechada** traz de volta a última aba que você fechou.
 

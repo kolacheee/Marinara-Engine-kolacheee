@@ -102,6 +102,8 @@ openssl rand -hex 32
 
 Marinara 把数据保存为普通的 JSON 文件，所以备份可以直接复制和查看。每个文件夹装了什么，见[数据保存在哪里](data/where-data-is-stored.md)。
 
+要把数据放在网络共享上，将 `DATA_DIR` 指向共享中的文件夹，并在 Marinara 启动前连接好共享。参见[无法访问网络或外部文件夹](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder)。
+
 ## 日志级别
 
 `LOG_LEVEL` 决定服务器打印多少内容。低于所选级别的内容一律不显示。

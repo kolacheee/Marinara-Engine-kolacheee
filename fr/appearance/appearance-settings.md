@@ -88,6 +88,8 @@ Dans la disposition classique, ces sections se trouvent dans l'onglet **Appearan
 
 - **Dynamic weather effects (rain, snow, fog, etc.)** (effets météo dynamiques : pluie, neige, brouillard, etc.) est activé par défaut. Il affiche la météo selon celle de l'histoire et le moment de la journée, et nécessite que l'agent **World State** soit activé pour le chat. Voir [Agents : des aides IA pour tes chats](../agents/agents-overview.md).
 - **Reduce Ambient Animations & Effects** (réduire les animations et effets d'ambiance) arrête les animations décoratives, les particules, les aperçus qui tournent et l'apparition progressive du texte.
+
+- **Afficher les jets de dés en texte** (désactivé par défaut) affiche chaque jet sous forme de courte ligne avec les dés, leurs résultats et le total, au lieu de dés animés. Les jets ont toujours lieu et le modèle comme le jeu reçoivent leurs résultats. Cela vaut dans tous les modes de chat, y compris pour les dés des tests de compétence.
 - **Reduced paint effects** (effets de rendu réduits) aplatit les panneaux transparents et les ombres coûteux pour que les appareils plus lents restent fluides.
 
 ## Arrière-plans

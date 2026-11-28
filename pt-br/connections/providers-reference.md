@@ -25,6 +25,8 @@ Estes serviços usam uma chave de API, exceto os três serviços por assinatura,
 | Arli AI | `www.arliai.com/account` |
 | Z.AI | `z.ai/manage-apikey/apikey-list` |
 | DeepSeek | `platform.deepseek.com/api_keys` |
+| AI Horde | `aihorde.net/register` (opcional, veja [AI Horde](#ai-horde)) |
+| BeaverNet | `net.beaverai.org/account` |
 | OpenAI-compatible, Claude (Subscription), OpenAI (ChatGPT), Grok CLI (Subscription) | Sem página de chave. Veja as notas abaixo. |
 
 Endereços padrão, que Marinara preenche para você:
@@ -43,6 +45,9 @@ Endereços padrão, que Marinara preenche para você:
 - Arli AI: `https://api.arliai.com/v1`
 - Z.AI: `https://api.z.ai/api/paas/v4`
 - DeepSeek: `https://api.deepseek.com/v1`
+
+- AI Horde: `https://oai.aihorde.net/v1`
+- BeaverNet: `https://net.beaverai.org/v1`
 - OpenAI-compatible e os serviços por assinatura: nenhum. Você informa um endereço, ou nenhum é necessário.
 
 Todas as páginas de chave começam com `https://`.
@@ -86,7 +91,7 @@ Um agregador é um serviço em que uma única chave dá acesso a modelos de muit
 
 | Modelo | O que fica em cache | Por quanto tempo |
 | --- | --- | --- |
-| Claude | O prompt de sistema, o histórico do chat até a **Profundidade do cache** e a mensagem mais recente | 5 minutos, ou 1 hora com **Cache de tokens estendido (1 hora)** |
+| Claude | Prompt de sistema (em duas partes se houver resumo, para o novo manter em cache o trecho antes de **Past Events**), histórico até **Profundidade do cache** e última mensagem | 5 minutos ou 1 hora com **Cache de tokens estendido (1 hora)** |
 | Qwen | O prompt de sistema e o histórico do chat até a **Profundidade do cache** | 5 minutos |
 | Gemini | O prompt de sistema | 5 minutos |
 | GPT, DeepSeek, Grok, Kimi e outros | O serviço faz cache por conta própria, com ou sem o botão liga/desliga ativado | Definido pelo serviço |
@@ -135,7 +140,9 @@ O mesmo medidor aparece abaixo da barra de contexto no seletor de conexão de um
 
 ### Z.AI
 
-**Z.AI** oferece os modelos GLM (GLM 5.3, GLM 5.3 Flash e anteriores) pela própria API. Os modelos GLM 5.2 e 5.3 aceitam o nível de raciocínio **Maximum** (máximo). O endereço padrão é o endpoint com cobrança por uso. O Coding Plan da Z.AI usa outro endpoint, então uma chave do Coding Plan pode não funcionar aqui.
+**Z.AI** oferece GLM (GLM 5.4, GLM 5.3, GLM 5.3 Flash e anteriores) na própria API. GLM 5.2, 5.3 e 5.4 aceitam **Máximo**. O endereço padrão cobra por uso. Coding Plan usa outro endpoint; sua chave pode não funcionar aqui.
+
+GLM 5.4 só está no GLM Coding Plan. Defina **Endereço** como `https://api.z.ai/api/coding/paas/v4`. Ele sempre pensa; **Esforço de raciocínio** oferece **Baixo**, **Alto**, **Máx.**, sem **Desativado**.
 
 ### DeepSeek
 
@@ -144,6 +151,20 @@ O mesmo medidor aparece abaixo da barra de contexto no seletor de conexão de um
 Alguns parâmetros não se aplicam, por isso o painel os deixa de fora: **Verbosity**, **Top K** e as penalidades foram descontinuados e são ignorados. **Temperature** (temperatura) e **Top P** formam um par, porque a DeepSeek usa um de cada vez. Você vê **Temperature** quando o raciocínio está desativado e **Top P** quando está ativado.
 
 Conecte a DeepSeek pelo botão próprio dela, e não apontando **OpenAI** para o endereço da DeepSeek. O serviço OpenAI espera os modelos da OpenAI; por isso, com um modelo da DeepSeek, ele esconde os controles de geração e não envia quase nenhum dos seus ajustes.
+
+<a id="ai-horde"></a>
+### AI Horde
+
+**AI Horde** é uma rede grátis de voluntários que rodam modelos nos próprios computadores. O bloco configura uma conta **OpenAI-compatible** com seu endereço.
+
+**Chave de API** começa com a chave anônima `0000000000`, sem conta. Solicitações anônimas esperam mais. Uma chave grátis de `aihorde.net/register` espera menos; compartilhar seu computador rende kudos (pontos Horde que adiantam solicitações).
+
+A lista mostra modelos ativos e muda muito. A fila leva segundos ou minutos. Se expirar, tente outro modelo ou aumente limites do servidor (veja [Tempos limite](#timeouts)).
+
+<a id="beavernet"></a>
+### BeaverNet
+
+**BeaverNet** é uma rede comunitária grátis: pessoas com placas gráficas livres rodam modelos para todos. O bloco cria uma conta **OpenAI-compatible** com seu endereço. Crie uma chave grátis em `net.beaverai.org/account`.
 
 ### OpenAI-compatible
 

@@ -346,12 +346,15 @@ Panels behalten ihren Zustand über ein `mountedPanels`-Set, das in einem `useSt
 | `GifPicker`        | GIF-Suche über die Giphy-API                                          |
 | `HelpTooltip`      | Symbol, das beim Draufzeigen einen über ein Portal platzierten Tooltip einblendet |
 | `LibraryToolbar` | Die gemeinsame Werkzeugleiste aller Bibliothekspanels (siehe unten) |
+| `EditorHeader` | Die gemeinsame Kopfzeile aller ganzseitigen Editoren (siehe unten) |
 
 Alle UI-Komponenten arbeiten mit kontrollierten Props (value plus onChange) und rendern Overlays über Portale.
 
 **Bibliothekspanels verwenden `LibraryToolbar`.** Die Panels für Charaktere, Personas, Lorebooks und Agenten sowie die Tabs des Presets-Panels rendern ihre oberen Bedienelemente darüber: eine optionale Bibliothekszeile (eine Schaltfläche über die volle Breite oder das Paar Herunterladen / Bibliothek öffnen), Erstellen / Importieren / Exportieren / Auswählen, Suche mit dem gemeinsamen Sortiermenü, Neuer Ordner und dann die Panelfilter als `children`. Die Zeilen sind typisierte Props, keine Slots. So erhält ein neues Bibliothekspanel dasselbe Markup statt einer Kopie, die auseinanderläuft. Ergänze dort eine Prop, statt im Panel eine eigene Werkzeugleiste zu bauen.
 
 `LibraryToolbar.tsx` exportiert außerdem `SegmentedButtons`, eine lange Schaltfläche mit `.mari-chrome-segmented`, unterteilt durch `|`. Sie stellt das Paar Herunterladen / Bibliothek öffnen und die Tabs **Prompts** / **Regex-Skripte** / **Tools** / **Profile** des Presets-Panels dar, damit die oberste Zeile jedes Panels dieselbe Höhe hat. Mit `groupLabel` wird die Zeile zu einer Tab-Gruppe mit `role="group"`; `pressed` setzt das `aria-pressed` jedes Tabs. `.mari-chrome-segmented` hat `flex-shrink: 0`, sodass der eigene Flex-Scrollbereich eines Panels mit fester Höhe (wie bei Charakteren) die Zeile nicht zusammendrücken kann.
+
+**Ganzseitige Editoren verwenden `EditorHeader`.** Er zeichnet Zurück, die Symbolkachel, den Namen, optionale Abschnittstabs, Aktionen und Schließen in zwei Layouts. Mit `nav` (Abschnittstabs) richten die Dichteregeln von `mari-editor-header--with-nav` alles an den Tabs aus. Ohne diese Tabs bekommen Aktionen auf Handys eine eigene Zeile und Save zeigt dort nur sein Symbol. Name, Kachelinhalt und Buttons sind Slots, sodass jeder Editor sein Namensfeld und seine Bedienelemente behält. Baue Buttons mit `EditorSaveButton` und `EditorHeaderAction`: Ihr Label dient immer als Tooltip und barrierefreier Name. Ergänze dort einen Slot oder Part, statt einen eigenen Editor-Header zu bauen.
 
 ## API-Client (`lib/api-client.ts`)
 
@@ -649,17 +652,24 @@ Die schlanke Engine startet mit einer leeren Agenten-Registry zur Laufzeit. Erst
 | `haptic`                 | post_processing | Schickt Befehle an Haptik-Geräte                                  |
 | `cyoa`                   | post_processing | Erzeugt Auswahlmöglichkeiten                                      |
 | `storyboard` | post_processing | Plant unbewegte oder animierte Storyboards in Game und Roleplay |
+| `2d-avatars` | feature | Zeigt animierte 2D-Avatare aus Sprites oder Meshes |
+| `3d-avatars` | feature | Zeigt animierte 3D-Avatare in VRM, MMD PMX, GLB und FBX |
 | `conversation-calls`     | feature         | Ergänzt Audio- und Videoanrufe in Conversation samt Einstellungen |
 | `hierarchical-maps`      | feature         | Ergänzt Karten, räumlichen Kontext und Bewegung in Roleplay/Game   |
 | `noodle` | feature | Ergänzt den lokalen sozialen Feed Noodle auf Home |
+| `otome-forge` | feature | Ergänzt Home um Otome Hearth, ein Otome-Spiel aus Charakteren |
+| `saucelings` | feature | Ergänzt Home um Saucelings, ein von Charakteren betreutes virtuelles Haustier |
 | `slurp2`                 | feature         | Ergänzt Slurp, eine private Creator-App für Charaktere, auf Home  |
+| `story-writer` | feature | Ergänzt Home um Story Writer, einen Arbeitsbereich zum gemeinsamen Bücherschreiben |
 | `gacha-forge`            | feature         | Ergänzt ein Gacha-Spiel auf Home                                  |
+| `blackjack` | feature | Ergänzt den Blackjack-Tisch in Conversation |
 | `uno`                    | feature         | Ergänzt den UNO-Tisch in Conversation                             |
 | `chess`                  | feature         | Ergänzt das Schachbrett in Conversation                           |
 | `poker`                  | feature         | Ergänzt den Texas-Hold'em-Tisch in Conversation                   |
 | `eightball`              | feature         | Ergänzt den 8-Ball-Billardtisch in Conversation                   |
 | `tic-tac-toe`            | feature         | Ergänzt das Tic-Tac-Toe-Feld in Conversation                      |
 | `rock-paper-scissors`    | feature         | Ergänzt Schere-Stein-Papier-Partien in Conversation               |
+| `wordle` | feature | Ergänzt das tägliche Wordle-Rennen in Conversation |
 
 ### Ergebnistypen der Agenten
 

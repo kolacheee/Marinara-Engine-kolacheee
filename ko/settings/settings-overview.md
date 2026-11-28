@@ -67,7 +67,7 @@ Settings에는 탭이 9개 있습니다. 탭 아래에 나란히 있는 버튼�
 | **Confirmations & Help** | **Confirm before deleting**, **Hide chat Help button**, **Walkthroughs**. |
 | **Extras** | **Achievements**, **Disable seasonal Marinara themes**, **Music Player**. |
 | **Professor Mari** | **Search and Professor Mari settings**(검색 및 Mari 교수님 설정) 행 하나가 있습니다. **Open**(열기)을 클릭하면 Search, 빠른 답변, Professor Mari를 설정할 수 있습니다. [Professor Mari](../home/professor-mari.md)를 참고하세요. |
-| **Notifications** | 알림이 표시되는 위치, 알림 소리, 브라우저 알림과 Android 알림. [Notifications](#notifications)를 참고하세요. |
+| **알림** | 알림 위치, 소리, 브라우저·Android 알림과 ntfy 푸시. [알림](#notifications) 참고. |
 
 ### Language
 
@@ -103,6 +103,28 @@ Marinara는 알림에 기본 내장 소리를 재생합니다. 직접 고른 소
 이 소리는 이 서버에 연결된 모든 기기에서 재생됩니다. 미리 듣기, 교체, 제거를 할 수 있습니다. 파일을 읽을 수 없으면 Marinara는 기본 내장 소리를 재생합니다. 이 파일은 백업과 프로필 내보내기에 포함됩니다.
 
 **Background Notifications**(백그라운드 알림)는 캐릭터가 스스로 보내는 Conversation 메시지를 알려 줍니다. **Generation Completion Notifications**(생성 완료 알림)는 Conversation, Roleplay, Game Mode에서 직접 시작한 응답을 알려 줍니다. 둘 다 Marinara를 열어 둔 채 다른 창을 보고 있을 때 작동합니다. 메시지 내용은 절대 표시하지 않습니다. **Notification position**(알림 위치)에서 오류 메시지와 다른 알림을 위쪽에 표시할지 아래쪽에 표시할지 고릅니다.
+
+<a id="get-notifications-on-your-phone-while-marinara-is-closed"></a>
+#### Marinara를 닫아도 휴대폰 알림 받기
+
+**푸시 알림(ntfy)**는 모든 탭과 Android 앱을 닫아도 도착합니다. 서버가 Android·iPhone 앱이 있는 무료 ntfy 서비스로 보냅니다.
+
+먼저 ntfy 앱을 설치하세요. 서버 컴퓨터에서 Marinara를 열거나 이 기기에 관리자 비밀 키가 있어야 합니다. [원격 접근](../REMOTE_ACCESS.md) 참고.
+
+1. **설정 → 일반 → 알림**에서 **푸시 알림 보내기**를 켭니다. 무작위 **토픽**이 개인 알림 채널로 생깁니다.
+2. 폰에서 **ntfy에서 열기**, 또는 **복사**로 주제를 복사해 ntfy에서 구독합니다.
+3. **테스트 알림 보내기**을 누르면 “Marinara test notification”이 옵니다.
+
+두 스위치로 고릅니다.
+
+- **캐릭터가 스스로 보내는 메시지**: 자발적인 Conversation 메시지. 열린 기기가 없어도 서버가 씁니다.
+- **완료 전에 Marinara를 닫은, 직접 시작한 답변**: 저장 전에 닫거나 떠난 답장만 알립니다. 열려 있으면 기존 알림이 담당합니다.
+
+작성자와 “Open Marinara to read it.”을 표시합니다. **메시지 미리보기 표시**를 켜면 대신 처음 최대 200자를 보냅니다. 누르면 **열 주소**에서 채팅을 엽니다. 처음에는 활성화한 주소이므로 폰 주소가 다르면 바꾸세요.
+
+> **참고:** `ntfy.sh`는 제목과 미리보기가 공개 서버를 지나며 주제를 아는 사람이 읽을 수 있습니다. 유출되면 **새 토픽**을 누르세요. 자체 장비에만 두려면 ntfy 서버를 운영하고 **ntfy 서버**에 주소를 넣으세요. 로컬 네트워크도 됩니다.
+
+테스트 실패 시 이유를 표시합니다. 흔히 Marinara 서버가 **ntfy 서버** 주소에 접근하지 못한 경우입니다.
 
 ## Chatting 탭
 

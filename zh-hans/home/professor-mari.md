@@ -38,7 +38,7 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用、帮你�
 - 为角色编写[交互式引导](../characters/interactive-onboarding.md)，并为已安装的 Game Mode(游戏模式) 规则集填写[规则集人物卡](../characters/colors-and-stats.md#ruleset-sheets)。数值不符合规则集时，她的改动会被拒绝，并附上原因。
 - 创建或编辑主题、智能体、提示词预设或 Personal Extension(个人扩展) 草稿。在你读过草稿的代码并在 **Library → Extensions**(资料库 → 扩展) 里批准之前，它一直处于关闭状态。
 - 就地编辑预设的某一部分，而不必替换整份预设。
-- 对比各个可下载的智能体，告诉你哪些适合你的目标。她会让你去 **Library → Agents**(资料库 → 智能体) 安装它们。见[可下载智能体参考](../agents/built-in-agents.md)。
+- 对比各个可下载的智能体，告诉你哪些适合你的目标。在 Workspace 模式下，她可以阅读智能体概述，并在有相关主题指南时获取它们。可以询问具体任务，例如如何设置头像。她会让你去 **资料库 → 智能体** 安装它们。见[可下载智能体参考](../agents/built-in-agents.md)。
 - 生成或指定图像，比如头像、立绘、背景和主题里的图片，还能裁剪、修边、调整大小或去除纯色背景。你需要先有一个图像生成账号，她不会替你创建。主题图片见[让 Professor Mari 制作图片](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)。点击她生成的图片，可以查看原尺寸、阅读所用的提示词、下载图片，或者修改提示词后重新生成。新图片会替换她回复里的旧图片。
 - 你研究某个角色或世界观时，查阅公开的 Fandom wiki 页面。
 

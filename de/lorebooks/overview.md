@@ -116,6 +116,26 @@ Unter den Schaltflächen:
 
 Jede Zeile hat die Schaltflächen **Copy** (Kopieren; dupliziert das Lorebook) und **Delete** (Löschen). Sie erscheinen, wenn du mit der Maus über die Zeile fährst, und sind auf Mobilgeräten immer sichtbar. Ein ausgeschaltetes Lorebook zeigt ein **OFF**-Badge. Klick auf das Bild, um es hochzuladen oder zu ersetzen.
 
+<a id="save-a-lorebook-set"></a>
+### Ein Lorebook-Set speichern
+
+Ein Lorebook-Set ist eine benannte Gruppe von Lorebooks, die du gemeinsam nutzt, etwa für eine Spielwelt. Du wählst die ganze Gruppe statt jedes Lorebook einzeln. Ein Set verweist auf deine Lorebooks und kopiert sie nicht.
+
+1. Klick im Bereich **Lorebooks** auf **Neues Set**. Das neue Set öffnet sich unter **Lorebook-Sets**.
+2. Gib unter **Setname** einen Namen ein.
+3. Klick auf **Lorebooks auswählen** und hake die Lorebooks an. Jede Änderung wird automatisch gespeichert.
+
+Zum späteren Bearbeiten klickst du unter **Lorebook-Sets** auf das Set. **Set löschen** entfernt nur das Set; seine Lorebooks bleiben in der Bibliothek. Ein gelöschtes Lorebook verschwindet aus allen Sets.
+
+Wähle ein Set unter **Gespeichertes Set verwenden** oberhalb von **Lorebooks auswählen**. Sobald ein Set existiert, erscheint das Feld hier:
+
+- Im Schritt **Attach Lorebooks** eines neuen Roleplay-Chats.
+- Bei den festen Quell-Lorebooks eines Agenten, etwa Knowledge Router. Siehe [Wissensquellen: Retrieval- und Router-Agenten](../agents/knowledge-sources.md#choose-the-sources).
+
+Ein Set ersetzt die dort gewählten Lorebooks. Danach kannst du für den Chat oder Agenten Lorebooks ergänzen oder entfernen, ohne das gespeicherte Set zu ändern.
+
+Um einzelne Einträge nur für einen Chat ein- oder auszuschalten, öffne **Chat-Einstellungen → Lorebooks** und klick auf den Stift (**Lorebook-Einträge bearbeiten**) neben dem Lorebook. Die Eintragsschalter gelten nur für diesen Chat. Andere Änderungen dort ändern das Lorebook selbst.
+
 ### Kategorien
 
 Eine Kategorie ist eine Beschriftung für deine Bibliothek. Sie ändert nichts daran, wann das Lorebook aktiv wird. Die Tabs sind **All**, **Active** (Lorebooks, die für den geöffneten Chat relevant sind), **World**, **Character**, **NPC**, **Spellbook** und **Other**. Die Kategorie eines Lorebooks änderst du in seinem Tab **Overview**, wo **Other** **Uncategorized** heißt.

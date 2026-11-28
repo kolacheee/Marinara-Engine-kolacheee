@@ -102,6 +102,8 @@ openssl rand -hex 32
 
 Marinara legt deine Daten als einfache JSON-Dateien ab, sodass du Backups kopieren und lesen kannst. Was in welchem Ordner steckt, erklärt [Wo Marinara deine Daten speichert](data/where-data-is-stored.md).
 
+Um Daten auf einer Netzwerkfreigabe zu speichern, setze `DATA_DIR` auf einen Ordner darauf und verbinde die Freigabe vor dem Start. Siehe [Kein Zugriff auf einen Netzwerk- oder externen Ordner](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder).
+
 ## Log-Stufen
 
 `LOG_LEVEL` legt fest, wie viel der Server ausgibt. Alles unterhalb der gewählten Stufe blendet er aus.

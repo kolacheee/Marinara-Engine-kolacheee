@@ -157,6 +157,7 @@ mari-protected, mari-theme-important, theme, base, components, utilities, mari-a
 | `--mari-page-floor` | 背景画像の上で、各フルページの下に敷かれるほぼ不透明なシート。デフォルトは`color-mix(in srgb, var(--background) 94%, transparent)`。`transparent`でなくなります |
 | `--mari-top-bar-bg` | トップバー用の完全な`background`値。画像、グラデーション、複数のレイヤーを使えます。`--mari-top-bar-rendering: pixelated`でピクセルアートの鮮明さを保てます。タブとアイコンは常に最前面に表示されます |
 | `--mari-top-bar-plate`, `--mari-top-bar-plate-radius` | トップバーのアートの上では、タブ、開いているチャットのタブ、アイコンボタン、ロゴそれぞれに下地を敷き、見やすくします。下地の色と角丸(デフォルト`0.5rem`)を設定します。角丸を`0`にすると、四角いピクセル風のボタンになります |
+| `--mari-tab-row-strip-bg`, `--mari-tab-row-strip-height`, `--mari-tab-row-strip-room` | トップバーのタブの下に描く帯（ニュースティッカーや柵など）は、グループの行が表示される間、その行へ移ります（`:root[data-ov-tabrow]`、行は`[data-tab-row]`）。`[data-tab-row]`に`background`、高さ、タブ下に取る空間を設定します（初期値は高さ、`0px`なら背後）。`[data-mari-part="tab-row-strip"]`はアニメーション可能です。`:root[data-ov-tabrow]`時のバーの帯は作者側で外してください。 |
 | `--mari-msg-head-rule` | Roleplayのメッセージの名前の下の線(`none`や`2px dashed currentColor`などの`border-bottom`値) |
 | `--mari-home-widget-border`, `--mari-home-widget-border-width`, `--mari-home-widget-radius`, `--mari-home-widget-bg` | Professor Mariを含むすべてのHomeウィジェットの枠と表面 |
 | `--mari-home-widget-font`, `--mari-home-widget-title-font`, `--mari-home-widget-title-size`, `--mari-home-widget-title-color`, `--mari-home-widget-eyebrow-size`, `--mari-home-widget-text-size`, `--mari-home-widget-muted` | Homeウィジェットの文字のスタイル。文字に必要な領域が増えると、切り取らずにウィジェットの高さが増します |

@@ -102,6 +102,8 @@ openssl rand -hex 32
 
 Marinara trzyma dane w zwykłych plikach JSON, więc kopie zapasowe można kopiować i czytać. Co zawiera każdy folder, wyjaśnia przewodnik [Gdzie Marinara przechowuje dane](data/where-data-is-stored.md).
 
+Aby przechowywać dane w udziale sieciowym, ustaw `DATA_DIR` na jego folder i połącz udział przed uruchomieniem Marinara. Zobacz [Brak dostępu do folderu sieciowego lub zewnętrznego](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder).
+
 ## Poziomy logowania
 
 `LOG_LEVEL` ustala, ile szczegółów wypisuje serwer. Ukrywa wszystko poniżej wybranego poziomu.

@@ -61,16 +61,47 @@ Le modèle publie un message utilisateur dans la peau de ton persona. Par exempl
 
 L'alias court est `/imp`. **Regenerate** fonctionne sur un message écrit par Impersonate : tu peux donc en obtenir une autre version.
 
+Un message publié compte comme ton tour : les agents et les trackers s’exécutent comme pour un message que tu écris, sauf si **Ignorer les agents** est activé. Choisir une option CYOA avec **Utiliser le CYOA comme direction** activé demande aussi la réponse du personnage juste après. Pour lire et modifier le message avant tout cela, fais plutôt écrire un brouillon à Impersonate.
+
+### Écrire d’abord un brouillon
+
+Le brouillon va dans la zone de message plutôt que dans le chat. Il n’est pas enregistré et rien ne s’exécute avant son envoi : ni réponse du personnage, ni agents, ni trackers, ni changement de l’état du monde.
+
+1. Ouvre **Réglages du chat** dans un chat Roleplay et trouve la section **Incarner**.
+2. Règle **Destination du résultat** sur **Brouillon de message**. Le réglage par défaut est **Publier**.
+3. Tape `/impersonate`, suivi d’une consigne si tu le souhaites, puis appuie sur <kbd>Enter</kbd>.
+
+Le brouillon s’affiche progressivement dans la zone de message. Une ligne au-dessus indique **Rédaction de ton prochain message…** pendant la rédaction ; clique sur **Arrêter** à cet endroit ou sur le bouton d’arrêt dans la zone pour garder le texte déjà écrit. Une fois terminé, modifie le texte et clique sur **Envoyer**. Jusqu’à l’envoi, la ligne propose :
+
+| Bouton | Effet |
+| --- | --- |
+| **Refaire** | Réécrit le brouillon avec la même consigne et remplace celui de la zone de message. |
+| **Annuler** | Jette le brouillon et rétablit le contenu précédent de la zone. |
+
+La rédaction continue si tu changes de chat ou d’onglet. À ton retour, le brouillon se trouve dans la zone de message du chat concerné. Chaque chat a son propre brouillon.
+
+Pour choisir une seule fois sans modifier le réglage :
+
+| Commande | Effet |
+| --- | --- |
+| `/impersonate_draft` | Écrit un brouillon. Aussi `/impd` et `/imp_draft`. |
+| `/impersonate_post` | Publie le message. Aussi `/impp` et `/imp_post`. |
+
+Avec **Réponses rapides** activé, le menu à côté de **Envoyer** propose aussi les deux : **Incarner** suit le réglage et la seconde action fait l’inverse. Un brouillon peut partir d’une zone vide ; le modèle choisit alors ce que tu dis.
+
+Avec **Utiliser le CYOA comme direction** activé et **Destination du résultat** sur **Brouillon de message**, cliquer sur une option CYOA écrit un brouillon avec cette option comme consigne. Les options restent affichées jusqu’à l’envoi.
+
 ### Les réglages d'Impersonate
 
-Ces réglages s'appliquent à chaque `/impersonate`, dans tous tes chats. Ouvre **Chat Settings** (réglages du chat) dans un chat Roleplay et repère la section **Impersonate**. Voir [Vue d'ensemble des Chat Settings](chat-settings.md) pour savoir comment ouvrir le panneau.
+Ces réglages s’appliquent à chaque `/impersonate` dans tous tes chats, sur toutes les fenêtres et tous les appareils. Ouvre **Réglages du chat** dans un chat Roleplay et trouve **Incarner**. Voir [Réglages du chat](chat-settings.md) pour ouvrir le panneau.
 
 | Contrôle | Ce qu'il fait |
 | --- | --- |
+| **Destination du résultat** | **Publier** ajoute immédiatement le message au chat. **Brouillon de message** l’écrit dans la zone de message pour que tu le modifies et l’envoies toi-même. Voir [Écrire d’abord un brouillon](#write-a-draft-first). Par défaut : **Publier**. |
 | **Prompt Template** (modèle de prompt) | Une instruction facultative envoyée à chaque impersonation. Laissé vide, le champ utilise le prompt propre au chat, ou la valeur par défaut intégrée. Il accepte `{{user}}`, `{{persona_description}}` et `{{impersonate_direction}}`, des espaces réservés que Marinara remplace par du vrai texte. Choisis **Built-in default** (valeur par défaut intégrée) pour lire la valeur par défaut, **Copy built-in default to edit** (copier la valeur par défaut intégrée pour la modifier) pour partir d'une copie, **Save as** (enregistrer sous) pour garder un modèle nommé, et **Delete template** (supprimer le modèle) pour en retirer un. |
 | **Preset** | Un preset de prompt réservé aux réponses d'Impersonate. Par défaut : **Use chat default** (utiliser la valeur par défaut du chat). Voir [Presets](../prompts/presets.md). |
 | **Connection** (connexion) | Le modèle des réponses d'Impersonate, par exemple un modèle moins cher ou plus rapide. Par défaut : **Use chat default**. Tu peux aussi choisir **Random**. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md). |
-| **Skip agents** (ignorer les agents) | Saute les agents (trackers, routeurs de lorebooks et autres aides du même genre) pendant Impersonate. Impersonate reste ainsi rapide et ne modifie pas l'état du monde. Désactivé par défaut. Voir [Agents](../agents/agents-overview.md). |
+| **Ignorer les agents** | Ignore les agents (trackers, routeurs de lorebook et aides similaires) pendant impersonate. Cela accélère la génération et évite de modifier l’état du monde. Désactivé par défaut. Un brouillon les ignore toujours. Voir [Agents](../agents/agents-overview.md). |
 | **Send Public Faces** (envoyer les faces publiques) | Dans les chats Roleplay, un personnage qui a une **Public Face** (face publique) apparaît dans le prompt d'Impersonate avec seulement son nom et sa face publique, pour que ta réponse ne connaisse que ce que tu pourrais savoir. Cela remplace tout le reste de ce qu'envoie sa fiche : Description, Personality, Backstory, Appearance, Scenario, System Prompt, les exemples de dialogue, les attributs RPG, Post-History Instructions et Depth Prompt. Un personnage dont la face publique est vide garde sa fiche complète. Les macros que tu places dans un preset ou un modèle de prompt d'Impersonate, comme `{{description}}`, envoient toujours ce qu'elles désignent. **Régénérer** conserve le réglage utilisé pour écrire le message. Désactivé par défaut. Voir [Onglet Card](../characters/creating-and-editing-characters.md#card-tab). |
 | **Use CYOA as direction** (utiliser le choix CYOA comme indication) | Un clic sur une option CYOA (choose your own adventure, l'aventure dont tu es le héros) l'utilise comme indication d'Impersonate au lieu de la publier. Désactivé par défaut. Si **Add CYOA choices to the message box instead of sending them** (ajouter les choix CYOA à la zone de saisie au lieu de les envoyer) est activé dans **Settings → Chatting → Message Box**, un clic ajoute seulement le texte à ton champ de message, et ce réglage n'a aucun effet. |
 
@@ -97,6 +128,6 @@ Les Quick replies ajoutent des alternatives à **Send** en un clic : plus besoin
 | --- | --- |
 | **Post only** (publier seulement) | Ajoute ton message saisi au chat, sans réponse. La commande `/send <message>` fait la même chose. |
 | **Guide reply** (guider la réponse) | Envoie ton texte saisi comme indication `/guided`. |
-| **Impersonate** | Génère une réponse côté persona, en prenant ton texte saisi comme indication. Cette action est masquée dans les chats Conversation. |
+| **Incarner** | Génère une réponse de ton persona en prenant ton texte comme consigne. Suit **Destination du résultat** ; dans Roleplay, une seconde action à côté fait l’inverse (**Incarner en brouillon** ou **Incarner et publier**). Masqué dans les chats Conversation. |
 
 Quand une seule action est active, son bouton se place à côté de **Send**. Quand plusieurs le sont, elles se regroupent dans un bouton à trois points (**Quick replies**) qui ouvre un menu.

@@ -77,6 +77,7 @@ globalThis.__MARINARA_HOST__ = {
 | `components.SearchInput` | 从 Capability API 1.832 起，Engine 的搜索框。传入 `value`、`onChange` 和供屏幕阅读器使用的 `label`。它带有清空按钮，Escape 会先清空文字。`resultCount` 显示“找到 4 项”，`busy` 显示加载圆环，`size="compact"` 适合紧凑的工具栏，`slashShortcut` 允许按“/”让输入框获得焦点。 |
 | `components.showConfirmDialog` | 从 Capability API 1.830 起，Engine 的确认弹窗，与 `services.dialogs.showConfirmDialog` 是同一个函数。 |
 | `components.Select` | 从 Capability API 1.831 起，Engine 的下拉选择器：传入 `value`（字符串或 `null`）、`options`（`{ value, label, description?, icon?, group?, disabledReason? }`）、`onChange(next)` 和 `label`；可选参数有 `placeholder`、`disabled`、`id`、`title`、`aria-describedby`、`className`、`searchable` 和 `buttonRef`。桌面上打开弹出框，手机上打开面板；选项达到八个时提供搜索。用它代替原生 `<select>`。 |
+| `components.Popover` | 从 Capability API 1.836 起提供 Engine 锚定浮层：传入 `open`、`onClose`、`anchorRef` 和内容；可选 `side`（`top` / `bottom`）、`align`（`start` / `center` / `end`）、`gap`、`matchAnchorWidth`、`role`、`className`、`dismiss`（如 `{ outsideClick: false }`）。空间不足时翻转，保持在窗口内，按 Escape、点击外部或返回时从最上层开始关闭，因此对话框内的浮层先于对话框关闭。 |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` 模块。 |
 | `api` | `lib/api-client.ts` 模块（`api`、`ApiError`、`getApiErrorMessage` 等）。 |
 
@@ -385,6 +386,12 @@ Engine 战斗自行决定普通敌人的行为。GM 方的每个非首领敌人�
 更新需要用户同意：除了为升级上来的安装保留原有内置功能的一次性迁移（见[兼容性迁移](#compatibility-migration)）之外，启动时绝不会下载或安装任何包。`GET /api/capability-packages/updates/pending` 会列出每个已安装、目录版本更新且与当前 Engine 和能力 API 兼容的官方包，用户已经拒绝过的版本不在其中。客户端会在一个 **Agent updates available**(有智能体更新可用) 提示里一并显示它们。提示窗口会通过常规安装流程逐个安装选中的更新，并固定为所提供的版本和产物 SHA-256。用户未勾选的更新会像选择 **Not now**(暂不更新) 一样被拒绝。**Not now** 会把被拒绝的版本记录到 `DATA_DIR/capability-packages/update-decisions-v1.json`(`POST /api/capability-packages/updates/decline`)，这样该版本不会再被提供，更新的版本则仍会提供。无论哪种情况，**Agent Organizer(智能体管理器)** 里的 **Update**(更新) 都一直可用。失败按包隔离，互不影响。目录离线或校验失败时，已有的文件和注册表状态照常可用；服务器运行时就绪失败则走回退到上一版本的路径。
 
 发行说明以 `notes.json` 的形式发布在它所描述的 `catalog.json` 旁边，绝不放进目录条目或清单：旧版 Engine 会丢弃带有未知键的目录条目。每个待处理的更新都带有 `releaseNotes`，内容是已安装版本之后、直到所提供版本为止每个版本的说明，最新的在前；只要其中任何一条被标记为用户会注意到的变化，`releaseHighlight` 就为 true。说明是纯文本，绝不会按 Markdown 或 HTML 渲染。
+
+用户指南使用各目录分支旁单独的可选 `docs.json`。包作者编写 Markdown，在 Marinara-Agents 的 `packages/<id>/documentation.json` 登记概述和主题，并运行 `node scripts/build-documentation.mjs`。Markdown、作者索引和生成的旁置文件应一起提交。这样无需重新构建可执行包即可更新文档。格式见 [Marinara-Agents 贡献指南](https://github.com/Pasta-Devs/Marinara-Agents/blob/staging/CONTRIBUTING.md#package-user-documentation)。
+
+Engine 通过 `GET /api/capability-packages/:id/documentation?guide=overview` 读取索引，返回主题列表和一篇指南，以及来源和可用状态。现有文档弹窗与 Professor Mari 共用此服务。Workspace Mari 的 `agent.catalog.get` 包含有长度限制的概述；`agent.documentation.get` 读取已登记主题，可选 `heading` 和 `maxChars`（1,000–16,000，默认 8,000）。取回的文章是参考资料，不是模型指令，也不是用户状态更改已保存的证明。
+
+包 Markdown 上限 256 KiB，须与发布的字节数和 SHA-256 一致。远程索引上限 2 MiB；远程读取限时五秒且不跟随重定向。本地 Engine 引用使用标准英文用户文档边界。验证过的读取五分钟内视为新鲜，可离线使用七天，在 `DATA_DIR/capability-packages/documentation-cache-v1` 最多缓存 128 次读取。缓存键区分目录来源、频道、包和主题，当前包版本必须匹配。已知官方包 README 与 Engine 指南链接提供旧版回退。自定义外部链接保留来源，缺少帮助不影响安装。
 
 安装器必须做到：
 

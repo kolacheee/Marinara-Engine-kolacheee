@@ -102,6 +102,8 @@ openssl rand -hex 32
 
 Marinara conserve tes données sous forme de simples fichiers JSON : tu peux donc copier et lire tes sauvegardes. Pour savoir ce que contient chaque dossier, consulte [Où Marinara enregistre tes données](data/where-data-is-stored.md).
 
+Pour garder les données sur un partage réseau, fais pointer `DATA_DIR` vers un dossier du partage et connecte-le avant de démarrer Marinara. Voir [Impossible d’accéder à un dossier réseau ou externe](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder).
+
 ## Niveaux de log
 
 `LOG_LEVEL` définit la quantité d'informations que le serveur affiche. Il masque tout ce qui se situe sous le niveau choisi.

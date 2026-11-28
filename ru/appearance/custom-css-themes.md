@@ -350,6 +350,38 @@ Mari работает только с вашими собственными те
 
 На телефоне меню с тремя точками раскрывается в круглые кнопки. Его кнопка открытия – `[data-chat-tools-menu-button]`, раскрытый столбец – `[data-chat-tools-menu]`, а атрибут `data-chat-tools-menu-item` каждого элемента списка содержит ID его окна. Кнопки инструментов используют `.mari-window-bubble.mari-chat-tools-button` и `data-chat-tools-menu-tool` с тем же ID. У столбца нет оконной рамки; кнопки используют цвета виджетов и выбранный размер кнопок независимо от трех переключателей для остальной части чата, сохраняя круглую форму.
 
+<a id="styling-character-sheets"></a>
+## Оформление листов персонажей
+
+Лист набора правил выглядит одинаково в Roleplay и Game. Эти классы и атрибуты позволяют оформить его темой.
+
+| Часть | Класс | Атрибуты данных |
+| --- | --- | --- |
+| Весь лист | `.mari-ruleset-sheet` | `data-ruleset` (ID правил, например `local/my-rules`), `data-rank-display` (`value`, `label`, `dots`, `roman` или `number`), `data-editing="true"` при редактировании |
+| Заголовок и **Изменить лист** | `.mari-ruleset-sheet__header` | |
+| Вкладки | `.mari-ruleset-sheet__tabs` | У каждой есть `data-tab-id` и `aria-selected` |
+| Заголовок группы | `.mari-ruleset-sheet__heading` | |
+| Поле вверху листа | `.mari-ruleset-sheet__field` (в `.mari-ruleset-sheet__fields`) | `data-field`, для вычисленных значений `data-derived` |
+| Характеристика | `.mari-ruleset-sheet__ability` (в `.mari-ruleset-sheet__abilities`); значение и проверка: `__ability-score` и `__ability-value` | `data-ability`; у группы есть `data-section` |
+| Пул, например Здоровье | `.mari-ruleset-sheet__pool` (в `.mari-ruleset-sheet__pools`) | `data-pool`; у группы есть `data-pool-group` |
+| Шкала | `.mari-ruleset-sheet__track` (в `.mari-ruleset-sheet__tracks`) | `data-track`; у шкалы ран также `data-wound="true"` |
+| Состояния | `.mari-ruleset-sheet__conditions` | |
+| Изученный навык или спасбросок | `.mari-ruleset-sheet__rank` (в `.mari-ruleset-sheet__trained`, по группам в `.mari-ruleset-sheet__rank-group`); ранг или значение проверки при `data-rank-display="value"`: `__rank-value`; проверка рядом на телефоне: `__rank-check`; практика: `__practice` | `data-skill` или `data-save`, `data-tier` (ID ступени), `data-rank` (`0` необученный, `1` следующая ступень и т. д.) |
+| Навык или спасбросок при редактировании | `.mari-ruleset-sheet-editor__rank` | `data-skill` или `data-save`, `data-tier`, `data-rank` |
+| Список, например Снаряжение | `.mari-ruleset-sheet__list`; каждая строка: `.mari-ruleset-sheet__list-row` | `data-list`; отмеченная строка имеет `data-marked="true"` |
+
+Пример показывает ранг 2 одного набора двумя звёздами. Добавьте такую пару правил для каждого изменяемого ранга. Используйте лишь при отображении точками, названиями, римскими цифрами или числами: при отображении значения проверки `__rank-value` содержит его, и этот код его скроет.
+
+```css
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value {
+  font-size: 0;
+}
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value::after {
+  content: "★★";
+  font-size: 0.6875rem;
+}
+```
+
 ## Смежные руководства
 
 - [Руководство для авторов тем](theme-author-guide.md)

@@ -346,12 +346,15 @@ AI 게임 마스터(GM) 화면입니다. chat 폴더가 아니라 `components/ga
 | `GifPicker` | Giphy API를 이용한 GIF 검색 |
 | `HelpTooltip` | 마우스를 올리면 포털 위치에 툴팁을 띄우는 아이콘 |
 | `LibraryToolbar` | 모든 라이브러리 패널이 공유하는 도구 모음(아래 참고) |
+| `EditorHeader` | 전체 페이지 편집기가 공유하는 헤더(아래 참고) |
 
 모든 UI 컴포넌트는 제어 방식 props(value와 onChange)를 쓰고, 오버레이는 포털로 렌더링합니다.
 
 **라이브러리 패널은 `LibraryToolbar`를 사용합니다.** Characters, Personas, Lorebooks, Agents와 Presets 패널의 탭은 이 컴포넌트로 상단 컨트롤을 렌더링합니다. 선택적인 라이브러리 행(전체 너비 버튼 하나 또는 Download / Open Library 쌍), 만들기 / 가져오기 / 내보내기 / 선택, 공통 정렬 메뉴가 있는 검색, New Folder, 그리고 `children`으로 전달하는 패널 필터 순서입니다. 행은 슬롯이 아닌 타입이 지정된 props이므로, 새 라이브러리 패널도 제각각 달라지는 복사본 대신 같은 마크업을 사용합니다. 패널 안에서 도구 모음을 직접 만들지 말고 이 컴포넌트에 prop을 추가하세요.
 
 `LibraryToolbar.tsx`는 `|`로 나뉜 하나의 긴 `.mari-chrome-segmented` 버튼인 `SegmentedButtons`도 내보냅니다. Download(다운로드) / Open Library(라이브러리 열기) 쌍과 Presets 패널의 **Prompts**(프롬프트) / **Regexes**(정규식) / **Tools**(도구) / **Profiles**(프로필) 탭을 그리므로, 모든 패널의 상단 행 높이가 같습니다. `groupLabel`을 전달하면 행이 탭으로 이루어진 `role="group"`이 되고, `pressed`는 각 탭의 `aria-pressed`를 설정합니다. `.mari-chrome-segmented`에는 `flex-shrink: 0`이 있어 Characters처럼 패널 자체의 높이가 고정된 flex 스크롤 영역도 행을 압축할 수 없습니다.
+
+**전체 페이지 편집기는 `EditorHeader`를 사용합니다.** 뒤로, 아이콘 타일, 이름, 선택적 섹션 탭, 작업, 닫기를 두 레이아웃으로 그립니다. `nav`(섹션 탭)가 있으면 `mari-editor-header--with-nav` 밀도 규칙이 탭 기준으로 크기를 맞춥니다. 없으면 휴대폰에서 작업이 별도 행을 쓰고 Save는 아이콘만 보입니다. 이름, 타일 내용, 버튼은 슬롯이므로 각 편집기가 고유한 이름 필드와 제어를 유지합니다. 버튼에는 `EditorSaveButton`, `EditorHeaderAction`을 쓰세요. 라벨은 항상 툴팁과 접근 가능한 이름입니다. 편집기마다 헤더를 직접 만들지 말고 여기에 슬롯이나 파트를 추가하세요.
 
 ## API 클라이언트(`lib/api-client.ts`)
 
@@ -649,17 +652,24 @@ Narrative Director의 Secret Plot 패널처럼 에이전트의 기억을 다루�
 | `haptic` | post_processing | 햅틱 기기 명령을 보냅니다 |
 | `cyoa` | post_processing | 선택지 프롬프트를 만듭니다 |
 | `storyboard` | post_processing | Game과 Roleplay의 정지 또는 애니메이션 스토리보드를 계획합니다 |
+| `2d-avatars` | feature | 2D 스프라이트 또는 메시 캐릭터 아바타를 애니메이션으로 표시 |
+| `3d-avatars` | feature | VRM, MMD PMX, GLB, FBX 3D 아바타를 애니메이션으로 표시 |
 | `conversation-calls` | feature | Conversation에 음성/영상 통화와 관련 설정을 추가합니다 |
 | `hierarchical-maps` | feature | Roleplay와 Game에 지도, 공간 컨텍스트, 이동을 추가합니다 |
 | `noodle` | feature | Home에 로컬 Noodle 소셜 피드를 추가합니다 |
+| `otome-forge` | feature | 캐릭터로 만든 오토메 게임 Otome Hearth를 Home에 추가 |
+| `saucelings` | feature | 캐릭터가 키우는 가상 반려동물 Saucelings를 Home에 추가 |
 | `slurp2` | feature | 캐릭터를 위한 비공개 크리에이터 앱인 Slurp를 Home에 추가합니다 |
+| `story-writer` | feature | 책 공동 집필 작업 공간 Story Writer를 Home에 추가 |
 | `gacha-forge` | feature | Home에 가챠 게임 모드를 추가합니다 |
+| `blackjack` | feature | Conversation의 Blackjack 테이블 추가 |
 | `uno` | feature | Conversation에 UNO 테이블을 추가합니다 |
 | `chess` | feature | Conversation에 Chess 판을 추가합니다 |
 | `poker` | feature | Conversation에 Texas Hold'em 테이블을 추가합니다 |
 | `eightball` | feature | Conversation에 8-Ball Pool 테이블을 추가합니다 |
 | `tic-tac-toe` | feature | Conversation에 Tic-Tac-Toe 판을 추가합니다 |
 | `rock-paper-scissors` | feature | Conversation에 Rock-Paper-Scissors 대결을 추가합니다 |
+| `wordle` | feature | Conversation의 일일 Wordle 경주 추가 |
 
 ### 에이전트 결과 종류
 

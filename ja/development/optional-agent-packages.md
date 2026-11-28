@@ -100,6 +100,7 @@ globalThis.__MARINARA_HOST__ = {
 | `components.SearchInput` | Capability API 1.832以降で使えるEngineの検索欄です。`value`、`onChange`、スクリーンリーダー用の`label`を渡してください。クリアボタンがあり、Escapeキーはまずテキストを消去します。`resultCount`は「4 found」を表示し、`busy`はスピナーを表示します。`size="compact"`は項目の多いツールバーに収まるサイズにし、`slashShortcut`は「/」キーでこの欄にフォーカスできるようにします。 |
 | `components.showConfirmDialog` | Capability API 1.830以降で使えるEngineの確認ダイアログです。`services.dialogs.showConfirmDialog`と同じ関数です。 |
 | `components.Select` | Capability API 1.831以降で使えるEngineのドロップダウンです。`value`(文字列または`null`)、`options`(`{ value, label, description?, icon?, group?, disabledReason? }`)、`onChange(next)`、`label`を渡してください。`placeholder`、`disabled`、`id`、`title`、`aria-describedby`、`className`、`searchable`、`buttonRef`は任意です。デスクトップではポップオーバー、スマートフォンではシートを開き、選択肢が8件以上あると検索できます。ネイティブの`<select>`の代わりに使ってください。 |
+| `components.Popover` | Capability API 1.836以降のEngineのアンカー付きレイヤー。`open`、`onClose`、`anchorRef`、内容を渡します。任意で`side`（`top` / `bottom`）、`align`（`start` / `center` / `end`）、`gap`、`matchAnchorWidth`、`role`、`className`、`dismiss`（例：`{ outsideClick: false }`）。空間に応じて反転し、ウィンドウ内に収まり、Escape、外側の押下、戻るで最上位から閉じるため、ダイアログ内のポップオーバーが先に閉じます。 |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts`モジュール。 |
 | `api` | `lib/api-client.ts`モジュール(`api`、`ApiError`、`getApiErrorMessage`、...)。 |
 
@@ -412,6 +413,12 @@ Decisionモデルを持たないユーザーでも動くよう、すべての利
 アップデートにはユーザーの同意が必要です。アップグレードしたインストールで以前の組み込み機能を保つための1回限りの移行([互換性のための移行](#compatibility-migration)を参照)を除き、起動時にパッケージをダウンロードしたりインストールしたりすることはありません。`GET /api/capability-packages/updates/pending`は、インストール済みの公式パッケージのうち、カタログのバージョンが新しく、動作中のEngineと機能APIに対応しているものを一覧にします。ユーザーがすでに断ったバージョンは除きます。クライアントはそれらを1つの**Agent updates available**の確認画面に表示します。**Update all**(すべてアップデート)は、提示されたバージョンとアーティファクトのSHA-256に固定したうえで、通常のインストールパイプラインで各パッケージをインストールします。**Not now**(今はしない)は断ったバージョンを`DATA_DIR/capability-packages/update-decisions-v1.json`に記録します(`POST /api/capability-packages/updates/decline`)。そのバージョンは再び提示されなくなりますが、より新しいバージョンは提示されます。どちらの場合も、**Agent Organizer (エージェント管理)**の**Update**(アップデート)はそのまま使えます。失敗はパッケージ単位で切り離されます。カタログに接続できないときや検証に失敗したときも、既存のファイルとレジストリーの状態は引き続き使えます。サーバーランタイムの準備に失敗した場合は、前のバージョンへ戻すロールバックの経路を使います。
 
 リリースノートは、対象の`catalog.json`の隣に`notes.json`として公開し、カタログの項目やマニフェストの中には決して入れません。古いEngineは、知らないキーを持つカタログの項目を捨ててしまうためです。保留中の各アップデートには、`releaseNotes`として、インストール済みのバージョンの次から提示されたバージョンまでのすべてのバージョンのノートが新しい順に入ります。そのいずれかがユーザーが気づく変更として示されている場合、`releaseHighlight`はtrueになります。ノートはプレーンテキストで、MarkdownやHTMLとして描画されることはありません。
+
+ユーザーガイドはカタログの各レーンに併置する任意の`docs.json`を使います。作者はMarkdownを書き、Marinara-Agentsの`packages/<id>/documentation.json`に概要とトピックを登録し、そこで`node scripts/build-documentation.mjs`を実行します。Markdown、作者用インデックス、生成したサイドカーを一緒にコミットします。実行パッケージを再構築せずガイドを更新できます。形式は[Marinara-Agents貢献ガイド](https://github.com/Pasta-Devs/Marinara-Agents/blob/staging/CONTRIBUTING.md#package-user-documentation)を参照してください。
+
+Engineは`GET /api/capability-packages/:id/documentation?guide=overview`でインデックスを読みます。応答はトピック一覧と1件のガイド、その出典と利用状況を含みます。既存のドキュメントモーダルとProfessor Mariは同じサービスを使います。Workspace Mariの`agent.catalog.get`は長さ制限付き概要を含み、`agent.documentation.get`は任意の`heading`と`maxChars`（1,000～16,000、初期値8,000）で登録トピックを読みます。取得した文章は参考資料で、モデルへの指示やユーザー状態変更の保存証明ではありません。
+
+パッケージMarkdownは256 KiB以下で、公開バイト数とSHA-256の一致が必要です。リモートインデックスは2 MiB以下、読み取りは5秒制限でリダイレクトを追いません。ローカルEngine参照は正規の英語ユーザードキュメント範囲を使います。検証済み読み取りは5分間新鮮で、オフラインで7日利用でき、`DATA_DIR/capability-packages/documentation-cache-v1`に最大128件保存します。キーは出典、チャンネル、パッケージ、トピックを分離し、実行中のパッケージバージョンと一致が必要です。既知の公式READMEとEngineガイドのリンクは旧形式の代替です。独自外部リンクは出典を保持し、ヘルプ不足はインストールに影響しません。
 
 インストーラーが満たすべき条件は次のとおりです:
 

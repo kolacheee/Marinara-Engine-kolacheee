@@ -83,6 +83,8 @@ Con **Send Avatar References** activado para las imágenes, **Reference pictures
 
 El escritor de prompts es la alternativa para los modelos de imagen que descartan las imágenes de referencia, como NovelAI V5. Necesita un modelo de escritura que lea imágenes. Si el escritor las rechaza, su solicitud se vuelve a enviar sin las imágenes, y ese escritor no recibe ninguna hasta que se reinicie el servidor. Un escritor cuya conexión esté marcada como que no lee imágenes no recibe ninguna. Enviar imágenes al escritor cuesta tokens en cada ejecución. Se envían hasta cuatro imágenes: las tarjetas nombradas en `[illustrate: characters="…"]` o, de lo contrario, los personajes activos y la persona del chat. **What to carry over from the pictures** (Qué tomar de las imágenes) indica lo que copia el escritor, como solo la apariencia y no el estilo artístico. Un chat de Roleplay puede definir su propio **Reference pictures go to** en **Send Avatar References**.
 
+En un chat de Roleplay, las imágenes de **Imágenes de referencia** de una entrada de lorebook también van al modelo de imágenes cuando la entrada está activa para la respuesta. Úsalas para un traje, objeto o habitación que la imagen deba reproducir. No hay que activar ningún ajuste. Solo las reciben los servicios que aceptan imágenes de referencia. Stability AI, Arli AI, SD Web UI y Draw Things no las reciben, porque partirían de la imagen de la entrada. Con **Enviar referencias de avatar** activado, **Redactor de prompts** también las retiene. Van después de **Imagen de referencia del lugar** de [World Maps](../agents/hierarchical-maps.md) y los avatares, hasta seis imágenes en total. Una entrada con **Posición** en **Salida** solo envía sus imágenes cuando se usa su Outlet, y nunca desde el botón **Ilustrar** de la galería.
+
 ## Controlar con qué frecuencia dibuja
 
 La tarjeta del Illustrator tiene un botón **Open Setup** que abre la pantalla de configuración completa. Allí estableces el intervalo de ejecución predeterminado y le das su propio modelo de imagen.
@@ -128,7 +130,8 @@ Illustrator también pinta fondos. En la tarjeta de Illustrator en **Chat Settin
 
 - **Generate Scene Backgrounds** (Generar fondos de escena) pinta un fondo cuando la historia llega a un lugar nuevo, salvo que ya tengas una imagen para él.
 - **Weather Versions of Backgrounds** (Versiones de los fondos según el clima) vuelve a pintar el fondo actual con el clima de la historia, con la lluvia o la nieve en movimiento dibujada solo en las ventanas de la habitación.
-- **Decision Model Checks** (Comprobaciones del modelo de decisión) hace que un modelo de decisión compruebe cada respuesta en busca de un lugar o un clima nuevo, para que los fondos no tengan que esperar al intervalo de ejecución.
+- **Versiones de fondos por hora del día** repinta el fondo al amanecer, de día, al atardecer o de noche cuando cambia la hora de la historia.
+- **Comprobaciones del modelo de decisión** hace que un modelo de decisión compruebe cada respuesta por si cambia el lugar, el clima o la hora del día, para que los fondos no esperen al intervalo de ejecución.
 
 Las tres opciones están desactivadas de forma predeterminada. Consulta [Fondos creados por Illustrator](scene-backgrounds.md).
 

@@ -85,6 +85,8 @@ Com **Enviar referências de avatar** ativado para imagens, **Reference pictures
 
 O redator de prompts é uma alternativa para modelos de imagem que descartam as imagens de referência, como o NovelAI V5. Ele precisa de um modelo que leia imagens. Se o redator as recusar, a requisição é enviada de novo sem as imagens, e esse redator não recebe nenhuma até o servidor reiniciar. Um redator cuja conexão esteja marcada como incapaz de ler imagens não recebe nenhuma. Enviar imagens ao redator custa tokens a cada execução. São enviadas até quatro imagens: as dos cards nomeados em `[illustrate: characters="…"]` ou, se não houver, as dos personagens ativos e da persona do chat. **What to carry over from the pictures** (o que aproveitar das imagens) diz o que o redator copia, como só a aparência e não o estilo da arte. Um chat de Roleplay pode definir o próprio **Reference pictures go to** em **Enviar referências de avatar**.
 
+Em um chat de Roleplay, as imagens de **Imagens de referência** de uma entrada de lorebook também vão para o modelo de imagens quando a entrada está ativa para a resposta. Use para uma roupa, objeto ou cômodo que a imagem deva reproduzir. Nenhuma configuração precisa ser ativada. Só serviços que aceitam imagens de referência as recebem. Stability AI, Arli AI, SD Web UI e Draw Things não recebem, pois começariam a geração pela imagem da entrada. Com **Enviar referências de avatar** ativado, **Escritor de prompts** também as retém. Elas vêm depois de **Imagem de referência do local** de [World Maps](../agents/hierarchical-maps.md) e dos avatares, até seis imagens no total. Uma entrada com **Posição** em **Outlet** só envia as imagens quando seu Outlet é usado, nunca pelo botão **Ilustrar** da galeria.
+
 ## Controle a frequência das imagens
 
 O cartão do Illustrator tem um botão **Open Setup**, que abre a tela completa de configuração. Lá você define o intervalo de execução padrão e dá ao agente um modelo de imagem próprio.
@@ -130,7 +132,8 @@ O Illustrator também cria planos de fundo. No cartão do Illustrator em **Chat 
 
 - **Generate Scene Backgrounds** (gerar planos de fundo de cena) cria um plano de fundo quando a história chega a um novo lugar, a menos que você já tenha uma imagem dele.
 - **Weather Versions of Backgrounds** (versões dos planos de fundo com clima) refaz o plano de fundo atual com o clima da história, desenhando a chuva ou a neve em movimento só nas janelas do ambiente.
-- **Decision Model Checks** (verificações do modelo de decisão) usa um modelo de decisão para verificar a cada resposta se há um novo lugar ou um novo clima, para que os planos de fundo não esperem pelo intervalo de execução.
+- **Versões de fundos por hora do dia** repinta o fundo ao amanhecer, de dia, ao pôr do sol ou à noite quando a hora da história muda.
+- **Verificações do modelo de decisão** faz um modelo de decisão verificar cada resposta por novos lugares, clima ou hora do dia, para os fundos não esperarem o intervalo de execução.
 
 As três opções vêm desativadas por padrão. Veja [Planos de fundo criados pelo Illustrator](scene-backgrounds.md).
 

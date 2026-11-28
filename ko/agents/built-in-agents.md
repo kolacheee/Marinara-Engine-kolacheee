@@ -75,6 +75,28 @@ Apps는 **Home**에 전용 탭이 있습니다. 채팅에 추가하지 않고 �
 - **주요 설정**: 설치하고 안내가 나오면 다시 시작한 다음, **Home → Story Writer**를 열고 사이드바에서 텍스트 연결을 고르세요. 이야기는 Marinara 서버에 저장됩니다. 새 이야기를 시작하고, 이전 이야기로 돌아가고, Markdown이나 일반 텍스트로 다운로드할 수 있습니다.
 - **전체 가이드**: [Story Writer 패키지 가이드](https://github.com/Pasta-Devs/Marinara-Agents/blob/staging/packages/story-writer/README.md).
 
+<a id="otome-hearth"></a>
+### Otome Hearth
+
+캐릭터로 만든 1인용 오토메 게임입니다. 연애 상대가 선택을 기억하고 메시지와 데이트를 하며, 플레이로 얻은 Starlight로 외전과 의상을 엽니다. 현금 결제나 스태미나 타이머는 없습니다.
+
+- **통합**: **홈**의 전용 **Otome Hearth** 탭 앱.
+- **사용 위치**: Home.
+- **지원 조건**: Engine **2.5.1+**(4.0.0 미만) 필요. 네트워크 연결, 서버 경로, 로컬 저장소, **홈** 탭 UI를 요청합니다.
+- **주요 설정**: 설치하고 안내 시 재시작한 뒤 **홈 → Otome Hearth**를 여세요. 캐릭터 설정집, **Lines & Veils** 콘텐츠 한도, 선택적 **Remind Me** 추적을 앱에서 설정합니다.
+- **전체 가이드**: [Otome Hearth](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/otome-forge/README.md).
+
+<a id="saucelings"></a>
+### Saucelings
+
+**홈 → Saucelings**와 위젯의 가상 반려동물입니다. 돌보는 캐릭터가 자기 일정으로 먹이고 놀고 안아 주며 부족한 부분은 내가 채웁니다.
+
+- **통합**: 전용 **Saucelings** 탭과 **홈** 위젯 앱.
+- **사용 위치**: Home.
+- **지원 조건**: Engine **2.5.0+**(4.0.0 미만) 필요. 채팅 프롬프트 맥락, 서버 경로, 로컬 저장소, **홈** 탭과 위젯 UI를 요청합니다.
+- **주요 설정**: 설치 후 안내 시 재시작하고 **홈 → Saucelings**의 **Nook**, **일지**, **Album**, **Menagerie**, **설정**에서 관리하세요.
+- **전체 가이드**: [Saucelings](https://github.com/Pasta-Devs/Marinara-Agents/blob/main/packages/saucelings/README.md).
+
 ## Writer 에이전트
 
 Writer 에이전트는 이야기나 문장을 다듬습니다. 답변 전에 방향을 잡아 주거나 답변 뒤에 답변을 손봅니다.
@@ -102,6 +124,8 @@ Writer 에이전트는 이야기나 문장을 다듬습니다. 답변 전에 방
 - **단계**: Post-Processing.
 - **사용 가능한 곳**: Roleplay.
 - **주요 설정**: 기본적으로 사용자와 어시스턴트 메시지 8개마다 한 번 실행됩니다. [에이전트 승인과 Agent Suite](approvals-and-agent-suite.md)를 참고하세요.
+
+- **요약과 함께 실행**(Roleplay의 Card Evolution Auditor 카드): 자동 요약이 켜지면 자체 횟수 대신 요약과 같은 답장에 실행합니다. 다음 메시지 전에 승인하면 그 요약 턴에 적용하고, 나중이면 다음 요약까지 기다리며 카드에 대기 수를 표시합니다. 카드와 프롬프트가 함께 바뀌어 캐시가 두 번 대신 한 번 깨집니다. 자동 요약을 끄면 자체 횟수와 즉시 승인을 씁니다.
 
 ### Narrative Director
 
@@ -274,6 +298,8 @@ Misc 에이전트는 이미지, 음악, 관객 반응, 카드 업데이트 같�
 - **데이터**: 보관함, 초안, 설정을 내보내거나 교체하려면 Memory Settings의 백업 기능을 쓰세요. **Delete all data**는 기억, 초안, 활동 기록, 색인을 영구히 지우지만 설정은 남깁니다. 제거해도 보관함은 남아 있어 나중에 다시 설치할 때 쓸 수 있습니다. 설치, 업데이트, 제거 후에는 재시작해야 합니다.
 - **호환성**: Engine `2.3.5` 이상 `4.0.0` 미만. 권한: `agent-runtime`, `chat-read`, `chat-write`, `routes`, `storage`, `ui`.
 
+- **저장된 메시지를 채팅 기록에서 제외**(Roleplay, Long-Term Memory 카드): 저장된 메시지는 최신 일부(기본 10개) 외에는 기록에서 빠집니다. 채팅과 보관소에는 남습니다. 저장 범위를 보고하는 패키지 버전이 필요하며 이전 버전은 효과가 없습니다.
+
 ### Illustrator
 
 이미지와 동영상을 만듭니다. 중요한 장면의 시각 프롬프트를 써서 내 이미지 또는 동영상 서비스로 보냅니다.
@@ -289,6 +315,9 @@ Misc 에이전트는 이미지, 음악, 관객 반응, 카드 업데이트 같�
 - **단계**: Post-Processing.
 - **사용 가능한 곳**: Roleplay. Game Mode에서는 세션 종료 시점에 실행되는 변형인 **Game Session Keeper**가 같은 일을 합니다.
 - **주요 설정**: 기본적으로 사용자와 어시스턴트 메시지 8개마다 한 번 실행됩니다. 항목을 넣을 곳은 **Target Lorebook**(적용할 로어북)으로 정하며, 자동 선택 옵션도 있습니다. 고급 프롬프트는 쓰기 가능한 로어북 이름이나 `world`, `npc`, `scene`, `player` 같은 별칭을 반환할 수 있습니다. 별칭 대상이 없으면 새로 만들어 채팅에 연결합니다. 대상을 정하지 않으면 단일 로어북 동작이 그대로 유지됩니다.
+
+- **저장된 메시지를 채팅 기록에서 제외**(Lorebook Keeper 카드): 마지막 성공 실행까지 기록에서 빼고 최신 일부(기본 10개)를 남깁니다. 채팅에는 남고 사실은 로어북으로 프롬프트에 갑니다. **오래된 메시지 단계별 제거**는 단계째로 뺍니다.
+- **요약과 함께 실행**: 자동 요약과 같은 답장에 실행하며 자체 횟수를 쓰지 않습니다. 새 항목과 제외 기록을 요약 턴에 함께 바꿔 캐시가 한 번 깨집니다. 요약을 끄면 자체 횟수를 씁니다.
 
 ### Combat
 
@@ -417,6 +446,24 @@ Conversation 캐릭터와 실시간 음성 통화와 영상 통화를 할 수 �
 - **연동 방식**: Conversation 게임 패키지.
 - **사용 가능한 곳**: Conversation.
 - **주요 설정**: 게임 선택기에서 시작하거나 `/rps`로 시작한 뒤 상대와 3판 2선승, 5판 3선승, 7판 4선승 중 하나를 고르세요. 설치하거나 제거하면 재시작해야 합니다.
+
+<a id="blackjack"></a>
+### Blackjack
+
+Conversation 캐릭터의 하우스 상대 Blackjack 테이블.
+
+- **통합**: Conversation 게임 패키지.
+- **사용 위치**: Conversation.
+- **주요 설정**: `/blackjack` 또는 캐릭터 요청으로 시작합니다. 자체 시작을 허용하려면 **채팅 설정 → 에이전트 → Commands**에서 **Blackjack**을 켜세요. 설치는 재시작 필요, 제거는 불필요합니다.
+
+<a id="wordle"></a>
+### Wordle
+
+Conversation 캐릭터와 일일 Wordle 단어 경주.
+
+- **통합**: Conversation 게임 패키지.
+- **사용 위치**: Conversation.
+- **주요 설정**: `/wordle`로 오늘 게임을 시작하세요. **채팅 설정 → 에이전트 → Commands**에서 **Wordle**을 켜면 자체 시작합니다. 설치는 재시작 필요, 제거는 불필요합니다.
 
 ## 관련 가이드
 

@@ -1,6 +1,6 @@
 # Tła tworzone przez agenta Illustrator
 
-Agent **Illustrator** potrafi malować tła do twojej historii: na żądanie, za każdym razem, gdy historia przenosi się w nowe miejsce, oraz w wersjach z deszczem, śniegiem lub mgłą, gdy zmienia się pogoda. Ten przewodnik opisuje wszystkie trzy możliwości i wyjaśnia, jak Illustrator wykorzystuje obrazy, które już masz, zamiast malować nowe.
+Agent **Illustrator** może malować tła opowieści: na żądanie, przy każdym nowym miejscu, wersje deszczu, śniegu i mgły po zmianie pogody oraz wersje świtu, dnia, zachodu słońca i nocy po zmianie pory dnia. Ten przewodnik opisuje je wszystkie i sposób ponownego używania posiadanych obrazów.
 
 Obrazy, które wgrywasz i wybierasz ręcznie, opisuje przewodnik [Biblioteka teł](../appearance/chat-backgrounds.md). O tym, jak czat wybiera wyświetlany obraz (agent Background, przypięte miejsca i obrazy z galerii), przeczytasz w przewodniku [Tła podążające za historią](../roleplay/backgrounds.md).
 
@@ -81,19 +81,43 @@ Gdy czat pokazuje wersję pogodową, w **Ustawienia czatu → Agenci → Illustr
 
 Jeśli się nie udało: sprawdź, czy World State czatu pokazuje **Pogoda** (albo czy włączone jest sprawdzanie pogody opisane poniżej) i czy agent **Illustrator** jest dodany do czatu z modelem obrazów.
 
+## Wersje teł dla pór dnia
+
+Po włączeniu tło podąża za zegarem opowieści. Gdy w gospodzie zapada noc, Illustrator przemalowuje jej tło: na zewnątrz ciemne niebo, w środku zapalone lampy i świece. Miejsce, układ i kamera pozostają bez zmian; zmienia się tylko światło.
+
+1. Otwórz **Ustawienia czatu → Agenci → Illustrator**.
+2. Włącz **Wersje tła według pory dnia**.
+
+Podobnie jak wersje pogody wymaga to modelu obrazów, który może zacząć od obrazu.
+
+Jak to działa:
+
+- Są cztery pory: **Świt**, **Dzień**, **Zachód słońca** i **Noc**. Decyduje czas World State: godzina (`7:40 PM`, `21:15`) ma pierwszeństwo, a w jej braku słowa takie jak "zmierzch", "północ" czy "wczesny ranek". Przed 5:00 i od 20:00 jest noc, od 5:00 do 7:00 świt, od 7:00 do 17:00 dzień, a od 17:00 do 20:00 zachód słońca.
+- Przyjmuje się, że obraz pokazuje porę, w której go namalowano. Illustrator zapamiętuje ją dla swoich obrazów. Dla pozostałych liczy się słowo w nazwie pliku lub tagu (`tavern-night.png`, `#sunset`); reszta jest uznawana za dzień. Obraz dzienny dostaje więc wersję nocną, a nocny dzienną, nigdy drugą nocną.
+- Każda para obrazu i pory jest malowana **raz**, a potem wyświetlana bezpłatnie. Wersje są zapisywane obok oryginału jako `name--tod-night.png` (także `--tod-dawn`, `--tod-day` i `--tod-sunset`).
+- Przy włączonych wersjach pogody jeden obraz obejmuje oba warunki: deszcz nocą to `name--wx-rain--tod-night.png`, namalowany raz z podstawowego obrazu. Gdy zmienia się tylko pogoda, pora zostaje, i odwrotnie.
+- Czas jest sprawdzany po każdej odpowiedzi, nie tylko przy uruchomieniu Illustrator. Obraz nocny pojawia się więc, gdy zegar World State osiągnie noc. Dotyczy to tylko czasu: nowe miejsce nadal czeka na uruchomienie Illustrator lub kontrolę miejsca poniżej.
+- Nakładane zabarwienie nieba, słońce, księżyc i gwiazdy są mniej widoczne na wersji pory dnia, bo obraz ma już własne niebo.
+- Bez czasu World State porę może ustalić kontrola modelu decyzyjnego (poniżej).
+
+Gdy czat pokazuje wersję pory dnia, pojawia się ten sam wiersz co przy obrazach pogody, np. **Ten obraz: Noc**, z **Odtwórz obraz**.
+
+W bibliotece wersje znajdują się pod podstawowym obrazem: karta pokazuje ich liczbę, a po otwarciu wymienia je w **Wersje pogody i pory dnia**.
+
 ## Sprawdzanie każdej odpowiedzi przez model decyzyjny
 
 Illustrator zwykle sprawdza scenę tylko w swoim interwale uruchamiania, więc nowe miejsce może czekać na tło przez kilka odpowiedzi. [Model decyzyjny](../connections/decision-models.md), czyli mały model odpowiadający tak lub nie, może zamiast tego sprawdzać każdą odpowiedź.
 
-Zanim zaczniesz: wybierz model decyzyjny w sekcji **Domyślne** na stronie Połączenia i włącz **Generuj tła scen**, **Weather Versions of Backgrounds** albo obie opcje.
+Zanim zaczniesz: wybierz model decyzyjny w **Domyślne** na stronie Connections i włącz **Generuj tła scen**, **Warianty pogodowe teł**, **Wersje tła według pory dnia** lub ich dowolne połączenie.
 
 1. Otwórz **Ustawienia czatu → Agenci → Illustrator**.
-2. W sekcji **Decision Model Checks** (sprawdzanie przez model decyzyjny) wybierz **The scene moved to a new place** (scena przeniosła się w nowe miejsce), **The weather changed** (pogoda się zmieniła) albo **New place and weather changes** (nowe miejsce i zmiany pogody). Domyślnie wybrane jest **Wyłączone**.
+2. W **Kontrole modelu decyzyjnego** wybierz jedną kontrolę, np. **Scena przeniosła się w nowe miejsce**, **Pogoda się zmieniła** lub **Zmieniła się pora dnia**, albo wszystkie włączone, np. **Nowe miejsce, zmiany pogody i pory dnia**. Widoczne są tylko kontrole włączonych ustawień. Domyślnie: **Wył.**.
 
 Po każdej odpowiedzi:
 
 - Sprawdzenie nowego miejsca pyta, czy ostatnia wiadomość przenosi scenę w nowe miejsce. Odpowiedź twierdząca zapewnia temu miejscu tło, w miarę możliwości wykorzystując obraz, który już masz. Model promptów pisze prompt nowego tła tylko po odpowiedzi twierdzącej.
 - Sprawdzenie pogody pyta, czy pogoda zmienia się w ostatniej wiadomości. Odpowiedź twierdząca wyświetla lub maluje wersję pogodową bieżącego tła. Jeśli World State nie podaje pogody, model decyzyjny wybiera też jej rodzaj.
+- Kontrola pory dnia pyta, czy najnowsza wiadomość zmienia porę dnia. Odpowiedź twierdząca pokazuje lub maluje wersję bieżącego tła dla danej pory. Bez czasu World State model decyzyjny wybiera też świt, dzień, zachód słońca lub noc.
 - Sprawdzenia tylko dodają okazje do działania. Własne uruchomienia agenta Illustrator i zmiany lokalizacji w World State nadal się liczą.
 - Przy braku odpowiedzi (brak modelu, przekroczenie limitu czasu lub błąd) sprawdzenie jest pomijane.
 

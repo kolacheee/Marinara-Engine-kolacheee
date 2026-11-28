@@ -12,10 +12,10 @@ Czat w trybie Roleplay pokazuje za wiadomościami obraz na całą scenę. Może 
 | Obrazu zmieniającego się wraz ze sceną | Agenta **Background** | [Pozwól agentowi Background wybierać tło](#let-the-background-agent-pick) |
 | Miejsca, które zawsze wygląda tak samo | Przypiętego miejsca | [Przypnij tło do miejsca](#pin-a-background-to-a-place) |
 | Pokoju postaci w każdym czacie z jej udziałem | Tła z galerii | [Tła podążające za postacią](#backgrounds-that-follow-a-character) |
-| Nowych obrazów dla nowych miejsc i pogody | Agenta **Illustrator** | [Tła tworzone przez agenta Illustrator](../media/scene-backgrounds.md) |
+| Nowe obrazy dla nowych miejsc, pogody i pory dnia | Agent **Illustrator** | [Tła tworzone przez Illustrator](../media/scene-backgrounds.md) |
 | Wgrywania, oznaczania tagami i porządkowania obrazów albo ich rozmywania | Biblioteki teł | [Biblioteka teł](../appearance/chat-backgrounds.md) |
 
-Gdy opowieść przenosi się w nowe miejsce, Marinara wybiera w tej kolejności: przypięcie do tego miejsca w tym czacie, potem tło z galerii z nazwą tego miejsca, a na końcu wybór agenta Background. Illustrator tworzy nowy obraz tylko wtedy, gdy żaden z tych obrazów nie pasuje. Niezależnie od tego, który obraz zostanie wybrany, wyświetla się jego wariant pogodowy, jeśli istnieje wariant dla pogody panującej w opowieści.
+Gdy opowieść dociera do miejsca, Marinara wybiera w tej kolejności: tło przypięte do tego miejsca w czacie, tło z galerii z nazwą miejsca, a potem wybór agenta Background. Przypięte miejsca i miejsca z galerii same zmieniają obraz tylko wtedy, gdy Marinara zna położenie opowieści z **World State** lub **World Maps**. Bez obu tych źródeł agent Background nadal widzi tła galerii według ich miejsc. Illustrator maluje nowy obraz tylko wtedy, gdy żaden nie pasuje. Dla wybranego obrazu pokazuje wersję pogody lub pory dnia, jeśli biblioteka ma odpowiednią dla pogody i czasu opowieści.
 
 ## Ustaw tło dla jednego czatu
 
@@ -23,6 +23,16 @@ Gdy opowieść przenosi się w nowe miejsce, Marinara wybiera w tej kolejności:
 2. W sekcji **Tło czatu** kliknij **Przeglądaj bibliotekę** i wybierz obraz.
 
 Zmienia to tylko ten czat. Aby wrócić do domyślnego tła, kliknij **Usuń** obok pola **Tło czatu**. Możesz też wybrać obraz w sekcji **Ustawienia czatu → Tło** w czacie. Nie masz jeszcze żadnych obrazów? Zobacz [Import tła](../appearance/chat-backgrounds.md#import-a-background).
+
+## Samodzielne tworzenie wersji pogody lub pory dnia
+
+Obraz pokazuje sypialnię za dnia, ale opowieść zaczyna się tam nocą w deszczu. Nie musisz czekać na Illustrator:
+
+1. Otwórz czat, a następnie **Ustawienia czatu → Tło**.
+2. W **Utwórz wersję tego tła** wybierz **Pogoda** i **Pora dnia**. **Jak namalowano** zachowuje dany element taki jak na obrazie.
+3. Kliknij **Utwórz wersję**.
+
+Połączenie obrazów agenta Illustrator przemalowuje obraz z oryginału, także obraz z galerii, a czat pokazuje nową wersję. Trafia ona do biblioteki teł, aby później użyć jej bez ponownego tworzenia. Jeśli już istnieje, pojawia się od razu. Połączenie obrazów musi obsługiwać rozpoczynanie od obrazu.
 
 ## Pozwól agentowi Background wybierać tło
 
@@ -32,9 +42,17 @@ Agent **Background** uruchamia się po każdej odpowiedzi. Czyta scenę i spośr
 2. Otwórz sekcję **Agents** i włącz przełącznik **Enable Agents**.
 3. Dodaj agenta **Background**.
 
-Od teraz tło zmienia się samo, w miarę jak fabuła przenosi się między miejscami. Agent widzi każdy obraz w bibliotece, także w folderach, i wybiera na podstawie nazw i tagów, więc pomagają czytelne nazwy i tagi miejsc.
+Tło zmienia się teraz samo wraz ze zmianą miejsca opowieści. Agent czyta tekst, a nie obrazy, więc wybiera na podstawie ich opisów:
 
-Jeśli to nie zadziałało: gdy masz tylko jedno albo dwa tła, agent wciąż wybiera właśnie je. Dodaj więcej obrazów do biblioteki.
+- **Obrazy biblioteki** według nazwy pliku i tagów, także w folderach.
+- **Tła z galerii** postaci i persony czatu według przypisanych miejsc (np. `dorm kitchen`) i opisu.
+- **Przypięte miejsca** w tym czacie według nazw przypiętych obrazów.
+
+Obraz biblioteki z nazwą złożoną tylko z losowych liter i cyfr (np. `70c60b32-6b8c-….jpg`) i bez tagów jest pomijany, bo nic nie określa jego miejsca. Dodaj tag miejsca lub czytelną nazwę, aby można go było wybrać. Jeśli nic z listy nie przedstawia miejsca sceny, agent zachowuje bieżący obraz zamiast zgadywać.
+
+**Ustawienia czatu → Tło** pokazuje pod podglądem powód wyboru bieżącego obrazu. Wiersz znika, gdy wybierzesz obraz samodzielnie.
+
+Jeśli nie działa: przy jednym lub dwóch tłach agent ciągle wybiera te same. Dodaj więcej do biblioteki. Jeśli działa wolno, sprawdź jego połączenie: gdy obsługuje jedno żądanie naraz, czeka na innych agentów, np. Lorebook Keeper.
 
 ## Przypnij tło do miejsca
 
@@ -61,7 +79,7 @@ Przypięcia muszą wiedzieć, gdzie toczy się opowieść, więc korzystają z l
 ### Co zmienia przypięcie
 
 - Obraz pojawia się raz, po przybyciu na miejsce. Jeśli podczas pobytu wybierzesz ręcznie inne tło, twój wybór pozostaje, dopóki opowieść nie przeniesie się dalej.
-- W przypiętym miejscu agent Background nie może zmienić obrazu, a Illustrator nie tworzy dla niego nowego tła. Przy włączonym ustawieniu **Weather Versions of Backgrounds** (warianty pogodowe teł) przypięty obraz nadal otrzymuje wariant z deszczem, śniegiem lub mgłą.
+- W przypiętym miejscu agent Background nie może zmienić obrazu, a Illustrator nie maluje nowego tła. Gdy **Warianty pogodowe teł** lub **Wersje tła według pory dnia** jest włączone, przypięty obraz nadal otrzymuje wersję deszczu, śniegu, mgły lub nocy.
 
 Jeśli to nie zadziałało: sprawdź, czy **Story is at** pod listą pokazuje miejsce i czy jedna z nazw przypięcia występuje w nim słowo w słowo.
 
@@ -89,7 +107,7 @@ Tła z galerii też otrzymują warianty pogodowe. Wariant z deszczem lub śniegi
 
 ## Powiązane przewodniki
 
-- [Tła tworzone przez agenta Illustrator](../media/scene-backgrounds.md): tworzenie nowych miejsc, wariantów pogodowych i masek okien.
+- [Tła tworzone przez Illustrator](../media/scene-backgrounds.md): nowe miejsca, wersje pogody i pory dnia oraz maski okien.
 - [Biblioteka teł](../appearance/chat-backgrounds.md): wgrywanie, tagi, foldery i rozmycie.
 - [Galerie postaci i person](../characters/galleries.md)
 - [Tryb Roleplay: pierwsze kroki](getting-started.md)

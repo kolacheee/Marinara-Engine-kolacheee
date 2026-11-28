@@ -118,6 +118,10 @@ El valor de `{{lastGenerationType}}` es una etiqueta simple. Los valores de ejem
 
 La macro `{{agent::TYPE}}` inserta la salida guardada de un agente (un ayudante en segundo plano que rellena cosas como un tracker de escena). La forma más fácil de añadirla es dentro del **Preset Editor**: haz clic en **Add Section**, abre el grupo **Agent Sections** y elige un agente. Marinara crea una sección que ya contiene la etiqueta `{{agent::TYPE}}` correcta. Esta macro se resuelve al final, así que el texto del agente no puede inyectar más macros en tu prompt.
 
+En el **Plantilla de prompt** de un agente, `{{agent::TYPE}}` inserta el estado guardado de un tracker activo en el chat: `world-state`, `character-tracker`, `persona-stats`, `quest`, `custom-tracker`, `inventory-tracker` o `beholder`. Es el mismo texto que su sección añade al preset, salvo que en un preset Markdown omite la línea que indica al narrador no volver a describir el estado. En una respuesta normal ve el estado anterior. Al volver a ejecutar un agente de posprocesamiento sobre un mensaje, ve el estado guardado en ese mensaje.
+
+El tipo del propio agente inserta su última salida solo si **Salida anterior** está activado en **Fuentes de contexto**. Otros tipos no insertan nada en el prompt de un agente, y los agentes con resultado **Actividad de personajes** no leen estados de trackers. No se admite nombrar el tipo propio en una condición de decisión: las decisiones se planifican una vez para todos los agentes y esa condición puede quedar sin respuesta y leerse como no.
+
 ## Macros Outlet de lorebooks
 
 `{{outlet::name}}` inserta contenido de las entradas de lorebook cuya **Position** es **Outlet** y cuyo **Outlet name** coincide exactamente con `name`. Los nombres de Outlet distinguen mayúsculas y minúsculas. Por ejemplo, `{{outlet::character_rules}}` no coincide con un Outlet llamado `Character_Rules`.

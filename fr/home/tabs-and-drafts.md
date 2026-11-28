@@ -6,14 +6,30 @@ Dans la nouvelle disposition, chaque chat, personnage, persona, lorebook, preset
 
 - **Ordinateur et tablette à l'horizontale :** les onglets se trouvent dans la barre du haut. Clique sur un onglet pour y revenir.
 - **Téléphone et tablette à la verticale :** touche le bouton avec un nombre en haut à droite. **Tous les onglets** affiche chaque onglet sous forme de carte. Touche une carte pour l'ouvrir, ou touche **Terminé** pour revenir.
+
+- Les **sections de Library**, comme Characters, Presets ou Settings, n’ont pas d’onglet propre, car elles sont à un clic. Pour en garder une dans la barre, glisse-la depuis la liste Library vers les onglets sur ordinateur. Elle reste jusqu’à sa fermeture.
 - **Balaye la barre du haut** vers la gauche ou la droite sur un téléphone pour passer à l'onglet suivant ou précédent.
+
+- Les **onglets de chat** commencent par le symbole dans la couleur du mode, puis **CO** pour Conversation, **RP** pour Roleplay ou **GM** pour Game, et le nom. Deux chats du même nom et mode sont numérotés, comme « Luna · 2 ».
+- Les **autres onglets** montrent leur symbole (personnage, lorebook, persona, etc.) et nom. Un chat et un personnage homonymes gardent leur nom, distingués par le symbole. Les onglets de même type et nom sont numérotés.
+
+<a id="tabs-keep-your-place"></a>
+## Les onglets gardent ta position
+
+Revenir à un onglet retrouve l’endroit quitté :
+
+- Les **éditeurs** rouvrent la même page, section ou entrée : page du preset et Prompt order, entrée avec recherche et tri, onglet galerie ou sprites de personnage ou persona, sections ajoutées à une fiche.
+- Le **défilement** est restauré dans éditeurs, listes et chats. Un chat remonté s’ouvre à cet endroit plutôt qu’au dernier message.
+- Une ouverture volontaire à un endroit précis, comme un champ montré par Professor Mari, y mène toujours.
+
+Ces positions restent jusqu’à fermeture de l’onglet ou rechargement.
 
 ## Déplacer, regrouper et fermer les onglets
 
 Fais un clic droit sur un onglet sur ordinateur, ou un appui long sur un écran tactile, pour ouvrir son menu :
 
 - **Move left** (déplacer vers la gauche) et **Move right** (déplacer vers la droite) déplacent l'onglet d'une place. Sur ordinateur, tu peux aussi le faire glisser.
-- **Ajouter à un nouveau groupe** place l'onglet dans un groupe. Sur ordinateur, tu peux aussi faire glisser un onglet sur un autre et l'y laisser un instant : quand l'autre onglet s'illumine, relâche-le et les deux forment un groupe (relâche-le sur un groupe pour l'y ajouter). Un relâchement rapide ne fait que déplacer l'onglet. Si tu maintiens Maj en relâchant, ils sont regroupés tout de suite. Quand tu consultes un onglet regroupé, les onglets de son groupe s'affichent sur une deuxième ligne sous la barre du haut. Clique sur le nom du groupe pour le renommer ou le fermer.
+- **Ajouter à un nouveau groupe** place l'onglet dans un groupe. Sur ordinateur, tu peux aussi faire glisser un onglet sur un autre et l'y laisser un instant : quand l'autre onglet s'illumine, relâche-le et les deux forment un groupe (relâche-le sur un groupe pour l'y ajouter). Un relâchement rapide ne fait que déplacer l'onglet. Si tu maintiens Maj en relâchant, ils sont regroupés tout de suite. Quand tu consultes un onglet regroupé, les onglets de son groupe s'affichent sur une deuxième ligne sous la barre du haut. Clique sur le nom du groupe pour le renommer ou le fermer. Cette rangée occupe toute une ligne, comme les piles de Vivaldi. Elle commence par le nom et le nombre d’onglets ; clique pour renommer, dégrouper ou fermer. Sur téléphone ou tablette verticale, **Tous les onglets** rassemble chaque groupe sous son nom.
 - **Fermer l'onglet** ferme cet onglet, et **Fermer les autres onglets** ferme les autres.
 - **Rouvrir l'onglet fermé** rétablit le dernier onglet que tu as fermé.
 

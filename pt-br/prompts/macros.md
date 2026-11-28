@@ -118,6 +118,10 @@ A macro `{{gameStoryboardKeyframeCount}}` é fornecida aos prompts de GM do Game
 
 A macro `{{agent::TYPE}}` insere a saída salva de um agente (um ajudante que roda em segundo plano e preenche coisas como o tracker de cena). O jeito mais fácil de adicioná-la é pelo **Preset Editor**: clique em **Add Section**, abra o grupo **Agent Sections** e escolha um agente. Marinara cria uma seção que já contém a etiqueta `{{agent::TYPE}}` certa. Esta macro é resolvida por último, então o texto do agente não consegue inserir mais macros no prompt.
 
+No **Modelo de prompt** de um agente, `{{agent::TYPE}}` insere o estado salvo de um tracker ativo no chat: `world-state`, `character-tracker`, `persona-stats`, `quest`, `custom-tracker`, `inventory-tracker` ou `beholder`. É o texto que a seção desse tracker adiciona ao preset, exceto que, com Markdown, omite a linha para o narrador não descrever o estado de novo. Numa resposta normal, o agente vê o estado anterior. Ao reexecutar um agente de pós-processamento numa mensagem, vê o estado salvo nela.
+
+O próprio tipo do agente insere sua última saída apenas com **Saída anterior** ativado em **Fontes de contexto**. Outros tipos não inserem nada no prompt do agente, e agentes com resultado **Atividade dos personagens** não leem estados de trackers. Não há suporte a nomear o próprio tipo numa condição de decisão: as decisões são planejadas uma vez para todos os agentes, então a condição pode ficar sem resposta e valer como não.
+
 ## Macros de Outlet de lorebook
 
 A macro `{{outlet::name}}` insere o conteúdo das entradas de lorebook cujo campo **Position** está em **Outlet** e cujo campo **Outlet name** é exatamente igual a `name`. Nos nomes de outlet, maiúsculas e minúsculas fazem diferença. Por exemplo, `{{outlet::character_rules}}` não corresponde a um outlet chamado `Character_Rules`.

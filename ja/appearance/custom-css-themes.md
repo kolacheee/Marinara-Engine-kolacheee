@@ -350,6 +350,38 @@ Game controls、Session、Volume、Game Assets、接続したチャット、パ�
 
 スマートフォンでは、3点メニューを開くと丸いボタンが展開されます。開閉ボタンは`[data-chat-tools-menu-button]`、開いたボタン列は`[data-chat-tools-menu]`で、各リスト項目の`data-chat-tools-menu-item`には、そのウィンドウのIDが設定されます。ツールのボタンは`.mari-window-bubble.mari-chat-tools-button`を使い、`data-chat-tools-menu-tool`にも同じIDが設定されます。ボタン列にはウィンドウの枠がありません。ボタンは丸い形を保ち、チャットのほかの部分に適用する3つのスイッチとは独立して、ウィジェットの色とボタンのサイズに従います。
 
+<a id="styling-character-sheets"></a>
+## キャラクターシートのスタイル
+
+ルールセットのシートはRoleplayとGameで同じ表示です。以下のクラスとデータ属性でテーマを適用できます。
+
+| 部分 | クラス | データ属性 |
+| --- | --- | --- |
+| シート全体 | `.mari-ruleset-sheet` | `data-ruleset`（ルールセットID、例：`local/my-rules`）、`data-rank-display`（`value`、`label`、`dots`、`roman`、`number`）、編集中は`data-editing="true"` |
+| タイトルと**シートを編集**ボタン | `.mari-ruleset-sheet__header` | |
+| タブ | `.mari-ruleset-sheet__tabs` | 各タブに`data-tab-id`と`aria-selected` |
+| グループ見出し | `.mari-ruleset-sheet__heading` | |
+| シート上部のフィールド | `.mari-ruleset-sheet__field`（`.mari-ruleset-sheet__fields`内） | `data-field`、計算値は`data-derived` |
+| 能力値 | `.mari-ruleset-sheet__ability`（`.mari-ruleset-sheet__abilities`内）、スコアと判定値は`__ability-score`と`__ability-value` | `data-ability`、グループに`data-section` |
+| 体力などのプール | `.mari-ruleset-sheet__pool`（`.mari-ruleset-sheet__pools`内） | `data-pool`、グループに`data-pool-group` |
+| トラック | `.mari-ruleset-sheet__track`（`.mari-ruleset-sheet__tracks`内） | `data-track`、負傷トラックには`data-wound="true"`も付く |
+| 状態 | `.mari-ruleset-sheet__conditions` | |
+| 習得した技能やセーヴ | `.mari-ruleset-sheet__rank`（`.mari-ruleset-sheet__trained`内、グループ別に`.mari-ruleset-sheet__rank-group`）、ランク、または`data-rank-display="value"`時の判定値は`__rank-value`、スマートフォンの横の判定値は`__rank-check`、練習は`__practice` | `data-skill`か`data-save`、`data-tier`（段階ID）、`data-rank`（`0`は未習得、`1`は次の段階、以降同様） |
+| 編集中の技能やセーヴ | `.mari-ruleset-sheet-editor__rank` | `data-skill`か`data-save`、`data-tier`、`data-rank` |
+| 装備などのリスト | `.mari-ruleset-sheet__list`、各行は`.mari-ruleset-sheet__list-row` | `data-list`、チェック済みの行に`data-marked="true"` |
+
+次の例は、あるルールセットのランク2を星2つで表示します。変更したい各ランクに同様のルールを2つずつ追加します。点、名前、ローマ数字、数値でランクを表示する場合だけ使ってください。判定値表示では`__rank-value`に判定値が入るため、それを隠してしまいます。
+
+```css
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value {
+  font-size: 0;
+}
+.mari-ruleset-sheet[data-ruleset="local/my-rules"] .mari-ruleset-sheet__rank[data-rank="2"] .mari-ruleset-sheet__rank-value::after {
+  content: "★★";
+  font-size: 0.6875rem;
+}
+```
+
 ## 関連ガイド
 
 - [テーマ作成ガイド](theme-author-guide.md)

@@ -31,6 +31,28 @@ Po wyborze rozgrywa się runda. Wyniki widać jako unoszące się liczby obraże
 
 W grze z zestawem zasad **Items** obsługuje własne przedmioty zestawu tak, jak mówi zestaw: ile leczą albo ranią i jakie stany nakładają. Przedmiot z ładunkami jest oferowany, dopóki zostało mu jakieś użycie. Jeśli przedmiot najpierw wymaga testu, test zostaje rzucony, a po porażce przedmiot zostaje zużyty na nic. Przedmiot, któremu zestaw nie daje żadnego zastosowania, nie jest oferowany. Pozostałe przedmioty działają tak, jak ocenił GM na początku walki, chyba że zestaw zasad wyłącza własne przedmioty trybu Game Mode.
 
+## Narracja walki
+
+W walce Turn-Based **Dziennik walki** opisuje każdy cios krótkim zdaniem, na przykład: "Rogi Xerneas rozbłyskują srebrnym blaskiem, po czym fala energii uderza Houndoom w bok". Obrażenia, leczenie oraz trafienie lub pudło zawsze wyznacza gra i pokazuje je pogrubione po opisie. Model opisuje tylko wygląd ciosu.
+
+Najpierw pojawia się prosty wpis, który po chwili zastępuje opis. Marinara prosi o całą rundę w jednym żądaniu, a nie o każdy cios osobno. Wpisy pochodzą z pierwszego dostępnego źródła:
+
+1. Wbudowanego modelu, który działa bezpłatnie na twoim komputerze. Zobacz [Konfiguracja wbudowanego modelu](../connections/local-model.md).
+2. **Połączenie efektów scen** gry.
+3. Tekstów tworzonych bezpłatnie przez Marinara.
+
+Model prowadzący GM nigdy nie służy do narracji walki.
+
+Aby zmienić ilość opisów, otwórz **Ustawienia czatu**, rozwiń **Styl walki** i wybierz opcję **Narracja walki**:
+
+| Opcja | Działanie |
+| --- | --- |
+| **Każdy cios** | Opisuje każdy cios. To ustawienie domyślne. |
+| **Kluczowe momenty: trafienia krytyczne, nokauty, reakcje** | Pyta model tylko o trafienia krytyczne, nokauty, reakcje żywiołów i superefektywne trafienia. Pozostałe ciosy mają teksty Marinara. |
+| **Wyłączona: prosty dziennik walki** | Pokazuje prosty dziennik walki. |
+
+Walki Tactical nie korzystają z narracji walki.
+
 ## Rozgrywanie walki Tactical
 
 Walka Tactical umieszcza drużynę i wrogów na polu bitwy podzielonym na siatkę. Każdy kwadrat to pole, na przykład **Plains** (równiny) albo **Forest** (las).

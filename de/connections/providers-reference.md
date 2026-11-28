@@ -25,6 +25,8 @@ Diese Dienste nutzen einen API-Key, außer den drei Abo-Diensten, die eine Anmel
 | Arli AI | `www.arliai.com/account` |
 | Z.AI | `z.ai/manage-apikey/apikey-list` |
 | DeepSeek | `platform.deepseek.com/api_keys` |
+| AI Horde | `aihorde.net/register` (optional, siehe [AI Horde](#ai-horde)) |
+| BeaverNet | `net.beaverai.org/account` |
 | OpenAI-compatible, Claude (Subscription), OpenAI (ChatGPT), Grok CLI (Subscription) | Keine Key-Seite. Siehe die Hinweise unten. |
 
 Standardadressen, die Marinara für dich einträgt:
@@ -43,6 +45,9 @@ Standardadressen, die Marinara für dich einträgt:
 - Arli AI: `https://api.arliai.com/v1`
 - Z.AI: `https://api.z.ai/api/paas/v4`
 - DeepSeek: `https://api.deepseek.com/v1`
+
+- AI Horde: `https://oai.aihorde.net/v1`
+- BeaverNet: `https://net.beaverai.org/v1`
 - OpenAI-compatible und die Abo-Dienste: keine. Du trägst eine Adresse ein, oder es wird keine gebraucht.
 
 Alle Key-Seiten beginnen mit `https://`.
@@ -86,7 +91,7 @@ Ein Aggregator ist ein Dienst, bei dem ein einziger Key Modelle vieler Firmen er
 
 | Modell | Was zwischengespeichert wird | Wie lange |
 | --- | --- | --- |
-| Claude | Der System-Prompt, der Chatverlauf bis zur **Cache-Tiefe** und die neueste Nachricht | 5 Minuten oder 1 Stunde mit **Erweitertes Token-Caching (1 Stunde)** |
+| Claude | System-Prompt (bei einer Zusammenfassung in zwei Teilen, damit eine neue Zusammenfassung den Teil vor **Past Events** im Cache lässt), Chatverlauf bis **Cache-Tiefe** und neueste Nachricht | 5 Minuten, mit **Erweitertes Token-Caching (1 Stunde)** 1 Stunde |
 | Qwen | Der System-Prompt und der Chatverlauf bis zur **Cache-Tiefe** | 5 Minuten |
 | Gemini | Der System-Prompt | 5 Minuten |
 | GPT, DeepSeek, Grok, Kimi und andere | Der Dienst speichert von sich aus zwischen, mit oder ohne den Schalter | Vom Dienst festgelegt |
@@ -135,7 +140,9 @@ Dieselbe Anzeige erscheint unter dem Kontextbalken in der Verbindungsauswahl ein
 
 ### Z.AI
 
-**Z.AI** stellt die GLM-Modelle (GLM 5.3, GLM 5.3 Flash und frühere) über eine eigene API bereit. Modelle der Reihen GLM 5.2 und 5.3 akzeptieren die Reasoning-Stufe **Maximum**. Die Standardadresse führt zum nutzungsabhängig abgerechneten Endpunkt. Der Coding Plan von Z.AI nutzt einen anderen Endpunkt, daher funktioniert ein Key für den Coding Plan hier möglicherweise nicht.
+**Z.AI** stellt GLM-Modelle (GLM 5.4, GLM 5.3, GLM 5.3 Flash und frühere) über seine API bereit. GLM 5.2, 5.3 und 5.4 akzeptieren **Maximum** als Reasoning-Stufe. Die Standardadresse ist nutzungsabhängig abgerechnet. Der Coding Plan verwendet einen anderen Endpunkt; sein Schlüssel funktioniert hier möglicherweise nicht.
+
+GLM 5.4 gibt es nur im GLM Coding Plan. Setze dafür **Adresse** auf `https://api.z.ai/api/coding/paas/v4`. GLM 5.4 denkt immer; **Reasoning-Aufwand** bietet **Niedrig**, **Hoch** und **Max.**, kein **Aus**.
 
 ### DeepSeek
 
@@ -144,6 +151,20 @@ Dieselbe Anzeige erscheint unter dem Kontextbalken in der Verbindungsauswahl ein
 Manche Parameter gelten nicht, deshalb lässt das Panel sie weg: **Verbosity**, **Top K** und die Wiederholungsstrafen sind abgeschafft und werden ignoriert. **Temperature** und **Top P** bilden ein Paar, weil DeepSeek jeweils nur einen davon nutzt. **Temperature** siehst du, wenn das Nachdenken aus ist, **Top P**, wenn es an ist.
 
 Verbinde DeepSeek über seine eigene Kachel, statt **OpenAI** auf die Adresse von DeepSeek zu richten. Der OpenAI-Dienst erwartet die Modelle von OpenAI. Bei einem DeepSeek-Modell blendet er deshalb die Regler für die Generierung aus und sendet fast keine deiner Einstellungen mit.
+
+<a id="ai-horde"></a>
+### AI Horde
+
+**AI Horde** ist ein kostenloses Netzwerk, in dem Freiwillige Modelle auf ihren Computern betreiben. Die Kachel richtet ein **OpenAI-compatible**-Konto mit der AI-Horde-Adresse ein.
+
+**API-Schlüssel** enthält anfangs den anonymen Schlüssel `0000000000`, der ohne Konto funktioniert. Anonyme Anfragen warten am längsten. Ein kostenloser Schlüssel von `aihorde.net/register` verkürzt die Wartezeit. Wenn du deinen Computer bereitstellst, verdienst du Kudos (Horde-Punkte für höhere Priorität).
+
+Die Modellliste zeigt die gerade betriebenen Modelle und ändert sich oft. Antworten dauern je nach Warteschlange Sekunden bis Minuten. Bei Zeitüberschreitung versuch ein anderes Modell oder erhöhe die Serverlimits (siehe [Zeitlimits](#timeouts)).
+
+<a id="beavernet"></a>
+### BeaverNet
+
+**BeaverNet** ist ein kostenloses Gemeinschaftsnetzwerk: Menschen mit freien Grafikkarten betreiben Modelle für alle. Die Kachel erstellt ein **OpenAI-compatible**-Konto mit seiner Adresse. Erstelle einen kostenlosen Schlüssel unter `net.beaverai.org/account`.
 
 ### OpenAI-compatible
 

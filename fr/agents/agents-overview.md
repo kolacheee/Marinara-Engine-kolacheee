@@ -91,6 +91,15 @@ Un package marqué **Rules** (règles) n'est pas un agent. Il ajoute un ensemble
 
 Désinstaller un package retire son code et ses réglages, mais garde les messages et l'historique de tes chats. Supprimer un agent personnalisé le supprime définitivement.
 
+<a id="read-an-agents-guides"></a>
+### Lire les guides d’un agent
+
+Ouvre la page de l’agent dans **Agent Organizer** et clique sur **Lire le fonctionnement de cet agent**. Sa présentation s’ouvre dans la fenêtre de documentation. Choisis un sujet dans la liste pour en savoir plus. Sur téléphone, la flèche de retour ramène à la liste. Ferme la fenêtre pour revenir à la page de l’agent.
+
+**Voir la source** ouvre le guide original. Certains agents n’ont encore qu’un bref résumé ou un lien externe pendant que leurs auteurs ajoutent des guides thématiques. Si un guide ne se charge pas, réessaie une fois en ligne. Les guides déjà ouverts peuvent rester disponibles jusqu’à sept jours ; une copie enregistrée peut être dépassée.
+
+**Historique des versions** affiche les trois entrées les plus récentes. Clique sur **Afficher les anciennes versions** pour développer la liste ou **Afficher moins de versions** pour la raccourcir. La dernière version apparaît aussi sous **Nouveautés**.
+
 ### Mettre à jour des agents
 
 Quand une version compatible plus récente d'un package installé existe, une fenêtre **Agent updates available** (mises à jour d'agents disponibles) s'ouvre. Elle liste chaque mise à jour avec sa version et indique si elle demande un redémarrage.

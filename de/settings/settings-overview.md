@@ -67,7 +67,7 @@ Wenn du **New layout** unter **Settings → Appearance → Theme** abgeschaltet 
 | **Confirmations & Help** | **Confirm before deleting**, **Hide chat Help button** und **Walkthroughs**. |
 | **Extras** | **Achievements**, **Disable seasonal Marinara themes** und **Music Player**. |
 | **Professor Mari** | Eine Zeile, **Search and Professor Mari settings**. Klick auf **Open** (Öffnen) für die Suche, schnelle Antworten und Professor Mari. Siehe [Professor Mari](../home/professor-mari.md). |
-| **Notifications** | Wo Hinweise erscheinen, Benachrichtigungstöne sowie Benachrichtigungen im Browser und unter Android. Siehe [Notifications](#notifications). |
+| **Benachrichtigungen** | Position von Hinweisen, Benachrichtigungstönen, Browser- und Android-Benachrichtigungen sowie Push über ntfy. Siehe [Benachrichtigungen](#notifications). |
 
 ### Sprache
 
@@ -103,6 +103,28 @@ Marinara spielt einen eingebauten Ton für Benachrichtigungen ab. So nutzt du de
 Der Ton spielt auf jedem Gerät, das mit diesem Server verbunden ist. Du kannst ihn anhören, ersetzen oder entfernen. Kann Marinara die Datei nicht lesen, spielt es den eingebauten Ton. Die Datei ist Teil von Backups und Profil-Exporten.
 
 **Background Notifications** gelten für Conversation-Nachrichten, die Charaktere von sich aus senden. **Generation Completion Notifications** gelten für Antworten, die du selbst in Conversation, Roleplay und Game Mode startest. Beide funktionieren, solange Marinara geöffnet, aber nicht im Vordergrund ist. Sie zeigen nie den Inhalt von Nachrichten. Mit **Notification position** legst du fest, ob Fehlermeldungen und andere Hinweise oben oder unten erscheinen.
+
+<a id="get-notifications-on-your-phone-while-marinara-is-closed"></a>
+#### Benachrichtigungen auf dem Handy bei geschlossenem Marinara
+
+**Push-Benachrichtigungen (ntfy)** erreichen dein Handy auch bei geschlossenen Marinara-Tabs und geschlossener Android-App. Der Server sendet über ntfy, einen kostenlosen Dienst mit Android- und iPhone-App.
+
+Installiere zuerst die ntfy-App. Öffne Marinara auf dem Servercomputer oder hinterlege den Admin-Schlüssel auf diesem Gerät. Siehe [Fernzugriff](../REMOTE_ACCESS.md).
+
+1. Aktiviere unter **Einstellungen → Allgemein → Benachrichtigungen** **Push-Benachrichtigungen senden**. Marinara erstellt ein zufälliges **Thema**, den privaten Kanal für deine Nachrichten.
+2. Klick auf dem Handy auf **In ntfy öffnen** oder kopiere mit **Kopieren** und abonniere das Topic in der ntfy-App.
+3. Klick auf **Testbenachrichtigung senden**. Das Handy zeigt „Marinara test notification“.
+
+Zwei Schalter bestimmen die Auslöser:
+
+- **Nachrichten, die Charaktere von selbst senden**: selbstständige Conversation-Nachrichten, die der Server auch ohne geöffnetes Marinara schreibt.
+- **Von dir gestartete Antworten, vor deren Abschluss du Marinara geschlossen hast**: nur wenn du Marinara vor dem Speichern geschlossen oder die Seite verlassen hast. Bei geöffnetem Marinara greifen dessen eigene Benachrichtigungen.
+
+Die Nachricht nennt den Absender und „Open Marinara to read it.“. **Nachrichtenvorschau anzeigen** sendet stattdessen die ersten bis zu 200 Zeichen. Antippen öffnet den Chat unter **Zu öffnende Adresse**, anfangs der beim Aktivieren genutzten Adresse. Ändere sie, falls dein Handy eine andere braucht.
+
+> **Hinweis:** Bei `ntfy.sh` gehen Titel und Vorschau durch einen öffentlichen Server. Wer das Topic kennt, kann sie lesen. Bei Bekanntwerden klick auf **Neues Thema**. Für eigene Infrastruktur betreibe einen ntfy-Server und trage seine Adresse unter **ntfy-Server** ein. Ein LAN-Server funktioniert.
+
+Bei fehlgeschlagenem Test erklärt Marinara den Grund. Meist ist **ntfy-Server** vom Marinara-Server nicht erreichbar.
 
 ## Der Tab Chatting
 

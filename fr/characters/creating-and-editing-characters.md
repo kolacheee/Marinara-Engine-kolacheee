@@ -100,7 +100,7 @@ L'onglet **Card** est l'espace principal de rédaction. Les liens en haut permet
 
 **Public Face** décrit ce que les autres personnages pourraient voir ou savoir du personnage : apparence, manière d'être, rôle, réputation et relations qui ne sont pas secrètes. N'y mets ni secrets, ni pensées intérieures, ni passé privé, ni instructions sur la façon de jouer le personnage. Ce texte n'est jamais envoyé avec la fiche de ce personnage. Un prompt ne le lit que là où tu places la macro `{{publicFace}}`, ou `{{personaPublicFace}}` pour ton persona. Voir [Macros de prompt](../prompts/macros.md#identity-character-and-persona-macros). Dans un chat de groupe Roleplay en mode Individual, **Others' Public Faces** (faces publiques des autres) l'envoie lors des tours des autres personnages. Voir [Autres réglages Individual](../chats/group-chats.md#more-individual-settings). Un agent dont la source **Personnages** ou **Persona** est réglée sur **Public Face** le lit à la place de la fiche. Voir [Autres réglages](../agents/custom-agents.md#other-settings). Avec **Send Public Faces** (envoyer les faces publiques) activé, Impersonate en Roleplay le lit à la place de la fiche. Voir [Les réglages d'Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
-**Apparence** a deux onglets, **Prose** et **Tags d'image**. **Prose** contient le texte de l'apparence lui-même. **Tags d'image** contient des tags courts pour les prompts d'image, comme un mot déclencheur de LoRA (un mot-clé qui active un style d'image personnalisé). Saisir des tags coche **Utiliser pour les prompts d'image**, et un point sur l'onglet indique qu'ils sont utilisés. Tant que la case est cochée et que les tags sont remplis, les prompts d'image utilisent ces tags tels quels, en gardant la prose comme contexte. Décoche-la pour garder les tags sans les utiliser : les prompts d'image reviennent alors à **Prose**. Le prompt d'avatar IA part lui aussi des tags. Le narrateur voit toujours le texte de **Prose**. L'onglet **Images** y mène avec **Aller à Apparence**.
+**Apparence** a deux onglets, **Prose** et **Tags d'image**. **Prose** contient le texte de l'apparence lui-même. **Tags d'image** contient des tags courts pour les prompts d'image, comme un mot déclencheur de LoRA (un mot-clé qui active un style d'image personnalisé). Saisir des tags coche **Utiliser pour les prompts d'image**, et un point sur l'onglet indique qu'ils sont utilisés. Tant que la case est cochée et que les tags sont remplis, les prompts d'image utilisent ces tags tels quels, en gardant la prose comme contexte. Décoche-la pour garder les tags sans les utiliser : les prompts d'image reviennent alors à **Prose**. Le prompt d'avatar IA part lui aussi des tags. Le narrateur voit toujours le texte de **Prose**. L'onglet **Images** y mène avec **Aller à Apparence**. L’onglet a sa propre baguette. Voir [Tags d’image avec la baguette](#image-tags-from-the-wand).
 
 La section **Dialogue & Greetings** définit l'ouverture du chat et le ton du personnage :
 
@@ -120,18 +120,30 @@ Les salutations et les messages d'exemple peuvent afficher des images de la Gall
 
 ### Écrire un champ de la fiche avec la baguette
 
-**Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** et chaque **Alternate Greeting** possèdent un bouton avec une simple icône de baguette au-dessus du champ. Son infobulle indique le champ qu'il écrit.
+**Résumé**, **Description**, **Personnalité**, **Passé**, **Apparence** (ses deux onglets), **Scénario**, **Profil public**, **Exemple de dialogue**, **Premier message** et chaque **Alternate Greeting** possèdent un bouton avec une simple icône de baguette au-dessus du champ. Son infobulle indique le champ qu'il écrit.
 
 Avant de commencer : configure une connexion texte fonctionnelle. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
 
 1. Écris dans le champ les idées que tu veux conserver, par exemple `smart, scientist, handsome`, ou laisse-le vide.
 2. Remplis les autres champs de la fiche que l'IA doit utiliser comme référence. Tu n'as pas besoin d'enregistrer d'abord.
-3. Clique sur la baguette du champ. Marinara demande 100–300 mots pour ce champ, en prenant ton texte comme point de départ. Example Dialogue demande des exemples d'échanges. **First Message** et chaque **Alternate Greeting** demandent un seul message d'ouverture qui te laisse libre de ta réponse. **Public Face** n'a pas de plage de longueur : sa baguette réécrit le reste de la fiche sans ses parties privées, donc sa longueur dépend de ta fiche.
+3. Clique sur la baguette du champ. Marinara demande 100–300 mots pour ce champ, en prenant ton texte comme point de départ. Example Dialogue demande des exemples d'échanges. **Premier message** et chaque **Alternate Greeting** demandent un seul message d'ouverture qui te laisse libre de ta réponse. **Profil public** n'a pas de plage de longueur : sa baguette réécrit le reste de la fiche sans ses parties privées, donc sa longueur dépend de ta fiche. Dans **Tags d'image** de **Apparence**, la baguette transforme plutôt l’apparence en une ligne de tags. Voir [Tags d’image avec la baguette](#image-tags-from-the-wand).
 4. Modifie le résultat, puis clique sur **Save**.
 
 La baguette utilise ta connexion texte par défaut pour les agents ou, s'il n'y en a pas, ta connexion texte par défaut. Une connexion de secours configurée pour les agents s'applique toujours.
 
 La baguette remplace uniquement le champ choisi dans ton brouillon non enregistré. Si la génération échoue, ton texte reste intact. Si tu modifies ce champ pendant l'attente, ou si tu passes à une autre fiche, un résultat tardif n'écrase pas ton travail. Tu n'as pas besoin de Professor Mari pour utiliser la baguette.
+
+<a id="image-tags-from-the-wand"></a>
+#### Tags d’image avec la baguette
+
+La baguette de **Tags d'image** dans **Apparence** écrit des tags d’après l’apparence de la fiche, surtout **Apparence**. Elle coche **Utiliser pour les prompts d'image**.
+
+- Les tags existants non expliqués par l’apparence, comme un déclencheur LoRA, restent inchangés au début.
+- Viennent les nouveaux : `1girl`, `1boy` ou `1other`, puis les traits durables du corps, cheveux, yeux, peau, visage et marques. Sans tag conservé, la ligne commence par `1girl`, `1boy` ou `1other`.
+- Ils sont en anglais, minuscules, séparés par des virgules, au style de Danbooru (site d’images anime dont beaucoup de modèles ont appris les tags).
+- Ils utilisent uniquement les traits de la fiche, sans vêtements, expressions, poses ou lieux, qui changent avec la scène.
+
+Ils viennent du modèle, pas d’une liste réelle de tags Danbooru ; une formulation peut être inconnue du modèle d’images. Relis et corrige avant d’enregistrer.
 
 ## Ajouter un avatar
 
@@ -196,7 +208,7 @@ Règles :
 - Un chat ne peut utiliser qu'une seule alternative par champ. Cocher un chat dans une autre alternative, ou en choisir une autre dans Chat Settings, l'y déplace.
 - Sans chat coché, l'alternative reste inactive pour plus tard.
 - Une alternative vide efface ce champ dans ses chats.
-- Une alternative de **Apparence** a ses propres onglets **Prose** et **Tags d'image**. Dans ses chats, ses tags remplacent ceux de la fiche. Si ses tags sont vides ou décochés, les prompts d'image utilisent la prose de l'alternative, jamais les tags de la fiche. Une nouvelle alternative copie aussi les tags de la fiche.
+- Une alternative de **Apparence** a ses propres onglets **Prose** et **Tags d'image**. Dans ses chats, ses tags remplacent ceux de la fiche. Si ses tags sont vides ou décochés, les prompts d'image utilisent la prose de l'alternative, jamais les tags de la fiche. Une nouvelle alternative copie aussi les tags de la fiche. Son onglet **Tags d'image** a une baguette qui lit le texte et les tags de l’alternative.
 - Les remplacements de scénario et d'apparence pour les images propres au chat restent prioritaires.
 - Les alternatives de **Summary** restent des métadonnées et ne sont pas envoyées à l'IA.
 - Si le personnage quitte un chat, son affectation est suspendue, puis reprend quand tu ajoutes à nouveau le personnage.

@@ -60,7 +60,7 @@ Marinara obsługuje OpenAI, Anthropic, Google Gemini, OpenRouter i wiele innych 
 
 ## Czy za korzystanie z aplikacji Marinara Engine trzeba płacić?
 
-Marinara jest darmowa. Płacisz tyle, ile liczy sobie twoja usługa AI. Niektóre opcje można wypróbować za darmo: obrazy z **Pollinations** nie wymagają klucza, **Stable Horde** jest darmowe, a **Built-in model** działa na twoim komputerze. Opcje subskrypcyjne korzystają z płatnego planu, który być może już masz.
+Marinara jest darmowa. Płacisz tyle, ile nalicza usługa AI. Część opcji można wypróbować bezpłatnie: obrazy **Pollinations** nie wymagają klucza, obrazy **Stable Horde** są darmowe, **AI Horde** i **BeaverNet** udostępniają darmowe modele czatu (zobacz [AI Horde](connections/providers-reference.md#ai-horde)), a **Na urządzeniu** działa na twoim komputerze. Opcje subskrypcyjne korzystają z płatnego planu, który możesz już mieć.
 
 ## Czy klucze API są bezpieczne?
 

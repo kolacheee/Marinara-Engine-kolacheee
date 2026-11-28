@@ -91,6 +91,15 @@ Un paquete marcado **Rules** no es un agente. Añade un conjunto de reglas de Ga
 
 Desinstalar un paquete elimina su código y sus ajustes, pero conserva los mensajes y el historial de tu chat. Borrar un agente personalizado lo elimina para siempre.
 
+<a id="read-an-agents-guides"></a>
+### Leer las guías de un agente
+
+Abre la página del agente en **Agent Organizer** y haz clic en **Leer cómo funciona este agente**. Su descripción general se abre en la ventana de documentación. Elige un tema de la lista para leer más. En el teléfono, usa la flecha de volver para regresar a la lista. Cierra la ventana para volver a la página del agente.
+
+**Ver fuente** abre la guía original. Algunos agentes solo tienen un resumen breve o un enlace externo mientras sus autores añaden guías temáticas. Si una guía no carga, inténtalo cuando tengas conexión. Las guías abiertas antes pueden estar disponibles hasta siete días; una guía guardada puede estar desactualizada.
+
+**Historial de versiones** muestra las tres entradas más recientes. Haz clic en **Mostrar versiones anteriores** para ampliar la lista o en **Mostrar menos versiones** para acortarla. La última versión también aparece en **Novedades**.
+
 ### Actualizar agentes
 
 Cuando existe una versión compatible más reciente de un paquete instalado, se abre una ventana **Agent updates available** (Actualizaciones de agentes disponibles). Enumera cada actualización con su versión e indica si necesita un reinicio.

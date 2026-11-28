@@ -122,6 +122,7 @@ Un **Prompt Block** es texto que escribes tú: instrucciones de sistema, reglas 
 | **Character Info** | Los detalles de la tarjeta de personaje activa. |
 | **Persona** | Los detalles de tu persona activa. |
 | **Chat History** | Los mensajes del chat. |
+| **Historial reciente** | Mensajes nuevos de **Historial del chat**. Consulta [Dividir el historial con Recent History](#split-the-history-with-recent-history). |
 | **Chat Summary** | El resumen compilado del chat. |
 | **Dialogue Examples** | El diálogo de ejemplo del personaje. |
 | **Lorebook Marker (All)** | Todas las entradas de lorebook activas. |
@@ -164,7 +165,7 @@ Un grupo envuelve varias secciones en un contenedor.
 2. Haz clic en el nombre del grupo para cambiarlo.
 3. Expande una sección y elige el grupo en su menú desplegable **Group**.
 
-Con **XML**, un grupo se convierte en una etiqueta padre. Con **MARKDOWN**, se convierte en un encabezado. Borrar un grupo no borra sus secciones. Solo pierden el grupo.
+Con **XML**, un grupo se convierte en una etiqueta padre. Con **Markdown**, se convierte en un encabezado. Borrar un grupo no borra sus secciones. Solo pierden el grupo. Las secciones del mismo grupo que no sean contiguas reciben cada una su etiqueta o encabezado.
 
 ### Posición y profundidad
 
@@ -209,6 +210,25 @@ Los chats de Game añaden más controles. **Story style**, **Violence**, **Conte
 La caché de prompts permite que un servicio reutilice el inicio de un prompt que ya leyó, para que los chats largos cuesten menos y respondan antes. El servicio solo reutiliza el prompt hasta el primer texto que cambió desde el último mensaje. Los recuerdos recuperados cambian con casi cada mensaje, así que, si están antes del historial del chat, dejan todo el historial fuera de la caché.
 
 Para colocarlos tú, agrega un marcador **Memory Recall** al preset. Arrástralo debajo de **Chat History**, o configura su **Position** (Posición) en **Depth (from end of chat)** (Profundidad (desde el final del chat)) para colocarlo dentro del historial. Los recuerdos que se leen antes de la historia hacen que las respuestas se ajusten más a ellos, así que la ubicación predeterminada sigue siendo antes del historial.
+
+<a id="split-the-history-with-recent-history"></a>
+## Dividir el historial con Recent History
+
+**Historial reciente** envía los mensajes nuevos en su posición y **Historial del chat** los antiguos. Las secciones entre ellos quedan entre ambos grupos. Úsalo para detalles cambiantes, como lugar o presentes. Los permanentes van encima de **Historial del chat**.
+
+1. En **Secciones**, pulsa **Agregar sección** y **Historial reciente**. Aparece después de **Historial del chat**.
+2. Expándelo y fija **Mensajes recientes** (por defecto 4).
+3. Arrastra secciones cambiantes, como **Lorebook Marker** o agentes, entre ambos marcadores.
+4. Haz clic en **Guardar**.
+
+El modelo lee detalles cambiantes cerca de los mensajes nuevos y los recuerda mejor. El historial antiguo permanece igual y la caché puede reutilizarlo. Con Claude y caché, la marca queda al final de los mensajes antiguos.
+
+- **Máximo de mensajes** de **Historial del chat** cuenta ambas partes; vacío envía todo.
+- Si hay menos que **Mensajes recientes**, todos van a **Historial reciente**.
+- **Profundidad (desde el final del chat)** cuenta solo mensajes. Una profundidad mayor que **Mensajes recientes** cae en la parte antigua e impide reutilizarla.
+- Sin **Historial del chat**, **Historial reciente** envía todo. Si está antes, o es un segundo marcador, no envía nada. La fila avisa en cada caso.
+- Con **XML**, los antiguos usan `<chat_history>`, los nuevos `<recent_history>` y el último `<last_message>`.
+- Versiones antiguas de Marinara no conocen **Historial reciente** y pueden rechazar el preset al importarlo.
 
 ## Bloques de decisión y caché de prompts
 

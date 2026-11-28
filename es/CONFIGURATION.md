@@ -102,6 +102,8 @@ openssl rand -hex 32
 
 Marinara guarda tus datos como archivos JSON simples, así que puedes copiar y leer las copias de seguridad. Para saber qué contiene cada carpeta, consulta [Dónde se guardan tus datos](data/where-data-is-stored.md).
 
+Para guardar datos en un recurso compartido de red, apunta `DATA_DIR` a una carpeta allí y conéctalo antes de iniciar Marinara. Consulta [No se puede acceder a una carpeta de red o externa](TROUBLESHOOTING.md#cannot-access-a-network-or-external-folder).
+
 ## Niveles de registro
 
 `LOG_LEVEL` establece cuánto imprime el servidor. Oculta todo lo que esté por debajo del nivel que elijas.

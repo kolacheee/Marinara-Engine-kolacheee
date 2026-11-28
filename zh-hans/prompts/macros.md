@@ -118,6 +118,10 @@ Conversation 模式会自动往提示词里插入好几个内容块。这些宏�
 
 `{{agent::TYPE}}` 宏插入的是智能体保存下来的输出。智能体是在后台干活的帮手，比如负责填写场景追踪器。最省事的添加方式是在 **Preset Editor** 里操作：点击 **Add Section**(添加小节)，展开 **Agent Sections** 分组，选一个智能体。Marinara 会创建一个已经带好对应 `{{agent::TYPE}}` 标签的小节。这个宏在最后才解析，所以智能体产出的文字没办法再往提示词里塞新的宏。
 
+在智能体的 **提示词模板** 中，`{{agent::TYPE}}` 插入聊天中已启用追踪器的保存状态：`world-state`、`character-tracker`、`persona-stats`、`quest`、`custom-tracker`、`inventory-tracker` 或 `beholder`。内容与该追踪器区段加入预设的文字相同，但 Markdown 预设会省略要求旁白不要重复描述状态的那一行。正常回复时，智能体看到的是回复前的状态。在某条消息上重新运行后处理智能体时，看到的是该消息保存的状态。
+
+智能体自己的类型只有在 **上下文来源** 中开启 **上一次输出** 时才插入上次输出。其他类型不会向智能体提示词插入内容，结果类型为 **角色活动** 的智能体不读取追踪器状态。不支持在判断语句中指定自己的类型：判断会为所有智能体统一规划一次，因此该语句可能没有回答，并被当作“否”。
+
 ## 世界书 Outlet 宏
 
 `{{outlet::name}}` 插入的是世界书条目的内容，条件是这些条目的 **Position**(位置) 设为 **Outlet**，并且 **Outlet name**(Outlet 名称) 与 `name` 完全一致。Outlet 名称区分大小写，比如 `{{outlet::character_rules}}` 匹配不到名为 `Character_Rules` 的 Outlet。

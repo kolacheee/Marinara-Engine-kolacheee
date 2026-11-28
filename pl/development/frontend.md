@@ -346,12 +346,15 @@ Panele zachowują stan dzięki zbiorowi `mountedPanels` przechowywanemu w `useSt
 | `GifPicker`        | Wyszukiwanie GIF-ów przez API Giphy                                    |
 | `HelpTooltip`      | Ikona, która po najechaniu pokazuje podpowiedź umieszczoną w portalu   |
 | `LibraryToolbar` | Wspólny pasek narzędzi wszystkich paneli biblioteki (zobacz niżej) |
+| `EditorHeader` | Wspólny nagłówek wszystkich edytorów pełnostronicowych (patrz niżej) |
 
 Wszystkie komponenty interfejsu korzystają z kontrolowanych właściwości (value oraz onChange) i renderują nakładki w portalu.
 
 **Panele biblioteki używają `LibraryToolbar`.** Panele Postacie, Persony, Lorebooki, Agenci i zakładki panelu Presety renderują przez niego górne kontrolki: opcjonalny wiersz biblioteki (jeden przycisk na całą szerokość albo para Pobierz / Otwórz bibliotekę), tworzenie / import / eksport / zaznaczanie, wyszukiwanie ze wspólnym menu sortowania, Nowy folder, a potem filtry panelu jako `children`. Wiersze są typowanymi propsami, a nie slotami, więc nowy panel biblioteki dostaje ten sam markup zamiast kopii, która z czasem zaczyna się różnić. Dodaj tam prop zamiast ręcznie budować pasek narzędzi w panelu.
 
 `LibraryToolbar.tsx` eksportuje też `SegmentedButtons`, jeden długi przycisk `.mari-chrome-segmented` podzielony znakami `|`. Renderuje on parę Pobierz / Otwórz bibliotekę i zakładki **Prompty** / **Regexy** / **Narzędzia** / **Profile** panelu Presety, dzięki czemu górny wiersz każdego panelu ma tę samą wysokość. Przekazanie `groupLabel` nadaje wierszowi zakładek `role="group"`, a `pressed` ustawia `aria-pressed` każdej zakładki. `.mari-chrome-segmented` ma `flex-shrink: 0`, więc własny przewijany kontener flex panelu o stałej wysokości (jak w panelu Postacie) nie może ścisnąć tego wiersza.
+
+**Edytory pełnostronicowe używają `EditorHeader`.** Rysuje Wstecz, kafelek ikony, nazwę, opcjonalne zakładki sekcji, akcje i Zamknij w dwóch układach. Z `nav` (zakładkami) reguły gęstości `mari-editor-header--with-nav` dopasowują wszystko do zakładek. Bez niego akcje na telefonie dostają osobny wiersz, a Save pokazuje tylko ikonę. Nazwa, zawartość kafelka i przyciski są slotami, więc każdy edytor zachowuje własne pole nazwy i kontrolki. Używaj `EditorSaveButton` i `EditorHeaderAction`: etykieta jest zawsze podpowiedzią i nazwą dostępną. Dodaj tu slot lub część zamiast budować nagłówek ręcznie.
 
 ## Klient API (`lib/api-client.ts`)
 
@@ -649,17 +652,24 @@ Lekka wersja Engine startuje z pustym rejestrem agentów. Pakiety zainstalowane 
 | `haptic`                 | post_processing | Wysyła komendy do urządzenia haptycznego                          |
 | `cyoa`                   | post_processing | Generuje prompty z wyborami                                       |
 | `storyboard` | post_processing | Planuje nieruchome i animowane storyboardy Game i Roleplay |
+| `2d-avatars` | feature | Wyświetla animowane awatary 2D ze sprite’ów lub siatek |
+| `3d-avatars` | feature | Wyświetla animowane awatary 3D VRM, MMD PMX, GLB i FBX |
 | `conversation-calls`     | feature         | Dodaje rozmowy audio/wideo w trybie Conversation i powiązane ustawienia |
 | `hierarchical-maps`      | feature         | Dodaje mapy, kontekst przestrzenny i ruch w trybach Roleplay i Game Mode |
 | `noodle` | feature | Dodaje lokalny kanał społecznościowy Noodle do Home |
+| `otome-forge` | feature | Dodaje do Home Otome Hearth, grę otome z twoich postaci |
+| `saucelings` | feature | Dodaje do Home Saucelings, wirtualne zwierzę wychowywane przez postacie |
 | `slurp2` | feature | Dodaje do Home Slurp, prywatną aplikację do tworzenia postaci |
+| `story-writer` | feature | Dodaje do Home Story Writer, przestrzeń do wspólnego pisania książek |
 | `gacha-forge` | feature | Dodaje do Home tryb gry gacha |
+| `blackjack` | feature | Dodaje stół Blackjack w Conversation |
 | `uno`                    | feature         | Dodaje stolik UNO w trybie Conversation                           |
 | `chess`                  | feature         | Dodaje szachownicę w trybie Conversation                          |
 | `poker`                  | feature         | Dodaje stolik Texas Hold'em w trybie Conversation                 |
 | `eightball`              | feature         | Dodaje stół do bilarda 8-Ball w trybie Conversation               |
 | `tic-tac-toe`            | feature         | Dodaje planszę do kółka i krzyżyka w trybie Conversation          |
 | `rock-paper-scissors`    | feature         | Dodaje partie w kamień, papier, nożyce w trybie Conversation      |
+| `wordle` | feature | Dodaje codzienny wyścig Wordle w Conversation |
 
 ### Typy wyników agentów
 

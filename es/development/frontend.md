@@ -346,12 +346,15 @@ Los paneles conservan su estado mediante un Set `mountedPanels` guardado en un `
 | `GifPicker`        | Búsqueda de GIF mediante la API de Giphy                              |
 | `HelpTooltip`      | Icono que al pasar el cursor muestra un tooltip (texto de ayuda) posicionado como portal |
 | `LibraryToolbar` | La barra de herramientas que comparten todos los paneles de biblioteca (ver más abajo) |
+| `EditorHeader` | La cabecera compartida por todos los editores de página completa (ver abajo) |
 
 Todos los componentes de interfaz usan props controladas (value más onChange) y renderizado como portal para las superposiciones.
 
 **Los paneles de biblioteca usan `LibraryToolbar`.** Characters, Personas, Lorebooks, Agents y las pestañas del panel Presets muestran sus controles superiores mediante este componente: una fila opcional de biblioteca (un botón de ancho completo o el par Download / Open Library), crear / importar / exportar / seleccionar, búsqueda con el menú de ordenación compartido, New Folder y, después, los filtros del panel como `children`. Las filas son props tipadas, no slots, así que un panel de biblioteca nuevo recibe el mismo marcado en lugar de una copia que se desvía. Añade una prop ahí en vez de construir a mano una barra de herramientas en un panel.
 
 `LibraryToolbar.tsx` también exporta `SegmentedButtons`, un botón largo `.mari-chrome-segmented` dividido por `|`. Renderiza el par Descargar / Abrir biblioteca y las pestañas **Prompts** / **Regex** / **Herramientas** / **Perfiles** del panel Presets, para que la fila superior de todos los paneles tenga la misma altura. Al pasar `groupLabel`, la fila se convierte en un `role="group"` de pestañas, y `pressed` establece el `aria-pressed` de cada pestaña. `.mari-chrome-segmented` tiene `flex-shrink: 0`, así que el contenedor flex con desplazamiento y altura fija del propio panel (como en Characters) no puede comprimir la fila.
+
+**Los editores de página completa usan `EditorHeader`.** Dibuja Volver, el icono, el nombre, las pestañas opcionales, acciones y Cerrar en dos diseños. Con `nav` (pestañas), las reglas de densidad `mari-editor-header--with-nav` ajustan todo a las pestañas. Sin él, las acciones tienen su propia fila en teléfonos y Save solo muestra el icono. El nombre, contenido del icono y botones son slots: cada editor conserva su campo de nombre y controles. Usa `EditorSaveButton` y `EditorHeaderAction` para los botones; su etiqueta es siempre el tooltip y nombre accesible. Añade allí un slot o parte en lugar de construir una cabecera a mano.
 
 ## Cliente de API (`lib/api-client.ts`)
 
@@ -649,17 +652,24 @@ El Engine ligero se envía con un registro de agentes en tiempo de ejecución va
 | `haptic`                 | post_processing | Envía comandos a dispositivos hápticos                            |
 | `cyoa`                   | post_processing | Genera prompts de elección                                        |
 | `storyboard` | post_processing | Planifica storyboards fijos o animados de Game y Roleplay |
+| `2d-avatars` | feature | Muestra avatares 2D animados de sprites o mallas |
+| `3d-avatars` | feature | Muestra avatares 3D animados VRM, MMD PMX, GLB y FBX |
 | `conversation-calls`     | feature         | Añade llamadas de audio/video de Conversation y ajustes relacionados |
 | `hierarchical-maps`      | feature         | Añade mapas de Roleplay/Game, contexto espacial y movimiento      |
 | `noodle` | feature | Añade el feed social local Noodle a Home |
+| `otome-forge` | feature | Añade Otome Hearth, un juego otome hecho con personajes, a Home |
+| `saucelings` | feature | Añade Saucelings, una mascota virtual criada por personajes, a Home |
 | `slurp2`                 | feature         | Añade Slurp, una app privada de creación de personajes, a Home    |
+| `story-writer` | feature | Añade Story Writer, un espacio para escribir libros en colaboración, a Home |
 | `gacha-forge`            | feature         | Añade un modo de juego gacha a Home                               |
+| `blackjack` | feature | Añade la mesa de Blackjack de Conversation |
 | `uno`                    | feature         | Añade la mesa de UNO de Conversation                              |
 | `chess`                  | feature         | Añade el tablero de Chess de Conversation                         |
 | `poker`                  | feature         | Añade la mesa de Texas Hold'em de Conversation                    |
 | `eightball`              | feature         | Añade la mesa de 8-Ball Pool de Conversation                      |
 | `tic-tac-toe`            | feature         | Añade el tablero de Tic-Tac-Toe de Conversation                   |
 | `rock-paper-scissors`    | feature         | Añade las partidas de Rock-Paper-Scissors de Conversation         |
+| `wordle` | feature | Añade la carrera diaria Wordle de Conversation |
 
 ### Tipos de resultado de los agentes
 

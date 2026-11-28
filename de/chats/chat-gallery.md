@@ -42,7 +42,26 @@ Du kannst ein generiertes Bild erneut erstellen, ohne die zugehörige Antwort ne
 3. Ändere unter dem Bild, was du möchtest: die Felder **Prompt** und **Negativer Prompt**, unter **Charakter-Prompts** ein Feld pro Charakter, sofern das Bild solche Prompts hatte, sowie das Bildmodell.
 4. Klick auf **Bild generieren** oder auf **Abbrechen**, um das Bild unverändert zu lassen.
 
-Das neue Bild ersetzt das alte in der Nachricht. Das alte bleibt in der Galerie, sodass du es wieder anheften kannst. Referenzbilder werden erneut aus den aktuellen Avataren der Charaktere gesendet. Bei manchen älteren Bildern wurden der negative Prompt und die Charakter-Prompts nicht gespeichert; der Editor weist dich darauf hin, wenn das der Fall ist.
+Das neue Bild wird die gewählte Version in der Nachricht. Frühere Ergebnisse bleiben in einer Gallery-Kachel mit Versionsanzahl zusammen. Jede Version behält Prompt, negativen Prompt und weitere gespeicherte Generierungsdetails. Referenzbilder kommen erneut von den aktuellen Charakteravataren, gefolgt von den ursprünglich verwendeten Lorebook-Eintragsbildern. Stability AI, Arli AI, SD Web UI und Draw Things erhalten keine Eintragsbilder. Bei älteren Bildern fehlen manchmal negativer Prompt und Charakter-Prompts; der Editor weist darauf hin.
+
+<a id="image-versions"></a>
+### Bildversionen
+
+Öffne ein gestapeltes Bild, um eine Version zu wählen. In einer Gallery wechseln Links-/Rechtspfeile, Pfeiltasten und horizontales Wischen zwischen Kacheln. Aus einer Chat-Nachricht geöffnet bleibst du im selben Stapel. Auf-/Ab-Steuerelemente, Pfeiltasten und vertikales Wischen auf dem Bild wechseln dessen Version. Zoome vorher heraus. Scrollen im Prompt wechselt keine Version.
+
+Klick auf Bild, Prompt-Kopfzeile oder Einklappbutton, um mit Auf/Ab Versionen zu wechseln. Klick auf Prompt-Text oder Kopierbutton, um stattdessen zu scrollen. Versionssteuerung bleibt beim Regenerieren oder Bearbeiten sichtbar. Übernimm oder lösche eine gemalte Maske vor dem Wechsel; während der Generierung pausieren die Steuerelemente.
+
+Die Auswahl wird gespeichert und im Chat auch nach Neuladen angezeigt. Regenerieren oder Bearbeiten einer älteren Version ergänzt denselben Stapel und behält spätere Versionen. Ein verzweigter Chat hat eine eigene Auswahl.
+
+Mit **Erzeugte Bilder automatisch in Charaktergalerien speichern** behalten neue Generierungen und Bearbeitungen die ursprünglichen Zielgalerien für Charakter und Persona. Auch diese gruppieren Versionen. Jede Galerie speichert ihre Auswahl unabhängig vom Chat. Einträge teilen Bilddateien, ohne zusätzliche Kopien. Beim Öffnen werden fehlende Versionen alter Chat-Stapel wiederhergestellt, sofern der ursprüngliche Eintrag noch auf den Quellchat verweist. Aus bereits gruppierten Galerien gelöschte Versionen bleiben gelöscht.
+
+Wähle in der Chat-Gallery **Galeriebild löschen** auf der Kachel oder den Löschbutton im Betrachter:
+
+- **Delete this version** entfernt die angezeigte Version. War sie ausgewählt, erscheint die neueste verbleibende.
+- **Delete other versions** behält die angezeigte und entfernt die anderen.
+- **Delete entire stack** entfernt alle Versionen und deren Bildanhänge aus dem Chat.
+
+Das löscht gespeicherte Versionen endgültig. **Abbrechen** behält alle.
 
 ## Weiterführende Anleitungen
 

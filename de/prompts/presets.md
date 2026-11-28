@@ -122,6 +122,7 @@ Ein **Prompt Block** ist Text, den du selbst schreibst: System-Anweisungen, Vorg
 | **Character Info** | Die Details der aktiven Charakterkarte. |
 | **Persona** | Die Details deiner aktiven Persona. |
 | **Chat History** | Die Chat-Nachrichten. |
+| **Neuester Verlauf** | Neueste Chat-Nachrichten aus **Chatverlauf**. Siehe [Verlauf mit Recent History aufteilen](#split-the-history-with-recent-history). |
 | **Chat Summary** | Die zusammengestellte Chat-Zusammenfassung. |
 | **Dialogue Examples** | Die Beispieldialoge des Charakters. |
 | **Lorebook Marker (All)** | Alle aktiven Lorebook-Einträge. |
@@ -164,7 +165,7 @@ Eine Gruppe fasst mehrere Abschnitte in einem Container zusammen.
 2. Klick auf den Namen der Gruppe, um sie umzubenennen.
 3. Klapp einen Abschnitt auf und wähl die Gruppe in seinem Dropdown-Menü **Group**.
 
-Bei **XML** wird eine Gruppe zu einem übergeordneten Tag. Bei **MARKDOWN** wird sie zu einer Überschrift. Löschst du eine Gruppe, bleiben ihre Abschnitte erhalten. Sie verlieren nur die Gruppenzuordnung.
+Bei **XML** wird eine Gruppe zu einem übergeordneten Tag. Bei **Markdown** wird sie zu einer Überschrift. Löschst du eine Gruppe, bleiben ihre Abschnitte erhalten. Sie verlieren nur die Gruppenzuordnung. Nicht nebeneinanderliegende Abschnitte derselben Gruppe bekommen jeweils ein eigenes Tag oder eine eigene Überschrift.
 
 ### Position und Tiefe
 
@@ -209,6 +210,25 @@ Game-Chats haben weitere Bedienelemente. **Erzählstil**, **Gewalt**, **Inhaltli
 Mit Prompt-Caching kann ein Dienst den Anfang eines Prompts wiederverwenden, den er schon gelesen hat. So kosten lange Chats weniger und antworten schneller. Der Dienst verwendet den Prompt nur bis zur ersten Textstelle wieder, die sich seit der letzten Nachricht geändert hat. Abgerufene Erinnerungen ändern sich mit fast jeder Nachricht. Stehen sie vor dem Chatverlauf, verhindern sie deshalb, dass der gesamte Verlauf aus dem Cache wiederverwendet wird.
 
 Um ihre Position selbst festzulegen, füge dem Preset einen **Memory Recall**-Marker hinzu. Zieh ihn unter **Chatverlauf** oder stell seine **Position** auf **Tiefe (ab dem Ende des Chats)**, um ihn innerhalb des Verlaufs einzufügen. Liest das Modell die Erinnerungen vor der Geschichte, orientieren sich die Antworten stärker daran. Deshalb bleiben sie standardmäßig vor dem Verlauf.
+
+<a id="split-the-history-with-recent-history"></a>
+## Verlauf mit Recent History aufteilen
+
+**Neuester Verlauf** sendet die neuesten Nachrichten an seiner Position, **Chatverlauf** die älteren. Abschnitte dazwischen landen zwischen alten und neuen Nachrichten. Nutze das für wechselnde Details wie Schauplatz oder Anwesende. Unveränderliche Details bleiben über **Chatverlauf**.
+
+1. Klick unter **Abschnitte** auf **Abschnitt hinzufügen**, dann **Neuester Verlauf**. Es erscheint direkt nach **Chatverlauf**.
+2. Klappe es auf und setze **Neueste Nachrichten** (Standard 4).
+3. Ziehe wechselnde Abschnitte, etwa **Lorebook Marker** oder Agentenabschnitte, zwischen **Chatverlauf** und **Neuester Verlauf**.
+4. Klick auf **Speichern**.
+
+Das Modell liest Änderungen nah an den neuesten Nachrichten und behält sie eher im Blick. Die ältere Historie bleibt gleich und kann im Prompt-Cache wiederverwendet werden. Bei Claude mit Caching liegt die Verlaufs-Cachemarkierung am Ende der älteren Nachrichten.
+
+- **Max. Nachrichten** unter **Chatverlauf** zählt beide Teile zusammen. Leer sendet alle Nachrichten.
+- Bei weniger Nachrichten als **Neueste Nachrichten** landen alle in **Neuester Verlauf**.
+- **Tiefe (ab dem Ende des Chats)** zählt nur Chat-Nachrichten. Größere Tiefe als **Neueste Nachrichten** landet im älteren Teil und verhindert dessen Wiederverwendung.
+- Ohne **Chatverlauf** sendet **Neuester Verlauf** alles. Oberhalb von **Chatverlauf** oder als zweiter Marker sendet es nichts. Die Zeile warnt jeweils.
+- Mit **XML** stehen ältere Nachrichten in `<chat_history>`, neuere in `<recent_history>`, die neueste in `<last_message>`.
+- Ältere Marinara-Versionen kennen **Neuester Verlauf** nicht und können solche Presets beim Import ablehnen.
 
 ## Decision-Blöcke und Prompt-Caching
 

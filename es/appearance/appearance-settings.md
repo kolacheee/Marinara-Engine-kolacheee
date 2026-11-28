@@ -88,6 +88,8 @@ En la distribución clásica, estas secciones están en la pestaña **Appearance
 
 - **Dynamic weather effects (rain, snow, fog, etc.)** (efectos de clima dinámicos: lluvia, nieve, niebla, etc.) está activado de forma predeterminada. Muestra el clima según el clima y la hora del día de la historia, y necesita que el agente **World State** esté activado para el chat. Consulta [Agentes: ayudantes de IA para tus chats](../agents/agents-overview.md).
 - **Reduce Ambient Animations & Effects** (reducir animaciones y efectos ambientales) detiene la animación decorativa, las partículas, las vistas previas giratorias y la aparición gradual del texto.
+
+- **Mostrar tiradas como texto** (desactivado por defecto) muestra cada tirada como una línea breve con los dados, sus resultados y el total, en lugar de dados animados. Las tiradas siguen ocurriendo y el modelo y el juego reciben sus resultados. Se aplica en todos los modos de chat, incluidos los dados de las pruebas de habilidad.
 - **Reduced paint effects** (efectos de pintura reducidos) aplana las transparencias y las sombras costosas, para que los dispositivos más lentos sigan funcionando con fluidez.
 
 ## Fondos

@@ -31,6 +31,28 @@ Depois da escolha, a rodada acontece. Os resultados aparecem como números de da
 
 Em uma partida com um conjunto de regras, **Items** faz o que o conjunto de regras diz para os itens do próprio conjunto: quanto eles curam ou ferem e quais condições acrescentam. Um item com cargas é oferecido enquanto restar um uso. Um item que pede um teste antes tem esse teste rolado, e, se o teste falhar, o item é gasto à toa. Um item ao qual o conjunto de regras não dá uso não é oferecido. Os outros itens fazem o que o GM avaliou quando a luta começou, a menos que o conjunto de regras desative os itens próprios do Game Mode.
 
+## Narração de batalha
+
+Em uma batalha Turn-Based, **Registro de combate** descreve cada golpe em uma frase curta, como "Os chifres de Xerneas brilham em prata antes de uma rajada de energia atingir o flanco de Houndoom". O dano, a cura e o acerto ou erro sempre vêm do jogo e aparecem em negrito após a frase. O modelo só descreve como o golpe parece.
+
+A linha simples aparece primeiro e é substituída pela descrição logo depois. Marinara pede a rodada inteira em uma solicitação, não uma por golpe. As frases vêm da primeira fonte disponível:
+
+1. O modelo integrado, que roda de graça no seu computador. Veja [Configuração do modelo integrado](../connections/local-model.md).
+2. O **Conexão dos efeitos de cena** do jogo.
+3. Frases escritas pela própria Marinara sem custo.
+
+O modelo que executa o GM nunca é usado na narração de batalha.
+
+Para mudar a quantidade de descrição, abra **Configurações do chat**, expanda **Estilo de combate** e escolha uma opção de **Narração de combate**:
+
+| Opção | O que faz |
+| --- | --- |
+| **Cada golpe** | Descreve cada golpe em texto. É o padrão. |
+| **Momentos-chave: críticos, nocautes, reações** | Só pede ao modelo acertos críticos, nocautes, reações elementais e golpes superefetivos. Os demais usam as frases da Marinara. |
+| **Desativado: registro de combate simples** | Mostra o registro de batalha simples. |
+
+Batalhas Tactical não usam narração de batalha.
+
 ## Jogar uma batalha Tactical
 
 O combate Tactical coloca a sua equipe e os inimigos em um campo de batalha em grade. Cada quadrado é uma casa, como **Plains** (planície) ou **Forest** (floresta).

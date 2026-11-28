@@ -25,6 +25,8 @@ Te usługi korzystają z klucza API, z wyjątkiem trzech usług subskrypcyjnych,
 | Arli AI | `www.arliai.com/account` |
 | Z.AI | `z.ai/manage-apikey/apikey-list` |
 | DeepSeek | `platform.deepseek.com/api_keys` |
+| AI Horde | `aihorde.net/register` (opcjonalnie, zobacz [AI Horde](#ai-horde)) |
+| BeaverNet | `net.beaverai.org/account` |
 | OpenAI-compatible, Claude (Subscription), OpenAI (ChatGPT), Grok CLI (Subscription) | Brak strony z kluczami. Zobacz uwagi niżej. |
 
 Domyślne adresy, które Marinara wpisuje za ciebie:
@@ -42,6 +44,9 @@ Domyślne adresy, które Marinara wpisuje za ciebie:
 - Arli AI: `https://api.arliai.com/v1`
 - Z.AI: `https://api.z.ai/api/paas/v4`
 - DeepSeek: `https://api.deepseek.com/v1`
+
+- AI Horde: `https://oai.aihorde.net/v1`
+- BeaverNet: `https://net.beaverai.org/v1`
 - OpenAI-compatible i usługi subskrypcyjne: brak. Adres wpisujesz samodzielnie albo nie jest potrzebny.
 
 Wszystkie strony z kluczami zaczynają się od `https://`.
@@ -85,7 +90,7 @@ Agregator to usługa, w której jeden klucz daje dostęp do modeli wielu firm. A
 
 | Model | Co trafia do pamięci podręcznej | Na jak długo |
 | --- | --- | --- |
-| Claude | Prompt systemowy, historia czatu do wartości **Głębokość pamięci podręcznej** i najnowsza wiadomość | 5 minut lub 1 godzina przy opcji **Rozszerzony zapis tokenów w pamięci podręcznej (1 godzina)** |
+| Claude | Prompt systemowy (w dwóch częściach przy podsumowaniu, aby nowe zachowało w pamięci część przed **Past Events**), historia do **Głębokość pamięci podręcznej** i najnowsza wiadomość | 5 minut lub 1 godzina z **Rozszerzony zapis tokenów w pamięci podręcznej (1 godzina)** |
 | Qwen | Prompt systemowy i historia czatu do wartości **Głębokość pamięci podręcznej** | 5 minut |
 | Gemini | Prompt systemowy | 5 minut |
 | GPT, DeepSeek, Grok, Kimi i inne | Usługa samodzielnie korzysta z pamięci podręcznej, niezależnie od przełącznika | Ustala usługa |
@@ -134,7 +139,9 @@ Ten sam wskaźnik pojawia się pod paskiem kontekstu w selektorze połączenia c
 
 ### Z.AI
 
-**Z.AI** udostępnia modele GLM (GLM 5.3, GLM 5.3 Flash i starsze) przez własne API. Modele GLM 5.2 i 5.3 przyjmują poziom rozumowania **Maximum** (maksymalny). Domyślny adres prowadzi do punktu końcowego rozliczanego za zużycie. Plan Coding Plan w usłudze Z.AI korzysta z innego punktu końcowego, więc klucz tego planu może tu nie działać.
+**Z.AI** udostępnia GLM (GLM 5.4, GLM 5.3, GLM 5.3 Flash i starsze) przez własne API. GLM 5.2, 5.3 i 5.4 akceptują **Maksymalny**. Domyślny adres rozlicza użycie. Coding Plan ma inny punkt końcowy, więc jego klucz może tu nie działać.
+
+GLM 5.4 jest tylko w GLM Coding Plan. Ustaw **Adres** na `https://api.z.ai/api/coding/paas/v4`. Zawsze rozumuje, więc **Wysiłek rozumowania** oferuje **Niski**, **Wysoki**, **Maks.**, bez **Wył.**.
 
 ### DeepSeek
 
@@ -143,6 +150,20 @@ Ten sam wskaźnik pojawia się pod paskiem kontekstu w selektorze połączenia c
 Część parametrów nie ma zastosowania, więc panel je pomija: ustawienia **Verbosity**, **Top K** i kary za powtórzenia zostały wycofane i są ignorowane. Parametry **Temperature** (losowość) i **Top P** tworzą parę, bo usługa DeepSeek używa naraz tylko jednego z nich. **Temperature** widzisz przy wyłączonym myśleniu, a **Top P** przy włączonym.
 
 Połącz się z usługą DeepSeek przez jej własny kafelek, a nie przez skierowanie **OpenAI** na adres usługi DeepSeek. Usługa OpenAI oczekuje modeli OpenAI, więc przy modelu DeepSeek ukrywa opcje generowania i nie wysyła prawie żadnego z twoich ustawień.
+
+<a id="ai-horde"></a>
+### AI Horde
+
+**AI Horde** to darmowa sieć modeli uruchamianych przez ochotników na ich komputerach. Kafelek tworzy konto **OpenAI-compatible** z adresem AI Horde.
+
+**Klucz API** zaczyna od anonimowego `0000000000`, bez konta. Anonimowe żądania czekają najdłużej. Darmowy klucz z `aihorde.net/register` skraca kolejkę, a udostępnienie komputera daje kudos (punkty Horde podnoszące priorytet).
+
+Lista aktualnie działających modeli często się zmienia. Odpowiedź trwa sekundy lub minuty zależnie od kolejki. Przy przekroczeniu czasu spróbuj innego modelu lub zwiększ limity serwera (zobacz [Limity czasu](#timeouts)).
+
+<a id="beavernet"></a>
+### BeaverNet
+
+**BeaverNet** to darmowa sieć społecznościowa: osoby z wolnymi kartami graficznymi uruchamiają modele dla innych. Kafelek tworzy konto **OpenAI-compatible** z jej adresem. Utwórz darmowy klucz na `net.beaverai.org/account`.
 
 ### OpenAI-compatible
 
