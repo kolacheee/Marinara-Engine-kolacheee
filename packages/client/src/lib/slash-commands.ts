@@ -379,6 +379,18 @@ export function getSlashCommandUsage(
   return translate(`ui.chat.slash.usage.${command.name}`, { defaultValue: command.usage });
 }
 
+/** A command's description in the app language; commands without a translation keep their English text. */
+export function getSlashCommandDescription(
+  command: SlashCommand,
+  translate: (key: string, options: { defaultValue: string; skipInterpolation: boolean }) => string,
+): string {
+  // Descriptions mention {{user}} literally, so the translation is not interpolated.
+  return translate(`ui.chat.slash.description.${command.name}`, {
+    defaultValue: command.description,
+    skipInterpolation: true,
+  });
+}
+
 async function buildSlashHelpText(availability: SlashCommandAvailability): Promise<string> {
   const { translate } = await import("../localization/i18n");
   const availableCommands = getAvailableSlashCommands(availability);
@@ -388,7 +400,9 @@ async function buildSlashHelpText(availability: SlashCommandAvailability): Promi
     translate("ui.chat.slash.help.arguments"),
     translate("ui.chat.slash.help.ranges"),
     "",
-    ...availableCommands.map((command) => `${getSlashCommandUsage(command, translate)} - ${command.description}`),
+    ...availableCommands.map(
+      (command) => `${getSlashCommandUsage(command, translate)} - ${getSlashCommandDescription(command, translate)}`,
+    ),
   ].join("\n");
 }
 
