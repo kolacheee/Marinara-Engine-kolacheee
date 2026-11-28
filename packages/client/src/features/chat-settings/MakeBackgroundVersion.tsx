@@ -68,20 +68,19 @@ export function MakeBackgroundVersion({ chatId, background }: { chatId: string; 
         "/backgrounds/weather-art/remake",
         { chatId, part: "version", weather, time, debugMode },
       );
-      if (
-        result.shown !== false &&
-        useChatStore.getState().activeChatId === chatId &&
-        useUIStore.getState().chatBackground === shownAtStart
-      ) {
-        // The same address the picker uses, so its preview names the version that is shown.
-        const url = chatBackgroundMetadataToUrl(result.filename);
-        if (url) useUIStore.getState().setChatBackground(url);
-      }
+      // Shown when the server showed it and, while this chat is on screen, nothing else was picked
+      // meanwhile (that pick is saved over the version, so the message says it was kept instead).
+      const onScreen = useChatStore.getState().activeChatId === chatId;
+      const url = chatBackgroundMetadataToUrl(result.filename);
+      const shown =
+        result.shown !== false && (!onScreen || (useUIStore.getState().chatBackground === shownAtStart && !!url));
+      // The same address the picker uses, so its preview names the version that is shown.
+      if (shown && onScreen && url) useUIStore.getState().setChatBackground(url);
       qc.invalidateQueries({ queryKey: ["chats"] });
       qc.invalidateQueries({ queryKey: ["backgrounds"] });
       toast.success(
         t(
-          result.shown === false
+          !shown
             ? "chat.settings.makeVersion.doneNotShown"
             : result.existed
               ? "chat.settings.makeVersion.shownExisting"
