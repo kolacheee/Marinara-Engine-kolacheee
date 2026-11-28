@@ -14025,6 +14025,8 @@
   "ui.chat.setupgenerationparameterspanel.leaveThisOffToUseTheSelectedConnectionS": "Leave this off to use the selected model's saved defaults for this chat.",
   "ui.chat.setupwizardshell.closeSetup": "Close setup",
   "ui.chat.setupwizardshell.goToValue1": "Go to {{value1}}",
+  "ui.chat.slash.description.impersonate_draft": "Write your character's ({{user}}) next message into the message box to edit before sending",
+  "ui.chat.slash.description.impersonate_post": "Generate and post your character's ({{user}}) next message right away",
   "ui.chat.slash.help.arguments": "Replace bracketed placeholders with your values; do not type the brackets. Fields marked \"(optional)\" can be omitted. Quotes can keep multiword or numeric names unambiguous.",
   "ui.chat.slash.help.ranges": "Ranges use message numbers, such as 3, 3-8, or 2-5,9. /hide also accepts name-first syntax. /unhide removes global hiding only; it does not clear character-specific hiding.",
   "ui.chat.slash.help.title": "Available Commands:",
