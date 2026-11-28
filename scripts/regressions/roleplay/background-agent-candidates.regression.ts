@@ -6,6 +6,7 @@
 import assert from "node:assert/strict";
 
 const {
+  backgroundAgentGalleryOwners,
   backgroundAgentHandleFor,
   buildBackgroundAgentCandidates,
   isUntellingBackgroundName,
@@ -178,5 +179,60 @@ await executeAgent(
 const customPrompt = customCapture.calls[0]!.map((message: { content: string }) => message.content).join("\n");
 assert.match(customPrompt, /- gallery:kitchen \[source: Zion's gallery\]/u, "custom background agents get the list");
 assert.match(customPrompt, /<background_selection_rules>/u);
+
+// ── Whose galleries count: the roster, active characters, and the user's identity ──
+const roster = [{ id: "zion", name: "Zion" }];
+const characterIdentity = backgroundAgentGalleryOwners({
+  roster,
+  active: [{ id: "zion", name: "Zion" }],
+  identity: { source: "character", id: "alyssa-card", name: "Alyssa" },
+});
+assert.deepEqual(
+  characterIdentity,
+  {
+    characters: [
+      { id: "zion", name: "Zion" },
+      { id: "alyssa-card", name: "Alyssa" },
+    ],
+    persona: null,
+  },
+  "a character-backed identity outside the roster still lends its gallery",
+);
+assert.deepEqual(
+  backgroundAgentGalleryOwners({
+    roster,
+    identity: { source: "persona", id: "alyssa-persona", name: "Alyssa" },
+  }),
+  { characters: [{ id: "zion", name: "Zion" }], persona: { id: "alyssa-persona", name: "Alyssa" } },
+  "a persona identity keeps the persona gallery",
+);
+assert.deepEqual(
+  backgroundAgentGalleryOwners({
+    roster,
+    identity: { source: "character", id: "zion", name: "Zion" },
+  }).characters,
+  [{ id: "zion", name: "Zion" }],
+  "no duplicate when the identity is already on the roster",
+);
+
+// ── The Illustrator's raw current background does not replace the Background agent's handle ──
+const bothCapture = makeCapturingProvider('{"chosen":null}');
+await executeAgent(
+  makeRegressionAgentConfig({ type: "background", name: "Background" }) as any,
+  makeRegressionAgentContext({
+    recentMessages: [{ role: "assistant", content: "Alyssa walks to the kettle in the kitchen." }],
+    memory: {
+      _availableBackgrounds: candidates,
+      _unlabelledBackgroundsLeftOut: 0,
+      _currentBackground: "gallery:kitchen",
+      _illustratorBackgroundGenerationEnabled: true,
+      _illustratorCurrentBackground: "/api/gallery/file/zion/kitchen.png",
+    },
+  }),
+  bothCapture.provider as any,
+  "regression-model",
+);
+const bothPrompt = bothCapture.calls[0]!.map((message: { content: string }) => message.content).join("\n");
+assert.match(bothPrompt, /<current_background>gallery:kitchen<\/current_background>/u);
 
 console.log("background agent candidates: ok");

@@ -3386,8 +3386,9 @@ function buildAgentExtras(
     parts.push(
       `Prefer a changed location in current or committed tracker state. When tracker location is unavailable, infer conservatively from recent scene context. Keep generateBackground false for movement within the same place, camera changes, mood, weather, lighting, or time-of-day changes alone.`,
     );
-    if (typeof context.memory._currentBackground === "string" && context.memory._currentBackground.trim()) {
-      parts.push(`Currently active background: ${escapeXml(context.memory._currentBackground.trim())}`);
+    const illustratorCurrentBackground = context.memory._illustratorCurrentBackground;
+    if (typeof illustratorCurrentBackground === "string" && illustratorCurrentBackground.trim()) {
+      parts.push(`Currently active background: ${escapeXml(illustratorCurrentBackground.trim())}`);
     } else {
       parts.push(`Currently active background: none`);
     }

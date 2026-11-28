@@ -106,6 +106,31 @@ export function libraryBackgroundAgentCandidates(
   return { candidates, leftOut };
 }
 
+/**
+ * Whose galleries the Background agent may pick from: the whole chat roster, active characters not on
+ * it, and the user's identity. A character-backed identity is listed as a character (its gallery is a
+ * character gallery); a persona identity uses the persona gallery.
+ */
+export function backgroundAgentGalleryOwners(args: {
+  roster: ReadonlyArray<{ id: string; name: string }>;
+  active?: ReadonlyArray<{ id: string; name: string }>;
+  identity: { source: "persona" | "character" | null; id: string | null; name: string } | null;
+}): { characters: Array<{ id: string; name: string }>; persona: { id: string; name: string } | null } {
+  const characters: Array<{ id: string; name: string }> = [];
+  const seen = new Set<string>();
+  const push = (owner: { id: string; name: string }) => {
+    if (!owner.id || seen.has(owner.id)) return;
+    seen.add(owner.id);
+    characters.push({ id: owner.id, name: owner.name });
+  };
+  for (const owner of args.roster) push(owner);
+  for (const owner of args.active ?? []) push(owner);
+  const identity = args.identity;
+  if (identity?.id && identity.source === "character") push({ id: identity.id, name: identity.name });
+  const persona = identity?.id && identity.source === "persona" ? { id: identity.id, name: identity.name } : null;
+  return { characters, persona };
+}
+
 /** Background pictures (with places) from the chat's characters' and persona's galleries. */
 export async function loadGalleryBackgroundAgentCandidates(args: {
   characters: ReadonlyArray<{ id: string; name: string }>;
