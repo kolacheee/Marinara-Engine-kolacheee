@@ -64,6 +64,15 @@ export async function runHeldSlashCommand<Result>(input: {
       if (succeeded !== undefined) generationSucceeded = succeeded;
       return succeeded;
     },
+    ...(ctx.impersonateDraft
+      ? {
+          impersonateDraft: async (direction: string) => {
+            const started = await ctx.impersonateDraft!(direction);
+            if (started === false) generationSucceeded = false;
+            return started;
+          },
+        }
+      : {}),
   };
   const restore = () => {
     drafts.release(chatId, text, false);
