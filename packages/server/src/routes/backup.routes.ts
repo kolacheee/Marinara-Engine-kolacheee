@@ -735,7 +735,7 @@ const PROFILE_LOCAL_DESTINATION_ROWS: Record<string, { key: string; column: stri
  * notifications go, Professor Mari's permissions mode, runtime and skill gate, and the switches that allow custom
  * Agent imports and External Extensions. A profile is exported without them, and an import keeps this install's own.
  */
-const PROFILE_INSTALL_ONLY_SETTINGS = new Set<unknown>([
+const PROFILE_INSTALL_ONLY_SETTINGS = new Set<string>([
   TRIPO_API_KEY_SETTING,
   PROFILE_IMPORT_UNDO_SETTING,
   PUSH_NOTIFICATION_SETTINGS_KEY,
@@ -745,6 +745,10 @@ const PROFILE_INSTALL_ONLY_SETTINGS = new Set<unknown>([
   CUSTOM_AGENT_IMPORTS_SETTINGS_KEY,
   EXTERNAL_EXTENSIONS_SETTINGS_KEY,
 ]);
+
+/** A settings row a profile carries: one keyed by text (the app reads settings by it) and not one of the above. */
+const isPortableProfileSetting = (row: Record<string, unknown> | null | undefined) =>
+  typeof row?.key === "string" && !PROFILE_INSTALL_ONLY_SETTINGS.has(row.key);
 
 const isProfileRecord = (value: unknown): value is Record<string, unknown> =>
   !!value && typeof value === "object" && !Array.isArray(value);
@@ -774,7 +778,8 @@ function readProfileLocalDestinations(tableName: string, row: Record<string, unk
  */
 function withLocalSpeechServers(row: Record<string, unknown>, local?: Record<string, unknown>) {
   const config = readProfileJsonRecord(row.value);
-  if (!config) return row;
+  // Other text, such as "[]", would replace this install's addresses and keys, so this install's row stays.
+  if (!config) return { ...row, value: typeof local?.value === "string" ? local.value : "{}" };
   const localConfig = readProfileJsonRecord(local?.value);
   const keep = (target: Record<string, unknown>, kept: unknown) => {
     for (const field of ["baseUrl", "apiKey"]) {
@@ -882,7 +887,7 @@ export function sanitizeProfileTableRows(tableName: string, rows: Array<Record<s
     }));
   }
   if (tableName === "app_settings") {
-    return rows.filter((row) => !PROFILE_INSTALL_ONLY_SETTINGS.has(row.key));
+    return rows.filter(isPortableProfileSetting);
   }
   if (tableName === "agent_configs") {
     return rows.map((row) => redactAgentSecrets(row));
@@ -4471,12 +4476,11 @@ export async function backupRoutes(app: FastifyInstance) {
 
       const data = envelope.data as Record<string, any>;
       const warnings = importInput.warnings ?? [];
-      // Settings that belong to this install, the Undo record among them: a profile can't bring or replace them.
+      // Settings that belong to this install, the Undo record among them, and rows not keyed by text: a profile can't
+      // bring or replace them.
       const importedSettings = isProfileStorageSnapshot(data.fileStorage) ? data.fileStorage.tables.app_settings : null;
       if (Array.isArray(importedSettings)) {
-        data.fileStorage.tables.app_settings = importedSettings.filter(
-          (row) => !PROFILE_INSTALL_ONLY_SETTINGS.has(row.key),
-        );
+        data.fileStorage.tables.app_settings = importedSettings.filter(isPortableProfileSetting);
       }
       if (keepExisting && isProfileStorageSnapshot(data.fileStorage)) {
         data.fileStorage = await withoutWhatAlreadyExists(app.db, data.fileStorage);

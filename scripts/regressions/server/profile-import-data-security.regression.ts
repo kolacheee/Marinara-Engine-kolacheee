@@ -660,7 +660,7 @@ try {
         "speech-to-text": { enabled: true, baseUrl: outside, apiKey: "outside-key", language: "pl" },
         tts: importedTts,
       };
-      const importSettings = (rows: Array<{ key: string; value: unknown }>) =>
+      const importSettings = (rows: Array<{ key: unknown; value: unknown }>) =>
         app.inject({
           method: "POST",
           url: "/api/backup/import-profile",
@@ -711,14 +711,27 @@ try {
       assert.equal(tts?.sourceProfiles.xai.apiKey, "");
       assert.deepEqual(tts?.sourceProfiles.openai, own.tts.sourceProfiles.openai, "a source the file lacks stays");
 
-      // A value that is not JSON text, such as an array holding that text, keeps this install's speech settings.
+      // A value that is not JSON text of the settings, such as an array holding that text, an array or other text,
+      // keeps this install's speech settings.
       const speechKeys = ["speech-to-text", "tts"] as const;
       const speechBefore = await Promise.all(speechKeys.map(readSetting));
-      const wrappedImport = await importSettings(
-        speechKeys.map((key) => ({ key, value: [JSON.stringify(importedSettings[key])] })),
+      for (const valueOf of [(key: string) => [JSON.stringify(importedSettings[key])], () => "[]", () => "not-json"]) {
+        const wrappedImport = await importSettings(speechKeys.map((key) => ({ key, value: valueOf(key) })));
+        assert.equal(wrappedImport.statusCode, 200, wrappedImport.body);
+        assert.deepEqual(await Promise.all(speechKeys.map(readSetting)), speechBefore);
+      }
+
+      // A row keyed by something other than text, such as an array holding an install-only key, is not written.
+      const arrayKeyImport = await importSettings([
+        { key: ["custom-agent-imports-enabled"], value: "true" },
+        { key: ["mari-permissions-mode"], value: "bypass" },
+      ]);
+      assert.equal(arrayKeyImport.statusCode, 200, arrayKeyImport.body);
+      const storedKeys = (await db.select().from(schema.appSettings)).map((row: { key: unknown }) => row.key);
+      assert.ok(
+        storedKeys.every((key: unknown) => typeof key === "string"),
+        `settings keys: ${JSON.stringify(storedKeys)}`,
       );
-      assert.equal(wrappedImport.statusCode, 200, wrappedImport.body);
-      assert.deepEqual(await Promise.all(speechKeys.map(readSetting)), speechBefore);
       const stored = JSON.stringify(await db.select().from(schema.appSettings));
       assert.doesNotMatch(stored, /collector\.example|outside-key|outside-topic/u);
     }
