@@ -3,8 +3,10 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import Fastify from "../../../packages/server/node_modules/fastify/fastify.js";
+import { STORED_SECRET_MASK } from "../../../packages/shared/src/constants/stored-secrets.js";
 import {
   buildCustomToolPatch,
+  createCustomToolFolderPackageEntries,
   importCustomToolEntries,
   normalizeCustomToolImportEntry,
   prepareCustomToolImportEntry,
@@ -170,18 +172,21 @@ try {
     { createCustomToolsStorage },
     { backupRoutes },
     { ENCRYPTED_WEBHOOK_PREFIX },
+    { customToolsRoutes },
   ] = await Promise.all([
     import("../../../packages/server/src/db/connection.js"),
     import("../../../packages/server/src/db/schema/index.js"),
     import("../../../packages/server/src/services/storage/custom-tools.storage.js"),
     import("../../../packages/server/src/routes/backup.routes.js"),
     import("../../../packages/server/src/utils/custom-tool-webhook.js"),
+    import("../../../packages/server/src/routes/custom-tools.routes.js"),
   ]);
   const db = await getDB();
   const app = Fastify();
   app.decorate("db", db);
   try {
     await app.register(backupRoutes, { prefix: "/api/backup" });
+    await app.register(customToolsRoutes, { prefix: "/api/custom-tools" });
     await app.ready();
     const storage = createCustomToolsStorage(db);
     const createdWebhook = await storage.create({
@@ -201,6 +206,46 @@ try {
       "https://example.com/hook?secret=value",
       "the owner can still use and edit the configured webhook",
     );
+
+    // The URL carries its token, so the tool routes answer with the mask in its place. The editor sends back only
+    // what changed, and a save that carries the mask keeps the saved URL. An export never carries the mask.
+    const listed = await app.inject({ method: "GET", url: "/api/custom-tools" });
+    assert.equal(listed.statusCode, 200, listed.body);
+    assert.doesNotMatch(listed.body, /example\.com|secret=value/u, "listing tools must not return a webhook URL");
+    const listedTool = (listed.json() as Array<Parameters<typeof buildCustomToolPatch>[0]>).find(
+      (tool) => tool.id === createdWebhook.id,
+    )!;
+    assert.equal(listedTool.webhookUrl, STORED_SECRET_MASK, "a saved webhook URL is shown as the mask");
+    const single = await app.inject({ method: "GET", url: `/api/custom-tools/${createdWebhook.id}` });
+    assert.equal(single.statusCode, 200, single.body);
+    assert.equal(single.json().webhookUrl, STORED_SECRET_MASK);
+    const editorSave = buildCustomToolPatch(listedTool, {
+      ...serializeCustomToolForTransfer(listedTool),
+      description: "Edited",
+    });
+    assert.deepEqual(editorSave, { description: "Edited" }, "the editor leaves an untouched URL out");
+    const maskedSave = await app.inject({
+      method: "PATCH",
+      url: `/api/custom-tools/${createdWebhook.id}`,
+      payload: { ...editorSave, webhookUrl: STORED_SECRET_MASK },
+    });
+    assert.equal(maskedSave.statusCode, 200, maskedSave.body);
+    assert.equal(maskedSave.json().webhookUrl, STORED_SECRET_MASK);
+    assert.equal(maskedSave.json().description, "Edited");
+    assert.equal(
+      (await storage.getById(createdWebhook.id))?.webhookUrl,
+      "https://example.com/hook?secret=value",
+      "sending the mask back keeps the saved URL",
+    );
+    const [exportedEntry] = createCustomToolFolderPackageEntries([serializeCustomToolForTransfer(listedTool)]);
+    assert.equal(exportedEntry?.entry.manifest.config.webhookUrl, null, "an export never carries the mask");
+    const replaced = await app.inject({
+      method: "PATCH",
+      url: `/api/custom-tools/${createdWebhook.id}`,
+      payload: { webhookUrl: "https://example.com/new-hook" },
+    });
+    assert.equal(replaced.statusCode, 200, replaced.body);
+    assert.equal((await storage.getById(createdWebhook.id))?.webhookUrl, "https://example.com/new-hook");
 
     const importedAt = new Date(0).toISOString();
     const importedProfileTool = {
