@@ -3,6 +3,7 @@ import {
   BEHOLDER_PASS_LANES,
   isBeholderLaneResponse,
   mergeBeholderLaneDeltas,
+  mergeBeholderWornRemovals,
   parseBeholderLanePrompts,
   resolveBeholderStateResponse,
 } from "../../../packages/server/src/services/agents/beholder-state.js";
@@ -155,3 +156,42 @@ const alreadyOff = resolveBeholderStateResponse(
 );
 assert.equal(alreadyOff.valid, true, "A no-op removal must not invalidate the turn");
 assert.equal(alreadyOff.error, undefined);
+
+// The take-off repair adds only removals, deduplicated, onto the merged delta.
+assert.deepEqual(
+  mergeBeholderWornRemovals(
+    { self: { body: { chest: { worn_remove: ["coat"] } } } },
+    { self: { body: { chest: { worn_remove: ["coat", "shirt"] } } } },
+  ),
+  { self: { body: { chest: { worn_remove: ["coat", "shirt"] } } } },
+);
+
+// Lane replies are model text read with JSON.parse, so a "__proto__" key arrives as
+// plain data. Merging must keep it data: nothing the model wrote may land on every
+// object in the server.
+const planted = ["plantedField", "species", "body", "worn", "worn_remove"];
+const inheritedKeys = () => planted.filter((key) => key in {});
+const protoLanes = mergeBeholderLaneDeltas([
+  '{"changed":true,"delta":{"x":{"body":{"__proto__":{"plantedField":"yes"}}}}}',
+  '{"changed":true,"delta":{"__proto__":{"species":"planted","body":{"chest":{"bare":true}}}}}',
+  '{"changed":true,"delta":{"x":{"body":{"chest":{"__proto__":{"worn":[{"item":"cloak"}]}}}}}}',
+]);
+assert.deepEqual(inheritedKeys(), [], "A lane's __proto__ key must not reach Object.prototype");
+assert.deepEqual(Object.keys(protoLanes.delta), ["x"]);
+const protoChest = (protoLanes.delta.x as { body: Record<string, Record<string, unknown>> }).body.chest;
+assert.deepEqual(Object.keys((protoLanes.delta.x as { body: object }).body), ["chest"], "Only known body slots merge");
+assert.equal(
+  Object.getPrototypeOf(protoChest),
+  Object.prototype,
+  "A slot's __proto__ field must not become its prototype",
+);
+assert.equal(protoChest.worn, undefined);
+
+const protoRepair = mergeBeholderWornRemovals(
+  {},
+  JSON.parse(
+    '{"__proto__":{"body":{"chest":{"worn_remove":["coat"]}}},"x":{"body":{"__proto__":{"worn_remove":["coat"]}}}}',
+  ),
+);
+assert.deepEqual(inheritedKeys(), [], "The take-off repair's __proto__ key must not reach Object.prototype");
+assert.deepEqual(Object.keys(protoRepair), []);
