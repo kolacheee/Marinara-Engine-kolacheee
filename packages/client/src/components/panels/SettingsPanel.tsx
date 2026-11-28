@@ -24,6 +24,7 @@ import {
   type ChatListBackgroundMode,
   type RoleplayAvatarStyle,
   type RoleplayChatPosition,
+  type ChatBackgroundOverlays,
   type TrackerDataPanelSection,
   type TrackerPanelSizeProfile,
   type TrackerStatDisplayMode,
@@ -155,6 +156,7 @@ import {
   type Theme,
   type ThemeMeta,
   type VideoGenerationUserSettings,
+  BACKGROUND_CHOICE_NOTE_KEY,
 } from "@marinara-engine/shared";
 import {
   findDuplicateTheme,
@@ -599,6 +601,7 @@ function formatStorageBytes(bytes: number): string {
 }
 
 const ROLEPLAY_CHAT_POSITIONS: RoleplayChatPosition[] = ["left", "center", "right"];
+const CHAT_BACKGROUND_OVERLAY_CHOICES: ChatBackgroundOverlays[] = ["full", "light", "off"];
 
 const ROLEPLAY_AVATAR_STYLE_OPTIONS: Array<{ id: RoleplayAvatarStyle; label: string; desc: string }> = [
   {
@@ -3663,6 +3666,8 @@ function AppearanceSettings({
   const chatArtBehindPanels = useUIStore((s) => s.chatArtBehindPanels);
   const setChatArtBehindPanels = useUIStore((s) => s.setChatArtBehindPanels);
   const setChatBackgroundBlur = useUIStore((s) => s.setChatBackgroundBlur);
+  const chatBackgroundOverlays = useUIStore((s) => s.chatBackgroundOverlays);
+  const setChatBackgroundOverlays = useUIStore((s) => s.setChatBackgroundOverlays);
   const conversationBackgroundImageOpacity = useUIStore((s) => s.conversationBackgroundImageOpacity);
   const setConversationBackgroundImageOpacity = useUIStore((s) => s.setConversationBackgroundImageOpacity);
   const resetAppearanceSettings = useUIStore((s) => s.resetAppearanceSettings);
@@ -3719,7 +3724,12 @@ function AppearanceSettings({
     (url: string | null) => {
       setChatBackgroundRaw(url);
       if (!activeChatId) return;
-      updateMeta.mutate({ id: activeChatId, background: chatBackgroundUrlToMetadata(url) });
+      // A pick by hand: the agent's "why" line no longer applies.
+      updateMeta.mutate({
+        id: activeChatId,
+        background: chatBackgroundUrlToMetadata(url),
+        [BACKGROUND_CHOICE_NOTE_KEY]: null,
+      });
     },
     [setChatBackgroundRaw, activeChatId, updateMeta],
   );
@@ -3798,7 +3808,11 @@ function AppearanceSettings({
     setActiveGradientScheme("dark");
     document.getElementById("marinara-css-editor-preview")?.remove();
     if (activeChatId) {
-      updateMeta.mutate({ id: activeChatId, background: chatBackgroundUrlToMetadata(null) });
+      updateMeta.mutate({
+        id: activeChatId,
+        background: chatBackgroundUrlToMetadata(null),
+        [BACKGROUND_CHOICE_NOTE_KEY]: null,
+      });
     }
     void setActiveSyncedTheme
       .mutateAsync(null)
@@ -4692,6 +4706,43 @@ function AppearanceSettings({
                     </span>
                   </div>
                 </label>
+                {overhaulLook ? (
+                  <SettingsChoiceRow
+                    anchorId={getSettingsControlAnchorId("chat-background-overlays")}
+                    label={localizeUi("settings.controls.chatBackgroundOverlays.label")}
+                    help={localizeUi("settings.controls.chatBackgroundOverlays.help")}
+                    value={chatBackgroundOverlays}
+                    onChange={setChatBackgroundOverlays}
+                    options={CHAT_BACKGROUND_OVERLAY_CHOICES.map((choice) => ({
+                      value: choice,
+                      label: localizeUi(`settings.controls.chatBackgroundOverlays.${choice}`),
+                    }))}
+                  />
+                ) : (
+                  <div id={getSettingsControlAnchorId("chat-background-overlays")} className="grid scroll-mt-3 gap-1.5">
+                    <span className="inline-flex items-center gap-1 text-[0.6875rem] font-medium">
+                      {localizeUi("settings.controls.chatBackgroundOverlays.label")}
+                      <HelpTooltip text={localizeUi("settings.controls.chatBackgroundOverlays.help")} />
+                    </span>
+                    <div
+                      role="group"
+                      aria-label={localizeUi("settings.controls.chatBackgroundOverlays.label")}
+                      className="grid grid-cols-3 gap-1"
+                    >
+                      {CHAT_BACKGROUND_OVERLAY_CHOICES.map((choice) => (
+                        <button
+                          key={choice}
+                          type="button"
+                          onClick={() => setChatBackgroundOverlays(choice)}
+                          aria-pressed={chatBackgroundOverlays === choice}
+                          className={SETTINGS_BUTTON_CLASS}
+                        >
+                          {localizeUi(`settings.controls.chatBackgroundOverlays.${choice}`)}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 <label className="mari-settings-boxed-slider flex flex-col gap-1 rounded-lg bg-[var(--secondary)]/45 p-3 ring-1 ring-[var(--border)]/70">
                   <span className="text-[0.6875rem] font-medium">
                     {localizeUi("settings.controls.conversationBackgroundImageOpacity.label")}

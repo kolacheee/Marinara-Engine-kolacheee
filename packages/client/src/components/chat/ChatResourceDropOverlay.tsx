@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { Ban, Bot, BookOpen, FileText, Image, Link, UserPlus, VenetianMask } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
-import { isAgentConfigDeleted, type Chat, type Lorebook } from "@marinara-engine/shared";
+import { BACKGROUND_CHOICE_NOTE_KEY, isAgentConfigDeleted, type Chat, type Lorebook } from "@marinara-engine/shared";
 import { useUpdateChat, useUpdateChatMetadata } from "../../hooks/use-chats";
 import { fetchAllCharacterPages, usePersona } from "../../hooks/use-characters";
 import { useLorebooks } from "../../hooks/use-lorebooks";
@@ -494,7 +494,12 @@ export function ChatResourceDropOverlay({ chat }: { chat: Chat }) {
           const nextBackground = chatBackgroundUrlToMetadata(latestAction.id);
           useUIStore.getState().setChatBackground(latestAction.id);
           try {
-            await updateMetadata.mutateAsync({ id: currentChat.id, background: nextBackground });
+            await updateMetadata.mutateAsync({
+              id: currentChat.id,
+              background: nextBackground,
+              // Dropped by hand: the agent's "why" line no longer applies.
+              [BACKGROUND_CHOICE_NOTE_KEY]: null,
+            });
           } catch (error) {
             useUIStore.getState().setChatBackground(previousBackgroundUrl);
             throw error;

@@ -6430,16 +6430,24 @@ input.ov-edhead__title:focus {
   padding-top: 0.25rem !important;
   padding-bottom: 0.25rem !important;
 }
+/* The week scrolls inside its own box, sized to what is left of the screen, so every
+   hour is tall enough that a half-hour block still shows its name. */
 .ov-week {
+  --ov-week-hour: 2.75rem;
   position: relative;
   display: grid;
+  height: max(26rem, calc(100dvh - var(--ov-week-top, 11.5rem)));
+  max-height: calc(var(--ov-week-hour) * 24 + 2.25rem);
   grid-template-columns: 2.75rem repeat(7, minmax(0, 1fr));
-  gap: 0.25rem;
+  align-items: start;
+  gap: 0 0.25rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .ov-week__hrs {
   position: relative;
-  margin-top: 1.75rem;
-  height: 26rem;
+  flex: none;
+  height: calc(var(--ov-week-hour) * 24);
   color: var(--ov-dim);
   font-size: 0.65rem;
   font-variant-numeric: tabular-nums;
@@ -6449,16 +6457,25 @@ input.ov-edhead__title:focus {
   right: 0.25rem;
   transform: translateY(-0.35em);
 }
+.ov-week__hrs span:first-child {
+  transform: none;
+}
 .ov-week__col {
   display: flex;
   min-width: 0;
   flex-direction: column;
 }
 .ov-week__dh {
-  height: 1.5rem;
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  height: 1.75rem;
   margin-bottom: 0.25rem;
+  flex: none;
   overflow: hidden;
-  border-radius: 0.375rem;
+  border-radius: 0 0 0.375rem 0.375rem;
+  background: var(--background);
+  box-shadow: 0 0.25rem 0 var(--background);
   color: var(--ov-muted);
   font-size: 0.75rem;
   font-weight: 600;
@@ -6467,24 +6484,34 @@ input.ov-edhead__title:focus {
 }
 @media (hover: hover) {
   .ov-week__dh:hover {
-    background: var(--ov-hover);
+    background: color-mix(in srgb, var(--ov-hover), var(--background));
   }
+}
+.ov-week__dh.is-corner {
+  pointer-events: none;
 }
 .ov-week__dh.is-today {
   color: var(--ov-accent-text);
 }
 .ov-week__dh.is-on {
-  background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
+  background: color-mix(in srgb, var(--ov-accent) 14%, var(--background));
 }
 .ov-week__day {
   position: relative;
-  height: 26rem;
+  height: calc(var(--ov-week-hour) * 24);
+  flex: none;
   border-radius: 0.375rem;
   background:
     repeating-linear-gradient(
       to bottom,
       color-mix(in srgb, var(--ov-line) 55%, transparent) 0 1px,
-      transparent 1px calc(100% / 6)
+      transparent 1px calc(100% / 12)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 calc(100% / 24),
+      color-mix(in srgb, var(--ov-line) 25%, transparent) calc(100% / 24) calc(100% / 24 + 1px),
+      transparent calc(100% / 24 + 1px) calc(100% / 12)
     ),
     color-mix(in srgb, var(--foreground) 2.5%, transparent);
   cursor: pointer;
@@ -6497,11 +6524,13 @@ input.ov-edhead__title:focus {
   min-height: 2px;
   flex-direction: column;
   overflow: hidden;
-  padding: 0.125rem 0.3125rem;
+  padding: 0.1875rem 0.3125rem;
   border-left: 2px solid currentColor;
   border-radius: 0.25rem;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   line-height: 1.25;
+  /* A hairline between blocks that touch. */
+  box-shadow: inset 0 -1px 0 var(--background);
 }
 .ov-week__blk b {
   overflow: hidden;
@@ -6514,6 +6543,18 @@ input.ov-edhead__title:focus {
   overflow: hidden;
   color: var(--ov-dim);
   white-space: nowrap;
+}
+/* Under an hour: the name on one line, the time after it only when the whole time fits.
+   A time that does not fit wraps, and the tall row gap pushes it out of the block. */
+.ov-week__blk.is-short {
+  flex-flow: row wrap;
+  align-content: flex-start;
+  gap: 4rem 0.375rem;
+  padding-top: 0.0625rem;
+  padding-bottom: 0;
+}
+.ov-week__blk.is-short b {
+  max-width: 100%;
 }
 .ov-week__blk.is-online {
   background: color-mix(in srgb, #3fbf6f 18%, transparent);
@@ -6538,6 +6579,137 @@ input.ov-edhead__title:focus {
   right: -2px;
   height: 2px;
   background: var(--ov-accent);
+}
+/* Phones: one day at a time instead of the week (seven 45px columns cannot hold a name). */
+.ov-day {
+  display: none;
+}
+.ov-schedEd > .ov-day {
+  order: -2;
+}
+@container ov-sched (max-width: 32rem) {
+  .ov-schedEd > .ov-week {
+    display: none;
+  }
+  .ov-schedEd > .ov-day {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+.ov-day__days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem;
+}
+.ov-day__chip {
+  display: flex;
+  min-width: 0;
+  height: 3.25rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border-radius: 0.5rem;
+  color: var(--ov-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.ov-day__chip.is-today {
+  color: var(--ov-accent-text);
+}
+.ov-day__chip.is-on {
+  background: color-mix(in srgb, var(--ov-accent) 16%, transparent);
+  color: var(--ov-accent-text);
+}
+.ov-day__bar {
+  position: relative;
+  width: 80%;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+.ov-day__bar > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.ov-day__bar > .is-online {
+  background: #3fbf6f;
+}
+.ov-day__bar > .is-idle {
+  background: #e0b04a;
+}
+.ov-day__bar > .is-dnd {
+  background: #e0566f;
+}
+.ov-day__bar > .is-offline {
+  background: color-mix(in srgb, var(--foreground) 22%, transparent);
+}
+.ov-day__title {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.ov-day__scroll {
+  --ov-week-hour: 3.25rem;
+  position: relative;
+  display: grid;
+  height: max(24rem, calc(100dvh - var(--ov-day-top, 15rem)));
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  align-items: start;
+  column-gap: 0.375rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+.ov-day__hrs {
+  position: relative;
+  height: calc(var(--ov-week-hour) * 24);
+  color: var(--ov-dim);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+.ov-day__hrs span {
+  position: absolute;
+  right: 0.25rem;
+  transform: translateY(-0.35em);
+}
+.ov-day__hrs span:first-child {
+  transform: none;
+}
+.ov-day__grid {
+  position: relative;
+  height: calc(var(--ov-week-hour) * 24);
+  border-radius: 0.5rem;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ov-line) 55%, transparent) 0 1px,
+      transparent 1px calc(100% / 12)
+    ),
+    color-mix(in srgb, var(--foreground) 2.5%, transparent);
+}
+.ov-day__blk {
+  width: auto;
+  align-items: stretch;
+  padding: 0.3125rem 0.625rem;
+  border-width: 0 0 0 3px;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  text-align: left;
+}
+.ov-day__blk span {
+  font-size: 0.75rem;
+}
+.ov-day__blk.is-short {
+  align-items: baseline;
+  padding-top: 0.125rem;
+}
+.ov-schedEd [data-sched-block].is-focus {
+  --tw-ring-color: var(--ov-accent) !important;
+  box-shadow: 0 0 0 2px var(--ov-accent) !important;
 }
 /* The calendar already shows every day, so below it only the picked day's editor shows. */
 .ov-schedEd fieldset > section:not(:has(> div)) {

@@ -17,6 +17,7 @@ import {
 } from "../services/sidecar/local-model-priority.js";
 import {
   LOCATION_BACKGROUND_PIN_SHOWN_KEY,
+  BACKGROUND_CHOICE_NOTE_KEY,
   type LocationBackgroundPin,
   applyClockCommandTags,
   backgroundTimeOfDay,
@@ -653,6 +654,14 @@ import {
   readChatBackgroundLibrary,
   pinnedSceneBackground,
 } from "../services/generation/location-background-pins.js";
+import {
+  backgroundAgentStoredValues,
+  backgroundAgentHandleFor,
+  buildBackgroundAgentCandidates,
+  loadGalleryBackgroundAgentCandidates,
+  resolveBackgroundAgentChoice,
+  type BackgroundAgentCandidate,
+} from "../services/generation/background-agent-candidates.js";
 import {
   chatBackgroundPlainPicture,
   isChatBackgroundWeatherVersion,
@@ -1483,6 +1492,24 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
     if (requestChatMode === "conversation" && input.impersonate) {
       return rejectGenerationOutput(reply, 400, { error: "Impersonate is not available in Conversation mode" });
     }
+    if (input.impersonateDraft) {
+      // A message-box draft is the user's own words until they send it: nothing is saved, nothing moves the
+      // scene, and no agent runs.
+      if (
+        !input.impersonate ||
+        input.regenerateMessageId ||
+        input.continueMessageId ||
+        input.pendingSpatialTransition
+      ) {
+        return rejectGenerationOutput(reply, 400, {
+          error: "An impersonate draft cannot regenerate, continue or move the scene",
+        });
+      }
+      input.impersonateBlockAgents = true;
+    }
+    // A draft leaves the lorebook's sticky and cooldown timers where they were: it was not a turn yet.
+    const persistLorebookState = (args: Parameters<typeof persistLorebookRuntimeState>[0]) =>
+      input.impersonateDraft ? Promise.resolve({}) : persistLorebookRuntimeState(args);
     const spatialRequestError = validateSpatialGenerationRequest({
       mode: requestChatMode,
       origin: resolveSpatialGenerationOrigin(input),
@@ -2154,7 +2181,8 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
         advancedMemorySettings.autoMessageVisibility &&
         groupGenerationMode === "individual" &&
         parseJsonField<string[]>(chat.characterIds, []).length > 1;
-      if (decidesMessageVisibility) {
+      // A message-box draft changes nothing until it is sent, so it reads the visibility already saved.
+      if (decidesMessageVisibility && !input.impersonateDraft) {
         await advancedMemory.settleMessageVisibility(input.chatId, {
           signal: generationSignal,
           debugMode: requestDebug,
@@ -3837,6 +3865,8 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
         let savedDecisionTimers = JSON.stringify(readDecisionTimers(chatMeta[DECISION_TIMERS_METADATA_KEY]));
         const saveDecisionTimers = async () => {
           if (!decisionTiming) return;
+          // A message-box draft is not a turn yet: its timer changes stay in this request.
+          if (input.impersonateDraft) return;
           const next = JSON.stringify(decisionTiming.state);
           if (next === savedDecisionTimers) return;
           // The turn count only matters while a timer runs, so a chat without one is not written.
@@ -4157,7 +4187,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           if (!options.previewOnly) {
             Object.assign(
               chatMeta,
-              await persistLorebookRuntimeState({
+              await persistLorebookState({
                 db: app.db,
                 chats,
                 chatId: input.chatId,
@@ -4445,7 +4475,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
 
           Object.assign(
             chatMeta,
-            await persistLorebookRuntimeState({
+            await persistLorebookState({
               db: app.db,
               chats,
               chatId: input.chatId,
@@ -4963,7 +4993,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
 
           Object.assign(
             chatMeta,
-            await persistLorebookRuntimeState({
+            await persistLorebookState({
               db: app.db,
               chats,
               chatId: input.chatId,
@@ -5724,7 +5754,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
 
             Object.assign(
               chatMeta,
-              await persistLorebookRuntimeState({
+              await persistLorebookState({
                 db: app.db,
                 chats,
                 chatId: input.chatId,
@@ -7332,6 +7362,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
         if (backgroundAgent) {
           agentContext.memory._availableBackgrounds = [];
           agentContext.memory._currentBackground = currentBackground;
+          let library: Array<{ filename: string; tags: string[] }> = [];
           try {
             const { readdirSync, readFileSync, existsSync } = await import("fs");
             const { join, extname } = await import("path");
@@ -7351,13 +7382,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 }
               }
 
-              // Weather versions follow their plain picture; the agent picks among plain pictures.
-              agentContext.memory._availableBackgrounds = files
-                .filter((f: string) => !isChatBackgroundWeatherVersion(f))
-                .map((f: string) => ({
-                  filename: f,
-                  tags: meta[f]?.tags ?? [],
-                }));
+              library = files.map((f: string) => ({ filename: f, tags: meta[f]?.tags ?? [] }));
               if (currentBackground && isChatBackgroundWeatherVersion(currentBackground)) {
                 const plainName = chatBackgroundPlainPicture(currentBackground);
                 if (plainName) agentContext.memory._currentBackground = plainName;
@@ -7365,6 +7390,42 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             }
           } catch {
             /* non-critical */
+          }
+          // Gallery backgrounds (labelled with places) and pinned places are candidates too; library
+          // files with no tags and a random file name are left out (nothing says what they show).
+          const galleryCandidates =
+            chatMode === "roleplay"
+              ? await loadGalleryBackgroundAgentCandidates({
+                  // The whole chat roster: an inactive character's room is still a place the story can go.
+                  characters: [...(await getGroupHistoryCharacterNamesById().catch(() => new Map<string, string>()))]
+                    .map(([id, name]) => ({ id, name }))
+                    .concat(
+                      charInfo
+                        .filter((character) => !allCharacterIds.includes(character.id))
+                        .map((character) => ({ id: character.id, name: character.name })),
+                    ),
+                  persona: personaId ? { id: personaId, name: personaName } : null,
+                  characterGallery,
+                  personaGallery,
+                }).catch(() => [])
+              : [];
+          const { candidates, leftOut } = buildBackgroundAgentCandidates({
+            library,
+            gallery: galleryCandidates,
+            chatMetadata: chatMeta,
+          });
+          agentContext.memory._availableBackgrounds = candidates;
+          agentContext.memory._unlabelledBackgroundsLeftOut = leftOut.length;
+          agentContext.memory._currentBackground = backgroundAgentHandleFor(
+            agentContext.memory._currentBackground as string | null | undefined,
+            candidates,
+          );
+          if (leftOut.length > 0) {
+            logger.info(
+              "[background-agent] %d library background(s) left out: no tags and a file name that says nothing (%s)",
+              leftOut.length,
+              leftOut.slice(0, 5).join(", "),
+            );
           }
         }
 
@@ -7752,12 +7813,29 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               };
             },
           });
+        // The Background agent answers with a handle; the chat stores a file name or a gallery URL.
+        // Resolved in place before the result goes out, so the client shows what the server keeps.
+        const resolveBackgroundAgentResult = (result: AgentResult) => {
+          if (!result.success || result.type !== "background_change") return;
+          if (!result.data || typeof result.data !== "object") return;
+          const candidates = agentContext.memory._availableBackgrounds as BackgroundAgentCandidate[] | undefined;
+          if (!candidates) return;
+          const data = result.data as { chosen?: unknown; reason?: unknown };
+          if (typeof data.chosen !== "string" || !data.chosen.trim()) return;
+          if (backgroundAgentStoredValues(candidates).has(data.chosen)) return;
+          const handle = data.chosen;
+          data.chosen = resolveBackgroundAgentChoice(handle, candidates);
+          if (!data.chosen)
+            logger.warn('[background-agent] "%s" is not one of the listed backgrounds; ignored', handle);
+        };
         const sendAgentEvent = (result: AgentResult, options?: { finalized?: boolean }) => {
+          resolveBackgroundAgentResult(result);
           const nextResult = markLorebookResultForApproval(result);
           if (!customAgentCanEmitResult(nextResult, resolvedAgents, builtInAgentTypes)) return;
           sendRawAgentEvent(nextResult, options);
         };
         const sendAgentResultEvent = (result: AgentResult) => {
+          resolveBackgroundAgentResult(result);
           const nextResult = markLorebookResultForApproval(result);
           if (!customAgentCanEmitResult(nextResult, resolvedAgents, builtInAgentTypes)) return;
           sendRawAgentResultEvent(nextResult);
@@ -7849,7 +7927,9 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           finalizeLorebookWrites,
         } = await resolveGenerationTools({
           requestBody: input as Record<string, unknown>,
-          nativeToolsAvailable: supportsNativeToolCalls((gameToolConnection ?? conn).provider),
+          // A message-box draft runs no tools, so nothing changes before it is sent.
+          nativeToolsAvailable:
+            !input.impersonateDraft && supportsNativeToolCalls((gameToolConnection ?? conn).provider),
           lorebookEmbeddingOptions: { embeddingSource: memoryRecallEmbeddingSource, signal: generationSignal },
           chatId: input.chatId,
           chatMetadata: chatMeta,
@@ -11648,6 +11728,12 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             return null;
           }
 
+          // An impersonate draft goes back to the message box unsaved; the caller ends the turn there.
+          if (input.impersonateDraft) {
+            sendSseEvent(reply, { type: "impersonate_draft", data: { chatId: input.chatId, text: fullResponse } });
+            return null;
+          }
+
           // Save assistant message (or user message for impersonate)
           const savedReply = await saveGeneratedReply(
             {
@@ -13072,6 +13158,11 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           // A merged group generation may voice several characters unless a regen
           // target or a single explicit @mention pins it to exactly one speaker.
           const genResult = await generateForCharacter(targetCharId, sentMessages, true, mergedSpeaksOnlyTarget);
+          if (input.impersonateDraft) {
+            // The draft was sent back unsaved: no reply was written, so nothing after it runs.
+            sendSseEvent(reply, { type: "done", data: "" });
+            return;
+          }
           if (genResult) {
             // A reply split at scene breaks: agents read every part, each with its own whispers.
             for (const part of genResult.earlierParts ?? []) {
@@ -14740,10 +14831,16 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 // Same pinned place as before: a picture the user picked by hand here stays.
                 if (shownPinId === pinned.match.pin.id) return;
                 backgroundsShownThisTurn.add(pinned.filename);
-                // A literal patch (pinnedBackgroundMetadataPatch's two keys) so the metadata sweep can read it.
+                // A literal patch (pinnedBackgroundMetadataPatch's keys) so the metadata sweep can read it.
                 await chats.patchMetadata(input.chatId, {
                   background: pinned.filename,
                   [LOCATION_BACKGROUND_PIN_SHOWN_KEY]: pinned.match.pin.id,
+                  [BACKGROUND_CHOICE_NOTE_KEY]: {
+                    background: pinned.filename,
+                    by: "pinned-place",
+                    reason: pinned.match.matched,
+                    at: new Date().toISOString(),
+                  },
                 });
                 sendSseEvent(reply, {
                   type: "agent_result",
@@ -14939,13 +15036,17 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               }
               if (bgData.chosen) {
                 const availableBgs = agentContext.memory._availableBackgrounds as
-                  Array<{ filename: string }> | undefined;
+                  BackgroundAgentCandidate[] | undefined;
                 if (availableBgs) {
-                  const valid = availableBgs.some((b) => b.filename === bgData.chosen);
-                  if (!valid) {
+                  // Already resolved when the result went out (a gallery handle is its URL by now).
+                  const stored = backgroundAgentStoredValues(availableBgs);
+                  const resolved = stored.has(bgData.chosen)
+                    ? bgData.chosen
+                    : resolveBackgroundAgentChoice(bgData.chosen, availableBgs);
+                  if (!resolved) {
                     logger.warn(`[generate] Background agent chose "${bgData.chosen}" which doesn't exist — rejecting`);
-                    bgData.chosen = null;
                   }
+                  bgData.chosen = resolved;
                 }
               }
 
@@ -15042,8 +15143,21 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               // Persist the validated background to chat metadata so it restores on reload
               if (bgData.chosen && !pinnedPatch) {
                 backgroundsShownThisTurn.add(bgData.chosen);
+                const reason =
+                  typeof (bgData as { reason?: unknown }).reason === "string"
+                    ? ((bgData as { reason: string }).reason.replace(/\s+/gu, " ").trim().slice(0, 200) ?? "")
+                    : "";
+                logger.info('[background-agent] Showing "%s"%s', bgData.chosen, reason ? ` (${reason})` : "");
                 try {
-                  await updateChatMetadataForTools({ background: bgData.chosen });
+                  await updateChatMetadataForTools({
+                    background: bgData.chosen,
+                    [BACKGROUND_CHOICE_NOTE_KEY]: {
+                      background: bgData.chosen,
+                      by: "background-agent",
+                      reason,
+                      at: new Date().toISOString(),
+                    },
+                  });
                 } catch {
                   /* non-critical */
                 }
